@@ -1,0 +1,56 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-preventing-drop-down-menu-from-displaying",
+    "controlName": ["WinEditors"],
+    "tags": ["How Do I"],
+    "guid": "{96C50B50-ACED-41A5-9212-32FD8BA3D921}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Preventing Drop-Down Menu from Displaying
+
+This topic applies to the following WinEditor™ controls:
+
+* WinComboEditor™
+* WinDateTimeEditor™
+* WinFontNameEditor™
+* WinCheckEditor™
+
+In certain situations you may only want to allow users to change values in the drop-downs using the arrow keys and not allow the drop-down portion of a combo to display. To prevent a drop-down of the combo portion of the element from occurring, you simply cancel the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase~beforedropdown_ev.html[BeforeDropDown]"]  event.
+
+Each drop-down in the sample project has a checkbox associated with it. If the checkbox is checked then setting 
+
+[source]
+----
+e.cancel = True
+----
+
+ will prevent the drop-down from displaying.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraComboEditor1_BeforeDropDown(ByVal sender As Object, _
+  ByVal e As System.ComponentModel.CancelEventArgs) _
+  Handles UltraComboEditor1.BeforeDropDown
+	If Me.UltraCheckEditor1.Checked Then
+		e.Cancel = True
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraComboEditor1_BeforeDropDown(object sender, 
+  System.ComponentModel.CancelEventArgs e)
+{
+	if(this.ultraCheckEditor1.Checked)
+		e.Cancel = true;
+}
+----

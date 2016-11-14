@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-show-the-navigator-programmatically",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{06EA61D3-AB24-4B6F-8AF0-4668EC8DC48E}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Show the Navigator Programmatically
+
+This topic will help you display the WinDockManager's™ Navigator using code at run time. You may wish to do this if you are using a dialog box to prompt a user to select a certain opened file. You may also want to do this if the key combination used to display the navigator, Ctrl-Tab, is already being used in your program. If that is the case, you should disable the Navigator. See the topic link:windockmanager-prevent-the-navigator-from-being-displayed.html[Prevent the Navigator from Being Displayed] for more information on disabling the Navigator. You can display the Navigator by simply invoking the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~shownavigator.html[ShowNavigator]"]  method. The code below demonstrates how to show the Navigator when a button is clicked.
+
+.Note
+[NOTE]
+====
+If your WinDockManager is on a form that will be a MDI child, you will need to show the navigator programmatically as the key combination will not show the navigator in this scenario by design.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub btnShowNavigator_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnShowNavigator.Click
+	Me.UltraDockManager1.ShowNavigator()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnShowNavigator_Click(object sender, EventArgs e)
+{
+	this.ultraDockManager1.ShowNavigator();
+}
+----

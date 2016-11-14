@@ -1,0 +1,95 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-creating-a-radial-gauge-in-design-view",
+    "controlName": ["WinGauge"],
+    "tags": [],
+    "guid": "{51183820-8FE4-43C9-A433-2A94C1FB5A51}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Radial Gauge in Design View
+
+This topic shows you how to add a Radial Gauge to WinGauge.
+
+[start=1]
+. In Design view, click the UltraGauge control on your form.
+[start=2]
+. In the Properties window, click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.win.ultrawingauge.ultragauge~gauges.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
+[start=3]
+. In the Gauges collection editor, click Add, and select Add Radial Gauge.
+
+image::Images\Gauge_Adding_a_Radial_Gauge_01.png[]
+
+[start=4]
+. At this point, the Radial Gauge has been added, but it is not visible because certain properties have not been set. To start configuring the Gauge, expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=5]
+. Create a new BrushElement object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  property. Then from the drop-down list, select Solid Fill.
+[start=6]
+. Expand the BrushElement property, and set the color property to Silver.
+[start=7]
+. At this point, you should see the Radial Gauge dial.
+
+image::Images\Gauge_Adding_a_Radial_Gauge_02.png[]
+
+[start=8]
+. Create a new Scale by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"]  property . Then from within the drop-down list, click the ellipsis (…) button to open the Scale Collection editor.
+[start=9]
+. Click Add to create a new Scale.
+[start=10]
+. Create a new Axis object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugescale~axis.html[Axis]"]  property of the Scale. Then, from the drop-down list, select Numeric Axis.
+[start=11]
+. Expand the Axis property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~startvalue.html[StartValue]"]  property to 0. Then set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~endvalue.html[EndValue]"]  property to 100\.
+[start=12]
+. Create a new BrushElement object by clicking the BrushElement property. Then from the drop-down list, select Solid Fill.
+[start=13]
+. Expand the BrushElement property, and set the Color property to White.
+[start=14]
+. Set the StartAngle property to 100, and the EndAngle property to 435. Setting these properties change where the Section begins and ends, and puts a small space between the start and end.
+[start=15]
+. Notice that the Scale touches the outer border of the dial. Change this by setting the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~outerextent.html[OuterExtent]"]  property to 85.
+[start=16]
+. So far if you run the project, it should look like the form below.
+
+image::Images\Gauge_Adding_a_Radial_Gauge_03.png[]
+
+[start=17]
+. Add major Tickmarks to the Scale by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~majortickmarks.html[MajorTickmarks]"]  property. Then, create a new BrushElement by clicking the BrushElement property, and from the drop-down list, select Solid Fill.
+[start=18]
+. Expand the BrushElement property, and set the Color property to Black.
+[start=19]
+. In order to align the outer edge of the Tickmarks, set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugeneedle~endextent.html[EndExtent]"]  property to 85, which is the same as that of the Section that we added earlier.
+[start=20]
+. The  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugeneedle~startextent.html[StartExtent]"]  property must also be changed so that its value is less than the EndExtent property. Set the StartExtent property to 75.
+[start=21]
+. Notice there are too many Tickmarks. Reduce them by setting the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugescaletickmarkappearance~frequency.html[Frequency]"]  property to 10. This will cause a Tickmark to be painted every 10 units that were defined in the Axis.
+[start=22]
+. At this point, if you run the project, it should look like the form below:
+
+image::Images\Gauge_Adding_a_Radial_Gauge_04.png[]
+
+[start=23]
+. Now all that is needed is a marker that indicates the current value that should be displayed. Click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"]  property of the Scale, and click the ellipsis (…) button to open the Markers Collection editor.
+
+image::Images\Gauge_Adding_a_Radial_Gauge_05.png[]
+
+[start=24]
+. Click Add and select Add Needle.
+[start=25]
+. The needle has now been added but is not visible because a Brush Element has not been created.
+[start=26]
+. Create a new BrushElement object by clicking the BrushElement property. Then from the drop-down list, select Solid Fill.
+[start=27]
+. Expand the BrushElement property, and set the Color property to Red.
+[start=28]
+. The Needle is still not visible because a Value was not specified. Set the Value property to 20\.
+[start=29]
+. To shorten the length of the Needle, set the MidExtent property to 65 and set the EndExtent property to 80\.
+[start=30]
+. Run the project. It should look similar to the form below.
+
+image::Images\Gauge_Adding_a_Radial_Gauge_06.png[]

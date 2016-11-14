@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-differences-wintab-and-wintabstrip",
+    "controlName": ["WinTab"],
+    "tags": ["Getting Started","Summaries","Tips and Tricks"],
+    "guid": "{F145490D-BD81-4FFE-89BE-DCCCB8EDBA28}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Differences Between WinTab and WinTabStip
+
+Both the WinTab™ and WinTabStrip™ controls are derived from the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase.html[UltraTabControlBase]"]  abstract base class and the majority of their functionality is shared between them. The following lists the differences:
+
+* *Per tab child controls* -- Only the UltraTabControl facilitates supplying different child controls per tab. It does this by creating an UltraTabPageControl for each tab which child controls can be placed on at design or run-time. The UltraTabStripControl instead uses the single SharedControlsPage as the tab page for every tab.
+
+.Note
+[NOTE]
+====
+With either element it is always possible to modify, hide or show child controls through code in a SelectedTabChanging or SelectedTabChanged event handler.
+====
+
+* *Design-time verbs* -- The UltraTabControl provides additional design-time verbs. They are:
+
+** ' _Show shared controls_ ' -- Shows the shared controls page. Child controls placed here will, by default, appear on every tab. This verb is not necessary for the UltraTabStripControl since the shared controls page is always visible.
+** ' _Exclude shared controls..._ ' -- Displays a dialog that allows the developer to specify which shared controls should be excluded from specific tabs.
+** ' _Convert TabControl..._ ' -- Displays a dialog that provides a facility to convert an existing TabControl to an UltraTabControl. This will duplicate the tab structure and optionally re-parent the child controls but will not convert existing code.
+
+* *Data binding* -- Only the UltraTabStripControl supports binding to a data source. It adds a tab for every row in the bound data. When the element's DataSource property is set the following changes occur:
+
+** All existing tabs are cleared.
+** At run-time the Tabs collection is loaded with a tab for every row in the bound list and the collection is marked read-only. As rows are added, deleted or modified in the data source the collection is automatically updated to reflect those changes. As each tab is loaded the TabDataInitialized event is raised.
+** At design-time the Tabs collection is loaded with a set of sample tabs that display the name of the column that will be used to supply the tab's text. These tabs can not be selected or scrolled at design-time and are only provided to simulate the look of the element at run-time. Also the 'Add tab' and 'Remove tab' verbs are disabled along with the InitialSelectedTab, SelectedTab and Tabs properties.
+
+* *Resolution of default property settings* -- The Tab and TabStrip elements resolve the default settings of certain properties differently, according to the following guidelines:
+
+** If the UseMenmonics property is left to its default setting it will resolve to true except for data bound UltraTabStripControls which will resolve to false.
+** If the ScrollButtonTypes property is left to its default setting it will resolve to 'NextPrevious' except for data bound UltraTabStripControls which resolve to 'NextPrevious' and 'Thumb'.

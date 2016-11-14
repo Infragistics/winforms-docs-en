@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-checkbox-in-column-header",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{866AD145-0993-4633-A30D-E8B83BBAD243}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Checkbox in Column Header
+
+WinGrid™ has the ability to select the value for all cells within a particular Boolean column, via a checkbox placed in the column header. This provides the ability to automatically synchronize with all the cell values within the column. The functionality can be enabled through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headercheckboxvisibility.html[HeaderCheckBoxVisibility]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headercheckboxalignment.html[HeaderCheckBoxAlignment]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headercheckboxsynchronization.html[HeaderCheckBoxSynchronization]"]  properties set through  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[ultraGrid.DisplayLayout.Override]"]  object. Similarly using the properties  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnheader~checkboxvisibility.html[CheckBoxVisibility]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnheader~checkboxalignment.html[CheckBoxAlignment]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnheader~checkboxsynchronization.html[CheckBoxSynchronization]"]  through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn.Header]"]  object, checkboxes can be displayed in Column Headers.
+
+The following code assumes WinGrid is bound to the Northwind Employees table. A Boolean column IsActive has been added to the Employees table for the sake of this topic.
+
+*In Visual Basic:*
+
+----
+'Display a checkbox in the column header where the column's data type isBoolean, DefaultableBoolean, or Nullable Boolean. 
+Me.ultraGrid1.DisplayLayout. Bands(0).Columns("IsActive").Header.CheckBoxVisibility = HeaderCheckBoxVisibility.WhenUsingCheckEditor
+'Aligns the Header checkbox to the right of the Header caption 
+Me.ultraGrid1.DisplayLayout.Bands(0).Columns("IsActive ").Header.CheckBoxAlignment = HeaderCheckBoxAlignment.Right
+'The checkbox and the cell values are kept in synch to affect only the RowsCollection 
+Me.ultraGrid1.DisplayLayout.Bands(0).Columns("IsActive ").Header.CheckBoxSynchronization = HeaderCheckBoxSynchronization.RowsCollection
+----
+
+*In C#:*
+
+----
+//Display a checkbox in the column header, where column's data type isBoolean,DefaultableBoolean, or Nullable Boolean.
+this.ultraGrid1.DisplayLayout. Bands[0].Columns["IsActive"].Header.CheckBoxVisibility = HeaderCheckBoxVisibility.WhenUsingCheckEditor;
+//Aligns the Header checkbox to the right of the Header caption
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["IsActive"].Header.CheckBoxAlignment = HeaderCheckBoxAlignment.Right;
+//The checkbox and the cell values are kept in synch to affect only the RowsCollection 
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["IsActive"].Header.CheckBoxSynchronization = HeaderCheckBoxSynchronization.RowsCollection;
+----
+
+image::Images\Wingrid_Displaying_Checkbox_in_Column_header.png[]
+
+*Handling Events when check state is modified*
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~beforeheadercheckstatechanged_ev.html[BeforeHeaderCheckStateChecked]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~afterheadercheckstatechanged_ev.html[AfterHeaderCheckStateChecked]"]  events can be handled to performs tasks before or after the header check state is modified. The current header check state can be obtained through the UltraGridColumn object's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~getheadercheckedstate.html[GetHeaderCheckedState]"]  method.
+
+*In Visual Basic:*
+
+----
+Private Sub ultraGrid2_AfterHeaderCheckStateChanged(ByVal sender As Object, ByVal e As AfterHeaderCheckStateChangedEventArgs) 
+    Dim currentCheckState As CheckState = e.Column.GetHeaderCheckedState(e.Rows) 
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid2_AfterHeaderCheckStateChanged(object sender, AfterHeaderCheckStateChangedEventArgs e)
+        {
+            CheckState currentCheckState = e.Column.GetHeaderCheckedState(e.Rows);
+        }
+----

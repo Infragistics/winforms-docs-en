@@ -1,0 +1,48 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-drag-once-databinding-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{624C4D72-688E-402E-876E-618D340EB37E}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Drag Once Databinding
+
+In Visual Studio 2005 (.NET Framework 2.0) Drag-Once Databinding was implemented for Infragistics' data-driven controls. The following is a list of the controls that are affected:
+
+* UltraLabel - DefaultBindingProperty("Text")
+* TextEditorControlBase - DefaultBindingProperty("Text")
+* UltraCheckEditor - DefaultBindingProperty("CheckedValue")
+* UltraComboEditor - LookupBindingPropertiesAttribute("DataSource", "DisplayMember", "ValueMember", "Value") & DefaultBindingProperty("Value")
+* UltraCurrencyEditor - DefaultBindingProperty("Value")
+* UltraDateTimeEditor - DefaultBindingProperty("Value")
+* UltraNumericEditor - DefaultBindingProperty("Value")
+* UltraOptionSet - LookupBindingPropertiesAttribute("DataSource", "DisplayMember", "ValueMember", "Value") & DefaultBindingProperty("Value")
+* UltraPictureBox - DefaultBindingProperty("Image")
+* UltraTextEditor - DefaultBindingProperty("Value")
+* UltraCombo – LookupBindingPropertiesAttribute("DataSource", "DisplayMember", "ValueMember", "Value") & DefaultBindingProperty("Value")
+* UltraDropdown – ComplexBindingAttribute("DataSource", "DataMember")
+* UltraGrid – ComplexBindingAttribute("DataSource", "DataMember")
+* UltraMaskedEdit - DefaultBindingProperty("Value")
+* UltraCalendarCombo - DefaultBindingProperty("Value")
+
+For general information on how to use Drag-Once Databinding, as well as its benefits, read the following two articles.
+
+* link:http://www.code-magazine.com/Article.aspx?quickid=0409051[Drag-Once Databinding]
+* link:http://www.code-magazine.com/Article.aspx?quickid=0411071[Drag Once DataBinding with Custom Controls]
+
+To access the Data Sources window that is referred to in the two above-mentioned topics, select Show Data Sources from the Data menu of Visual Studio 2005. An example of the Data Sources window is shown below.
+
+.Note
+[NOTE]
+====
+This window may appear differently, depending on whether you already have any data sources defined in your project.
+====
+
+image::images\Win_Whats_New_VS2005_Drag_Once_Databinding_01.png[drag once databinding]

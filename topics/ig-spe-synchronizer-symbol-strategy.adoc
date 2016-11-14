@@ -1,0 +1,86 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-synchronizer-symbol-strategy",
+    "controlName": [],
+    "tags": [],
+    "guid": "06c9658c-0b1f-4840-b0f3-30c4dd19fcdb",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0718521Z"
+}
+|metadata|
+////
+
+= Synchronizer Symbol Strategy
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the synchronizer symbol error handling strategy.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-errors.html[Syntax Errors]
+|This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349579059, Synchronizer Symbol Strategy >>
+* <<_Ref349579063, Overview >>
+* <<_Ref349579066, Related Content >>
+
+[[_Ref349579059]]
+== Synchronizer Symbol Strategy
+
+[[_Ref349579063]]
+
+=== Overview
+
+The main type of error handling used by the Syntax Parsing Engine is called the “synchronizer symbol” strategy, because it is used to synchronize the parser’s place in the grammar rules back up with the tokens from the lexer. They become out of sync when the tokens provided do not conform to the grammar rules. The synchronizer symbols used are taken from the remainders of all productions which are currently being constructed when the error occurs. If the unexpected token is associated with one of the synchronizer symbols, the missing structures that should have been before it will be filled in so that the parser can continue parsing with the token that is now expected. Otherwise, tokens are skipped and marked as errors until a token is found that is associated with a synchronizer symbol. Here are some things to note about this error handling strategy:
+
+* If certain symbols should not be used as synchronizers for a non-terminal symbol’s productions, they can be suppressed by calling the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppresserrorrecoveryforsymbol.html[NonTerminalSymbol.SuppressErrorRecoveryForSymbol] method and passing it a symbol directly used in the non-terminal symbol’s production bodies. When taking synchronizer symbols from the remainder of a production body, they will not be taken from these symbols.
+* The synchronizer symbol error handling strategy is a “catch all” strategy which is attempted after all other error handling strategies fail. In addition, it will always succeed in recovering from errors, even if that means skipping all remaining tokens from the lexer. It will never fail to move the parser along in the token stream from the lexer.
+
+[[_Ref349579066]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[cols="a,a"]
+|====
+| link:ig-spe-error-production-strategy.html[Error Production Strategy]
+|This topic explains the error production error handling strategy.
+
+| link:ig-spe-synchronizer-pair-strategy.html[Synchronizer Pair Strategy]
+|This topic explains the synchronizer pair error handling strategy.
+
+| link:ig-spe-backtracking-strategy.html[Backtracking Strategy]
+|This topic explains the backtracking error handling strategy.
+
+|====

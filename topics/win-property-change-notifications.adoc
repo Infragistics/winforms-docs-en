@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-property-change-notifications",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Application Scenarios","Events","Tips and Tricks"],
+    "guid": "{6514A027-699B-4D51-BBEF-DB359246FA48}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Property Change Notifications
+
+Controls that expose extensive object models (e.g. a grid or a tree control) are usually plagued by a type of error that results from not always updating some internal state or refreshing the display as the result of a property change on some sub object.
+
+In an effort to eliminate these bugs, code often gets sprinkled throughout the control, sometimes duplicated in multiple property set routines. Not only is this extremely error-prone but it ends up bloating the size of the control.
+
+For example, say a grid control exposes a collection of 'Band' objects, each of which expose a collection of 'Column' objects, which in turn expose a 'Header' object with an 'Appearance' object property. When that Appearance's ForeColor property is set to blue the text in the header for that column should be re-painted blue. Ideally, only that header should get re-painted. However the Appearance object (which is implemented in the shared assemblies) doesn't know anything about a column header. Therefore, every object that has an appearance property would have to add its own refresh logic that would be called when an appearance property was changed.
+
+One simple approach to solve this problem is to always refresh the entire control whenever anything changes. This solution however is often times overkill and usually incurs unnecessary runtime overhead.
+
+The Presentation Layer Framework solves this problem by supplying an event-based infrastructure that allows sub object state change notifications to be easily percolated up the ownership chain while retaining complete change context information.
+
+In the above example, this would be the sequence of events:
+
+[start=1]
+. The set logic for the appearance's ForeColor would call a method called 'NotifyPropChange' with an identifier that denotes the ForeColor property
+[start=2]
+. The header object's 'OnSubObjectPropertyChange' method would be called (since the header object hooked the property change event exposed by the Appearance object) with context information that includes the identifier described above and the Appearance object reference. The header object then passes along the notification by calling 'NotifyPropChange' with an identifier denoting the 'Appearance' property and the passed in context information. Note: the 'NotifyPropertyChange' method first chains this context information together before firing the event.
+[start=3]
+. Step 2 is repeated up the ownership chain from 'Column' to 'ColumnsCollection' to 'Band' to BandsCollection' and finally to the grid control with each of these object's 'OnSubObjectPropertyChange' method being called in turn (with a lengthening context chain). When the grid is notified it fires its PropertyChanged event with complete context information.
+
+== Advantages
+
+* Update/refresh logic can be placed anywhere in the notification chain. This tends to avoid unnecessary duplication of logic.
+* Since complete context information is retained through the context chain unnecessary updates can be easily avoided and update logic can be as fine-grained as necessary.
+* A user of the control can hook into the notification chain at any point to monitor control state changes (with complete context information).

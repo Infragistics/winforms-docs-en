@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2014-volume-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "4a1d03ee-4aa7-4161-b8ce-fbb4f237bc9b",  
+    "buildFlags": [],
+    "createdOn": "2014-09-05T20:43:44.9878054Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2014 Volume 2
+
+== WinGrid (Non-Quantitative vs. Quantitative filtering approach)
+
+=== Breaking changes
+
+In early version of the  _UltraGrid_  , the filtering criteria was based on Quantitative ( _Equals_  ,  _GreaterThan_  ,  _LessThan_  ) and Non-Quantitative ( _StartWith_  ,  _EndWith_  ,  _Contains_  ) comparisons.
+
+This approach introduced an unexpected behavior when a numeric field or a field with formatted mask was filtered using Non-Quantitative comparison. Numeric fields were filtered by value, and they would return an incorrect result in a scenario such as the following:
+
+For example: If a numeric column contained 1.20, and was filtered with “ _EndWith .20_  ”, it would be filtered by value and return 1.2 instead of 1.20. The trailing zero would be discounted for numeric comparison, and so the comparison would not meet the expectation.
+
+Workaround
+
+The link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~filtercomparisonstyle.html[FilterComparisonStyle] property now contains a new value called  _DisplayTextOnly_   for Non-Quantitative comparison, while the existing values are also available to revert the behavior if a value comparison is required.
+
+[[_Ref367305781]]
+== Infragistics Excel Engine
+
+As part of the 14.2 release we implemented the  _INotifyPropertyChanged_   and  _INotifyCollectionChanged_   interfaces in several Excel classes including  _Workbook_  ,  _Worksheet_  , the settings classes and  _WorksheetCollection_   on all platforms.
+
+This was done as part of the notification and undo infrastructure needed for WPF platform, however, it may affect WinForms platform temporarily, and will be removed in the October 2014 service release as an optimization.

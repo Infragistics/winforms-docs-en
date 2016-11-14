@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-tile-states",
+    "controlName": ["WinTilePanel"],
+    "tags": ["Patterns and Practices"],
+    "guid": "{6394DD16-D406-4332-B82C-E253738CAFD4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Tile States
+
+The WinTilePanel™ control allows each tile to be in one of the following states: Normal and Large. By default, all the tiles added to the control will be in Normal state. In normal state, the TilePanel maintains a uniform height and width of all the Tiles.
+
+At any given time, at least one tile must be in the normal state. By default, only one tile can be maximized as a large tile, though any number of tiles can be maximized by setting the UltraTilePanel control’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~maximumvisiblelargetiles.html[MaximumVisibleLargeTiles]"]  property to an integer value. It is possible to determine and set the state of any tile through its State property.
+
+This topic assumes that you have an UltraTilePanel control dropped onto your form. For information on adding tiles to the UltraTilePanel control please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
+
+*In Visual Basic:*
+
+----
+' Set the maximum number of tiles whose state can be set to Large
+Me.ultraTilePanel1.MaximumVisibleLargeTiles = 3
+' Determine the state of the Tile 
+Dim stateofTile As Infragistics.Win.Misc.TileState = tile1.State
+MessageBox.Show(stateofTile.ToString())
+----
+
+*In C#:*
+
+----
+// Set the maximum number of tiles whose state can be set to Large
+this.ultraTilePanel1.MaximumVisibleLargeTiles = 3;
+// Determine the state of the Tile
+Infragistics.Win.Misc.TileState stateofTile = tile1.State;
+MessageBox.Show(stateofTile.ToString());
+----
+
+=== WinTilePanel with all tiles in normal state
+
+image::Images\WinTilePanel_Tile_States_01.png[]
+
+=== WinTilePanel with one Large state tile and three normal state tiles
+
+image::Images\WinTilePanel_Tile_States_02.png[]

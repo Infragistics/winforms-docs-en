@@ -1,0 +1,153 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-textdocumentsnapshot-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "4402879c-cfd7-49e9-a277-6059abb74907",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1118561Z"
+}
+|metadata|
+////
+
+= TextDocumentSnapshot Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the `TextDocumentSnapshot` object’s properties and methods.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref335166805,Introduction>>
+
+** <<_Ref335166821,TextDocumentSnapshot summary>>
+
+* <<_Ref335166842,TextDocumentSnapshot Read-Only Properties>>
+
+** <<_Ref335166850,Read-only Property List>>
+
+* <<_Ref335166856,TextDocumentSnapshot Methods>>
+
+** <<_Ref335166864,Methods List>>
+
+* <<_Ref335166870,Related Content>>
+
+** <<_Ref335166875,Topics>>
+
+[[_Append_Text_to]]
+[[_Ref335166805]]
+[[_Ref327861013]]
+[[_Ref324841253]]
+== Introduction
+
+[[_Ref335166821]]
+
+=== TextDocumentSnapshot summary
+
+The `TextDocumentSnaphot` represents the entire state of the document through each of its versions. Making any changes to the document creates a new snapshot. Each snapshot being thread safe and immutable.
+
+[[_Ref335166842]]
+== TextDocumentSnapshot Read-Only Properties
+
+[[_Description]]
+
+=== Read-Only Property List
+
+[options="header", cols="a,a"]
+|====
+|Property|Description
+
+|Document
+|This property returns the associated TextDocument.
+
+|Version
+|This property returns a TextDocumentVersion object that exposes a version number, a reference to the next TextDocumentVersion (if it is not the current snapshot) along with a list of the changes made to the version to get to the next version
+
+|Length
+|This property returns the length of the TextDocument, in characters.
+
+|LineCount
+|This property returns the number of lines in the TextDocument.
+
+|TokenCount
+|This property returns the number of tokens in the TextDocument.
+
+|====
+
+[[_Code]]
+[[_Delete_Text_from]]
+[[_Ref335166856]]
+== TextDocumentSnapshot Methods
+
+[[_Description_1]]
+
+=== Methods List
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+|CreateScanner
+|This property creates and returns an instance of a `TextDocumentSnapshotScanner` targeting the `TextDocumentSnapshot` that created it.
+
+|GetLines
+|This property retrieves an enumerator of `Lines` in the document.
+
+|GetTokens
+|This property retrieves an enumerator of `Tokens` in the document.
+
+|LineFromIndex
+|This property retrieves a `SnapshotLineInfo` object for the line of text at a zero-based index.
+
+|LineFromOffset
+|This property retrieves a `SnapshotLineInfo` object for the line of text containing the character at the specified offset.
+
+|TokenFromOffset
+|This property retrieves the `Token` object containing the character at the specified offset.
+
+|WordFromOffset
+|This property retrieves the `Word` object containing the character at the specified offset.
+
+|====
+
+[[_Code_1]]
+[[_Insert_Text_into]]
+[[_Description_2]]
+[[_Code_2]]
+[[_Replace_All_Occurrences]]
+[[_Description_3]]
+[[_Code_3]]
+[[_Replace_a_Single]]
+[[_Description_4]]
+[[_Code_4]]
+[[_Replace_Text_at]]
+[[_Description_5]]
+[[_Code_5]]
+
+[[_Related_Content]]
+[[_Ref335166870]]
+== Related Content
+
+[[_Topics]]
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-textdocument-overview.html[TextDocument Overview]
+|This topic describes the Infragistics Syntax Parsing Engine’s main class, `TextDocument`, and contains links to topics outlining its most important methods, events and properties.
+
+| link:ig-spe-textdocumentsnapshotscanner-overview.html[TextDocumentSnapshotScanner Overview]
+|This topic provides an overview of the `TextDocumentSnapshotScanner` object’s properties and methods.
+
+|====

@@ -1,0 +1,58 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-adding-unbound-columns-to-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{64DEBFC2-023E-4C91-A575-BDA1DC666639}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Unbound Columns to WinGrid
+
+You can add an unbound column to the WinGrid™. This is useful for displaying calculations based on other fields in the row, or for placing check boxes into the grid so users can select multiple rows.
+
+.Note
+[NOTE]
+====
+*Note* : A grid must have at least one bound column. It can never contain only unbound columns. This task assumes that you already have a bound WinGrid on the form.
+====
+
+For more information on adding calculated columns to the WinGrid, see the WinCalcManager tutorial, link:wincalcmanager-creating-a-calculated-column-in-wingrid.html[Creating a Calculated Column in WinGrid].
+
+== To add an unbound column to a grid:
+
+There are two ways to add an unbound column to the grid. At Design-time, you can use the custom property pages. At run-time, you can add a column using the Columns Collection of a Band.
+
+== Using WinGrid Designer
+
+[start=1]
+. Open the grid Designer by right clicking on the grid and selecting UltraWinGrid Designer from the context menu.
+[start=2]
+. Expand the Band and Column Settings.
+[start=3]
+. Expand the node for the appropriate Band, then click the Columns node under that band.
+[start=4]
+. A list of columns will be displayed on the right. At the bottom of the list will be a button labeled "Add Unbound Column". Click this button.
+
+== Run Time
+
+To add the column in code, access the *Add* method of the *Columns* Collection specifying a key value for the new column. You can optionally specify a caption to be displayed in the column's header.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns.Add("CalculatedColumn", "Calculated Value")
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns.Add("CalculatedColumn", "Calculated Value");
+----
+
+The most common use of creating an unbound column is to perform a calculation based on other columns and show the result in the unbound column.

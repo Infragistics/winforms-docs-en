@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-datasource-property-added-to-wincomboeditor-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{DA67A325-1E43-49BB-8D90-005972EC39F9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= DataSource Property Added to WinComboEditor
+
+The WinComboEditor™ control can now be bound to a data source via a new  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~datasource.html[DataSource]"]  property. To allow for databinding, you must set the DataSource property of the WinComboEditor and specify the following members:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~datamember.html[DataMember]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~displaymember.html[DisplayMember]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~valuemember.html[ValueMember]"] 
+
+The WinComboEditor then displays the values found in the data source and exposes them through the DisplayMember property. When a bound ValueListItem is created, the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~initializedataitem_ev.html[InitializeDataItem]"]  event fires, once per item. Each event gives you a chance to apply value-dependent appearance settings to the item.
+
+image::images/WinEditors_Walk_Through_Databinding_the_WinComboEditor_and_WinOptionSet_Controls_01.png[datasource property added to ultracomboeditor]
+
+== Related Topics
+
+link:wineditors-binding-wincomboeditor-and-winoptionset-controls-to-data.html[Databinding the WinComboEditor and WinOptionSet Controls]

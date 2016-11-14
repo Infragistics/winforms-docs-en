@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-taskworkinghourmode-for-winganttview",
+    "controlName": [],
+    "tags": [],
+    "guid": "784dbdc3-5128-43f3-98a1-c2409dd6c194",  
+    "buildFlags": [],
+    "createdOn": "2010-06-02T16:30:56.9945377Z"
+}
+|metadata|
+////
+
+= TaskWorkingHourMode for WinGanttView
+
+A link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskworkinghourmode.html[TaskWorkingHourMode] property has been added to the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo.html[UltraCalendarInfo] object to account for non-working days and non-working hours in the duration of a Task. With the default setting of TaskWorkingHourMode property, the task’s link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~startdatetime.html[StartDateTime] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] will not skip non-working hours and non-working days. When set to the ‘AutoAdjust’ enumeration value the task properties automatically adjust and skip non-working hours and non-working days. For example, a task set with ‘AutoAdjust’ that starts on a Friday and has duration of two days would end on Monday rather than on Saturday (assuming that Saturday and Sunday are both designated as non-working days).
+
+The adjustment of end-date time depends upon the unit of time specified for the duration. The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~setduration(timespan,timespanformat).html[SetDuration] method of the Task object accepts a TimeSpanFormat parameter that can be used to set the unit of time (days, hours, minutes, weeks). When the Task object’s duration is parsed or formatted the actual amount of working time in a workday is resolved from the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskdurationworkingtimeperday.html[TaskDurationWorkingTimePerDay] property of the UltraCalendarInfo object.
+
+As part of this feature, a link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendardatesettings.html[CalendarDateSettings] collection object has been added. This object provides options to customize the workday status and working hours for a particular date.
+
+== *Related Topic*
+
+link:winganttview-task-duration-adjustment.html[Task Duration Adjustment]

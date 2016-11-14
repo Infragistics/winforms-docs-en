@@ -1,0 +1,56 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-create-an-mdi-window-list",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{BAF92FE2-427F-46AD-A242-67DF6F804C8A}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create an MDI Window List
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.mdiwindowlisttool.html[MDIWindowList]"]  tool is a list tool to document all open MDI forms in the application and when you select one form from the list it will bring that form to the forefront and give it focus. It also gives you options to close all the windows, tile horizontally, vertically, minimize all windows, and cascade them.
+
+[start=1]
+. Open the Customize editor for the element, create and add a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopUpMenu]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[Button]"]  tool to a toolbar that you have placed on an MDI parent form.
+[start=2]
+. Create a MDIWindowList tool and add the MDIWindowList to the popup menu by dragging it towards the menu tool until the drop cursor is displayed and then dropping it.
+[start=3]
+. Besides listing all the open forms in the MDI application you can list different commands for the user to choose for a visual display of the open forms. The following is a list of available properties.
+
+[options="header", cols="a,a"]
+|====
+|Property|Description
+
+|DisplayArrangeIconsCommand
+|Will arrange all minimized windows in the lower left corner of the parent form.
+
+|DisplayCascadeCommand
+|Will cascade all the open forms.
+
+|DisplayCheckmark
+|Will display a check mark next to the form that has focus.
+
+|DisplayCloseWindowsCommand
+|Will close all open forms.
+
+|DisplayMinimizeCommand
+|Will minimize all the open forms.
+
+|DisplayTileHorizontalCommand
+|Will tile all open forms in a horizontal appearance.
+
+|DisplayTileVerticalCommand
+|Will tile all open forms in a vertical appearance.
+
+|====
+
+[start=4]
+. The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.listtool~displaycheckmark.html[DisplayCheckmark]"]  property takes a Boolean value but the others can be set to Hide, DisplayOnMenu, DisplayOnDialog or DisplayOnMenuAndDialog. (Dialog in this case means the "More Windows..." dialog.)
+[start=5]
+. In the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event for the button tool, add code to display several MDI child forms. Run the project, display a number of child forms then display your MDIWindowList tool and you will see the text for all the open forms listed.

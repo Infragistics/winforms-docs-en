@@ -1,0 +1,100 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-save-and-load-appointments",
+    "controlName": ["WinCalendarInfo"],
+    "tags": ["Data Binding","Sample Data Source"],
+    "guid": "{04881FD4-2A1E-4B2C-880C-613BD3541559}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Load Appointments
+
+Using WinCalendarInfo™, you can save and load data to and from a stream. The following code demonstrates how to save and load  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointments]"] . See the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendarinfocategories.html[CalendarInfoCategories]"]  enumeration for a list categories that can be used when saving and loading information.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+Imports System.IO
+...
+Private Sub SaveAppointments()
+	' Create a new FileStream in the same folder with the EXE
+	Dim SaveFileStream As New IO.FileStream("Appointments.sav", IO.FileMode.OpenOrCreate)
+	' Move to the beginning of the FileStream
+	SaveFileStream.Position = 0
+	' Save the CalendarInfo
+	Me.UltraCalendarInfo1.Save(SaveFileStream, CalendarInfoCategories.Appointments)
+	' Close the FileStream
+	SaveFileStream.Close()
+End Sub
+Private Sub LoadAppointments()
+	Dim LoadFileStream As IO.FileStream = Nothing
+	Try
+		' Try to load FileStream
+		LoadFileStream = _
+		  New IO.FileStream(System.IO.Path.Combine(Application.StartupPath(), _
+		  "Appointments.sav"), IO.FileMode.Open)
+	Catch When LoadFileStream Is Nothing
+		' If the FileStream fails to load, it's probably because the file does not exist 
+		MsgBox("Error opening Appointments file. The file may not exist", _
+		  MsgBoxStyle.OKOnly, "Error")
+		Exit Sub
+	End Try
+	' Move to the beginning of the FileStream 
+	LoadFileStream.Position = 0
+	' Load the FileStream 
+	Me.UltraCalendarInfo1.Load(LoadFileStream, CalendarInfoCategories.Appointments)
+	' Close the FileStream 
+	LoadFileStream.Close()
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+using System.IO;
+...
+private void SaveAppointments()
+{
+	// Create a new FileStream in the same folder with the EXE
+	FileStream SaveFileStream = new FileStream("Appointments.sav", 
+	  FileMode.OpenOrCreate);
+	// Move to the beginning of the FileStream
+	SaveFileStream.Position = 0;
+	// Save the CalendarInfo
+	ultraCalendarInfo1.Save(SaveFileStream, CalendarInfoCategories.Appointments);
+	// Close the FileStream
+	SaveFileStream.Close();
+}
+private void LoadAppointments()
+{
+	FileStream LoadFileStream = null;
+	try
+	{
+		// Try to load FileStream
+		LoadFileStream = new FileStream( 
+		  System.IO.Path.Combine(Application.StartupPath, 
+		  "Appointments.sav"), FileMode.Open);
+	}
+	catch 
+	{
+		// If the FileStream fails to load, it's probably because the file does not exist
+		MessageBox.Show(
+		  "Error opening Appointments file. The file may not exist", 
+		  "Error", MessageBoxButtons.OK);
+		return;
+	}
+	// Move to the beginning of the FileStream
+	LoadFileStream.Position = 0;
+	// Load the FileStream
+	ultraCalendarInfo1.Load(LoadFileStream, CalendarInfoCategories.Appointments);
+	// Close the FileStream
+	LoadFileStream.Close();
+}
+----

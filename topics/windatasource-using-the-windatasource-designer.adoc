@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-using-the-windatasource-designer",
+    "controlName": ["WinDataSource"],
+    "tags": ["Getting Started","Persistence"],
+    "guid": "{4D09A9DE-ED9D-4AF2-8EC9-6BCCB75920BF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the WinDataSource Designer
+
+You can easily define a data schema and add rows of data to your schema using the WinDataSource™ designer.
+
+Once you drag the non-visual WinDataSource component onto your form, you can right-click on to component and select UltraDataSource Designer from the context menu.
+
+image::Images/WinDataSource_Using_Windatasource_Designer_01.PNG[Shows how to launch the windatasource designer]
+
+The UltradataSource designer will now appear, giving you three options on the left pane:
+
+* Schema
+* DataEntry
+* SaveLoad
+
+The Schema designer allows you to add  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradataband.html[Bands]"]  and  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatacolumn.html[Columns]"]  to the data source, thus defining a schema from which you can add data at design time or run time. When you add new Bands to the schema, you can then add Columns to the Bands. The data source element fully understands flat and hierarchical data that you add.
+
+image::Images/WinDataSource_Using_Windatasource_Designer_02.PNG[windatasource's schema definition area]
+
+The DataEntry designer allows you to manually add  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatarow.html[Rows]"]  of data at design time. The schema is defined by the Schema designer shown above. Once you have added data at design time using the designer, you can persist the data and the schema to  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasbinary.html[Binary]"]  or  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasxml.html[XML]"]  using the SaveLoad designer described in the next section.
+
+image::Images/WinDataSource_Using_Windatasource_Designer_03.PNG[windatasource's data entry area]
+
+The SaveLoad designer allows you to persist to disk in a Binary or XML format the data manually entered into the data source via the DataEntry designer described above. You can also load previously persisted data into the data source, which will overwrite any existing schema definition. If you uncheck the Include Data option, on the designer, only the schema will be persisted.
+
+image::Images/WinDataSource_Using_Windatasource_Designer_04.PNG[windatasource's save and load layout area]

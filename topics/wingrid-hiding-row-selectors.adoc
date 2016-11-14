@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-hiding-row-selectors",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{EFB6414B-2032-4710-A150-46E1B93C18B0}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Hiding Row Selectors
+
+== To hide row selectors:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+----
+
+[start=2]
+. The following code demonstrates how to hide the row selectors in the WinGrid™ control.
+
+*In Visual Basic:*
+
+----
+Private Sub HidingRowSelectors_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.Override.RowSelectors = DefaultableBoolean.False
+End Sub
+----
+
+*In C#:*
+
+----
+private void HidingRowSelectors_Load(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Override.RowSelectors = DefaultableBoolean.False;
+}
+----
+
+[start=3]
+. Here is a snapshot of two grids, the first with row selectors and the second without them.
+
+image::Images\WinGrid_Hide_Row_Selectors_01.png[Row selectors in ultragrid] 
+
+image::Images\WinGrid_Hide_Row_Selectors_02.png[hide row selectors in ultragrid]

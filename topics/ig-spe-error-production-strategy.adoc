@@ -1,0 +1,120 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-error-production-strategy",
+    "controlName": [],
+    "tags": [],
+    "guid": "67e855ed-99f7-4ed8-977c-fc87a68a0e60",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0748524Z"
+}
+|metadata|
+////
+
+= Error Production Strategy
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the error production error handling strategy.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-errors.html[Syntax Errors]
+|This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349580233, Error Production Strategy >>
+* <<_Ref349580237, Overview >>
+* <<_Ref349579066, Related Content >>
+
+[[_Ref349580233]]
+== Error Production Strategy
+
+[[_Ref349580237]]
+
+=== Overview
+
+If a grammar writer identifies a common error that users are likely to type, he or she can define a non-terminal symbol to represent that error and then use it as an alternative to the structure(s) which the user likely meant to use. Then the grammar writer can set the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[NonTerminalSymbol.IsError] value to True on that symbol. When parsing a document with no errors, the parser will make no attempt to reduce a production body to a non-terminal symbol that is marked as an error. It will be as if the non-terminal symbol was never defined. But as soon as an error occurs, the error production error handling strategy will look to see if any  _error_  non-terminal symbols could have reduced if given the chance. If so, those reductions are performed and the node created to represent the error non-terminal symbols are automatically marked as errors.
+
+For example, in C# it is common for a user to start typing a member in a class but to pause long enough for the parser to start analyzing the document before they are finished. So the grammar writer might want to define a non-terminal symbol with the following pseudo-production:
+
+IncompleteMember → [Attributes] [Modifiers] Type
+
+And then they might use it in a place where other members are used:
+
+ClassMember →
+
+FieldDeclaration | MethodDeclaration | PropertyDeclaration | *IncompleteMember*
+
+Now if the user were to type something such as this
+
+*In C#:*
+
+[source,csharp]
+----
+class X
+{
+    private int 
+}
+----
+
+The error production strategy would detect an "IncompleteMember" could be created and the grammar writer could provide a custom error message saying "Incomplete member definition in class or struct".
+
+.Note
+[NOTE]
+====
+For more information on customizing error messages, see the link:ig-spe-customize-error-messages.html[Customize Error Messages] topic.
+====
+
+This is much better than letting the synchronizer symbol strategy handle the error, because it would probably generate error messages such as
+
+* Identifier expected
+* ‘;’ expected
+
+Although this is arguably correct, the strategy is guessing that the user was about to type a field declaration, simply because that produced the simplest tree structure for the missing nodes. The user could have easily been typing a property or method declaration.
+
+[[_Ref349579066]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[cols="a,a"]
+|====
+| link:ig-spe-synchronizer-symbol-strategy.html[Synchronizer Symbol Strategy]
+|This topic explains the synchronizer symbol error handling strategy.
+
+| link:ig-spe-synchronizer-pair-strategy.html[Synchronizer Pair Strategy]
+|This topic explains the synchronizer pair error handling strategy.
+
+| link:ig-spe-backtracking-strategy.html[Backtracking Strategy]
+|This topic explains the backtracking error handling strategy.
+
+|====

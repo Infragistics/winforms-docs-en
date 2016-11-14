@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-wintimelineview-smart-tag",
+    "controlName": ["WinTimelineView"],
+    "tags": ["Getting Started"],
+    "guid": "{AE43703B-CC5B-46DF-8DFD-D933747A6601}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinTimelineView Smart Tag
+
+In Visual Studio 2005/2008 (.NET Framework 2.0/3.5), each Infragistics Windows Forms control/component is equipped with a Smart Tag. By simply selecting the control/component, a Smart Tag anchor appears. When you click this anchor, a pop-up panel appears, providing you with quick and easy access to the most common properties and settings of the control/component.
+
+The WinTimelineView™ Smart Tag contains the name of the component, as well as the following items:
+
+* *Appearance:* Provides common tasks involving the appearance, look, and feel of the control.
+* *Data:* Refers to any underlying data the control is using such as data sources and data members.
+* *Date/Time Interval:* Refers to the Timeslot settings required by the control that is displayed along a horizontal timeline.
+* *Layout:* Offers properties that will determine where and how the control is placed on the form.
+* *Owners:* Refers to how Owners are grouped.
+
+See below for a description of the above mentioned items, as well as the item's corresponding property in the properties grid.
+
+image::Images/WinTimeLineView_Smart_Tag.png[]
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance|Description|Corresponding Property
+
+|Calendar Look
+|Upon clicking the drop-down, all available WinCalendarLook controls on the form will be displayed.
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarlook.html[CalendarLook]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Data|Description|Corresponding Property
+
+|Calendar Info
+|Upon clicking the drop-down, all available WinCalendarInfo controls on the form will be displayed.
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarinfo.html[CalendarInfo]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Date/Time Interval|Description|Corresponding Property
+
+|Additional Intervals
+|Defines the date or time intervals that appear above the primary Interval.
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~additionalintervals.html[AdditionalIntervals]"] 
+
+|Primary Interval
+|Defines the smallest time interval in effect for the control. Represented in the bottom row of column headers. Default interval is set to 15 minutes.
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~primaryinterval.html[PrimaryInterval]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Layout|Description|Corresponding Property
+
+|Dock
+|Choose to dock the WinTimelineView top, right, bottom, left, fill, and none.
+|Dock
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Owners|Description|Corresponding Property
+
+|OwnerGroupingStyle
+|Select Separate to present Owners as separate rows in the user interface or select Merged to merge Owners.
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~ownergroupingstyle.html[OwnerGroupingStyle]"] 
+
+|====

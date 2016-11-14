@@ -1,0 +1,19 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2009-volume-1",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{91F15178-6CA6-47B6-8BD0-DA684A27212F}",  
+    "buildFlags": [],
+    "createdOn": "2009-04-03T11:24:13Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2009 Volume 1
+
+The RequiredImageAndTextSize property of the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.autosizecontrolbase.html[AutoSizeControlBase]"]  object within Infragistics.Win.Misc Namespace is now obsolete. Instead a new GetRequiredImageAndTextSize method has been added, which accepts size as a parameter to display image and text.
+
+Starting from 2009.1 release going forward, the path for the start menu shortcut has been changed to C:\Documents and Settings\AllUsers\StartMenu\Programs\Infragistics\Infragistics x.x and the path for the main Infragistics Installation Folder has been changed to C:\Program Files\Infragistics\Infragistics x.x\Windows Forms. For more specific paths on different operating systems please refer link:getting-started-where-files-are-placed-on-your-file-system-during-installation.html[Where Files are Placed on your File System During Installation] topic.

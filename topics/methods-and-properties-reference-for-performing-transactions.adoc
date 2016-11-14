@@ -1,0 +1,152 @@
+﻿////
+
+|metadata|
+{
+    "name": "methods-and-properties-reference-for-performing-transactions",
+    "controlName": [],
+    "tags": ["API"],
+    "guid": "37f74033-cf62-4ba9-9849-5b83fd2111b8",  
+    "buildFlags": [],
+    "createdOn": "2012-09-06T12:08:35.3970125Z"
+}
+|metadata|
+////
+
+= Methods and Properties Reference for Performing Transactions
+
+== Topic Overview
+
+=== Purpose
+
+This topic lists the available methods and properties for performing undo/redo transactions.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:undomanager-properties-and-methods-reference.html[UndoManager Properties and Methods Reference]
+|This topic lists some of the important properties and methods of the UndoManager class.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref321067088, Methods and Properties Reference for Performing Transactions >>
+** <<_Ref321067130,Introduction>>
+** <<_Ref321067137,Methods reference summary>>
+** <<_Ref321067143,Properties reference summary>>
+
+* <<_Ref321067149, Related Content >>
+
+[[_Ref321067088]]
+== Methods and Properties Reference for Performing Transactions
+
+[[_Ref321067130]]
+
+=== Introduction
+
+In some cases, you may want to unite several end-user operations into one entry that will be recorded in the undo/redo history. This can be achieved using the transactions in the Infragistics Undo/Redo Framework™.
+
+.Note:
+[NOTE]
+====
+The Undo/Redo methods cannot be invoked while a transaction is open or an exception will be thrown.
+====
+
+[[_Ref321067137]]
+
+=== Methods reference summary
+
+The following table summarizes the purpose and functionality of the methods related with performing transactions.
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~starttransaction.html[StartTransaction]
+|Creates and start a transaction. This is an `UndoManager` method and returns link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction] as a result. Once the transaction is started, any changes that are added to the `UndoManager` will be added to that transaction. 
+
+Nested transactions can be created by invoking the `StartTransaction` method while a transaction is still in progress.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~commit.html[Commit]
+|Closes the transaction as well as any open nested transactions within it and the transaction is added to the undo/redo history. 
+
+The `Commit` method can only be invoked while the transaction is still opened. Once the transaction is closed, its property `IsClosed` returns _T_ _rue_ and invoking the method results in an exception.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~rollback.html[Rollback]
+|Closes the transaction and reverses the actions that had happened up to that point while the transaction was open. 
+
+The `Rollback` method can only be invoked while the transaction is still opened. Once the transaction is closed, its property `IsClosed` returns _True_ and invoking the method results in an exception.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~executeintransaction.html[ExecuteInTransaction]
+|Executes a specified `Action` within a transaction. 
+
+If an exception occurs while the transaction is in progress, the `Rollback` method is invoked. Otherwise, the `Commit` method is invoked.
+
+|====
+
+[[_Ref321067143]]
+
+=== Properties reference summary
+
+The following table summarizes the purpose and functionality of the properties related with performing transactions.
+
+[options="header", cols="a,a"]
+|====
+|Property|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~roottransaction.html[RootTransaction]
+|Returns the current open root `UndoTransaction`. 
+
+If there is no open transaction, the method returns _null_ .
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~currenttransaction.html[CurrentTransaction]
+|Returns the current open leaf `UndoTransaction`.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~isperformingrollback.html[IsPerformingRollback]
+|Returns a boolean value indicating if the `UndoManager` is performing a `Rollback` of an `UndoTransaction`.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~isclosed.html[IsClosed]
+|Returns a boolean value indicating if the transaction has been closed.
+
+|====
+
+[[_Ref321067149]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:methods-reference-for-adding-undounits-to-the-undo-history.html[Methods Reference for Adding UndoUnits to the Undo History]
+|This topic lists the available methods for adding an UndoUnit derived class object to the undo history.
+
+| link:methods-reference-for-removing-undounits-from-the-history.html[Methods Reference for Removing UndoUnits from the History]
+|This topic lists the available methods for removing the UndoUnit instances from the undo/redo history.
+
+| link:methods-reference-for-registering-unregistering-objects.html[Methods Reference for Registering and Unregistering Objects]
+|This topic lists the methods that register/unregister a specific object to an UndoManager instance.
+
+| link:methods-reference-for-performing-undo-redo-operations.html[Methods Reference for Performing Undo Redo Operations]
+|This topic lists the available methods for performing undo and redo operations.
+
+| link:methods-and-properties-reference-for-merging-undoredo-operations.html[Methods and Properties Reference for Merging Undo Redo Operations]
+|This topic lists the available methods and properties related to the merging of undo/redo operations.
+
+| link:methods-reference-for-suspending-and-resuming-saving-history.html[Methods Reference for Suspending and Resuming Saving History]
+|This topic lists the available methods for suspending and resuming the saving of the undo/redo operations in history.
+
+| link:methods-and-properties-reference-for-creating-custom-undounit.html[Methods and Properties Reference for Creating Custom UndoUnit]
+|This topic lists the available methods and properties related to creating of a custom UndoUnit in the Infragistics Undo/Redo Framework™.
+
+|====

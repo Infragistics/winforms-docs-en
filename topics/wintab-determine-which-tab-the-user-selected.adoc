@@ -1,0 +1,63 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-determine-which-tab-the-user-selected",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{34A6C43A-ABF6-4175-9971-9FC04C4CABF9}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determine Which Tab the User Selected
+
+Whenever the user selects a new tab, the element fires the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~selectedtabchanging_ev.html[SelectedTabChanging]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~selectedtabchanged_ev.html[SelectedTabChanged]"]  events. You can use these events to determine which tab was selected by the user and take any action you deem necessary.
+
+The e parameter passed to the SelectedTabChanging event provides access to the current tab, and a way to cancel the tab change before it occurs. The e parameter passed to the SelectedTabChanged event provides access to both the tab that has been selected and the tab that was selected.
+
+The following is an example of how you can use the SelectedTabChanging event.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraTabControl1_SelectedTabChanging(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventArgs) _
+  Handles UltraTabControl1.SelectedTabChanging
+	MessageBox.Show("You have selected tab " + e.Tab.Text.ToString)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraTabControl1_SelectedTabChanging(object sender, 
+  Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventArgs e)
+{
+	MessageBox.Show("You have selected tab " + e.Tab.Text.ToString());
+}
+----
+
+The following is an example of how you can use the SelectedTabChanged event. This code assumes you also have a StatusBar on your form.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraTabControl1_SelectedTabChanged(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs) _
+  Handles UltraTabControl1.SelectedTabChanged
+	Me.UltraStatusBar1.Text = "Now viewing " + e.Tab.Text + " options.  "
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraTabControl1_SelectedTabChanged(object sender, 
+  Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
+{
+	this.ultraStatusBar1.Text = "Now viewing " + e.Tab.Text + " options.  ";
+}
+----

@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-creating-fixed-non-scrolling-columns",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{15682126-85F5-4DC9-84C6-35AFD109F192}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating Fixed (Non-Scrolling) Columns
+
+To create a fixed (non-scrolling) column, you can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~fixed.html[Fixed]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase.html[Header]"]  object.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Me.UltraGrid1.DisplayLayout.UseFixedHeaders = True
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+this.ultraGrid1.DisplayLayout.UseFixedHeaders = true;
+----
+
+You can also toggle on or off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~fixedheaderindicator.html[FixedHeaderIndicator]"]  in the header, which is displayed by default:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Header.FixedHeaderIndicator = _
+  FixedHeaderIndicator.None
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Header.FixedHeaderIndicator = 
+  FixedHeaderIndicator.None;
+----
+
+In the following image the "CustomerID" can not be fixed as the FixedHeaderIndicator is set to None. The other columns can be fixed though by selecting the indicator in the column header.
+
+image::Images/WinGrid_Create_Fixed_Non_Scrolling_Columns_01.png[create fixed non scrolling columns in ultragrid]

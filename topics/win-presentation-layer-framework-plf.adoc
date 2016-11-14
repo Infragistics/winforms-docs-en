@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-presentation-layer-framework-plf",
+    "controlName": [],
+    "tags": ["API","Styling","Templating"],
+    "guid": "{2E55EE68-2BFB-41E4-BB3F-138E0189694B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Presentation Layer Framework (PLF)
+
+Click the links below to learn about how important the Presentation Layer Framework™ (PLF) is in building applications that will provide a consistent experience to your end users, as well as learn about each of the PLF components.
+
+* link:win-plf-overview.html[PLF Overview] -- Provides an overview of the PLF, and the components that comprise the PLF.
+* link:win-appearance-objects.html[Appearance Objects] -- Gives you a quick overview of image-related properties used to customize the appearance of a control/component.
+* link:win-uielements.html[UIElements] -- Describes the UIElements base class, and the UIElement derived classes. The UIElement abstraction is the core of the PLF.
+* link:win-implementing-custom-uielement-objects.html[Implementing Custom UIElement Objects] -- Provides a list of some of the UIElement classes that can be used as base classes, as well as a list of the virtual properties and methods that are exposed by the UIElement base class.
+* link:win-mouse-handling.html[Mouse Handling] -- Provides code snippets for two mouse-handling events (i.e., MouseEnterElement and MouseLeaveElement) that are exposed by PLF-based controls/components.
+* link:win-keyboard-handling.html[Keyboard Handling] -- Explains how the PLF addresses the difficulty of customizing keyboard behavior of third-party controls that accept input focus (e.g., grids and trees).
+* link:win-event-managers.html[Event Managers] -- Provides sample code that illustrates how an event manager can temporarily disable its events, and verify that an event is being raised.
+* link:win-selection-strategies.html[Selection Strategies] -- Describes the PLF interfaces that support keyboard and mouse selection.
+* link:win-property-change-notifications.html[Property Change Notifications] -- Explains how PLF ensures that changes to properties are spread through the object hierarchy while retaining complete change context information.
+* link:win-embeddable-editors.html[Embeddable Editors] -- Embed several different types of editors in multiple controls.
+* link:win-filters.html[Filters] -- Contains topics that describe the PLF filters (i.e., link:win-draw-filter.html[Draw], link:win-creation-filter.html[Creation], link:win-cursor-filter.html[Cursor], and link:win-selection-strategy-filter.html[Selection]). These filters give you added flexibility when customizing the UIElements of a control/component.

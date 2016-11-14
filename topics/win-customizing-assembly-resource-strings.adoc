@@ -1,0 +1,123 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-customizing-assembly-resource-strings",
+    "controlName": [],
+    "tags": ["Application Scenarios","Localization","Resource Strings"],
+    "guid": "{24CD0BF8-79F5-490B-A1EA-629B1E9CF7DC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Customizing Assembly Resource Strings
+
+Each Infragistics assembly is equipped with a feature that allows you to quickly and easily change any string value that is displayed to the end user by a Infragistics Windows Forms control/component. Customizable strings include items such as dialog box captions, message text that appears in dialog boxes, warning messages, alerts, and so on. The primary use for customizing resource strings is for localization purposes.
+
+.Note
+[NOTE]
+====
+For a list of all topics containing the resource strings for each assembly, see link:win-assembly-resource-strings.html[Assembly Resource Strings]. Keep in mind that there is no correlation between resource strings and controls/components; the correlation is between the resource strings and the assemblies.
+====
+
+To access the functionality of customizing assembly resource strings, you can use the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.resources~customizer.html[Customizer]"]  property of an assembly's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appstyling.runtime.applicationstylelibrary~resources.html[Resources]"]  class. This property returns an instance of the ResourceCustomizer class (from Infragistics.Shared) that is specific to the assembly you are customizing. This ResourceCustomizer class contains a collection of the following:
+
+* name -- The internal name used by the assembly to identify a particular resource string.
+* value -- The text that is displayed to the end user.
+
+By changing the value associated with a specific name, you can customize any message displayed by the control/component.
+
+The ResourceCustomizer class provides several methods that you can use to customize the resource string values:
+
+*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~setcustomizedstring.html[SetCustomizedString]"]  method -- Sets the string for a particular  _name_  to the text you specify.
+*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~getcustomizedstring.html[GetCustomizedString]"]  method -- Returns the custom text that has been set for a specific  _name_, or null if there is no customization for the given  _name_ .
+*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~resetcustomizedstring.html[ResetCustomizedString]"]  method -- Removes the customized string for the  _name_  that you specify and returns that string to its default (built-in) message text.
+*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~resetallcustomizedstrings.html[ResetAllCustomizedStrings]"]  method -- Discards all the customizations that have been made. Every  _name_  is reset to its default (built-in) message text at once.
+
+In addition, the Resources class contains the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resources~getstring.html[GetString]"]  and  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resources~getobject.html[GetObject]"]  methods, which allow you to access the resolved resource string value.
+
+Resource string customization is a run-time feature; customized string settings are not local to a control. If you create code to customize the resource strings, you will need to place that code in a procedure that is executed every time your application runs, preferably before the interface is displayed to the end user.
+
+The following sample code illustrates how to use an assembly's resource customizer to customize the string resources that an assembly uses.
+
+*In Visual Basic:*
+
+----
+Private Sub Form1_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim rc As Infragistics.Shared.ResourceCustomizer
+	' Get the resource customizer object for the
+	' 'Infragistics.Win.UltraWinTree' assembly.
+	rc = Infragistics.Win.UltraWinTree.Resources.Customizer
+	' Customize a couple of string resources.
+	rc.SetCustomizedString("xxxxx", "New string for 'xxxxx' resource")
+	rc.SetCustomizedString("yyyyy", "New string for 'yyyyy' resource")
+	' Get the resource customizer object for the  
+	' 'Infragistics.Win' assembly.
+	rc = Infragistics.Win.Resources.Customizer
+	' Customize one of its string resources.
+	rc.SetCustomizedString("zzzzz", "New string for 'zzzzz' resource")
+	' The 'GetCustomizedString' method can be used to
+	' retrieve any previously customized string resource.
+	Dim customizedString As String
+	customizedString = rc.GetCustomizedString("zzzzz")
+	' Note: In the above examples, the first parameter
+	' to the 'SetCustomizedString' method (i.e. "xxxxx",
+	' "yyyyy" or "zzzzz") specifies the name of the resource.
+	'
+	' A list of the resource names is included in online help
+	' under Infragistics Software\[assembly name]\Support Topics\
+	' Message Strings Customization [name]
+	'
+	' Also, the string resources can be reset back to there
+	' original values by calling one of the 'Reset...' methods
+	' as in the following sample code.
+	' Reset a previously customized string resource back to
+	' its original value.
+	rc.ResetCustomizedString("xxxxx")
+	' Reset all previously customized string resources back to
+	' their original values.
+	rc.ResetAllCustomizedStrings()
+End Sub
+----
+
+*In C#:*
+
+----
+private void Form1_Load(object sender, System.EventArgs e)
+{
+	Infragistics.Shared.ResourceCustomizer rc;
+	// Get the resource customizer object for the
+	// 'Infragistics.Win.UltraWinTree' assembly.
+	// and customize a couple of string resources.
+	rc = Infragistics.Win.UltraWinTree.Resources.Customizer;
+	rc.SetCustomizedString("xxxxx", "New string for 'xxxxx' resource");
+	rc.SetCustomizedString("yyyyy", "New string for 'yyyyy' resource");
+	// Get the resource customizer object for the 
+	// 'Infragistics.Win' assembly to customize one
+	// of its string resources.
+	rc = Infragistics.Win.Resources.Customizer;
+	rc.SetCustomizedString("zzzzz", "New string for 'zzzzz' resource");
+	// The 'GetCustomizedString' method can be used to
+	// retrieve any previously customized string resource.
+	string customizedString = rc.GetCustomizedString("zzzzz");
+	// Note: In the above examples, the first parameter
+	// to the 'SetCustomizedString' method (i.e. "xxxxx",
+	// "yyyyy" or "zzzzz") specifies the name of the resource.
+	// A list of the resource names is included in online help
+	// under Infragistics Software\[assembly name]\Support Topics\
+	// Message Strings Customization [name]
+	//
+	// Also, the string resources can be reset back to there
+	// original values by calling one of the 'Reset...' methods
+	// as in the following sample code.
+	// Reset a previously customized string resource back to
+	// its original value.
+	rc.ResetCustomizedString("xxxxx");
+	// Reset all previously customized string resources back to
+	// their original values.
+	rc.ResetAllCustomizedStrings();
+}
+----

@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincomboeditor-changing-the-drop-down-button-alignment",
+    "controlName": ["WinComboEditor"],
+    "tags": ["How Do I"],
+    "guid": "{1D7D0452-358B-4D7C-80B1-643EBD2A82DB}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Drop-Down Button Alignment
+
+You can change the location of the drop-down arrow on WinComboEditor™ from its default right location. To make such a change all you need to do is change the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~dropdownbuttonalignment.html[DropDownButtonAlignment]"]  property off the WinComboEditor, to one of the available  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithcombo~buttonalignment.html[ButtonAlignment]"]  enumerations.
+
+The following example code changes the alignment for the WinComboEditor at run-time.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub Changing_the_Drop_Down_Button_Alignment_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraComboEditor1.DropDownButtonAlignment = ButtonAlignment.Left
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void Changing_the_Drop_Down_Button_Alignment_Load(object sender, 
+  EventArgs e)
+{
+	this.ultraComboEditor1.DropDownButtonAlignment = ButtonAlignment.Left;
+}
+----
+
+image::images\WinComboEditor_Changing_the_Drop-Down_Button_Alignment_01.png[wincomboeditor's showing the drop-down button on the left instead of right]

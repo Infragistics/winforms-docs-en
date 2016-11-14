@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-validate-all-controls-associated-with-winvalidator",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{F17B2590-52DB-45B4-9C65-27D429171F7F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Validate All Controls Associated with WinValidator
+
+In order for WinValidator to validate a control, you need to associate that control with WinValidator™. You can do this in one of several ways.
+
+*Associate a control at design time*
+
+You can associate any control on your form with WinValidator at design time by locating the ValidationSettings extender property in the properties window. The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object exposes numerous objects and properties that allow you to validate the control using a number of built-in conditions. All you need to do in order to associate a control with WinValidator is to set any single property. When you set a property in the ValidationSettings object, WinValidator creates the object and associates it with itself. You can set properties like  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~condition.html[Condition]"] ,  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~validationtrigger.html[ValidationTrigger]"] , or  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~validationpropertyname.html[ValidationPropertyName]"]  if you want to validate this control using specific conditions, or you can set the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~validationgroup.html[ValidationGroup]"]  property to a ValidationGroup that you previously created on WinValidator. For more information on ValidationGroups, see link:winvalidator-validate-a-group-of-controls.html[Validate a Group of Controls].
+
+*Associate a control at run time*
+
+Associating a control with WinValidator at run time is quite similar to design time. You need to create a ValidationSettings object and associate it with WinValidator. WinValidator offers two methods to help you associate a ValidationSettings object with a control:
+
+*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~setvalidationsettings.html[SetValidationSettings]"]  – If you have a ValidationSettings object available, use this method to associate that object with a control. The method takes two parameters, the control to associate the ValidationSettings object, and the object itself.
+*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~getvalidationsettings.html[GetValidationSettings]"]  – This method will retrieve (or create if one doesn't exist) a ValidationSettings object from a specific control. The GetValidationSettings method is useful for assigning a control's ValidationSettings object to an instantiated object in order to modify it. For more information on the GetValidationSettings method, see link:winvalidator-validate-a-single-control.html[Validate a Single Control].
+
+The following code demonstrates the simplicity of validating every control that is currently associated with WinValidator.
+
+*In Visual Basic:*
+
+----
+Me.UltraValidator1.Validate()
+----
+
+*In C#:*
+
+----
+this.ultraValidator1.Validate();
+----

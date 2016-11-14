@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-afterrowactivate-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{A12A8272-7E9B-4268-9653-595903CEF0B5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= AfterRowActivate Event
+
+Many times, Application Views are designed to show a Grid with Parent information and beneath you will often find another Grid that displays Child information. This is known as a Parent / Child view. Using the AfterRowActivate event in the Parent Grid will allow an easy way to load the Child Grid with the related records. The following code example shows how we can handle the AfterRowActivate of the Parent Grid and use the Customer object in the current active Row to go and retrieve the Account records that belong to the current Customer:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_AfterRowActivate( _
+   ByVal sender As System.Object, _
+   ByVal e As System.EventArgs) _
+   Handles UltraGrid1.AfterRowActivate
+   If Me.UltraGrid1.ActiveRow Is Nothing Then Return
+   Dim theEmployee As Employee = _
+      DirectCast(Me.UltraGrid1.ActiveRow.ListObject, Employee)
+   Me.UltraChildGrid.DataSource = Nothing
+   Me.UltraChildGrid.DataSource = _
+      DataManager.GetAccountsByEmployee(theEmployee)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_AfterRowActivate(
+   object sender, EventArgs e)
+{
+   if (this.ultraGrid1.ActiveRow == null) return;
+   Employee theEmployee = 
+      this.ultraGrid1.ActiveRow.ListObject as Employee;
+   this.ultraChildGrid.DataSource = null;
+   this.ultraChildGrid.DataSource = 
+      DataManager.GetAccountsByEmployee(theEmployee);
+}
+----
+
+The AfterRowActivate event arguments do not provide us with the Row that is currently active so we need to access it directly on the WinGrid itself through the Grid.ActiveRow property. It is always a good practice to check if the Grid.ActiveRow is null or Nothing even though it is highly unlikely that it will be null in this event. There are many uses for this event such as populating other Form fields (Labels, TextBoxes, etc) with data from the current Entity.

@@ -1,0 +1,28 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridbaglayoutmanager-about-wingridbaglayoutmanager",
+    "controlName": [],
+    "tags": ["Getting Started","Layouts"],
+    "guid": "{90920459-F9A0-4EB6-A693-1CC8893139E8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinGridBagLayoutManager
+
+The WinGridBagLayoutManager™ element is a component which offers flexible automatic positioning and resizing capabilities for controls in a container (ex. in a Form). This component uses the notions of logical columns and logical rows to provide a straightforward way for you to specify the relative positioning and sizing of the various controls being managed. The locations and sizes of controls in a container will be determined based on the following settings:
+
+* ExpandToFitHeight -- Indicates whether to proportionally resize heights of all the controls being managed to fit any extra available height.
+* ExpandToFitWidth -- Indicates whether to proportionally resize widths of all the controls being managed to fit any extra available width.
+* Margins -- The minimal distance between the borders of the containing control and the contained controls.
+
+In addition to the above settings, the UltraGridBagLayoutManager attaches extender properties to the controls it manipulates. The properties allow each individual control to specify layout-related information which only applies to that control. The extender properties are:
+
+* GridBagConstraint -- Contains many properties used for adjusting the ways which a control is affected by the layout manager.
+* IncludeInLayout -- Determines whether the control's position is managed by the layout manager.
+* MinimumSize -- The minimum size that the control should be allowed to be resized to.
+* PreferredSize -- The proffered size for the control to be used by the layout manager.

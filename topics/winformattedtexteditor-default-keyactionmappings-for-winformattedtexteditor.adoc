@@ -1,0 +1,127 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-default-keyactionmappings-for-winformattedtexteditor",
+    "controlName": [],
+    "tags": ["Events","Tips and Tricks"],
+    "guid": "{84BCF200-DA6D-4DB0-8030-DFD0F445EEDD}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T12:11:51Z"
+}
+|metadata|
+////
+
+= Default KeyActionMappings for WinFormattedTextEditor
+
+pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.keyactionmappingsbase.html[KeyActionMappings]"]  is a map of keystrokes that a control recognizes. Each keystroke that the control recognizes can perform an action. Generally, KeyActionMappings are used for keyboard navigation; however, in WinFormattedTextEditor's™ case, keystrokes can also be used for content modifications and formatting.
+
+WinFormattedTextEditor's  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor~keyactionmappings.html[KeyActionMappings]"]  are completely editable through the link:win-plf-overview.html[Presentation Layer Framework™]. See Keyboard Handling for more information on mapping keystrokes.
+
+The following tables provide a complete list of WinFormattedTextEditor's default KeyActionMappings and a description of each.
+
+== Navigation
+
+[options="header", cols="a, a"]
+|====
+
+|Key|Action
+
+|Left Arrow
+|Navigates to the previous cursor position
+
+|Right Arrow
+|Navigates to the next cursor position
+
+|Up Arrow
+|Navigates to the previous line
+
+|Down Arrow
+|Navigates to the next line
+
+|Page Up
+|Performs the Page Up operation
+
+|Page Down
+|Performs the Page Down operation
+
+|Ctrl + Left
+|Navigates to the previous word
+
+|Ctrl + Right
+|Navigates to the next word
+
+|Home
+|Navigates to the beginning of the current line
+
+|End
+|Navigates to the end of the current line
+
+|Ctrl + Home
+|Navigates to the beginning of the entire contents
+
+|Ctrl + End
+|Navigates to the end of the entire contents
+
+|====
+
+.Note
+[NOTE]
+====
+If the Shift key is pressed while performing any of these operations, the contents will be added to the selection. If the Shift key is not pressed while performing any of these operations, the current selection will be cleared.
+====
+
+== Content Modification
+
+[options="header", cols="a, a"]
+|====
+
+|Key|Action
+
+|Backspace
+|Deletes the current selection. If nothing is selected, deletes the item before the cursor.
+
+|Delete
+|Deletes the current selection. If nothing is selected, deletes the item after the cursor.
+
+|Enter
+|Inserts a line break (visually identical to a carriage return).
+
+|Ctrl + A
+|Selects the entire contents of the editor.
+
+|Ctrl + C
+|Copies the current selection to the clipboard.
+
+|Ctrl + X
+|Cuts the current selection. A Copy operation is performed followed by a delete operation.
+
+|Ctrl + V
+|Pastes the contents of the clipboard at the cursor's position.
+
+|Ctrl + Z
+|Performs and undo of the last operation (e.g. multiple insertions or deletions).
+
+|Ctrl + Y
+|Performs a redo of the last Undo operation.
+
+|====
+
+== Formatting Key Strokes
+[options="header", cols="a, a"]
+|====
+
+|Key|Action
+
+|Ctrl + B
+|Toggles bold formatting. If the selected text is bold, this keystroke will unbold the text, and vice versa. If only a part of the selection is bolded, all of the text becomes bold. If this operation is performed without a selection, the next characters typed at that position will be bold. 
+
+If none exists, this key combination will add a <span> tag to the selected text and use the font-weight sub-attribute of the Style attribute. Toggling the Bold off will change the font-weight from bold to normal.
+
+|Ctrl + I
+|Toggles italic formatting. Behaves like Ctrl + B, but manipulates the font-style sub-attribute of the Style attribute.
+
+|Ctrl + U
+|Toggles underline formatting. Behaves like Ctrl + B, but manipulates the text-decoration sub-attribute of the Style attribute.
+
+|====

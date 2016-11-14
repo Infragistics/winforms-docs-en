@@ -1,0 +1,136 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-wingrid-as-a-data-navigator",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "{EBE71AC5-7AAF-4200-9580-46371D6415B6}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using WinGrid as a Data Navigator
+
+== Background
+
+You may want to create an application that uses a "data navigator" interface to present data to the user for display and editing. This type of interface provides a single control as a "navigator" which is used to select records from the data set. It combines this with multiple individual controls to display or edit the data. WinGrid™ is ideal as a Navigator control due to its extensive layout and appearance options.
+
+By using individual controls for editing, you have complete control over the layout of the presented data and the interface the user sees when interacting with that data. A data navigator interface can also be useful when some of the data stored in the data source is in an "exotic" format, such as OLE object data or a data in a custom binary format. You can use a control specific to the data type to display the data, while still taking advantage of the ability of the WinGrid to handle data set navigation easily and robustly.
+
+== Questions
+
+* How can I use the WinGrid control as a navigator for selecting which record from a DataTable displays in other controls, such as text boxes?
+
+== Solutions
+
+Bind the DataTable to the WinGrid and use the Currency Manager to bind the DataTable to the "Text" property of the other windows controls.
+
+== Sample Project
+
+This sample project loads the Northwind Customers Table, displays the CustomerID column in the WinGrid and displays some of the other columns in TextBox controls. The user can select various rows of the grid and observe the row data displays in the text boxes:
+
+image::Images\WinGrid_Using_WinGrid_as_a_Data_Navigator_01.png[using ultragrid as a data navigator]
+
+The Form Events Region contains the following event handlers:
+
+* MyBase.Load - The code in the Form Load Event binds the grid data source to each of the text boxes:
+
+*In Visual Basic:*
+
+----
+Private Sub Using_WinGrid_as_a_Data_Navigator_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Set data binding for text boxes
+	Me.txtCompanyName.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "CompanyName")
+	Me.txtContactName.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "ContactName")
+	Me.txtContactTitle.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "ContactTitle")
+	Me.txtAddress.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "Address")
+	Me.txtCity.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "City")
+	Me.txtRegion.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "Region")
+	Me.txtPostalCode.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "PostalCode")
+	Me.txtCountry.DataBindings.Add("Text", Me.UltraGrid1.DataSource, "Country")
+End Sub
+----
+
+*In C#:*
+
+----
+private void Using_WinGrid_as_a_Data_Navigator_Load(object sender, EventArgs e)
+{
+	// Set data binding for text boxes
+	this.txtCompanyName.DataBindings.Add("Text", this.ultraGrid1.DataSource, "CompanyName");
+	this.txtContactName.DataBindings.Add("Text", this.ultraGrid1.DataSource, "ContactName");
+	this.txtContactTitle.DataBindings.Add("Text", this.ultraGrid1.DataSource, "ContactTitle");
+	this.txtAddress.DataBindings.Add("Text", this.ultraGrid1.DataSource, "Address");
+	this.txtCity.DataBindings.Add("Text", this.ultraGrid1.DataSource, "City");
+	this.txtRegion.DataBindings.Add("Text", this.ultraGrid1.DataSource, "Region");
+	this.txtPostalCode.DataBindings.Add("Text", this.ultraGrid1.DataSource, "PostalCode");
+	this.txtCountry.DataBindings.Add("Text", this.ultraGrid1.DataSource, "Country");
+}
+----
+
+The WinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout Event hides all but the "CustomerID" column and performs other grid configuration:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Hide all but "CustomerID" column
+	Dim aColumn As UltraGridColumn
+	For Each aColumn In e.Layout.Bands(0).Columns
+		Select Case aColumn.Key
+			Case "CustomerID"
+				aColumn.CellActivation = Activation.NoEdit
+			Case Else
+				aColumn.Hidden = True
+		End Select
+	Next
+	' Configure grid
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+	e.Layout.Override.SelectTypeCell = SelectType.None
+	e.Layout.Override.SelectTypeCol = SelectType.None
+	e.Layout.Override.SelectTypeRow = SelectType.None
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Hide all but "CustomerID" column
+	foreach(UltraGridColumn aColumn in e.Layout.Bands[0].Columns)
+	{
+		switch (aColumn.Key)
+		{
+			case "CustomerID":
+				aColumn.CellActivation = Activation.NoEdit;
+				break;
+			default :
+				aColumn.Hidden = true;
+				break;
+		}
+	}
+	// Configure grid
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+	e.Layout.Override.SelectTypeCell = SelectType.None;
+	e.Layout.Override.SelectTypeCol = SelectType.None;
+	e.Layout.Override.SelectTypeRow = SelectType.None;
+}
+----
+
+== Review
+
+This projects shows how to connect row activation in an WinGrid to the data row bound to other Windows Form Controls such as Text Boxes. Thus, the WinGrid becomes a Data Navigator.

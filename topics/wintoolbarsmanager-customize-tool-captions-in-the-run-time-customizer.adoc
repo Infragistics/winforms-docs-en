@@ -1,0 +1,54 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-customize-tool-captions-in-the-run-time-customizer",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{E9B593A2-FB25-405A-BB20-B280DCCE253D}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Customize Tool Captions in the Run-Time Customizer
+
+At run-time a user can customize the tools on a toolbar, such as setting shortcut keys or reading a description of the tool. You can use the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~customizercaption.html[CustomizerCaption]"]  property of the tool, which returns or sets the string that will appear in the Customize dialog's Commands list.
+
+*To customize a tool's run-time customizer caption at design-time:*
+
+[start=1]
+. Add the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolBarsManager]"]  to a form, right click and choose Customize.
+[start=2]
+. In the editor, select a tool in the Tool tab and under  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  set the CustmizerCaption property.
+
+*To customize a tool's run-time customizer caption at run-time.*
+
+*In Visual Basic:*
+
+----
+Private Sub Customize_Tool_Captions_in_the_Run_Time_Customizer_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraToolbarsManager1.Toolbars(1).Tools(0).SharedProps.CustomizerCaption = _
+	  "New Caption"
+End Sub
+----
+
+*In C#:*
+
+----
+private void Customize_Tool_Captions_in_the_Run_Time_Customizer_Load(object sender, 
+  EventArgs e)
+{
+	this.ultraToolbarsManager1.Toolbars[1].Tools[0].SharedProps.CustomizerCaption = 
+	  "New Caption";			
+}
+----
+
+.Note
+[NOTE]
+====
+If the CustomizerCaption property is not set, then the value of the tool's Caption property will be displayed. If that property is not set, then the value of the tool's Key will be displayed.
+====

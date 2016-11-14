@@ -1,0 +1,34 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2015-volume-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "28999d2f-8a96-4c58-8304-32b9ffd79aeb",  
+    "buildFlags": [],
+    "createdOn": "2015-02-10T19:48:56.8348445Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2015 Volume 1
+
+== Infragistics CAB Extensibility Kit
+
+=== Breaking changes
+
+As part of the 15.1 release we have retired support for Infragistics CAB Extensibility Kit.
+
+The technology is considered “outdated and is no longer being maintained” by Microsoft, and it is no longer supported for newer Operating Systems like Windows 8 and later. Infragistics can no longer guarantee the quality of this technology on Windows 8 and higher.
+
+For more information, review the following link: link:https://msdn.microsoft.com/en-us/library/ff709809.aspx[https://msdn.microsoft.com/en-us/library/ff709809.aspx]
+
+[[_Ref367305781]]
+== Infragistics WinInkProvider
+
+As part of the 15.1 release we have retired the Infragistics WinInkProvider component.
+
+This component relies on the link:https://msdn.microsoft.com/en-us/library/ms840464.aspx[Tablet PC Platform SDK], which is part of link:http://windows.microsoft.com/en-us/windows/xp-downloads#2TC=featured[Microsoft® Windows® XP] , which is no longer supported by Microsoft. Based on this Infragistics cannot guaranteee the quality and behavior of this component on the newer operating systems.
+
+Note that the UltraInkProvider component has been removed from the Visual Studio Toolbox, but the assembly is still included in the product for backward compatibility.

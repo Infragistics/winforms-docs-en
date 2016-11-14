@@ -1,0 +1,222 @@
+﻿////
+|metadata|
+{
+    "name": "windockmanager-resource-strings",
+    "controlName": [],
+    "tags": ["Localization","Resource Strings"],
+    "guid": "{D0428D40-71C6-416A-93DB-B3AE53142658}",
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinDockManager Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|AllowDropErrorMessage
+|The 'AllowDrop' property is set to true but the ApartmentState of the current thread does not support drag drop. To disable drag drop functionality set the 'AllowDrop' property to false. To enable drag drop functionality you must set the ApartmentState of the thread to STAThread. This can also be accomplished by putting the [STAThread] attribute on your 'Main' method.
+
+|AllowDropErrorMessageTitle
+|UltraDockManager - DragDrop disabled
+
+|ContextMenuAutoHide
+|&Auto Hide
+
+|ContextMenuDockable
+|Doc&kable
+
+|ContextMenuFloating
+|&Floating
+
+|ContextMenuHide
+|&Hide
+
+|ControlPanePropertyTabName
+|Docked Pane
+
+|DockableControlPaneUnpinnedState
+|Unpinned
+
+|DockablePanesPropertyPageTabCaption
+|Panes
+
+|DockControlsDlgCancel
+|&Cancel
+
+|DockControlsDlgDockedLocation
+|DockArea Location:
+
+|DockControlsDlgGroupType
+|Child Pane Style:
+
+|DockControlsDlgOK
+|&OK
+
+|DockControlsDlgSelectedControls
+|Selected Controls:
+
+|DockControlsDlgTitle
+|New DockArea
+
+|InvalidGrabHandleExtent
+|The grab handle extent must be at least 0.
+
+|LoadSaveDlgAction
+|&Action:
+
+|LoadSaveDlgBinary
+|&Binary
+
+|LoadSaveDlgCancel
+|&Cancel
+
+|LoadSaveDlgFileDialogDefaultExt
+|udm
+
+|LoadSaveDlgFileDialogFilter
+|UltraDockManager Files ($$*$$.udm)\|$$*$$.udm\|All Files ($$*$$.$$*$$)\|$$*$$.$$* $$
+
+|LoadSaveDlgFileDialogLoadTitle
+|Load UltraDockManager Layout
+
+|LoadSaveDlgFileDialogSaveTitle
+|Save UltraDockManager Layout
+
+|LoadSaveDlgFilename
+|&FileName:
+
+|LoadSaveDlgFormat
+|F&ormat
+
+|LoadSaveDlgLoad
+|&Load
+
+|LoadSaveDlgLoadLayout
+|Load UltraDockManager Layout
+
+|LoadSaveDlgOK
+|&OK
+
+|LoadSaveDlgSave
+|&Save
+
+|LoadSaveDlgSaveLayout
+|Save UltraDockManager Layout
+
+|LoadSaveDlgSummary
+|Use this dialog to save or load the UltraDockManager settings. The information can be saved as Binary or XML (SOAP).
+
+|LoadSaveDlgTitle
+|Load/Save UltraDockManager Layout
+
+|LoadSaveDlgXML
+|&XML
+
+|MsgLoadLayout
+|Load UltraDockManager Layout
+
+|MsgSaveLayout
+|Save UltraDockManager Layout
+
+|NavigatorDefaultMdiListCaption
+|Windows
+
+|NavigatorDefaultPaneListCaption
+|Tools
+
+|PaneButtonToolTipClose
+|Close
+
+|PaneButtonToolTipMaximize
+|Maximize
+
+|PaneButtonToolTipMenu
+|Menu
+
+|PaneButtonToolTipMinimize
+|Minimize
+
+|PaneButtonToolTipPin
+|Auto Hide
+
+|PaneButtonToolTipRestoreDown
+|Restore
+
+|PaneButtonToolTipRestoreUp
+|Restore
+
+|PaneButtonToolTipUnpin
+|Auto Hide
+
+|PanePropPageDockedPanesText
+|Docked Panes:
+
+|PanePropPageDockedPanesToolTip
+|Displays the docked dock area panes.
+
+|PanePropPageFloatingPanesText
+|Floating Panes:
+
+|PanePropPageFloatingPanesToolTip
+|Displays the floating dock area panes.
+
+|PanePropPageUndockedPanesText
+|Undocked Controls
+
+|PanePropPageUndockedPanesTooltip
+|Displays the controls which are not currently associated with a dockable control pane.
+
+|QuickHelpDlgBody1
+|Select the controls to group together, right click and select the "Dock Controls" option on the context menu.
+
+|QuickHelpDlgBody2
+|Once docked controls have been created, the panes may be dragged around by pressing down on the caption, tab item or sliding group header of the pane.
+
+|QuickHelpDlgBody3
+|If the CTRL key is held down during the dragging of a pane, the drop location for the pane will always be a floating window.
+
+|QuickHelpDlgBody4
+|Double clicking on a pane caption, tab item, or sliding group header will toggle the docked state of the pane(s).
+
+|QuickHelpDlgBody5
+|When a docked control is cut, deleted or dragged out of the dockable window, the associated DockableControlPane is removed. A pane can also be undocked by right clicking on the docked control and unchecking "Dock Controls" on the context menu.
+
+|QuickHelpDlgBody6
+|When a docked control is selected, an additional property tab in the Properties window is displayed. This property tab displays the properties of the DockableControlPane associated with the docked control.
+
+|QuickHelpDlgOk
+|&OK
+
+|QuickHelpDlgShowNextTime
+|Show this dialog when a new UltraDockManager component is created.
+
+|QuickHelpDlgTitle
+|QuickHelp - UltraDockManager
+
+|QuickHelpDlgTopic1
+|Creating New Dockable Panes
+
+|QuickHelpDlgTopic2
+|Grouping and Moving Panes
+
+|QuickHelpDlgTopic3
+|Preventing Docking
+
+|QuickHelpDlgTopic4
+|Toggling the Docked / Floating State of Panes
+
+|QuickHelpDlgTopic5
+|Removing / Undocking Controls
+
+|QuickHelpDlgTopic6
+|Additional Property Tab For Setting Control Pane Properties
+
+|====

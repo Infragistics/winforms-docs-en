@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-validate-a-range-of-values",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{747FE8DC-028F-40A9-8800-8DAD147D8CE6}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Validate a Range of Values
+
+WinValidator™ can validate several different scenarios, one of which is a range of values. Using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.rangecondition.html[RangeCondition]"]  object, you can test to see if a specific value is within the range by setting minimum and maximum values. When instantiating a new RangeCondition object, the third constructor allows you to supply both a minimum and maximum value as objects, as well as a Type object to define what type of objects the range will include. Once you have a RangeCondition object, you simply need to retrieve the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object for the control you are validating and set the RangeCondition to the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~condition.html[Condition]"]  property exposed by the ValidationSettings object.
+
+The following code demonstrates how to create a RangeCondition object that tests whether an integer is higher than zero and lower than 255 (similar to a numeric editor for RGB values). This topic assumes that you have a WinValidator component and a WinNumericEditor™ control on your form.
+
+*In Visual Basic:*
+
+----
+' Create a condition that fails validation if the value
+' is less than 0 or greater than 255.
+Dim rc As Infragistics.Win.RangeCondition = _
+	New Infragistics.Win.RangeCondition(0, 255, GetType(Integer))
+' Get the ValidationSettings object that determines 
+' how the control will be validated.
+Dim vs As Infragistics.Win.Misc.ValidationSettings = _
+	Me.UltraValidator1.GetValidationSettings(Me.UltraNumericEditor1)
+' Set the condition to the RangeCondition
+vs.Condition = rc
+----
+
+*In C#:*
+
+----
+// Create a condition that fails validation if the value
+// is less than 0 or greater than 255.
+Infragistics.Win.RangeCondition rc =
+	new Infragistics.Win.RangeCondition(0, 255, typeof(int));
+// Get the ValidationSettings object that determines 
+// how the control will be validated.
+Infragistics.Win.Misc.ValidationSettings vs = 
+	this.ultraValidator1.GetValidationSettings(this.ultraNumericEditor1);
+// Set the condition to the RangeCondition
+vs.Condition = rc;
+----

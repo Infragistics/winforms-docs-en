@@ -1,0 +1,132 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-share-data-selection-and-appearances",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{AEB32337-E996-4CF6-AC3E-4917C9967EC1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Share Data, Selection, and Appearances
+
+This topic's content applies to all the WinSchedule™ controls and components. The WinSchedule consists of:
+
+* WinCalendarCombo™
+* WinCalendarInfo™
+* WinCalendarLook™
+* WinDayView™
+* WinMonthViewMulti™
+* WinMonthViewSingle™
+* WinSchedulePrintDocument™
+* WinWeekView™
+
+These controls and components are typically used in combination to provide a rich calendaring UI. When used on the same form they usually present different views of the same set of data (i.e., appointments, holidays and notes).
+
+For example, a WinMonthViewSingle control might be used to display a month's worth of  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointmentscollection.html[Appointments]"] , while a WinDayView control on the same form would be used to show how appointments for a particular day of the month fall within that day.
+
+== Sharing Data (Appointments, Holidays, and Notes)
+
+In order to reduce the effort required to design a UI which contains multiple WinSchedule controls and components that share the same set of data, WinSchedule includes the WinCalendarInfo component to centrally manage all data. The WinCalendarInfo component is the central repository for all data (appointments, holidays and notes) displayable by the WinSchedule controls. An instance of the WinCalendarInfo element contains collections of appointments, holidays and notes that can be shared by multiple WinSchedule controls.
+
+== The UltraCalendarInfo element
+
+Each of the WinSchedule controls has a *CalendarInfo* property, which can be set to a reference of the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo.html[UltraCalendarInfo]"]  instance that is supplying data to the element. If the CalendarInfo property on the control is not explicitly set at design-time or run-time, an WinCalendarInfo instance is automatically created the first time the property is accessed. In this scenario, any data added to the WinCalendarInfo instance will only be available to that control. For example, if a form contains an instance of an WinDayView control called 'ultraDayView1' and its CalendarInfo property is not explicitly set, then the following code would add an appointment to the default UltraCalendarInfo instance supplied to the element:
+
+*In Visual Basic:*
+
+----
+Me.UltraDayView1.CalendarInfo.Appointments.Add(DateTime.Now, "New Appointment")
+----
+
+*In C#:*
+
+----
+this.ultraDayView1.CalendarInfo.Appointments.Add(DateTime.Now, "New Appointment");
+----
+
+The WinDayView element would then display the appointment. Going one step further, this default WinCalendarInfo instance could be shared with another WinSchedule element on the form with the following code.
+
+*In Visual Basic:*
+
+----
+Me.UltraMonthViewSingle1.CalendarInfo = Me.UltraDayView1.CalendarInfo
+----
+
+*In C#:*
+
+----
+this.ultraMonthViewSingle1.CalendarInfo = this.ultraDayView1.CalendarInfo;
+----
+
+Once this is done, both elements would display the appointment.
+
+Another way to share data in an WinCalendarInfo element is to link it at design time to multiple WinSchedule controls. To do this, drag an UltraCalendarInfo tool from the toolbox onto the form.
+
+.Note
+[NOTE]
+====
+Since the UltraCalendarInfo element is derived from System.ComponentModel.Component and has no UI, it will appear in the component tray at the bottom of the form designer
+====
+
+Then set the CalendarInfo property on each WinSchedule control on the form, using the designer's property browser.
+
+.Note
+[NOTE]
+====
+When you set the CalendarInfo property on an WinSchedule element at design-time using the property browser, a drop-down list showing all the UltraCalendarInfo elements available to the form is displayed.
+====
+
+Once this design time linking has been done, the following line of code executed at runtime.
+
+*In Visual Basic:*
+
+----
+Me.UltraCalendarInfo1.Appointments.Add( _
+  New DateTime(2005, 10, 28, 12, 15, 1), "Second Appointment")
+----
+
+*In C#:*
+
+----
+this.ultraCalendarInfo1.Appointments.Add(
+  new DateTime(2005, 10, 28, 12, 15, 1),"Second Appointment");
+----
+
+Would cause each WinSchedule control linked to ultraCalendarInfo1 to display the appointment 'Second Appointment'.
+
+== Sharing Selection
+
+Coordinating selection among multiple WinSchedule controls is another task that is automatically handled by the WinCalendarInfo element. After linking multiple WinSchedule controls to the same WinCalendarInfo instance at runtime or design-time as described above, the elements will all share a common selection list. As days or activities are selected in one control, they will be simultaneously selected in all linked controls.
+
+For example, if January 1 and 2 are selected in a WinMonthViewSingle, then a WinDayView linked to the same WinCalendarInfo would display 2 days worth of appointments - for January 1 and 2. A WinMonthViewMulti linked to the same WinCalendarInfo would display January 1 and 2 as selected days.
+
+Similarly, if an appointment was selected in an WinDayView control, that appointment would also appear selected in a WinWeekView linked to the same WinCalendarInfo (assuming the week containing the appointment was currently in view).
+
+Once linked to a common WinCalendarInfo instance, linked elements will share selection lists with no additional code required. 
+
+== Sharing Appearances
+
+WinSchedule includes another component called  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook.html[UltraCalendarLook]"] . This component provides sharing capabilities between linked elements in a manner similar to that described for WinCalendarInfo above. Instead of sharing data between elements, WinCalendarLook allows the sharing of appearances between elements. By defining appearances for different elements in WinCalendarLook, all linked elements will use the appearances, thus providing a consistent look across all elements with a minimum of effort. 
+
+== The UltraCalendarLook element
+
+WinSchedule controls can be linked to a common WinCalendarLook instance in the same way as the WinCalendarInfo described above. Instead of setting the CalendarInfo property on each element to be linked, the *CalendarLook* property would be set.
+
+*In Visual Basic:*
+
+----
+Me.UltraMonthViewSingle1.CalendarLook = Me.UltraDayView1.CalendarLook
+----
+
+*In C#:*
+
+----
+this.ultraMonthViewSingle1.CalendarLook = this.ultraDayView1.CalendarLook;
+----
+
+WinCalendarLook contains a rich set of  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearancescollection.html[Appearances]"]  for different UI elements as well as for different sets of data. For example, in addition to including appearances for element items like  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~dayheaderappearance.html[DayHeaderAppearance]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~weekheaderappearance.html[WeekHeaderAppearance]"] , and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~monthheaderappearance.html[MonthHeaderAppearance]"] , WinCalendarLook also includes objects containing appearances that are data related such as *DayLook* and *DayOfWeekLook* . By defining a DayOfWeekLook.Appearance for "Monday" for example, you could ensure that Monday is displayed with the same look in an WinMonthViewSingle and WinWeekView linked to the same WinCalendarLook.

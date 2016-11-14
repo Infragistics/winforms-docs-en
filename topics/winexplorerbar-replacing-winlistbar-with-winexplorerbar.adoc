@@ -1,0 +1,134 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-replacing-winlistbar-with-winexplorerbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["FAQ","How Do I"],
+    "guid": "{E0A7A637-38A5-45C6-A937-1919E7EACF70}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Replacing WinListBar with WinExplorerBar
+
+Though the object models of the WinExplorerBar™ and the WinListbar™ controls are similar they are not the same. For example, Group and Item objects in the WinListbar element are now called  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[UltraExplorerBarGroup]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"] .
+
+In addition, many properties that were originally on the Group and Item objects have been moved to the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings.html[GroupSettings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[ItemSettings]"]  objects for greater flexibility when setting properties.
+
+If you are replacing an WinListbar element in an existing project with an WinExplorerBar element, there are a couple of tasks you will need to complete:
+
+[start=1]
+. Copy Group and Item definitions created at design-time in the WinListbar element to the new WinExplorerBar element.
+[start=2]
+. Modify the existing code that manipulates the WinListbar element to work with the WinExplorerBar element.
+
+== Importing Groups and Items from and existing WinListbar element
+
+To assist you with step 1 above, UltraExplorerBar includes an Import function that will let you easily Import Groups and Items defined in an existing  _UltraListbar_  element into an UltraExlorerBar element on the same form.
+
+The Import function can be found on a tab within the UltraExplorerBar Designer. The UltraExplorerBar Designer can be started by selecting the 'UltraExplorerBar Designer...' option from the element's context menu (displayable by right-clicking the UltraExplorerBar element on a form in the Visual Studio IDE at design-time) or from the list of verbs in the Visual Studio IDE Property Browser as shown below:
+
+image::Images/WinExplorerbar_Replacing_an_Existing_WinListbar_Element_with_a_WinExplorerbar_01.png[shows ultraexplorerbar design time options]
+
+Once the UltraExplorerBar Designer is displayed, select the 'Import Groups/Items' tab which presents a simple 3 step process as shown below:
+
+image::Images/WinExplorerbar_Replacing_an_Existing_WinListbar_Element_with_a_WinExplorerbar_02.png[shows ultraexplorerbar's designer tab for import groups/items]
+
+The list of elements in the left will show all UltraListbar elements found on the current form.
+
+*_Step 1_* , on the right hand side of the dialog, asks you to select the Groups and Items you would like to import. By default, all Groups and Items are checked. Click the checkbox to deselect a Group or Item and exclude it from the import.
+
+*_Step 2_* asks you to indicate whether Groups and Items (if any) currently defined to the UltraExplorerBar element should be cleared before the UltraListbar Groups/Items are imported. By default the 'Retain current Groups and Items' selection is checked.
+
+*_Step 3_* requires you to click the start button. A message will be displayed at the completion of the import.
+
+== Modifying Existing UltraListbar code
+
+When modifying existing UltraListbar code to target the UltraExplorerBar element, there is no automated way to accomplish the conversion. It is a manual effort, but the following guidelines can help speed the process:
+
+* The class names for the objects representing groups in the UltraExplorerBar element has changed from Group to UltraExplorerBarGroup.
+* The class names for the objects representing items in the UltraExplorerBar element has changed from Item to UltraExplorerBarItem.
+* Many of the properties that existed on the UltraListbar  _Group_  object are now on the UltraExplorerBar  _GroupSettings_  object. The GroupSettings object can be found on the UltraExplorerBarGroup object under the property name 'Settings'.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinExplorerBar
+Imports Infragistics.Win.UltraWinListBar
+...
+Me.UltraListbar1.Groups(0).Style = Style.LargeIcons
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinExplorerBar;
+using Infragistics.Win.UltraWinListBar;
+...
+this.ultraListBar1.Groups[0].Style = Style.LargeIcons;
+----
+
+In UltraExplorerBar the same property would be accessed as follows.
+
+*In Visual Basic:*
+
+----
+Me.UltraExplorerBar1.Groups(0).Settings.Style = GroupStyle.LargeImages
+----
+
+*In C#:*
+
+----
+this.ultraExplorerBar1.Groups[0].Settings.Style = GroupStyle.LargeImages;
+----
+
+* Many of the properties that existed on the UltraListbar  _Item_  object are now on the UltraExplorerBar  _ItemSettings_  object. The ItemSettings object can be found on the UltraExplorerBarItem object under the property name 'Settings'. For example, in UltraListbar the Item's Appearance property was accessed as follows:
+
+*In Visual Basic:*
+
+----
+Me.UltraListBar1.Groups(1).Items(0). & _ 
+  Appearance.ForeColor = Color.Red
+----
+
+*In C#:*
+
+----
+this.ultraListBar1.Groups[1].Items[0].
+  Appearance.ForeColor = Color.Red;
+----
+
+In UltraExplorerBar the same property would be accessed as follows:
+
+*In Visual Basic:*
+
+----
+Me.UltraExplorerBar1.Groups(1).Items(0).Settings.AppearancesSmall.Appearance.ForeColor = Color.Red
+----
+
+*In C#:*
+
+----
+this.ultraExplorerBar1.Groups[1].Items[0].Settings.AppearancesSmall.Appearance.ForeColor = Color.Red;
+----
+
+* Since the UltraExplorerBar element does not support multiple orientations as the UltraListbar did, the element no longer has an Orientation property. You will need to remove any code that accesses the Orientation property and possibly redesign your form if you were using the element in a horizontal orientation. (The UltraExplorerBar element can only display its contents in a vertical orientation).
+* The GroupSelected event in the UltraListbar element has been replaced with 2 events:
+
+**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanging_ev.html[SelectedGroupChanging]"] 
+**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanged_ev.html[SelectedGroupChanged]"] 
+
+* The ItemSelected event in the UltraListbar element has been replaced by the ItemClick event.
+
+.Note
+[NOTE]
+====
+There are two additional events that apply to Item selection for Item type StateButton:
+
+====
+
+**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanging_ev.html[ItemCheckStateChanging]"] 
+**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanged_ev.html[ItemCheckStateChanged]"]

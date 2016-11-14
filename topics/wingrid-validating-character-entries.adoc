@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-validating-character-entries",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Validation"],
+    "guid": "{26D309CE-0E7A-426D-B819-1C32C0F22DCC}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Validating Character Entries
+
+== Background
+
+The WinGrid's™ KeyPress event provides you with total control over key-by-key user input and the ability to translate or validate these key strokes.
+
+== Questions
+
+* How do I treat the period (".") key like a slash ("/") key in a date field?
+
+== Solution
+
+In the KeyPress Event, use the Key property of the ActiveCell's Column object (ActiveCell.Column.Key) to tell which column received the key stroke, set the Handled property of the e object to True to cancel any additional operations on this characters, and invoke the SendKeys.Send("/") method to send a slash instead.
+
+== Sample Project
+
+This sample project translates the period (".") character to a slash ("/") character during user input into the OrderDate column.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+The UltraGrid Events region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event turns off the drop-down calendar of the OrderDate column:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Turn off drop-down calendar
+	e.Layout.Bands(0).Columns("OrderDate").Style = _
+	  Infragistics.Win.UltraWinGrid.ColumnStyle.Edit
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Turn off drop-down calendar
+	e.Layout.Bands[0].Columns["OrderDate"].Style = 
+	  Infragistics.Win.UltraWinGrid.ColumnStyle.Edit;
+}
+----
+
+* UltraGrid1.KeyPress - The code in the KeyPress event tests to see if this character is targeted to the OrderDate column. Then tests to see if the character is a period ("."), and if it is the Handled property of the e object is set to True so the character will not be processed and the SendKeys.Send method called to replace the period with a slash ("/"):
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_KeyPress(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.KeyPressEventArgs) _
+  Handles UltraGrid1.KeyPress
+	' For the OrderDate column, change the periods to slashes
+	Select Case Me.UltraGrid1.ActiveCell.Column.Key
+		Case "OrderDate"
+			If e.KeyChar = "." Then
+				e.Handled = True
+				SendKeys.Send("/")
+			End If
+	End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_KeyPress(object sender, KeyPressEventArgs e)
+{
+	// For the OrderDate column, change the periods to slashes
+	switch (this.ultraGrid1.ActiveCell.Column.Key)
+	{
+		case "OrderDate":
+			if(e.KeyChar.ToString() == ".")
+			{
+				e.Handled = true;
+				SendKeys.Send("/");
+			}
+			break;
+	}
+}
+----
+
+== Review
+
+This sample projects shows how to translate user input characters as they are typed. The same concept can be used to throw out characters that are invalid and/or display a message box indicating invalid input.

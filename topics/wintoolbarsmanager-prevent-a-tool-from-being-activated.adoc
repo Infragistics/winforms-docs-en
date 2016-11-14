@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-prevent-a-tool-from-being-activated",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{BA1EEA99-0538-4212-8BB7-25F8DB125C92}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Prevent a Tool from Being Activated
+
+Sometimes you do not want a tool to become activated as the mouse is over it. This means that it doesn't exhibit a "mouse over" appearance, such as being given focus or an image change. The tool will still look enabled, but the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event will not fire if you click on it.
+
+Add the code below to your project. This will fire as you mouse over a tool and give you the option to check the tool and cancel the event if you like. This will not let the tool to be activated.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraToolbarsManager1_BeforeToolActivate(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinToolbars.CancelableToolEventArgs) _
+  Handles UltraToolbarsManager1.BeforeToolActivate
+	If e.Tool.Index = 4 Then
+		e.Cancel = True
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraToolbarsManager1_BeforeToolActivate(object sender, 
+  Infragistics.Win.UltraWinToolbars.CancelableToolEventArgs e)
+{
+	if(e.Tool.Index == 4)
+		e.Cancel = true;
+}
+----

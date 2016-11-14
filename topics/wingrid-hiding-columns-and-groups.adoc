@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-hiding-columns-and-groups",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{1AE9150E-0669-49DA-A315-F94BADCEBFEF}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Hiding Columns and Groups
+
+== To hide a column at design time:
+
+[start=1]
+. If your grid has a DataSource set up at Design-time, you can hide columns or groups in the property pages.
+
+Open the property pages by selecting the on the form and clicking the Custom Properties... link at the bottom of the Properties window.
+[start=2]
+. Switch to the Groups and Columns tab.
+[start=3]
+. Select the Column or Group you want to hide from the tree list.
+[start=4]
+. Click the Show/Hide button.
+[start=5]
+. Set the Hidden property.
+
+== To hide a column at run time:
+
+*In Visual Basic:*
+
+----
+Private Sub Hide_Columns_and_Groups_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Hidden = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void Hide_Columns_and_Groups_Load(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Hidden = true;
+}
+----

@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-inserting-a-node-at-a-specific-index",
+    "controlName": ["WinTree"],
+    "tags": ["Events","How Do I"],
+    "guid": "{A953051F-2867-4504-B20D-850A919C349E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Inserting a Node at a specific Index
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection~insert.html[Insert]"]  method of the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection.html[TreeNodesCollection]"]  inserts a node at a particular index position.
+
+By default, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection~add.html[Add]"]  method of the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection.html[UltraTreeNodes]"]  collection adds a node to the end of the collection. 
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+'Declare a new node 
+Dim node As New UltraTreeNode("insertedNode", "InsertedNode")
+'Insert the new node at index postion 1. In this case 2 nodes exist previously with index positions 0 and 1 repsectively. 
+Me.ultraTree1.Nodes.Insert(1, node)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+//Declare a new node
+UltraTreeNode node = new UltraTreeNode("insertedNode", "InsertedNode");
+//Insert the new node at index postion 1. In this case 2 nodes exist previously with index positions 0 and 1 repsectively.
+this.ultraTree1.Nodes.Insert(1, node);
+----

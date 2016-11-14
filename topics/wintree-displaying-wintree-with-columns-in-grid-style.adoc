@@ -1,0 +1,131 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-displaying-wintree-with-columns-in-grid-style",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{A9ED092B-2566-4ECB-B383-BD10CB36E37F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying WinTree with Columns in Grid Style
+
+*Before You Begin*
+
+In Grid style, WinTree displays column headers at the top of each node collection. This style can be adopted when each node collection has its own unique data schema. Non-recursive hierarchical data can also be presented in this mode.
+
+*What you will accomplish*
+
+This topic will show you how WinTree displays hierarchical data in Grid Style. For this topic the WinTree control is bound to various DataTables of the Northwind database. The DataTables include Employees, Customers, Orders, Order Details, Products and Categories. Each entity is displayed as separate nodes with their corresponding column headers.
+
+*Follow these Steps*
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports System.Data.SqlClient
+Imports Infragistics.Win.UltraWinTree
+----
+
+*In C#:*
+
+----
+using System.Data.SqlClient;
+using Infragistics.Win.UltraWinTree;
+----
+
+[start=2]
+. Add a reference to the Northwind database.
+
+a. Right click the project name. From the context menu select, 'Add > Existing Item'.
+
+b. Navigate to the Northwind database available in your local folder.
+
+c. Select NORTHWND.MDF file and click Add.
+
+image::Images\WinTree_Displaying_WinTree_with_columns_in_Grid_Style.png[]
+
+[start=3]
+. Once you add the NORTHWND.MDF file to your project, the Data Source Configuration Wizard appears that enables you to choose the tables for the DataSet. From the Tables category, choose Employees, Customers, Orders, Order Details, Products and Categories tables and click Finish.
+[start=4]
+. Write the following code within Form load event to get data from the Northwind Database, using ADO.NET classes. Also establish the relation between the DataTables.
+
+*In Visual Basic:*
+
+----
+string connectionstring = @"Data Source=.\SQLEXPRESS;AttachDbFilename= |DataDirectory|Northwind.mdf;Integrated Security=True;User Instance=True"
+SqlConnection conn = new SqlConnection(connectionstring)
+SqlDataAdapter empadapter = new SqlDataAdapter("SELECT * from Employees", conn)
+SqlDataAdapter custadapter = new SqlDataAdapter("SELECT * from Customers", conn)
+SqlDataAdapter orderadapter = new SqlDataAdapter("SELECT * from Orders", conn)
+SqlDataAdapter orderdetailsadapter = new SqlDataAdapter("SELECT * from [Order Details]", conn)
+SqlDataAdapter productsadapter = new SqlDataAdapter("SELECT * from Products", conn)
+SqlDataAdapter categoriesadapter = new SqlDataAdapter("SELECT * from Categories", conn)
+DataSet ds = new DataSet()
+empadapter.Fill(ds, "Employees")
+custadapter.Fill(ds, "Customers")
+orderadapter.Fill(ds, "Orders")
+orderdetailsadapter.Fill(ds, "Order_Details")
+productsadapter.Fill(ds, "Products")
+categoriesadapter.Fill(ds, "Categories")
+Dim relation1 As New DataRelation("CustOrders", ds.Tables("Customers").Columns("CustomerID"), ds.Tables("Orders").Columns("CustomerID"))
+Dim relation2 As New DataRelation("EmpOrders", ds.Tables("Employees").Columns("EmployeeID"), ds.Tables("Orders").Columns("EmployeeID"))
+Dim relation3 As New DataRelation("OrdersOrderDetails", ds.Tables("Orders").Columns("OrderID"), ds.Tables("Order_Details").Columns("OrderID"))
+Dim relation4 As New DataRelation("CategoriesProducts", ds.Tables("Categories").Columns("CategoryID"), ds.Tables("Products").Columns("CategoryID"))
+Dim relation5 As New DataRelation("ProductsOrderDetails", ds.Tables("Products").Columns("ProductID"), ds.Tables("Order_Details").Columns("ProductID"))
+ds.Relations.Add(relation1) 
+ds.Relations.Add(relation2) 
+ds.Relations.Add(relation3) 
+ds.Relations.Add(relation4) 
+ds.Relations.Add(relation5)
+this.ultraTree1.DataSource = ds
+----
+
+*In C#:*
+
+----
+string connectionstring = @"Data Source=.\SQLEXPRESS;AttachDbFilename= |DataDirectory|Northwind.mdf;Integrated Security=True;User Instance=True";
+SqlConnection conn = new SqlConnection(connectionstring);
+SqlDataAdapter empadapter = new SqlDataAdapter("SELECT * from Employees", conn);
+SqlDataAdapter custadapter = new SqlDataAdapter("SELECT * from Customers", conn);
+SqlDataAdapter orderadapter = new SqlDataAdapter("SELECT * from Orders", conn);
+SqlDataAdapter orderdetailsadapter = new SqlDataAdapter("SELECT * from [Order Details]", conn);
+SqlDataAdapter productsadapter = new SqlDataAdapter("SELECT * from Products", conn);
+SqlDataAdapter categoriesadapter = new SqlDataAdapter("SELECT * from Categories", conn);
+DataSet ds = new DataSet();
+empadapter.Fill(ds, "Employees");
+custadapter.Fill(ds, "Customers");
+orderadapter.Fill(ds, "Orders");
+orderdetailsadapter.Fill(ds, "Order_Details");
+productsadapter.Fill(ds, "Products");
+categoriesadapter.Fill(ds, "Categories");
+DataRelation relation1 = new DataRelation("CustOrders", ds.Tables["Customers"].Columns["CustomerID"], ds.Tables["Orders"].Columns["CustomerID"]);
+DataRelation relation2 = new DataRelation("EmpOrders", ds.Tables["Employees"].Columns["EmployeeID"], ds.Tables["Orders"].Columns["EmployeeID"]);
+DataRelation relation3 = new DataRelation("OrdersOrderDetails", ds.Tables["Orders"].Columns["OrderID"], ds.Tables["Order_Details"].Columns["OrderID"]);
+DataRelation relation4 = new DataRelation("CategoriesProducts", ds.Tables["Categories"].Columns["CategoryID"], ds.Tables["Products"].Columns["CategoryID"]);
+DataRelation relation5 = new DataRelation("ProductsOrderDetails", ds.Tables["Products"].Columns["ProductID"], ds.Tables["Order_Details"].Columns["ProductID"]);
+ds.Relations.Add(relation1);
+ds.Relations.Add(relation2);
+ds.Relations.Add(relation3);
+ds.Relations.Add(relation4);
+ds.Relations.Add(relation5);
+this.ultraTree1.DataSource = ds;
+----
+
+[start=5]
+. Run the application. WinTree displays hierarchical data in Grid style, with each node representing different data entities and displaying separate column headers corresponding to the schema.
+
+image::Images\WinTree_Displaying_WinTree_with_columns_in_Grid_Style_02.png[]
+
+== Related Topics
+
+* link:wintree-columns.html[Columns]
+* link:wintree-adding-columns-using-outlook-express-style.html[Adding Columns using Outlook Express Style]
+* link:wintree-adding-columns-using-freeform-style.html[Adding Columns Using Freeform Style]

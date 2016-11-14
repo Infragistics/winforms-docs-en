@@ -1,0 +1,54 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-determining-what-node-was-clicked",
+    "controlName": ["WinTree"],
+    "tags": ["Events","How Do I"],
+    "guid": "{AF8332FC-A721-4BE9-B1BB-E0D211E47677}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining What Node was clicked
+
+When working with the WinTree™ control, a common task would be to determine which node was clicked, and respond accordingly.
+
+The following code shows you how to find out the node that was clicked by checking the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.selecteventargs.html[SelectEventArgs]"]  object, which contains data related to the event. The SelectEventArgs object’s  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.selecteventargs~newselections.html[NewSelections]"]  property contains a collection of the currently selected nodes. In this case, we expect to click on one node at a time; therefore we can access the first element in the collection.
+
+.Note
+[NOTE]
+====
+Clicking a node will select it therefore causing the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~afterselect_ev.html[AfterSelect]"]  event to fire. Clicking the same exact node again will not cause the AfterSelect event to fire. A different node will have to be clicked in order for the AfterSelect event to fire.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub ultraTree1_AfterSelect(ByVal sender As Object, ByVal e As SelectEventArgs) Handles ultraTree1.AfterSelect
+    	Dim node As UltraTreeNode = e.NewSelections(0)
+    	'Determine by checking the key of the selected node 
+         Console.WriteLine(node.Key) 
+      'Determine by checking the Text property 
+         Console.WriteLine(node.Text) 
+      'Determine the Level of the node; Root nodes are level 0. Children of 'the root are Level 1, etc. 
+         Console.WriteLine(node.Level)
+ End Sub
+----
+
+*In C#:*
+
+----
+private void ultraTree1_AfterSelect(object sender, SelectEventArgs e)
+        {
+            UltraTreeNode node = e.NewSelections[0];
+           //Determine by checking the key of the selected node
+            Console.WriteLine(node.Key);
+            //Determine by checking the Text property
+            Console.WriteLine(node.Text);
+           //Determine the Level of the node; Root nodes are level 0. //Children of the root are Level 1, etc.
+            Console.WriteLine(node.Level);      
+  }
+----

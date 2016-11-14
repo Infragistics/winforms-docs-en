@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-deprecated-properties-whats-new-2006-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "{5BA8C945-F6A6-4071-A0CA-32982F43F311}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Deprecated Properties
+
+There always comes a time in a product's life cycle when, in order to make vast improvements, minor changes need to be made. These changes may affect your application. In Infragistics Windows Forms 2006 Volume 2, we needed to deprecate a few properties, mostly as a result of our new Application Styling Framework™. These properties needed to have default values. Therefore, properties that were of type Boolean needed to be of type DefaultableBoolean. Below are tables listing the deprecated properties and the new properties replacing them:
+
+== Infragistics.Win.UltraControlBase
+
+[options="header", cols="a,a"]
+|====
+|Old Property [property type]|New Property [property type]
+
+|FlatMode [bool]
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~useflatmode.html[UseFlatMode]"] [DefaultableBoolean]
+
+|SupportThemes [bool]
+| pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~useosthemes.html[UseOsThemes]"] [DefaultableBoolean]
+
+|====
+
+== Infragistics.Win.UltraComponentControlManagerBase
+
+[options="header", cols="a,a"]
+|====
+|Old Property [property type]|New Property [property type]
+
+|FlatMode [bool]
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracomponentcontrolmanagerbase~useflatmode.html[UseFlatMode]"] [DefaultableBoolean]
+
+|SupportThemes [bool]
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracomponentcontrolmanagerbase~useosthemes.html[UseOsThemes]"] [DefaultableBoolean]
+
+|====
+
+== Infragistics.Win.UltraWinScrollBar.ScrollBarLook
+
+[options="header", cols="a,a"]
+|====
+|Old Property [property type]|New Property [property type]
+
+|MinMaxButtonsVisible [bool]
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawinscrollbar.scrollbarlook~showminmaxbuttons.html[ShowMinMaxButtons]"] [DefaultableBoolean]
+
+|====
+
+== Infragistics.Win.UltraWinToolbarsManager.UltraToolbarsManager
+
+[options="header", cols="a,a"]
+|====
+|Old Property [property type]|New Property [property type]
+
+|AlwaysShowFullMenus [bool]
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~alwaysshowmenusexpanded.html[AlwaysShowMenusExpanded]"] [DefaultableBoolean]
+
+|====

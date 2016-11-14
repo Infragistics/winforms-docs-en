@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-working-with-tile-headers",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I"],
+    "guid": "{0439BEBA-CCC7-4882-A61F-7ED5C70B0292}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Tile Headers
+
+Each Tile in a WinTilePanel™ control displays headers by default. The headers can display images, and text; headers contain the state change button and/or the close button. It is possible to hide or position headers by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~settings.html[ultraTile.Settings]"]  or  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilesettings.html[UltraTilePanel.TileSettings]"]  object’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~headerposition.html[HeaderPosition]"]  property.
+
+.Note
+[NOTE]
+====
+If you choose to hide the Tile header, then the end user will not be able to drag, hide or change the state of that tile.
+====
+
+The text displayed in the header can be controlled by the UltraTile object’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~caption.html[Caption]"]  property and the size of the tile header can be controlled by the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~headerextent.html[HeaderExtent]"]  property. The default header size can also be set for all the tiles in an UltraTilePanel by setting the UltraTilePanel object’s TileSettings.HeaderExtent property. When the header is displayed on the top or bottom of the tile, the extent indicates the height of the header.
+
+The header appearances can be set using the ultraTile.Settings or UltraTilePanel.TileSettings object’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~headerappearance.html[HeaderAppearance]"]  property. For information on adding tiles to TilePanel please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
+
+*In Visual Basic:*
+
+----
+tile1.Settings.HeaderPosition = TileHeaderPosition.Bottom 
+tile1.Caption = "Header-Positioned Bottom" 
+tile1.Settings.HeaderExtent = 50 
+tile1.Settings.HeaderAppearance.BackColor = Color.LightPink
+tile2.Settings.HeaderPosition = TileHeaderPosition.Top
+tile2.Caption = "Header-Positioned Top" 
+tile2.Settings.HeaderExtent = 30 
+tile2.Settings.HeaderAppearance.BackColor = Color.Aqua
+----
+
+*In C#:*
+
+----
+tile1.Settings.HeaderPosition = TileHeaderPosition.Bottom;
+tile1.Caption = "Header-Positioned Bottom";
+tile1.Settings.HeaderExtent = 50;
+tile1.Settings.HeaderAppearance.BackColor = Color.LightPink;
+tile2.Settings.HeaderPosition = TileHeaderPosition.Top;
+tile2.Caption = "Header-Positioned Top";
+tile2.Settings.HeaderExtent = 30;
+tile2.Settings.HeaderAppearance.BackColor = Color.Aqua;
+----
+
+image::Images\WinTilePanel_Working_with_Tile_Headers_01.png[]

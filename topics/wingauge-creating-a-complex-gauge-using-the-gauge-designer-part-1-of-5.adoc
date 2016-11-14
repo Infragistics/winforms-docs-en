@@ -1,0 +1,382 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-1-of-5",
+    "controlName": ["WinGauge"],
+    "tags": [],
+    "guid": "{66293F67-9E21-46EE-89C7-7C3C3E34169C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Complex Gauge Using the Gauge Designer Part 1 of 5
+
+This procedure guides you through the process of creating a Radial gauge and setting the Dial, Scale and Label properties.
+
+[start=1]
+. From the toolbox, drag the UltraGauge control to your form. The Gauge Designer opens.
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_1.png[]
+
+[start=2]
+. In the Gauge Explorer, expand Gauges.
+[start=3]
+. Click Add Gauge... and select New Radial Gauge.
+
+.Note:
+[NOTE]
+====
+The gauge size in this instruction is set to 300(height) x 300(width) that can be set using the Custom Property Pages. See <<_usingCustomPropertyPages,Using Custom Property Pages>>.
+====
+
+[start=4]
+. Expand Radial Gauge and select OverDial.
+[start=5]
+. Before you continue with this step, please review the following note and screenshots to know how to assign the `FocusScales` and `CenterPoint` properties.
+
+In the Properties panel, click the Appearance tab. In the Brush pane, add the following brush elements with the specified properties:
+
+.Note:
+[NOTE]
+====
+In the subsequent steps of instructions the `FocusScales` and `CenterPoint` properties need to be configured by either (1) using the  *Custom Property Pages*  of the control for adding values there, or (2) via the  _UltraGauge_   Designer interacting with the visual interface in the UI.
+====
+
+[[_usingCustomPropertyPages]]
+==== Using Custom Property Pages
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_2.png[]
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_3.png[]
+
+==== Using UltraGauge Designer UI
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_4.png[]
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.005045409, Color = Color.FromArgb(150, 255, 255, 255)
+*** ColorStop 3 -- Offset = 0.1413793, Color = Color.FromArgb(100, 255, 255, 255)
+*** ColorStop 4 -- Offset = 0.2689655, Color = Transparent
+*** ColorStop 5 -- Offset = 1, Color = Transparent
+*** FocusScales -- 3, 0
+*** CenterPoint -- 50, 100
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.2517241, Color = Color.FromArgb(46, 254, 254, 254)
+*** ColorStop 3 -- Offset = 0.6034483, Color = Color.FromArgb(120, 255, 255, 255)
+*** ColorStop 4 -- Offset = 1, Color = Color.FromArgb(255, 255, 255, 255)
+*** FocusScales -- 0.099999, 0
+*** CenterPoint -- 50, 110
+
+[start=6]
+. Expand Radial Gauge and select Dial.
+[start=7]
+. In the Properties panel, click the Appearance tab. In the Brush pane, add the following brush elements with the specified properties:
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Color.FromArgb(240, 240, 240)
+*** ColorStop 2 -- Offset = 0.4758621, Color = Color.FromArgb(210, 210, 210)
+*** ColorStop 3 -- Offset = 1, Color = Color.FromArgb(89, 89, 89)
+*** FocusScales -- 0.800000012, 0.800000012
+*** CenterPoint -- 50, 50
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.003548387, Color = Color.FromArgb(180, 180, 180)
+*** ColorStop 3 -- Offset = 0.04193548, Color = Color.FromArgb(240, 240, 240)
+*** ColorStop 4 -- Offset = 0.05870968, Color = Color.FromArgb(0, 79, 118)
+*** ColorStop 5 -- Offset = 1, Color = Color.FromArgb(0, 174, 209)
+*** FocusScales -- 0, 0
+*** CenterPoint -- 50, 50
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.02413793, Color = Color.FromArgb(40, 0, 0, 0)
+*** ColorStop 3 -- Offset = 0.2655172, Color = Color.FromArgb(30, 0, 0, 0)
+*** ColorStop 4 -- Offset = 0.4551724, Color = Transparent
+*** ColorStop 5 -- Offset = 1, Color = Transparent
+*** FocusScales -- 0.5, 3
+*** CenterPoint -- 100, 50
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.02413793, Color = Color.FromArgb(40, 0, 0, 0)
+*** ColorStop 3 -- Offset = 0.2655172, Color = Color.FromArgb(30, 0, 0, 0)
+*** ColorStop 4 -- Offset = 0.4551724, Color = Transparent
+*** ColorStop 5 -- Offset = 1, Color = Transparent
+*** FocusScales -- 0.5, 3
+*** CenterPoint -- 0,50
+
+[start=8]
+. In the Stroke pane of the Appearance tab set the following properties:
+
+** Type -- Solid
+** Details -- Silver
+** Style -- Solid
+** Thickness -- 1
+** Alignment -- Center
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_5.png[]
+
+[start=9]
+. In the Gauge Explorer, expand Scales.
+[start=10]
+. Click Add Scale... and select New Scale.
+[start=11]
+. In the Properties panel, click the Scale Layout tab. In the Sweep Angle pane, set the following properties:
+
+** Start -- 160
+** End -- 380
+
+[start=12]
+. In the Axis pane of the Scale Layout tab, set the following properties:
+
+** End Value -- 300.00
+** Start Value -- 30.00
+** Tickmark Interval -- 1.0
+
+[start=13]
+. In the Gauge Explorer, expand the newly created scale, and select Labels.
+[start=14]
+. In the Properties panel, click the Labels Layout tab. In the Orientation pane, set the following properties:
+
+** Extent -- 84
+** Orientation -- Horizontal
+
+[start=15]
+. In the Formatting pane of the Labels Layout tab, set the following properties:
+
+** Frequency -- 30.00
+** Span Max -- 10
+
+[start=16]
+. Click the Labels Appearance tab. In the Brush pane set the following properties:
+
+** Type -- Solid
+** Color -- White
+
+[start=17]
+. In the Font pane of the Labels Appearance tab, set the following properties:
+
+** Font -- Impact
+** Font size -- 14Type -- Point
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_6.png[]
+
+[start=18]
+. In the Gauge Explorer, select Major Tickmarks.
+[start=19]
+. In the Properties panel, click the Tickmark Layout tab. In the Extent pane set the following properties:
+
+** Start -- 68
+** End -- 78
+
+[start=20]
+. In the Widths pane of the Tickmark Layout tab, set the following properties:
+
+** Start -- 4
+** End -- 4
+
+[start=21]
+. In the Orientation pane of the Tickmark Layout tab, set the following properties:
+
+** Frequency -- 30.00
+** Post-Initial -- 150
+
+[start=22]
+. Click the Appearance tab. In the Brush pane, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(180, 255, 216, 22)
+
+[start=23]
+. In the Stroke pane of the Appearance tab, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(232, 154, 0)
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_7.png[]
+
+[start=24]
+. In the Gauge Explorer, select Minor Tickmarks.
+[start=25]
+. In the Properties Panel, click the Tickmark Layout tab. In the Extent pane, set the following properties:
+
+** Start -- 70
+** End -- 75
+
+[start=26]
+. In the Widths pane of the Tickmark Layout tab, set the following properties:
+
+** Start -- 2
+** End -- 2
+
+[start=27]
+. In the Orientation pane of the Tickmark Layout tab, set the following properties:
+
+** Post-Initial -- 150
+** Frequency -- 10.00
+
+[start=28]
+. Click the Appearance tab. In the Brush pane, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(0, 255, 255, 255)
+
+[start=29]
+. In the Stroke pane of the Appearance tab, set the following properties:
+
+** Type -- Solid
+** Color -- White
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_8.png[]
+
+[start=30]
+. In the Gauge Explorer, expand Markers.
+[start=31]
+. Click Add Marker... and select New Needle.
+[start=32]
+. In the Properties Panel, click the Needle Marker Layout tab. In the Widths and Extents pane, set the following properties:
+
+** Widths
+
+*** Start -- 7
+*** Mid -- 7
+*** End -- 0
+
+**** Extents
+
+***** Start -- -26
+***** Mid -- 26
+***** End -- 37
+
+[start=33]
+. In the Value and Units pane of the Needle Marker Layout tab, set the following properties:
+
+** Value -- 100.00
+** Precision -- 100.00
+** Units -- Percent
+
+[start=34]
+. Click the Appearance tab. In the Brush pane, add the following brush elements with the specified properties:
+
+** Simple Gradient brush element
+
+*** StartColor -- Color = Color.FromArgb(230, 255, 181)
+*** EndColor -- Color = Color.FromArgb(180, 69, 209, 0)
+*** Gradient Style -- BackwardDiagonal
+
+[start=35]
+. In the Stroke pane of the Appearance tab, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(125, 255, 255, 255)
+** Thickness -- 2
+
+[start=36]
+. In the Gauge Explorer, expand the newly created needle marker, and select Anchor.
+[start=37]
+. In the Radius pane of the Anchor Layout tab, set the following property:
+
+** Value -- 20
+
+[start=38]
+. In the Properties panel, click the Appearance tab. In the Brush pane, add the following brush elements with the specified properties:
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Color.FromArgb(0, 141, 47)
+*** ColorStop 2 -- Offset = 1, Color = Color.FromArgb(104, 209, 0)
+*** FocusScales -- 0, 0
+*** CenterPoint -- 75, 25
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.02901786, Color = Color.FromArgb(80, 0, 0, 0)
+*** ColorStop 3 -- Offset = 0.1241379, Color = Transparent
+*** ColorStop 4 -- Offset = 1, Color = Transparent
+*** FocusScales -- 0, 3
+*** CenterPoint -- 100, 50
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.02901786, Color = Color.FromArgb(80, 0, 0, 0)
+*** ColorStop 3 -- Offset = 0.1241379, Color = Transparent
+*** ColorStop 4 -- Offset = 1, Color = Transparent
+*** FocusScales -- 0, 3
+*** CenterPoint -- 0, 50
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.02758621, Color = Color.FromArgb(200, 255, 255, 255)
+*** ColorStop 3 -- Offset = 0.3034483, Color = Color.FromArgb(0, 0, 0, 0)
+*** ColorStop 4 -- Offset = 0.3724138, Color = Transparent
+*** ColorStop 5 -- Offset = 1, Color = Transparent
+*** FocusScales -- 3, 0
+*** CenterPoint -- 50, 100
+
+** Multi-Stop Radial Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Transparent
+*** ColorStop 2 -- Offset = 0.03103448, Color = Color.FromArgb(71, 255, 255, 255)
+*** ColorStop 3 -- Offset = 0.162069, Color = Transparent
+*** ColorStop 4 -- Offset = 0.3724138, Color = Transparent
+*** ColorStop 5 -- Offset = 1, Color = Transparent
+*** FocusScales -- 5, 0
+*** CenterPoint -- 50, 0
+
+[start=39]
+. In the Stroke pane of the Appearance tab, set the following properties:
+
+** Radial Gradient brush element
+
+*** SurroundColor -- Color.FromArgb(180, 255, 255, 255)
+*** CenterColor -- Color.FromArgb(150, 255, 255, 255)
+*** FocusScale -- 0,0
+*** CenterPoint -- 75, 25
+
+** Thickness -- 3
+
+[start=40]
+. In the Gauge Explorer, expand Ranges.
+[start=41]
+. Click Add Range... and select New Range.
+[start=42]
+. In the Value pane of the Range Layout tab, set the following properties:
+
+** Start -- 180.00
+** End -- 300.00
+
+[start=43]
+. In the Extent pane of the Range Layout tab, set the following properties:
+
+** Inner Start -- 72
+** Inner End -- 72
+** Outer -- 74
+
+[start=44]
+. In the Properties panel, click the Appearance tab. In the Brush pane, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(80, 255, 255, 255)
+** Thickness -- 1
+
+image::Images/Creating_a_Complex_Gauge_Part_1_Image_9.png[]
+
+Related Topic
+
+link:wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-2-of-5.html[Creating a Complex Gauge Using the Gauge Designer Part 2 of 5]

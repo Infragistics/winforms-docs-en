@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-formatting-cells-containing-dates",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Localization"],
+    "guid": "{EC9B86B9-908F-4173-BB16-A78BF10D3805}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Formatting Cells Containing Dates
+
+== Background
+
+User input into cells containing dates need to be formatted for display and follow localization guidelines so that dates display differently in different localities.
+
+== Questions
+
+* How do I display a date/time field with just the month, day, and year?
+* How do I display the month, day and year so it will conform to the Windows locale settings?
+
+== Solutions
+
+The solution to all of the above issues is to use the .Format property of the column object.
+
+== Sample Project
+
+This sample project displays three columns. The OrderDate column uses the "localized" short date standard format, and RequiredDate displays the time portion of a date field in "hh:mm:ss" format.
+
+image::Images\WinGrid_Formatting_Cells_Containing_Dates_01.png[formatting cells containing dates in ultragrid]
+
+UltraGrid1.InitializeLayout -- The code in the UltraWinGrid InitializeLayout event tells the grid to fit the columns to the width of the grid and format the three columns as indicated:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.Bands(0).Columns("OrderDate").Format = "d"
+	e.Layout.Bands(0).Columns("RequiredDate").Format = "hh:mm:ss"
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Bands[0].Columns["OrderDate"].Format = "d";
+	e.Layout.Bands[0].Columns["RequiredDate"].Format = "hh:mm:ss";
+}
+----
+
+== Review
+
+This sample project demonstrates the simplest method of formatting columns using the .Format property of the Column object. Review the Microsoft documentation regarding the "Format Function" for more information regarding the capabilities of the .Format property.

@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-exporter-events",
+    "controlName": [],
+    "tags": ["Events","Exporting"],
+    "guid": "f74fe645-c295-4197-bb5f-31b4c29397ca",  
+    "buildFlags": [],
+    "createdOn": "2011-05-13T18:29:27.1296752Z"
+}
+|metadata|
+////
+
+= New Exporter Events
+
+Three new events– link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.exportstartedeventargs.html[ExportStarted], link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.exportendingeventargs.html[ExportEnding], and link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.exportendedeventargs.html[ExportEnded], – are added to the WinGridDocumentExporter™ and WinGridExcelExporter™ components.
+
+Starting with Infragistics Windows Forms 2011 Volume 1 release, these new events replace the corresponding old events as shown in Table 1:
+
+Table 1: Event replacement chart and new events functionality
+
+[options="header", cols="a,a,a"]
+|====
+|Old Event|New Event|Functionality of the New Event
+
+|BeginExport
+|ExportStarted
+|same
+
+|EndExport
+|ExportEnding
+|The ExportEnding event fires before the end of both the grid export process and the process of writing the workbook (in case of Excel export) or document (in case of Document export) to the file or the stream.
+
+|EndExport
+|ExportEnded
+|The ExportEnded event fires after both the end of the grid export process and the process of writing the workbook or document to the file or the stream.
+
+|====
+
+.Note
+[NOTE]
+====
+The “end” events – ExportEnding and ExportEnded – are added in place of EndExport event, since the exported file is not accessible in the EndExport event. For example, in case of Excel export, the EndExport event used to fire after the the grid export but before writing the workbook or document to the file or stream.
+====

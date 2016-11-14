@@ -1,0 +1,70 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimespaneditor-setting-time-span-values",
+    "controlName": ["WinTimeSpanEditor"],
+    "tags": ["Editing","How Do I"],
+    "guid": "82f0e781-32b8-4f6c-8ed5-df10af110641",  
+    "buildFlags": [],
+    "createdOn": "2010-06-03T20:43:17.9823459Z"
+}
+|metadata|
+////
+
+= Setting Time Span Values
+
+The following example code illustrates on setting time span values and formatting them. A specific time span can be set using the TimeSpan property. The minimum and maximum values can be set for the TimeSpanEditor using the link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratimespaneditor~minvalue.html[MinValue] and link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratimespaneditor~maxvalue.html[MaxValue] properties. The time span values can be formatted using the link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratimespaneditor~format.html[Format] property.
+
+*In Visual Basic:*
+
+----
+' Create a time span value to set the intial value for ultraTimeSpanEditor 
+Dim toStartWithValue As New TimeSpan(4, 0, 0, 0)
+' Create minimum and maximum time span values 
+Dim minValue As New TimeSpan(1, 0, 0, 0)
+Dim maxValue As New TimeSpan(20, 0, 0, 0)
+' Set the initial time span value 
+Me.ultraTimeSpanEditor1.TimeSpan = toStartWithValue 
+' Set minimum and maximum time span values for ultraTimeSpanEditor 
+Me.ultraTimeSpanEditor1.MinValue = minValue 
+Me.ultraTimeSpanEditor1.MaxValue = maxValue 
+' Set the unit of time to days 
+Me.ultraTimeSpanEditor1.Format = TimeSpanFormat.Days 
+' Set the string to be displayed when the number of days is more than one 
+Me.ultraTimeSpanEditor1.FormatInfo.DayDisplayStringPlural = "DAYS" 
+' Do not display the spin button 
+' this.ultraTimeSpanEditor1.HasSpinButton = false; 
+' Fire the event when the value within ultraTimeSpanEditor changes. 
+AddHandler Me.ultraTimeSpanEditor1.ValueChanged, AddressOf ultraTimeSpanEditor1_ValueChanged
+Private Sub ultraTimeSpanEditor1_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
+    ' TODO: Implementation logic for value changed 
+End Sub
+----
+
+*In C#:*
+
+----
+// Create a time span value to set the intial value for ultraTimeSpanEditor
+TimeSpan toStartWithValue = new TimeSpan(4, 0, 0, 0);
+// Create minimum and maximum time span values
+TimeSpan minValue = new TimeSpan(1, 0, 0, 0);
+TimeSpan maxValue = new TimeSpan(20, 0, 0, 0);
+// Set the initial time span value
+this.ultraTimeSpanEditor1.TimeSpan = toStartWithValue;
+// Set  minimum and maximum time span values for ultraTimeSpanEditor
+this.ultraTimeSpanEditor1.MinValue = minValue;
+this.ultraTimeSpanEditor1.MaxValue = maxValue;
+// Set the unit of time to days
+this.ultraTimeSpanEditor1.Format = TimeSpanFormat.Days;
+// Set the string to be displayed when the number of days is more than one
+this.ultraTimeSpanEditor1.FormatInfo.DayDisplayStringPlural = "DAYS";
+// Do not display the spin button
+// this.ultraTimeSpanEditor1.HasSpinButton = false;
+// Fire the event when the value within ultraTimeSpanEditor changes.
+this.ultraTimeSpanEditor1.ValueChanged += new EventHandler(ultraTimeSpanEditor1_ValueChanged);
+void ultraTimeSpanEditor1_ValueChanged(object sender, EventArgs e)
+{
+   // TODO: Implementation logic for value changed
+}
+----

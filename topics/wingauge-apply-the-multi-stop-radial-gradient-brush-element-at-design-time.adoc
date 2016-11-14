@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-multi-stop-radial-gradient-brush-element-at-design-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{9677BB16-62AA-4C0C-AA0F-6B5848B1C942}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Multi Stop Radial Gradient Brush Element at Design Time
+
+If you want more than two colors of a property of your gauge to blend into each other in a circular fashion, apply the Multi-Stop Radial Gradient brush element to the property.
+
+*To apply a Multi-Stop Radial Gradient brush element to your property at design time:*
+
+[start=1]
+. Add a Radial Gauge to the Gauges collection.
+[start=2]
+. In the left-hand pane of the Gauges collection editor, click Linear Gauge.
+[start=3]
+. Expand the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=4]
+. From the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  drop-down list, select Multi-Stop Radial Gradient. This will create a new Multi-Stop Radial Gradient brush element.
+[start=5]
+. Set the following properties:
+
+** CenterPoint -- 75, 25
+** FocusScales -- 0,0
+
+[start=6]
+. Click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.multistopradialgradientbrushelement~colorstops.html[ColorStops]"]  property, then click the ellipsis button (...) to open the ColorStops collection editor.
+[start=7]
+. In the ColorStops collection editor, click under the color scale to add a new color stop.
+[start=8]
+. Right click on the color stop to change the color.
+[start=9]
+. Drag the color stop to change the offset.
+[start=10]
+. The following step allows you to edit the values with more precision.
+[start=11]
+. Click the small arrow on the horizontal bar. Then set the following properties:
+
+** Start color - Click the first cell in the first row. Click the drop-down arrow. The color picker appears. On the top, click Web, then select the Black color.
+** Start color offset - Click the second cell in the first row. Enter the value 0 in the text box.
+** Color stop - Click the first cell in the second row. Enter the value 186, 0, 0 in the text box.
+** Color stop offset - Click the second cell in the second row. Enter the value 0.264 in the text box.
+** End color - Click the first cell in the third row. Enter the value 254, 127, 0 in the text box.
+** End color offset - Click the second cell in the third row. Enter the value 1 in the text box.
+
+== Related Topics
+
+link:wingauge-multi-stop-radial-gradient-brush-element.html[Multi Stop Radial Gradient Brush Element]
+
+link:wingauge-apply-the-multi-stop-radial-gradient-brush-element-at-run-time.html[Apply the Multi-Stop Radial Gradient Brush Element at Run Time]
+
+link:wingauge-apply-the-multi-stop-radial-gradient-brush-element-using-the-gauge-designer.html[Apply the Multi-Stop Radial Gradient Brush Element Using the Gauge Designer]

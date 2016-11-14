@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-change-the-default-animation-of-the-desktop-alert-window",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I","Styling"],
+    "guid": "{09DA8484-6847-490C-8F67-503353C8DC49}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Default Animation of the Desktop Alert Window
+
+The desktop alert window has several entrance and exit animations. By tweaking most of these animations, you can keep the alert window as unobtrusive as possible or spice things up to capture the end user's attention. There are several ways in which you can modify the default animation of the desktop alert window:
+
+* *Scrolling and Fading* -- Choose whether the alert window will smoothly fade or scroll in and out with a scrolling effect.
+* *Scroll Direction* -- The desktop alert window can scroll in from the top, right, bottom, or left, as well as diagonally from any of the four corners.
+* *Auto Close Delay* -- Set the desktop alert window to automatically close after a set number of milliseconds or not at all.
+* *Animation Speed* -- Control the speed at which the desktop alert window fades and scrolls in and out. You can choose from slow, medium, or fast.
+* *Opacity* -- Keep the desktop alert window fully opaque so your end user doesn't miss it, or make the alert window transparent to keep it from interfering with their work.
+
+Using a combination of these animation settings will ensure that the desktop alert window meets your application's specific needs.
+
+The following code changes the default animation of the desktop alert window. Instead of the slow, transparent fade that you would normally see, the desktop alert window will quickly scroll in from the right to left while fully opaque. The alert window will then scroll out in a similar manner three seconds later from the left to the right.
+
+.Note
+[NOTE]
+====
+All of the code can potentially be placed in your form's Load event except for the final line, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~show.html[Show]"]  method. The Show method can be placed in any other event or method suiting your application's logic.
+====
+
+*In Visual Basic:*
+
+----
+' Force the desktop alert window to scroll (rather than fade)
+' from the right to the left.
+Me.UltraDesktopAlert1.AnimationStyleShow = AnimationStyle.Scroll
+Me.UltraDesktopAlert1.AnimationScrollDirectionShow = _
+  AnimationScrollDirection.RightToLeft
+' Force the desktop alert window to scroll from the left to
+' the right as it automatically closes.
+Me.UltraDesktopAlert1.AnimationStyleAutoClose = AnimationStyle.Scroll
+Me.UltraDesktopAlert1.AnimationScrollDirectionAutoClose = _
+  AnimationScrollDirection.LeftToRight
+' Time in milliseconds before the desktop alert window
+' automatically closes.
+Me.UltraDesktopAlert1.AutoCloseDelay = 3000
+' This speeds up the scroll speed.
+Me.UltraDesktopAlert1.AnimationSpeed = AnimationSpeed.Fast
+' This causes the desktop alert window to be fully opaque.
+Me.UltraDesktopAlert1.Opacity = 1
+' Display the desktop alert window with some sample text.
+Me.UltraDesktopAlert1.Show("Test Alert", "This is only a test.")
+----
+
+*In C#:*
+
+----
+// Force the desktop alert window to scroll (rather than fade)
+// from the right to the left.
+this.ultraDesktopAlert1.AnimationStyleShow = AnimationStyle.Scroll;
+this.ultraDesktopAlert1.AnimationScrollDirectionShow =
+  AnimationScrollDirection.RightToLeft;
+// Force the desktop alert window to scroll from the left to
+// the right as it automatically closes.
+this.ultraDesktopAlert1.AnimationStyleAutoClose = AnimationStyle.Scroll;
+this.ultraDesktopAlert1.AnimationScrollDirectionAutoClose =
+  AnimationScrollDirection.LeftToRight;
+// Time in milliseconds before the desktop alert window
+// automatically closes.
+this.ultraDesktopAlert1.AutoCloseDelay = 3000;
+// This speeds up the scroll speed.
+this.ultraDesktopAlert1.AnimationSpeed = AnimationSpeed.Fast;
+// This causes the desktop alert window to be fully opaque.
+this.ultraDesktopAlert1.Opacity = 1;
+// Display the desktop alert window with some sample text.
+this.ultraDesktopAlert1.Show("Test Alert", "This is only a test.");
+----

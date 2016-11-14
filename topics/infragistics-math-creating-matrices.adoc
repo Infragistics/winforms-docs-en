@@ -1,0 +1,229 @@
+﻿////
+
+|metadata|
+{
+    "name": "infragistics-math-creating-matrices",
+    "controlName": ["Infragistics Math Library"],
+    "tags": ["Application Blocks","Calculations"],
+    "guid": "e148e2a0-70c8-4483-bdf0-150bbd928583",  
+    "buildFlags": [],
+    "createdOn": "2011-08-01T14:06:37.9229995Z"
+}
+|metadata|
+////
+
+= Creating Matrices
+
+== Introduction
+
+The Infragistics Math Library™ offers several approaches to creating matrices. Though this topic demonstrates how to create only link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] instances, the approaches shown apply to all matrix types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexMatrix]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
+
+== Overview
+
+Following is a list of the possible ways to create a matrix:
+
+* <<Elements_and_Dimensions,Creating a Matrix by Specifying the Its Elements and Dimensions>>
+* <<Elements_Only,Creating a Matrix by Specifying Its Elements Only>>
+* <<Length,Creating a Matrix by Specifying Its Length>>
+* <<Value_for_Its_Elements_and_Its_Length,Creating a Matrix by Specifying a Value for Its Elements and Its Length>>
+* <<Multidimensional_Array,Creating a Matrix from a Multidimensional Array>>
+* <<Other_Approaches,Other Approaches>>
+
+** <<Unitary_Matrix,Creating a Unitary Matrix>>
+** <<4-dimesnional_Matrix,Creating a 4-dimesnional Matrix>>
+** <<Identity_Matrix,Creating an Identity Matrix>>
+** <<Same_Elements,Creating a Matrix with the Same Elements>>
+
+Each of them is explained in an individual sub-section below. In addition to these approaches, some other ways to create a matrix are covered in the <<Other_Approaches,Other Approaches>> section at the end of the topic.
+
+== Creating Matrices
+
+[[Elements_and_Dimensions]]
+== Creating a Matrix by Specifying Its Elements and Dimensions
+
+The most general constructor for the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] class takes any *IList<double>* object containing the matrix elements, together with an integer array specifying the dimensions of the matrix. The product of the items in the dimensions array must be equal to the length of the array with the elements, otherwise an exception will be thrown.
+
+The following code example creates a three-dimensional matrix – each dimension has 2 elements, with a total of 8 elements.
+
+*In Visual Basic:*
+
+----
+Dim dimensions As Integer() = New Integer() {2, 2, 2}
+Dim elements As Double() = New Double() {0, 1, 2, 3, 4, 5, 6, 7}
+Dim x As New Matrix(elements, dimensions)
+----
+
+*In C#:*
+
+----
+int[] dimensions = new int[]{ 2, 2, 2 };
+double[] elements = new double[]{ 0, 1, 2, 3, 4, 5, 6, 7 };
+Matrix x = new Matrix(elements, dimensions);
+----
+
+[[Elements_Only]]
+== Creating a Matrix by Specifying Its Elements Only
+
+This approach creates a row matrix. With it, a matrix can be created by specifying only its elements – this will create a matrix of one row and as many columns as there are elements.
+
+The following code example creates a row matrix:
+
+*In Visual Basic:*
+
+----
+Dim elements As Double() = New Double(4) {}
+Dim x As New Matrix(elements)
+----
+
+*In C#:*
+
+----
+double[] elements = new double[5];
+Matrix x = new Matrix(elements);
+----
+
+[[Length]]
+== Creating a Matrix by Specifying Its Length Only
+
+This approach creates a zero row matrix. Passing in an integer length into the constructor produces a row matrix filled with zeros:
+
+*In Visual Basic:*
+
+----
+Dim length As Integer = 5
+Dim x As New Matrix(length)
+----
+
+*In C#:*
+
+----
+int length = 5;
+Matrix x = new Matrix(length);
+----
+
+[[Value_for_Its_Elements_and_Its_Length]]
+== Creating a Matrix by Specifying the Value for Its Elements and the Length
+
+This approach creates a row matrix consisting of same elements. It is constructed by passing in a double and integer length as parameters:
+
+*In Visual Basic:*
+
+----
+'A length 10 row Matrix with all elements equal to 1.
+Dim x As New Matrix(1, 10)
+----
+
+*In C#:*
+
+----
+//A length 10 row Matrix with all elements equal to 1.
+Matrix x = new Matrix(1, 10);
+----
+
+[[Multidimensional_Array]]
+== Creating a Matrix from a Multidimensional Array
+
+Since a multidimensional array is a type of matrix, it can be used to create a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] instance:
+
+*In Visual Basic:*
+
+----
+'A two-dimensional Matrix.
+Dim elements As Double(,) = New Double(,) {{1, 2}, {3, 4}}
+Dim x As New Matrix(elements)
+----
+
+*In C#:*
+
+----
+//A two-dimensional Matrix.
+double[,] elements = new double[,] { { 1, 2 }, { 3, 4 } };
+Matrix x = new Matrix(elements);
+----
+
+[[Other_Approaches]]
+== Other Approaches
+
+The following snippets demonstrate several other approaches for creating a matrix:
+
+[[Unitary_Matrix]]
+=== Creating a Unitary Matrix
+
+*In Visual Basic:*
+
+----
+'A unitary Matrix.
+Dim x As Matrix = 1
+----
+
+*In C#:*
+
+----
+//A unitary Matrix.
+Matrix x = 1;
+----
+
+[[4-dimesnional_Matrix]]
+=== Creating a 4-Dimesnional Matrix
+
+*In Visual Basic:*
+
+----
+'A 4-dimensional Matrix of zeros.
+Dim x As Matrix = Compute.Zeros(3, 3, 3, 3)
+----
+
+*In C#:*
+
+----
+//A 4-dimensional Matrix of zeros.
+Matrix x = Compute.Zeros(3, 3, 3, 3);
+----
+
+[[Identity_Matrix]]
+=== Creating an Identity Matrix
+
+*In Visual Basic:*
+
+----
+'A 10 x 10 identity Matrix filled with zeros and ones on the diagonal.
+Dim x As Matrix = Compute.IdentityMatrix(10)
+----
+
+*In C#:*
+
+----
+//A 10 x 10 identity Matrix filled with zeros and ones on the diagonal.
+Matrix x = Compute.IdentityMatrix(10);
+----
+
+[[Same_Elements]]
+=== Creating a Matrix With the Same Elements
+
+*In Visual Basic:*
+
+----
+'A 3-dimensional Matrix with all elements equal to 1.
+Dim dimensions As Integer() = New Integer() {2, 2, 2}
+Dim x As New Matrix(1, dimensions)
+----
+
+*In C#:*
+
+----
+//A 3-dimensional Matrix with all elements equal to 1.
+int[] dimensions = new int[]{ 2, 2, 2 };
+Matrix x = new Matrix(1, dimensions);
+----
+
+== Related Topics
+
+link:infragistics-math-working-with-matrices.html[Working With Matrices]
+
+link:infragistics-math-complex-numbers.html[Complex Numbers]
+
+link:infragistics-math-vectors.html[Vectors]
+
+link:infragistics-math-mathematical-functions.html[Mathematical Functions]
+
+link:infragistics-math-api-overview.html[API Overview]

@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "winspellchecker-turn-off-spell-checking",
+    "controlName": ["WinSpellChecker"],
+    "tags": ["How Do I","Validation"],
+    "guid": "{22C29F5B-75CF-4193-9810-F20BE01BBDA1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Turn Off Spell Checking
+
+You may wish to give the end user the option of turning off a certain subset of spell checking functionality. It is possible to not have the WinSpellChecker™ check spelling as you type or when a text box loses focus. Use the following code to turn off this functionality.
+
+.Note
+[NOTE]
+====
+The end user will still be able to launch spell checking dialog boxes as well as use most other functions of WinSpellChecker. These other functions will need to be disabled individually. For example, if a button launches the spell checking dialog box, set its Enabled property to False.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSpellChecker
+...
+Me.UltraSpellChecker1.Mode = SpellCheckingMode.None
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSpellChecker;
+...
+this.ultraSpellChecker1.Mode = SpellCheckingMode.None;
+----

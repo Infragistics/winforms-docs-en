@@ -1,0 +1,98 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-button",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{0F6EB889-273E-4C97-832B-16FF67B32EAD}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to Button
+
+The Button panel is simply a panel on the WinStatusBar™ that displays a standard command button.
+
+== Setting up Button Style Panel at Design-Time
+
+[start=1]
+. Add an UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Scroll the properties until you come to the pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the style property equal to "Button".
+[start=5]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property to the text you want displayed on the button.
+[start=6]
+. Click OK to close the window and you will see your panel added to the status bar.
+
+image::images\WinStatusBar_WinStatusBar_QuickTour_Button_Panel_01.png[ultrastatusbar with button panel style setup at design time]
+
+== Setting up Button Style Panel at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Panel_Style_to_Button_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.Button
+	' Set the text for your button/panel
+	myPanel.Text = "Press Me"
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Panel_Style_to_Button_Load(object sender, EventArgs e)
+{
+	//create new panel
+	UltraStatusPanel myPanel = new UltraStatusPanel();
+	//set the style for the panel
+	myPanel.Style = PanelStyle.Button;
+	//set the text for your button/panel
+	myPanel.Text = "Press Me";
+	//add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+}
+----
+
+== Event for Button Style Panel
+
+The button fires an event called  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"] . There is one parameter passed to the event:  _e.Panel_ . This parameter provides a reference to the Panel that holds the button. For example, to get a reference to the panel in the ButtonClick event and print out the text on the panel:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraStatusBar1_ButtonClick(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinStatusBar.PanelEventArgs) _
+  Handles UltraStatusBar1.ButtonClick
+	MessageBox.Show(e.Panel.Text.ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraStatusBar1_ButtonClick(object sender, 
+  PanelEventArgs e)
+{
+	MessageBox.Show(e.Panel.Text.ToString());
+}
+----
+
+image::images\WinStatusBar_Set_the_Panel_Style_to_Button_01.png[shows ultrastatusbar with button style panel setup at run time]

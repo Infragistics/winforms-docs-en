@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "winspellchecker-dictionaries",
+    "controlName": ["WinSpellChecker"],
+    "tags": ["Application Scenarios","Getting Started"],
+    "guid": "{648E59B4-9D32-4DCB-85B5-DD1763A62D1F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Dictionaries
+
+== Default Dictionary
+
+WinSpellChecker™ uses its default dictionary to check a control's spelling. This default dictionary is the English dictionary and is embedded into the assembly; therefore, WinSpellChecker does not need any extra dictionaries deployed along with it in order to function properly. If your application uses some language other than English, it will be necessary to deploy extra dictionaries with your application.
+
+WinSpellChecker comes out of the box with dictionaries for nine different languages including Australian, Canadian, English (generic), Dutch, French, German, Portuguese, and Spanish. You will find these dictionaries in the {InstallPath}\Dictionaries folder. In order to use one of these dictionaries, you'll need to set the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~dictionary.html[Dictionary]"]  property of WinSpellChecker to the file name (including the full path) of the dictionary.
+
+.Note
+[NOTE]
+====
+If you place your dictionary in the same folder as your application's executable, you won't need to specify a path.
+====
+
+== User Dictionary
+
+When WinSpellChecker encounters a misspelled word (in other words, a word that is not in the default dictionary), and the end user knows that this unique word is spelled correctly, you will want to give the end user the option of adding that word to the dictionary. This is where the user dictionary comes in. WinSpellChecker won't allow you to add words to the standard dictionary; you must create a user dictionary and add the words to it. The user dictionary can be a simple text file with any extension you would like to give it.
+
+.Note
+[NOTE]
+====
+We recommend you give the user dictionary an extension such as .dic or .dict. This way, you won't run into any problems if you accidentally give it a system extension.
+====
+
+When adding words to the user dictionary, WinSpellChecker will add one word per line. This is the same format Microsoft® Word uses and is very convenient as the end user might wish to use their Word custom dictionary with WinSpellChecker.
+
+In order to set the user dictionary, the process is almost exactly the same as setting the default dictionary. Set the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~userdictionary.html[UserDictionary]"]  property to the file name (including the full path) of the user dictionary.

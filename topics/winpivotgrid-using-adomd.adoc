@@ -1,0 +1,226 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpivotgrid-using-adomd",
+    "controlName": [],
+    "tags": [],
+    "guid": "9ac27182-3d54-437b-b68d-436ac0f0fa67",  
+    "buildFlags": [],
+    "createdOn": "2014-09-12T02:12:30.8814189Z"
+}
+|metadata|
+////
+
+= Using ADOMD
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains and demonstrates the  _WinPivotGrid_™ data binding using ADOMD data Source/Provider.
+
+=== Application Requirements
+
+Ensure that your application is created based on  *.Net Framework 4* , not  *.Net Framework 4 Client Profile*  that does not include  _System.Web.Extensions_  .
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref381022270,Using ADOMD>>
+
+** <<_Ref398230705,Preview>>
+** <<_Ref398230657,Requirements>>
+** <<_Ref381022287,ADOMD settings>>
+** <<_Ref398230733,Code>>
+** <<_Ref398236798,Adding MdxDataSelector>>
+
+* <<_Ref381022312,Related Content>>
+
+[[_Ref381022270]]
+== Using ADOMD
+
+[[_Ref398230705]]
+
+=== Preview
+
+The following screenshot is the preview of the result from ADOMD data binding example in this topic:
+
+image::images/Using_ADOMD_1.png[]
+
+[[_Ref398230657]]
+
+=== Requirements
+
+To complete the procedure you need the following:
+
+[options="header", cols="a,a"]
+|====
+|Requirement category|Requirement listing
+
+|Assemblies
+|{ApiPlatform}Olap.Core.v{ProductVersion} 
+
+{ApiPlatform}Olap.DataSource.v{ProductVersion} 
+
+{ApiPlatform}Olap.DataProvider.Adomd.v{ProductVersion} 
+
+{ApiPlatform}Olap.DataSource.Mdx.v{ProductVersion} 
+
+{ApiPlatform}Shared.v{ProductVersion} 
+
+{ApiPlatform}Win.UltraWinPivotGrid.v{ProductVersion} 
+
+{ApiPlatform}Win.v{ProductVersion}
+
+|Using/Imports
+|Add the following _Using/Imports_ statement in your application form: 
+
+Infragistics.Olap.Adomd
+
+|====
+
+[[_Ref381022287]]
+
+=== ADOMD settings
+
+ADOMD data provider requires a connection via link:{ApiPlatform}olap.dataprovider.adomd.v{ProductVersion}~infragistics.olap.adomd.adomdinitialsettings~connectionstring.html[ConnectionString] property, in order to communicate with the data in the server.
+
+The following table lists parameters that are necessary to establish a connection to the data in the server using the link:{ApiPlatform}olap.dataprovider.adomd.v{ProductVersion}~infragistics.olap.adomd.adomdinitialsettings_members.html[AdomdInitialSettings] object. There are other optional parameters for authentication and security (not listed here). The binding code example below contains all these settings.
+
+[options="header", cols="a,a"]
+|====
+|Parameter|Description
+
+| _provider_ 
+|Used for connections that require SQL server data provider for Analysis Services ( *Optional* using current version). If specific version is required then this parameter needs to be specified. 
+
+`"provider=MSOLAP.4;"`
+
+| _data source_ 
+|Specifies the server instance ( *Required* ). 
+
+`"data source=http://sampledata.infragistics.com/olap/msmdpump.dll;"`
+
+|====
+
+In addition to the connection string, mentioned above, you need to configure the following settings including the dimensions (rows, columns and measures) of the cube.
+
+[options="header", cols="a,a"]
+|====
+|Parameter|Description
+
+| _catalog_ 
+|Specifies the name of the Analysis Services database ( *Required* ). 
+
+`Catalog = "Adventure Works DW Standard Edition"`
+
+| _cube_ 
+|Cube name ( *Required* ). 
+
+`Cube = "Adventure Works"`
+
+| _Rows_ 
+|Rows dimensions. 
+
+`Rows = "[Date].[Calendar]"`
+
+| _Columns_ 
+|Column dimensions. 
+
+`Columns = "[Product].[Category] "`
+
+| _Measures_ 
+|Measures dimensions. 
+
+`Measures = "[Measures].[Reseller Sales Amount]"`
+
+|====
+
+==== Related Sources:
+
+* link:http://msdn.microsoft.com/en-us/library/dn140245.aspx[Connection String Properties (Analysis Services)]
+
+[[_Ref398230733]]
+
+=== Code
+
+ADOMD data provider communicates with Microsoft SQL Server Analysis Services using XML for analysis protocol. The following code example demonstrates how to configure the pivot grid to communicate with the data using ADOMD.
+
+.Note:
+[NOTE]
+====
+This topic uses Infragistics sample data for demonstration purposes.
+====
+
+This example uses the data from the Infragistics OLAP server.
+
+*In C#:*
+
+[source,csharp]
+----
+AdomdInitialSettings settings = new AdomdInitialSettings();
+StringBuilder sb = new StringBuilder();
+sb.Append("provider=MSOLAP.4;");
+sb.Append("data source=http://sampledata.infragistics.com/olap/msmdpump.dll;");
+sb.Append("catalog=\"Adventure Works DW Standard Edition\";");
+sb.Append("cube=\"Adventure Works\";");
+options.ConnectionString = sb.ToString();
+settings.Catalog = "Adventure Works DW Standard Edition";
+settings.Cube = "Adventure Works";
+settings.Rows = "[Date].[Calendar]";
+settings.Columns = "[Product].[Category] ";
+settings.Measures = "[Measures].[Reseller Sales Amount]";
+AdomdDataSource adomdDs = new AdomdDataSource(settings);
+ultraPivotGrid1.DataSource = adomdDs;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Dim settings As New AdomdInitialSettings()
+Dim sb As New StringBuilder()
+sb.Append("provider=MSOLAP.4;")
+sb.Append("data source=http://sampledata.infragistics.com/olap/msmdpump.dll;")
+sb.Append("catalog=""Adventure Works DW Standard Edition"";")
+sb.Append("cube=""Adventure Works"";")
+settings.ConnectionString = sb.ToString()
+settings.Catalog = "Adventure Works DW Standard Edition"
+settings.Cube = "Adventure Works"
+settings.Rows = "[Date].[Calendar]"
+settings.Columns = "[Product].[Category] "
+settings.Measures = "[Measures].[Reseller Sales Amount]"
+Dim adomdDs As New AdomdDataSource(settings)
+ultraPivotGrid1.DataSource = adomdDs
+----
+
+[[_Ref398236798]]
+
+include::winpivotgrid-adding-mdxdataselector.adoc[]
+
+[[_Ref381022312]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winpivotgrid.html[WinPivotGrid]
+|This section contains topics covering the _WinPivotGrid_™ control for Infragistics® Windows Forms®.
+
+| link:winpivotgrid-using-xmla.html[Using XMLA]
+|This topic explains and demonstrates the _WinPivotGrid_™ data binding using XMLA data Source/Provider.
+
+| link:winpivotgrid-using-flatdatasource.html[Using FlatDataSource]
+|This topic explains how to use the FlatDataSource class for displaying _IEnumerable_ data in the _WinPivotGrid_™.
+
+| link:winpivotgrid-glossary.html[Glossary]
+|This section lists common terms used in pivot grid topics.
+
+|====

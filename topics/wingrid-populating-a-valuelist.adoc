@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-populating-a-valuelist",
+    "controlName": ["WinGrid"],
+    "tags": ["Data Presentation","Grids","How Do I"],
+    "guid": "{4E576A7C-D84D-47FD-A3BE-FC7CA3C03DD5}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Populating a ValueList
+
+You can use a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"]  object to provide a dropdown list of values for a WinGrid™ column. The ValueList object is ideal for any WinGrid column that represents a foreign key field that contains related information in a lookup table. The ValueList object is a lightweight alternative to the WinCombo™ control. To use a ValueList object, you will need to loop through the data you want to add to the ValueList object. At each iteration of the loop, set the DataValue and DisplayText properties of a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem.html[ValueListItem]"]  object and then add the ValueListItem object to the ValueListItems collection.
+
+The following code demonstrates how to populate a ValueList object with descriptions and pictures, then add that ValueList to a WinGrid column.
+
+*In Visual Basic:*
+
+----
+Private Sub ProductsUltraGrid_InitializeLayout(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs)_
+	 Handles ProductsUltraGrid.InitializeLayout
+	Dim theValueList As New ValueList()
+	Dim theImageConverter As New ImageConverter()
+	Me.CategoriesTableAdapter1.Fill(Me.NorthwindDataSet.Categories)
+	For Each theRow As PopulateValueListVB.NorthwindDataSet.CategoriesRow In Me.NorthwindDataSet.Categories
+		If theRow.Picture IsNot Nothing AndAlso theRow.Picture.Length > 0 Then
+		theValueList.ValueListItems.Add(theRow.CategoryID, theRow.CategoryName).Appearance.Image = _
+			theImageConverter.ConvertFrom(theRow.Picture)
+		End If
+	Next
+	e.Layout.Bands(0).Columns("CategoryID").ValueList = theValueList
+End Sub
+----
+
+*In C#:*
+
+----
+private void productsUltraGrid_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	ValueList theValueList = new ValueList();
+	ImageConverter theImageConverter = new ImageConverter();
+	this.categoriesTableAdapter1.Fill(this.northwindDataSet.Categories);
+	foreach (PoplulateValueList.NorthwindDataSet.CategoriesRow theRow in this.northwindDataSet.Categories)
+	{
+		if (theRow.Picture != null && theRow.Picture.Length > 0)
+		{
+			theValueList.ValueListItems.Add(theRow.CategoryID, theRow.CategoryName).Appearance.Image =
+				theImageConverter.ConvertFrom(theRow.Picture);
+		}
+	}
+	e.Layout.Bands[0].Columns["CategoryID"].ValueList = theValueList;
+}
+----

@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-removing-grid-lines",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{C1A86281-10EF-41DF-885E-37BD65133906}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Removing Grid Lines
+
+== Background
+
+To provide a more pleasant user experience, the developer may need to remove the grid lines. This can be done by setting the cell border to transparent and setting the color of the row border to the same color as the cell background.
+
+== Questions
+
+* How do I remove the grid lines?
+
+== Solutions
+
+Set the cell border to transparent and the row border color to the same as the cell background.
+
+== Sample Project
+
+This sample project shows a grid with the grid lines removed:
+
+image::Images\WinGrid_Removing_Grid_Lines_01.png[removing grid lines from ultragrid]
+
+The code in the WinGrid's™ InitializeLayout event sets the cell border to Transparent and sets the row border color to the system windows color:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Remove grid lines
+	e.Layout.Reset()
+	e.Layout.Override.CellAppearance.BorderAlpha = Alpha.Transparent
+	e.Layout.Override.RowAppearance.BorderColor = Color.White
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Remove grid lines
+	e.Layout.Reset();
+	e.Layout.Override.CellAppearance.BorderAlpha = Alpha.Transparent;
+	e.Layout.Override.RowAppearance.BorderColor = Color.White;
+}
+----
+
+== Review
+
+This sample project shows how to remove the grid lines by setting the cell border to transparent and the row border to the same color as the cell background.

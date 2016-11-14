@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-working-with-linear-gauges",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Getting Started"],
+    "guid": "{949BFD32-1D16-4BD3-BE8A-A33141E30A4A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Linear Gauges
+
+Linear gauges consist of different components that work together to create visually impressive gauges. To create a Linear gauge, you will need to understand how the components specific to Linear gauges work.
+
+image::Images/Gauge_Working_with_Linear_Gauges_01.png[Shows the key parts of a linear gauge.]
+
+== Scales
+
+The scale displays the range of values of your gauge. The  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargauge~scales.html[Scales]"]  property includes various properties, including   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~labels.html[Labels]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~markers.html[Markers]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~majortickmarks.html[TickMarks]"] .
+
+===== Tick Marks
+
+You can add tick marks to Linear gauges to display the values of the gauge's scale.
+
+The TickMarks property has two attributes:
+
+* Minor TickMarks
+* Major TickMarks
+
+You can configure both of them to display 'ticks' at specific values. Major tick marks are usually larger than minor tick marks. They are configured to highlight every n^th^ value on the scale.
+
+===== Labels
+
+Labels are numeric or text values that are used to represent the points of the scale. They are associated with the tick marks on the scale.
+
+== Markers
+
+Markers are elements that point out values on a scale. In a Linear gauge, the Marker property has two attributes:
+
+* Needle marker -- These are displayed as pointers that point to a value on the scale.
+* Bar marker -- These are displayed as bars that have a start and end point on the scale.

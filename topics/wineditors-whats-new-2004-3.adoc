@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-whats-new-2004-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{0D847036-9F4E-45CA-8D24-65BBC56594E0}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinEditors 2004.3
+
+== Editor Buttons
+
+The WinEditors™ now have the ability to display editor buttons. Editor buttons are displayed inside the editor element to the left and/or right of the text area. Editor buttons generate events, which can be used to take actions such as invoking a custom editing interface or modifying the value contained in the editor. There are five types of editor buttons available: button, repeat button, state button, spin button and drop-down button. For more information on editor buttons, see link:wineditors-editor-buttons.html[Editor Buttons Overview].
+
+== Ink Support for Windows® XP Tablet PC Edition
+
+All the WinEditors elements that support text editing have been ink-enabled for compatibility with applications designed for the Tablet PC environment. Ink capability is provided by a new assembly, WinInkProvider, that provides ink capabilities to all of the WinForms elements in the Infragistics Presentation Layer Framework that handle text input. The WinComboEditor™, WinCurrencyEditor™, WinDateTimeEditor™, WinFontNameEditor™, WinMaskedEdit™, WinNumericEditor™, and WinTextEditor™ controls all gain ink input capabilities with the addition of the InkProvider element.
+
+== Handedness Support for Menus
+
+Another component of Tablet PC support, the menus used by the WinEditors elements now support the handedness functions of the Tablet PC platform. This insures that menus being displayed will not be obscured by the user's hand while using the pen with the Tablet PC. The elements will adjust themselves automatically to right-handed or left-handed operation, depending on the settings of the operating system.

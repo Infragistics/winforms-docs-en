@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-set-the-active-day",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{F4A2DDCF-D9EF-4581-9DAB-1C84702378D9}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Active Day
+
+You can use the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~activeday.html[ActiveDay]"]  property off WinCalendarInfo™ to change the active day of all WinSchedule™ controls sharing the same WinCalendarInfo instance.
+
+*In Visual Basic:*
+
+----
+Private Sub Set_the_Active_Day_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraCalendarInfo1.ActiveDay = _
+	  Me.UltraCalendarInfo1.GetDay(DateTime.Today.AddDays(2), True)
+End Sub
+----
+
+*In C#:*
+
+----
+private void Set_the_Active_Day_Load(object sender, EventArgs e)
+{
+	this.ultraCalendarInfo1.ActiveDay = 
+	  this.ultraCalendarInfo1.GetDay(DateTime.Today.AddDays(2), true);
+}
+----

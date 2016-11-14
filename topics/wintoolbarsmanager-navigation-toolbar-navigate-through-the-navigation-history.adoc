@@ -1,0 +1,70 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-navigation-toolbar-navigate-through-the-navigation-history",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Navigation"],
+    "guid": "{75FE974D-439B-4638-B039-647F9F6C6DB7}",  
+    "buildFlags": [],
+    "createdOn": "2007-12-09T12:10:46Z"
+}
+|metadata|
+////
+
+= Navigate Through the Navigation History
+
+The navigation history is comprised of a back history, a forward history, and a current item. These objects are stored in the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~backhistory.html[BackHistory]"]  collection,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~forwardhistory.html[ForwardHistory]"]  collection, and a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationhistoryitem.html[NavigationHistoryItem]"]  respectively. In order to navigate backwards, into the BackHistory collection, you can call the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~navigateback.html[NavigateBack]"]  method. Conversely, you can call the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~navigateforward.html[NavigateForward]"]  method to navigate forward into the ForwardHistory collection. These methods are extremely useful if you’d like to bind a specific key or key combination to allow your end user to navigate back and forward in the navigation history. This navigation, of course, is not limited to KeyPress events. You can also call these methods from the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event of WinToolbarsManager™, or any other event for that matter.
+
+The following code demonstrates how you could navigate backwards and forwards in the navigation history through the PreviewKeyDown event of the in-box WebBrowser control. If the end user presses the Ctrl-[ key combination when input focus is on the WebBrowser control, the Navigation toolbar will navigate backwards, while pressing the Ctrl-] key combination will navigate forwards.
+
+.Note
+[NOTE]
+====
+Before calling the NavigateBack and NavigateForward methods, it’s important to check whether or not you can navigate forwards or backwards with the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~cannavigateback.html[CanNavigateBack]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~cannavigateforward.html[CanNavigateForward]"]  properties. If you can’t navigate in a certain direction, and you call the associated Navigate method, an exception will be thrown.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub WebBrowser1_PreviewKeyDown(ByVal sender As System.Object, _
+  ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) _
+  Handles WebBrowser1.PreviewKeyDown
+    ' If "Ctrl-[" is pressed...
+    If e.Control AndAlso e.KeyCode = Keys.OemOpenBrackets Then
+        ' ...Navigate back (if you can).
+        If Me.UltraToolbarsManager1.NavigationToolbar.CanNavigateBack Then
+            Me.UltraToolbarsManager1.NavigationToolbar.NavigateBack()
+        End If
+    End If
+    ' If "Ctrl-]" is pressed, 
+    If e.Control AndAlso e.KeyCode = Keys.OemCloseBrackets Then
+        ' ...Navigate forward (if you can).
+        If Me.UltraToolbarsManager1.NavigationToolbar.CanNavigateForward Then
+            Me.UltraToolbarsManager1.NavigationToolbar.NavigateForward()
+        End If
+    End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+{
+	// If "Ctrl-[" is pressed...
+	if (e.Control && e.KeyCode == Keys.OemOpenBrackets)
+	{
+		// ...Navigate back (if you can).
+		if (this.ultraToolbarsManager1.NavigationToolbar.CanNavigateBack)
+			this.ultraToolbarsManager1.NavigationToolbar.NavigateBack();
+	}
+	// If "Ctrl-]" is pressed, 
+	if (e.Control && e.KeyCode == Keys.OemCloseBrackets)
+	{
+		// ...Navigate forward (if you can).
+		if (this.ultraToolbarsManager1.NavigationToolbar.CanNavigateForward)
+			this.ultraToolbarsManager1.NavigationToolbar.NavigateForward();
+	}
+}
+----

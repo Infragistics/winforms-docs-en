@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-the-location-of-a-specific-cell",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{DE0395E4-5680-4264-943A-79EC05B69677}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining the Location of a Specific Cell
+
+There may be times when you would like to know which cell the user has clicked on. You can obtain the Cell object that is located at any specified point on the grid, such as the position returned by the mouse-related events. This topic will familiarize you with the ElementFromPoint method.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. To work with the position of the mouse pointer when the mouse button is clicked, use the MouseDown event. This event passes in parameters that specify the X and Y coordinates of the mouse pointer.
+[start=3]
+. Start by defining an object variable to store the UIElement and another to store the cell object.
+
+*In Visual Basic:*
+
+----
+Dim myUIElement As UIElement
+Dim myCell As UltraGridCell
+----
+
+*In C#:*
+
+----
+UIElement myUIElement;
+UltraGridCell myCell;
+----
+
+[start=4]
+. Now, use the ElementFromPoint method to get a reference to the UIElement that was clicked.
+
+*In Visual Basic:*
+
+----
+myUIElement = Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint(New Point(e.X, e.Y))
+----
+
+*In C#:*
+
+----
+myUIElement = this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X, e.Y));
+----
+
+[start=5]
+. From the UIElement, you can get the associated cell using the GetContext method.
+
+*In Visual Basic:*
+
+----
+myCell = myUIElement.GetContext(GetType(UltraGridCell))
+MessageBox.Show("You are over a Cell containing " + myCell.Value)
+----
+
+*In C#:*
+
+----
+myCell = (UltraGridCell)myUIElement.GetContext(typeof(UltraGridCell));
+MessageBox.Show("You are over a Cell containing " + myCell.Value.ToString());
+----

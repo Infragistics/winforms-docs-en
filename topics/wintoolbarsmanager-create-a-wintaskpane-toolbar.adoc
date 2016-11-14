@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-create-a-wintaskpane-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{45B574B3-5786-4B3B-92EF-3F5F497B0B0B}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a WinTaskPane Toolbar
+
+== Creating an UltraTaskPane Toolbar
+
+At design time, an  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"]  can be created by using the "New Toolbar" dialog. This dialog can be displayed by either pressing the "New Toolbar…" button in the form/user control designer when in place editing is enabled...
+
+image::Images\WinToolbar_Creating_an_WinTaskPane_Toolbar_01.PNG[form with ultratoolbarsmanager on it]
+
+...or from within the "design time customizer" Toolbars tab, press the "New..." button.
+
+image::Images\WinToolbar_Creating_an_WinTaskPane_Toolbar_02.PNG[ultratoolbarsmanager customize dialog]
+
+This will display the "New Toolbar" dialog.
+
+image::Images\WinToolbar_Creating_an_WinTaskPane_Toolbar_03.PNG[ultratoolbarsmanager new toolbar dialog]
+
+This dialog is similar to the one presented at run-time from the run-time customize dialog except there is an additional option – "Toolbar Type". By default, this dialog is used to create a standard UltraToolbar type toolbar which is used to host tools such as  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.textboxtool.html[TextBoxTool]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] , etc. An additional option is available – "TaskPane Toolbar".
+
+image::Images\WinToolbar_Creating_an_WinTaskPane_Toolbar_04.PNG[form with taskpane on form at design time]

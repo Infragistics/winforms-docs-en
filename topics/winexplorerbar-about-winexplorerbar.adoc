@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-about-winexplorerbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Getting Started"],
+    "guid": "{4F636FFF-E6A8-41EA-94EE-6DB7B2EA94A1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinExplorerBar
+
+The following is a list of the key features of the WinExplorerBar™ control.
+
+* A  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property that controls the basic layout and behavior of the element. The available element styles are:
+
+** ExplorerBar -- emulates the look and feel of the ExplorerBar in the Windows XP Explorer.
+** Listbar -- emulates the look and feel of the OutlookBar in Microsoft Outlook and the Infragistics UltraListbar element.
+** Toolbox -- emulates the look and feel of the Toolbox in Visual Basic 6 and Visual Studio .NET
+** OutlookNavigationPane -- emulates the look and feel of the Navigation Pane in Outlook 2003.
+** VisualStudio2005Toolbox -- emulates the look and feel of the Toolbox in Visual Studio 2005.
+
+* A  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~viewstyle.html[ViewStyle]"]  property that enables the selection of different looks for each element style. While the Style property contributes to the look of the element by determining its basic layout, the ViewStyle determines the style that is used to render key parts of the element. A setting of 'Default' automatically chooses the 'traditional' look for the current element style. The available ViewStyles are:
+
+** XPExplorerBar -- uses XP themes (if available) to simulate the look of the ExplorerBar in the Windows XP Explorer
+** XP -- uses gradients, shaded borders and system colors to provide a clean XP-like look.
+** Office2000 -- uses system 3D colors and beveled borders to emulate the look of Office 2000\.
+** Office2003 -- uses colors that emulate the look of Office 2003.
+** VisualStudio2005 -- uses colors that emulate the look of the Toolbox in Visual Studio 2005.
+** Office2007 -- uses colors to emulate the look of Office 2007.
+
+* Built with the Infragistics Presentation Layer Framework (PLF) class library. The PLF is a robust and tested framework that provides a tremendous amount of flexibility for the developer. From UIElements to DrawFilters to CreationFilters to Appearances and more, the PLF allows you to customize UltraExplorerBar to meet all your application's presentation layer requirements.
+* Follows the OutlookBar and XP ExplorerBar metaphor of one or more  _Items_  contained within one or more  _Groups_ .
+* The number of  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Groups]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[Items]"]  that can be created is limited only by available memory.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~groupsettings.html[GroupSettings]"]  object contains a number of properties that control the look and behavior of Groups. The GroupSettings object is found on both the Group object and the element itself. Since most of the properties on the GroupSettings object have a 'default' setting it is possible set properties on the element's GroupSettings object and then selectively override those settings on the Group's GroupSettings object for specific Groups.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemsettings.html[ItemSettings]"]  object contains a number of properties that control the look and behavior of Items. The ItemSettings object is found on the Item object, Group object and the element itself. Since most of the properties on the ItemSettings object have a 'default' setting it is possible set properties on the element and/or Group's ItemSettings object and then selectively override those settings on the Group and/or Item's ItemSettings object.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings.html[GroupSettings]"]  object contains a  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings~style.html[Style]"]  property that determines the behavior and look of the Group. Group styles include:
+
+** Default - the Group Style is automatically chosen based on the element Style. The list of element Styles and their associated default Group style is:
+
+*** Element Style ExplorerBar -- uses Group Style 'SmallImagesWithText'.
+*** Element Style Listbar -- uses Group Style 'LargeImagesWithText'.
+*** Element Style Toolbox -- uses Group Style 'LargeImages'.
+*** Element Style OutlookNavigationPane -- uses Group Style 'SmallImagesWithText'.
+*** Element Style VisualStudio2005Toolbox -- uses Group Style 'SmallImagesWithText'.
+
+** SmallImages -- Items within the Group are rendered using the Item's small image. Items are arranged in rows and columns - left to right, top to bottom. This style is typically used when the element style is 'Toolbox'.
+** SmallImagesWithText -- Items within the Group are rendered using the Item's small image and the Item's Text. The text is displayed to the right of the image. Items are arranged vertically, one on top of the other. This is the default style for element style 'ExplorerBar'.
+** LargeImages -- Items within the Group are rendered using the Item's large image. Items are arranged in rows and columns - left to right, top to bottom. This is the default style for element style 'Toolbox'.
+** LargeImagesWithText -- Items within the Group are rendered using the Item's large image and the Item's Text. The text is displayed to the right of the image. Items are arranged vertically, one on top of the other. This is the default style for element style 'Listbar'.
+** LargeImagesWithTextBelow -- Items within the Group are rendered using the Item's large image and the Item's Text. The text is displayed below the image. Items are arranged vertically, one on top of the other. This style is typically used when the element style is 'Listbar'.
+** ControlContainer -- The Group's Items (if any) are not displayed, and instead an UltraExplorerBarContainerControl is automatically placed in the Group. This enables the Group to link:winexplorerbar-host-net-winforms-controls-in-winexplorerbar.html[host any .NET WinForms control].
+
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[ItemSettings]"]  object contains a  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~style.html[Style]"]  property that determines the behavior and look of the Item. Item styles include:
+
+** Button -- the item behaves like a button, firing a Click event when clicked with the mouse.
+** StateButton -- the item behaves like a radio button, toggling its checked state when clicked with the mouse. The value of the Item's Checked property reflects the Item's checked state.
+** Label -- the item behaves like a label. It displays text but does not respond or change state when clicked with the mouse.
+** Separator -- the Item behaves like a separator in a menu. It displays a 1 pixel line but does not respond or change state when clicked with the mouse. The SeparatorStyle property of the ItemSettings object determines whether the separator displays vertically or horizontally.
+
+* The control's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~statebuttoncheckstyle.html[StateButtonCheckStyle]"]  property determines the range within which Items of type StateButton are toggled. Settings for StateButtonCheckStyle are:
+
+** Default -- the StateButtonCheckStyle value is automatically set based on the element Style:
+
+*** ExplorerBar, Listbar, OutlookNavigationPane, and VisualStudio2005Toolbox - the StateButtonCheckStyle used is 'ExclusiveWithinControl'.
+*** Toolbox -- the StateButtonCheckStyle used is 'ExclusiveWithinGroup'.
+
+** ExclusiveWithinControl -- only 1 StateButton-type Item can be checked across all Groups in the element at any given time.
+** ExclusiveWithinGroup -- 1 StateButton-type Item per Group can be checked at any given time.
+
+* Text wrapping (multiline text) is supported for Items and Groups via the MaxLines property on the GroupSettings and ItemSettings objects.
+* Group opening and closing can be animated via the element's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~animationenabled.html[AnimationEnabled]"]  property.
+
+.Note
+[NOTE]
+====
+that animation is not available for element style 'OutlookNavigationPane') The speed of the animations can be controlled by the element's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~animationspeed.html[AnimationSpeed]"]  property.
+
+====
+
+* Both Groups and Items haveVisible and Enabled properties.
+*  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~indent.html[Indent]"]  property on Items allows Items to be indented a specific number of pixels.
+
+.Note
+[NOTE]
+====
+that this property only has meaning for Items that belong to a Group with a Style set to SmallImagesWithText or LargeImagesWithText.
+====
+
+* The element can take focus and as a result provides full support for keyboard navigation and mnemonics. When mnemonics are 'activated' by pressing the appropriate keyboard combination, they simulate mouse clicks on the elements containing the mnemonics.
+* The element property  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~acceptsfocus.html[AcceptsFocus]"]  (a DefaultableBoolean property) determines if the element can take focus. When set to '0 - Default' the resolved value depends on the element style. Element style '0 - Explorer Bar' resolves to true and the other element styles resolve to false.
+* The element includes full drag and drop support for moving items between groups (for more information, see link:winexplorerbar-control-dragging-and-dropping-items.html[Control Dragging and Dropping Items]). The ItemSettings object's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~allowdragcopy.html[AllowDragCopy]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~allowdragmove.html[AllowDragMove]"]  properties control the ways in which Items can be dragged. The GroupSettings object's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings~allowitemdrop.html[AllowItemDrop]"]  property controls whether Items can be dropped on a Group. The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemdragging_ev.html[ItemDragging]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemdragover_ev.html[ItemDragOver]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemdropped_ev.html[ItemDropped]"]  events involve the developer in the Item dragging process.
+* Full support for Binary and XML property serialization.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~columncount.html[ColumnCount]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~columnspacing.html[ColumnSpacing]"]  properties on the element allow groups to be displayed in multiple columns when using the ExplorerBar element style. The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~columnsspanned.html[ColumnsSpan]"]  property on the Group indicates how many columns the Group should span.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~margins.html[Margins]"]  property on the element manages the spacing between Groups and the edge of the element
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~groupspacing.html[GroupSpacing]"]  property on the element manages the spacing between Groups.
+* The element's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~scrollbars.html[Scrollbars]"]  property provides options that determine when the vertical scroll bar will be displayed when using the ExplorerBar element style. Settings include, Always, Never or Automatic.
+* The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationmaxgroupheaders.html[NavigationMaxGroupHeaders]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcurrentgroupareaminheight.html[NavigationCurrentGroupAreaMinHeight]"]  properties work together for element style OutlookNavigationPane to control the size of the area allotted to the items for the Selected Group and the number of Groups that are displayed in the Navigation area (as Group Headers and Overflow Buttons)
+* For element style OutlookNavigationPane the Overflow Button Area at the bottom of the element displays button representations of Groups. After reserving space for displaying the Selected Group and its Items, remaining Groups are 'bumped' into the Overflow Button Area and displayed as toolbar buttons. A flyout QuickCustomize menu allows the end user to access overflow buttons that cannot be displayed because of insufficient element width.
+* The end user can display a Navigation Pane Options dialog by selecting an option on the default element Context menu when the element style is OutlookNavigationPane. This dialog allows the user to show/hide groups and change the displayed order of groups.
+* For element style OutlookNavigationPane a QuickCustomize button in the Navigation Overflow Button  _area_  lets the user show/hide groups, change the number of Group headers shown in the Navigation Area and display the Navigation Pane Options dialog

@@ -1,0 +1,142 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-selected-rows",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","How Do I"],
+    "guid": "{EE0B3554-49A9-49D8-A61C-7534A5B29D1B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Selected Rows
+
+== Background
+
+WinGrid™ provides a Selected.Rows collection containing a list of all rows which have been selected by either the user or the application. This Selected.Rows collection can then be processed to meet the application's needs.
+
+== Questions
+
+* How do I know if any rows are selected?
+* How do I know which rows are selected?
+* Can I make selections on different bands in the same collection?
+
+== Solution
+
+Look at the .Selected.Rows.Count property to see if any rows are selected.
+
+Loop through the .Selected.Rows collection to process each of the selected rows.
+
+The user can only select from a single band when clicking the RowSelectors. However the application can add rows from any band to the .Selected.Rows collection.
+
+== Sample Project
+
+This sample project displays the Band and Row index of rows as they are selected, provides a button for selecting Band 0 row 1, and a button to clear all selected rows.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Working_with_Selected_Rows_01.png[working with selected rows in ultragrid]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.AfterSelectChange - The code in the AfterSelectChange event passes the rows in the Selected.Rows collection and places the band and row index values in the TextBox:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_AfterSelectChange(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs) _
+  Handles UltraGrid1.AfterSelectChange
+	If Me.UltraGrid1.Selected.Rows.Count > 0 Then
+		Dim rowSelected As UltraGridRow
+		Me.UltraTextEditor1.Text = "Band, Row" + vbCrLf
+		For Each rowSelected In Me.UltraGrid1.Selected.Rows
+			Me.UltraTextEditor1.Text += rowSelected.Band.Index.ToString _
+			  + ", " + rowSelected.Index.ToString + vbCrLf
+		Next
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_AfterSelectChange(object sender, 
+  Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+{
+	if(this.ultraGrid1.Selected.Rows.Count > 0)
+	{
+		this.ultraTextEditor1.Text = "Band, Row \n";
+		foreach(UltraGridRow rowSelected in this.ultraGrid1.Selected.Rows)
+		{
+			this.ultraTextEditor1.Text += rowSelected.Band.Index.ToString() +
+			  " , " + rowSelected.Index.ToString() + "\n";
+		}
+	}
+}
+----
+
+Button Events
+
+The Button Events Region contains the following event handlers:
+
+* btnSelectBand0Row1.Click - The code in the SelectBand0Row1 Click event adds the row to the selected rows collection:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSelectBand0Row1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSelectBand0Row1.Click
+	Me.UltraGrid1.Rows(1).Selected = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSelectBand0Row1_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.Rows[1].Selected = true;
+}
+----
+
+* btnClearSelectedRows.Click - The code in the ClearSelectedRows Click event removes each selected row from the selected rows collection and places "$$*$$ cleared$$* $$" into the TextBox:
+
+*In Visual Basic:*
+
+----
+Private Sub btnClearSelectedRows_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnClearSelectedRows.Click
+	Me.UltraGrid1.Selected.Rows.Clear()
+	Me.UltraTextEditor1.Text = "$$*$$cleared$$* $$"
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnClearSelectedRows_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.Selected.Rows.Clear();
+	this.ultraTextEditor1.Text = "$$*$$cleared$$* $$";
+}
+----
+
+== Review
+
+This sample program illustrates the basics of how to deal with WinGrid Selected Rows.

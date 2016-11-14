@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincombo-automatically-fill-an-empty-date-when-leaving-an-editor-whats-new-20063",
+    "controlName": [],
+    "tags": [],
+    "guid": "{B3A81089-C715-4989-829D-65607FB297EC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Automatically Fill an Empty Date when Leaving an Editor
+
+We've added a new property to the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"]  base class, WinMaskedEdit™ control, and WinDateTimeEditor™ control. This new property,  pick:[win-forms="link:infragistics4.win.ultrawinmaskededit.v{ProductVersion}~infragistics.win.ultrawinmaskededit.ultramaskededit~autofilldate.html[AutoFillDate]"] , will allow you to specify whether the control should automatically enter the current month or month and year if the control loses focus and those parts of the date remain uncompleted.

@@ -1,0 +1,54 @@
+﻿= What's New in 2016 Volume 2
+
+This topic presents the new and enhanced controls and features for the Infragistics® Windows Forms 2016 Volume 2 release.
+
+
+== WinOfficeNavBar
+
+The link:winofficenavbar.html[WinOfficeNavBar]™ provides a simplistic way to navigate between views, while offering a means to quickly access a minimalistic subset of a view within a popup window called the peek window.
+
+//TODO add OfficeNavBar screenshot
+
+* link:winofficenavbar-about.html[About WinOfficeNavbar]
+* link:winofficenavbar-peek-window.html[Peek Window]
+
+
+== WinColorPalette, WinColorPicker, and WinPaletteInfo
+
+The color selecting experience has been redesigned to provide a modern UI allowing you to have any color you like.
+
+=== WinColorPalette
+
+The WinColorPalette is the centerpiece of our new color selection experience. It provides various parts which allow the user to be very specific in their color through a simple, user friendly process. The developer can choose which parts to show on the application, giving you full control over the experience.
+
+The WinColorPalette is the standalone control, and is ready to be added to your Windows Forms.
+
+* link:wincolorpalette-about.html[About WinColorPalette]
+
+=== WinColorPicker
+
+We've also made the WinColorPalette available in dropdown form by adding the link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracolorpicker~style.html[WinColorPicker.Style]
+property. Now, by default WinColorPickers' Style will be set to
+link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracolorpalette.colorpickereditorstyle.html[ColorPickerEditorStyle.ColorPalette],
+which will use the same UI as a WinColorPalette within the WinColorPicker's dropdown. The previous style is still available as the VisualStudio style, and all WinColorPickers on a Form can be set to it via the link:{ApiPlatform}win{ApiVersion}~infragistics.win.colorpickereditor~defaultstyle.html[ColorPickerEditor.DefaultStyle] static property.
+
+* link:wincolorpicker-about-wincolorpicker.html[About WinColorPicker]
+
+=== WinPaletteInfo
+
+A form may have many ColorPalettes, either in standalone control (WinColorPalette) or dropdown (WinColorPicker) form. We've enabled the ability to synchronize settings by creating the WinPaletteInfo class to hold the settings of a ColorPalette.
+
+By setting the link:winpaletteinfo.html[PaletteInfo] of each ColorPalette to the same WinPaletteInfo object, developers can sync settings to provide a uniform color selecting experience throughout the Form.
+
+* link:winpaletteinfo-about.html[About WinPaletteInfo]
+
+
+== WinZoomPanel
+
+The WinZoomPanel™ is a control container which allows the user to zoom into its contents and then to scroll through the zoomed contents. This makes your UI more accessible by letting the user determine the preferred size of your controls for optimal interaction. Whether you want one zoomable link:wingrid.html[UltraGrid] or an entire zoomable UI, the WinZoomPanel opens the door to greater user accessibility.
+
+With Infragistics 2016 Volume 2, the WinZoomPanel supports some of our most popular controls, including the link:wingrid.html[UltraGrid], link:wintree.html[UltraTree], link:wincombo.html[UltraCombo], and link:winschedule.html[UltraSchedule]. For a full list of currently supported controls, see our link:winzoompanel-zoom-supported-controls.html[Zoom Supported Controls] page, and check back there for more supported controls in future releases.
+
+
+* link:winzoompanel-about.html[About WinZoomPanel]
+* link:winzoompanel-zoom-supported-controls.html[Zoom Supported Controls]

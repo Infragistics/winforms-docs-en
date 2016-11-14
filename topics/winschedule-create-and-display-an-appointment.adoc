@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-create-and-display-an-appointment",
+    "controlName": ["WinSchedule"],
+    "tags": ["Appointments"],
+    "guid": "{28F2F47E-9C42-4C66-A3F6-B69C12A473EB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create and Display an Appointment
+
+You can enhance your end-user's experience by creating an appointment and launching the appointment dialog for the newly create appointment. This will make it easier for the end-user to quickly add appointments. The following steps walk you through such a scenario, where with a button's click a new appointment is created and the appointment dialog is launched for it. The following steps will work for any of the WinSchedule™ view controls.
+
+[start=1]
+. On a form, place a UltraDayView, and a UltraCalendarInfo from the toolbox.
+[start=2]
+. Set the UltraDayView's *CalendarInfo* property to the instance of UltraCalendarInfo on the form.
+[start=3]
+. Place an UltraButton button on the form. Set up the buttons Click event.
+[start=4]
+. The following code demonstrates how to create an  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  and then show it with the appointment dialog.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub btnShow_Click(ByVal sender As System.Object, _
+ByVal e As System.EventArgs) Handles btnShow.Click
+	Dim appointment As Appointment
+	appointment = Me.UltraCalendarInfo1.Appointments.Add( _
+	  DateTime.Today, "Appointment Subject")
+	Me.UltraCalendarInfo1.DisplayAppointmentDialog(appointment)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void btnShow_Click(object sender, System.EventArgs e)
+{
+	Appointment appointment;
+	appointment = this.ultraCalendarInfo1.Appointments.Add( 
+	  DateTime.Today, "Appointment Subject");
+	this.ultraCalendarInfo1.DisplayAppointmentDialog(appointment);
+}
+----
+
+[start=5]
+. If you run the form, and select the button the appointment is created an initialized to today's date and time. You can then use the appointment dialog that pops up to modify the appointment more.

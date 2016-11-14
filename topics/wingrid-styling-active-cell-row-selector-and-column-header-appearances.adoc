@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-styling-active-cell-row-selector-and-column-header-appearances",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Styling"],
+    "guid": "{77658D6D-7778-4A82-AE0E-51FC295B68E8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Styling Active Cell Row Selector and Column Header Appearances
+
+You can style the appearance of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"]  object’s, row selector and ColumnHeader for the active  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridcell]"]  . The Appearance objects can be changed through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellrowselectorappearance.html[ActiveCellRowSelectorAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellcolumnheaderappearance.html[ActiveCellColumnHeaderAppearance]"]  properties. These properties are available on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object found on the WinGridcontrol’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragriddisplaylayout.html[DisplayLayout]"]  property as well as on each  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  .
+
+*In Visual Basic:*
+
+----
+' Set Active cell's Row Selector appearance styling off of DisplayLayout of the Grid 
+Me.ultraGrid1.DisplayLayout.Override.ActiveCellRowSelectorAppearance.BackColor = Color.Red 
+' Set Active cell's Row Selector appearance styling off of DisplayLayout of each Band 
+'this.ultraGrid1.DisplayLayout.Bands[0].Override.ActiveCellRowSelectorAppearance.BackColor = Color.Purple;
+----
+
+*In C#:*
+
+----
+// Set Active cell's Row Selector appearance styling off of DisplayLayout of the Grid
+this.ultraGrid1.DisplayLayout.Override.ActiveCellRowSelectorAppearance.BackColor = Color.Red;
+// Set Active cell's Row Selector appearance styling off of DisplayLayout of each Band
+//this.ultraGrid1.DisplayLayout.Bands[0].Override.ActiveCellRowSelectorAppearance.BackColor = Color.Purple;
+----
+
+*WinGrid with Active cell’s Row Selector Appearance set to Red.*
+
+image::Images\wingrid_styling_active_cell_row_selector_and_column_header_appearances_01.png[]
+
+*In Visual Basic:*
+
+----
+' Set Active cell's Column Header appearance styling off of DisplayLayout of the Grid 
+ Me.ultraGrid1.DisplayLayout.Override.ActiveCellColumnHeaderAppearance. ForeColor = Color.Blue
+' Set Active cell's Column Header appearance styling off of DisplayLayout of each Band 
+'this.ultraGrid1.DisplayLayout.Bands[0].Override.ActiveCellColumnHeaderAppearance. ForeColor= Color.Blue;
+----
+
+*In C#:*
+
+----
+// Set Active cell's Column Header appearance styling off of DisplayLayout of the Grid
+this.ultraGrid1.DisplayLayout.Override.ActiveCellColumnHeaderAppearance. ForeColor = Color.Blue;
+// Set Active cell's Column Header appearance styling off of DisplayLayout of each Band
+//this.ultraGrid1.DisplayLayout.Bands[0].Override.ActiveCellColumnHeaderAppearance. ForeColor= Color.Blue;
+----
+
+*WinGrid with Active Cell’s Column Header Appearance set to Blue*
+
+image::Images\wingrid_styling_active_cell_row_selector_and_column_header_appearances_02.png[]

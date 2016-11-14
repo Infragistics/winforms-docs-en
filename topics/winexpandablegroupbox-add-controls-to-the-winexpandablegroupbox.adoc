@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexpandablegroupbox-add-controls-to-the-winexpandablegroupbox",
+    "controlName": [],
+    "tags": [],
+    "guid": "{DCAD044F-1348-4CF2-B2B8-3E83465790BD}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Controls to the WinExpandableGroupBox
+
+The WinExpandableGroupBox™ control is designed to hold controls in the specified layout. Therefore, if you move the GroupBox, the layout of the controls inside it stay in place. It is also able to show or hide its contents depending if it is needed or not. For example you have an UltraExpandableGroupBox that only expands if a particular node is selected in an UltraTree.
+
+To add controls to the WinExpandableGroupBox, simply drag the control from the toolbox into the WinExpandableGroupBox control.
+
+image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_06.png[example of ultraexpandablegroupbox host other control]
+
+In addition, the WinExpandableGroupBox control can also hold instances of other WinExpandableGroupBox controls. For example, the screenshot below shows a WinExpandableGroupBox control inside a WinExpandableGroupBox control, inside a WinExpandableGroupBox control, which are all contained in a WinExpandableGroupBox control.
+
+image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_07.png[expandablegroupboxs nexted inside each other]
+
+== Example of Use
+
+One benefit that the ExpandableGroupBox gives you is to create a similar look to the Outlook Navigation element. For instance by placing three UltraExpandableGroupBoxes inside a panel, and placing the WinTree control in one of them, and place the header area at the bottom of them, you could make something similar to the screen shot shown below.
+
+image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_08.png[example of ultraexpandablegroupbox]

@@ -1,0 +1,103 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatetimeeditor-preventing-from-typing-into-windatetimeeditor",
+    "controlName": ["WinDateTimeEditor"],
+    "tags": ["Editing","How Do I"],
+    "guid": "b1f14e2d-bbcc-4127-93b2-b3316d5f0bfe",  
+    "buildFlags": [],
+    "createdOn": "2013-01-29T14:41:34.4612559Z"
+}
+|metadata|
+////
+
+= Preventing From Typing Into WinDateTimeEditor
+
+== Topic Overview
+
+=== Purpose
+
+This topic introduces a new  _WinDateTimeEditor_™ control feature that prevents users from typing directly into the control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref346724465,Configuring the DropDownStyle Property>>
+
+** <<_Ref341518673,Introduction>>
+** <<_Ref341518679,Property settings>>
+
+* <<_Ref341518687,Related Content>>
+
+[[_Ref346724465]]
+== Configuring the DropDownStyle Property
+
+[[_Ref341518673]]
+
+=== Introduction
+
+Prior to the release of 13.1 the  _WinDateTimeEditor_   control did not have a link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor~dropdownstyle.html[DropDownStyle] property as it existed in other drop-down controls such as  _UltraComboEditor™_   and  _UltraCombo™_  . Without the `DropDownStyle` property, the control allowed users not only to drop down the list for selecting an item, but also allowed them to edit selections by typing directly into the control.
+
+Now you can prevent users from typing directly into the control without impeding the selection of items from the drop-down list by simply configuring the `DropDownStyle` property.
+
+[[_Ref341518679]]
+
+=== Property settings
+
+.Note:
+[NOTE]
+====
+By default, the control allows typing into it directly. Take the following two scenarios into consideration when configuring the control to prevent the users from typing directly into the control’s editor.
+====
+
+1. If the  _WinDateTimeEditor_   control is stand-alone, use the `DropDownStyle` property of the control.
+
+*In C#:*
+
+[source,csharp]
+----
+ultraDateTimeEditor1.DropDownStyle = DropDownStyle.DropDownList;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraDateTimeEditor1.DropDownStyle = DropDownStyle.DropDownList
+----
+
+2. If the  _WinDateTimeEditor_   control is embedded in the grid, configure the column that contains the embedded editor using the column’s `Style` property.
+
+*In C#:*
+
+[source,csharp]
+----
+UltraGridColumn column = ultraGrid1.DisplayLayout.Bands[0].Columns["Date"];
+column.Style = ColumnStyle.DropDownList;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Dim column As UltraGridColumn = ultraGrid1.DisplayLayout.Bands(0).Columns("Date")
+column.Style = ColumnStyle.DropDownList
+----
+
+[[_Ref341518687]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:windatetimeeditor-using-windatetimeeditor.html[Using WinDateTimeEditor]
+|In this section, you will find short, task-based topics that explain how to perform a specific task related to the _WinDateTimeEditor_ component.
+
+|====

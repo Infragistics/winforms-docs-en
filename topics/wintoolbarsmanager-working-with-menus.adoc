@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-working-with-menus",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{DC54EECE-1C36-4A77-A918-D1C285A4C1BB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Menus
+
+Menus in WinToolbarsManager™ are conceptually the same as standard .NET menus and Microsoft Office menus. In the .NET menu architecture, a menu is a special MenuItem that contains a collection of other MenuItems. Similarly, in UltraToolbarsManager a Menu is a special Tool represented by the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  class - one of the 12 native tool types supported by UltraToolbarsManager. The PopupMenuTool has the ability to contain other tools (including other PopupMenuTools).
+
+PopupMenu Tools can be placed on toolbars or menus. In these cases the tool displays a pop-up menu containing the tools defined for the menu when it is clicked. PopupMenu Tools can also be 'popped-up' as context menus anywhere on the desktop using the ShowPopup method of the UltraToolbarsManager element.
+
+== Adding Tools to Menus
+
+PopupMenu Tools have a Tools property which is a collection of ToolBase derived objects (i.e., Tools). The tools that reside in this collection are Instance Tools (refer to the discussion of link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools] for more information on this important topic). To display tools on a menu they must be added to the menu's Tools collection. Tools can be added to the Tools collection by the developer and the end user. The developer can add tools to the menu:
+
+* via drag and drop using the design-time customizer
+* programmatically by calling the Tool collection's add method at run-time
+
+The end-user can add tools to a menu:
+
+* via drag and drop using the run-time customizer
+
+== Top-Level Menus vs. SubMenus
+
+A top-level menu is a PopupMenuTool that has been added to a toolbar or popped-up as a context menu. A submenu is a PopupMenuTool that has been added to another PopupMenuTool. When clicked by the end-user its menu 'cascades' out from the parent menu. Top-level menus (parent menus) and submenus, are the same type of objects that differ only in their location.
+
+image::Images\UltraToolbarsManager_About_Menus_01.png[screen shot of form showing ultratoolbarsmanager different menu types.]

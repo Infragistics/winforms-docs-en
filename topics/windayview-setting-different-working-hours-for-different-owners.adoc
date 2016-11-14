@@ -1,0 +1,71 @@
+﻿////
+
+|metadata|
+{
+    "name": "windayview-setting-different-working-hours-for-different-owners",
+    "controlName": ["WinDayView"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{5221778A-3A44-4147-B91C-E8FAA94AB4D9}",  
+    "buildFlags": [],
+    "createdOn": "2007-02-05T12:35:24Z"
+}
+|metadata|
+////
+
+= Setting Different Working Hours for Different Owners
+
+For some scheduling applications, it may be necessary to define different working hours for each Owner. Furthermore, those working hours might vary from day to day differently for each Owner. What is needed to support this is a collection similar to the CalendarInfo's DaysOfWeek collection, so that you can define the working hours for each day of the week on a per-Owner basis. This is where the new  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~dayofweeksettings.html[DayOfWeekSettings]"]  collection comes in - a collection of  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings.html[DayOfWeekSettings]"]  objects, one for each of the seven days of the week, that is specific to one Owner. The DayOfWeekSettings object exposes 2 properties which determine the start and end times of the work day,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings~workdaystarttime.html[WorkDayStartTime]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings~workdayendtime.html[WorkDayEndTime]"] .
+
+This topic assumes you have completed link:windayview-showing-multiple-owners-on-windayview.html[Showing Multiple Owners on WinDayView], as it uses the owners defined it that topic in the code snippets in this topic. Let's set these properties such that the work day for Dr. Welby, on a Monday, is 9AM to 1PM:
+
+*In Visual Basic:*
+
+----
+Dim welby As Owner = Me.ultraCalendarInfo1.Owners("welby")
+Dim mondaySettings As DayOfWeekSettings = _
+  welby.DayOfWeekSettings(System.DayOfWeek.Monday)
+mondaySettings.WorkDayStartTime = DateTime.Today.AddHours(9.0F)
+mondaySettings.WorkDayEndTime = mondaySettings.WorkDayStartTime.AddHours(4.0F)
+----
+
+*In C#:*
+
+----
+Owner welby = this.ultraCalendarInfo1.Owners["welby"];
+DayOfWeekSettings mondaySettings = 
+  welby.DayOfWeekSettings[System.DayOfWeek.Monday];
+mondaySettings.WorkDayStartTime = DateTime.Today.AddHours(9.0F);
+mondaySettings.WorkDayEndTime = mondaySettings.WorkDayStartTime.AddHours(4.0F);
+----
+
+Remember that the date components of the value we assign to the WorkDayStartTime and WorkDayEndTime properties are not applicable, so we can use any convenient value. Since the level of granularity with respect to time in WinSchedule is one minute, the seconds component does not matter either, so the only significant values here are the hour and minute components of the value.
+
+Also worth mentioning is the hierarchical nature of the WorkDayStartTime and WorkDayEndTime properties. Internally, the implementation keeps track of whether the values have ever been set on the object. When they have, those values are used to determine the working hours for that Owner. When the values are left at their defaults, the values as defined by the corresponding entry in the CalendarInfo's DaysOfWeek collection for that day of the week is used. The Owner's DayOfWeekSettings collection is used when a specific value exists, and when it does not, the CalendarInfo's DaysOfWeek collection is used.
+
+In addition to the WorkDayStartTime and WorkDayEndTime properties, there is another property exposed by the DayOfWeekSettings object,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslotsettings~isworkday.html[IsWorkDay]"] , which determines whether the corresponding day of the week is considered a working day. The IsWorkDay property also adheres to the same hierarchical rules as the WorkDayStartTime and WorkDayEndTime properties; in fact, the type of the IsWorkDay property is  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.defaultableboolean.html[DefaultableBoolean]"] , which, through the 'Default' constant, provides a way to specify that the property has not been set. When left at the Default setting, the the value as defined by the IsWorkDay property of the corresponding entry in the CalendarInfo's DaysOfWeek collection for that day of the week is used. If the value is set, it is used for that Owner for that day of the week.
+
+Extending our previous example, let's assume that Dr. Quincy (he's with the Coroner's Office) has had a busy weekend, as Medical Examiners often do, and has Mondays off. Since the default value for the IsWorkDay property on the entry for Monday in the CalendarInfo's DaysOfWeek collection is True, we will use the DayOfWeekSettings object for Monday in Dr. Quincy's DayOfWeekSettings collection, and set the IsWorkDay property to DefaultableBoolean.False, so that Monday's status as a work day is redefined for Dr. Quincy:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Dim quincy As Owner = Me.ultraCalendarInfo1.Owners("quincy")
+mondaySettings = quincy.DayOfWeekSettings(System.DayOfWeek.Monday)
+mondaySettings.IsWorkDay = DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+Owner quincy = this.ultraCalendarInfo1.Owners["quincy"];
+mondaySettings = quincy.DayOfWeekSettings[System.DayOfWeek.Monday];
+mondaySettings.IsWorkDay = DefaultableBoolean.False;
+----
+
+If you run the project, you will see that Dr. Welby's working hours are different on Mondays than the rest of his colleagues and that Dr. Quincy's TimeSlots appear as non-working hours on Mondays because he is off.
+
+image::Images/WinCalendarInfo_Setting_Different_Working_Hours_for_Different_Owners_01.png[setting different working hours for different owners in ultradayview]

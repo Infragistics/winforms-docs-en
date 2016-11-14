@@ -1,0 +1,120 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-in-2016-volume-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "b254fdb4-ba3c-45c9-99b0-6b23ad8c287f",  
+    "buildFlags": [],
+    "createdOn": "2016-03-03T16:42:48.9401529Z"
+}
+|metadata|
+////
+
+= What's New in 2016 Volume 1
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides detailed instruction on the controls and new and enhanced features for Infragistics® Windows Forms® 2016 Volume 1 release.
+
+[[_Ref386478097]]
+[[_Configuring_a_Custom]]
+== What’s New Summary
+
+== _UltraSpreadsheet_
+
+=== New Control
+
+The UltraSpreadsheet™ control allows visualizing and editing of spreadsheet data, represented by the data model supported by the Infragistics Excel Engine. The following screenshot shows the UltraSpreadsheet™ control displaying some spreadsheet data:
+
+image::Images/Spreadsheet_13.png[]
+
+*Related topics:*
+
+* link:spreadsheet-overview.html[Overview]
+* link:spreadsheet-adding.html[Adding the UltraSpreadsheet to Your Page]
+
+== _UltraGrid_
+
+=== Collapse Column Groups
+
+The UltraGridGroups collection supports ExpansionIndicators, allowing the user to hide all columns assigned to them. This improves the readability of your grid by allowing users to quickly prioritize information most relevant to them.
+
+* link:wingrid-collapsing-column-groups.html[Collapsing Column Groups]
+
+=== AutoEditMode
+
+The AutoEditMode property is used to specify whether typing a displayable character will automatically enter edit mode on the active cell and process that character as though the cell had already been in edit mode. This allows the user to select or activate a cell (which is not in edit mode) and begin typing immediately to edit the contents of the cells, instead of having to explicitly enter edit mode via a separate keyboard action (like pressing F2).
+
+* link:wingrid-enabling-autoeditmode.html[Enabling AutoEditMode]
+
+=== ChildBand Rows Collapse\Expand
+
+The UltraGrid supports BandExpansionIndicators at the header of each child band, allowing for collapse/expand funcitonality on each child band. This improves ease of navigation between sibling bands with large data sets and reduces information clutter on the UI.
+
+* link:wingrid-collapsible-child-bands.html[Collapsible Child Bands]
+
+== _UltraPieChart_
+
+=== New Control
+
+The UltraPieChart™ is a specialized control that renders a pie chart, consisting of a circular area divided into sections. Each section has arc length proportional to its underlying data value.
+
+image::Images/Piechart.PNG[]
+
+==== Related topics:
+
+* link:piechart-getting-started-with-piechart.html[Getting Started with the PieChart]
+* link:piechart-using-piechart.html[Configuring the UltraPieChart]
+
+== _UltraDoughnutChart_
+
+The UltraDoughnutChart™ control is similar to the UltraPieChart™ –proportionally illustrating the occurrences of a variable or multiple variables in concentric rings. The following screenshot shows the UltraDoughnutChart control displaying some data:
+
+image::Images/Doughnut.PNG[]
+
+==== Related topics:
+
+* link:xamdoughnutchart-overview.html[Overview]
+* link:xamdoughnutchart-adding.html[Adding the UltraDoughnutChart]
+
+== _UltraRadialGauge_
+
+The UltraRadialGauge™ control is a data visualization tool capable of displaying a gauge containing a number of visual elements, such as a scale with tick marks and labels, a needle, and a number of ranges. Create a scale by supplying MinimumValue and MaximumValue values and point the needle to a value by setting the Value property. The gauge also supports ranges providing visual cues for the scale, for more information see the link:radialgauge-configuring-ranges.html[Configuring Ranges] topic
+
+image::Images/RadialGauge_13.png[]
+
+==== Related topic:
+
+* link:radialgauge-getting-started-with-radialgauge.html[Adding the UltraRadialGauge]
+* link:radialgauge-using-radialgauge.html[Configuring the RadialGauge]
+
+== _Barcode_
+
+Industries have created standards around barcode technology such as creating barcodes that provide capabilities unique to their industries. The vision for the Barcode™ control is to provide you with a control that is capable of rendering on screen barcode images that conform to the various widely adopted barcodes standards; this control abstracts much of the process and detail of barcode creation from you, allowing you to easily embed data in barcode format into your applications. The Barcode™ control provides support for the following barcode symbology:
+
+image::Images/winBarcode_Code128Barcode_01.png[]
+
+link:xambarcode-configuring-code128.html[UltraCode128BarCode]
+
+image::Images/winBarcode_Adding_QR_Code_07.png[]
+
+link:xambarcode-configuring-qr-code.html[UltraQRCodeBarcode]
+
+==== Related topics:
+
+* link:xambarcode-about-xambarcode.html[About Barcode]
+* link:xambarcode-getting-started-with-xambarcode.html[Getting Started with Barcode]
+
+== _UltraTabControl & UltraTabStripControl_
+
+=== Right-to-Left Support
+
+The Right-to-Left mode in the  _UltraTabControl & UltraTabStripControl_   applies to the tabs and their corresponding position at the top of the control.
+
+*Related topics:*
+
+* link:right-to-left-support.html#WinTabControl[Right-to-Left Support]

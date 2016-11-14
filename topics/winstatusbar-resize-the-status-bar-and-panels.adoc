@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-resize-the-status-bar-and-panels",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I"],
+    "guid": "{75A10C21-EBE5-4010-83B7-D30F6D573400}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Resize the Status Bar and Panels
+
+When the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~sizingmode.html[SizingMode]"]  property of the panel is set to Fixed, which is the default value, or Adjustable, the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~width.html[Width]"]  property determines the extent of the panel. The Width property may be set at design time or at run time.
+
+== Setting Panel Size at Design-Time
+
+[start=1]
+. Add an  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar.html[UltraStatusBar]"]  to your Windows Form.
+[start=2]
+. In the Property window scroll down to the Panels property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Scroll the properties until you come to the Width property. Changing the width of the panel here will determine it's width on the status bar.
+[start=5]
+. Click OK to close the window and you will see your panel added to the status bar width the corresponding width.
+
+== Setting StatusBar Height and Width at Design Time
+
+[start=1]
+. Scroll to the Size property and expand the plus indicator. There will be 2 properties: Height and Width.
+[start=2]
+. Set the Height property to 50. Use Width to alter the width of the element.
+
+image::images\WinStatusBar_Resize_the_Status_Bar_and_Panels_02.png[shows ultrastatusbar created at design time to allow resizable panels]
+
+== Setting StatusBar Height and Width at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Resize_the_Status_Bar_and_Panels_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.Button
+	' Set the width for the panel
+	myPanel.Width = 200
+	' Set some text for the panel
+	myPanel.Text = "New Panel"
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+	' Set the height and width of the status bar
+	Dim mySize As New Size(75, Me.Width)
+	Me.UltraStatusBar1.Size = mySize
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Resize_the_Status_Bar_and_Panels_Load(object sender, EventArgs e)
+{
+	// Create new panel
+	UltraStatusPanel myPanel = new UltraStatusPanel();
+	// Set the style for the panel
+	myPanel.Style = PanelStyle.Button;
+	// Set the width for the panel
+	myPanel.Width = 200;
+	// Set some text for the panel
+	myPanel.Text = "New Panel";
+	// Add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+	// Set the height and width of the status bar
+	Size mySize = new Size(75, this.Width);
+	this.ultraStatusBar1.Size = mySize;
+}
+----
+
+image::images\WinStatusBar_Resize_the_Status_Bar_and_Panels_01.png[shows ultrastatusbar create at run time to allow resizable panels]

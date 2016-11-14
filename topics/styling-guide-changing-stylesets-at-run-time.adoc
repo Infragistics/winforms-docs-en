@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-changing-stylesets-at-run-time",
+    "controlName": [],
+    "tags": ["Styling","Theming"],
+    "guid": "{64B1B885-C6C4-43B6-9481-233A03B8164B}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-04T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing StyleSets at Run Time
+
+If you would like to give the end user a choice between different styles created in AppStylist®, you will need to change StyleSets. You can either change a StyleSet at design time or run time. To change a StyleSet at design time, use the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~stylesetname.html[StyleSetName]"]  property of any Infragistics control that supports application styling. At run time, use the following code to change StyleSets.
+
+*In Visual Basic:*
+
+----
+Me.ultraMonthViewSingle.StyleSetName = "StyleSetBlue"
+----
+
+*In C#:*
+
+----
+this.ultraMonthViewSingle.StyleSetName = "StyleSetBlue";
+----
+
+== Related Topics
+
+link:styling-guide-loading-a-stylelibrary.html[Loading a Style Library]
+
+link:styling-guide-styling-your-application-at-run-time.html[Styling Your Application at Run Time]

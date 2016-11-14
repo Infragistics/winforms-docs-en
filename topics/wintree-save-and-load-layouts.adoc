@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-save-and-load-layouts",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Layouts"],
+    "guid": "{FF7743DE-562E-42B7-BB10-C9F4B2972B23}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Load Layouts
+
+Introduced in v3 of the WinTree™ is the ability to save and load control layouts. The information stored by the layout includes everything that affects the appearance of the tree: The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection.html[Nodes]"]  collection, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  object and sub-objects, and all related properties.
+
+Tree layouts may be saved in either binary or XML format. The binary format is more space-efficient, while the XML format provides greater inter-operability with other technologies. You can choose to serialize the layout to a storage stream or write it into a file on disk. When you load a layout file into the Tree, you should use the method that corresponds to the method used to save the file. If you use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~saveasbinary.html[SaveAsBinary]"]  method to create the layout file, you should use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~loadfrombinary.html[LoadFromBinary]"]  method to load that file and restore the saved layout. Similarly, files created with the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~saveasxml.html[SaveAsXml]"]  method should be restored with the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~loadfromxml.html[LoadFromXml]"]  method.
+
+Use the following code to write the Tree layout in Xml format into a local file in a specific location.
+
+*In Visual Basic:*
+
+----
+Private Sub btnSave_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSave.Click
+	Me.UltraTree1.SaveAsXml("UWTree1.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSave_Click(object sender, EventArgs e)
+{
+	this.ultraTree1.SaveAsXml("UWTree1.xml");
+}
+----
+
+.Note
+[NOTE]
+====
+If using binary Save or Load methods, there is no pre-defined file extension for binary layout files. You can choose whichever file extension you think is appropriate, but be sure to use it consistently.
+====
+
+Use the following code to load the previously saved file back into the Tree.
+
+*In Visual Basic:*
+
+----
+Private Sub btnLoad_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnLoad.Click
+	Me.UltraTree1.LoadFromXml("UWTree1.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnLoad_Click(object sender, EventArgs e)
+{
+	this.ultraTree1.LoadFromXml("UWTree1.xml");
+}
+----

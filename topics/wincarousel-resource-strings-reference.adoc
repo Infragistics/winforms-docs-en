@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincarousel-resource-strings-reference",
+    "controlName": [],
+    "tags": [],
+    "guid": "eda258e9-2b0c-4d59-a4fc-63df37b12f0c",  
+    "buildFlags": [],
+    "createdOn": "2014-09-13T18:24:34.1654034Z"
+}
+|metadata|
+////
+
+= WinCarousel Resource Strings Reference
+
+This topic provides a list of the  _WinCarousel_   assembly resource strings used to customize the internally-defined text elements of the  _WinCarousel_   control. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings along with their customizable default text values used by this assembly.
+
+[options="header", cols="a,a"]
+|====
+|Resource string name|Default value
+
+|UltraCarousel_E_ItemSelectionChanging
+|Occurs before the contents of the SelectedItems collection is changed.
+
+|UltraCarousel_E_ItemSelectionChanged
+|Occurs after the contents of the SelectedItems collection has changed.
+
+|CarouselItem_P_ItemSettings
+|Returns the ItemSettings object which defines properties that are specific to the item.
+
+|CarouselItem_P_Text
+|Gets/sets the text of the item.
+
+|CarouselItem_P_Visible
+|Gets/sets whether the item should be displayed.
+
+|ItemSettings_P_HotTrackingAppearance
+|Gets/sets the appearance that is applied to an item when the cursor passes within the bounds of its UIElement.
+
+|ItemSettings_P_SelectedAppearance
+|Gets/sets the appearance that is applied to a CarouselItem when it is selected.
+
+|ItemSettings_P_BorderStyle
+|Gets/sets the style of the item's border.
+
+|ItemSettings_P_Enabled
+|Gets/sets the Enabled state of items.
+
+|ItemSettings_P_Appearance
+|Gets/sets the appearance that is applied to CarouselItem objects.
+
+|UltraCarousel_Description
+|Infragistics Windows Forms control which renders visual items along a specified path.
+
+|UltraCarousel_P_Items
+|Returns the collection of CarouselItem objects.
+
+|UltraCarousel_P_ItemSettings
+|Returns the ItemSettings object which defines properties that are specific to items.
+
+|UltraCarousel_P_SelectionType
+|Gets/sets the SelectionType constant which dictates how items can be selected via the user interface.
+
+|Exception_CannotAddItemToSameCollection
+|An CarouselItem cannot be added to the same CarouselItemsCollection to which it already belongs.
+
+|Exception_CannotAddItemToDifferentCollection
+|An CarouselItem cannot belong to more than one CarouselItemsCollection.
+
+|Exception_CannotSelectItemFromDifferentCollection
+|An CarouselItem cannot be selected if it does not belong to this control's Items collection.
+
+|PredefinedPath_HorizontalLine
+|HorizontalLine
+
+|PredefinedPath_VerticalLine
+|VerticalLine
+
+|PredefinedPath_EllipseBottom
+|EllipseBottom
+
+|PredefinedPath_EllipseTop
+|EllipseTop
+
+|PredefinedPath_EllipseLeft
+|EllipseLeft
+
+|PredefinedPath_EllipseRight
+|EllipseRight
+
+|PredefinedPath_LowerLeftU
+|LowerLeftU
+
+|PredefinedPath_InverseParabola
+|InverseParabola
+
+|PredefinedPath_RightArc
+|RightArc
+
+|PredefinedPath_Zigzag
+|Zigzag
+
+|PredefinedPath_Spiral
+|Spiral
+
+|PredefinedPath_Spiral_Lite
+|Spiral Lite
+
+|PredefinedPath_Heart
+|Heart
+
+|====

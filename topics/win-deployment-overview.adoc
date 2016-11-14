@@ -1,0 +1,936 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-deployment-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "{00374AF4-A5DF-446D-BE33-D46BBC83552F}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-06T00:00:00Z"
+}
+|metadata|
+////
+
+= Deployment Overview
+
+The first step in deploying applications that include tools from the Infragistics Windows Forms toolset is to determine what resources you will need to include as part of your deployment package. Click on the links to learn what resources each of the elements requires as part of deployment.
+
+When deploying a .NET application, you must distribute certain files in addition to your executable. If your application contains one or more Infragistics elements, you will have to distribute or deploy one or more Infragistics assembly files as part of your application. This topic outlines the files that you must re-distribute.
+
+.Note
+[NOTE]
+====
+The files listed in this document, along with their like-named counterparts with later .NET Framework version numbers (e.g., Infragistics3-) are redistributable. Otherwise, any files not specifically covered by this topic should be considered non-redistributable. Files that are included with your Infragistics product but not listed here are not licensed for distribution, and should not be copied to, moved to or shared with any machine other than the one on which the licensed Infragistics product is installed.
+====
+
+== Required Assemblies for All Controls/Components
+
+In addition to individual assembly files listed for each control/component, the deployment of any Infragistics Windows Forms control/component also requires the re-distribution of the following files:
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Shared.v{ProductVersion}.dll
+|Infragistics Shared support assembly for .NET
+
+|{ApiPlatform}Win.v{ProductVersion}.dll
+|Infragistics Windows Forms support assembly for .NET
+
+|====
+
+The following controls and components do not require the Win or Shared assemblies.
+
+* Infragistics Syntax Parsing Engine
+* Infragistics Document Engine
+* Infragistics Excel Engine
+* Infragistics Word Library
+* WinChart
+* WinGauge (*does* require Shared, but *not* Win)
+
+== Required Assemblies for Ink-Enabled Applications
+
+If your application requires support for ink-enabled input on the TabletPC platform, you must also distribute the following assembly to enable ink features:
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinInkProvider.Ink17.v{ProductVersion}.dll
+|Infragistics Ink Provider assembly for use with *v1.7* of the Tablet PC Platform SDK.
+
+|====
+
+== Deployment Options
+
+Once you determine which resources you need to include in your deployment, you can learn how to deploy them using the following deployment options.
+
+* link:win-using-xcopy-deployment.html[XCopy]
+* link:win-using-global-assembly-cache-gac-deployment.html[Deployment using the GAC]
+* link:win-using-no-touch-deployment.html[No-Touch Deployment]
+
+== Required Assemblies for Individual Controls/Components
+
+The following tables identify which assemblies are required when deploying each individual control or component.
+
+== AppStylistRuntime™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.AppStylistSupport.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the AppStylistRuntime component.
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMisc controls.
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinEditor controls.
+
+|{ApiPlatform}Win.UltraWinListView.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinListView control.
+
+|{ApiPlatform}Win.UltraWinTabControl.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTab control.
+
+|{ApiPlatform}Win.UltraWinToolbars.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinToolbarsManager component.
+
+|{ApiPlatform}Win.UltraWinTree.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTree control.
+
+|====
+
+== InboxControlStyler™
+
+Located in the Win assembly. No additional files required.
+
+== Infragistics Document Engine™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Documents.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Document Engine™ code library.
+
+|{ApiPlatform}Documents.Core.v{ProductVersion}.dll
+|$$.NET$$ Assembly encapsulating the properties of an OfficeML-compliant document.
+
+|====
+
+== Infragistics Math Library™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Math.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Math Library™.
+
+|====
+
+== Infragistics Syntax Parsing Engine™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Documents.TextDocument.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Syntax Parsing Engine™.
+
+|{ApiPlatform}Documents.TextDocument.CSharp.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the C# language parsing elements of the Infragistics Syntax Parsing Engine™.
+
+|{ApiPlatform}Documents.TextDocument.TSql.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the TSQL parsing elements of the Infragistics Syntax Parsing Engine™.
+
+|{ApiPlatform}Documents.TextDocument.VisualBasic.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Visual Basic language prasing elements of the Infragistics Syntax Parsing Engine™.
+
+|====
+
+== Infragistics Undo Redo Framework™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Undo.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Undo Redo Framework™.
+
+|====
+
+== Infragistics Word Library™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Documents.Word.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Word Library™.
+
+|====
+
+== UltraDataChart™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}DataVisualization.Shared.dll
+|Infragistics DataVisualization shared support assembly for .NET.
+
+|{ApiPlatform}Win.DataVisualization.UltraDataChart.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the UltraDataChart control.
+
+|{ApiPlatform}Win.Portable.Core.dll
+|Infragistics Windows Forms Portable Core assembly for .NET.
+
+|====
+
+== WinActivityIndicator™
+
+Located in the Win assembly. No additional files required.
+
+== WinAnimation™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinAnimation control.
+
+|====
+
+== WinButton™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinButton control.
+
+|====
+
+== WinCalcManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinCalcManager.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinCalcManager CalcEngine.
+
+|{ApiPlatform}Win.UltraWinCalcManager.v{ProductVersion}.FormulaBuilder.dll
+|$$.NET$$ Assembly containing the WinCalcManager FormulaBuilder.
+
+|====
+
+== WinCarousel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinCarousel.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing all the WinCarousel element.
+
+|====
+
+== WinChart™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinChart.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing all the WinChart element.
+
+|====
+
+== WinCombo™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinCombo element.
+
+|====
+
+== WinDataSource™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinDataSource.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinDataSource control.
+
+|====
+
+== WinDesktopAlert™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinDesktopAlert component.
+
+|====
+
+== WinDockManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinDock.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinDockManager control.
+
+|====
+
+== WinDropDown™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinDropDown control.
+
+|====
+
+== WinEditors™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinEditor controls.
+
+|====
+
+== WinExpandableGroupBox™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinExpandableGroupBox control.
+
+|====
+
+== WinExplorerBar™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinExplorerBar.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinExplorerBar control.
+
+|====
+
+== WinFlowLayoutManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinFlowLayoutManager control.
+
+|====
+
+== WinFormattedLinkLabel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinFormattedLinkLabel control.
+
+|====
+
+== WinFormattedTextEditor™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|Infragistics pick:[win-forms="4"] .Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinFormattedTextEditor control.
+
+|====
+
+== WinFormattedTextWordWriter™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinFormattedTextEditor control.
+
+|{ApiPlatform}Documents.IO.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Word Library.
+
+|{ApiPlatform}Win.UltraWinFormattedText.WordWriter.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinFormattedTextWordWriter component.
+
+|====
+
+== WinGanttView™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGanttView.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing all the WinGanttView element.
+
+|{ApiPlatform}Win.UltraWinSchedule.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinSchedule controls.
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid element.
+
+|====
+
+== WinGauge™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|v.Win.UltraWinGauge.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing all the WinGauge element.
+
+|====
+
+== WinGrid™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid element.
+
+|{ApiPlatform}Win.UltraWinMaskedEdit.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMaskedEdit element.
+
+|{ApiPlatform}Win.UltraWinGrid.ExcelExport.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing Excel spreadsheet export functionality.
+
+|{ApiPlatform}Excel.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Excel Engine™.
+
+|{ApiPlatform}Win.v{ProductVersion}.SupportDialogs.dll
+|$$.NET$$ Assembly containing the UltraGridFilterUIProvider component of the Infragistics Excel Engine™.
+
+|====
+
+== WinGridBagLayoutManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGridBagLayoutManager control.
+
+|====
+
+== WinGridBagLayoutPanel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGridBagLayoutPanel™ control.
+
+|====
+
+== WinGridCellProxy™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGridCellProxy control.
+
+|====
+
+== WinGridDocumentExporter™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid control.
+
+|{ApiPlatform}Win.UltraWinGrid.DocumentExport.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing PDF export functionality.
+
+|{ApiPlatform}Documents.Reports.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Document Engine™.
+
+|====
+
+== WinGridExcelExporter™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid element.
+
+|{ApiPlatform}Win.UltraWinGrid.ExcelExport.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing Excel spreadsheet export functionality.
+
+|{ApiPlatform}Documents.Excel.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Excel Engine.
+
+|====
+
+== WinGridPrintDocument™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid control.
+
+|====
+
+== WinGridRowEditTemplate™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGridRowEditTemplate control.
+
+|====
+
+== WinGridWordWriter™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGrid element.
+
+|{ApiPlatform}Win.UltraWinGrid.WordWriter.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing Word writer functionality.
+
+|{ApiPlatform}Documents.IO.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the Infragistics Word Library.
+
+|====
+
+== WinGroupBox™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|Infragistics pick:[win-forms="4"] .Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinGroupBox control.
+
+|====
+
+== WinInkProvider™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinInkProvider.Ink17.v{ProductVersion}.dll
+|Infragistics' Ink Provider assembly for use with *v1.7* of the 
+
+Tablet PC Platform SDK.
+
+|====
+
+== WinLabel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinLabel control.
+
+|====
+
+== WinListBar™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinListbar.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinListbar control.
+
+|====
+
+== WinListView™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinListView.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinListView control.
+
+|====
+
+== WinLiveTileView™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinLiveTileView.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinLiveTileView control.
+
+|====
+
+== WinMaskedEdit™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinMaskedEdit.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMaskedEdit control.
+
+|====
+
+== WinMessageBoxManager™
+
+Located in the Win assembly. No additional files required.
+
+== WinNavigationBar™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinNavigationBar control.
+
+|====
+
+== WinPanel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPanel control.
+
+|====
+
+== WinPivotGrid™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Olap.Core.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing OLAP classes.
+
+|{ApiPlatform}Olap.DataProvider.Adomd.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing OLAP ADOMD data provider.
+
+|{ApiPlatform}Olap.DataSource.Mdx.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing OLAP MDX data selector.
+
+|{ApiPlatform}Olap.DataSource.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing OLAP data source connectivity.
+
+|{ApiPlatform}Olap.DataSource.Xmla.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing OLAP XMLA data source.
+
+|{ApiPlatform}Olap.DataSource.Flat.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing OLAP Flat data source.
+
+|{ApiPlatform}Win.UltraWinPivotGrid.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing WinPivotGrid control.
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly representing WinEditor controls.
+
+|{ApiPlatform}Win.UltraWinTree.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing WinTree control.
+
+|====
+
+== WinPopupControlContainer™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPopupControlContainer control.
+
+|====
+
+== WinPrintDocument™
+
+Located in the Win assembly. No additional files required.
+
+== WinPrintPreview™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPrintPreview control.
+
+|====
+
+== WinPrintPreviewDialog™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPrintPreview control.
+
+|{ApiPlatform}Win.UltraWinPrintPreviewDialog.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPrintPreviewDialog control.
+
+|{ApiPlatform}Win.UltraWinStatusBar.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinStatusBar control.
+
+|{ApiPlatform}Win.UltraWinToolbars.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinToolbarsManager component.
+
+|====
+
+== WinPrintPreviewThumbnail™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinPrintPreviewThumbnail control.
+
+|====
+
+== WinProgressBar™
+
+Located in the Win assembly. No additional files required.
+
+== WinRadialMenu™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinRadialMenu.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinRadialMenu control.
+
+|====
+
+== WinSchedule™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinSchedule.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinSchedule controls.
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMisc controls.
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinEditor controls.
+
+|{ApiPlatform}Win.UltraWinTabControl.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTab control.
+
+|{ApiPlatform}Win.UltraWinToolbars.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinToolbarsManager component.
+
+|====
+
+== WinScrollBar™
+
+Located in the Win assembly. No additional files required.
+
+== WinSpellChecker™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinSpellChecker.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinSpellChecker component.
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMisc controls.
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinEditor controls.
+
+|{ApiPlatform}Win.UltraWinListView.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinListView control.
+
+|====
+
+== WinSplitter™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinSplitter control.
+
+|====
+
+== WinStatusBar™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinStatusBar.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinStatusBar control.
+
+|====
+
+== WinTab™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinTabControl.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTab and WinTabStrip controls.
+
+|====
+
+== WinTabbedMdiManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinTabbedMdi.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTabbedMDIManager control.
+
+|====
+
+== WinTabStrip™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinTabControl.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTab and WinTabStrip controls.
+
+|====
+
+== WinTilePanel™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTilePanel control.
+
+|====
+
+== WinTimelineView™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|
+
+|{ApiPlatform}Win.UltraWinSchedule.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinSchedule controls.
+
+|====
+
+== WinToolbarsManager™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinToolbars.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinToolbarsManager component.
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinMisc controls and components.
+
+|{ApiPlatform}Win.UltraWinEditors.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinEditors controls and components.
+
+|{ApiPlatform}Win.UltraWinStatusBar.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinStatusBar control.
+
+|{ApiPlatform}Win.UltraWinTabControl.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTab control.
+
+|====
+
+== WinToolTipManager™
+
+Located in the Win assembly. No additional files required.
+
+== WinTree™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinTree.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinTree control.
+
+|====
+
+== WinValidator™
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.Misc.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing the WinValidator control.
+
+|====

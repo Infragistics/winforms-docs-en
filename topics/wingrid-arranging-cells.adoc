@@ -1,0 +1,147 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-arranging-cells",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{52A879EE-421F-4744-B28F-18C800C1EB6E}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Arranging Cells
+
+== Background
+
+Many times there is more data to display than will fit on a single WinGrid™ row without deploying the horizontal scroll bar. The AutoFitColumns property can be set to True, but this may not be of much use if there are a large number of columns. Even though the user can use the horizontal scroll bar to display all of the cells, in many applications this is not convenient.
+
+To provide a friendlier user experience, the UltraWinGrid allows the developer to arrange the cells into groups and levels within the group. Thus the data can be displayed without horizontal scroll bars.
+
+== Questions
+
+How do I display a single band of data on multiple lines of the grid?
+
+== Solutions
+
+Use the UltraWinGrid Groups and Levels properties to arrange the cells of the band.
+
+== Sample Project
+
+This sample project displays customer name, address and sales data in two different grids. The first grid displays without any cell arranging, and the second organizes the cells into two groups and up to 5 levels.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Arranging_Cells_01.png[arranging cells in ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid2.InitializeLayout - The UltraGrid2 InitializeLayout event contains the code used to arrange the cells and format the UltraWinGrid:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Set the AutoFitStyle to Resize all the columns and put a 5 pixel spacing
+	' before each row
+	Me.UltraGrid1.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+	Me.UltraGrid1.DisplayLayout.Override.RowSpacingBefore = 5
+	' Add two groups one for the NameInfo cells 
+	' and another for Address cells
+	Me.UltraGrid1.DisplayLayout.Bands(0).Groups.Add("NameInfo")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Groups.Add("Address")
+	' Set the levelcount to the number of levels each group can have
+	Me.UltraGrid1.DisplayLayout.Bands(0).LevelCount = 5
+	' Set the Group and Level property of each cell in the Name group
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("CompanyName").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("NameInfo")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("CompanyName").Level = 0
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactName").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("NameInfo")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactName").Level = 1
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactTitle").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("NameInfo")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactTitle").Level = 2
+	' Set the Group and Level property of each cell in the Address group
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Address").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("Address")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Address").Level = 1
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("City").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("Address")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("City").Level = 3
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Region").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("Address")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Region").Level = 3
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("PostalCode").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("Address")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("PostalCode").Level = 3
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Country").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Groups("Address")
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Country").Level = 4
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set the AutoFitStyle to Resize all the columns and put a 5 pixel spacing
+	// before each row
+	this.ultraGrid1.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+	this.ultraGrid1.DisplayLayout.Override.RowSpacingBefore = 5;
+	// Add two groups one for the NameInfo cells 
+	// and another for Address cells
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups.Add("NameInfo");
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups.Add("Address");
+	// Set the levelcount to the number of levels each group can have
+	this.ultraGrid1.DisplayLayout.Bands[0].LevelCount = 5;
+	// Set the Group and Level property of each cell in the Name group
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["CompanyName"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["NameInfo"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["CompanyName"].Level = 0;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactName"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["NameInfo"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactName"].Level = 1;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactTitle"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["NameInfo"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactTitle"].Level = 2;
+	// Set the Group and Level property of each cell in the Address group
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Address"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["Address"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Address"].Level = 1;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["City"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["Address"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["City"].Level = 3;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Region"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["Address"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Region"].Level = 3;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["PostalCode"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["Address"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["PostalCode"].Level = 3;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Country"].Group = 
+	this.ultraGrid1.DisplayLayout.Bands[0].Groups["Address"];
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Country"].Level = 4;
+}
+----
+
+== Review
+
+This sample project illustrates the use of Groups and Levels to arrange cells into a more readable display format.

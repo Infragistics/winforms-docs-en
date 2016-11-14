@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-adding-image-to-a-tab",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{87EE5AA2-E391-493E-BA60-C5C290FA28D3}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Image to a Tab
+
+This topic will show you how to add images to a Tab in WinTab™.
+
+Assuming you have an ImageList control dropped onto your Form with few sample images in it, assign the ImageList control to WinTab control’s  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~imagelist.html[ImageList]"]  property.
+
+*In Visual Basic:*
+
+----
+' Assign the ImageList control to WinTab 
+Me.ultraTabControl1.ImageList = Me.imageList1 
+' Add image to a tab in WinTab by setting the index of the image in ImageList control 
+Me.ultraTabControl1.Tabs(0).Appearance.Image = 2
+----
+
+*In C#:*
+
+----
+// Assign the ImageList control to WinTab
+this.ultraTabControl1.ImageList = this.imageList1;
+// Add image to a tab in WinTab by setting the index of the image in ImageList control
+this.ultraTabControl1.Tabs[0].Appearance.Image = 2;
+----
+
+WinTab displaying an image before the Text in the first Tab.
+
+image::Images\WinTab_Add_Image_to_a_Tab_in_WinTab.png[]

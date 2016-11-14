@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-which-row-the-user-clicked",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Tips and Tricks"],
+    "guid": "{503BE87B-2827-4564-93C2-4F2FCEED61BB}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining Which Row the User Clicked
+
+== Background
+
+WinGrid™ exposes many different User Interface Elements (UIElement) to the user. When working with the mouse the developer may need to be able to determine the row on which the user clicked, or the row under the current mouse position. Properties and methods of the UIElement provide an object reference to the row associated with the UIElement under a mouse position.
+
+== Questions
+
+* Which row did the user click on?
+* Which row is under the current mouse position?
+
+== Solutions
+
+Both of the questions are answered by knowing the X an Y positions of the mouse, invoking the ElementFromPoint method to retrieve the UIElement, and invoking the GetContext method of the UIElement to retrieve the Row object reference.
+
+== Sample Project
+
+This sample project presents a multi-band UltraWinGrid and as the user clicks on various parts of the grid the band index and row index of the row display in the text box.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Determining_Which_Row_the_User_Clicked_01.png[determining which row the user clicked in ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.MouseUp - The code in the MouseUp event finds the UIElement under the mouse, retrieves an object reference to the UltraGridRow associated with this element and displays the Band and Row indexes in the text box:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_MouseUp(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraGrid1.MouseUp
+	' Declare and retrieve a reference to the UIElement
+	Dim aUIElement As UIElement = _
+	  Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint(New Point(e.X, e.Y))
+	' Declare and retrieve a reference to the Row
+	Dim aRow As UltraGridRow = aUIElement.GetContext(GetType(UltraGridRow))
+	' If a row was found display the band and row index
+	If Not aRow Is Nothing Then
+		Me.UltraTextEditor1.Text += "Band(" _
+		  + aRow.Band.Index.ToString() + ") Row.Index=" + aRow.Index.ToString + vbCrLf
+	Else
+		Me.UltraTextEditor1.Text += "$$*$$ no row associated with this location $$* $$" _
+		  + vbCrLf
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_MouseUp(object sender, MouseEventArgs e)
+{
+	// Declare and retrieves a reference to the UIElement
+	UIElement aUIElement = 
+	  this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X,e.Y));
+	// Declare and retrieve a reference to the row
+	UltraGridRow aRow = (UltraGridRow)aUIElement.GetContext(typeof(UltraGridRow));
+	// If a row was found display the band and row index
+	if(aRow != null)
+		this.ultraTextEditor1.Text += "Band(" 
+		  + aRow.Band.Index.ToString() + ") Row.Index=" + aRow.Index.ToString() + "\n";
+	else
+		this.ultraTextEditor1.Text += "$$*$$ no row associated with this location $$* $$\n";	
+}
+----
+
+== Review
+
+This project illustrates the method calls required to retrieve an object reference to a row from mouse X and Y coordinates.

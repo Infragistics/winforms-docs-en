@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-back-anchor-extent-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{2E7ED74F-ECE5-48CC-84FF-C9703E896D9C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Extent Pane
+
+The Extent pane lets you determine the position of the back anchor.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugeneedleanchor~extent.html[Extent]"]  -- Set this value to an integer from 0 to 100. If the extent is set to 0, the back anchor will be positioned in the center of the Radial gauge. As the value increases the back anchor will move towards the edge of the gauge in the direction of the needle. As the value decreases the back anchor will move in the opposite direction. If you enter a value greater than 100, the back anchor will not appear on the gauge.
+
+image::images/Extent_Pane_01.png[Wingauge's back anchor extent pane.]
+
+== Related Topic
+
+link:wingauge-back-anchor-layout-tab.html[Back Anchor Layout Tab]

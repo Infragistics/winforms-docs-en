@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-customize-chart-section-of-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": ["Charting","How Do I"],
+    "guid": "{DE9E5ACF-ACEB-46B6-827A-2F3208B2874D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Customize Chart Section of WinGanttView
+
+This topic illustrates the customization options available to modify the look and user interaction of the chart section of WinGanttView™. The chart section of the control is a type of bar chart that displays tasks and task information. The display of bars in the chart section can be customized through the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinesettings.html[TimelineSettings] object. The TimelineSettings object can also be applied to a specific Task.
+
+The following example code assumes that you have an UltraGanttView control dropped onto the form that displays parent and child tasks and task details. For more information on adding tasks to GanttView please see the link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView] topic.
+
+*In Visual Basic:*
+
+----
+' Allow drag operation for End Indicator of tasks 
+Me.ultraGanttView1.TimelineSettings.AllowedDragActions = BarDragActions.EndDateTime 
+' Set the default back color for child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.BarAppearance.BackColor = Color.Blue 
+' Set the default height for child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.BarHeight = 10 
+' Set the text to be displayed to the right of child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.BarTextRight = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField. ResourceNames
+' Set the text to be displayed at the left of child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.BarTextLeft = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField.PercentComplete 
+' Set the default back color for deadline indicators 
+Me.ultraGanttView1.TimelineSettings.BarSettings.DeadlineIndicatorAppearance.BackColor = Color.Red 
+' Set the default back color for Percent complete bars within child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.PercentCompleteBarAppearance.BackColor = Color.Yellow 
+'Set the height for Percent complete bars within child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.PercentCompleteBarHeight = 7 
+'  Set the bar settings for  Summary tasks
+Me.ultraGanttView1.TimelineSettings.BarSettingsSummary.BarTextInside = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField.Name
+Me.ultraGanttView1.TimelineSettings.BarSettingsSummary.BarAppearance.BackColor = Color.Wheat
+' Allow only dragging of percent complete for a specific Task
+Me.ultraGanttView1.CalendarInfo.Tasks[0].Tasks[0].TimelineSettings.AllowedDragActions = BarDragActions.PercentComplete
+' Show start and end indicators for child tasks similar to summary tasks
+Me.ultraGanttView1.TimelineSettings.BarSettings.StartIndicatorVisible = Infragistics.Win.DefaultableBoolean.True
+Me.ultraGanttView1.TimelineSettings.BarSettings.EndIndicatorVisible = Infragistics.Win.DefaultableBoolean.True
+' Set the default back color for End Indicators of child task bars 
+Me.ultraGanttView1.TimelineSettings.BarSettings.EndIndicatorAppearance.BackColor = Color.Green
+----
+
+*In C#:*
+
+----
+// Allow drag operation for End Indicator of tasks
+this.ultraGanttView1.TimelineSettings.AllowedDragActions = BarDragActions.EndDateTime;
+// Set the default back color for child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.BarAppearance.BackColor = Color.Blue;
+// Set the height for child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.BarHeight = 10;
+// Set the Text to be displayed at the right of child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.BarTextRight = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField.ResourceNames;
+// Set the Text to be displayed at the left of child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.BarTextLeft = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField.PercentComplete;
+// Set the default back color for deadline indicators
+this.ultraGanttView1.TimelineSettings.BarSettings.DeadlineIndicatorAppearance.BackColor = Color.Red;
+// Set the default back color for End Indicators of child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.EndIndicatorAppearance.BackColor = Color.Green;
+// Set the default back color for Percent complete bars within child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.PercentCompleteBarAppearance.BackColor = Color.Yellow;
+//Set the height for Percent complete bars within child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.PercentCompleteBarHeight = 7;
+//  Set the bar settings for  Summary tasks
+this.ultraGanttView1.TimelineSettings.BarSettingsSummary.BarTextInside = Infragistics.Win.UltraWinSchedule.TaskUI.BarTextField.Name;
+this.ultraGanttView1.TimelineSettings.BarSettingsSummary.BarAppearance.BackColor = Color.Wheat;
+// Allow only dragging of percent complete for a specific Task
+this.ultraGanttView1.CalendarInfo.Tasks[0].Tasks[0].TimelineSettings.AllowedDragActions = BarDragActions.PercentComplete;
+// Show start and end indicators for child tasks similar to summary tasks
+this.ultraGanttView1.TimelineSettings.BarSettings.StartIndicatorVisible = Infragistics.Win.DefaultableBoolean.True;
+this.ultraGanttView1.TimelineSettings.BarSettings.EndIndicatorVisible = Infragistics.Win.DefaultableBoolean.True;
+// Set the default back color for End Indicators of child task bars
+this.ultraGanttView1.TimelineSettings.BarSettings.EndIndicatorAppearance.BackColor = Color.Green;
+----
+
+image::images/WinGanttView_Customize_Chart_section_of_WinGanttView_01.png[]
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

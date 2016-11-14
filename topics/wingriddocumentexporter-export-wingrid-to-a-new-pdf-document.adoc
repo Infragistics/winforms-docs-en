@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingriddocumentexporter-export-wingrid-to-a-new-pdf-document",
+    "controlName": ["WinGridDocumentExporter"],
+    "tags": ["Exporting"],
+    "guid": "{C04D2C08-997E-451B-AD08-D61BE63726F3}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Export WinGrid to a New PDF Document
+
+The WinGridDocumentExporter™ component enables you to export your entire WinGrid™ directly into a PDF or XML Paper Specification (XPS) document (depending on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.gridexportfileformat.html[GridExportFileFormat]"]  property). You can accomplish this by simply calling the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~export.html[Export]"]  method off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter.html[UltraGridDocumentExporter]"]  object. The Export method contains several overloads to customize the export process. This topic discusses the fourth overload. This overload accepts three parameters:
+
+* the WinGrid you are exporting (Infragsitics.Win.UltraWinGrid.UltraGrid)
+* the file name of the document to which WinGrid will be exported (System.String)
+* the file format of the document (Infragistics.Win.UltraWinGrid.DocumentExport.GridExportFileFormat)
+
+This topic assumes that you have a data bound WinGrid and a WinGridDocumentExporter component on the form. For more information on binding WinGrid to a data source, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
+
+Use the following code to export your WinGrid to a PDF document. This code will also name the PDF document "WinGrid_Report.pdf" and place it in the C:\Reports folder.
+
+*In Visual Basic:*
+
+----
+Me.UltraGridDocumentExporter1.Export( _
+	Me.UltraGrid1, _
+	"C:\Reports\WinGrid_Report.pdf", _
+	Infragistics.Win.UltraWinGrid.DocumentExport.GridExportFileFormat.PDF)
+----
+
+*In C#:*
+
+----
+this.ultraGridDocumentExporter1.Export(
+	this.ultraGrid1,
+	"C:\\Reports\\WinGrid_Report.pdf",
+	Infragistics.Win.UltraWinGrid.DocumentExport.GridExportFileFormat.PDF);
+----

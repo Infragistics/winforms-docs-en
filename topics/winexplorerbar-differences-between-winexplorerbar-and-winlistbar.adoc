@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-differences-between-winexplorerbar-and-winlistbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["FAQ"],
+    "guid": "{9AF4DB2A-8B79-4A77-8E29-37B829EB6056}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Differences Between WinExplorerBar and WinListBar
+
+WinExplorerBar™ is a next-generation version of the existing Infragistics WinListBar™ control. It includes all the functionality of the WinListbar element (with the exception of the option to display the element in a horizontal orientation) plus much more. While it is not backward-compatible with the WinListbar element, an included utility makes it easy for you to import groups and items defined at design-time in an existing WinListbar element.
+
+== Key Differences and New Features in the WinExplorerBar Element
+
+* Multiple element styles -- the WinExplorerBar element supports XP ExplorerBar, Toolbox and OutlookNavigationPane styles in addition to WinListBar style (the only style supported in the WinListbar element).
+* Multiple view styles -- the WinExplorerBar element has a ViewStyle property that lets you change the look of the element with a single property setting. Choose from XPExplorerBar, XP, Office2000 or Office2003, Office2007 looks.
+* Element now accepts focus -- the WinExplorerBar element has support for keyboard navigation and mnemonics.
+* Three new Item types -- In addition to the only Item type available in the WinListbar, i.e. Button, item types now include StateButton, Label and Separator.
+* Group styles -- In addition to the only Group styles available in the WinListbar, i.e. Large icons with text below and Small icons with text, Group styles now include SmallIcons, LargeIcons, LargeIconsWithText and ControlContainer
+* Groups as control containers -- using the ControlContainer Group style, Groups may now contain other WinForms controls. This style may be applied individually to each Group or to all Groups via the GroupSettings  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings~style.html[Style]"]  property.
+* Full Drag and Drop support -- for moving items between groups. The ItemSettings object's AllowItemDrag property controls which Items can be dragged. The GroupSettings object's AllowItemDrop property controls whether Items can be dropped on a Group. The ItemDragging, ItemOverDropLocation and ItemDroppped events allow developers to get involved in the Item dragging process.
+* Enabled and Visible properties -- the Enabled and Visible status of individual Groups and Items can be set.
+* Text wrapping (multiline text) is supported for Items and Groups via the MaxLines property on the GroupSettings and ItemSettings objects.
+* Multi-column support -- when using the WinExplorerBar element style, Groups can be displayed in multiple columns.
+* GroupSettings and ItemSettings objects -- important property settings for Groups and Items are contained in the new GroupSettings and ItemSettings objects. The GroupSettings object can be found at the Group (property name Settings) and element level (property name GroupSettings). This allows Group properties to be set at the element level for all Groups and/or overridden at the Group level for a specific Group. Similarly, the ItemSettings object can be found at the Item (property name Settings), Group (property name ItemSettings) and element (property name ItemSettings) levels. This allows Item properties to be set at the element level for all Items, overridden at the Group level for all Items in a Group or overridden at the Item level for a specific Item.
+
+== Using the UltraExplorerBar Element in the Same Application as an WinListbar Element
+
+The new WinExplorerBar element can be used side by side in the same application as the old WinListbar. Although the WinExplorerBar element is not backward-compatible with WinListbar, the design of the WinExplorerBar object model attempts to preserve as much of the original WinListbar object model as possible to facilitate the upgrading of applications.
+
+An included utility makes it easy for you to import Groups and Items defined at design-time, from an existing WinListbar element. See link:winexplorerbar-replacing-winlistbar-with-winexplorerbar.html[Replacing an Existing WinListbar Element with an UltraExplorerBar Element] for more information.

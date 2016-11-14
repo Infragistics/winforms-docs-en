@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-pane-object-types",
+    "controlName": ["WinDockManager"],
+    "tags": ["API"],
+    "guid": "{4AA519BC-21AD-4A21-876B-AAEA79AD3815}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Pane Object Types
+
+There are three types of pane objects in the WinDockManager™ component: the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablecontrolpane.html[DockableControlPane]"] ,  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"] , and  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockareapane.html[DockAreaPane]"] . Each of these objects is derived from the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]  object. The following is a summary of the purpose of each type of pane.
+
+The DockableControlPane is the simplest of the three objects. It holds a single control.
+
+The DockableGroupPane contains a collection of one or more panes, each of which can be either a DockableControlPane or another DockableGroupPane. In this way, you can have an unlimited number of levels of nested panes.
+
+The DockAreaPane is the highest element in the family of panes, and both DockableGroupPanes and DockableControlPanes can be added to it. Only a DockAreaPane can be added to the WinDockManager. The DockAreaPane is the element that specifies to which side of the application a pane is docked. If you want controls to be docked on separate sides, they must be added to distinct DockAreaPanes.

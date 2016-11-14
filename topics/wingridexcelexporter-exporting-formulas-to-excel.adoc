@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridexcelexporter-exporting-formulas-to-excel",
+    "controlName": ["WinGridExcelExporter"],
+    "tags": ["Exporting"],
+    "guid": "{8BCCFF1B-71D7-4929-8532-269D296EE8E4}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-09T17:03:50Z"
+}
+|metadata|
+////
+
+= Exporting Formulas to Excel
+
+*Before You Begin*
+
+The WinGridExcelExporter™ has the ability to export data from WinGrid™ to Microsoft® Excel® file format. Considering a Grid that has an unbound WinCalcManager™ calculated column, you might want the Grid formula to be translated into an actual Excel function in the created Excel file. WinGridExcelExporter has the ability to translate the WinCalcManager formulas to Excel formulas. Thus the resulting Excel file will have real working formulas created by the exporting process of WinGridExcelExporter.
+
+A property called  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~exportformulas.html[ExportFormulas]"] , on the WinGridExcelExporter component determines whether formulas will be exported.
+
+.Note
+[NOTE]
+====
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~exportformulas.html[ExportFormulas]"]  property is set to true by default.
+====
+
+*What You Will Accomplish*
+
+This walkthrough guides you through the steps on how to export a WinGrid that has a calculated column to an Excel worksheet. To accomplish this, follow these steps:
+
+[start=1]
+. You will need a WinGrid with at least one unbound calculated column. For information on how to do this you can review the link:wincalcmanager-creating-a-calculated-column-in-wingrid.html[Creating a Calculated Column in WinGrid] topic.
+[start=2]
+. Add the following using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinCalcManager;
+Imports Infragistics.Win.UltraWinGrid;
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinCalcManager;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=3]
+. Locate the UltraGridExcelExporter component in the Visual Studio® Toolbox and double-click it to add it to the Form. It is a non-visual component and will appear in the Form's component tray.
+[start=4]
+. Add a button to the Form. This will be used to export the Grid data to Excel.
+[start=5]
+. Enter the following code in the button click event handler:
+
+*In Visual Basic:*
+
+----
+Private Sub btnExport_Click (ByVal sender As System. Object, _
+  ByVal e As System. EventArgs) Handles btnExport.Click
+	Me.UltraGridExcelExporter1.Export (Me.UltraGrid1, "C:\GridData.xls")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnExport_Click (object sender, EventArgs e)
+{
+	this.ultraGridExcelExporter1.Export (this.ultraGrid1, @"C:\GridData.xls");
+}
+----
+
+image::Images\Formula_In_Excel.png[Exporting Formulas to Excel]
+
+An Excel file is created and the Grid’s calculated column formula is translated into an Excel formula.

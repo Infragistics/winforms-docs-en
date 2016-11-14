@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-design-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{A221D15C-4542-4D11-A6B5-241CB821C176}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Multi Stop Linear Gradient Brush Element at Design Time
+
+If you want more than two colors of a property of your gauge to blend into each in a linear fashion, apply the Multi-Stop Linear Gradient brush element to your property.
+
+*To apply a Multi-Stop Linear Gradient brush element to your property at design time:*
+
+[start=1]
+. Add a Linear Gauge to the Gauges collection.
+[start=2]
+. In the left-hand pane of the Gauges collection editor, click Linear Gauge.
+[start=3]
+. From the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  drop-down list, select Multi-Stop Linear Gradient. This will create a new Multi-Stop Linear Gradient brush element.
+[start=4]
+. Set the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.multistoplineargradientbrushelement~angle.html[Angle]"]  property to 90\.
+[start=5]
+. Click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.multistoplineargradientbrushelement~colorstops.html[ColorStops]"]  property, then click the ellipsis button (...) to open the ColorStops collection editor.
+[start=6]
+. In the ColorStops collection editor, click under the color scale to add a new color stop.
+[start=7]
+. Right click on the color stop to change the color.
+[start=8]
+. Drag the color stop to change the offset.
+[start=9]
+. The following step allows you to edit the values with more precision.
+[start=10]
+. Click the small arrow on the horizontal bar. Then set the following properties:
+
+** Start color - Click the first cell in the first row. Enter the value 254, 42, 0 in the text box.
+** Start color offset - Click the second cell in the first row. Enter the value 0 in the text box.
+** Color stop - Click the first cell in the second row. Enter the value 212, 254, 0 in the text box.
+** Color stop offset - Click the second cell in the second row. Enter the value 0.37 in the text box.
+** End color - Click the first cell in the third row. Enter the value 0, 118, 0 in the text box.
+** End color offset - Click the second cell in the third row. Enter the value 1 in the text box.
+
+== Related Topics
+
+link:wingauge-multi-stop-linear-gradient-brush-element.html[Multi Stop Linear Gradient Brush Element]
+
+link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-run-time.html[Apply the Multi-Stop Linear Gradient Brush Element at Run Time]
+
+link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-using-the-gauge-designer.html[Apply the Multi-Stop Linear Gradient Brush Element Using the Gauge Designer]

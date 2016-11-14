@@ -1,0 +1,125 @@
+﻿////
+
+|metadata|
+{
+    "name": "undounit-derived-classes-properties-and-methods-reference",
+    "controlName": [],
+    "tags": ["API","Editing","How Do I"],
+    "guid": "67e5c26c-3448-40bc-857e-494fb8546f3d",  
+    "buildFlags": [],
+    "createdOn": "2012-09-06T12:08:35.3750125Z"
+}
+|metadata|
+////
+
+= UndoUnit Derived Classes, Properties and Methods Reference
+
+== Topic Overview
+
+=== Purpose
+
+This topic lists the derived classes and some of the important properties and methods of the UndoUnit class.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref320656474, UndoUnit Class Reference >>
+** <<_Ref320801583,Introduction>>
+** <<_derived,Derived classes reference summary>>
+** <<_Ref320801594,Properties reference summary>>
+** <<_Ref320801601,Methods reference summary>>
+
+* <<_Ref320656481, Related Content >>
+
+[[_Ref320656474]]
+== UndoUnit Class Reference
+
+[[_Ref320801583]]
+
+=== Introduction
+
+The UndoUnit is the base class for an undoable operation added to the undo/redo history.
+
+It exposes methods for retrieving the string description of an operation, executing an operation and optionally merging the results of an operation.
+
+[[_derived]]
+
+=== Derived classes reference summary
+
+The following table summarizes the purpose of the UndoUnit derived classes.
+
+[options="header", cols="a,a"]
+|====
+|Class|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.collectionchangeundounit`1.html[CollectionChangeUndoUnit] 
+|This class is used for reverting the changes to an _ICollection_ _._
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounit`2.html[PropertyChangeUndoUnit]
+|This class is used for reverting the changes to a single CLR property.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase]
+|This class is base class for an `UndoUnit` and represents a change of a single property value.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction]
+|This class is a custom UndoUnit class that contains one or more UndoUnits. 
+
+For more information, refer to the Methods and Properties Reference for Performing Transactions topic.
+
+|====
+
+[[_Ref320801594]]
+
+=== Properties reference summary
+
+The following table summarizes the purpose and functionality of the UndoUnit class key properties.
+
+[options="header", cols="a,a"]
+|====
+|Property|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~target.html[Target]
+|Returns the target object that will be affected by the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] .
+
+|====
+
+[[_Ref320801601]]
+
+=== Methods reference summary
+
+The following table summarizes the purpose and functionality of the UndoUnit class key methods.
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~getdescription.html[GetDescription]
+|Returns a string representation of the action based on whether this is for an undo or redo operation.
+
+|====
+
+[[_Ref320656481]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:observablecollectionextendedwithundo-properties-reference.html[ObservableCollectionExtendedWithUndo Properties Reference]
+|This topic lists some of the important properties of the ObservableCollectionExtendedWithUndo class.
+
+| link:undohistoryitem-properties-and-methods-reference.html[UndoHistoryItem Properties and Methods Reference]
+|This topic lists the properties and methods of the UndoHistoryItem class.
+
+| link:undomanager-properties-and-methods-reference.html[UndoManager Properties and Methods Reference]
+|This topic lists some of the important properties and methods of the UndoManager class.
+
+| link:undounitfactory-properties-and-methods-reference.html[UndoUnitFactory Properties and Methods Reference]
+|This topic lists some of the important properties and methods of the UndoUnitFactory class.
+
+|====

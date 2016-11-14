@@ -1,0 +1,72 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-about-wincalcmanager",
+    "controlName": ["WinCalcManager"],
+    "tags": ["Calculations","Extending"],
+    "guid": "{B7352217-9268-4883-9E78-8AF4F5BFBAF4}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinCalcManager
+
+The WinCalcManager™ Assembly is a non-visual component that extends the capabilities of all controls on a form. To implement formulas on your form, drag the UltraCalcManager component from the Toolbox onto your form. Once this is done, almost all of the controls on the form will have a new property called  pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings.html[CalcSettings]"] . Some controls (like the WinGrid) support special handling of formulas, and will not show the CalcSettings property. These controls handle formulas in other ways. For example, WinGrid has a Formula property on the Column and SummarySettings objects. CalcSettings is of type UltraCalcSettings which has the following properties:
+
+[options="header", cols="a,a"]
+|====
+|Property Name|Description
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~alias.html[Alias]"] 
+|Gets or sets the alias name of the control.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~erroriconalignment.html[ErrorIconAlignment]"] 
+|Gets or sets where the ErrorIcon from the ErrorProvider should be aligned in relationship to the control, if an error occurs in a calculation.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~errorvalue.html[ErrorValue]"] 
+|Gets or sets the value displayed in the element when an error occurs in the formula.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~formula.html[Formula]"] 
+|Gets or sets the formula which will be used to set the value of this object.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~propertyname.html[PropertyName]"] 
+|Gets or sets which property (Text, Tag, Value, etc., based on the element) is used as either the source or target of any calculations involving the control. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+that in order for a control to function properly as the Source value of a calculation, the property must also have a changed event. For example, if using the Text property, the control must have a TextChanged event. Otherwise, the CalcManager cannot detect changes in the property. 
+
+====
+
+|Tag
+|Gets or sets any additional information that should be associated with this object.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~treatastype.html[TreatAsType]"] 
+|Gets or sets a type to use for conversion purposes when the UltraCalcManager interprets the value from the control.
+
+|====
+
+[start=1]
+. The following image demonstrates the WinTextEditor control on a form with its properties extended by the CalcManager component.
+
+image::Images/WinCalcManager_Using_CalcManager_and_Formulas_01.png[show properties added to control in the properties window]
+
+[start=2]
+. To add formulas to an element, set the PropertyName, and then simply click the ellipses button on the Formula property to invoke the Formula Builder.
+
+image::Images/WinCalcManager_Using_CalcManager_and_Formulas_02.png[shows the ellipse button on the formula property]
+
+[start=3]
+. Once the Formula Builder is displayed, the left column displays 2 tabs. The first tab lists the elements on the form that can be used in a formula, along with any custom NamedReferences. The second tab lists all of the formulas that can be used.
+
+image::Images/WinCalcManager_Using_CalcManager_and_Formulas_03.png[shows the formula builder available at design time for wincalcmanager]
+
+[start=4]
+. To create a formula, simply double-click the name of an element on the first tab, or drag-and-drop the element name in the list to the formula editor. Use the formula editor's toolbar to add basic math symbols to your calculation. As you modify the formula in the formula editor, the formula is being checked for syntax errors in the background. If a formula entered is invalid, then you will be notified of the column and line number where you need to make the change.

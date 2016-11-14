@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-showing-wingrids-caption",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{4CCFB228-71BF-421F-B043-66FF985CE1AD}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Showing WinGrid's Caption
+
+You can show the caption of a WinGrid™ by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout's]"]   pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~captionvisible.html[CaptionVisible]"]  property to True. You can also show the grid caption by setting the Text property of the WinGrid to a value.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub Show_WinGrids_Caption_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.CaptionVisible = DefaultableBoolean.True
+	Me.UltraGrid1.Text = "Customer Information"
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void Show_WinGrids_Caption_Load(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.CaptionVisible = DefaultableBoolean.True;
+	this.ultraGrid1.Text = "Customer Information";
+}
+----
+
+The following snapshot shows WinGrid with its caption visible, and the Text property set to "Customer Information."
+
+image::Images\WinGrid_Show_WinGrids_Caption_01.png[show ultragrid's caption]

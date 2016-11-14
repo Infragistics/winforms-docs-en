@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-standard-about-the-standard-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{86759F98-E9CF-42FC-93FE-57F07E21282E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the Standard Toolbar
+
+Toolbars are 'tool containers' that can contain zero or more tools. Their default visual representation and behavior duplicates that of the toolbars in Microsoft Office. When tools reside on a toolbar, they are rendered as buttons and arranged horizontally or vertically, depending on the orientation of the toolbar. The DisplayStyle property of the tool determines whether the tool is displayed with an image and/or Text.
+
+Internally, WinToolbarsManager™ represents toolbars with the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[UltraToolbar]"]  class.
+
+== Docking Toolbars
+
+Toolbars can be docked to the top, left, right or bottom of the link:wintoolbarsmanager-terms-and-concepts.html[Container] that the UltraToolbarsManager has been assigned to. When docked, toolbars sit inside of a link:wintoolbarsmanager-terms-and-concepts.html[DockArea] on the Container. Toolbars can be moved within a dock area or between dock areas via drag and drop.
+
+image::Images\UltraToolbarsManager_About_Toolbars_05.png[example of ultratoolbarsmanager standard toolbar]
+
+== Floating Toolbars
+
+Toolbars can dragged from their link:wintoolbarsmanager-terms-and-concepts.html[DockArea] and floated in their own window. When a toolbar is floating, double-clicking its caption area will return it to its original dock area. Floating toolbars windows are resizable, with the extent of the resizing determined by the layout of the tools on the toolbar.
+
+image::Images\UltraToolbarsManager_About_Toolbars_06.png[example of ultratoolbarsmanager floating toolbar]
+
+== Adding Tools to Toolbars
+
+UltraToolbar objects have a Tools property which is a collection of ToolBase derived objects (i.e., Tools). The tools that reside in this collection are Instance Tools (refer to the discussion of link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools] for more information on this important topic). To display tools on a toolbar they must be added to the Toolbar's Tools collection. Tools can be added to the Tools collection by the developer and the end user. The developer can add tools to the toolbar:
+
+* via drag and drop using the design-time customizer
+* programmatically by calling the Tool collection's add method at run-time
+
+The end-user can add tools to a toolbar:
+
+* via drag and drop using the run-time customizer
+
+== Setting Toolbar Properties
+
+The Settings property of the toolbar returns a ToolbarSettings object which contains properties that affect the look and behavior of the toolbar. UltraToolBarsManager has a property called ToolbarSettings which also returns a ToolbarSettings object. This ToolbarSettings object serves as a default for all toolbars while the ToolbarSettings object returned by the Toolbar.Settings property affects just that toolbar. The toolbar also has a SettingsResolved property that returns a ToolbarSettingsResolved object that resolves the settings for a particular toolbar by combining the Toolbar.Settings object with the UltraToolbarsManager.ToolbarSettings object. This gives you the power to apply settings globally across all toolbars and the flexibility to override selected settings for specific toolbars.

@@ -1,0 +1,255 @@
+﻿////
+
+|metadata|
+{
+    "name": "touch-enabled-schedule-controls",
+    "controlName": [],
+    "tags": [],
+    "guid": "a8012f6c-84f7-4a79-9d20-3bc10c147e3c",  
+    "buildFlags": [],
+    "createdOn": "2013-09-15T23:58:33.6572807Z"
+}
+|metadata|
+////
+
+= Touch-enabled Schedule Controls
+
+== Topic Overview
+
+=== Purpose
+
+This topic illustrates the Infragistics touch-enabled  _WinSchedule_™ controls elements.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref366599891,Touchable  _WinSchedule_   Controls>>
+
+** <<_Ref366599899,DayView touchable element>>
+** <<_Ref366599907,DayView gesture support>>
+** <<_Ref366599923,WeekView touchable elements>>
+** <<_Ref366599935,WeekView gesture support>>
+** <<_Ref366599947,MonthViewSingle touchable elements>>
+** <<_Ref366599959,MonthViewSingle gesture support>>
+** <<_Ref366599969,MonthViewMulti touchable elements>>
+** <<_Ref366599977,MonthViewMulti gesture support>>
+** <<_Ref366600008,CalendarCombo touchable elements>>
+
+* <<_Ref366600017,Related Content>>
+
+[[_Ref366599891]]
+== Touchable  _WinSchedule_   Controls
+
+[[_Ref366599899]]
+
+=== DayView touchable element
+
+The following screenshots illustrate the  _WinDayView™_   control’s touchable elements. The touch elements appear slightly larger in touch-enabled mode for easier user interaction.
+
+[options="header", cols="a,a"]
+|====
+|Element name|Image
+
+|AllDayViewEventArea
+|image::images/Touch_WinSchedule_1.png[]
+
+|AllDayViewEvent
+|image::images/Touch_WinSchedule_2.png[]
+
+|TimeSlots
+|image::images/Touch_WinSchedule_3.png[]
+
+|AllDayEventAreaScrollButton
+|image::images/Touch_WinSchedule_4.png[]
+
+|====
+
+[[_Ref366599907]]
+
+=== DayView gesture support
+
+Gesture support for the  _WinDayView_   control consists of  *Vertical*  and  *Horizontal*  panning (See link:touch-gestures-overview.html#_Ref349131108[Panning Gestures]) in the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~timeslots.html[TimeSlots] area and the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area. The implementation also includes time slots drag-selection and appointments dragging operations.
+
+Consider the following results in panning and using the drag-selection gesture:
+
+* If you move in the horizontal direction only you will start a drag-selection operation
+* Panning in the horizontal direction requires that you first move slightly in the vertical direction, to prevent the drag-selection operation while panning horizontally and then continue panning in the horizontal direction
+
+[[_Ref366599923]]
+
+=== WeekView touchable elements
+
+The following screenshot illustrates the  _WinWeekView™_   control’s touchable elements. The touch elements appear slightly larger in touch-enabled mode for easier user interaction.
+
+.Note:
+[NOTE]
+====
+The height of the header elements for the day ( link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofmonth~daynumber.html[DayNumber]) is not increased.
+====
+
+[options="header", cols="a,a"]
+|====
+|Element name|Image
+
+|SingleDayAppointment
+|image::images/Touch_WinSchedule_5.png[]
+
+|OwnerHeaderDropDownButton
+|image::images/Touch_WinSchedule_6.png[] 
+
+Code example to enabling the owner header drop-down button. 
+
+*In C#:*
+
+[source,csharp]
+---- 
+ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.DropDown; // Or ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.DropDownAndScrollbar; ---- 
+
+*In Visual Basic:*
+
+[source,vb]
+---- 
+ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.DropDown ' Or ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.DropDownAndScrollbar ---- 
+
+|OwnerHeaderScrollButton
+|image::images/Touch_WinSchedule_7.png[] 
+
+Code example to enabling the owner header scroll buttons. 
+
+*In C#:*
+
+[source,csharp]
+---- 
+ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.ScrollButtons; ---- 
+
+*In Visual Basic:*
+
+[source,vb]
+---- 
+ultraWeekView1.OwnerNavigationStyle = OwnerNavigationStyle.ScrollButtons ---- 
+
+|====
+
+[[_Ref366599935]]
+
+=== WeekView gesture support
+
+Gesture support for the  _WinWeekView_   control consists of  *Vertical*  and  *Horizontal*  panning (See link:touch-gestures-overview.html#_Ref349131108[Panning Gestures]). The implementation also includes drag-selection of days and the activities dragging operations.
+
+Consider the following results in panning and using the drag-selection gesture:
+
+* If you move in the horizontal direction only you will start a drag-selection operation
+* Panning in the horizontal direction requires that you first move slightly in the vertical direction, to prevent the drag-selection operation while panning horizontally and then continue panning in the horizontal direction
+
+[[_Ref366599947]]
+
+=== MonthViewSingle touchable elements
+
+The following screenshot illustrates the  _WinMonthViewSingle™_   control’s touchable element. The touch element appears slightly larger in touch-enabled mode for easier user interaction.
+
+.Note:
+[NOTE]
+====
+The height of the header elements for the day ( link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofmonth~daynumber.html[DayNumber]) is not increased.
+====
+
+[options="header", cols="a,a"]
+|====
+|Element name|Image
+
+|SingleDayAppointment
+|image::images/Touch_WinSchedule_8.png[]
+
+|====
+
+[[_Ref366599959]]
+
+=== MonthViewSingle gesture support
+
+Gesture support for the  _WinMonthViewSingle_   control consists of  *Vertical*  panning (See link:touch-gestures-overview.html#_Ref349131108[Panning Gestures]). The implementation also includes drag-selection of days and the activities dragging operations.
+
+Since the horizontal panning gesture is unsupported in  _WinMonthViewSingle_   control, a drag-selection operation starts if you move in the horizontal direction on an activity.
+
+[[_Ref366599969]]
+
+=== MonthViewMulti touchable elements
+
+The following screenshots illustrate the  _WinMonthViewMulti™_   control’s touchable elements. The touch elements appear slightly larger in touch-enabled mode for easier user interaction.
+
+[options="header", cols="a,a"]
+|====
+|Element name|Image
+
+|MonthHeader
+|image::images/Touch_WinSchedule_9.png[]
+
+|MonthScrollButton
+|image::images/Touch_WinSchedule_10.png[]
+
+|YearScrollButton
+|image::images/Touch_WinSchedule_11.png[]
+
+|DayOfWeekHeader
+|image::images/Touch_WinSchedule_12.png[]
+
+|WeekNumber
+|image::images/Touch_WinSchedule_13.png[]
+
+|Day
+|image::images/Touch_WinSchedule_14.png[]
+
+|MonthPopupItem
+|image::images/Touch_WinSchedule_15.png[]
+
+|====
+
+[[_Ref366599977]]
+
+=== MonthViewMulti gesture support
+
+Gesture support for the  _WinMonthViewMulti_   control consists of  *Vertical*  and  *Horizontal*  panning (See link:touch-gestures-overview.html#_Ref349131108[Panning Gestures]).
+
+The  _WinMonthViewMulti_   control does not support drag-selection operation.
+
+[[_Ref366600008]]
+
+=== CalendarCombo touchable elements
+
+The following screenshot illustrates the  _WinCalendarCombo™_   control’s touchable element. The touch element appears slightly larger in touch-enabled mode for easier user interaction.
+
+Except link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendarcombo.datebutton_members.html[DateButton] element,  _WinCalendarCombo_   exposes the same elements as the  _WinMonthViewMulti_   illustrated above.
+
+.Note:
+[NOTE]
+====
+The  _WinCalendarCombo_   control does not support gestures.
+====
+
+[options="header", cols="a,a"]
+|====
+|Element name|Image
+
+|DateButton
+|image::images/Touch_WinSchedule_16.png[]
+
+|====
+
+[[_Ref366600017]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wintouchprovider.html[Touch Support]
+|This section contains links to specific topics explaining the feature for developing touch-enabled applications using the Infragistics controls and components.
+
+| link:touch-gestures.html[Touch Gestures]
+|The topics in this group illustrate Infragistics touch-enabled control’s Touch Gestures.
+
+|====

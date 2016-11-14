@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-snaplines-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{AE1ECB39-FB96-440C-B1F1-1F4E516963D1}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= SnapLines
+
+Visual Studio 2005 (.NET Framework 2.0) introduces the concept of SnapLines to help lay out design-time controls. SnapLines are horizontal and vertical line segments dynamically created in the user interface. SnapLines help the programmer design the layout of the controls in containers. They appear when you are moving a selected control or controls near a position that would align with another control or set of controls. Your selection will "snap" to the suggested position as you move it past the other controls.
+
+SnapLines are generated dynamically and automatically as a control edge moves near another control or near the boundaries of its container. This can occur when a control is added from the toolbox, or moved or resized by mouse operations or keyboard commands. Controls typically have both horizontal and vertical SnapLines defined; for rectangular controls these typically extend from all four edges.
+
+SnapLines can be manipulated by the programmer by setting a control’s Margin and Padding properties. The SnapLine's distance from a container’s border is the sum of the control's Margin property and the container’s Padding property values.
+
+All Infragistics controls have SnapLines that align with the top, bottom, left, and right of the control. In addition, Text BaseLine SnapLines, that align with the bottom of a text element have been added to several controls. Visit Microsoft's web site for more information on link:http://msdn.microsoft.com/en-us/library/t5b5kc41.aspx[SnapLines]

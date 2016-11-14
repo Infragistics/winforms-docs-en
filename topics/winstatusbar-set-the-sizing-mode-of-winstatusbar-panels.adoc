@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-sizing-mode-of-winstatusbar-panels",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I"],
+    "guid": "{E23DEA4B-9C93-4E46-80BD-F4E67FF3A38B}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Sizing Mode of WinStatusBar Panels
+
+The  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~sizingmode.html[SizingMode]"]  property of a panel determines how the panel width is managed.
+
+== Setting up a Panel's SizingMode at Design-Time
+
+[start=1]
+. Add an UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Scroll the properties until you come to the SizingMode property. This property has four possible settings:
+
+** *Fixed:* The width of the Panel is based on the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~width.html[Width]"]  property. This is the default sizing mode for a panel.
+** *Automatic:* The panel adjusts the width based on the length of text and image on the panel.
+** *Spring:* The panel will use any space that is available. If it is the only panel then the panel will use the entire StatusBar. If all panels use this mode, for example 3 panels set to spring mode then each will be 1/3 of the width. If some of the panels are set to spring and others aren't then these spring panels will use the remaining space.
+
+For example, suppose on a StatusBar with a width of 900 pixels contains four panels. Panel 1 is fixed at 100, panel 2 is fixed at 300 and panels 3 and 4 are set to "spring". Panels 3 and 4 will divide up the remaining 500 pixels of space, and each will be 250\.
+** *Adjustable:* The width of the Panel is based on the Width property. The end-user may drag the right edge of the panel at run-time or double click on the right edge to autosize the panel based on its contents.
+
+image::images\WinStatusBar_Setting_the_Sizing_Mode_of_WinStatusBar_Panels_01.png[UltraStatusPanel collection editor]
+
+When the SizingMode property of a panel is set to Adjustable, the ResizeStyle property of the UltraStatusBar is used to determine whether the resizing is immediate, deferred or disabled. When this property is set to a value other then None, these panels may be resized by dragging the right edge of the panel.
+
+== Setting the ResizeStyle at Design-Time
+
+[start=1]
+. Select the UltraStatusBar in the designer and go to the Properties window.
+[start=2]
+. Scroll to the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~resizestyle.html[ResizeStyle]"]  property.
+[start=3]
+. This property has 3 possible settings:
+
+** *None:* The panels cannot be resized by the end-user.
+** *Deferred:* A vertical line is rendered during the drag operation indicating where the right edge of the panel will be upon release. The panel will not be resized until the mouse is released.
+** *Immediate:* The panel is resized during the drag operation so that the end user may see exactly how the panels will be arranged when the resize operation is complete.
+
+== Setting up a Panel's SizingMode and ResizeStyle at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Sizing_Mode_of_WinStatusBar_Panels_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.Button
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+	' Set the sizing mode for a panel
+	Me.UltraStatusBar1.Panels(0).SizingMode = PanelSizingMode.Automatic
+	' Set the ResizeStyle for the entire UltraStatusBar
+	Me.UltraStatusBar1.ResizeStyle = ResizeStyle.Immediate
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Sizing_Mode_of_WinStatusBar_Panels_Load(object sender, 
+  EventArgs e)
+{
+	// Create new panel
+	UltraStatusPanel myPanel= new UltraStatusPanel();
+	// Set the style for the panel
+	myPanel.Style=PanelStyle.Button;
+	// Add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+	// Set the sizing mode for a panel
+	this.ultraStatusBar1.Panels[0].SizingMode=PanelSizingMode.Automatic;
+	// Set the ResizeStyle for the entire UltraStatusBar
+	this.ultraStatusBar1.ResizeStyle=ResizeStyle.Immediate;
+}
+----

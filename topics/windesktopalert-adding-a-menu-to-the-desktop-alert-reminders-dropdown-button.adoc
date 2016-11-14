@@ -1,0 +1,285 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-adding-a-menu-to-the-desktop-alert-reminders-dropdown-button",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{3F439DF7-72E3-4CB0-8724-4BCECFF15392}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding a Menu to the Desktop Alert Reminder's Drop-down Button
+
+== Before You Begin
+
+This is the third topic in a three-part walkthrough designed to demonstrate several key WinDesktopAlert™ features working in a common scenario that you might encounter. For more information on this scenario, see link:windesktopalert-creating-a-desktop-alert-reminder-for-winschedule.html[Creating a Desktop Alert Reminder for WinSchedule]. If you have not completed the second topic, link:windesktopalert-adding-alert-buttons-to-the-desktop-alert-reminder.html[Adding Alert Buttons to the Desktop Alert Reminder], consider doing so now, as the current topic will build upon it.
+
+Most of the code in this topic involves creating the menu that you will display when the end user clicks the desktop alert window's drop-down button. Also, a good amount of code is used to handle the Click event for the tools on the menu. You can find more information about these tasks in the WinToolbarsManager™ section of the help. The tricky part of this topic is displaying the popup menu at the desired coordinates; and believe it or not, it will only take one line of code.
+
+When the end user clicks the drop-down button, the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~dropdownbuttonclicked_ev.html[DropDownButtonClicked] event fires. The link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.dropdownbuttonclickedeventargs.html[EventArgs] of this event include the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.dropdownbuttonclickedeventargs~buttonscreenrect.html[ButtonScreenRect] property. The ButtonScreenRect property returns the binding rectangle of the drop-down button. You want to position the popup menu so that its upper-left corner is at the drop-down button's lower-left corner. Therefore, when you call the link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool's] link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase~showpopup.html[ShowPopup] method, you can pass in a System.Drawing.Point and the popup menu's owner. In this case, the Point you will pass in will be ButtonScreenRect.Left and ButtonScreenRect.Bottom (the left and bottom coordinates intersect at the lower-left corner). The owner will be the desktop alert window, retrieved easily in the EventArgs through the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.desktopalerteventargsbase~windowinfo.html[WindowInfo.DesktopAlertWindow] property.
+
+== What You Will Accomplish
+
+You will learn how to display a menu when the end user clicks the drop-down button on the desktop alert window. You will create a menu using the PopupMenuTool of WinToolbarsManager. This menu will look similar to the Microsoft® Outlook® New Mail Desktop Alert. You will then handle WinToolbarManager's link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick] event for the menu items followed by WinDesktopAlert's DropDownButtonClicked event to display the menu.
+
+== Follow these Steps
+
+[start=1]
+. *Create the menu that will display when the end user clicks the drop-down button* .
+
+In the form's Load event, after the code to create the Alert buttons, add code that will create a PopupMenuTool. You will start out by creating the five ButtonTools that the menu will be comprised of. Once you've created and added these tools to link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolbarsManager's] link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools] collection, set the captions off their link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~sharedprops.html[SharedProps] so the end user actually sees something on the menu. Create the PopupMenuTool, add it to the Tools collection, and then add each of the ButtonTools to the PopupMenuTool's Tools collection. You will also be setting other properties for the tools on the menu such as the IsFirstInGroup property to add divider lines to the menu, and the link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~customizedimage.html[CustomizedImage] property to add the snooze and dismiss images as well.
+
+There are two more important tasks that you need to perform in the Load event. The first task involves adding handlers to two events. Add a handler to WinToolbarsManager's ToolClick event for when the end user clicks the ButtonTools on the menu, and another handler for WinDesktopAlert's DropDownButtonClicked event for when the end user clicks the drop-down button on the desktop alert window. However, in order for the end user to click the drop-down button, it needs to be visible. Set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~dropdownbuttonvisible.html[DropDownButtonVisible] property off UltraDesktopAlert to DefaultableBoolean.True (default resolves to False).
+
+*In Visual Basic:*
+
+----
+' Add five new tools to WinToolbarManager's tools collection.
+Me.UltraToolbarsManager1.Tools.AddRange(New ToolBase() _
+{ _
+	New ButtonTool("OpenAppointment"), _
+	New ButtonTool("SnoozeAppointment"), _
+	New ButtonTool("DismissAppointment"), _
+	New ButtonTool("DisableAlert"), _
+	New ButtonTool("DesktopAlertSettings") _
+})
+' Set captions for all the tools.
+Me.UltraToolbarsManager1.Tools("OpenAppointment").SharedProps.Caption = _
+  "Open Appointment"
+Me.UltraToolbarsManager1.Tools("SnoozeAppointment").SharedProps.Caption = _
+  "Snooze for 15 minutes"
+Me.UltraToolbarsManager1.Tools("DismissAppointment").SharedProps.Caption = _
+  "Dismiss Appointment"
+Me.UltraToolbarsManager1.Tools("DisableAlert").SharedProps.Caption = _
+  "Disable Reminder Desktop Alert"
+Me.UltraToolbarsManager1.Tools("DesktopAlertSettings").SharedProps.Caption = _
+  "Desktop Alert Settings..."
+' Create the popup menu.
+Dim menu As PopupMenuTool = New PopupMenuTool("PopupMenu1")
+' Add the popup menu to the tools collection.
+Me.UltraToolbarsManager1.Tools.Add(menu)
+' Add the menu items to the menu's tools collection.
+menu.Tools.AddToolRange(New String() _
+{ _
+	"OpenAppointment", _
+	"SnoozeAppointment", _
+	"DismissAppointment", _
+	"DisableAlert", _
+	"DesktopAlertSettings" _
+})
+' Add separator lines above the following menu items.
+menu.Tools("SnoozeAppointment").InstanceProps.IsFirstInGroup = True
+menu.Tools("DisableAlert").InstanceProps.IsFirstInGroup = True
+menu.Tools("DesktopAlertSettings").InstanceProps.IsFirstInGroup = True
+' Set images for Snooze and Dismiss tools.
+menu.Tools("SnoozeAppointment").CustomizedImage = _
+  New Bitmap(Application.StartupPath + "\Snooze.gif")
+menu.Tools("DismissAppointment").CustomizedImage = _
+  New Bitmap(Application.StartupPath + "\Dismiss.gif")
+' Add a handler for WinToolbarManager's ToolClick event.
+AddHandler UltraToolbarsManager1.ToolClick, _
+  AddressOf UltraToolbarsManager1_ToolClick
+' Add a handler for WinDesktopAlert's DropDownButtonClicked event.
+AddHandler UltraDesktopAlert1.DropDownButtonClicked, _
+  AddressOf UltraDesktopAlert1_DropDownButtonClicked
+' Make the Drop-down button visible so the end user can
+' click it and get the popup menu.
+Me.UltraDesktopAlert1.DropDownButtonVisible = DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+// Add five new tools to WinToolbarManager's tools collection.
+this.ultraToolbarsManager1.Tools.AddRange(new ToolBase[]
+{
+	new ButtonTool("OpenAppointment"),
+	new ButtonTool("SnoozeAppointment"),
+	new ButtonTool("DismissAppointment"),
+	new ButtonTool("DisableAlert"),
+	new ButtonTool("DesktopAlertSettings")
+});
+// Set captions for all the tools.
+this.ultraToolbarsManager1.Tools["OpenAppointment"].SharedProps.Caption =
+	"Open Appointment";
+this.ultraToolbarsManager1.Tools["SnoozeAppointment"].SharedProps.Caption =
+	"Snooze for 15 minutes";
+this.ultraToolbarsManager1.Tools["DismissAppointment"].SharedProps.Caption =
+	"Dismiss Appointment";
+this.ultraToolbarsManager1.Tools["DisableAlert"].SharedProps.Caption =
+	"Disable Reminder Desktop Alert";
+this.ultraToolbarsManager1.Tools["DesktopAlertSettings"].SharedProps.Caption =
+	"Desktop Alert Settings...";
+// Create the popup menu.
+PopupMenuTool menu = new PopupMenuTool("PopupMenu1");
+// Add the popup menu to the tools collection.
+this.ultraToolbarsManager1.Tools.Add(menu);
+// Add the menu items to the menu's tools collection.
+menu.Tools.AddToolRange(new string[]
+{
+	"OpenAppointment",
+	"SnoozeAppointment",
+	"DismissAppointment",
+	"DisableAlert",
+	"DesktopAlertSettings"
+});
+// Add separator lines above the following menu items.
+menu.Tools["SnoozeAppointment"].InstanceProps.IsFirstInGroup = true;
+menu.Tools["DisableAlert"].InstanceProps.IsFirstInGroup = true;
+menu.Tools["DesktopAlertSettings"].InstanceProps.IsFirstInGroup = true;
+// Set images for Snooze and Dismiss tools.
+menu.Tools["SnoozeAppointment"].CustomizedImage =
+  new Bitmap(Application.StartupPath + @"\Snooze.gif");
+menu.Tools["DismissAppointment"].CustomizedImage =
+  new Bitmap(Application.StartupPath + @"\Dismiss.gif");
+// Handle WinToolbarManager's ToolClick event.
+this.ultraToolbarsManager1.ToolClick +=
+  new ToolClickEventHandler(this.ultraToolbarsManager1_ToolClick);
+// Handle WinDesktopAlert's DropDownButtonClicked event.
+this.ultraDesktopAlert1.DropDownButtonClicked +=
+  new DropDownButtonClickedHandler(this.ultraDesktopAlert1_DropDownButtonClicked);
+// Make the Drop-down button visible so the end user can
+// click it and get the popup menu.
+this.ultraDesktopAlert1.DropDownButtonVisible = DefaultableBoolean.True;
+----
+
+[start=2]
+. *Handle WinToolbarsManager's ToolClick event* .
+
+Place the following code after the AlertButtonClicked event created in the previous walkthrough. This code handles WinToolbarsManager's ToolClick event, and determines the action that occurs when the end user clicks on each tool in the tools collection.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraToolbarsManager1_ToolClick _
+      (ByVal sender As System.Object, ByVal e As ToolClickEventArgs) _
+      Handles UltraToolbarsManager1.ToolClick
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraToolbarsManager1_ToolClick(object sender, ToolClickEventArgs e)
+{
+}
+----
+
+You can handle the ToolClick event easily with a switch/select statement as the EventArgs include a reference to each Tool in the tools collection. Before you can access the Appointment, you need to get a reference to it; add the following code to the ToolClick event.
+
+*In Visual Basic:*
+
+----
+' Get a reference to the Appointment object.
+Dim menuAppointment As Appointment = Me.windowInfo.Data
+----
+
+*In C#:*
+
+----
+// Get a reference to the Appointment object.
+Appointment menuAppointment = this.windowInfo.Data as Appointment;
+----
+
+Now that you have a reference to the Appointment, your tools can use that reference to perform tasks such as display the Appointment dialog box, and snooze or dismiss the Reminder. Add the following code to the ToolClick event.
+
+*In Visual Basic:*
+
+----
+Select Case e.Tool.Key
+	Case "OpenAppointment"
+		Me.UltraCalendarInfo1.DisplayAppointmentDialog(menuAppointment)
+	Case "SnoozeAppointment"
+		menuAppointment.Reminder.Snooze(SnoozeIntervalUnits.Minutes, 15)
+		MessageBox.Show("Reminder snoozed for 15 minutes")
+	Case "DismissAppointment"
+		menuAppointment.Reminder.Enabled = False
+		MessageBox.Show("You will not be reminded about " + _
+		  menuAppointment.Subject + " again.")
+	Case "DisableAlert"
+		MessageBox.Show("Reminder Desktop Alert disabled")
+	Case "DesktopAlertSettings"
+		MessageBox.Show("Desktop Alert Settings")
+	End Select
+----
+
+*In C#:*
+
+----
+switch (e.Tool.Key)
+{
+	case "OpenAppointment":
+		this.ultraCalendarInfo1.DisplayAppointmentDialog(menuAppointment);
+		break;
+	case "SnoozeAppointment":
+		menuAppointment.Reminder.Snooze(SnoozeIntervalUnits.Minutes, 15);
+		MessageBox.Show("Reminder snoozed for 15 minutes");
+		break;
+	case "DismissAppointment":
+		menuAppointment.Reminder.Enabled = false;
+		MessageBox.Show("You will not be reminded about " + 
+		menuAppointment.Subject +
+		" again.");
+		break;
+	case "DisableAlert":
+		// Add code to disable the desktop alert reminder in your application.
+		MessageBox.Show("Reminder Desktop Alert disabled");
+		break;
+	case "DesktopAlertSettings":
+		// Add code to open a dialog box with additional 
+		// desktop alert reminder settings.
+		MessageBox.Show("Desktop Alert Settings");
+		break;
+}
+----
+
+[start=3]
+. *Handle WinDesktopAlert's DropDownButtonClicked event* .
+
+Opening the popup menu when the end user clicks the drop-down button is an important task as well as a simple one. All you need to do is get a reference to the PopupMenuTool from the UltraToolbarsManager's Tools collection and then display it by calling its ShowPopup method. The ShowPopup method has six overloads; you will need to use the third overload for this scenario. This overload accepts a Point that determines where the upper-left corner of the popup menu will be positioned, and a control representing the popup menu's owner. You want to position the popup menu so its upper-left corner is at the same coordinates as the drop-down button's lower-left corner. The DropDownButtonClickedEventArgs class includes a ButtonScreenRect object which represents the binding rectangle of the drop-down button. When creating the new Point object to pass in as a parameter for the ShowPopup method, use the ButtonScreenRect.Left property for the horizontal coordinate and the ButtonScreenRect.Bottom property for the vertical coordinate.
+
+The next parameter to pass in to the ShowPopup method is the owner. Use the WindowInfo.DesktopAlertWindow property off the EventArgs for the owner. Performing this step is important; otherwise, the popup menu will always appear behind the desktop alert window.
+
+Add the following code after WinToolbarsManager's ToolClick event.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraDesktopAlert1_DropDownButtonClicked _
+  (ByVal sender As System.Object, ByVal e As DropDownButtonClickedEventArgs) _
+  Handles UltraDesktopAlert1.DropDownButtonClicked
+	' Get a reference to the popup menu.
+	Dim menu As PopupMenuTool = Me.UltraToolbarsManager1.Tools("PopupMenu1")
+	' Display the popup menu.
+	Menu.ShowPopup(New Point(e.ButtonScreenRect.Left, _
+	  e.ButtonScreenRect.Bottom), _
+	  e.WindowInfo.DesktopAlertWindow)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraDesktopAlert1_DropDownButtonClicked(object sender,
+  DropDownButtonClickedEventArgs e)
+{
+	// Get a reference to the popup menu.
+	PopupMenuTool menu =
+	  this.ultraToolbarsManager1.Tools["PopupMenu1"] as PopupMenuTool;
+	// Display the popup menu.
+	menu.ShowPopup(new Point(e.ButtonScreenRect.Left, 
+	  e.ButtonScreenRect.Bottom),
+	  e.WindowInfo.DesktopAlertWindow);	
+}
+----
+
+[start=4]
+. *Run the application*
+
+Run the application and click the Create Appointment button. This time, the desktop alert reminder shows with a drop-down arrow to the left of the Close button in the upper-right corner of the window. Clicking this drop-down button will display the popup menu. Experiment a little by clicking the different menu items. Notice that the popup menu doesn't display its upper-left corner at the lower-left corner of the drop-down button. WinDesktopAlert automatically repositions the popup menu because there is not enough space to display the entire menu. Drag the desktop alert window towards the center of your screen and click the drop-down button again. This time, the popup menu displays at the coordinate you expect.
+
+image::images/WinDesktopAlert_Adding_a_Menu_to_the_Desktop_Alert_Reminders_Dropdown_Button_01.png[adding a menu to the ultradesktopalert reminder's drop-down button]

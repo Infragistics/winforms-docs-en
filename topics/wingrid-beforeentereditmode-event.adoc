@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-beforeentereditmode-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{C076E553-E54E-4CB6-898D-6C58EF64A2C1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= BeforeEnterEditMode Event
+
+Whenever a WinGrid™ cell receives focus and editing is enabled, the moment right before the Cell enters into Edit Mode, the BeforeEnterEditMode event fires. This event can be cancelled if certain conditions are not met. For example, in this event, you can check for special conditions within sibling cells or from other information stores in the back end and if these conditions are not met, you can cancel the event from firing by setting the event argument e.Cancel = true. If the Cell never completes this event, it will never allow anyone to enter data into the Cell.
+
+The following example code shows how we handle the BeforeEnterEditMode event to check if an Employee deserves a bonus. The check is performed by using a Business Logic Class that accepts an Employee object that is referenced by the Active Grid Row. If the check fails by returning false, we cancel the event and the end user cannot enter or change any values in the Bonus Column.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_BeforeEnterEditMode( _
+   ByVal sender As System.Object, _
+   ByVal e As System.ComponentModel.CancelEventArgs) _
+   Handles UltraGrid1.BeforeEnterEditMode
+   If Me.UltraGrid1.ActiveCell Is Nothing Then Return
+   'Perform this action only on the "Bonus" column:
+   If Me.UltraGrid1.ActiveCell.Column.Key <> "Bonus" Then Return
+   'Extract the Employee object from the Current Row:
+   Dim theEmployee As Employee = _
+      DirectCast(Me.UltraGrid1.ActiveCell.Row.ListObject, Employee)
+   'Using custom business logic, determine if we should
+   'allow the "Bonus" column to allow editing:
+   If BusinessLogicManager.EmpDeservesBonus(theEmployee) = False Then
+      e.Cancel = True
+   End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_BeforeEnterEditMode( 
+   object sender, CancelEventArgs e)
+{
+   if (this.ultraGrid1.ActiveCell == null) return;
+   //Perform this action only on the "Bonus" column:
+   if (this.ultraGrid1.ActiveCell.Column.Key != "Bonus") return;
+   //Extract the Employee object from the Current Row:
+   Employee theEmployee =
+      this.ultraGrid1.ActiveCell.Row.ListObject as Employee;
+   //Using custom business logic, determine if we should
+   //allow the "Bonus" column to allow editing:
+   if (BusinessLogicManager.EmpDeservesBonus(theEmployee) == false)
+   {
+      e.Cancel = true;
+   }
+}
+----

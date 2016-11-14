@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-the-activerow-of-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{05614E30-E90C-4BF7-8FBB-153028007076}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting the ActiveRow of WinGrid
+
+== Background
+
+Setting the ActiveRow of the WinGrid™ control will always move the row into the viewable area. The ActiveRow can be set using WinGrid methods or by setting the CurrencyManager.Position property to the appropriate row. This allows the developer to perform operations on the underlying data and set the ActiveRow of the grid from the results.
+
+== Questions
+
+* How do I set the ActiveRow of the grid through code?
+* If I know the row number of the underlying DataTable, how can I set this row as the ActiveRow of the grid?
+
+== Solution
+
+Set the ActiveRow of the grid by invoking the ActiveRow method of the UltraGridRow object. Set the ActiveRow of the grid with the CurrencyManager by setting the Position property.
+
+== Sample Project
+
+When the user presses "Move to Row 50 with ActiveRow" row 50 will display as the active row. When the user presses "Move to Row 75 with BindingContext" row 75 displays.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Setting_the_ActiveRow_of_WnGrid_01.png[setting the activerow in ultragrid]
+
+The UltraGrid Events region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event tells the grid to display all columns in the available grid width:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Fit columns to available grid width
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Fit Columns to available grid width
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+Button Events
+
+The Button Events region contains the following event handlers:
+
+* btnMoveActiveRow.Click - The code in the Move To Row 50 With ActiveRow Click event sets the 50th row as the active row:
+
+*In Visual Basic:*
+
+----
+Private Sub btnMoveActiveRow_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnMoveActiveRow.Click
+	' Set row 49 as ActiveRow inside the grid
+	Me.UltraGrid1.Rows(49).Activate()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnMoveActiveRow_Click(object sender, System.EventArgs e)
+{	
+	// Set row 49 as ActiveRow inside the grid
+	this.ultraGrid1.Rows[49].Activate();
+}	
+----
+
+* btnMoveWithBindingContext.Click - The code in the "Move To Row 75 With Binding Context" Click event sets the 75th row as the active row by setting the Position property of the Current Manager:
+
+*In Visual Basic:*
+
+----
+Private Sub btnMoveWithBindingContext_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnMoveWithBindingContext.Click
+	' Set row 74 as ActiveRow using the Currency Manager
+	Dim currencymanagerCustomers As CurrencyManager
+	currencymanagerCustomers = Me.BindingContext(Me.UltraGrid1.DataSource)
+	currencymanagerCustomers.Position = 74
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnMoveWithBindingContext_Click(object sender, System.EventArgs e)
+{
+	// Set row 74 as ActiveRow using the Currency Manager
+	CurrencyManager currencyManagerCustomers = 
+	  (CurrencyManager)this.BindingContext[this.ultraGrid1.DataSource];
+	currencyManagerCustomers.Position = 74;
+}
+----
+
+== Review
+
+This sample project shows two different methods of setting the row position to a specific row and having that row display in the viewable area of the WinGrid.

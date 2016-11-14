@@ -1,0 +1,514 @@
+﻿////
+
+|metadata|
+{
+    "name": "textdocument-library-resource-strings",
+    "controlName": [],
+    "tags": [],
+    "guid": "fb678909-bab6-4081-a11e-828ef166ab8d",  
+    "buildFlags": [],
+    "createdOn": "2012-08-30T16:53:54.3426903Z"
+}
+|metadata|
+////
+
+= TextDocument Library Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|ClassificationType_Comment_Description
+|A ClassificationType for a comment
+
+|ClassificationType_Comment_Name
+|Comment
+
+|ClassificationType_CompilerError_Description
+|A ClassificationType for a compiler error
+
+|ClassificationType_CompilerError_Name
+|CompilerError
+
+|ClassificationType_DateLiteral_Description
+|A ClassificationType for a date literal
+
+|ClassificationType_DateLiteral_Name
+|DateLiteral
+
+|ClassificationType_DocCommentStart_Description
+|A ClassificationType for the element that represents the start of a documentation comment
+
+|ClassificationType_DocCommentStart_Name
+|DocCommentStart
+
+|ClassificationType_DocCommentTag_Description
+|A ClassificationType for an XML tag in a documentation comment
+
+|ClassificationType_DocCommentTag_Name
+|DocCommentTag
+
+|ClassificationType_DocCommentText_Description
+|A ClassificationType for text inside a documentation comment
+
+|ClassificationType_DocCommentText_Name
+|DocCommentText
+
+|ClassificationType_Identifier_Description
+|A ClassificationType for an identifier
+
+|ClassificationType_Identifier_Name
+|Identifier
+
+|ClassificationType_Keyword_Description
+|A ClassificationType for a keyword
+
+|ClassificationType_Keyword_Name
+|Keyword
+
+|ClassificationType_Number_Description
+|A ClassificationType for a number
+
+|ClassificationType_Number_Name
+|Number
+
+|ClassificationType_NumericLiteral_Description
+|A ClassificationType for a numeric literal
+
+|ClassificationType_NumericLiteral_Name
+|NumericLiteral
+
+|ClassificationType_Operator_Description
+|A ClassificationType for an operator
+
+|ClassificationType_Operator_Name
+|Operator
+
+|ClassificationType_PreprocessorDirective_Description
+|A ClassificationType for a preprocessor directive
+
+|ClassificationType_PreprocessorDirective_Name
+|PreprocessorDirective
+
+|ClassificationType_PreprocessorDirectiveText_Description
+|A ClassificationType for preprocessor directive text
+
+|ClassificationType_PreprocessorDirectiveText_Name
+|PreprocessorDirectiveText
+
+|ClassificationType_Punctuation_Description
+|A ClassificationType for punctuation
+
+|ClassificationType_Punctuation_Name
+|Punctuation
+
+|ClassificationType_StringLiteral_Description
+|A ClassificationType for a string literal
+
+|ClassificationType_StringLiteral_Name
+|StringLiteral
+
+|ClassificationType_SyntaxError_Description
+|A ClassificationType for a syntax error
+
+|ClassificationType_SyntaxError_Name
+|SyntaxError
+
+|ClassificationType_Undefined_Description
+|A ClassificationType for an undefined language element
+
+|ClassificationType_Undefined_Name
+|Undefined
+
+|ClassificationType_UndefinedError_Description
+|A ClassificationType for an undefined error
+
+|ClassificationType_UndefinedError_Name
+|UndefinedError
+
+|ClassificationType_Unrecognized_Description
+|A ClassificationType for an unrecognized language element
+
+|ClassificationType_Unrecognized_Name
+|Unrecognized
+
+|ClassificationType_Warning_Description
+|A ClassificationType for a warning
+
+|ClassificationType_Warning_Name
+|Warning
+
+|ClassificationType_Whitespace_Description
+|A ClassificationType for whitespace
+
+|ClassificationType_Whitespace_Name
+|Whitespace
+
+|Collection_Exception_ParseInProgress
+|The contents of this collection cannot be modified when the Parse method of the associated Grammar is in progress.
+
+|CollectionIsReadOnly
+|The collection can not be modified, it is read-only.
+
+|CollectionReadOnly
+|The collection is read only.
+
+|DocumentIsBeingUpdated
+|The document is in the process of being changed. It can not be modifed until the change is completed.
+
+|DocumentIsReadOnly
+|The document is marked read-only.
+
+|EbnfParseError_Description_DuplicateAssignmentSymbol
+|Duplicate assignment symbol ({0}).
+
+|EbnfParseError_Description_DuplicateIdentifier
+|The identifier '{0}' is currently in use by another statement.
+
+|EbnfParseError_Description_DuplicateStartSymbol
+|Duplicate StartSymbol; see '{0}'.
+
+|EbnfParseError_Description_EmptyGrammarDefinition
+|The grammar definition is empty.
+
+|EbnfParseError_Description_EmptyTerminalSymbolValue
+|A terminal symbol's value was specified as an empty string.
+
+|EbnfParseError_Description_GroupingSymbolMismatch
+|Grouping symbol mismatch; missing {0}.
+
+|EbnfParseError_Description_IncompleteStatement
+|No expression was found on the right-hand side of the statement.
+
+|EbnfParseError_Description_InvalidAssignment
+|The left-hand side of the statement contains content that is not valid for an assignment.
+
+|EbnfParseError_Description_InvalidConjunctionRuleDescendant
+|A Conjunction or Negation rule has one or more invalid descendant rules.
+
+|EbnfParseError_Description_InvalidDeclaration
+|The value '{0}' is not valid at this location.
+
+|EbnfParseError_Description_InvalidOperator
+|The operator '{0}' is not valid at this location.
+
+|EbnfParseError_Description_InvalidPropertyValue
+|The value '{0}' could not be parsed into a valid value.
+
+|EbnfParseError_Description_InvalidRegularExpression
+|The value '{0}' is not a valid regular expression pattern.
+
+|EbnfParseError_Description_InvalidTerminalDeclaration
+|The terminal symbol declaration could not be parsed into a valid statement.
+
+|EbnfParseError_Description_InvalidXml
+|Invalid XML: {0}
+
+|EbnfParseError_Description_LexerStateAlreadySet
+|The TerminalSymbol '{0}' is already assigned as the starting symbol for LexerState '{1}'.
+
+|EbnfParseError_Description_LineCol
+|Error at line {0}, column {1}.
+
+|EbnfParseError_Description_MissingAssignmentSymbol
+|Expected assignment symbol ({0}).
+
+|EbnfParseError_Description_MissingDeclaration
+|The left-hand side of the statement cannot be parsed into a valid identifier.
+
+|EbnfParseError_Description_MissingEndOfStatement
+|Expected end of statement symbol ({0}).
+
+|EbnfParseError_Description_MissingName
+|No value was specified for the 'Name' property.
+
+|EbnfParseError_Description_MissingOperand
+|Expected operand.
+
+|EbnfParseError_Description_MissingOperator
+|Missing operator near value '{0}'.
+
+|EbnfParseError_Description_MissingValue
+|The XML tag is missing a value.
+
+|EbnfParseError_Description_NegationRuleIsFirstDescendant
+|A Negation rule appears as the first sub-rule.
+
+|EbnfParseError_Description_OpenLiteralString
+|The value '{0}' begins with a quote symbol but does not end with one.
+
+|EbnfParseError_Description_StartSymbolIsReferenced
+|'{0}' cannot be designated as the StartSymbol because it is referenced by another rule.
+
+|EbnfParseError_Description_UnbalancedXmlTag
+|The XML tag '{0}' has no matching tag.
+
+|EbnfParseError_Description_UndeclaredReference
+|The symbol reference '{0}' was never declared.
+
+|EbnfParseError_Description_UnrecognizedContent
+|The statement contains content which is not recognizable.
+
+|EbnfParseError_Description_UnrecognizedXmlTag
+|The name of the XML tag '{0}' is not recognized by the special sequence in which it appears.
+
+|EbnfParserNotationDefinition_CannotModify
+|This instance cannot be modified.
+
+|EbnfParserNotationDefinition_DuplicatePropertyValue
+|The {0} property cannot be set to the value '{1}' because the {2} property returns the same value.
+
+|EmptyEnumerator
+|Empty enumerator
+
+|EnumeratorDisposed
+|Enumerator is already disposed.
+
+|EnumeratorNotinitialized
+|The enumerator has not been initiailized or has reached its end.
+
+|EnumeratorPassedEnd
+|Enumerator not initialzied or has passed end of items.
+
+|EOS_DisplayText
+|EndOfStream ($)
+
+|ErrorAlias_Argument
+|Argument
+
+|ErrorAlias_Attribute
+|attribute
+
+|ErrorAlias_ClassDeclaration
+|Class declaration
+
+|ErrorAlias_Expression
+|Expression
+
+|ErrorAlias_GetOrSet
+|get or set
+
+|ErrorAlias_Identifier
+|Identifier
+
+|ErrorAlias_LockStatement
+|lock
+
+|ErrorAlias_NamespaceDeclaration
+|Namespace declaration
+
+|ErrorAlias_NumericType
+|Numeric type
+
+|ErrorAlias_RankSpecifier
+|array dimension
+
+|ErrorAlias_Statement
+|Statement
+
+|ErrorAlias_StringLiteral
+|String or character literal
+
+|ErrorAlias_Type
+|Type
+
+|ErrorAlias_TypeArgumentList
+|Generic argument list
+
+|ErrorAlias_UsingDirective
+|Using
+
+|ErrorAlias_UsingStatement
+|using
+
+|ErrorAlias_Void
+|void
+
+|Exception_ParseInProgress
+|The {0} property cannot be modified when the Parse method of the associated Grammar is in progress.
+
+|Grammar_EndOfStreamSymbol_Description
+|end of stream
+
+|Grammar_Exception_CannotModify
+|Changes cannot be made to the grammar because it has been compiled.
+
+|Grammar_Exception_NoStartSymbol
+|The input string cannot be analyzed because the StartSymbol property is null. Assign a NonTerminalSymbol to the StartSymbol property to define the starting point for syntax analysis.
+
+|Grammar_Exception_ParseActionConflicts
+|The grammar could not be successfully compiled; {0} parse action conflicts were encountered.
+
+|Grammar_Exception_StartSymbolIsReferenced
+|The NonTerminalSymbol '{0}' is not a valid StartSymbol because it is referenced by at least one other NonTerminalSymbol. The StartSymbol must not be referenced by any other NonTerminalSymbol.
+
+|Grammar_Import_InvalidFile
+|The specified file '{0}' does not contain text.
+
+|Grammar_Import_UnsupportedFormat
+|The '{0}' format is currently not supported.
+
+|Grammar_NewLineSymbol_Description
+|newline
+
+|Grammar_WhitespaceSymbol_Description
+|whitespace
+
+|InvalidCircularReferenceException_Message
+|A circular reference exists between NonTerminalSymbol '{0}' and NonTerminalSymbol '{1}', but no TerminalSymbol appears between them. Circular references are supported, but NonTerminalSymbols which refer to each other must contain an intervening TerminalSymbol, or infinite recursion will occur when one of the rules are evaluated.
+
+|InvalidDescendantOfConjunctionException_Message
+|A {0} cannot exist in the descendant chain of a ConjunctionRule or NegationRule.
+
+|InvalidEnumValue
+|Invalid enum value for {0}
+
+|LALRParserDebugger_Exception_LanguageGuidMismatch
+|The {0} language has a different Guid than the one contained within the specified XML. A debugger cannot be created for a language unless the Guids match.
+
+|LanguageGenerationParams_Exception_IsLocked_Generate
+|The specified LanguageGenerationParams instance is currently in use.
+
+|LanguageGenerationParams_Exception_IsLocked_Property
+|The '{0}' property cannot be modified when a language generation operation is in progress.
+
+|Lexer_Exception_UnrecognizedContent
+|Unrecognized content at character position {0}; The value '{1}' could not be tokenized.
+
+|LexerState_Exception_TerminalSymbol
+|The TerminalSymbol '{0}' cannot be assigned as the first symbol for LexerState '{1}' because it already belongs to LexerState '{2}'. The first symbol for a LexerState must not be associated with any other LexerStates.
+
+|LexerStatesCollection_Exception_DuplicateKey
+|A LexerState with the name '{0}' already exists in this collection. All LexerStates must have unique names.
+
+|MissingTerminalRuleException_Message
+|The syntax rule '{0}' (descendant of NonTerminalSymbol '{1}') does not contain a terminal rule. All branches of a syntax rule tree must end with a leaf node which represents a terminal rule.
+
+|NegationRuleIsInvalidDescendantException_Message
+|A NegationRule cannot appear as the first sub-rule of rule {0}.
+
+|NonTerminalSymbolsCollection_Exception_DuplicateKey
+|A NonTerminalSymbol with the name '{0}' already exists in this collection. All NonTerminalSymbols must have unique names.
+
+|NotPredecessorOrSuccessorSnapshot
+|Target snapshot is not a predecessor or successor of the source snapshot
+
+|ObjectAlreadyDisposed
+|The object has already been disposed.
+
+|SnapshotsDontMatch
+|The snapshots don't match
+
+|SyntaxError_EndOfStream
+|end of file
+
+|SyntaxError_Expected
+|{0} expected
+
+|SyntaxError_Unexpected
+|Unexpected token '{0}'
+
+|SyntaxRulesCollection_Exception_CircularReference
+|The rule '{0}' cannot be added to this collection because it would create a circular reference. Circular references are supported, but only for NonTerminalRules.
+
+|SyntaxRulesCollection_Exception_RuleEqualsParent
+|The rule '{0}' cannot be added to this collection because it is an ancestor of this collection.
+
+|SyntaxValidationError_Description_Expected
+|Expected '{0}'.
+
+|SyntaxValidationError_Description_Invalid
+|Invalid token {0}at line {1}, column {2}.
+
+|SyntaxValidationError_Description_Missing
+|Missing token {0}at line {1}, column {2}.
+
+|SyntaxValidationError_Description_Missing_Expected_Literal
+|Expected '{0}'.
+
+|SyntaxValidationError_Description_Missing_Expected_Regex
+|Expected a value matching the pattern '{0}'.
+
+|SyntaxValidationError_Description_UnrecognizedContent
+|Error at line {0}, column {1}. Unrecognized content.
+
+|TerminalBoundary_Exception_DifferentGrammar
+|The terminal symbol '{0}' is associated with a different Grammar.
+
+|TerminalSymbol_BadRegex
+|The value '{0}' is not a valid regular expression pattern.
+
+|TerminalSymbol_Comparison_BadRegex
+|The current value of the Value property, '{0}', is not a valid regular expression pattern.
+
+|TerminalSymbol_Exception_CannotModifyWhitespaceSymbol
+|Properties of the TerminalSymbol instance returned from the WhitespaceSymbol property cannot be modified.
+
+|TerminalSymbol_Exception_LanguageElement
+|The LanguageElement property cannot be set to '{0}' because that value is reserved for the {1}.
+
+|TerminalSymbol_Exception_MatchingSymbol_CannotReferenceSelf
+|The value assigned to the MatchingSymbol property must reference a different TerminalSymbol.
+
+|TerminalSymbol_Exception_MatchingSymbol_DifferentGrammar
+|The value assigned to the MatchingSymbol property must belong to the same Grammar as the instance to which it is being assigned.
+
+|TerminalSymbolsCollection_Exception_DuplicateKey
+|A TerminalSymbol with the name '{0}' already exists in this collection. All TerminalSymbols must have unique names.
+
+|ThreadAccessError
+|The properties and methods of an instance of {0} can only be accessed from the thread it was create on.
+
+|Undo_AutoIndent
+|AutoIndent
+
+|Undo_DeleteText
+|Delete Text
+
+|Undo_DeleteTextDetailed
+|Delete '{0}'
+
+|Undo_InsertNewLine
+|Insert new line
+
+|Undo_InsertTab
+|Insert Tab
+
+|Undo_InsertText
+|Insert Text
+
+|Undo_InsertTextDetailed
+|Insert '{0}'
+
+|Undo_NewLineLiteral
+|New Line
+
+|Undo_RemoveLine
+|Remove line
+
+|Undo_RemoveTab
+|Remove Previous Tab
+
+|Undo_ReplaceAll
+|Replace all
+
+|Undo_ReplaceAllDetailed
+|Replace all '{0}' with '{1}'
+
+|Undo_ReplaceText
+|Replace Text
+
+|Undo_ReplaceTextDetailed
+|Replace '{0}' with '{1}'
+
+|Undo_TabLiteral
+|Tab
+
+|Whitespace_DisplayText
+|{0} (Whitespace)
+
+|====

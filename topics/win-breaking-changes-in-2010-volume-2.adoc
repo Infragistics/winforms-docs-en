@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2010-volume-2",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "b5a80cd6-9a0e-4b91-a257-d056a3f90fb8",  
+    "buildFlags": [],
+    "createdOn": "2010-06-04T16:54:46.3043368Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2010 Volume 2
+
+== WinControlContainerEditor™
+
+If the EditingControl used within a ControlContainerEditor component implements INotifyPropertyChanged interface, then WinControlContainerEditor listens for the notification from this interface instead of listening to the  _PropertyName_ Changed event (e.g. TextChanged, ValueChanged).
+
+== Run Time Dialogs for WinGrid™, WinToolbarsManager™ and PrintPreviewDialogs
+
+Our run-time dialogs have been restyled. To increase the styling capability of the run-time dialogs, other Infragistics Windows Forms controls have been utilized. As such, additional assembly references have been added to existing control assemblies. For example, the restyled run-time dialogs of the WinGrid now utilizes controls found within the Infragistics4.Win.Misc assembly. Therefore when a new UltraGrid control is dropped onto Form/UserControl in the designer, the required assembly references will automatically be added to the project. However, projects that are upgraded from previous versions may not contain the required references, and will therefore display the dialogs utilizing the inbox controls.
+
+For information about the restyled run-time dialogs, please see the link:whats-new-restyled-run-time-dialogs.html[Restyled Run-Time Dialogs] topic.

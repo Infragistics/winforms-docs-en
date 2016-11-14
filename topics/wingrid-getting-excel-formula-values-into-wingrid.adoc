@@ -1,0 +1,246 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-getting-excel-formula-values-into-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Data Presentation","Grids"],
+    "guid": "{612831F4-D0D1-439E-957A-D0567CBCBDF7}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Getting Excel Formula Values into WinGrid
+
+*Before You Begin*
+
+Sometimes you may want to import an Excel file into WinGrid™. Consider an Excel Worksheet that contains some data as well as a column that is calculated by Excel Formulas. This topic will show you how to get the calculated values of Excel Formulas into a WinGrid. Thanks to the Excel Formula Deserialization feature, we are able to get the resulting formula values.
+
+*What You Will Accomplish*
+
+In this walkthrough, you will import data from an excel Worksheet into a dynamically created DataTable and then bind it to WinGrid.
+
+*Follow These Steps*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to type out a member's fully qualified name. A reference to Infragistics.Documents.Excel and Infragistics.Win.UltraWinGrid dlls are required for this example code.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Excel
+Imports Infragistics.Win.UltraWinGrid
+Imports System.IO
+----
+
+*In C#:*
+
+----
+using Infragistics.Documents.Excel;
+using Infragistics.Win.UltraWinGrid;
+using System.IO;
+----
+
+[start=2]
+. Add the UltraGrid control from your Visual Studio® Toolbox to your Form.
+[start=3]
+. Add an Excel file named EMPLOYEE_METRICS.xls to the project. The GRAND_TOTAL column contains a Formula that multiplies the SALES and FREQUENCY columns. This is what the Excel file schema and data looks like:
+
+[cols="a,a,a,a"]
+|====
+|NAME
+|SALES
+|FREQUENCY
+|GRAND_TOTAL
+
+|Tom
+|456
+|2
+|912
+
+|Joe
+|443
+|1
+|443
+
+|Maria
+|323
+|2
+|646
+
+|Ken
+|456
+|3
+|1368
+
+|John
+|227
+|2
+|454
+
+|Reese
+|998
+|4
+|3992
+
+|====
+
+[start=4]
+. Add a Button control to your Form. This will be used to initiate the import action. Double click the Button control and place the following code inside its Click event handler:
+
+*In Visual Basic:*
+
+----
+Dim theFile As String = Application.StartupPath + "\EMPLOYEE_METRICS.xls"
+        If File.Exists(theFile) Then
+            'Load the Excel File into the Workbook Object 
+            Dim theWorkbook As Workbook = Workbook.Load(theFile)
+            'We will only work with the first Worksheet in the Workbook 
+            Dim theWorksheet As Worksheet = theWorkbook.Worksheets(0)
+            'We will place the Excel Data into this DataTable 
+            Dim theEmployeeData As New DataTable("Employee_Data")
+            Dim theRowCounter As Integer = 0
+            Dim theCellCounter As Integer = 0
+            'Iterate through all Worksheet rows 
+            For Each theWorksheetRow As WorksheetRow In theWorksheet.Rows
+                If theRowCounter = 0 Then
+                    'This is the Header Row. We are assuming that the Excel Worksheet's 
+                    'first row contains the schema of our soon to be data model. 
+                    'We will use this information to build our DataTable's schema 
+                    For Each theWorksheetCell As WorksheetCell In theWorksheetRow.Cells
+                        Dim theCellValue As String = theWorksheetCell.Value.ToString().Trim()
+                        If theCellValue <> String.Empty Then
+                            'This is the "Header Row" 
+                            'Create a DataColumn for each Column taken from the first Worksheet row 
+                            Dim theDataColumn As DataColumn = theEmployeeData.Columns.Add()
+                            'Since this is the Header Row, we use the cell value 
+                            'as the Column Name 
+                            theDataColumn.ColumnName = theCellValue
+                            'Here we skip to the actual data row (the row below the header row) and 
+                            'set the data column's data type to the type that exists in the corresponding 
+                            'cell in the actual data row of the Worksheet 
+                            theDataColumn.DataType = theWorksheet.Rows(theRowCounter + 1).Cells(theCellCounter).Value.[GetType]()
+                        Else
+                            'Exit the loop so that we do not 
+                            'traverse all empty Worksheet Cells. 
+                            Exit For
+                        End If
+                        theCellCounter += 1
+                    Next
+                Else
+                    'This is the actual data that will populate the data model 
+                    theCellCounter = 0
+                    'Add a new empty data row to our data model 
+                    Dim theDataRow As DataRow = theEmployeeData.NewRow()
+                    'iterate through each current Worksheet cell and populate the new data row. 
+                    For Each theWorksheetCell As WorksheetCell In theWorksheetRow.Cells
+                        Dim theValue As Object = theWorksheet.Rows(theRowCounter).Cells(theCellCounter).Value
+                        If theValue IsNot Nothing Then
+                            theDataRow(theCellCounter) = theValue
+                        Else
+                            'Exit the loop so that we do not 
+                            'traverse all empty Worksheet Cells. 
+                            Exit For
+                        End If
+                        theCellCounter += 1
+                    Next
+                    'Add the Data Row to the DataTable 
+                    theEmployeeData.Rows.Add(theDataRow)
+                End If
+                theRowCounter += 1
+            Next
+            'AcceptChanges so that these do not appear to be NEW rows 
+            theEmployeeData.AcceptChanges()
+            'Finally, bind the WinGrid to the DataTable 
+            Me.UltraGrid1.DataSource = theEmployeeData
+        End If
+----
+
+*In C#:*
+
+----
+string theFile = Application.StartupPath + @"\EMPLOYEE_METRICS.xls";
+            if (File.Exists(theFile))
+            {
+                //Load the Excel File into the Workbook Object
+                Workbook theWorkbook = Workbook.Load(theFile);
+                //We will only work with the first Worksheet in the Workbook
+                Worksheet theWorksheet = theWorkbook.Worksheets[0];
+                //We will place the Excel Data into this DataTable
+                DataTable theEmployeeData = new DataTable("Employee_Data");
+                int theRowCounter = 0; 
+                int theCellCounter = 0;
+                //Iterate through all Worksheet rows
+                foreach (WorksheetRow theWorksheetRow in theWorksheet.Rows)
+                {                    
+                    if (theRowCounter == 0) 
+                    {
+                        //This is the Header Row. We are assuming that the Excel Worksheet's 
+                        //first row contains the schema of our soon to be data model. 
+                        //We will use this information to build our DataTable's schema
+                        foreach (WorksheetCell theWorksheetCell in theWorksheetRow.Cells)
+                        {
+                            string theCellValue = theWorksheetCell.Value.ToString().Trim();
+                            if (theCellValue != string.Empty)
+                            {
+                                //This is the "Header Row"
+                                //Create a DataColumn for each Column taken from the first Worksheet row
+                                DataColumn theDataColumn = theEmployeeData.Columns.Add();
+                                //Since this is the Header Row, we use the cell value
+                                //as the Column Name
+                                theDataColumn.ColumnName = theCellValue;
+                                //Here we skip to the actual data row (the row below the header row) and
+                                //set the data column's data type to the type that exists in the corresponding
+                                //cell in the actual data row of the Worksheet
+                                theDataColumn.DataType = 
+                                    theWorksheet.Rows[theRowCounter + 1].Cells[theCellCounter].Value.GetType();
+                            }
+                            else
+                            {
+                                break; 
+                                //Exit the loop so that we do not
+                                //traverse all empty Worksheet Cells.
+                            }
+                            theCellCounter++;
+                        }
+                    }
+                    else
+                        //This is the actual data that will populate the data model
+                    {
+                        theCellCounter = 0;
+                        //Add a new empty data row to our data model        
+                        DataRow theDataRow = theEmployeeData.NewRow();
+                        //iterate through each current Worksheet cell and populate the new data row.
+                        foreach (WorksheetCell theWorksheetCell in theWorksheetRow.Cells)
+                        {
+                            object theValue = theWorksheet.Rows[theRowCounter].Cells[theCellCounter].Value;
+                            if (theValue != null)
+                            {
+                                theDataRow[theCellCounter] = theValue;                                
+                            }
+                            else
+                            {
+                                break;
+                                //Exit the loop so that we do not
+                                //traverse all empty Worksheet Cells.
+                            }
+                            theCellCounter++;                        
+                        }
+                        //Add the Data Row to the DataTable
+                        theEmployeeData.Rows.Add(theDataRow);                            
+                    }
+                    theRowCounter++;
+                }
+                //AcceptChanges so that these do not appear to be NEW rows
+                theEmployeeData.AcceptChanges();
+                //Finally, bind the WinGrid to the DataTable
+                this.ultraGrid1.DataSource = theEmployeeData;
+            }
+----
+
+[start=5]
+. Run the application. Click the button that initiates the import action. Following is an image of the WinGrid control that has been bound to the data that was loaded from the Excel Worksheet. The colored column represents the Worksheet’s calculated column whose actual values have been extracted.
+
+image::Images/Getting_Excel_Formula_Values_into_WinGrid.png[Getting Excel Formula values into UltraGrid]

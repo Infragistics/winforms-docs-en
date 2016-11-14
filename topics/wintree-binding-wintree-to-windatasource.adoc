@@ -1,0 +1,68 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-binding-wintree-to-windatasource",
+    "controlName": ["WinTree"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{FCC62AE9-BA48-4329-8A32-260062D9FC84}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding WinTree to WinDataSource
+
+In addition to the column support added to the WinTree™ with Infragistics Windows Forms 2005 Volume 2, the ability to bind the control was also added. You can either bind the root nodes collection, using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datasource.html[DataSource]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  properties, or you can use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection~setdatabinding.html[SetDataBindingMethod]"]  of a nodes collection to bind the contents of a specific node's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~nodes.html[Nodes]"]  collection. The WinTree may be bound to an IList or IBindingList datasource and depending upon the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~autogeneratecolumnsets.html[AutoGenerateColumnSets]"]  can automatically generate  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn.html[UltraTreeNodeColumn]"]  objects based on the datasource.
+
+In this topic we will look at binding the WinTree using the WinDataSource control. We will design a schema using the UltraDataSource's designer, then take a look at how the WinTree changes when using the schema from the UltraDataSource, in the Grid  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"] .
+
+[start=1]
+. Create a new Windows Application and open the form in design view. Add a WinTree to the Form from the toolbox, and set its Dock property to Fill.
+
+You will notice that by adding the WinTree to your project three references were added:
+
+** Infragistics.Shared.v{ProductVersion}
+** Infragistics.Win.UltraWinTree.v{ProductVersion}
+** Infragistics.Win.Win.v{ProductVersion}
+
+[start=2]
+. Add an UltraDataSource to your project. This will add an additional reference to the project:
+
+** Infragistics.Win.UltraDataSource.v{ProductVersion}
+
+[start=3]
+. Right click on ultraDataSource1 in the components tray, and select "UltraDataSource Designer" in the context menu. This will display a designer dialog similar to the one shown below.
+
+image::Images/WinTree_Binding_to_the_WinDataSource_01.png[windatasource designer]
+
+[start=4]
+. Select "Band 0" under the "DataBands" header and then either hit F2 or go to the property grid displayed on the right side of the dialog and select the Key property, then change the key to "Customers".
+
+image::Images/WinTree_Binding_to_the_WinDataSource_02.png[windatasource designer column editor]
+
+[start=5]
+. Under the "DataColumns" header, click on the add button to create columns. When you click the add button, the item is in edit mode and you may change the key of the new column. Add four columns to this band and assign them the following Keys "Last Name", "First Name", "Middle Name", and "Title".
+
+image::Images/WinTree_Binding_to_the_WinDataSource_03.png[windatasource designer datacolumn area]
+
+[start=6]
+. Once you have created the four columns, click on the "Data Entry" node in the tree on the left. A grid will be displayed on the right hand side where you can create the rows of data. Enter the values using the data from the screenshot below. Then click OK to close the dialog.
+
+image::Images/WinTree_Binding_to_the_WinDataSource_04.png[windatasource designer data entry area]
+
+[start=7]
+. To set this UltraDataSource schema as the data source for the WinTree, right click on the WinTree and choose "Properties". In the property grid, select the DataSource property and click the drop down arrow. Choose the UltraDataSource (e.g. ultraDataSource1) that you created. You may notice that the WinTree changes to show a single root node that represents the "Customers" band; this is referred to as a "band" node and is a special type of bound node and displays the name of the list in the underlying data source. You can click on the expansion indicator on this node to see the column structure that was created. Your tree should now look similar to the screenshot below.
+
+image::Images/WinTree_Binding_to_the_WinDataSource_05.png[showing windatasource bound to ultratree]
+
+[start=8]
+. If you now select the DataMember property in the properties grid, a drop down arrow appears and you can select the band you defined in the data source (e.g. "Customers"). If you do this you will notice that the band node is removed and the grid structure appears at the root level.
+
+image::Images/WinTree_Binding_to_the_WinDataSource_06.png[showing windatasource bound to ultratree with datamember set]
+
+[start=9]
+. Now that we have a basic structure, you may go back into the UltraDataSource designer and add child bands to create bound child nodes for the root customer nodes. For example, the image below was created by adding a child band named "Address" to the "Customers" band and then adding 4 columns to that new band - Address, City, State and Zip Code.
+
+image::Images/WinTree_Binding_to_the_WinDataSource_07.png[showing ultratree bound to windatasource with child band]

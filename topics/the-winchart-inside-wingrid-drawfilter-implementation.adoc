@@ -1,0 +1,483 @@
+﻿////
+
+|metadata|
+{
+    "name": "the-winchart-inside-wingrid-drawfilter-implementation",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting","Grids"],
+    "guid": "{E1CFB718-FA68-4F8D-BD1F-B37A1326F0B3}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:49:14Z"
+}
+|metadata|
+////
+
+= The WinChart inside WinGrid Draw Filter Implementation
+
+This topic will describe the design and construction of the ChartInsideGridCellDrawFilter class which is used to access the WinGrid™ internal rendering engine so that it can be customized to show a Chart in the cells of a specific Column. The majority of the work that has gone into this sample exists in this class. This is where specific WinGrid UIElements and their properties are accessed so that we can position a WinChart™ within the rectangle bounds of certain WinGrid cells.
+
+The following Imports / using statements have been referenced in the Draw Filter class in order to make coding simpler. A Draw Filter is simply a class that implements the IUIElementDrawFilter interface.
+
+*In Visual Basic:*
+
+----
+Imports System
+Imports System.Drawing
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+Imports Infragistics.Win.UltraWinChart
+Public Class ChartInsideGridCellDrawFilter
+	Implements IUIElementDrawFilter
+----
+
+*In C#:*
+
+----
+using System;
+using System.Drawing;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinChart;
+public class ChartInsideGridCellDrawFilter : IUIElementDrawFilter
+----
+
+The class contains a private reference to a WinChart and WinGrid control. This is required so that the Draw Filter can access properties on the WinGrid that it is attached to as well as the Chart that gets rendered in the specific WinGrid cells. A custom delegate is defined in order to help us create a custom event that will fire whenever a particular Chart is being initialized. This is going to behave similar to the WinGrid’s InitializeRow event.
+
+*In Visual Basic:*
+
+----
+#Region "Members"
+	'Reference to the Chart
+        Private _theChart As UltraChart
+        'Reference to the Grid	
+	Private _theGrid As UltraGrid 
+	Public Delegate Sub ChartInfoRequestedDelegate(ByVal Sender As Object, ByVal e As ChartInfoEventArgs)
+	Public Event ChartInfoRequested As ChartInfoRequestedDelegate
+#End Region
+----
+
+*In C#:*
+
+----
+#region Members
+         //Reference to the Chart
+         UltraChart _theChart;
+         //Reference to the Grid
+         private   UltraGrid _theGrid; 
+         public delegate void ChartInfoRequestedDelegate(object Sender, ChartInfoEventArgs e);
+         public event ChartInfoRequestedDelegate ChartInfoRequested;
+#endregion
+----
+
+By adding the WinGrid as a parameter to the DrawFilter’s only constructor, we are requiring the end developer to provide a reference to the actual WinGrid that will be used to display WinChart in one of its columns.
+
+In this constructor, we handle some initializations. A new instance of WinChart is created in the constructor. Note the technique that is used to get a reference to the Form that hosts the WinGrid control. We then add the WinChart control to the Form as you would with any dynamically created Windows Forms control.
+
+Next, we wire WinGrid’s MouseEnterElement event to an event handler. This is important as we will use this event to identify whenever the end user moves the mouse cursor into a cell that should display WinChart. In this event, we show and position the WinChart within the rectangle that represents the WinGrid cell that has been moused over.
+
+Finally, we wire WinChart’s MouseLeave event to an event handler. This event handler is used to hide the WinChart from view while at the same time saving its state while replacing the Chart with a non-interactive image snapshot. This is the model that was chosen in order to provide the best performance because there is only one WinChart instance that is reused across all of the Grid Rows and the other Charts are just plain images.
+
+*In Visual Basic:*
+
+----
+#Region "Constructor"
+	Public Sub New(ByVal theGrid As UltraGrid)
+		_theGrid = theGrid
+		_theChart = New UltraChart()
+		theGrid.FindForm().Controls.Add(_theChart)
+		AddHandler _theGrid.MouseEnterElement, AddressOf _theGrid_MouseEnterElement
+		AddHandler _theChart.MouseLeave, AddressOf _theChart_MouseLeave
+	End Sub
+#End Region
+----
+
+*In C#:*
+
+----
+#region Constructor
+public ChartInsideGridCellDrawFilter(UltraGrid theGrid)
+{
+	_theGrid = theGrid;
+	_theChart = new UltraChart();
+	theGrid.FindForm().Controls.Add(_theChart);
+	_theGrid.MouseEnterElement += new UIElementEventHandler(_theGrid_MouseEnterElement);
+	_theChart.MouseLeave += new EventHandler(_theChart_MouseLeave);
+}
+#endregion
+----
+
+One important bit of internal functionality that we need is the ability to get a reference to WinGrid’s current UltraGridCell. This is exposed as a property within the Draw Filter.
+
+Getting a reference to the DrawFilter’s internal WinChart is also accomplished by exposing it through a public property.
+
+*In Visual Basic:*
+
+----
+#Region "Props"
+	Private _currentCell As UltraGridCell = Nothing
+	Public Property CurrentCell() As UltraGridCell
+		'Reference to the Current WinGrid Cell:
+		Get
+			Return _currentCell
+		End Get
+		Set(ByVal value As UltraGridCell)
+			_currentCell = value
+		End Set
+	End Property
+	Public ReadOnly Property Chart() As UltraChart
+		'Reference to the Chart
+		Get
+			Return _theChart
+		End Get
+	End Property
+#End Region
+----
+
+*In C#:*
+
+----
+#region Props
+//Reference to the Current WinGrid Cell:
+private UltraGridCell _currentCell = null;
+public UltraGridCell CurrentCell
+{
+	get { return _currentCell; }
+	set { _currentCell = value; }
+}
+//Reference to the Chart
+public UltraChart Chart
+{
+	get { return _theChart; }
+}
+#endregion
+----
+
+WinGrid’s MouseEnterElement event is used to show the WinChart control within WinGrid’s Cells. Both the UIElement that was moused over as well as the WinGrid itself are passed to the ShowChartInCell method that is defined in the Draw Filter.
+
+*In Visual Basic:*
+
+----
+#Region "Grid Events"
+	Private Sub _theGrid_MouseEnterElement(ByVal sender As Object, ByVal e As Infragistics.Win.UIElementEventArgs)
+		Me.ShowChartInCell(e.Element, _theGrid)
+	End Sub
+#End Region
+----
+
+*In C#:*
+
+----
+#region Grid Events
+private void _theGrid_MouseEnterElement(object sender,
+	Infragistics.Win.UIElementEventArgs e)
+{
+	this.ShowChartInCell(e.Element, _theGrid);
+}
+#endregion
+----
+
+The WinChart’s MouseLeave event is used to persist its state settings for later retrieval. In this event handler, we are using a helper function that accepts the visible WinChart control and simply copies some important Chart properties into a ChartLayout object. The ChartLayout object is then placed in the Draw Filter’s CurrentCell property. The WinChart is immediately hidden from view by setting its Visible property to False.
+
+*In Visual Basic:*
+
+----
+#Region "Chart Events"
+	Private Sub _theChart_MouseLeave(ByVal sender As Object, ByVal e As EventArgs)
+		Me.CurrentCell.Tag = HelperFunctions.ChartToLayout(Me.Chart)
+		Me.Chart.Visible = False
+	End Sub
+#End Region
+----
+
+*In C#:*
+
+----
+#region Chart Events
+private void _theChart_MouseLeave(object sender, EventArgs e)
+{
+	this.CurrentCell.Tag = HelperFunctions.ChartToLayout(this.Chart);
+	this.Chart.Visible = false;
+}
+#endregion
+----
+
+The ShowChartInCell method is important in this application. Keep in mind that it is called every single time the end user’s mouse cursor enters a WinGrid UIElement. Whenever this method is called, we immediately test if the UIElement that was entered is of type EditorWithTextDisplayUIElement. If it is not, we do nothing and exit the method. If it is of that type, then it is highly likely that we have entered a UIElement that could be associated with a WinGridCell. Since a UIElement is the painted graphical representation of an actual control’s object model (e.g., UltraGridCell, UltraGridColumn), we want to get that underlying object by using the UIElement’s GetContext method. After the GetContext method call, we most definitely want to test if the call was successful. If it is not successful, the UltraGridCell reference will be null. This could happen if we called the GetContext method from an EditorWithTextDisplayUIElement that is NOT associated with an UltraGridCell. If successful, we will have a reference to an actual UltraGridCell.
+
+Since we just do not want to place a Chart in any cell, we want to test if this cell is part of our unbound column. We test this by checking the Column Key. In this case, the Column Key is set to “CHART”.
+
+In order to position WinChart over a particular UIElement, we will need a rectangle. We will rely on the rectangle’s width, height, and location. In the code that will shortly follow, you will notice that one of two possible rectangles will be used to position WinChart. In this logic, we are simply checking if the UltraGridCell’s UIElement is somehow being clipped by other UIElements such as a scrollbar that may appear if the Grid is being resized. If it is being clipped, then we will use the “clipped” rectangle. If it is not being clipped, then we will just use the UIElement’s standard rectangle. UIElements have a Rectangle property which normally does not change and they also have a Clipped Rectangle property which when compared against the regular rectangle can indicate if another UIElement is clipping the current UIElement. If we do not do this, WinChart will render above whatever UIElement is clipping the UltraGridCell which will be undesirable.
+
+Once we determine which rectangle to use, we then use the WinChart SetLocation method to size and position it over the UltraGridCell. We then retrieve our previously ChartLayout object that is stored in the CurrentCell’s Tag property and assign its property values to WinChart through the use of a helper method called LayoutToChart. We then make the chart visible, bring it to the front and then set focus to it. This causes the chart underneath the end user’s mouse cursor to come alive and be ready for any interaction.
+
+*In Visual Basic:*
+
+----
+#Region "Methods"
+Private Sub ShowChartInCell(ByVal theUIElement As UIElement, ByVal theGrid As UltraGrid)
+	'Only target the following element type:
+	If TypeOf theUIElement Is EditorWithTextDisplayTextUIElement Then
+		'Get the WinGrid cell associated with this UIElement
+		Dim theCell As UltraGridCell = TryCast(theUIElement.GetContext(GetType(UltraGridCell)), UltraGridCell)
+		'Make sure that we are on the "CHART" cell
+		'that is supposed to receive the Chart component:
+		If theCell IsNot Nothing AndAlso theCell.Column.Key = "CHART" AndAlso theCell.Tag IsNot Nothing Then
+			Me.CurrentCell = theCell
+			Dim r As Rectangle = theUIElement.Rect
+			'Determines if the clipped rectangle should be used
+			If theUIElement.ClipRect.Width < theUIElement.Rect.Width Then
+				r = theUIElement.ClipRect
+			End If
+			'Reference the Current Cell
+			'We use the SetBounds method of the Chart to
+			'position and size it directly over the
+			'UIElement that represents the Current Cell
+			Me.Chart.SetBounds(r.Location.X + theGrid.Location.X, r.Location.Y + theGrid.Location.Y, r.Width, r.Height)
+			'Get the ChartLayout object that is stored
+			'inside the CurrentCell's Tag and apply
+			'its property values to the Chart
+			HelperFunctions.LayoutToChart(TryCast(Me.CurrentCell.Tag, ChartLayout), Me.Chart)
+			'Show the Chart, Bring it to the Front:
+			Me.Chart.Visible = True
+			Me.Chart.BringToFront()
+			Me.Chart.Focus()
+			Me.Chart.Refresh()
+		End If
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+#region Methods
+private void ShowChartInCell(
+	UIElement theUIElement, UltraGrid theGrid)
+{
+	//Only target the following element type:
+	if (theUIElement is EditorWithTextDisplayTextUIElement)
+	{
+		//Get the WinGrid cell associated with this UIElement
+		UltraGridCell theCell =theUIElement.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+		//Make sure that we are on the "CHART" cell
+		//that is supposed to receive the Chart component:
+		if (theCell != null &&
+			theCell.Column.Key == "CHART" &&
+			theCell.Tag != null)
+		{
+			this.CurrentCell = theCell; //Reference the Current Cell
+			Rectangle r = theUIElement.Rect;
+			//Determines if the clipped rectangle should be used
+			if (theUIElement.ClipRect.Width < theUIElement.Rect.Width)
+			{
+				r = theUIElement.ClipRect;
+			}
+			//We use the SetBounds method of the Chart to
+			//position and size it directly over the
+			//UIElement that represents the Current Cell
+			this.Chart.SetBounds(
+				r.Location.X + theGrid.Location.X,
+				r.Location.Y + theGrid.Location.Y,
+				r.Width,
+				r.Height);
+			//Get the ChartLayout object that is stored
+			//inside the CurrentCell's Tag and apply
+			//its property values to the Chart
+			HelperFunctions.LayoutToChart(
+				this.CurrentCell.Tag as ChartLayout,
+				this.Chart);
+			//Show the Chart, Bring it to the Front:
+			this.Chart.Visible = true;
+			this.Chart.BringToFront();
+			this.Chart.Focus();
+			this.Chart.Refresh();
+		}
+	}
+}
+----
+
+This method is used to raise the ChartInfoRequested event. This method is called whenever we want to raise an event and pass the custom ChartInfoEventArgs to the end developer so that they can provide specific data to the WinChart control that is associated with a particular Grid Row. The ChartInfoEventArgs contains the current WinGrid Row context as well as the WinChart that exists and represents that Row. An end developer can get information from that Row and then retrieve related data and assign it to the Chart. Other properties can be set on WinChart in the event handler to further customize it and make it unique for the Row.
+
+*In Visual Basic:*
+
+----
+Protected Sub onChartInfoRequested(ByVal e As ChartInfoEventArgs)
+	RaiseEvent ChartInfoRequested(Me, e)
+End Sub
+----
+
+*In C#:*
+
+----
+protected void onChartInfoRequested(ChartInfoEventArgs e)
+{
+	if (ChartInfoRequested != null)
+	{
+		ChartInfoRequested(this, e);
+	}
+	else
+	{
+		throw new ApplicationException(
+			"The ChartInfoRequested event must be handled otherwise the Chart will not render");
+	}
+}
+#endregion
+----
+
+The Draw Filter’s GetPhasesToFilter method is used by WinGrid to determine at exactly which phased of the rendering cycle to actually call upon the custom logic employed by the Draw Filter. It is during the BeforeDrawBackColor phase that we want to take over and render the Chart inside the specific WinGrid cells.
+
+*In Visual Basic:*
+
+----
+#Region "IUIElementDrawFilter Members"
+Public Function GetPhasesToFilter(ByRef drawParams As UIElementDrawParams) As Infragistics.Win.DrawPhase Implements IUIElementDrawFilter.GetPhasesToFilter
+	Return DrawPhase.BeforeDrawBackColor
+	'we will want to take over the phase
+	'that happens when it is time to draw an element's backColor.
+End Function
+----
+
+*In C#:*
+
+----
+#region IUIElementDrawFilter Members
+public Infragistics.Win.DrawPhase GetPhasesToFilter(
+	ref UIElementDrawParams drawParams)
+{
+	return DrawPhase.BeforeDrawBackColor; //we will want to take over the phase
+	//that happens when it is time to draw an element's backColor.
+}
+----
+
+In this Draw Filter implementation, the DrawElement method is called during the BeforeDrawBackColor phase. The DrawElement method contains the implementation logic of showing the Chart.
+
+The retVal Boolean variable is important in this method; if the method returns True, then the WinGrid will use the logic defined in the DrawElement method to render the UIElements that we have altered. If we return False, then any code and logic used to alter the UIElements will be completely ignored.
+
+Next we only want to target UIElements of type EditorWithTextDisplayTextUIElement; Anything is ignored because typically an UltraGridCell is attached to an EditorWithTextDisplayTextUIElement. In other words, we do not want to target any Column Header or Row Selector UIElements as they are not related to specific Grid Cells.
+
+If we get to the UIElement that we are looking for, we try to get a reference to the UltraGridCell that it is attached to. This is accomplished through the UIElement GetContext method. This method simply attempts to return the underlying WinGrid objects that may be associated with a particular UIElement. In this case, we are looking for an UltraGridCell.
+
+Once we get the Cell, we want to ensure that it belongs to the Column that is intended to show the Chart. In other words, this WinGrid has an additional unbound Column with a key “CHART” whose purpose is to display one Chart per WinGrid Row.
+
+We then attempt to extract a ChartLayout object from the Cell’s Tag property. If this is the first time we are accessing this property, it will be null. This means that we need to fire the ChartInfoRequested event so that the end Developer can provide this information such as the Chart’s Data Source and other Property Settings. The ChartLayout object is then created and populated and finally stored in the Cell’s Tag for later retrieval.
+
+We need to establish a rectangle that represents the boundaries and position of the Chart. The UIElement itself provides us with a Rect property with this information, however, it also provides us with a ClippedRect property that provides us with a rectangle that represents a smaller boundary of the original UIElement. The ClippedRect can be smaller only if another UIElement is being drawn over the current UIElement, thus “clipping” it from view. An example of this would be a ScrollBar UIElement rendering over a series of Cells. The Cells have a particular standard rectangle that represents their boundary, however the ClippedRect represents the “ViewPort” or smaller visible region that we can see. We do some simple math in order to decide which rectangle to use. If the ClippedRect width or height is smaller than the Rect Width and Height, we take the ClippedRect otherwise we just use Rect. If we do not employ this logic, an adverse side effect of this application would be having the Chart rendering over UIElements that clip the Cell. In other words, you can expect to see the Chart rendering over elements such as Scrollbars.
+
+We then get a reference to the ChartLayout object from the Cell Tag property and if it is the first time or subsequent time we are accessing this object, we now have some property settings that will be applied to the Chart. Data and property settings are provided to the Chart and the Chart is then positioned carefully in the rectangle that we just chose. In essence, we are hovering the Chart over the Cell’s rectangle so that it looks like it is part of the WinGrid.
+
+*In Visual Basic:*
+
+----
+Public Function DrawElement(ByVal drawPhase As Infragistics.Win.DrawPhase, ByRef drawParams As UIElementDrawParams) As Boolean Implements IUIElementDrawFilter.DrawElement
+	'TRUE: I will handle the drawing myself; 
+	'FALSE: let the control draw the element
+	Dim retVal As Boolean = False
+	'Only target the following element type:
+	If TypeOf drawParams.Element Is EditorWithTextDisplayTextUIElement Then
+		Dim g As Graphics = drawParams.Graphics
+		'Get the WinGrid cell associated with this UIElement
+		Dim theGridCell As UltraGridCell = TryCast(drawParams.Element.GetContext(GetType(UltraGridCell)), UltraGridCell)
+		'Make sure that we are on the CHART cell / column
+		If theGridCell IsNot Nothing AndAlso theGridCell.Column.Key = "CHART" Then
+			Dim theChartLayout As ChartLayout = TryCast(theGridCell.Tag, ChartLayout)
+			'Look at the Cell's Tag for a chart image if it exists
+			If theChartLayout Is Nothing Then
+				'Create a new EventArg 
+				Dim e As New ChartInfoEventArgs(_theChart, theGridCell.Row)
+				'Fire the Chart Info Requested event, exposing
+				'the Chart and current Grid Row to the
+				'developer
+				Me.onChartInfoRequested(e)
+				'Position and set where the Chart will show
+				'which should be in the same place as the
+				'current Cell's UIElement Rectangle
+				_theChart.SetBounds(drawParams.Element.Rect.X, drawParams.Element.Rect.Y, drawParams.Element.Rect.Width, drawParams.Element.Rect.Height)
+				_theChart.Data.DataBind()
+				'Copy the Chart's properties into the Layout object
+				'so that we can restore the Chart to these settings
+				'later on
+				theChartLayout = HelperFunctions.ChartToLayout(_theChart)
+				'Store the Layout in the Cell's Tag
+				theGridCell.Tag = theChartLayout
+			End If
+                  'System.Diagnostics.Debug.WriteLine("DrawFilter: " + theGridCell.Row.Cells["CustomerID"].Value.ToString() );
+			'either way, we get our hands on a chart Image
+			'and then use the current UIElement's rectangle
+			'and we then draw the image into that rectangle
+			g.DrawImage(theChartLayout.Image, drawParams.Element.Rect)
+			retVal = True
+		End If
+	End If
+	Return retVal
+End Function
+#End Region
+----
+
+*In C#:*
+
+----
+public bool DrawElement(Infragistics.Win.DrawPhase drawPhase,
+	ref UIElementDrawParams drawParams)
+{
+	//TRUE: I will handle the drawing myself; 
+	//FALSE: let the control draw the element
+	bool retVal = false;
+	//Only target the following element type:
+	if (drawParams.Element is EditorWithTextDisplayTextUIElement)
+	{
+		Graphics g = drawParams.Graphics;
+		//Get the WinGrid cell associated with this UIElement
+		UltraGridCell theGridCell =
+			drawParams.Element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+		//Make sure that we are on the CHART cell / column
+		if (theGridCell != null && theGridCell.Column.Key == "CHART")
+		{
+			ChartLayout theChartLayout = theGridCell.Tag as ChartLayout;
+			Rectangle r = drawParams.Element.Rect;
+			//Look at the Cell's Tag for a chart image if it exists
+			if (theChartLayout == null)
+			{
+				//Create a new EventArg 
+				ChartInfoEventArgs e =
+					new ChartInfoEventArgs(_theChart, theGridCell.Row);
+				//Fire the Chart Info Requested event, exposing
+				//the Chart and current Grid Row to the
+				//developer
+				this.onChartInfoRequested(e);
+				//Determines if the clipped rectangle should be used
+				if (drawParams.Element.ClipRect.Width < drawParams.Element.Rect.Width)
+				{
+					r = drawParams.Element.ClipRect;
+				}
+				else
+				{
+					r = drawParams.Element.Rect;
+				}
+				//Position and set where the Chart will show
+				//which should be in the same place as the
+				//current Cell's UIElement Rectangle
+				_theChart.SetBounds(r.X,
+					r.Y,
+					r.Width,
+					r.Height);
+				_theChart.Data.DataBind();
+				//Copy the Chart's properties into the Layout object
+				//so that we can restore the Chart to these settings
+				//later on
+				theChartLayout = HelperFunctions.ChartToLayout(_theChart);
+				//Store the Layout in the Cell's Tag
+				theGridCell.Tag = theChartLayout;
+			}
+			//System.Diagnostics.Debug.WriteLine("DrawFilter: " + theGridCell.Row.Cells["CustomerID"].Value.ToString() );
+			//either way, we get our hands on a chart Image
+			//and then use the current UIElement's rectangle
+			//and we then draw the image into that rectangle
+			g.DrawImage(theChartLayout.Image, r);
+			retVal = true;
+		}
+	}
+	return retVal;
+}
+#endregion
+----
+
+The following topic will help you understand the design and implementation of the ChartInfoEventArgs class that exposes Chart and Grid information to the End Developers that will populate each Chart with data: link:the-chartinfoeventargs-class.html[The ChartInfoEventArgs Class]

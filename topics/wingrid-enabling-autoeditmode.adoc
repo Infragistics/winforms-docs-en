@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-enabling-autoeditmode",
+    "controlName": [],
+    "tags": [],
+    "guid": "ba56dc84-1907-47e8-b702-7aa2ecdf730d",  
+    "buildFlags": [],
+    "createdOn": "2016-03-12T04:46:18.3497067Z"
+}
+|metadata|
+////
+
+= Enabling AutoEditMode
+
+The UltraGrid allows you to enter edit mode by typing in the active cell. This improves the extensibility of your grid by allowing users to quickly begin editing a cell.
+
+== Enable AutoEditMode
+
+You can allow the user to enter editing mode automatically when a cell is activated and the user enters text by setting the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~autoeditmode.html[AutoEditMode] property to True, as demonstrated in the following code snippet.
+
+*In Visual Basic:*
+
+[source,vb]
+----      Me.ultraGrid1.DisplayLayout.Override.AutoEditMode = Infragistics.Win.DefaultableBoolean.True
+----
+
+*In C#:*
+
+[source,csharp]
+----    this.ultraGrid1.DisplayLayout.Override.AutoEditMode = Infragistics.Win.DefaultableBoolean.True;
+----
+
+*Relevant Topics:*
+
+* link:wingrid-editing-data.html[Editing Data]

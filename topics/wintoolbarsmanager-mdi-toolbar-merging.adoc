@@ -1,0 +1,90 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-mdi-toolbar-merging",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{CA99F7CD-2C81-491A-BF51-970BCA622EE9}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= MDI Toolbar Merging
+
+WinToolbarsManager™ support for MDI parent and child forms includes the following key features:
+
+* Automatic merging of child toolbars, tools and menus into parent toolbars, tools and menus
+* No developer-supplied code required to support automatic merging
+* Total encapsulation of child toolbar, tool and menu application code in child forms including event handlers for child tools
+* Toolbars, tools and menus on child forms behave appropriately regardless of whether the form is actually used as an MDI child form or a standalone form
+* Multiple child form types can coexist in the same parent. Toolbars, tools and menus on each will be merged and displayed as each form type is activated
+* End-user customizations performed on merged toolbars, tools and menus are remembered between activations of different child form types
+* Merged toolbar layouts can be programmatically saved and loaded with all end-user customizations intact
+* Parent and child tools are merged based on their respective keys allowing logically equivalent tools in different child forms to be treated as the same tool.
+
+== Overview
+
+To use UltraToolbarsManager in an MDI scenario you simply place an UltraToolbarsManager element on the MDI parent form and on each child form that requires toolbars, tools or menus. You then configure each UltraToolbarsManager as you normally would (i.e., as if they were regular standalone forms) using the design-time customizer or by adding code to the form to dynamically create toolbars, tools and menus at run-time.
+
+Then at run-time when an MDI child form is created and activated, its toolbars, tools and menus are automatically merged with the MDI parent's toolbars, tools and menus. If your application requires that MDI parent and child toolbars  _not_  be merged simply set the UltraToolbarsManager's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~mdimergeable.html[MdiMergeable]"]  property to false on either the parent or child UltraToolbarsManager (the default setting is true and both the parent and child manager setting must be true in order for merging to occur).
+
+== No Special design-time Requirements for UltraToolbarsManager elements on MDI child forms
+
+When setting up the UltraToolbarsManager element on the child form you don't need to know ahead of time (i.e., at design-time) that a particular form will be used as an MDI child form. Just as the .NET framework doesn't require you to identify a form as an MDI child at design-time, the UltraToolbarsManager element does not require you to indicate at design-time that it will be used on a form that will ultimately become an MDI child. Simply set it up as you normally would and it will be automatically merged with the MDI parent's UltraToolbarsManager if its form becomes an MDI child at run-time (i.e., if its MDIParent property is set).
+
+In fact it is possible to create multiple instances of the same form at run-time, some of which have their MDI parent property set and some that don't – those that have their MDI parent property set will have their toolbars, tools and menus merged into the parent and those that don't will display their toolbars, tools and menus directly on the form.
+
+If you do know ahead of time that a particular form will be used as an MDI child form at run-time, you may want to give some thought to the keys you assign to toolbars, tools and menus in its UltraToolbarsManager. See the Choosing Keys for Tools section below for more information on this topic.
+
+== What happens at run-time?
+
+At run-time when the MDIParent property of a form is set (effectively making it an MDI child form) and the form is activated, the form's toolbars, tools and menus are automatically merged with the MDI parent's toolbars, tools and menus. No additional developer-supplied code is required to perform the merge. The merge process matches toolbars, tools and menus in the parent and active child form based on their respective keys (and for tools, tool types).
+
+* *Toolbar Merging* -- if a toolbar on the MDI parent and a toolbar on the MDI child have the same key, their contents will be merged on the parent when the MDI child form is activated. The lone exception to this is that toolbars marked as MainMenuBars are merged whether or not their keys match.
+* *Menu Merging* -- if a menu on the MDI parent and a menu on the MDI child have the same key, their contents  _may_  be merged depending on the setting of the MergeType property on the two menus. The default Merge Type for menus is 'MergeItems' which will cause individual tools on the parent and child menus to be merged according to the rules outlined below under Tool Merging. Other Merge Types are Add, Merge and Remove.
+
+If both the parent and child menu have a MergeType set to something other than Default, then preference is given to the child menu's MergeType setting. If the combination of the MergeType properties results in the menus being merged, then the individual tools on the menus are merged according to the rules outlined below under Tool Merging.
+* *Tool Merging* -- when merging the individual tools on a parent toolbar/menu with a child toolbar/menu, the merge process determines if there are ' _matching_ ' tools on each toolbar/menu. In order for tools to be considered ' _matching_ ', their keys and types must be the same. For example, if a parent toolbar and a child toolbar are being merged and the parent toolbar contains a Button tool with a key of 'Foo' and the child toolbar contains a Textbox tool with a key of "Foo", they are not considered a match. If, however, both the parent and child toolbar contains a Button tool with a key of 'Foo' a match would be declared.
+
+Child tools that don't 'match' a parent tool are always merged into the parent toolbar or menu. Child tools that 'match' a parent tool are merged depending on the setting of the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~mergetype.html[MergeType]"]  property of the two tools. The default Merge Type for tools is Replace (except for the PopupMenuTool which has a default Merge Type of MergeItems) which will use the child tool to replace the tool on the parent toolbar or menu. (If the child tool does not exist on the parent toolbar, it is still added.) Other merge types are Add and Remove.
+
+For more information on how tools merge from child to parent MDI forms, see the task-based help topic entitled link:wintoolbarsmanager-control-mdi-tool-merging-with-mergeorder-and-mergetype.html[Control MDI Tool Merging with MergeOrder and MergeType.]
+
+Tools have a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~mergeorder.html[MergeOrder]"]  property which can be used to determine the order in which merged tools are displayed on a toolbar or menu. Unlike the MergeOrder property of .NET MenuItems which determines matching  _and_  presentation order, the MergeOrder property of UltraToolbarsManager tool is an integer that determines presentation order only. Within a merged toolbar or menu, all tools with the same MergeOrder value will be displayed as follows: parent tools in their original order followed by child tools in their original order. Tools with the next highest MergeOrder value will be then be displayed according to the same rules etc.
+
+== Choosing Keys for Tools
+
+When setting up UltraToolbarsManager to be used on MDI child or parent forms there are some facts you should consider when assigning keys to tools.
+
+Since the keys of tools are used to determine if a child tool matches a parent tool, the same key value should only be assigned to both tools when the tools are 'logically' the same. This also applies to assigning keys to tools on different MDI child forms.
+
+For example, you may have Cut, Copy and Paste tools defined on an Edit menu on more than one MDI child form. In this case, it would be appropriate to assign keys of 'Cut', Copy' and 'Paste' respectively for the tools on all forms since the tools represent the same logical function. However, if the tools are intended to be displayed on different toolbars or menus when each form is activated which implies that they work in different contexts and possibly behave differently, then they should be given different keys (e.g. 'Cut_FormA', 'Cut_FormB' etc.).
+
+The reason for this is that when child tools are merged into a parent UltraToolbarsManager, special internal MDIPlaceholderTools are created and maintained on the parent UltraToolbarsManager to allow user customizations of the merged child tools to be persisted between MDI child form activations. When a new child form is activated, UltraToolbarsManager attempts to associate these MDIPlaceholderTools on the parent with child tools by looking for tools on the newly activated MDI child form that are of the same tool type and that have the same key as the MDIPlaceholderTools. If such a tool is found it is made visible. As far as UltraToolbarsManager is concerned, if an MDIPlaceholderTool on the parent and a child tool are of the same tool type have the same key they are 'logically' the same tool and will be made visible. Most often this is the preferred behavior for similarly named tools, however if this is not the behavior you require simply change the keys of the tools.
+
+To illustrate this, suppose:
+
+* ChildForm_A has a tool with a key of 'Cut' on a toolbar called 'Edit'
+* ChildForm_B has a tool with a key 'Cut' on a toolbar called 'Format'
+* an instance of ChildForm_A has been created and activated
+
+Suppose further that the parent UltraToolbarsManager also has toolbars called 'Edit' and 'Format' defined.
+
+When an instance of ChildForm_B is created and activated, not only will the 'Cut' tool on the 'Format' toolbar be made visible but so will the cut tool on the 'Edit' toolbar. The merge process sees that a child tool called 'Cut' has been previously merged onto the 'Edit' toolbar (via the activation of ChildForm_A) and when deciding whether to make it visible upon the activation of ChildForm_B it looks to see if the UltraToolbarsManager on ChildForm_B also has a tool called 'Cut'. Since it does (and the tools are of the same type) it considers them logically the same tool and makes the 'Cut' tool on the 'Edit' menu visible. Depending on your application design, this may or may not be the behavior you desire. If you don't want this to happen, simply choose different names for the 'Cut' tools.
+
+Note that in the above example, if the UltraToolbarsManager on the parent did not have toolbars named 'Edit' and 'Format' defined, the similarly named 'Cut' tools on ChildForm_A and ChildForm_B would  _not_  be matched up as described above.
+
+== How End-User Customizations Affect Merging
+
+As described in the section above, special internal MDIPlaceholderTools are used to keep track of user customizations between MDI child form activations. The following example illustrates the power of this approach.
+
+Lets say a user activates an MDI child form than contains an UltraToolbarsManager element with button tools with keys 'Foo' and 'Bar'. Instances of these tools were placed on a toolbar with a key of 'Format' (the UltraToolbarsManager element on the MDI parent form doesn't contain tools or toolbars with these keys). The user then right clicks on a dock area to bring up the run-time customizer and copies (or moves) these tools to a toolbar with key 'Edit' that was only defined to the parent form's UltraToolbarsManager. In addition, the user copies (or moves) another tool (that was only defined on the parent) onto the MDI child's 'Format' toolbar.
+
+If the user closes the form the child tools are hidden. If the user then activates a new instance of the same MDI child form the tools will reappear where they were moved to. This includes child tools that were moved to parent form toolbars/menus and parent tools that were moved to child form toolbars/menus.
+
+Also, if the user activates a different MDI child form type that has an UltraToolbarsManager element with a toolbar defined with key 'Format' and button tools with the keys 'Foo' and 'Bar', the tools will also appear in the positions the user had moved them to. This is because UltraToolbarsManager treats tools of the same type (e.g. button. state button, popupmenu etc.) that have the same key as 'logically' the same tool. Therefore, the MDIPlaceholderTools 'hook up' to them appropriately, just as the user would expect.
+
+Another advantage to this approach is that the state of the parent form's UltraToolbarsManager element can be easily saved to a binary or XML stream (via the UltraToolbarManager's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~saveasbinary.html[SaveAsBinary]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~saveasxml.html[SaveAsXML]"]  methods) and then loaded back in (via the UltraToolbarManager's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~loadfrombinary.html[LoadFromBinary]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~loadfromxml.html[LoadFromXML]"]  methods) complete with user customizations intact.

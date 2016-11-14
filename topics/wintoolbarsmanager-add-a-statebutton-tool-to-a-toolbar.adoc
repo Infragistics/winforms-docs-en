@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-a-statebutton-tool-to-a-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{6256F9E6-729F-40EC-A681-1C4A33E6A342}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add a StateButton Tool to a Toolbar
+
+The WinToolbarsManager™ component has 15 different tool types that you can add to a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[ToolBar]"] . This demonstrates how to add a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButtonTool]"]  design-time and run-time and highlights one of the major features of the Tool. Since StateButtons can display images when the the statebutton is pressed and unpressed, you can use the ImageList control to store these images.
+
+== At Design Time
+
+[start=1]
+. To configure the UltraWinToolbar element, open the design-time customizer by right-clicking on the UltraToolbarsManager element and selecting "Customize."
+[start=2]
+. To create a new Tool, click the "Tools" tab in the customizer, and then the "New..." button.
+[start=3]
+. Select StateButton as your Tool Type and click on the Add button.
+[start=4]
+. Click the "ToolBars" tab in the customizer, and then the "New..." button.
+[start=5]
+. Click the "Tools" tab and drag the StateButton tool to the ToolBar residing on the form.
+
+== At Run Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Add_a_StateButton_Tool_to_a_Toolbar_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim statebutton As New StateButtonTool("statebutton")
+	' Adds the tool to the Toolbar Manager's Tools collection
+	Me.UltraToolbarsManager1.Tools.Add(statebutton)
+	Me.UltraToolbarsManager1.Toolbars(0).Tools.Add(statebutton)
+	statebutton.SharedProps.DisplayStyle = ToolDisplayStyle.TextOnlyAlways
+	statebutton.SharedProps.Caption = "Underline"
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Add_a_StateButton_Tool_to_a_Toolbar_Load(object sender, EventArgs e)
+{
+	StateButtonTool statebutton = new StateButtonTool("statebutton");
+	// Adds the tool to the Toolbar Manager's Tools collection
+	this.ultraToolbarsManager1.Tools.Add(statebutton);
+	this.ultraToolbarsManager1.Toolbars[0].Tools.Add(statebutton);
+	statebutton.SharedProps.DisplayStyle = ToolDisplayStyle.TextOnlyAlways;
+	statebutton.SharedProps.Caption = "Underline";
+}
+----

@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-use-checkboxes-in-winlistview",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{0129C2A8-BD11-4E1D-9964-DD09D15AA605}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Use Checkboxes in WinListView
+
+When the WinListView™ control's  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property is set to List or Details, the control can be made to display checkboxes next to each item. This is accomplished by setting the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewlistsettingsbase~checkboxstyle.html[CheckBoxStyle]"]  property of the ViewSettingsList or ViewSettingsDetails to either CheckBox or TriState. In both cases the checkboxes are displayed; when set to TriState, the checkboxes can depict the checked, unchecked, or indeterminate state.
+
+The WinListView control also exposes a collection property,  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~checkeditems.html[CheckedItems]"] , which contains references to the members of the control's Items collection that have been checked, either programmatically or by the end user.
+
+The following code sample demonstrates how the control can be configured to display checkboxes, and also how the CheckedItems collection can be used to list the items that have been checked:
+
+.Note
+[NOTE]
+====
+The  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem.html[UltraListViewItem]"]  class exposes a  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem~checkstate.html[CheckState]"]  property, which contains the value of the checkbox for that item. The WinListView control also exposes the following events which fire when the value of this property is about to change, or has changed:  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~itemcheckstatechanging_ev.html[ItemCheckStateChanging]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~itemcheckstatechanged_ev.html[ItemCheckStateChanged]"] , respectively.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinListView
+...
+Private Sub Use_Checkboxes_in_WinListView_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Use the data from the 'Customers' table in the Northwind database
+	Me.CustomersTableAdapter.Fill(Me.NWindDataSet.Customers)
+	' Set the control's View property to 'List'
+	Me.ultraListView1.View = UltraListViewStyle.List
+	' For the second control, set MultiColumn to false
+	Me.UltraListView2.View = UltraListViewStyle.List
+	Me.UltraListView2.ViewSettingsList.MultiColumn = False
+	' Set the CheckBoxStyle property to 'CheckBox'
+	Me.ultraListView1.ViewSettingsList.CheckBoxStyle = CheckBoxStyle.CheckBox
+	' Iterate the Rows collection of the 'Customers' table
+	' and add an item for each customer
+	Dim i As Integer
+	For i = 0 To Me.NWindDataSet.Customers.Rows.Count - 1
+		Dim row As DataRow = Me.NWindDataSet.Customers.Rows(i)
+		Dim customerID As String = row("CustomerID")
+		Dim companyName As String = row("CompanyName")
+		Me.ultraListView1.Items.Add(customerID, companyName)
+	Next
+End Sub
+Private Sub btnGetCheckedItems_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles Button1.Click
+	' List the customers that were checked by the end user
+	' Clear the previous list
+	Me.UltraListView2.Items.Clear()
+	' Get a reference to the control's CheckedItems collection
+	Dim checkedItems As UltraListViewCheckedItemsCollection = Me.ultraListView1.CheckedItems
+	' Iterate the CheckedItems collection and add the company names
+	'	to the second UltraListView control.
+	Dim i As Integer
+	For i = 0 To checkedItems.Count - 1
+		Dim checkedItem As UltraListViewItem = checkedItems(i)
+		Me.UltraListView2.Items.Add(checkedItem.Key, checkedItem.Value)
+	Next
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinListView;
+...
+private void Use_Checkboxes_in_WinListView_Load(object sender, EventArgs e)
+{
+	// Use the data from the 'Customers' table in the Northwind database
+	this.customersTableAdapter.Fill(this.nWindDataSet1.Customers);
+	// Set the control's View property to 'List'
+	this.ultraListView1.View = UltraListViewStyle.List;
+	// For the second control, set MultiColumn to false
+	this.ultraListView2.View = UltraListViewStyle.List;
+	this.ultraListView2.ViewSettingsList.MultiColumn = false;
+	// Set the CheckBoxStyle property to 'CheckBox'
+	this.ultraListView1.ViewSettingsList.CheckBoxStyle = CheckBoxStyle.CheckBox;
+	for ( int i = 0; i < this.nWindDataSet1.Customers.Rows.Count; i ++ )
+	{
+		DataRow row = this.nWindDataSet1.Customers.Rows[i];
+		string customerID = row["CustomerID"] as string;
+		string companyName = row["CompanyName"] as string;
+		this.ultraListView1.Items.Add( customerID, companyName );
+	}
+}
+private void btnGetCheckedItems_Click(object sender, EventArgs e)
+{
+	// List the customers that were checked by the end user
+	// Clear the previous list
+	this.ultraListView2.Items.Clear();
+	// Get a reference to the control's CheckedItems collection
+	UltraListViewCheckedItemsCollection checkedItems = this.ultraListView1.CheckedItems;
+	// Iterate the CheckedItems collection and add the company names
+	//	to the second UltraListView control.
+	for ( int i = 0; i < checkedItems.Count; i ++ )
+	{
+		UltraListViewItem checkedItem = checkedItems[i];
+		this.ultraListView2.Items.Add( checkedItem.Key, checkedItem.Value );
+	}
+}
+----

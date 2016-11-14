@@ -1,0 +1,54 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-display-a-label-over-the-icon-area",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{8AAAEA7A-AF47-4A65-88E1-B561A3C1CB6C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Display a Label Over the Icon Area
+
+{Warning}
+
+In order to divide the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  into logical sections, you may want to use a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.labeltool.html[LabelTool]"]  as a header. With the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.menusettings~labeldisplaystyle.html[LabelDisplayStyle]"]  property, you can do just that. Setting the LabelDisplayStyle property to Header will display all labels in a menu overtop the icon area. This essentially gives you headers for various sections in a popup menu.
+
+The following code demonstrates how to create a PopupMenuTool and set its LabelDisplayStyle property to Header, giving your popup menus a look similar to the images to the right ("Header 1" and "Header 2" are LabelTools).
+
+[cols="a,a"]
+|====
+|image::images/WinToolbarsManager_Display_a_Label_Over_the_Icon_Area_01.png[standard popupmenu tool ]
+|image::images/WinToolbarsManager_Display_a_Label_Over_the_Icon_Area_02.png[popupmenu tool with label over the icon area when using ribbon]
+
+|Default
+|Header
+
+|====
+
+*In Visual Basic:*
+
+----
+Dim contextMenu As New Infragistics.Win.UltraWinToolbars.PopupMenuTool("ContextMenu")
+contextMenu.Settings.LabelDisplayStyle = _
+  Infragistics.Win.UltraWinToolbars.LabelMenuDisplayStyle.Header
+----
+
+*In C#:*
+
+----
+Infragistics.Win.UltraWinToolbars.PopupMenuTool contextMenu = new 
+  Infragistics.Win.UltraWinToolbars.PopupMenuTool("ContextMenu");
+contextMenu.Settings.LabelDisplayStyle = 
+  Infragistics.Win.UltraWinToolbars.LabelMenuDisplayStyle.Header;
+----
+
+== Related Topics
+
+link:wintoolbarsmanager-add-a-popupmenu-tool-to-a-toolbar.html[Add a PopupMenu Tool to a Toolbar]
+
+link:wintoolbarsmanager-display-a-menu-as-a-context-menu.html[Display a Menu as a Context Menu]

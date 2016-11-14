@@ -1,0 +1,150 @@
+﻿////
+|metadata|
+{
+    "name": "wintree-resource-strings",
+    "controlName": [],
+    "tags": ["Localization","Resource Strings"],
+    "guid": "{3E9402D3-C6DE-4B1D-8B25-6A28A1EBDCE9}",
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinTree Resource Strings Reference
+
+This topic provides a list of the `WinTree`  assembly resource strings used to customize the internally-defined text elements of the `WinTree` control. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings along with their customizable default text values used by this assembly.
+
+[options="header", cols="a,a"]
+|====
+|Resource string name|Default value
+
+|AllNodesDelete
+|All nodes in the_UltraTree_will be deleted. Do you want to continue?
+
+|BeforeNodesDeletedMessage
+|You have selected {0} node(s) for deletion. Choose Yes to delete the_UltraTreeNode(s) or No to exit.
+
+|BeforeNodesDeletedTitle
+|Delete UltraTreeNodes
+
+|DataError_MessageBox_Title
+|Data Error
+
+|DataErrorUnableToConvert
+|Unable to convert from: {0} to {1}
+
+|DefaultAction_Collapse
+|Collapse
+
+|DefaultAction_EnterEditMode
+|Enter edit mode
+
+|DefaultAction_Expand
+|Expand
+
+|DefaultAction_Sort
+|Sort
+
+|Exception_CannotEditDataBoundNode
+|The 'BeginEdit' method cannot be called on a node that is bound to a data source unless the '_UseEditor_' property of the associated Override is set to DefaultableBoolean.True.
+
+|InvalidEditorValue_Error_Message
+|The editor's current value is not valid.
+
+|InvalidEditorValue_Error_Message_Prefix
+|Unable to update the data value:
+
+|LDR_None
+|{none}
+
+|NodeEditClear
+|&Clear
+
+|NodeEditDelete
+|&Delete
+
+|NodeEditorTitle
+|UltraWinTree Node Editor
+
+|NodePropAddChild
+|Add C&hild
+
+|NodePropAddRoot
+|Add &Root
+
+|NodePropAddSibling
+|Add &Sibling
+
+|NodePropEdit
+|&Edit
+
+|NodeProperty
+|Node Property
+
+|NodePropertyCancel
+|Cancel
+
+|NodePropertyEditorLabelEditMessage
+|Node Label changed.
+
+|NodePropertyOK
+|OK
+
+|NodesCollectionEditor_CannotModifyNodes
+|The nodes collection cannot be edited when there are bound nodes in the tree.
+
+|PasteErrorMessage
+|The following error was encountered while attempting to paste nodes from the clipboard: {0}
+
+|PasteErrorMessageCaption
+|Paste error
+
+|SelNodeEdit
+|Select node to edit:
+
+|SelNodeLabel
+|Selected Node Label:
+
+|UltraTree_Exception_ActiveCellColumnHasNoDisplayColumn
+|The ActiveCell_cannot be set for an_UltraTreeNodeColumn_which has no corresponding display column.
+
+|UltraTree_Exception_CannotSetTopNodeToHiddenNode
+|The TopNode_property cannot be set to an_UltraTreeNode_that is not visible in the user interface.
+
+|UltraTreeNode_DefaultText
+|Node{0}
+
+|UltraTreeNode_Exception_BringCellIntoView
+|The specified column is not associated with this node.
+
+|UltraTreeNodeColumn_EditorValueInvalid
+|"Value in editor is not valid."
+
+|UltraTreeNodeColumn_Exception_MaxLength
+|The 'MaxLength' property cannot be set to a value that is less than zero.
+
+|UltraTreeNodeLayoutInfo_Exception_InvalidSize
+|The specified size was invalid because it contained a width or height that is less than zero.
+
+|ViolatesNullable_Error_Message
+|Empty cell value not allowed in column '{0}'.
+
+|NodePropMoveUp
+|Move &Up
+
+|NodePropMoveDown
+|Move &Down
+
+|NodePropOutdent
+|Make selected node a sibling &of its parent
+
+|NodePropIndent
+|Make selected node the child of its_preceeding_s&ibling
+
+|PropertiesLabel
+|&Properties
+
+|====

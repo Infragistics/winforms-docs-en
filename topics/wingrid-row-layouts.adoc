@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-row-layouts",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Layouts"],
+    "guid": "{C3BF9EA6-6B9E-491F-B3A4-415C3C4CC570}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Row Layouts
+
+Row layouts give you a great deal of flexibility when designing WinGrid's format in your application. You can use row layouts to create a form-like look to display and enter data in both the conventional row view style and the Card view style.
+
+== Regular View and Card View
+
+Row layout functionality provides a way for you to arrange data cells and their labels relative to one another. How a label appears relative to its data cell is usually determined by the type of view in combination with other settings. In regular (grid rows) view, the data labels appear above the data cells in the form of column headers. In card view, data labels appear to the left of the data cells. Other settings may control the proximity between the labels and the data. For example, in card view, selecting MergedLabels as the CardStyle setting may place a data label further to the left of the data than the other settings of that property, but the general principles of the positioning do not change.
+
+== Positioning Labels
+
+Row layouts make it possible to change many more aspects of the relationship between cells and labels. Data labels can be positioned in any of the four directions from the related data. Labels can be kept with the data or allowed to group together. More importantly, you can independently size and arrange cells and labels, with custom heights, widths, and positioning, allowing cells to span more than one column in the layout.
+
+== Resizing the Layout
+
+Another important function of row layouts is that they provide relative (rather than absolute) sizing and positioning. Generally, WinGrid adjusts the layout dynamically to fit your specified arrangement within the available screen real estate. Sizes are specified as preferences, which WinGrid honors if it can when re-arranging the layout in response to user activity. You can specify minimum sizes to make sure that important data remains legible, and you can specify relative weights for each cell so the more important data in the layout takes priority when the entire layout resizes.
+
+Read the following topics for more information on row layouts within the WinGrid control.
+
+* link:wingrid-using-row-layouts-designer.html[Using Row Layouts Designer]
+* link:wingrid-advanced-row-layouts-part-1-of-2.html[Advanced Row Layouts (Part 1 of 2)]
+* link:wingrid-advanced-row-layouts-part-2-of-2.html[Advanced Row Layouts (Part 2 of 2)]
+* link:wingrid-working-with-row-layouts.html[Working with Row Layouts]
+* link:wingrid-grouping-columns-in-row-layout-mode-using-the-designer.html[Grouping Columns in Row Layout Mode using the Designer]
+* link:wingrid-grouping-columns-in-row-layout-using-code.html[Grouping Columns in Row Layout using code]
+* link:wingrid-collapsing-column-groups.html[Collapsing Column Groups]

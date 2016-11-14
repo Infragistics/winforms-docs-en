@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-appointment-dragging-and-resizing-enhancements",
+    "controlName": ["WinSchedule"],
+    "tags": ["Events"],
+    "guid": "{272D01AF-E1B0-4A33-BF35-3CC44C40EB9E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Appointment Dragging and Resizing Enhancements
+
+All the WinSchedule™ controls expose four completely new events for appointments dragging and resizing actions:  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.controlwithactivitybase~appointmentsdragging_ev.html[AppointmentsDragging]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.controlwithactivitybase~appointmentsdragdrop_ev.html[AppointmentsDragDrop]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.controlwithactivitybase~appointmentresizing_ev.html[AppointmentResizing]"] , and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.controlwithactivitybase~appointmentresized_ev.html[AppointmentResized]"] .
+
+The “ing” events are cancelable, and their event arguments classes expose a property which defines which  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointmentsdraggingeventargs~phase.html[phase]"]  of the drag/resize operation the firing represents, i.e., whether it is beginning (first drag after MouseDown), in progress (MouseMove), or ending (MouseUp). Cancellation during any of these phases is fully supported, which results in the appointment times/owner reverting to their pre-drag states. The event arguments classes also expose a read-only collection of appointments which contain references to the actual instances which reside in the Appointments collection. Dragging Appointments from one Owner to another can also be prevented.
+
+*In Visual Basic:*
+
+----
+AddHandler Me.ultraDayView1.AppointmentsDragging, AddressOf ultraDayView1_AppointmentsDragging 
+AddHandler Me.ultraDayView1.AppointmentResized, AddressOf ultraDayView1_AppointmentResized
+Private Sub ultraDayView1_AppointmentsDragging(ByVal sender As Object, ByVal e As AppointmentsDraggingEventArgs) Handles ultraDayView1.AppointmentsDragging
+    Dim control As ControlWithActivityBase = TryCast(sender, ControlWithActivityBase)
+    'Get WinSchedule control name 
+    System.Console.WriteLine(control.Name.ToString())
+    System.Console.WriteLine(e.Phase.ToString())
+    System.Console.WriteLine(e.InitialOwner.ToString())
+    'Date Time of the appointment 
+    System.Console.WriteLine(e.InitialDateTime.ToString())
+    'New Date Time to which the appointment has moved 
+    System.Console.WriteLine(e.NewDateTime.ToString())
+    'Prevent dragging appointment from one Owner to another 
+    e.AllowOwnerChange = False
+End Sub
+Private Sub ultraDayView1_AppointmentResized(ByVal sender As Object, ByVal e As AppointmentResizedEventArgs) Handles ultraDayView1.AppointmentResized
+    'Specifies whether starting Date Time or Ending Date Time was resized 
+    System.Console.WriteLine(e.ResizeType.ToString()) 
+End Sub
+----
+
+*In C#:*
+
+----
+this.ultraDayView1.AppointmentsDragging += new AppointmentsDraggingHandler(ultraDayView1_AppointmentsDragging);
+this.ultraDayView1.AppointmentResized += new AppointmentResizedHandler(ultraDayView1_AppointmentResized);
+void ultraDayView1_AppointmentsDragging(object sender, AppointmentsDraggingEventArgs e)
+                {
+                  ControlWithActivityBase control = sender as ControlWithActivityBase;
+                    //Get WinSchedule control name
+                    System.Console.WriteLine(control.Name.ToString());
+                    System.Console.WriteLine(e.Phase.ToString());
+                    System.Console.WriteLine(e.InitialOwner.ToString());
+                   //Date Time of the appointment
+                    System.Console.WriteLine(e.InitialDateTime.ToString());
+                   //New Date Time to which the appointment has moved
+                    System.Console.WriteLine(e.NewDateTime.ToString());   
+                   //Prevent dragging appointment from one Owner to another
+                    e.AllowOwnerChange = false;
+                }
+   void ultraDayView1_AppointmentResized(object sender, AppointmentResizedEventArgs e)
+                {
+                    //Specifies whether starting Date Time or Ending Date Time was resized
+                    System.Console.WriteLine(e.ResizeType.ToString());
+                }
+----

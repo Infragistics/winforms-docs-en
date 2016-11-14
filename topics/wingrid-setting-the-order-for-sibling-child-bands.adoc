@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-the-order-for-sibling-child-bands",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{CA74B3A8-E251-49CB-B114-64D3DF4630C1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting the Order for Sibling Child Bands
+
+WinGrid™ displays sibling child bands in the order in which they are provided by the BindingManager and previously there was no way to change this order. But now, a new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~visibleposition.html[VisiblePosition]"]  property has been added to the UltraGridBand. This new property will default to 0 for all bands. When the WinGrid displays sibling bands, it will sort them based on the VisiblePosition from lowest to highest. So sibling bands with the lowest VisibilePosition will appear first and those with the highest VisiblePosition will appear last.
+
+.Note
+[NOTE]
+====
+When two bands have the same VisiblePosition (as they all will by default), then the grid will fall back to the old behavior of displaying in the order in which they were provided by the binding manager and use the Index of the band; the lowest index will appear first.
+====
+
+Consider the WinGrid control bound to an instance of the Customers DataTable from the Northwind database. Customers DataTable will be the parent band(band[0]). Let the two sibling child bands be Order DataTable and CustomerCustomerDemo DataTable from the Northwind database. The following code, changes the order of the sibling child bands so that the CustomerCustomerDemo table is displayed first followed by the Orders table, which is reverse of the default display.
+
+*In Visual Basic:*
+
+----
+'Displays CustomerCustomerDemo DataTable as the first sibling child band to the Customers parent band
+Me.ultraGrid1.DisplayLayout.Bands(2).VisiblePosition = 0
+'Displays Orders DataTable as the second sibling child band to the Customers parent band
+Me.ultraGrid1.DisplayLayout.Bands(1).VisiblePosition = 1
+----
+
+*In C#:*
+
+----
+//Displays CustomerCustomerDemo DataTable as the first sibling child band to the Customers parent band
+this.ultraGrid1.DisplayLayout.Bands[2].VisiblePosition = 0;
+//Displays Orders DataTable as the second sibling child band to the Customers parent band
+this.ultraGrid1.DisplayLayout.Bands[1].VisiblePosition = 1;
+----
+
+The WinGrid control displays the CustomerCustomerDemo table as the first child band and displays the Orders table as the second child band.
+
+image::Images\WinGrid_Setting_the_Order_for_Sibling_child_bands.png[]

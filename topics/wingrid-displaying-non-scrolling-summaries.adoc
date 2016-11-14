@@ -1,0 +1,82 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-non-scrolling-summaries",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Summaries"],
+    "guid": "{A93D3135-1E9D-4F75-90F3-6E9A17CDD5E8}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Non-Scrolling Summaries
+
+The WinGrid™ displays summaries at the bottom of the row collection by default. In addition, the summaries scroll as rows are scrolled.
+
+This topic shows you how to fix the summaries so they don't scroll. It also describes how to show summaries at the top of the row collection rather than at the bottom.
+
+.Note
+[NOTE]
+====
+The summaries will be fixed in the root band only. Child bands will display the summaries, however, they will scroll.
+====
+
+== To display non-scrolling summaries:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~summarydisplayarea.html[SummaryDisplayArea]"]  to a value that has either BottomFixed or TopFixed bit turned on. The SummaryDisplayArea property is a flagged enumeration type. You can specify multiple values by using the bitwise or operation.
+
+*In Visual Basic:*
+
+----
+Private Sub CustomersUltraGrid_InitializeLayout(ByVal sender As System.Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles CustomersUltraGrid.InitializeLayout
+	Me.CustomersUltraGrid.DisplayLayout.Override.AllowRowSummaries = _
+	  AllowRowSummaries.True
+	Me.CustomersUltraGrid.DisplayLayout.Override.SummaryDisplayArea = _
+	  SummaryDisplayAreas.TopFixed
+End Sub
+----
+
+*In C#:*
+
+----
+private void customersUltraGrid_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.customersUltraGrid.DisplayLayout.Override.AllowRowSummaries = 
+	  AllowRowSummaries.True;
+	this.customersUltraGrid.DisplayLayout.Override.SummaryDisplayArea = 
+	  SummaryDisplayAreas.TopFixed;
+}
+----
+
+.Note
+[NOTE]
+====
+that the SummaryDisplayArea property is exposed off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings]"]  object as well so different summaries can be displayed in different areas.
+====
+
+[start=3]
+. The below screen shot shows an UltraGrid with fixed summaries at the top. When you scroll the rows are scrolled out of view at the top however the summary area remains visible at all times.
+
+image::Images/WinGrid_Display_Non_Scrolling_Summaries_01.PNG[display non scrolling summaries in ultragrid]

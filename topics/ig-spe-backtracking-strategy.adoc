@@ -1,0 +1,116 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-backtracking-strategy",
+    "controlName": [],
+    "tags": [],
+    "guid": "9b5dbe0c-feb8-410b-95c4-4de4a14b24a9",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.080853Z"
+}
+|metadata|
+////
+
+= Backtracking Strategy
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the backtracking error handling strategy.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|The topics in this group explain the Infragistics Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349639323, Introduction >>
+* <<_Ref349639329, Overview >>
+* <<_Ref349639333, Related Content >>
+
+[[_Ref349639323]]
+== Introduction
+
+[[_Ref349639329]]
+
+=== Overview
+
+It is possible for the Syntax Parsing Engine to parse things incorrectly if the user omits something from the code. Special cases of this can be handled by the synchronizer pair error handling strategy, but it does not make sense to set link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair] on most symbols. The backtracking strategy handles the general case of backing out of a bad parsing decision. The following is an example of part of a document the parser has started analyzing:
+
+*In C#:*
+
+[source,csharp]
+----
+class X
+{
+      int A()
+      {
+      int B
+----
+
+The parser will assume it is within a class “X”, which contains a method “A”, which contains a local variable named “B”. However, here is the full document:
+
+*In C#:*
+
+[source,csharp]
+----
+class X
+{
+    int  A()
+    {
+    int B()
+    {
+    }
+}
+----
+
+When the parsing gets to the “B(“ text, it realizes that something is wrong. Local variable declarations cannot be followed by an open parenthesis. What should have happened was the close brace for method “A” should have been inserted as missing, and “int B” should have been interpreted as the start of a method signature.
+
+The backtracking strategy will break up some small syntax nodes recently created by the parser and see if the tokens in those nodes could have been parsed in a better way if some omitted things had been included by the user. In this above example, this will correctly report that a close brace is missing.
+
+A few things to note about the backtracking error handling strategy:
+
+* This strategy can be disabled for a non-terminal symbol by setting its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~preventbacktracking.html[NonTerminalSymbol.PreventBacktracking] property to True. Once a reduction occurs to a non-terminal symbol with this value set to True, the syntax node created by that reduction can never be broken up to try a backtracking approach.
+* Only a small number of syntax nodes will be broken up like this when an error occurs, and if a node is made of up too many tokens, the backtracking strategy will not be used. It would be too slow to re-parse a hundreds or thousands of tokens once they were already parsed into a node structure.
+
+[[_Ref349639333]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[cols="a,a"]
+|====
+| link:ig-spe-synchronizer-symbol-strategy.html[Synchronizer Symbol Strategy]
+|This topic explains the synchronizer symbol error handling strategy.
+
+| link:ig-spe-error-production-strategy.html[Error Production Strategy]
+|This topic explains the error production error handling strategy.
+
+| link:ig-spe-synchronizer-pair-strategy.html[Synchronizer Pair Strategy]
+|This topic explains the synchronizer pair error handling strategy.
+
+|====

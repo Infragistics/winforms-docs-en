@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-collapse-the-outlook-navigation-pane",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Events","How Do I"],
+    "guid": "{3057CC8A-8F24-4799-BA9D-44B904DCC771}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Collapse the Outlook Navigation Pane
+
+WinExplorerBar™ includes a style that emulates the Microsoft® Outlook navigation pane. Microsoft developed the navigation pane to be able to collapse, saving the end user valuable screen real estate. WinExplorerBar includes this same functionality and can be easily turned on by setting two properties:
+
+* *Style* – It is important to set the Style property to OutlookNavigationPane because WinExplorerBar will not be able to collapse in any other style.
+* *NavigationPaneExpansionMode* – This property (which defaults to None) allows you to choose how you want the navigation pane to collapse and expand. Setting NavigationPaneExpansionMode to OnButtonClick will place a button in the upper-right corner of the navigation pane. Clicking this button allows the end user to collapse the navigation pane. Setting NavigationPaneExpansionMode to OnSizeChanged allows you to decide how wide the navigation pane should be before automatically collapsing it.
+
+The following code demonstrates how to allow your end users to collapse WinExplorerBar's Outlook navigation pane using the expansion button.
+
+*In Visual Basic:*
+
+----
+Me.UltraExplorerBar1.Style = _
+	Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarStyle.OutlookNavigationPane
+Me.UltraExplorerBar1.NavigationPaneExpansionMode = _
+	Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionMode.OnButtonClick
+----
+
+*In C#:*
+
+----
+this.ultraExplorerBar1.Style = 
+	Infragistics.Win.UltraWinExplorerBar.UltraExplorerBarStyle.OutlookNavigationPane;
+this.ultraExplorerBar1.NavigationPaneExpansionMode = 
+	Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionMode.OnButtonClick;
+----

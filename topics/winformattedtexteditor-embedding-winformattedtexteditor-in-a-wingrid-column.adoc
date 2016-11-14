@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-embedding-winformattedtexteditor-in-a-wingrid-column",
+    "controlName": [],
+    "tags": ["How Do I"],
+    "guid": "{2E04DD8A-344B-4891-9C71-AEE620152320}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T13:43:30Z"
+}
+|metadata|
+////
+
+= Embedding WinFormattedTextEditor in a WinGrid Column
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  class gives you the ability to add formatted text and hyperlinks to any Infragistics Windows Forms control which uses embeddable editors. FormattedLinkEditor derives from the embeddable editors base class in order to give Infragistics Windows Forms controls this functionality. This topic will guide you through the task of setting up the WinGrid™ control using the WinDataSource™ component to store unformatted text. You will then use the WinFormattedTextEditor™ control to format this text.
+
+[start=1]
+. *Set up WinDataSource and WinGrid.*
+
+.. Drag the UltraDataSource component onto the form. The ultraDataSource1 component appears in the component tray.
+.. Drag the UltraGrid control from the toolbox onto the form.
+.. In the Properties window, find the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~datasource.html[DataSource]"]  property and set it to ultraDataSource1.
+
+[start=2]
+. *Set up the data source.*
+
+.. Right-click the ultraDataSource1 component in the component tray and select "UltraDataSource Designer." The UltraDataSource Designer appears.
+.. Under DataColumns, click the "Add a new column" button
+.. Click Apply.
+.. Click Data Entry from the tree on the left.
+.. In the first cell, enter "<span >Bolded Text</span>" into the cell and then press Enter.
+.. In the second cell, enter "<span >Italicized Text</span>" into the cell and then press Enter.
+.. In the third cell, enter "<span >Underlined Text</span>" into the cell and then press Enter.
+.. Click Apply, and then OK.
+
+[start=3]
+. *Set up the WinFormattedTextEditor control and set it as the column's Editor.*
+
+Place the following code in WinGrid's InitializeLayout event. The first line instantiates an instance of the FormattedLinkEditor. Using True for the supportsEditing argument creates an instance of the FormattedTextEditor. False will create a FormattedLinkLabel. The difference between the two is that the FormattedTextEditor supports editing, the FormattedLinkLabel does not. The second line of code sets the FormattedLinkEditor as the column's editor.
+
+*In Visual Basic:*
+
+----
+Dim textEditor As New _
+  Infragistics.Win.FormattedLinkLabel.FormattedLinkEditor(True)
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Editor = textEditor
+----
+
+*In C#:*
+
+----
+Infragistics.Win.FormattedLinkLabel.FormattedLinkEditor textEditor = 
+  new Infragistics.Win.FormattedLinkLabel.FormattedLinkEditor(true);
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Editor = textEditor;
+----
+
+[start=4]
+. *Run the application.*
+
+You will see three cells, each with formatted text inside. Highlight the first cell and press Ctrl+B. The text is not bold anymore. Edit the text in the cells. You wouldn't be able to edit the text in the cells if you used False in the supportsEditing argument when you instantiated the FormattedLinkEditor. If you don't want to allow editing, you can set the ReadOnly property to True. For more information on the ReadOnly property, see link:winformattedtexteditor-prevent-text-from-being-edited.html[Prevent Text from being Edited].

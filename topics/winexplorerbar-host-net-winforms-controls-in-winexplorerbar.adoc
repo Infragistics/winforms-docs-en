@@ -1,0 +1,71 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-host-net-winforms-controls-in-winexplorerbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Tips and Tricks"],
+    "guid": "{089CAE05-D7C7-4CCA-8764-38FDBA578D22}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Host .NET WinForms Controls in WinExplorerBar
+
+One of the powerful features of WinExplorerBar™ is the ability to host any .NET WinForms control. Controls that are hosted in WinExplorerBar are displayed within the item area of a *Group* in place of the Items defined to the Group (if any).
+
+Here are two examples (one using the WinExplorerBar element style and one using the WinListbar element style) that show an WinExplorerBar Group acting as a container for WinForms controls:
+
+image::Images\WinExplorerBar_Hosting_NET_WinForms_Controls_in_WinExplorerBar_01.png[ultraexplorerbar example hosting .net windows forms controls]
+
+== Making a Group a Control Container
+
+To host WinForms controls in a Group, set the Style property of the Group's *GroupSettings* object to Control Container.
+
+When a Group has been designated as a control container in this manner, several things happen:
+
+[start=1]
+. A special control called *UltraExplorerBarContainerControl* is automatically created. It is positioned and sized to fit within the item area of the Group. WinForms controls can then be placed on the UltraExplorerBarContainerControl.
+[start=2]
+. When the Group is collapsed (ExplorerBar element style) or de-selected (Listbar and Toolbox element styles) or simply scrolled out of view, the UltraExplorerBarContainerControl is made invisible.
+[start=3]
+. *Items* defined to the Group (if any) are not displayed, but they do remain in Group's Items collection. Subsequently changing the *Style* of the Group to something other than ControlContainer will display the Items.
+
+== Adding Controls to a Control Container Group
+
+There are several ways to add controls to a control container Group (i.e., a Group that has its Settings.Style property set to 'ControlContainer'.
+
+* At runtime, execute the following line of code. This example adds a WinForms ComboBox control to the first Group.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinExplorerBar
+...
+Private Sub Host_NET_WinForms_Controls_in_WinExplorerBar_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraExplorerBar1.Groups(0).Settings.Style = GroupStyle.ControlContainer
+	' Create and add a ComboBox control to the Group.
+	Me.UltraExplorerBar1.Groups(0).Container.Controls.Add(New ComboBox())
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinExplorerBar;
+...
+private void Host_NET_WinForms_Controls_in_WinExplorerBar_Load(object sender, 
+  EventArgs e)
+{
+	// Make sure the Group style is ControlContainer.
+	this.ultraExplorerBar1.Groups[0].Settings.Style = GroupStyle.ControlContainer;
+	// Create and add a ComboBox control to the Group.
+	this.ultraExplorerBar1.Groups[0].Container.Controls.Add(new ComboBox());
+}
+----
+
+image::images\WinExplorerBar_Host_NET_WinForms_Controls_in_WinExplorerBar_01.png[another example of ultraexplorerbar hosting .net windows forms controls.]

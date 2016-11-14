@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-float-a-dockable-pane",
+    "controlName": ["WinDockManager"],
+    "tags": ["Layouts"],
+    "guid": "{8B35DCB2-02B8-49A0-B9B0-6B54DFE63573}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Float a Dockable Pane
+
+The WinDockManager™ allows controls that are docked in  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Panes]"]  to be floated on the screen unattached to the sides of a application. You can float a pane in code or by dragging the pane's title bar away form a docking area at run-time.
+
+To float a pane at run-time, click the mouse on the pane's title bar and drag it until the preview outline does not snap to any dockable areas. When you release the mouse, the pane will float in its own window.
+
+To float a window in code use the following:
+
+*In Visual Basic:*
+
+----
+Private Sub Float_a_Dockable_Pane_Load(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraDockManager1.PaneFromControl(Me.UltraTree1).Float(True)
+End Sub
+----
+
+*In C#:*
+
+----
+private void Float_a_Dockable_Pane_Load(object sender, EventArgs e)
+{
+	this.ultraDockManager1.PaneFromControl(this.ultraTree1).Float(true);
+}
+----

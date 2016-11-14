@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-add-and-remove-nodes-programmatically",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{CD4A5DF1-9937-414E-B8C4-147BBF876F12}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add and Remove Nodes Programmatically
+
+This topic will show you how to add and remove nodes at run-time. The Add and Remove methods of the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection.html[TreeNodesCollection]"]  object are used for this purpose. To add a child node the Add method has to be used on the parent node.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+' Declare nodes 
+Dim nodeA As UltraTreeNode
+Dim nodeB As UltraTreeNode
+' Add two nodes to the WinTree
+nodeA = Me.ultraTree1.Nodes.Add("nodeA", "NodeA") 
+nodeB = Me.ultraTree1.Nodes.Add("nodeB", "NodeB") 
+' Expand the newly added node 
+nodeA.Expanded = True 
+' Add a child node to Node A 
+nodeA.Nodes.Add("childNodeofA", "ChildNodeA1") 
+' Add Node C to WinTree 
+Me.ultraTree1.Nodes.Add("nodeC", "NodeC") 
+' Get a reference to Node C using its key 
+Dim nodeC As UltraTreeNode = Me.ultraTree1.GetNodeByKey("nodeC")
+' Add a child node to NodeC 
+nodeC.Nodes.Add("childNodeofC", "ChildNodeC1") 
+' Remove NodeB 
+Me.ultraTree1.Nodes.Remove(nodeB)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+ // Declare nodes
+ UltraTreeNode nodeA;
+ UltraTreeNode nodeB;
+ // Add two nodes to the WinTree
+ nodeA = this.ultraTree1.Nodes.Add("nodeA","NodeA");
+ nodeB = this.ultraTree1.Nodes.Add("nodeB", "NodeB");
+ // Expand the newly added node
+ nodeA.Expanded = true;
+ // Add a child node to Node A
+ nodeA.Nodes.Add("childNodeofA", "ChildNodeA1");
+ // Add Node C to WinTree
+ this.ultraTree1.Nodes.Add("nodeC", "NodeC");
+ // Get a reference to Node C using its key
+ UltraTreeNode nodeC = this.ultraTree1.GetNodeByKey("nodeC");
+ // Add a child node to NodeC
+ nodeC.Nodes.Add("childNodeofC", "ChildNodeC1");
+ // Remove NodeB
+ this.ultraTree1.Nodes.Remove(nodeB);
+----

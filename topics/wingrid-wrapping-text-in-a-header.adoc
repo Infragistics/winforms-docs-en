@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-wrapping-text-in-a-header",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{1176C539-2E8B-4441-BBD4-3EDF5E0A903F}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Wrapping Text in a Header
+
+This functionality automatically wraps the text in a header if horizontal width of the header is not enough to fully display the text. The column header will also automatically adjust its height if the resulting multi-line text does not fit the height.
+
+You can also set this property at design time via the WinGrid™ designer by following the below steps.
+
+[start=1]
+. Right click on the UltraGrid and select the UltraWinGrid Designer. The designer dialog should come up.
+[start=2]
+. In the designer select the Control Settings in the left pane.
+[start=3]
+. In the right pane expand the UltraGrid.
+[start=4]
+. Expand  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[DisplayLayout]"] .
+[start=5]
+. Select and expand  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"] .
+[start=6]
+. The property grid on the right now should list all the properties of the Override object. Find  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~wrapheadertext.html[WrapHeaderText]"]  and set it to True.
+[start=7]
+. For demonstration purposes run the project. Initially it should look something like the following.
+
+image::Images/WinGrid_Wrap_Text_Headers_01.png[wrap text in a header in ultragrid]
+
+[start=8]
+. Resize a column smaller so that it's caption does not fully fit the horizontal width of the header. You will notice that the header's height will increase and the header caption will be wrapped. This way the caption will stay fully visible.
+
+image::Images/WinGrid_Wrap_Text_Headers_02.png[wrap text in a header in ultragrid]
+
+[start=9]
+. Resizing the column back to a width that can accommodate the header caption on a single line will cause the height of the header to be adjusted back to a single line height.
+
+image::Images/WinGrid_Wrap_Text_Headers_02.png[wrap text in a column header in ultragrid]

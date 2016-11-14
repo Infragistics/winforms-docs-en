@@ -1,0 +1,177 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-overriding-default-cursor-movement",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "{493F2019-E7FA-419C-A5A3-3210E5762FD5}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Overriding Default Cursor Movement
+
+== Background
+
+In some user environments the user may need to have the WinGrid™ move the cursor in a manner similar to Excel. The PerformAction method of the WinGrid provides the developer with almost unlimited flexibility when overriding the normal behavior.
+
+== Questions
+
+* How do I get WinGrid to move the active cell with the cursor movement keys similar to Excel?
+
+== Solution
+
+Use PerformAction to override the normal cursor movement behavior.
+
+== Sample Project
+
+This sample project displays a sample DataTable and allows the user to move the cursor with the arrow keys.
+
+The UltraGrid Events region consists of the following event handlers:
+
+* UltraGrid1.KeyDown - The code in the KeyDown event invokes the appropriate PerformAction methods for each of the cursor movement key strokes:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_KeyDown(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.KeyEventArgs) _
+  Handles UltraGrid1.KeyDown
+	' Perform action needed to move cursor
+	Select Case e.KeyValue
+		Case Keys.Up
+			Me.UltraGrid1.PerformAction(UltraGridAction.ExitEditMode, False, False)
+			Me.UltraGrid1.PerformAction(UltraGridAction.AboveCell, False, False)
+			e.Handled = True
+			Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+		Case Keys.Down
+			Me.UltraGrid1.PerformAction(UltraGridAction.ExitEditMode, False, False)
+			Me.UltraGrid1.PerformAction(UltraGridAction.BelowCell, False, False)
+			e.Handled = True
+			Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+		Case Keys.Right
+			Me.UltraGrid1.PerformAction(UltraGridAction.ExitEditMode, False, False)
+			Me.UltraGrid1.PerformAction(UltraGridAction.NextCellByTab, False, False)
+			e.Handled = True
+			Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+		Case Keys.Left
+			Me.UltraGrid1.PerformAction(UltraGridAction.ExitEditMode, False, False)
+			Me.UltraGrid1.PerformAction(UltraGridAction.PrevCellByTab, False, False)
+			e.Handled = True
+			Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+	End Select
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_KeyDown(object sender, KeyEventArgs e)
+{
+	// Perform action needed to move cursor
+	switch(e.KeyCode)
+	{
+		case Keys.Up:
+			this.ultraGrid1.PerformAction(UltraGridAction.ExitEditMode, false, 
+			  false);
+			this.ultraGrid1.PerformAction(UltraGridAction.AboveCell, false, 
+			  false);
+			e.Handled = true;
+			this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, 
+			  false);
+			break;
+		case Keys.Down:
+			this.ultraGrid1.PerformAction(UltraGridAction.ExitEditMode, false, 
+			  false);
+			this.ultraGrid1.PerformAction(UltraGridAction.BelowCell, false, 
+			  false);
+			e.Handled = true;
+			this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, 
+			  false);
+			break;
+		case Keys.Right:
+			this.ultraGrid1.PerformAction(UltraGridAction.ExitEditMode, false, 
+			  false);
+			this.ultraGrid1.PerformAction(UltraGridAction.NextCellByTab, false, 
+			  false);
+			e.Handled = true;
+			this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, 
+			  false);
+			break;
+		case Keys.Left:
+			this.ultraGrid1.PerformAction(UltraGridAction.ExitEditMode, false, 
+			  false);
+			this.ultraGrid1.PerformAction(UltraGridAction.PrevCellByTab, false, 
+			  false);
+			e.Handled = true;
+			this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, 
+			  false);
+			break;
+	}
+}
+----
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event overrides the background color of the active cell:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Set background color of Active Cell
+	Me.UltraGrid1.DisplayLayout.Override.ActiveCellAppearance.BackColor = Color.Red
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set background color of Active Cell
+	this.ultraGrid1.DisplayLayout.Override.ActiveCellAppearance.BackColor = Color.Red;
+}
+----
+
+* UltraGrid1.Enter - The code in the Enter event sets an Active Row and an Active Cell if they are not already set:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_Enter(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles UltraGrid1.Enter
+	' Set ActiveRow and ActiveCell on grid entry
+	If Me.UltraGrid1.ActiveRow Is Nothing Then
+		Me.UltraGrid1.ActiveRow = Me.UltraGrid1.GetRow(ChildRow.First)
+	End If
+	If Me.UltraGrid1.ActiveCell Is Nothing Then
+		Me.UltraGrid1.ActiveCell = Me.UltraGrid1.ActiveRow.Cells(2)
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_Enter(object sender, EventArgs e)
+{
+	// Set ActiveRow and ActiveCell on grid entry
+	if(this.ultraGrid1.ActiveRow == null)
+		this.ultraGrid1.ActiveRow = this.ultraGrid1.GetRow(ChildRow.First);
+	if(this.ultraGrid1.ActiveCell == null)
+		this.ultraGrid1.ActiveCell = this.ultraGrid1.ActiveRow.Cells[2];
+}
+----
+
+== Review
+
+This sample project shows how to use the PerformAction method of the WinGrid to simulate the cursor movement of Excel.

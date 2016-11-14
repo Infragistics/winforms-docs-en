@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-anchor-extent-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{8DBB7C3B-04F4-4B49-B334-8F1F87BAB178}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Extent Pane
+
+The Extent pane lets you determine the position of the anchor.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugeneedleanchor~extent.html[Extent]"]  -- Set this value to an integer from 0 to 100. If the extent is set to 0, the anchor will be positioned in the center of the Radial gauge. As the value increases the anchor will move towards the edge of the gauge in the direction of the needle. As the value decreases the anchor will move in the opposite direction. If you enter a value greater than 100, the anchor will not appear on the gauge.
+
+image::Images/Extent_Pane_01.png[wingauge's extent pane.]
+
+== Related Topic
+
+link:wingauge-anchor-layout-tab.html[Anchor Layout Tab]

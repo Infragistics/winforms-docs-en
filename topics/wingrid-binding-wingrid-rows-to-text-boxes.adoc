@@ -1,0 +1,122 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-binding-wingrid-rows-to-text-boxes",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{693350BD-0706-400B-BC80-B806B9FE7D23}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding WinGrid Rows to Text Boxes
+
+== Background
+
+Many projects use the WinGrid™ to navigate a sorted result set and standard Text Boxes to edit the data. To make this work there needs to be a known relationship between DataSources and Grid Rows.
+
+For flat data this is not much of a problem since the UltraGridRow's Index property points directly to the position of the row in the bound DataTable.
+
+== Issues
+
+How do I bind DataTable Rows to text boxes and change the position in the DataTable when the user selects rows in the WinGrid?
+
+== Sample Project
+
+This sample project allows the user to select rows in the WinGrid and the corresponding data display in UltraTextEditors.
+
+image::Images\WinGrid_Binding_WinGrid_Rows_to_Text_Boxes_01.png[binding ultragrid rows to text boxes]
+
+The Form Events Region contains the following event handlers:
+
+* MyBase.Load - The Form Load event code then columns from the Orders table are bound to the text box controls:
+
+*In Visual Basic:*
+
+----
+Private Sub Binding_WinGrid_Rows_to_Text_Boxes_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.txtShipAddress.DataBindings.Add("Text", Me.nWindDataSet3.Orders, "ShipAddress")
+	Me.txtShipCity.DataBindings.Add("Text", Me.nWindDataSet3.Orders, "ShipCity")
+	Me.txtShipName.DataBindings.Add("Text", Me.nWindDataSet3.Orders, "ShipName")
+End Sub
+----
+
+*In C#:*
+
+----
+private void Binding_WinGrid_Rows_to_Text_Boxes_Load(object sender, System.EventArgs e)
+{
+	this.txtShipAddress.DataBindings.Add("Text", 
+	  this.nWindDataSet3.Orders, "ShipAddress");
+	this.txtShipCity.DataBindings.Add("Text", this.nWindDataSet3.Orders, "ShipCity");
+	this.txtShipName.DataBindings.Add("Text", this.nWindDataSet3.Orders, "ShipName");
+}
+----
+
+The WinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The InitializeLayout event handler sets the Row Select Type and Cell Click Action properties:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.Override.SelectTypeRow = SelectType.Single
+	e.Layout.Override.CellClickAction = CellClickAction.RowSelect
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Override.SelectTypeRow = SelectType.Single;
+	e.Layout.Override.CellClickAction = CellClickAction.RowSelect;
+}
+----
+
+* UltraGrid1.AfterSelectChange - The AfterSelectChange event fires each time the selected row in the grid changes.
+
+For selections the CurrencyManager can be called directly with the Selected.Rows(0).Index to position the record in the TextBoxes:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_AfterSelectChange(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs) _
+  Handles UltraGrid1.AfterSelectChange
+	' Use CurrencyManager to set position
+	Dim currencymanager1 As CurrencyManager
+	currencymanager1 = Me.BindingContext(Me.nWindDataSet3.Orders)
+	currencymanager1.Position = Me.UltraGrid1.Selected.Rows(0).Index
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_AfterSelectChange(object sender, 
+  Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+{
+	// Use CurrencyManager to set position
+	CurrencyManager currencyManager1;
+	currencyManager1 = (CurrencyManager)this.BindingContext[this.nWindDataSet3.Orders];
+	currencyManager1.Position = this.ultraGrid1.Selected.Rows[0].Index;
+}
+----
+
+== Review
+
+This is a rather interesting project illustrating the relationship between WinGrid Row Indexes and the underlying DataTable rows. Also illustrated is the mechanism used to bind DataTable columns to TextBoxes.

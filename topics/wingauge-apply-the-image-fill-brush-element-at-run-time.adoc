@@ -1,0 +1,78 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-image-fill-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{766F1797-82E7-4660-A9AF-46801181A9FC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Image Fill Brush Element at Run Time
+
+Applying the Image Fill brush element to a property of your gauge renders the property as an image.
+
+*To apply the Image Fill brush element to a property of your gauge at design time:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event, and add the following code.
+[start=3]
+. Create instances of the classes:
+
+*In Visual Basic:*
+
+----
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+Dim imageBrushElement1 As New ImageBrushElement()
+----
+
+*In C#:*
+
+----
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+ImageBrushElement myImageBrushElement = new ImageBrushElement();
+----
+
+[start=4]
+. Apply the image fill brush element to the *Dial* property.
+
+*In Visual Basic:*
+
+----
+imageBrushElement1.Image = Image.FromFile("infragisitics_LOGO_140.gif")
+imageBrushElement1.ImageFit = Infragistics.UltraGauge.Resources.ImageFit.Tile
+myRadialGauge.Dial.BrushElement = imageBrushElement1
+----
+
+*In C#:*
+
+----
+myImageBrushElement.Image = Image.FromFile("infragisitics_LOGO_140.gif");
+myImageBrushElement.ImageFit = Infragistics.UltraGauge.Resources.ImageFit.Tile;
+myRadialGauge.Dial.BrushElement = myImageBrushElement;
+----
+
+== Related Topics
+
+link:wingauge-image-fill-brush-element.html[Image Fill Brush Element]
+
+link:wingauge-apply-the-image-brush-element-at-design-time.html[Apply the Image Fill Brush Element at Design Time]

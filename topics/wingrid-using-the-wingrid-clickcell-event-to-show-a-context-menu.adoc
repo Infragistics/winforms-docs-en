@@ -1,0 +1,179 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-the-wingrid-clickcell-event-to-show-a-context-menu",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Events","Grids"],
+    "guid": "{D3F3EA75-6B34-42A3-A324-B30451EC4C21}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the WinGrid ClickCell Event to Show a Context Menu
+
+*Before You Begin*
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~clickcell_ev.html[ClickCell]"]  Event of the WinGrid control is useful to monitor which cell the end-user clicked. Using the ClickCell event arguments you can access the cell value, the row that it belongs to, the header of the clicked cell as well as its sibling cells and their values.
+
+*What You Will Accomplish*
+
+This walkthrough guides you through the steps on how to gain access to the clicked cell, select the row that was clicked, show the Header caption and the cell value corresponding to the clicked cell, and also popup a Context menu. This walkthrough is a good exercise to help you learn how to interact with WinGrid through this event and its event arguments.
+
+*Follow These Steps*
+
+[start=1]
+. Drag and drop an UltraGrid from your Visual Studio® Toolbox onto your Form. Bind the UltraGrid to the categories table of the Northwind database. For more information on databinding WinGrid, see the link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat data Source topic.]
+[start=2]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+Imports Infragistics.Win.UltraWinToolbars
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win.UltraWinToolbars;
+----
+
+[start=3]
+. In the code-behind of your Form, add a private variable to store the Mouse button information when a cell is clicked.
+
+*In Visual Basic:*
+
+----
+Private _theButton As MouseButtons = MouseButtons.None
+----
+
+*In C#:*
+
+----
+private MouseButtons _theButton = MouseButtons.None;
+----
+
+[start=4]
+. Add the UltraToolbarsManager™ from your Visual Studio® Toolbox onto your Form.
+[start=5]
+. Add the following code to the Form_Load event handler.
+
+*In Visual Basic:*
+
+----
+'The following lines of code create and set up the Popup menu. 
+    Dim b As ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool ("Delete")
+b.SharedProps.Caption = "Delete" 
+    Dim p As PopupMenuTool = New Infragistics.Win.UltraWinToolbars.PopupMenuTool ("Operations")
+Me.ultraToolbarsManager1.Tools.AddRange (New ToolBase () {p, b}) 
+p.Tools.AddTool ("Delete") 
+AddHandler Me.ultraToolbarsManager1.ToolClick, AddressOf_ ultraToolbarsManager1_ToolClick 
+Me.Text = "WinGrid CellClick Example" 
+    ' TODO: This line of code loads data into the 'nwindDataSet.Categories' table. You can ‘move, or remove it, as needed. 
+Me.categoriesTableAdapter.Fill (Me.nwindDataSet.Categories)
+----
+
+*In C#:*
+
+----
+// The following lines of code create and set up the Popup menu. 
+            ButtonTool b = new Infragistics.Win.UltraWinToolbars.ButtonTool("Delete");
+            b.SharedProps.Caption = "Delete";
+            PopupMenuTool p = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Operations");
+            this.ultraToolbarsManager1.Tools.AddRange(new ToolBase[] { p, b });
+            p.Tools.AddTool("Delete");
+            this.ultraToolbarsManager1.ToolClick+=new ToolClickEventHandler(ultraToolbarsManager1_ToolClick);
+           // Assigns Header text to the Form
+            this.Text = "WinGrid CellClick Example";
+            // TODO: This line of code loads data into the 'nwindDataSet.Categories' table. You can move, or remove it, as needed.
+            this.categoriesTableAdapter.Fill(this.nwindDataSet.Categories);
+----
+
+[start=6]
+. In the MouseDown Event handler of the UltraGrid add this line of code.
+
+*In Visual Basic:*
+
+----
+_theButton = e.Button
+----
+
+*In C#:*
+
+----
+_theButton = e.Button
+----
+
+[start=7]
+. Add the ToolClick event handler for UltraToolbarsManager and write the following code to delete the active WinGrid row.
+
+*In Visual Basic:*
+
+----
+Select Case e.Tool.Key 
+    Case "Delete" 
+        If Me.categoriesUltraGrid.ActiveRow IsNot Nothing Then 
+            Me.categoriesUltraGrid.ActiveRow.Delete() 
+        End If 
+        Exit Select 
+End Select
+----
+
+*In C#:*
+
+----
+switch (e.Tool.Key)
+              {
+                case "Delete":
+                    if (this.categoriesUltraGrid.ActiveRow != null)
+                    {
+                        this.categoriesUltraGrid.ActiveRow.Delete();
+                    }
+                    break;
+ }
+----
+
+[start=8]
+. Add the ClickCell event handler for the WinGrid control and place the following lines of code.
+
+*In Visual Basic:*
+
+----
+'activate and select the Row that was clicked 
+DirectCast (sender, UltraGrid).Selected.Rows.Clear () 
+e.Cell.Row.Activate () 
+e.Cell.Row.Selected = True 
+'Set the Form text to show the Header Caption and Cell Value. 
+Me.Text = String.Format ("{0}: {1}", e.Cell.Column.Header.Caption, e.Cell.Value.ToString ()) 
+'If we Right Click, show the Context Menu 
+If _theButton = MouseButtons.Right Then 
+    Me.ultraToolbarsManager1.ShowPopup ("Operations") 
+End If
+----
+
+*In C#:*
+
+----
+//activate and select the Row that was clicked
+            ((UltraGrid)sender).Selected.Rows.Clear();
+            e.Cell.Row.Activate();
+            e.Cell.Row.Selected = true;
+            //Set the Form text to show the Header Caption and Cell Value. 
+            this.Text = 
+                string.Format("{0}: {1}", e.Cell.Column.Header.Caption, e.Cell.Value.ToString());
+            //If we Right Click, show the Context Menu
+            if (_theButton == MouseButtons.Right)
+            {
+                this.ultraToolbarsManager1.ShowPopup("Operations");
+ }
+----
+
+[start=9]
+. Run the application and right click on each cell. Observe the Form.Text changes as you right click and also the Delete context menu pops up.
+
+image::Images\WinGrid_ClickCell_Event_Showing_Context_Menu.png[using the ultragrid click event to show a context menu]

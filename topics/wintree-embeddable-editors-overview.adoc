@@ -1,0 +1,284 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-embeddable-editors-overview",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{659B4F62-20CD-42F3-A567-00C52C34293E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Embeddable Editors Overview
+
+== Introduction
+
+Embeddable editors were first introduced with the WinGrid™ control, to create a consistent communication layer between the WinGrid and the various editors it utilizes. As with the WinGrid control, the WinTree™ control does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorownerbase.html[EmbeddableEditorOwnerBase]"]  class. Similarly, the embeddable editors have no awareness of the control with which they are communicating - they call the appropriate method of the EmbeddableEditorOwnerBase class, and do whatever the return value tells them to do.
+
+[[newproperties]]
+
+== New Properties
+
+In order to make using embeddable editors easier for the end developer, the following properties were added to the UltraWinTree control:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~editorresolved.html[EditorResolved]"]  - Returns the resolved value of the associated Override's Editor property.
+*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editor.html[Editor]"]  - Sets or returns the editor used for editing the node's text. This property evaluates to an instance of an embeddable editor class from the Infragistics.Win assembly.
+*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  - Sets or returns the control that implements the IProvidesEmbeddableEditor interface for editing the Node's text. This property is typically set to an UltraWinEditors control that has been placed on the form along with the UltraWinTree.
+*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~showeditorbuttons.html[ShowEditorButtons]"]  - Sets or returns a value indicating when to show editing buttons when using embeddable editors.
+*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  - Sets or returns a value indicating whether to use embeddable editors.
+
+For more information regarding the differences between the Editor and the EditorComponent property, and the implications of using one over the other, consult the <<editorversuscontrol,Editor vs. EditorComponent>> section later in this topic.
+
+[[background]]
+
+== Background on Embeddable editors
+
+The following section provides a short primer on the way embeddable editors work, and how embeddable editors communicate with the UltraWinTree control.
+
+All of the embeddable editor controls expose an interface through which the control provides an instance of its editor to other controls (such as WinGrid or WinTree) that want to "embed" that editor for use within themselves. (The UltraWinEditors controls are actually just simple implementations of these editing interfaces; each one exposes a single embedded editor without any other functionality.) The editor interface is  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"] . It exposes only one member - the Editor property, which returns a copy of the same  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"] -derived object that realizes the control's rendering and editing functionality.
+
+The EmbeddableEditorBase class is the abstract class from which all embeddable editors derive. It provides one or more instances of  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableuielementbase.html[EmbeddableUIElementBase]"] -derived embeddable elements specific to that editor, which handle rendering and editing of the values provided by the owner.
+
+The EmbeddableUIElementBase class is the abstract class from which all embeddable elements derive. Most of the behavior of these embeddable elements is governed by the control in which they are embedded, via that control's implementation of an EmbeddableEditorOwnerBase-derived class.
+
+The EmbeddableEditorOwnerBase class provides the main communication layer between the embeddable elements and the control in which they are embedded. An example of the communication that occurs between the embeddable element and its owning control is exhibited by the EmbeddableEditorOwnerBase class'  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorownerbase~getvalue.html[GetValue]"]  method; when an embeddable element is drawn, it determines what value it should render by calling this method, and then converts the value returned by the owning control into a data type that it can reliably render (e.g., a string).
+
+[[usingeditors]]
+
+== Using Embeddable Editors in the UltraWinTree Control
+
+By default, the UltraWinTree control does not use embeddable editors. If the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  property is specifically set to DefaultableBoolean.True, but neither the Editor nor EditorComponent properties of the control's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  object have been set, the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtext.html[EditorWithText]"]  editor is used to render and edit node text. EditorWithText is especially geared towards the display of textual values. The EditorWithText editor provides an  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtextuielement.html[EditorWithTextUIElement]"]  embeddable element for all nodes displayed by the control. If the node is brought into "edit mode", the editor displays a TextBox-derived control which allows the node's text to be modified by the end user. When the edit mode session ends, the value typed by the end user is then assigned to the node's Text property, assuming the edit session was not canceled by pressing the Escape key. So far, this really hasn't deviated from version 2 behavior, except in what goes on under the hood.
+
+When either the Editor or  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property have been specifically set, nodes that are affected by the Override on which the Editor or EditorComponent property was set then use the specified editor to render and edit the node's text. The resolution hierarchy is the same for the Editor and EditorComponent properties as it is for any other property exposed by the Override object. For example, if the properties are set on the control-level Override, all nodes use that editor, provided that they are not affected by a more specific (lower-level) Override setting. The order of precedence for properties exposed by the Override object is outlined in the following table, in descending priority: 
+
+[options="header", cols="a,a"]
+|====
+|Override setting|Nodes affected
+
+|UltraTreeNode.Override
+|Only the specified UltraTreeNode object
+
+|TreeNodesCollection.Override
+|All UltraTreeNode objects that belong to that particular Nodes collection
+
+|NodeLevelOverridesCollection[ _level_ ].Override
+|All UltraTreeNode objects whose Level property is equal to _level_ 
+
+|UltraTree.Override
+|All UltraTreeNode objects at all levels of the specified UltraWinTree control
+
+|====
+
+The Editor property can be set to any of the editors provided by the Win assembly, as the EditorComponent property can be set to any of the controls in the UltraWinEditors assembly. The following table outlines those controls, the editors they provide, and the data type they are most commonly used to render and edit:
+
+[options="header", cols="a,a,a"]
+|====
+|WinEditor control|EmbeddableEditorBase-derived editor|Data type
+
+|WinTextEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtext.html[EditorWithText]"] 
+|System.String
+
+|WinComboEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithcombo.html[EditorWithCombo]"] 
+|System.Object
+
+|WinFontNameEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.fontnameeditor.html[FontNameEditor]"] 
+|System.String
+
+|WinDateTimeEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+|System.DateTime
+
+|WinNumericEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+|System.Int32, System.Double
+
+|WinCurrencyEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+|System.Decimal
+
+|WinColorPicker
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.colorpickereditor.html[ColorPickerEditor]"] 
+|System.Color
+
+|WinOptionSet
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.optionseteditor.html[OptionSetEditor]"] 
+|System.Object
+
+|WinCheckEditor
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.checkeditor.html[CheckEditor]"] 
+|System.Boolean
+
+|====
+
+Any of the above mentioned editors can be assigned to the UltraWinTree control for editing node text. Design-time support is provided for the EditorComponent property in the form of a drop-down list that enumerates all of the controls on the form that implement the IProvidesEmbeddableEditor interface. Runtime assignment is accomplished by one line of code, which would look something like this:
+
+*In Visual Basic:*
+
+----
+Me.UltraTree1.Override.EditorComponent = Me.UltraComboEditor1
+----
+
+*In C#:*
+
+----
+this.ultraTree1.Override.EditorComponent = this.ultraComboEditor1;
+----
+
+== How Embeddable Editors Communicate with the UltraWinTree Control
+
+The following section uses event sequences to demonstrate how embeddable editors communicate with the UltraWinTree control to render and edit information.
+
+== A custom editor is assigned
+
+[start=1]
+. The developer sets the EditorComponent property of the control's Override to an instance of an UltraComboEditor control that resides on the same form.
+[start=2]
+. The UltraWinTree control verifies that the UltraComboEditor control implements the IProvidesEmbeddableEditor interface, and throws an exception if it doesn't. If no exception is thrown, a reference to the UltraComboEditor control is cached for later use.
+[start=3]
+. The UltraWinTree control casts the reference it holds to the UltraComboEditor control it obtained in the previous step to an IProvidesEmbeddableEditor implementor, and accesses the Editor property of its Override.
+[start=4]
+. The next time the UltraWinTree control renders a node's text, the GetEmbeddableElement method is called on the editor obtained in the previous step. The UltraWinTree control specifies its EmbeddableEditorOwnerBase-derived implementation as the means by which information is communicated to the embeddable element. It also specifies whether (and under what circumstances) the embeddable element should display edit elements (for example, the drop-down button); this decision is made based on the value of the associated Override's ShowEditorButtons property.
+[start=5]
+. The EmbeddableUIElementBase-derived element returned in the previous step is added to the collection of child elements that represents the node in the user interface.
+[start=6]
+. When the EmbeddableUIElementBase-derived element is rendered, it calls several methods on the UltraWinTree control's EmbeddableEditorOwnerBase-derived implementation to determine, for example:
+
+** What value should I display? (GetValue method)
+** What is the data type of the value you are providing me with? (GetDataType method)
+** What ForeColor, BackColor, Font, etc. should I display myself with? (ResolveAppearance method)
+** Should I display the value as multiline? (IsMultiLine method)
+** If the value is null, what text should I display? (GetNullText method)
+
+== A node is brought into edit mode
+
+[start=1]
+. A node that is being displayed by the UltraWinTree control is selected, and the end user presses the F2 key to bring the node into edit mode.
+[start=2]
+. The UltraWinTree control calls the EnterEditMode method on the editor obtained in the previous section, passing in the EmbeddableUIElementBase-derived element associated with the node that is about to be edited.
+[start=3]
+. The editor fires its BeforeEnterEditMode event, which in turn triggers the firing of the UltraTree control's BeforeLabelEdit event. If either event is canceled, no further action takes place.
+[start=4]
+. If the BeforeEnterEditMode event is not canceled, the embeddable element associated with the node is brought into edit mode.
+[start=5]
+. The next time the UltraWinTree control renders the node, the embeddable element renders itself as appropriate for edit mode - the drop-down button is displayed, and (provided the UltraComboEditor control's DropDownStyle property is not set to 'DropDownList') a TextBox-derived control appears for the edit portion.
+
+== A node is brought out of edit mode
+
+[start=1]
+. The Enter key is pressed while the node (which was brought into edit mode in the previous section) is in edit mode.
+[start=2]
+. The EditorWithCombo editor calls the IsKeyMapped method of UltraWinTree control's EmbeddableEditorOwnerBase-derived implementation to determine if it wants to handle the keystroke.
+[start=3]
+. The UltraWinTree control searches its KeyActionMappings collection for an action that responds to the Enter key; since there is an action defined, it returns True from its EmbeddableEditorOwnerBase-derived implementation of the IsKeyMapped method.
+[start=4]
+. The EditorWithCombo editor fires its KeyDown event for the Enter key; the UltraWinTree control processes it since it has an action defined for the key, and sets the Handled property of the KeyEventArgs that gets passed to it to true to signify that it is handling the keystroke.
+[start=5]
+. The EditorWithCombo editor for goes its default processing of the Enter key, if any, because the UltraWinTree control handled it.
+[start=6]
+. The UltraWinTree control performs the action it has defined for the Enter key, which indicates that edit mode should be exited, and any changes that were made during the edit session should be applied to the node's Text property.
+[start=7]
+. In response to the action described in the previous step, the EditorWithCombo's ExitEditMode method is called, specifying a value of true for the 'applyChanges' parameter.
+[start=8]
+. As a result of having its ExitEditMode method called, the EditorWithCombo editor fires its BeforeExitEditMode event.
+[start=9]
+. The UltraWinTree control handles the editor's BeforeExitEditMode event by setting the node's Text property to the string representation of the EditorWithCombo editor's Value property. Since it is possible that some other listener could have canceled the event, it does so only if the event was not canceled by any listener.
+
+== Setting Editor-Specific Properties
+
+The following section describes how properties that are specific to the editor (i.e., not defined in the EmbeddableEditorBase class) can be set so that they apply to the editor used by the UltraWinTree control, and provides a simple example demonstrating how these properties can be accessed and manipulated.
+
+Certain properties apply to all editors and are thus defined in the EmbeddableEditorBase class. An example of such a property is the IsInEditMode property; since every editor, regardless of the kind of editor it is, must know whether or not it is in edit mode, the IsInEditMode property makes sense for all editors.
+
+Some editors may expose properties that are specific to that particular editor. These properties usually exist because there is no method defined in the EmbeddableEditorOwnerBase class that corresponds to that functionality, because it only makes sense for a specific kind of editor. An example of such a property is the EditorWithCombo editor's HasMRUList property: since an MRU (Most Recently Used) list is not generic enough to apply to most editors, there is no method defined in the EmbeddableEditorOwnerBase class that corresponds to it. If the end developer wants to take advantage of this feature, there is no property setting on the UltraWinTree control that enables it, so the property must be set directly on the editor itself.
+
+When the UltraComboEditor is assigned to the EditorControl property of the UltraWinTree control's Override, property settings that are applied to the UltraComboEditor control on the form are reflected by the editor that is provided to the UltraWinTree control. What this means is that to get MRU list functionality in the editor provided to the UltraWinTree control, the developer simply has to set the appropriate properties on the UltraComboEditor control. The following code sample demonstrates how this is done programmatically:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub WinTreeEmbeddableEditorsOverview_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Add a few items to the UltraComboEditor control's Items collection.
+	Me.UltraComboEditor1.Items.Add(1, "One")
+	Me.UltraComboEditor1.Items.Add(2, "Two")
+	Me.UltraComboEditor1.Items.Add(3, "Three")
+	' Enable MRU list functionality by setting the HasMRUList property to True
+	Me.UltraComboEditor1.HasMRUList = True
+	' Limit the MRU list to 5 items
+	Me.UltraComboEditor1.MaxMRUItems = 5
+	' Allows the node to be put into edit mode so the editor can show
+	Me.UltraTree1.Nodes(0).Nodes(0).Override.LabelEdit = DefaultableBoolean.True
+	' Set the EditorControl property to the UltraComboEditor.
+	Me.UltraTree1.Nodes(0).Nodes(0).Override.EditorComponent = Me.UltraComboEditor1
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void WinTreeEmbeddableEditorsOverview_Load(object sender, System.EventArgs e)
+{
+	// Add a few items to the UltraComboEditor control's Items collection.
+	this.ultraComboEditor1.Items.Add(1, "One");
+	this.ultraComboEditor1.Items.Add(2, "Two");
+	this.ultraComboEditor1.Items.Add(3, "Three");
+	// Enable MRU list functionality by setting the HasMRUList property to True
+	this.ultraComboEditor1.HasMRUList = true;
+	// Limit the MRU list to 5 items
+	this.ultraComboEditor1.MaxMRUItems = 5;
+	// Allows the node to be put into edit mode so the editor can show
+	this.ultraTree1.Nodes[0].Nodes[0].Override.LabelEdit = DefaultableBoolean.True;
+	// Set the EditorControl property to the UltraComboEditor.
+	this.ultraTree1.Nodes[0].Nodes[0].Override.EditorComponent = this.ultraComboEditor1;
+}
+----
+
+At design-time, the properties can be set via the property grid, with the same result - the values of the control's properties are carried over to the instance of the editor that is used by the UltraWinTree control.
+
+[[editorversuscontrol]]
+
+== Editor vs. EditorComponent
+
+The following section describes the differences between the Editor and EditorComponent properties.
+
+The short answer to the question, "What is the difference between the Editor property and the EditorComponent property?" is: not much. There are a couple of things to keep in mind however; most notably, that the Editor property takes precedence over the EditorComponent property. If both properties are set, only the Editor property is observed.
+
+The main reason for the EditorComponent property is to provide design-time support for assigning custom editors for use within the UltraWinTree control, because there is no way to instantiated an EmbeddableEditorBase-derived editor at design-time. If the EditorComponent property is set at design-time, but then the Editor property is set to a different editor at runtime, that editor is used to edit nodes.
+
+The main benefit in using the Editor property rather than the EditorComponent property is that the same thing can be accomplished without the overhead of creating an additional control. An instance of the editor can be created on the stack, and then assigned to the Editor property of the UltraWinTree control's Override, as demonstrated by the following code sample:
+
+.Note
+[NOTE]
+====
+There are certain limitations that the developer should be aware of when electing to use the the Editor property rather than the EditorComponent property. The following section explains the concept of the "default owner" and how it can be used to overcome these limitations.
+====
+
+[[defaultowner]]
+
+== The "Default Owner": What It Is and How It Is Used
+
+The following section describes the concept of the "default owner", and its significance to the embeddable editor.
+
+The standalone UltraWinEditors controls utilize embeddable editors to realize most of their functionality. It is interesting to note that the embeddable editor doesn't know what control it is being used by - it communicates only with the EmbeddableEditorOwnerBase-derived class that the owning control implements to provide the relevant information to the embeddable editor.
+
+You may have noticed that there is an overload of the EmbeddableEditorBase class constructor that takes a parameter named 'defaultOwner'. The parameter is of type EmbeddableEditorOwnerBase. This overload of the constructor is used by the UltraWinEditors controls' implementation of the IProvidesEmbeddableEditor.Editor property; when they provide an editor to some other control, the UltraWinEditors control specifies it own EnbeddableEditorOwnerBase implementation when it instantiates the embeddable editor that it returns.
+
+This is done so that if the primary owner (i.e., the UltraWinTree control) elects not to override an EmbeddableEditorBase method, that information is then provided by the default owner - in this case, the UltraWinEditors control. Since this concept might be a little difficult to follow at first glance, here is an example, using actual property names. Assume that the EditorComponent property of the UltraWinTree control's Override is set to an instance of the UltraComboEditor control class, and that you want to utilize the auto-complete functionality that the UltraComboEditor offers. From your perspective, this is very simple to accomplish - just set the UltraComboEditor control's AutoComplete property to True.
+
+The reason this works is because of the role that the default owner plays in this scenario. The EditorWithCombo, which actually handles the auto-complete functionality, asks the owning control whether it wants to use it via the EmbeddableEditorOwnerBase class' GetAutoEdit method. If the owner returns True from that method, the EditorWithCombo switches the feature on.
+
+The UltraWinTree control does not implement the GetAutoEdit method because it doesn't have a corresponding property, and thus does not have a way to communicate to the EditorWithCombo that it would like to use the feature. However, the EditorWithCombo calls the GetAutoEdit method not only on the UltraWinTree control's EmbeddableEditorOwnerBase class implementation, but also on the EmbeddableEditorOwnerBase class instance that was passed to its constructor to see if it has anything to say on the matter. The UltraComboEditor's implementation returns the value of its AutoComplete property, so if the property is set to True, the UltraWinTree control is able to use the feature as well.
+
+When the Editor property is used rather than the EditorComponent property, and the instance of the EmbeddableEditorBase-derived class that is assigned to the Editor property was not created with the overload that takes a default owner, the embeddable editor will not be able to obtain default owner information, and as such the UltraWinTree control is not able to pick up any of the editor's functionality that does not correspond to one of the UltraWinTree control's properties. This can be avoided if the embeddable editor is created with the overload that takes a default owner.
+
+Furthermore, the instance of the EmbeddableEditorOwnerBase-derived class that is passed to the constructor can be a custom class that stands independent of any control. Any of the methods that are overridden in this custom class, provided that they are not also implemented by the UltraWinTree control, are called by the embeddable editor, providing you with the best of both worlds - efficiency in that the overhead of creating a control to provide this information is avoided, and flexibility in being able to provide additional information to the embeddable editor.

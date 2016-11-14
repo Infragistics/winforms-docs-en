@@ -1,0 +1,140 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-printing-support-in-winschedule",
+    "controlName": ["WinSchedule"],
+    "tags": ["Printing","Styling"],
+    "guid": "{FC2CB617-E9DB-4AED-848F-90FB05894712}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Printing Support in WinSchedule
+
+Printing support in WinSchedule™ is implemented as a separate component that derives from the .NET framework's PrintDocument class. This will allows you to use the class with the existing .NET print classes (e.g. link:http://msdn.microsoft.com/en-us/library/system.windows.forms.printdialog(v=vs.110).aspx[PrintDialog], link:http://msdn.microsoft.com/en-us/library/system.windows.forms.printdialog(v=vs.110).aspx[PageSetupDialog], link:http://msdn.microsoft.com/en-us/library/system.windows.forms.printpreviewcontrol(v=vs.110).aspx[PrintPreviewControl], link:http://msdn.microsoft.com/en-us/library/system.windows.forms.printdialog(v=vs.110).aspx[PrintPreviewDialog], etc.) or custom printer objects that deal with the PrinterDocument class. This also follows along with the schedule infrastructure of having another component that provides a different view of the information managed by the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo.html[UltraCalendarInfo]"]  object.
+
+[[print_styles]]
+
+== Print Styles
+
+This is an overview of the print styles that are available in  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument.html[UltraSchedulePrintDocument]"]  class for printing out schedule data. The basic model emulated by the WinSchedule is that of Microsoft Outlook. Outlook includes six different styles of calendar printing; we have added a seventh style for a yearly style printing capability.
+
+* *Daily Style* -- This is basically an output of the appointments, notes and tasks for a particular day given a particular time range. This style may be rendered on one page or two pages. The appointments are only ever rendered on the first page. The second page is used to render the notes, lined notes and task pad information. The notes are just a blank area that can be used for writing notes after it has been printed.
+
+image::Images/WinSchedule_Printing_and_Print_Styles_01.gif[winschedule's daily style print support]
+
+image::Images/WinSchedule_Printing_and_Print_Styles_02.gif[winschedule's daily style print support]
+
+* *Weekly Style* -- This is used to output a week's information. When the arrangement is set to "Left to Right" it appears as a DayView on a form would display a week's worth of days; when set to "Top to Bottom", the days are laid out as displayed by the WeekView element. When the arrangement is set to "Top to Bottom", the user has additional options not available when "Left to Right" is chosen; this includes the option of excluding the weekends and the option of selecting the time range to render. Regardless of arrangement, the user may specify a one or two page layout and whether to include notes and task pad.
+
+image::Images/WinSchedule_Printing_and_Print_Styles_03.gif[winschedule's weekly style print support]
+
+image::Images/WinSchedule_Printing_and_Print_Styles_04.gif[winschedule's weekly style print support]
+
+* *Monthly Style* -- This is used to render an entire month's information. The layout may be set to one or two pages and may include the notes and/or task pad. There are also options to exclude the weekends and to print exactly one month per page. When the latter is set to true, it forces the output to only display the month containing the first visible day in the month view - slots in the week that would contain the leading or trailing days are blank (including the day number). Note that the header still may contain two months. Otherwise, the output renders five weeks starting with the currently visible week.
+
+image::Images/WinSchedule_Printing_and_Print_Styles_05.gif[winschedule's monthly style print support]
+
+image::Images/WinSchedule_Printing_and_Print_Styles_06.gif[winschedule's monthly style print support]
+
+* *Yearly Style* -- This is used to render an entire year's information.
+* *TriFold Style* -- This is essentially a single page divided into three. Each section can be a Daily Calendar, Weekly Calendar, Monthly Calendar, blank notes, lined notes or task pad. At least one of the three must be date-related or an error message is displayed. The smallest date related item dictates the number of pages rendered. For example, if daily is included as well as monthly, one page for each day is printed and therefore the monthly is repeated on each page.
+
+image::Images/WinSchedule_Printing_and_Print_Styles_07.gif[winschedule's trifold style print support]
+
+* *Calendar Details Style* -- This view prints out a header section containing the date and day name for any day in the range containing activity. Under the day's header, a list of the activities with the start and end times as well as the subject, location and description. The options include whether to start a new page on a day, week or month break.
+
+image::Images/WinSchedule_Printing_and_Print_Styles_08.gif[winschedule's calendar details style print support]
+
+* *Memo Style* -- This is a special style that requires that at least one appointment (activity) to be selected. Essentially, each item is output with the user name (i.e. owner) with a dark separator line underneath followed by the details of the activity including the subject, location, start time, end time and other miscellaneous information (e.g. recurrence, recurrence patterns, required attendees, description, meeting status, etc.)
+
+image::Images/WinSchedule_Printing_and_Print_Styles_09.gif[winschedue's memo style print support]
+
+In all cases, the page setup dialog that is presented contains three tabs:
+
+* *Format --* This is where you choose the layout (number of pages or top to bottom, etc), what additional items to include (e.g. task pad, notes, etc.), time range (if applicable), fonts for the date headings and appointments, and whether to print using gray shading. This page differs for each print style.
+* *Paper --* This is analogous to the page setup dialog's page - margins, orientation, paper size, etc.
+* *Header/Footer --* This has separate sections for the left, middle and top sections of the header and footer and allows you to include special tags denoting current date, time, page number and user name. There is also an option to reverse the sections on even pages.
+
+The page setup dialogs are  _not_  part of the element. (They are not built into the UltraWinSchedule assembly). A sample project has been provided with UltraWinSchedule that demonstrates how to construct these dialog boxes using the element. You can use the custom page setup dialog box provided in the sample with your own applications. The Printing sample containing the dialog boxes is available as part of the Infragistics Professional SDK install. By default, the Printing sample is located in the following installation folder, depending on your operating system:
+
+* XP
+
+** VB.NET -- {InstallPathXP}{ProductNameVersion}\Samples\Win\WinSchedule\VB\Printing
+** C# -- {InstallPathXP}{ProductNameVersion}\Samples\Win\WinSchedule\CS\Printing
+
+* Vista
+
+** VB.NET -- {InstallPathVista}{ProductNameVersion}\Samples\Win\WinSchedule\VB\Printing
+** C# -- {InstallPathVista}{ProductNameVersion}\Samples\Win\WinSchedule\CS\Printing
+
+== Replaceable Tags for Header and Footer Text
+
+The following replaceable escape tags can be used to insert variable information into the header or footer of your printed schedule pages. These values can be specified for any text property of a header or footer page section, such as the link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textleft.html[TextLeft] link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textleft.html[TextLeft], link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textcenter.html[TextCenter] link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textcenter.html[TextCenter] and link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textright.html[TextRight] link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.headerfooterpagesection~textright.html[TextRight] properties.
+
+[options="header", cols="a,a"]
+|====
+|Replaceable Escape Tag|Purpose
+
+|[Page #]
+|Inserts the current page number
+
+|[Date Printed]
+|Inserts the date when the print operation began.
+
+|[User Name]
+|Inserts the user name as available from *System.Environment.UserName*
+
+|[Time Printed]
+|Inserts the time when the print operation began
+
+|====
+
+== The Printing Process
+
+WinSchedule printing is accomplished by creating a custom  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument.html[PrintDocument]"]  class. This class is derived from the base print document class,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.ultraprintdocument.html[UltraPrintDocument]"] , which exists in Infragistics.Win and encapsulates support for headers, footers, and other generic printing functions.
+
+The rendering of the header, footer, borders, etc. of the UltraPrintDocument base class provides the infrastructure for implementing the same header/footer functionality provided by Outlook. It includes support for replaceable tokens in the header/footer sections for page number, date, time, and user name. The base class overrides the OnPrintPage method, renders the header/footer and other page appearances and then calls the base implementation in the .NET Framework, possibly reducing the margin bounds in the  pick:[win-forms="link:http://msdn.microsoft.com/en-us/library/system.drawing.printing.printpageeventargs(v=vs.110).aspx[PrintPageEventArgs]"]  so that any listener to the event will know to only render into the remaining area.
+
+The sequence of events for the base UltraPrintDocument class is as follows:
+
+[options="header", cols="a,a"]
+|====
+|Event|Occurrence
+
+|PagePrinting
+|Occurs before the page is printed.
+
+|PageHeaderPrinting
+|Occurs before the page header is printed.
+
+|PageHeaderPrinted
+|Occurs after the page header has been printed.
+
+|PageFooterPrinting
+|Occurs before the page footer is printed.
+
+|PageFooterPrinted
+|Occurs after the page footer has been printed.
+
+|PageBodyPrinting
+|Occurs before the contents of the page body is printed.
+
+|PageBodyPrinted
+|Occurs after the page body has been printed.
+
+|PagePrinted
+|Occurs after the page has been printed.
+
+|====
+
+The UltraWinSchedule's PrintDocument class additionally has  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~calendarinfo.html[CalendarInfo]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~calendarlook.html[CalendarLook]"]  properties. If neither of these is explicitly set, the appropriate object will be created when the corresponding property is requested. UltraSchedulePrintDocument also exposes a  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~drawfilter.html[DrawFilter]"]  and a  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~creationfilter.html[CreationFilter]"]  property you can use to implement owner drawing of the elements.
+
+During the course of the print operation, the print document will need to create instances of the schedule controls that it will use to perform the calendar-related print operations. The element will be initialized based on the respective "template" control. For example, TemplateDayView will be used to initialize a DayView element created especially for the print operation. Properties that do not make sense for printing (such as scrollbars, current time indicator, scrollbuttons, etc.) will be turned off in these controls.
+
+As each new instance is created, an Initialize event will be invoked to allow the element to be initialized (for example, InitializeDayView.) This will give you the opportunity to change properties on the element to affect its display. Note that some properties may still be overridden if it is required to perform the print operation (for example, the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsingle~visibleweeks.html[VisibleWeeks]"]  property of MonthViewSingle will be set based on how many weeks must be rendered to print the month).
+
+The type of output generated is based on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~printstyle.html[PrintStyle]"]  property. The element supports the six styles that Outlook supports, in addition to a seventh style for yearly printouts. The contents of the Memo print style are based on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~selectedappointments.html[SelectedAppointments]"]  collection of the associated CalendarInfo class. All other styles are based on either the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~selecteddateranges.html[SelectedDateRanges]"]  of the associated CalendarInfo or the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~startdate.html[StartDate]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~enddate.html[EndDate]"]  properties of the print document, based on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.daterange.html[DateRange]"]  used. This property will default to using the SelectedDateRanges collection but can be set to use the specified DateRange to provide further control over the output. If you use SelectedDateRanges and there are no selected dates, the ActiveDay will be used.

@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-overview-of-controlcontainereditor-object",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["Getting Started"],
+    "guid": "{585DEBC5-EEBF-40D1-9F66-B1B1E4F34CA4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Overview of ControlContainerEditor Object
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor.html[ControlContainerEditor]"]  object provides an easy way to plug in any control that does not implement the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"]  interface into any Infragistics control that supports Embeddable Editors. Implementing the IProvidesEmbeddableEditor interface is not a trivial task, however it is required in order to embed controls into WinGrid™, WinTree™ or any controls that support embeddable editors. To circumvent implementing the IProvidesEmbeddableEditor interface, the ControlContainerEditor object can be used and as a result you will have an easier and more maintainable implementation.
+
+The ControlContainerEditor is an embeddable editor that derives from the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"]  class, which is the parent class for all embeddable editors. The editor object exposes two important properties, pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrol.html[RenderingControl]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrol.html[EditingControl]"]  through which you can specify a Rendering and an Editing control that has to be embedded within a control like WinGrid.
+
+.Note
+[NOTE]
+====
+The Rendering control will be drawn to a Bitmap. Hence any control used as the Rendering control must support the DrawToBitmap method.
+====
+
+Considering that you want to embed a custom editor control into a cell in WinGrid: The RenderingControl will render cells in the WinGrid that are not in edit mode and the EditingControl will allow end users to edit cells that are in edit mode. If you do not specify an EditingControl the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  will not allow editing and will essentially remain as a renderer and not as an editor.
+
+When used with WinGrid, the Rendering and Editing Controls that you specify must have a property that represents the value in UltraGridCell and must also have a PropertyNameChanged event (e.g., ValueChanged, TextChanged etc.,) that can raise an event whenever the value of the specified property changes. The single property of the rendering and editing controls can be assigned to ControlContainerEditor using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrolpropertyname.html[RenderingControlPropertyName]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrolpropertyname.html[EditingControlPropertyName]"]  property settings. If these properties are not explicitly set, the ControlContainerEditor will look for a Value or Text property to use.
+
+*ControlContainerEditor Object versus UltraControlContainerEditor component*
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor.html[UltraControlContainerEditor]"]  is a component available at design-time and it implements the IProvidesEmbeddableEditor interface. It exposes all of the significant properties of the ControlContainerEditor object.
+
+In the simplest case, you can easily set up the UltraControlContainerEditor component at design-time or through code. For information on how to set up the component see the link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-ultracontrolcontainereditor-component.html[Embed Any Control within WinGrid Cell using UltraControlContainerEditor Component] topic.
+
+Similarly, the ControlContainerEditor object can be used by creating an instance of it and setting all its properties so as to point to the controls. It can then be assigned to a column or cell in case of WinGrid. In complex cases, the ControlContainerEditor object can be best utilized. You can derive any class from the ControlContainerEditor object and override properties and methods to deal with more advanced situations.

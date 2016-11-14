@@ -1,0 +1,116 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-a-popupmenu-tool-to-a-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{609A7A9B-3397-42B5-BFC0-0DFB45CD2F49}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add a PopupMenu Tool to a Toolbar
+
+A  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenu]"]  allows you to display a menu of tools. This topic demonstrates how to add a PopupMenu to the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[Toolbar]"]  and how to add a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[Button]"]  and a Textbox Tool to the Popup menu. The Button and TextBox tool can be added in the same manner on the ToolBar level. This Popup Menu tool has a Toolbar PopupStyle, can be torn away, floated and segmented.
+
+== At Design-Time
+
+[start=1]
+. To configure the WinToolbarsManager™ component, open the design-time customizer by right-clicking on the UltraToolbarManager element and selecting "Customize".
+[start=2]
+. To create a new Tool, click the "Tools" tab in the customizer, and then the "New..." button.
+[start=3]
+. Select Popup Menu as your Tool Type and click on the Add button.
+[start=4]
+. Set  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase~dropdownarrowstyle.html[DropDownArrowStyle]"]  to Segmented in order to specify a segmented Popup tool.
+[start=5]
+. Enable  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase~allowtearaway.html[AllowTearaway]"]  on the Popup Menu.
+[start=6]
+. To specify the PopupStyle as Menu select the PopupStyle of the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar~settings.html[Settings]"]  Property.
+[start=7]
+. Select Button Tool as your Tool Type and click on the Add button.
+[start=8]
+. Select TextBox Tool as your Tool Type and click on the Add button.
+[start=9]
+. Click the "ToolBars" tab in the customizer, and then the "New..." button.
+[start=10]
+. click the "Tools" tab and drag the Popup Menu Tool to the ToolBar residing on the form.
+[start=11]
+. Drag the Button Tool to the Popup Menu Tool.
+[start=12]
+. Drag the Text Tool to the Popup Menu Tool.
+
+== At Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Add_a_Popup_Menu_to_a_Toolbar_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim popupmenutool As New PopupMenuTool("popupmenutool")
+	' Adds the tool to the Toolbar Manager's Tools collection
+	Me.UltraToolbarsManager1.Tools.Add(popupmenutool)
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("MAIN")
+	Me.UltraToolbarsManager1.Toolbars(0).Tools.Add(popupmenutool)
+	popupmenutool.SharedProps.DisplayStyle = ToolDisplayStyle.ImageAndText
+	' Specifies a segmented Popup menu
+	popupmenutool.DropDownArrowStyle = DropDownArrowStyle.Segmented
+	' Specifies the Popup Style as Menu
+	popupmenutool.Settings.PopupStyle = PopupStyle.Menu
+	' Specifies the Popup menu to be torn away and floated.
+	popupmenutool.AllowTearaway = True
+	Dim textbox As New TextBoxTool("textbox")
+	Me.UltraToolbarsManager1.Tools.Add(textbox)
+	textbox.Text = "TextBox1"
+	' Adds the TextBox to the Popup menu
+	popupmenutool.Tools.Add(textbox)
+	Dim button As New ButtonTool("button")
+	' Adds a button tool the the Tools collection 
+	Me.UltraToolbarsManager1.Tools.Add(button)
+	button.SharedProps.AppearancesSmall.Appearance.BackColor = Color.RosyBrown
+	button.SharedProps.Caption = "Button1"
+	button.SharedProps.DisplayStyle = ToolDisplayStyle.TextOnlyAlways
+	' Adds the Button to the Popup menu
+	popupmenutool.Tools.Add(button)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Add_a_Popup_Menu_to_a_Toolbar_Load(object sender, EventArgs e)
+{
+	PopupMenuTool popupmenutool = new PopupMenuTool("popupmenutool");
+	popupmenutool.SharedProps.DisplayStyle = ToolDisplayStyle.ImageAndText;
+	// Specifies a segmented Popup menu
+	popupmenutool.DropDownArrowStyle = DropDownArrowStyle.Segmented;
+	// Specifies the Popup Style as Menu
+	popupmenutool.Settings.PopupStyle = PopupStyle.Menu;
+	// Specifies the Popup menu to be torn away and floated.
+	popupmenutool.AllowTearaway = true;
+	// Adds the tool to the Toolbar Manager's Tools collection
+	this.ultraToolbarsManager1.Tools.Add(popupmenutool);
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("MAIN");
+	this.ultraToolbarsManager1.Toolbars[0].Tools.Add(popupmenutool);
+	TextBoxTool textbox = new TextBoxTool("textbox");
+	this.ultraToolbarsManager1.Tools.Add(textbox);
+	textbox.Text = "TextBox1";
+	// Adds the TextBox to the Popup menu
+	popupmenutool.Tools.Add(textbox);
+	ButtonTool button = new ButtonTool("button");
+	// Adds a button tool the the Tools collection 
+	this.ultraToolbarsManager1.Tools.Add(button);
+	button.SharedProps.AppearancesSmall.Appearance.BackColor = Color.RosyBrown;
+	button.SharedProps.Caption = "Button1";
+	button.SharedProps.DisplayStyle = ToolDisplayStyle.TextOnlyAlways;
+	// Adds the Button to the Popup menu
+	popupmenutool.Tools.Add(button);
+}
+----

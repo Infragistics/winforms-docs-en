@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2008-volume-3",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{9506CC69-65B4-420F-A078-9CBE0EA034A8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2008 Volume 3
+
+== *Excel Engine*
+
+*WorksheetCell.Value*
+
+When a formula, array formula, or data table is applied to a cell, the  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcell~value.html[Value]"]  property of the WorksheetCell will no longer return the Formula, ArrayFormula, or WorksheetDataTable instance applied to the cell. Now it will return the calculated value of the cell. To get the formula or array formula of the cell, there is a new  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcell~formula.html[Formula]"]  property which will return the Formula or ArrayFormula instance. If a formula is not applied to the cell, this property will return null. To get the data table of the cell, there is a new  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcell~associateddatatable.html[AssociatedDataTable]"]  property which will return the  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetdatatable.html[WorksheetDataTable]"]  instance applied to the cell. If the cell is not a cell within a data table, this property will return null.
+
+*WorksheetMergedCellsRegion.Value*
+
+When a formula is applied to a merged cells region, the  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetmergedcellsregion~value.html[Value]"]  property of the  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetmergedcellsregion.html[WorksheetMergedCellsRegion]"]  will no longer return the Formula instance applied to the cell. Now it will return the calculated value of the cell. To get the formula of the merged cells region, there is a new  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetmergedcellsregion~formula.html[Formula]"]  property which will return the Formula instance. If a formula is not applied to the merged cells region, this property will return null.
+
+*Non Top-Left Cells of Merged Cells Regions*
+
+In previous versions of Excel, getting the value of any cell within a merged cells region would return the value of the associated merged cells region. This is actually incorrect and can be verified through the use of formulas (referencing the non top-left cell of a merged cells region in a formula uses a null or zero for the cell’s value). Now null will be returned for any cell associated with a merged cells region except for the top-left cell, which will continue to return the merged cells region’s value. Setting the value of any cell other than the top-left cell will have no action and will not cause an exception. Setting the value of the top-left cell of the merged cells region will set the value of the merged cells region as well.
+
+*Removing a Worksheet*
+
+When a  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheet.html[Worksheet]"]  is removed from its owning  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.workbook.html[Workbook]"] , the Worksheet will now lose any of its Cell data. Previously, it would be possible to keep a reference to the Worksheet and access its data after it had been removed from the Workbook, but now all cells will have a null value.
+
+== *WinCalcManager*
+
+*Invalid Values to Operators in UltraCalcManager*
+
+When using the UltraCalcManager in previous versions, if non-numerical values were passed to operators (such as =“Hello”+5), a #NUM! error would have occurred. This is inconsistent with Excel though. Now they will correctly cause a #VALUE! Error to occur.

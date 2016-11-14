@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-cellclickaction-property-added-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{924B5912-D5B3-4F64-B2D1-A8AFB31B91E6}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= CellClickAction Property Added
+
+Prior to this release, the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~cellclickaction.html[CellClickAction]"]  property existed only in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  class. Now,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~cellclickaction.html[CellClickAction]"]  has been added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  class. This property allows you to control the behavior (on a per-column basis) that occurs when the user clicks a cell. For example, you can specify that when the user clicks a cell in a specific column, the cell is selected and highlighted.
+
+image::Images/WinGrid_How_To_Use_the_CellClickAction_Property_02.png[cellclickaction property added to ultragrid]
+
+_CellClickAction set to EditAndSelectText_ 
+
+== Related Topic
+
+link:wingrid-specifying-the-cell-behavior-on-cell-click.html[Specify the Cell Behavior on Cell-Click]

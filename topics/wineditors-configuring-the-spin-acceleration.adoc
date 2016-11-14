@@ -1,0 +1,187 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-configuring-the-spin-acceleration",
+    "controlName": [],
+    "tags": [],
+    "guid": "03e275bc-d5f6-48de-8822-93b05d014e23",  
+    "buildFlags": [],
+    "createdOn": "2014-01-28T16:04:21.935346Z"
+}
+|metadata|
+////
+
+= Configuring the Spin Acceleration
+
+== Topic Overview
+
+=== Purpose
+
+This topic introduces spin button acceleration for editor controls.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref371956987,Spin Button Acceleration>>
+
+** <<_Ref370929747,Introduction>>
+** <<_Ref371956998,Built-in spin button properties>>
+** <<_Ref370929768,SpinEditorButton>>
+** <<_Ref370929756,AutoRepeatEditorButton>>
+
+* <<_Ref371957010,Supported Editor Controls>>
+* <<_Ref370929790,Related Content>>
+
+[[_Ref371956987]]
+== Spin Button Acceleration
+
+[[_Ref370929747]]
+
+=== Introduction
+
+Spin button provides capability to increase or decrease the speed at which values display in the editor. The spin button acceleration allows speeding up the spinning of the editor’s numerical or date/time value when pressing and holding the spin button. After about 5 repetitions the spinning starts occurring much faster.
+
+Implemented in the Infragistics editor controls, this mechanism allows for spin button acceleration. Editor controls expose a threshold property on the spin button indicating the number of spins required to start the acceleration.
+
+For example, threshold of 10 start accelerating after 10 spinning repetitions. The default threshold is 5 spin repetitions.
+
+`ultraNumericEditor.SpinButtonIntervalSettings.AccelerationThreshold = 10;`
+
+[[_Ref371956998]]
+
+=== Built-in spin button properties
+
+Editor controls that already have integral spin buttons expose a new feature called link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.spinbuttonintervalsettings.html[SpinButtonIntervalSettings] containing the following 5 properties:
+
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~interval.html[Interval]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~initialdelay.html[InitialDelay]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationenabled.html[AccelerationEnabled]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~acceleratedinterval.html[AcceleratedInterval]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationthreshold.html[AccelerationThreshold]
+
+In order to enable spin button acceleration the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationenabled.html[AccelerationEnabled] property must be set, for example, to  _True_
+
+*In C#:*
+
+[source,csharp]
+----
+ultraNumericEditor.SpinButtonIntervalSettings.AccelerationEnabled = true;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraNumericEditor.SpinButtonIntervalSettings.AccelerationEnabled = True
+----
+
+[[_Ref370929768]]
+
+=== SpinEditorButton
+
+As a stand-alone button element, the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton] button now exposes five additional properties, similar to built-in spin buttons, supporting spin button acceleration.
+
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~interval.html[Interval]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~initialdelay.html[InitialDelay]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationenabled.html[AccelerationEnabled]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~acceleratedinterval.html[AcceleratedInterval]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationthreshold.html[AccelerationThreshold]
+
+[[_Ref370929756]]
+
+=== AutoRepeatEditorButton
+
+The link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton_members.html[AutoRepeatEditorButton] button is also a stand-alone button element providing similar functionality as the spin button. `AutoRepeatEditorButton` already exposes the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~interval.html[Interval] and link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~initialdelay.html[InitialDelay] properties requiring the addition of the following three properties to support spin button acceleration.
+
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationenabled.html[AccelerationEnabled]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~acceleratedinterval.html[AcceleratedInterval]
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.autorepeateditorbutton~accelerationthreshold.html[AccelerationThreshold]
+
+[[_Ref371957010]]
+== Supported Editor Controls
+
+=== Summary
+
+Some of the editor controls have a built-in spin buttons. Consequently, enabling spin button acceleration only requires one property setting. For other editor controls that do not have built-in spin buttons require that you configure either the `ButtonLeft` or `ButtonRight` buttons. This requires adding the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton], containing all the necessary properties for enabling spin button acceleration, to either the `ButtonLeft` or `ButtonRight` collection.
+
+The following table lists all editor controls supporting spin button acceleration feature.
+
+[options="header", cols="a,a,a"]
+|====
+|Editor control|Supports built-in spin buttons|Supports spin button acceleration via…
+
+|_WinCalculatorDropDown_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinCalendarCombo_™
+|Yes
+|Built-in spin button properties.
+
+|_WinColorPicker_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinCombo_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinComboEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinCurrencyEditor_™
+|Yes
+|Built-in spin button properties, and link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinDateTimeEditor_™
+|Yes
+|Built-in spin button properties, and link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinFontNameEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinFormattedTextEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinMaskedEdit_™
+|Yes
+|Built-in spin button properties, and link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinNumericEditor_™
+|Yes
+|Built-in spin button properties, and link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinTextEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinTimeSpanEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|_WinTimeZoneEditor_™
+|No
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.spineditorbutton_members.html[SpinEditorButton]
+
+|====
+
+[[_Ref370929790]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wineditors-displaying-spin-buttons.html[Displaying Spin Buttons]
+|This topic applies to all _WinEditor_™ controls.
+
+|====

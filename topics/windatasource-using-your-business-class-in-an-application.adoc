@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-using-your-business-class-in-an-application",
+    "controlName": ["WinDataSource"],
+    "tags": ["Application Scenarios"],
+    "guid": "{60610AE8-90AC-4343-8CF8-A5C9EA74C003}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Using Your Business Class in an Application
+
+Now that our Business Class has been created and all appropriate events handled how is this used in an application? It is pretty simple actually. All you need to do is drag an instance of the component on your Windows Form. You can now use design time DataBinding to assign the DataSource property of your control (in this case the WinGrid™) to the UltraNorthwindDataSource1. In the Form Load event we can place some simple code to make this all work:
+
+*In Visual Basic:*
+
+----
+' On Form Load, we set the "Picture" column up so that it will render
+' byte arrays that are made from BLOB fields as Images.
+' We then set the connection string on the DataSource and "fill" it with the data.
+Private Sub SubClassingaWinDataSourcetoRepresentaBusinessClasst_Load( _
+  ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Picture").Editor = _
+	  New EmbeddableImageRenderer()
+	Me.UltraNorthwindDataSource1.ConnectionString = Me.SqlConnection1.ConnectionString
+	Me.UltraNorthwindDataSource1.FillData()
+End Sub
+----
+
+*In C#:*
+
+----
+// On Form Load, we set the "Picture" column up so that it will render
+// byte arrays that are made from BLOB fields as Images.
+// We then set the connection string on the DataSource and "fill" it with the data.
+private void SubClassingaWinDataSourcetoRepresentaBusinessClass_Load(
+  object sender, System.EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["Picture"].Editor = 
+	  new EmbeddableImageRenderer();
+	this.ultraNorthwindDataSource1.ConnectionString = this.sqlConnection1.ConnectionString;
+	this.ultraNorthwindDataSource1.FillData();
+}
+----
+
+== Summary
+
+At this point all we need to do is run the application and the Grid fills automatically with all the records in the Categories table. We use the Grid's intrinsic means of adding rows to the underlying data model by simply typing into the provided empty row. Once you move off the row and all valid values have been entered, the row will be automatically inserted into the Database and the negative temporary primary key value will be replaced with the real server generated value.
+
+If you select one or many rows and press the keyboard Delete key, after accepting the confirmation prompt, the row will be deleted from the Grid and from the Database.
+
+Simply typing into the cells and moving off the row causes the existing records to be Updated as well.
+
+Any failure to comply to constraints will be exposed as an error message that will be bubbled by the grid to the user and this will cause the current operation to cancel. In other words, you cannot delete rows that have constraints, you cannot enter characters into numeric fields and so forth.
+
+This sample can be scaled and made better so that we can store "Previous State" instances of the records so that if we cancel, we can restore all of the original values to each row. We can provide a test to see if the current record has any changes or has been "dirtied" so that we can skip making a round trip to the Database.
+
+This sample will show a working implementation of the content discussed in these five articles. Make sure that you change the connection string in the Form_Load event so that it points to your instance of SQL Server.

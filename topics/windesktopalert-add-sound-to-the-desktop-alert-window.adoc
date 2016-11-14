@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-add-sound-to-the-desktop-alert-window",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{1AC6BB74-078A-4AFA-B3E4-048B46E4D30E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Sound to the Desktop Alert Window
+
+Another way in which WinDesktopAlert™ can capture your end user's attention is by using their auditory senses. Each desktop alert window can play a sound (such as the Windows® XP exclamation sound) when the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~show.html[Show]"]  method is called. You can have the alert window play a sound by creating an instance of the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo.html[UltraDesktopAlertShowWindowInfo]"]  class and then setting its  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~sound.html[Sound]"]  property to a string representing the path to the sound. Once you have set the Sound property, you can call the Show method off the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert.html[UltraDesktopAlert]"]  class and pass in the UltraDesktopAlertShowWindowInfo object as the parameter.
+
+Use the following code to add sound to your desktop alert window. This code will instantiate an UltraDesktopAlertShowWindowInfo and set its Sound property to a local WAV file. The Show method is then called and the UltraDesktopAlertShowWindowInfo object is passed as its parameter.Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.Misc
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.Misc;
+----
+
+*In Visual Basic:*
+
+----
+' Create a new instance of the UltraDesktopAlertShowWindoInfo
+' class and supply it with some sample text.
+Dim windowInfo As UltraDesktopAlertShowWindowInfo = _
+  New UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.")
+' Set the Sound property to a WAV file place in the project's
+' root folder.
+windowInfo.Sound = Application.StartupPath + "..\Windows XP Exclamation.wav"
+' Display a desktop alert window with the information
+' provided above.
+Me.UltraDesktopAlert1.Show(windowInfo)
+----
+
+*In C#:*
+
+----
+// Create a new instance of the UltraDesktopAlertShowWindoInfo
+// class and supply it with some sample text.
+UltraDesktopAlertShowWindowInfo windowInfo =
+  new UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.");
+// Set the Sound property to a WAV file place in the project's
+// root folder.
+windowInfo.Sound = Application.StartupPath +
+  @"..\Windows XP Exclamation.wav";
+// Display a desktop alert window with the information
+// provided above.
+this.ultraDesktopAlert1.Show(windowInfo);
+----

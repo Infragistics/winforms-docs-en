@@ -1,0 +1,51 @@
+﻿////
+
+|metadata|
+{
+    "name": "winoptionset-printing-data-when-user-selects-an-item-in-winoptionset",
+    "controlName": ["WinOptionSet"],
+    "tags": ["Grouping","How Do I"],
+    "guid": "{233EC983-7401-4AAB-8D1F-164E3AB1F544}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Printing Data When User Selects an Item in WinOptionSet
+
+To write code for handling changes to the WinOptionSet™, use the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset~valuechanged_ev.html[ValueChanged]"]  event to listen for when the user selects a new item in the set. For example, the following code would print out the index of the item and the value of the item that was just selected.
+
+.Note
+[NOTE]
+====
+If no ValueList is added to the element then the DisplayText and DataValue are the same value.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub UltraOptionSet1_ValueChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles UltraOptionSet1.ValueChanged
+	' This prints out the integer index of the newly selected item, 
+	' DisplayText, and DataValue
+	MessageBox.Show(Me.UltraOptionSet1.CheckedIndex.ToString() & " " & _
+	Me.UltraOptionSet1.CheckedItem.DisplayText & " " & _
+	Me.UltraOptionSet1.CheckedItem.DataValue)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraOptionSet1_ValueChanged(object sender, EventArgs e)
+{
+	// This prints out the integer index of the newly selected item, 
+	// DisplayText, and DataValue
+	MessageBox.Show(this.ultraOptionSet1.CheckedIndex.ToString() + " " +
+	  this.ultraOptionSet1.CheckedItem.DisplayText + " " + 
+	  this.ultraOptionSet1.CheckedItem.DataValue);			
+}
+----
+
+image::images\WinOptionSet_Printing_Data_When_User_Selects_an_Item_in_WinOptionSet_01.png[shows how you can get the data values from the winoptionset when a value is selected]

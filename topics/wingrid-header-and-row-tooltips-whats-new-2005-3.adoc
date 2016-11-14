@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-header-and-row-tooltips-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{BCE70E79-5390-431C-AB4D-23DB05B63CD0}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Header and Row Tooltips
+
+Property for setting the tooltips on the header of a column.
+
+Added ToolTipText to the following:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~tooltiptext.html[UltraGridRow]"]  -- Specifies the tool tip to display when the user hovers the mouse over the row.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~tooltiptext.html[HeaderBase]"]  -- Specifies the tool tip to display when the user hovers the mouse over the header.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings~tooltiptext.html[SummarySettings]"]  -- Specifies the tool tip to display when the user hovers the mouse over the associated summary value. SummaryValue class also exposes the ToolTipText property. If both the SummaryValue and the associated SummarySettings objects have their ToolTipText set then the SummaryValue's ToolTipText takes precedence.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~tooltiptext.html[SummaryValue]"]  -- Specifies the tool tip to display when the user hovers the mouse over the associated summary value. SummarySettings class also exposes the ToolTipText property. If both the SummaryValue and the associated SummarySettings objects have their ToolTipText set then the SummaryValue's ToolTipText takes precedence.
+
+.Note
+[NOTE]
+====
+in addition to  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"] , the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridgroupbyrow.html[UltraGridGroupByRow]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridfilterrow.html[UltraGridFilterRow]"]  also support row tool tips
+====
+
+As part of this functionality, UltraGrid now displays the tool tip on the header if the header's caption is clipped. You don't have to set the header's ToolTipText property for this. Cells currently behave this way. If a cell's contents are clipped and you hover the mouse over it, it displays a tool tip containing the full contents of the cell. Now the headers will the do the same. Also note that this tooltip is displayed over the header, it will cover the header.
+
+When ToolTipText property is set, the header will display the value of that property in the tool tip when the mouse is hovered over the header. Also the tool tip will be displayed in a different manner than how the clipped caption tool tip is displayed. The clipped caption tool tip is displayed over the header. The tool tip containing ToolTipText will be displayed near the cursor, not over the header. This is because in the case of the clipped caption tool tip, since the tool tip contains the header caption, it's natural to display the tool tip over the same area as the caption. Where as with ToolTipText, since it would typically display some other information regarding the header (for example the description of the column), it's more natural to display the tool tip similar to how a tool in a toolbar displays the tool tip. That is the tool tip would be outside of the header and near the cursor.
+
+.Note
+[NOTE]
+====
+when the ToolTipText is set, the clipped caption tool tip is not displayed. Only the ToolTipText tool tip is displayed.
+====
+
+image::Images/WinGrid_How_To_Show_ToolTips_01.png[header and row tooltips in ultragrid]
+
+== Related Topic
+
+link:wingrid-displaying-tooltips.html[Display ToolTips]

@@ -1,0 +1,90 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-adding-tools-to-the-dynamically-created-taskpane-toolbar-part-2-of-2",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{BFAA24FB-B4D5-4017-937C-83F2F3691D68}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Tools to the Dynamically Created TaskPane Toolbar (Part 2 of 2)
+
+This topic looks at how to create a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"]  dynamically and add a tool to the TaskPaneTool. This topic is a continuation of link:wintoolbarsmanager-creating-a-taskpane-toolbar-dynamically-part-1-of-2.html[Creating a TaskPane Toolbar Dynamically (Part 1 of 2)].
+
+[start=1]
+. Now that you have created the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"]  you are ready to add TaskPaneTools.
+
+*In Visual Basic:*
+
+----
+' Create a new TaskPaneTool
+Dim myTaskPaneTool1 As New TaskPaneTool("ToDoBar")
+' Set the Caption on the TaskPaneTool
+myTaskPaneTool1.SharedProps.Caption = "To-Do Bar"
+' Add the TaskPaneTool to the UltraToolbarsManager to its tools collection
+myToolbarManager.Tools.Add(myTaskPaneTool1)
+' Add the TaskPaneTool to the TaskPaneToolbar
+myTaskPaneToolbar.Tools.AddRange(New ToolBase() {myTaskPaneTool1})
+----
+
+*In C#:*
+
+----
+// Create a new TaskPaneTool
+TaskPaneTool myTaskPaneTool1 = new TaskPaneTool("ToDoBar");
+// Set the Caption on the TaskPaneTool
+myTaskPaneTool1.SharedProps.Caption = "To-Do Bar";
+// Add the TaskPaneTool to the UltraToolbarsManager to its tools collection
+myToolbarManager.Tools.Add(myTaskPaneTool1);
+// Add the TaskPaneTool to the TaskPaneToolbar
+myTaskPaneToolbar.Tools.AddRange(new ToolBase[] { myTaskPaneTool1});
+----
+
+[start=2]
+. This is really all there is to setting up a basic TaskPaneTool and adding it to the UltraTaskPaneToolbar, in code.
+[start=3]
+. Now you are ready to add a control to your TaskPaneTool. We are adding a Panel control that contains a WinMonthViewMulti control.
+
+*In Visual Basic:*
+
+----
+' Create a general Control to put into the TaskPaneTool
+Dim myPanel As New Panel
+' Set the control the TaskPaneTool will host
+myTaskPaneTool1.Control = myPanel
+' Add a WinMonthView to the Panel
+Dim myMonthView As New UltraMonthViewMulti()
+myPanel.Controls.Add(myMonthView)
+' Set the Selected TaskPaneTool
+myTaskPaneToolbar.SelectedTaskPaneTool = myTaskPaneTool1
+----
+
+*In C#:*
+
+----
+// Create a general Control to put into the TaskPaneTool
+System.Windows.Forms.Panel myPanel = new Panel();
+// Set the control the TaskPaneTool will host
+myTaskPaneTool1.Control = myPanel;
+// Add a WinMonthView to the Panel
+UltraMonthViewMulti myMonthView = new UltraMonthViewMulti();
+myPanel.Controls.Add(myMonthView);
+// Set the Selected TaskPaneTool
+myTaskPaneToolbar.SelectedTaskPaneTool = myTaskPaneTool1;
+----
+
+[start=4]
+. If you build and run your project now you should see a TaskPaneToolbar Docked on the Right, which has a TaskPaneTool that is hosting a Panel control.
+
+image::Images\WinToolbarsManager_Working_with_Dynamically_Created_TaskPane_Toolbars_01.png[ultratoolbarsmanager with a taskpane toolbar created entirely in code.]
+
+.Note
+[NOTE]
+====
+you can only add one control to the TaskPaneTool, so if you wanted to add several different controls you would have to place them in a panel or a groupbox and then select that as the control in the TaskPaneTool. An example of this would be if you wanted to have a couple buttons and several textboxes, you would have to make a panel or groupbox with all those controls placed inside it and then select the panel or groupbox as the control for the TaskPaneTool.
+====

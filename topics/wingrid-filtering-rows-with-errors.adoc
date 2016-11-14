@@ -1,0 +1,87 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-filtering-rows-with-errors",
+    "controlName": ["WinGrid"],
+    "tags": [],
+    "guid": "{B3EE3E2C-7ADF-4EDF-8466-8E3F4250C174}",  
+    "buildFlags": [],
+    "createdOn": "2009-06-08T14:28:49Z"
+}
+|metadata|
+////
+
+= Filtering Rows with Errors
+
+WinGrid™ supports filtering based on whether cells have errors as determined by the IDataErrorInfo implementation of the underlying data source. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filteroperanddropdownitems.html[FilterOperandDropDownItems]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  objects provides a way to select which items should be displayed in the filter drop down list that exists in the filter row or header icons. This property consists of the following flagged options:
+
+All, Blanks, CellValues, Custom, Default, Errors, NonBlanks, NonErrors, ShowAll, ShowNone.
+
+The following code is placed in the WinGrid control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializerow_ev.html[InitializeRow]"]  event in order to set data errors. The FilterOperandDropDownItems property is configured to list the “Errors” filter option in the drop down list, which when it is selected by the end user, it displays all rows whose cell values match the error condition.
+
+This topic assumes that you have an UltraGrid control dropped onto your form and bound to the Orders table of the Northwind Database.
+
+*In Visual Basic:*
+
+----
+Imports System.Data.SqlClient
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+...
+----
+
+----
+Me.ultraGrid1.DisplayLayout.Override.SupportDataErrorInfo = SupportDataErrorInfo.RowsAndCells 
+Me.ultraGrid1.DisplayLayout.Override.FilterUIType = FilterUIType.HeaderIcons 
+Me.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = DefaultableBoolean.[True] 
+Dim rowError As String = ""
+Dim cellError As String = ""
+Dim value As [Object] = e.Row.Cells("ShippedDate").Value
+' Set the data error if ShippedDate column is empty 
+If DBNull.Value = value Then 
+    rowError = "Row contains errors" 
+    cellError = "Shipped Date can not be empty" 
+End If 
+Dim drv As DataRowView = DirectCast(e.Row.ListObject, DataRowView)
+drv.Row.RowError = rowError 
+drv.Row.SetColumnError("ShippedDate", cellError) 
+' Lists only the "Errors" filter option in the Filter drop down list 
+Me.ultraGrid1.DisplayLayout.Override.FilterOperandDropDownItems = FilterOperandDropDownItems.Errors
+----
+
+*In C#:*
+
+----
+using System.Data.SqlClient;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+...
+----
+
+----
+this.ultraGrid1.DisplayLayout.Override.SupportDataErrorInfo = SupportDataErrorInfo.RowsAndCells;
+this.ultraGrid1.DisplayLayout.Override.FilterUIType = FilterUIType.HeaderIcons;
+this.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = DefaultableBoolean.True;
+string rowError = "";
+string cellError = "";
+Object value = e.Row.Cells["ShippedDate"].Value;
+// Set the data error if ShippedDate column is empty
+if (DBNull.Value == value)
+{
+  rowError = "Row contains errors";
+  cellError = "Shipped Date can not be empty";
+}
+DataRowView drv = (DataRowView)e.Row.ListObject;
+drv.Row.RowError = rowError;
+drv.Row.SetColumnError("ShippedDate", cellError);
+// Lists only the "Errors" filter option in the Filter drop down list
+this.ultraGrid1.DisplayLayout.Override.FilterOperandDropDownItems = FilterOperandDropDownItems.Errors;
+----
+
+*WinGrid displaying Rows that match the error condition.*
+
+image::Images\WinGrid_Filtering_Rows_with_Errrors.png[]
+
+== Related Topics
+* link:wingrid-displaying-row-cell-errors-using-idataerrorinfo.html[Display Row Cell Errors Using IDataErrorInfo]

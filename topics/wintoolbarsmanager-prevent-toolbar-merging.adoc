@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-prevent-toolbar-merging",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{60A32E84-F8AD-4178-8ACD-5879A71B8A91}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Prevent Toolbar Merging
+
+The WinToolbarsManager™ control supports the automatic merging of toolbars for MDI parent and child forms. So when a MDI child form that also contains an UltraToolbarsManager element is activated, its toolbars are merged with the UltraToolBarsManager element on the MDI parent form. It is possible to create an UltraToolBarsManager element on a MDI child form that does not get merged with that on the MDI parent form. This can be done by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~mdimergeable.html[MDIMergeable]"]  property of the control on the MDI child form to False.

@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-enabling-ime-mode-on-a-single-column",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Localization"],
+    "guid": "{CEDE5485-532F-4FA1-B3A8-15617C281DB5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Enabling IME Mode on a Single Column
+
+Input Method Editors (IME) allow your end users to enter data in Chinese, Korean, or Japanese using a standard keyboard. This is extremely important if you localize your application in several different languages. WinGrid fully supports IME mode all the way down to the column level.
+
+Using IME mode, you can set every link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column] in WinGrid to accept IME input and then override one column to not accept it. Or, if you happen to only require one column to use Japanese characters, for example, you can simply set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~imemode.html[ImeMode] property for that one column.
+
+The following example code demonstrates how to turn IME mode on for the first column in the first band of WinGrid.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).ImeMode = ImeMode.On
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].ImeMode = ImeMode.On;
+----

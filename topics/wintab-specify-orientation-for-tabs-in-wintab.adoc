@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-specify-orientation-for-tabs-in-wintab",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Layouts"],
+    "guid": "{29DBDFE9-A885-44C7-BDA7-E1189E08F47B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Specify Orientation for Tabs in WinTab
+
+This topic shows you how to set the WinTab™ control’s Tab Orientation as well as the Tab object’s Text Orientation. These settings can be applied through the WinTab control’s smart tag. It is also possible through code using the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~taborientation.html[TabOrientation]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~textorientation.html[TextOrientation]"]  properties.
+
+*In Visual Basic:*
+
+----
+'Specify Orientation for all tabs in WinTab 
+Me.ultraTabControl1.TabOrientation = TabOrientation.BottomRight 
+' Specify Orientation for Text on tabs 
+Me.ultraTabControl1.TextOrientation = TextOrientation.Horizontal
+----
+
+*In C#:*
+
+----
+//Specify Orientation for all tabs in WinTab
+this.ultraTabControl1.TabOrientation = TabOrientation.BottomRight;
+// Specify Orientation for Text on tabs 
+this.ultraTabControl1.TextOrientation = TextOrientation.Horizontal;
+----
+
+image::Images/WinTab_Specify_Orientation_for_Tabs_in_WinTab.png[]

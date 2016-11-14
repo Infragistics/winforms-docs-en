@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtextwordwriter-about-winformattedtextwordwriter",
+    "controlName": ["WinFormattedTextWordWriter"],
+    "tags": ["Events","Exporting","How Do I"],
+    "guid": "0f96007c-de4a-4321-a3de-85c4c2b2362a",  
+    "buildFlags": [],
+    "createdOn": "2011-03-15T14:41:01.2032156Z"
+}
+|metadata|
+////
+
+= About WinFormattedTextWordWriter
+
+WinFormattedTextWordWriter™, like WinGridWordWriter™, is a component with exporting functionality that enables the contents of WinFormattedTextEditor™ or WinFormattedLinkLabel™ to write to a new Word document. This functionality is based on the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object in the Infragistics.Documents.IO assembly.
+
+The link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~export.html[Export] method implements the basic exporting functionality. You can export the entire text including font styles, font size, text alignment, images, hyperlinks, special characters and other formatted text features supported by the WinFormattedTextEditor and WinFormattedLinkLabel controls. There are also several events that you may take advantage of to customize the export to your liking, such as:
+
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportstarted_ev.html[ExportStarted]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportending_ev.html[ExportEnding]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportended_ev.html[ExportEnded]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexporting_ev.html[TextExporting]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexported_ev.html[TextExported]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexporting_ev.html[HyperlinkExporting]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexported_ev.html[HyperlinkExported]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexporting_ev.html[ImageExporting]
+* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexported_ev.html[ImageExported]
+
+The following code listing demonstrates the basic implementation required for the export process. To begin, drag and drop an UltraFormattedTextWordWriter component and an UltraFormattedTextEditor control onto the form and set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditorbase~value.html[Value] property of the UltraFormattedTextEditor control to some formatted text.
+
+.Note
+[NOTE]
+====
+A reference to the Infragistics3.Documents.IO assembly is required for the following code.
+====
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Create a new instance of the WordDocumentWriter class
+// using the static 'Create' method.
+// After writing content, this instance must be closed.
+WordDocumentWriter wordWriter = WordDocumentWriter.Create("C:\\WordDocuments\\FormattedTextInWord.docx");
+wordWriter.StartDocument();
+// Export formatted text to Word
+this.ultraFormattedTextWordWriter1.Export(this.ultraFormattedTextEditor1, wordWriter);
+wordWriter.EndDocument();
+// Close the writer
+wordWriter.Close();
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Create a new instance of the WordDocumentWriter class
+' using the static 'Create' method.
+' After writing content, this instance must be closed.
+Dim wordWriter As WordDocumentWriter = WordDocumentWriter.Create("C:\WordDocuments\FormattedTextInWord.docx")
+wordWriter.StartDocument()
+' Export formatted text to Word
+Me.ultraFormattedTextWordWriter1.Export(Me.ultraFormattedTextEditor1, wordWriter)
+wordWriter.EndDocument()
+' Close the writer
+wordWriter.Close()
+----
+
+== Related Topics
+
+* link:winformattedtextwordwriter-export-formattedtexteditor-text-to-word.html[Export WinFormattedTextEditor text to Word Document]

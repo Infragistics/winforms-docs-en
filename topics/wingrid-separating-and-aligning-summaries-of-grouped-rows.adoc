@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-separating-and-aligning-summaries-of-grouped-rows",
+    "controlName": ["WinGrid"],
+    "tags": ["Data Presentation","Grids","How Do I"],
+    "guid": "{4CDB9B23-2C3D-4346-B527-CF1BD7B4E27E}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Separating and Aligning Summaries of Grouped Rows
+
+The WinGrid™ by default displays summaries in group-by rows by appending the summaries to the group-by row description text. You can instead display each summary as a separate UI element aligned with columns in the group-by row.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. To enable this functionality set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbysummarydisplaystyle.html[GroupBySummaryDisplayStyle]"]  property to SummaryCells or SummaryCellsAlwaysBelowDescription. The difference between the SummaryCells and the SummaryCellsAlwaysBelowDescription is that the SummaryCells option will auto wrap the summaries if one of the summary cells overlaps with the description of the group-by row. The SummaryCellsAlwaysBelowDescription on the other hand will always wrap the summaries so they are always below the group-by row description. When summaries are wrapped the height of the group-by row is increased and the summary cells are displayed below the group-by row description.

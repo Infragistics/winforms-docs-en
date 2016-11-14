@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-save-and-load-windatasource-data",
+    "controlName": ["WinDataSource"],
+    "tags": ["Persistence"],
+    "guid": "{4B272780-1827-4102-AB15-59CE912F2890}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Load WinDataSource Data
+
+You can save and load the schema and data entered into the WinDataSource™ in  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasbinary.html[Binary]"]  or  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasxml.html[XML]"]  format at runtime at runtime as well as design time using the link:windatasource-using-the-windatasource-designer.html[WinDataSource designer].
+
+Using the overloaded  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasxml.html[SaveAsXml]"]  or the overloaded  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~saveasbinary.html[SaveAsBinary]"] , you can pass a string filename or a System.IO.Stream object to the method to persist the data and/or schema to disk or to a stream object. To load a previously persisted XML or Binary formatted object data into an existing WinDataSource, use the overloaded  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~loadfromxml.html[LoadFromXml]"]  or  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~loadfrombinary.html[LoadFromBinary]"]  methods. These methods will accept a string filename or an I/O stream.
+
+== Persisting Data
+
+Passing in true as the boolean will save the data and schema of a WinDataSource object to a file on the file system. Passing in false as the boolean will save only the schema of a WinDataSource object to a file on the file system (both SaveAsXml and SaveAsBinary methods are shown). The string parameter is the path to your data.
+
+SaveAsXml(string, boolean)
+
+SaveAsBinary(string, boolean)
+
+== Loading Data
+
+Passing in true as the boolean will load data and it's schema to a WinDataSource object from a file on the file system. Passing in false as the boolean will load the schema of a WinDataSource object (both LoadFromXml and LoadFromBinary methods are shown). The string parameter is the path to your data you wish to load.
+
+LoadFromXml(string, boolean)
+
+LoadFromBinary(string, boolean)

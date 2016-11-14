@@ -1,0 +1,187 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-adding-columns-using-freeform-style",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{4EF35258-0424-480E-BD27-EF513BFD4002}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Columns Using Freeform Style
+
+This topic shows you how columns can be added to WinTree™ in Freeform style. In Freeform style each and every row can have a different set of columns and above each column’s cell data, column headers can be displayed. Thus the freeform style allows you to create a separate, distinct schema on a node-by-node basis for heterogeneous data.
+
+In this example each row displays different columns with different data. It is assumed that you have an UltraTree dropped onto your form.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+Imports Infragistics.Win
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+using Infragistics.Win;
+----
+
+Write the following code in the form load event.
+
+*In Visual Basic:*
+
+----
+'Set the WinTree control's viewStyle 
+Me.ultraTree1.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.FreeForm 
+#Region "Create the first Node which displays a hierarchy"
+'Define a ColumnSet that represents the parent table 
+Dim customerColumnSet As New UltraTreeColumnSet()
+'Add columns to the ColumnSet 
+customerColumnSet.Columns.Add("CustName") 
+customerColumnSet.Columns.Add("CustID") 
+customerColumnSet.Columns.Add("ContactTitle") 
+customerColumnSet.Columns("CustName").CanShowExpansionIndicator = DefaultableBoolean.[True] 
+'Set the ColumSet with the columns created, to the WinTree 
+Me.ultraTree1.ColumnSettings.RootColumnSet = customerColumnSet 
+'Define a Node that holds the parent table and add it to WinTree 
+Dim CustomerNode As UltraTreeNode = Me.ultraTree1.Nodes.Add("10", "RootNode1")
+'Define a ColumnSet that represents the child table 
+Dim orderColumnSet As New UltraTreeColumnSet()
+'Add columns to the child ColumnSet 
+orderColumnSet.Columns.Add("OrderID") 
+orderColumnSet.Columns.Add("OrderDate") 
+orderColumnSet.Columns.Add("CustID") 
+'Define a node that holds the child table and add it to the parent node 
+Dim OrderNode As UltraTreeNode = CustomerNode.Nodes.Add("10~1", "1042")
+'Set the ColumSet with the columns created, to the child node 
+OrderNode.Override.ColumnSet = orderColumnSet 
+'Set the cell values for the parent table 
+CustomerNode.Cells("CustName").Value = "Diego Roel" 
+CustomerNode.Cells("CustID").Value = "1" 
+CustomerNode.Cells("ContactTitle").Value = "Sales Manager" 
+'Set the cell values for the child table 
+OrderNode.Cells("OrderID").Value = "1042" 
+OrderNode.Cells("OrderDate").Value = "10/02/2009" 
+OrderNode.Cells("CustID").Value = "1" 
+#End Region
+#Region "Create the second node"
+Dim shirtNode As UltraTreeNode = Me.ultraTree1.Nodes.Add("1", "Products")
+Dim shirtColumnSet As New UltraTreeColumnSet()
+shirtNode.Override.ColumnSet = shirtColumnSet 
+shirtColumnSet.Columns.Add("ProductName") 
+shirtColumnSet.Columns.Add("Color") 
+shirtColumnSet.Columns.Add("Size") 
+shirtNode.Cells("ProductName").Value = "Shirt" 
+shirtNode.Cells("Color").Value = "Blue" 
+shirtNode.Cells("Size").Value = "Large" 
+#End Region
+#Region "Create the third node"
+Dim washerNode As UltraTreeNode = Me.ultraTree1.Nodes.Add("2", "Products")
+Dim washerColumnSet As New UltraTreeColumnSet()
+washerNode.Override.ColumnSet = washerColumnSet 
+washerColumnSet.Columns.Add("ProductName") 
+washerColumnSet.Columns.Add("Brand") 
+washerColumnSet.Columns.Add("Wash Cycle") 
+washerNode.Cells("ProductName").Value = "Washer" 
+washerNode.Cells("Brand").Value = "GE" 
+washerNode.Cells("Wash Cycle").Value = "35 mins" 
+#End Region
+#Region "Create the fourth node"
+Dim refrigeratorNode As UltraTreeNode = Me.ultraTree1.Nodes.Add("3", "Products")
+Dim refrigeratorColumnSet As New UltraTreeColumnSet()
+refrigeratorNode.Override.ColumnSet = refrigeratorColumnSet 
+refrigeratorColumnSet.Columns.Add("ProductName") 
+refrigeratorColumnSet.Columns.Add("Type") 
+refrigeratorColumnSet.Columns.Add("Capacity") 
+refrigeratorNode.Cells("ProductName").Value = "Refrigerator" 
+refrigeratorNode.Cells("Type").Value = "French Door" 
+refrigeratorNode.Cells("Capacity").Value = "29 cu.ft." 
+#End Region
+----
+
+*In C#:*
+
+----
+//Set the WinTree control's viewStyle
+this.ultraTree1.ViewStyle =   Infragistics.Win.UltraWinTree.ViewStyle.FreeForm;
+#region Create the first Node displaying a hierarchy
+//Define a ColumnSet that represents the parent table
+UltraTreeColumnSet customerColumnSet = new UltraTreeColumnSet();
+//Add columns to the ColumnSet
+customerColumnSet.Columns.Add("CustName");
+customerColumnSet.Columns.Add("CustID");
+customerColumnSet.Columns.Add("ContactTitle");
+customerColumnSet.Columns["CustName"].CanShowExpansionIndicator = DefaultableBoolean.True;
+//Set the ColumSet with the columns created, to the WinTree
+this.ultraTree1.ColumnSettings.RootColumnSet = customerColumnSet;
+//Define a Node that holds the parent table and add it to WinTree
+UltraTreeNode CustomerNode = this.ultraTree1.Nodes.Add("10", "RootNode1");
+//Define a ColumnSet that represents the child table
+UltraTreeColumnSet orderColumnSet = new UltraTreeColumnSet();
+//Add columns to the child ColumnSet
+orderColumnSet.Columns.Add("OrderID");
+orderColumnSet.Columns.Add("OrderDate");
+orderColumnSet.Columns.Add("CustID");
+//Define a node that holds the child table and add it to the parent node
+UltraTreeNode OrderNode = CustomerNode.Nodes.Add("10~1", "1042");
+//Set the ColumSet with the columns created, to the child node
+OrderNode.Override.ColumnSet = orderColumnSet;
+//Set the cell values for the parent table
+CustomerNode.Cells["CustName"].Value = "Diego Roel";
+CustomerNode.Cells["CustID"].Value = "1";
+CustomerNode.Cells["ContactTitle"].Value = "Sales Manager";
+//Set the cell values for the child table
+OrderNode.Cells["OrderID"].Value = "1042";
+OrderNode.Cells["OrderDate"].Value = "10/02/2009";
+OrderNode.Cells["CustID"].Value = "1";
+#endregion
+#region Create the second node
+UltraTreeNode shirtNode = this.ultraTree1.Nodes.Add("1", "Products");
+UltraTreeColumnSet shirtColumnSet = new UltraTreeColumnSet();
+shirtNode.Override.ColumnSet = shirtColumnSet;
+shirtColumnSet.Columns.Add("ProductName");
+shirtColumnSet.Columns.Add("Color");
+shirtColumnSet.Columns.Add("Size");
+shirtNode.Cells["ProductName"].Value = "Shirt";
+shirtNode.Cells["Color"].Value = "Blue";
+shirtNode.Cells["Size"].Value = "Large";
+#endregion
+#region Create the third node
+UltraTreeNode washerNode = this.ultraTree1.Nodes.Add("2", "Products");
+UltraTreeColumnSet washerColumnSet = new UltraTreeColumnSet();
+washerNode.Override.ColumnSet = washerColumnSet;
+washerColumnSet.Columns.Add("ProductName");
+washerColumnSet.Columns.Add("Brand");
+washerColumnSet.Columns.Add("Wash Cycle");
+washerNode.Cells["ProductName"].Value = "Washer";
+washerNode.Cells["Brand"].Value = "GE";
+washerNode.Cells["Wash Cycle"].Value = "35 mins";
+#endregion
+#region Create the fourth node
+UltraTreeNode refrigeratorNode = this.ultraTree1.Nodes.Add("3", "Products");
+UltraTreeColumnSet refrigeratorColumnSet = new UltraTreeColumnSet();
+refrigeratorNode.Override.ColumnSet = refrigeratorColumnSet;
+refrigeratorColumnSet.Columns.Add("ProductName");
+refrigeratorColumnSet.Columns.Add("Type");
+refrigeratorColumnSet.Columns.Add("Capacity");
+refrigeratorNode.Cells["ProductName"].Value = "Refrigerator";
+refrigeratorNode.Cells["Type"].Value = "French Door";
+refrigeratorNode.Cells["Capacity"].Value = "29 cu.ft.";
+#endregion
+----
+
+image::Images\WinTree_Adding_Columns_Using_Freeform_Style_01.png[]
+
+== Related Topics
+
+* link:wintree-adding-columns-using-outlook-express-style.html[Adding Columns Using Outlook Express Style]
+
+* link:wintree-displaying-wintree-with-columns-in-grid-style.html[Displaying WinTree with Columns in Grid Style]

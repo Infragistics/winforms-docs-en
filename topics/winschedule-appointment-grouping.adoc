@@ -1,0 +1,144 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-appointment-grouping",
+    "controlName": ["WinSchedule"],
+    "tags": ["Appointments","Grouping"],
+    "guid": "{B7D2BFDD-C6C1-4333-8246-9C59AAF36D4D}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Appointment Grouping
+
+The NAS2004 Volume 3 release of WinSchedule™ includes support for Appointment Grouping. The WinSchedule controls that display activities (i.e., Appointments and Notes) have been modified to support the separation of activities that belong to different owners. This means that with a few simple property settings, the WinDayView™, WinMonthViewSingle™, and WinWeekView™ controls can display calendars for different owners, side by side, within the same instance of the element.
+
+== The Owner Object
+
+To support the Appointment Grouping feature, a new object was added to the WinSchedule assembly - the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"] . The Owner object was designed to represent a person, or department, to which groups of Appointments and Notes belong. The Owner exposes properties such as  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~name.html[Name]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~key.html[Key]"]  to provide a means by which different owners can be distinguished from one another. The existing  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.note.html[Note]"]  objects now expose new properties, Owner and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~ownerkey.html[OwnerKey]"] , through which an Owner can be associated with the Appointment/Note. An Owner object is created by adding a member to the associated UltraCalendarInfo element's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ownerscollection.html[Owners]"]  collection; at the time an Owner is created, it must be assigned a key that uniquely identifies that Owner.
+
+The Owners collection always contains at least one member - the "unassigned owner" - which is present even if the collection is cleared. Any Appointment or Note that is not explicitly assigned to an owner behaves as if it were assigned to this special unassigned owner. A reference to this unassigned owner can be obtained via the UnassignedOwner property of the Owners collection.
+
+Once an Owner object is created, it can be made to take ownership of any Appointment or Note by assigning that instance to the Owner property of the Appointment/Note, or by assigning its key to the OwnerKey property of the Appointment/Note. Once the Appointment/Note is assigned to a specific owner, the UltraWinSchedule elements that are configured to display different owner calendars separately will display that Appointment/Note only in that Owner's calendar. In the case where the Owners collection contains a relatively large number of Owners, but not all of them are to be accessible through the user interface, the Owner's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~visible.html[Visible]"]  property can be used to show or hide that Owner (and its associated activity). Owners whose Visible property is set to true appear in the associated UltraCalendarInfo element's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.visibleownerscollection.html[VisibleOwners]"]  collection, providing an easy way to iterate through the owners that are currently accessible through the user interface. Similarly, the Owner object exposes a  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~locked.html[Locked]"]  property to support the concept of a "read-only" Owner - one that is displayed in the user interface, but whose Appointments and Notes cannot be modified.
+
+== Appearance
+
+In addition to the behavior-related properties of the Owner object, several Appearance properties are exposed as well, providing the ability to achieve unique looks for each owner. The following table lists these Appearances, as well as the element(s) to which they apply, and a short description of what aspect of the display they control:
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance Property|Applies To|Description
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~alternatemonthdayappearance.html[AlternateMonthDayAppearance]"] 
+|UltraMonthViewSingle
+|Describes the look for days that fall in "alternating months". For example, if the current month is June, the AlternateMonthDayAppearance is applied to days that fall in July, September, November, etc.
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~dayappearance.html[DayAppearance]"] 
+|UltraMonthViewSingle 
+
+UltraWeekView
+|Describes the look for days that fall in "non-alternating months". For example, if the current month is June, the AlternateMonthDayAppearance is applied to days that fall in June, August, October, etc.
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~headerappearance.html[HeaderAppearance]"] 
+|UltraDayView 
+
+UltraMonthViewSingle 
+
+UltraWeekView
+|Describes the look for the headers that are displayed to separate the different owners. Note that Owner headers can be hidden, on a per-control basis, by setting the control's ShowOwnerHeader property to false.
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~nonworkinghourtimeslotappearance.html[NonWorkingHourTimeSlotAppearance]"] 
+|UltraDayView
+|Describes the look for TimeSlots that fall in "non-working" hours, which is defined by the DayOfWeek object's WorkDayStartTime and WorkDayEndTime properties.
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~selectedtimeslotappearance.html[SelectedTimeSlotAppearance]"] 
+|UltraDayView
+|Describes the look for TimeSlots that are selected.
+
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~workinghourtimeslotappearance.html[WorkingHourTimeSlotAppearance]"] 
+|UltraDayView
+|Describes the look for TimeSlots that fall in "working" hours, which is defined by the DayOfWeek object's WorkDayStartTime and WorkDayEndTime properties.
+
+|====
+
+== Appointment Grouping For The UltraDayView Element
+
+The UltraDayView control exposes properties that dictate how the different owners will be displayed within the control. The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~groupingstyle.html[GroupingStyle]"]  property defaults to "NoGrouping" (to preserve backward compatibility), but can be set to "OwnerWithinDate" to display all visible owners within a given date, or 'DateWithinOwner' to display the contents of the associated UltraCalendarInfo element's SelectedDateRanges collection within each owner.
+
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~columnscrolling.html[ColumnScrolling]"]  property determines whether and how the end user can navigate through the columns. The following table lists the different settings for the ColumnScrolling property, along with a brief description of how each setting affects the user interface:
+
+[options="header", cols="a,a"]
+|====
+|*ColumnScrolling Property Setting*|* Description*
+
+|ColumnsAcrossGroups
+|A horizontal scrollbar is displayed at the bottom of the control, which allows the end user to scroll through the different groups. A small change in the scroll position moves the view by one inner column, and a large change moves the view by the number of visible columns.
+
+|
+
+|ColumnsAndGroupsSeparately
+|A horizontal scrollbar is displayed at the bottom of the control, which allows the end user to scroll through the inner columns of the currently visible group. To navigate through the different groups, scroll buttons are displayed on the left and right side of the group header.
+
+|
+
+|ColumnsWithinGroupsOnly
+|A horizontal scrollbar is displayed at the bottom of the control, which allows the end user to scroll through the inner columns of the currently visible group. No user interface elements are presented by which to navigate through the different groups.
+
+|
+
+|GroupScrollbarOnly
+|A horizontal scrollbar is displayed at the bottom of the control, which allows the end user to scroll through the different groups. No user interface elements are presented by which to navigate through the inner columns.
+
+|
+
+|GroupScrollButtonsOnly
+|To navigate through the different groups, scroll buttons are displayed on the left and right side of the group header. No user interface elements are presented by which to navigate through the inner columns.
+
+|
+
+|None
+|No user interface elements are presented to the end user by which to navigate through groups or columns.
+
+|====
+
+Additional properties are exposed that allow the end developer to further customize the user interface. For example, the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~allowcolumnresizing.html[AllowColumnResizing]"]  property can be set to False to prevent the end user from changing column widths, and the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~minimumcolumnwidth.html[MinimumColumnWidth]"]  property can be set to make the columns a specific width. Owner headers can be shown or hidden by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsinglebase~showownerheader.html[ShowOwnerHeader]"]  property; the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~preferredinviewcolumncount.html[PreferredInViewColumnCount]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~preferredinviewgroupcount.html[PreferredInViewGroupCount]"]  properties can be used to set an initial width for columns (or number of columns displayed) while still allowing the end user to change them during the application session.
+
+== Appointment Grouping For The UltraMonthViewSingle and UltraWeekView Elements
+
+The UltraMonthViewSingleBase-derived elements (UltraMonthViewSingle and UltraWeekView) expose an  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsinglebase~ownerdisplaystyle.html[OwnerDisplayStyle]"]  property, which determines whether Appointments/Notes are grouped by owner, or whether they are intermingled. The property defaults to "Merged" (to preserve backward compatibility), but can be set to "Separate" to have the controls display different calendars for each visible Owner in the associated UltraCalendarInfo component's Owners collection.
+
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsinglebase~ownernavigationstyle.html[OwnerNavigationStyle]"]  property determines whether and how the end user can navigate through the different owners. The following table lists the different settings for the property, along with a brief description of how each setting affects the user interface:
+
+[options="header", cols="a,a"]
+|====
+|*ColumnScrolling Property Setting*|* Description*
+
+|DropDown
+|A drop-down button is displayed to the right of the owner's name in the header, which when clicked, displays a list of the visible owners. Selecting an entry from the list will swap visible positions with the owner that was selected.
+
+|
+
+|Scrollbar
+|A horizontal scrollbar is displayed at the bottom of the control which allows the end user to navigate through the visible owners. A small change in the scroll position moves the view by one owner, and a large change moves the view by the value of the MaximumOwnersInView property.
+
+|
+
+|DropDownAndScrollbar
+|Combines the "DropDown" and "Scrollbar" settings.
+
+|
+
+|ScrollButtons
+|Scroll buttons are displayed on the leftmost and rightmost owner headers which, when clicked, bring the previous/next owner into view.
+
+|
+
+|None
+|No user interface elements are presented by which to navigate through owners.
+
+|====
+
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsinglebase~maximumownersinview.html[MaximumOwnersInView]"]  property is used to specify the number of owners that will be displayed by the control. As with the UltraDayView control, the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~showownerheader.html[ShowOwnerHeader]"]  property provides a way to show/hide the owner headers.

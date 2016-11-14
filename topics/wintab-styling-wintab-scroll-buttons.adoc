@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-styling-wintab-scroll-buttons",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{77C47261-CDDB-4083-BE6B-A45565CCACA4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Styling WinTab Scroll Buttons
+
+This topic shows you how to style the WinTab™ control’s scroll buttons. Whenever the amount of Tab objects exceed the visible portion of the WinTab control, scroll buttons will be shown by default so that end users can scroll through your Tab objects.
+
+*In Visual Basic:*
+
+----
+' Set to always show scroll buttons 
+Me.ultraTabControl1.ScrollButtons = TabScrollButtons.Always 
+' Sets the type of ScrollButton 
+Me.ultraTabControl1.ScrollButtonTypes = ScrollButtonTypes. NextPrevious
+' Sets the Style for the ScrollButton 
+Me.ultraTabControl1.ScrollButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2007ScrollbarButton 
+' Sets the Style for the arrrow in the ScrollButton 
+Me.ultraTabControl1.ScrollArrowStyle = ScrollArrowStyle.VisualStudio
+----
+
+*In C#:*
+
+----
+// Set to always show scroll buttons
+ this.ultraTabControl1.ScrollButtons = TabScrollButtons.Always;
+ // Sets the type of ScrollButton
+ this.ultraTabControl1.ScrollButtonTypes = ScrollButtonTypes. NextPrevious;
+ // Sets the Style for the ScrollButton
+ this.ultraTabControl1.ScrollButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2007ScrollbarButton;
+ // Sets the Style for the arrrow in the ScrollButton
+  this.ultraTabControl1.ScrollArrowStyle = ScrollArrowStyle.VisualStudio;
+----

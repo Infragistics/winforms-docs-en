@@ -1,0 +1,123 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-the-minsummaryrowheight-and- defaultsummaryrowheight",
+    "controlName": [],
+    "tags": [],
+    "guid": "2e648301-772d-4b5b-9988-d454c1222a26",  
+    "buildFlags": [],
+    "createdOn": "2015-07-14T15:33:03.922517Z"
+}
+|metadata|
+////
+
+= Using the MinSummaryRowHeight and DefaultSummaryRowHeight
+
+== Topic Overview
+
+=== Purpose
+
+This topic demonstrates the usage of the MinSummaryRowHeight and DefaultSummaryRowHeight properties of the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid_members.html[UltraGrid].
+
+=== Required Background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wingrid-displaying-non-scrolling-summaries.html[Displaying Non-Scrolling Summaries]
+|The WinGrid™ displays summaries at the bottom of the row collection by default. In addition, the summaries scroll as rows are scrolled. 
+
+This topic shows you how to fix the summaries so they don't scroll. It also describes how to show summaries at the top of the row collection rather than at the bottom.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref423531568,DefaultSummaryRowHeight>>
+
+** <<_Ref421266503,Overview>>
+** <<_Ref423531244,Example>>
+
+* <<_Ref423531385,MinSummaryRowHeight>>
+
+** <<_Ref423531308,Overview>>
+** <<_Ref423531317,Example>>
+
+* <<_Ref423531444,Related Content>>
+
+[[_Configuring_a_Custom]]
+[[_Ref386478097]]
+[[_Ref423531568]]
+== DefaultSummaryRowHeight
+
+[[_Ref421266503]]
+
+=== Overview
+
+The DefaultSummaryRowHeight property provides the ability to specify the default height of the summary rows. The default value is -1 which indicates that the DefaultSummaryRowHeight property will not affect the summary row height calculations. If the DefaultSummaryRowHeight property is less than the minimum height for the summary row, the minimum height will be used as the height of the summary row. If the property is set to 0, the height of the summary rows will be calculated based on the summary row contents, regardless of the value of this property on other Override levels.
+
+[[_Ref423531244]]
+
+=== Example
+
+An example of setting the DefaultSummaryRowHeight property.
+
+*In C#:*
+
+[source, csharp]
+ultraGrid1.DisplayLayout.Override.DefaultSummaryRowHeight = 40;
+
+*In Visual Basic:*
+[source, vb]
+UltraGrid1.DisplayLayout.Override.DefaultSummaryRowHeight = 40
+
+[[_Ref388439099]]
+[[_Ref423531385]]
+== MinSummaryRowHeight
+
+[[_Ref423531308]]
+
+=== Overview
+
+By default, the minimum height of a summary row is based on the space required to display the summary contents (text, images, etc.). The MinSummaryRowHeight property provides the ability to specify the minimum height of a summary row. The default value of this property is -1 which indicates to use the calculated content size. If the properties is set to 0, an ArgumentOutOfRangeException is thrown as the row height has to be at least 1.
+
+[[_Ref423531317]]
+
+=== Example
+
+An example of setting the MinSummaryRowHeight property.
+
+*In C#:*
+
+[source, csharp]
+ultraGrid1.DisplayLayout.Override.MinSummaryRowHeight = 10;
+
+
+*In Visual Basic:*
+
+[source, vb]
+UltraGrid1.DisplayLayout.Override.MinSummaryRowHeight = 10
+
+[[_Ref423531444]]
+== Related Content
+
+[[_Ref386478106]]
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wingrid-using-wingrid.html[Using WinGrid]
+|Contains tutorials that demonstrate how to use the link:wingrid.html[WinGrid] control.
+
+|====

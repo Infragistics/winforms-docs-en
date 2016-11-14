@@ -1,0 +1,26 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-whats-new-2004-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{17CFFA24-7420-4658-8294-7DD3F8D9A419}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinChart 2004.3
+
+* Added the OthersCategoryText class; this applies to DoughnutChart, PieChart, and PieChart3D.
+* Added TickmarkInterval for set label axes – if TickmarkStyle = DataInterval and TickmarkInterval >0, then axis labels will appear every n times (where n is the value of Axis.TickmarkInterval).
+* Added a class called ChartTransform3DEventArgs. Events are fired when the user rotates/scales a 3D chart with the mouse.
+* Added the GetPrintDocument() method which returns an object of type System.Drawing.Printing.PrintDocument.
+* Added the ChartInvalidDataEvent.
+* Added a class called ChartDataInvalidEventArgs. It holds the information regarding the nature of the error, and holds a text property that can be set to display in the chart. This event is fired when data is not suitable for the chart type selected.
+* Added ChartDataDoubleClicked event.
+* Added the SplitData property value for UltraChart.Legend.DataAssociation, allowing combination charts (ScatterLineChart and ColumnLineChart) to display data for both chart types.
+* Added the ability to manipulate both Column and Line primitives in a custom layer for ColumnLineChart.
+* Added Cancelable Scrolling and Scaling events for when chart zooming and scrolling is caused by user interaction.

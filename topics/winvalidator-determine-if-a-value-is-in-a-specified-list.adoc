@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-determine-if-a-value-is-in-a-specified-list",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{ABDE68DD-5327-4361-9B2A-EAA01ACE5AFB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Determine if a Value is in a Specified List
+
+WinValidator™ can validate whether or not a specific item is included in a list that you provide. Using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.containedinlistcondition.html[ContainedInListCondition]"]  object, you can provide either an Infragistics  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"]  object or an in-box IList interface for WinValidator to test your end user's values against. Therefore, if you can put it in a list, you can test against it, making for a very versatile testing pattern. Once you've created your ContainedInListCondition, the rest of the procedure is very similar to testing any other condition that WinValidator supports (i.e.  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.rangecondition.html[RangeCondition]"] ).
+
+The following example code demonstrates how to create a ContainedInListCondition object and apply it to the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object of a WinTextEditor™ control.
+
+*In Visual Basic:*
+
+----
+' Create an Infragistics ValueList
+Dim theValueList As Infragistics.Win.ValueList = _
+	New Infragistics.Win.ValueList()
+' Populate the ValueList with names of known, system colors.
+Dim color As String
+For Each color In  [Enum].GetNames(GetType(System.Drawing.KnownColor))
+   theValueList.ValueListItems.Add(color)
+Next color
+' Create a new ContainedInListCondition object and set
+' the list to the ValueList created above. Use the 
+' display text rather than the data value to determine
+' if there is a match.
+Dim listCondition As Infragistics.Win.ContainedInListCondition = _
+	New Infragistics.Win.ContainedInListCondition( _
+		theValueList, _
+		Infragistics.Win.ListItemMatchMode.DisplayText)
+' Retrieve the ValidationSettings object associated with
+' the WinTextEditor control.
+Dim vs As Infragistics.Win.Misc.ValidationSettings = _
+	Me.UltraValidator1.GetValidationSettings(Me.UltraTextEditor1)
+' Set WinTextEditor's condition to the 
+' ContainedInListCondition created above.
+vs.Condition = listCondition
+----
+
+*In C#:*
+
+----
+// Create an Infragistics ValueList
+Infragistics.Win.ValueList theValueList = 
+	new Infragistics.Win.ValueList();
+// Populate the ValueList with names of known, system colors.
+foreach (string color in Enum.GetNames(typeof(System.Drawing.KnownColor)))
+{
+	theValueList.ValueListItems.Add(color);
+}
+// Create a new ContainedInListCondition object and set
+// the list to the ValueList created above. Use the 
+// display text rather than the data value to determine
+// if there is a match.
+Infragistics.Win.ContainedInListCondition listCondition =
+	new Infragistics.Win.ContainedInListCondition(
+		theValueList,
+		Infragistics.Win.ListItemMatchMode.DisplayText);
+// Retrieve the ValidationSettings object associated with
+// the WinTextEditor control.
+Infragistics.Win.Misc.ValidationSettings vs =
+	this.ultraValidator1.GetValidationSettings(this.ultraTextEditor1);
+// Set WinTextEditor's condition to the 
+// ContainedInListCondition created above.
+vs.Condition = listCondition;
+----

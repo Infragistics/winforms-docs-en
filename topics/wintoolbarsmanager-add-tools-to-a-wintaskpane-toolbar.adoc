@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-tools-to-a-wintaskpane-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{55CB90B8-8619-43D8-9202-CDE67B654E2E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Tools to a WinTaskPane Toolbar
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"]  is a specialized UltraToolbar. Its Tools collection can only contain  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"]  instances. The TaskPaneTool has a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool~control.html[Control]"]  property which is used to determine what control is displayed in the content area of the UltraTaskPaneToolbar. At design time, tools may be added to the UltraTaskPaneToolbar by clicking on the pop-up menu displayed within the caption area and then clicking on the "[Insert New Tool]" option. Alternatively, if no tools have been added to the UltraTaskPaneToolbar, you can also click on the "[Insert New Tool]" option with the caption itself.
+
+image::Images\WinToolbar_Adding_Tools_to_an_WinTaskPane_Toolbar_01.PNG[Ultratoolbarsmanager new tool dialog at design time]
+
+The only Tool Type that is available for the UltraTaskPaneToolbar is a "TaskPane Item". Once the tools have been created, you can right click on each tool as you would for any other tool on a toolbar or menu and display a context menu with options for modifying the tool. One option is to choose the associated Control that will be displayed when the TaskPaneTool is selected.
+
+.Note
+[NOTE]
+====
+If a Control is not specified, the tool will be disabled.
+====
+
+image::Images\WinToolbar_Adding_Tools_to_an_WinTaskPane_Toolbar_02.PNG[ultratoolbarsmanager taskpanetool context menu]
+
+The item with the check mark is the SelectedTaskPaneTool of the UltraTaskPaneToolbar which indicates the TaskPaneTool whose Control is currently displayed within the content area. An easy way to change this property in the designer is to click into the area where the checkmark would be displayed for an item in the menu.
+
+.Note
+[NOTE]
+====
+The control will not be re-parented (i.e. displayed within the content area) at design time
+====

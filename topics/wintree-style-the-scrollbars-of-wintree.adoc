@@ -1,0 +1,53 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-style-the-scrollbars-of-wintree",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{B130CBF3-7085-4735-BB9E-E67D519E31CF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Style the Scrollbars of WinTree
+
+In Infragistics Windows Forms 2006 Volume 2, you can now style the scrollbars in WinTree™ just like you would with WinScrollBar™. We added a  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~scrollbarlook.html[ScrollBarLook]"]  property to the WinTree that exposes several of the same objects as the WinScrollBar control. By setting the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawinscrollbar.scrollbarlook~appearance.html[Appearance]"]  property of the ScrollBarLook property to an  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object, you can style the entire scrollbar. Alternatively, if you need more control, you can set properties such as  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawinscrollbar.scrollbarlook~buttonappearance.html[ButtonAppearance]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawinscrollbar.scrollbarlook~thumbappearance.html[ThumbAppearance]"] , and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawinscrollbar.scrollbarlook~trackappearance.html[TrackAppearance]"] .
+
+The following code will create an Appearance object, set a few of its properties to show a light blue, vertical gradient, and than apply that appearance to the WinTree's scrollbars.
+
+image::images/WinTree_Style_the_Scrollbars_of_WinTree_01.png[styling the scrollbars of ultratree]
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+' Create an appearance object
+Dim app1 As New Infragistics.Win.Appearance()
+' Set the properties of the first appearance object
+app1.BackColor = Color.White
+app1.BackColor2 = Color.LightBlue
+app1.BackGradientStyle = GradientStyle.Vertical
+app1.ThemedElementAlpha = Alpha.Transparent
+' Set the appearance of the WinTree's scrollbar
+Me.UltraTree1.ScrollBarLook.Appearance = app1
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+// Create an appearance object
+Infragistics.Win.Appearance app1 = new Infragistics.Win.Appearance();
+// Set the properties of the first appearance object
+app1.BackColor = Color.White;
+app1.BackColor2 = Color.LightBlue;
+app1.BackGradientStyle = GradientStyle.Vertical;
+app1.ThemedElementAlpha = Alpha.Transparent;
+// Set the appearance of the WinTree's scrollbar
+this.ultraTree1.ScrollBarLook.Appearance = app1;
+----

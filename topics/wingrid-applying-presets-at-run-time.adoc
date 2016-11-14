@@ -1,0 +1,57 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-applying-presets-at-run-time",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Persistence"],
+    "guid": "{0DE4043F-01F0-4949-AD88-79332FBA51AA}",
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Applying Presets at Run Time
+
+You can save property settings that affect the appearance of the WinGrid™ to preset files. This allows you to easily persist and distribute a standardized configuration for WinGrids used in your company's applications. Previously, the presets could be applied to the WinGrid at design-time only. Now you can easily apply a preset at run time via the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfromxml.html[ApplyPresetFromXml]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfrombinary.html[ApplyPresetFromBinary]"]  methods.
+
+There are two overloads of each method:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfromxml(string).html[ApplyPresetFromXml(string filename)]"]  - Takes the name of the XML Preset file to load.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfromxml(string,boolean).html[ApplyPresetFromXml(string filename, bool clearAllSettings)]"]  - Takes the name of the XML Preset file to load and a bool indicating whether the existing "presetable" property settings will be cleared before loading the specified Preset.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfrombinary(string).html[ApplyPresetFromBinary(string filename)]"]  - Takes the name of the binary Preset file to load.
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~applypresetfrombinary(string,boolean).html[ApplyPresetFromBinary(string filename, bool clearAllSettings)]"]  - Takes the name of the binary Preset file to load and a bool indicating whether the existing "presetable" property settings will be cleared before loading the specified Preset.
+
+You can create your own Presets by using the WinGrid Designer. In the WinGrid's designer, navigate to the "Manage Presets" section and click the "New" button on the Tab control. This will open the "Add Preset" dialog where you can modify all of the "presetable" properties of the WinGrid. Once your custom Preset is complete, type a name into the "Name" TextBox and click the "Add" button.
+
+.Note
+[NOTE]
+====
+The default location of the installed presets is: C:\Program Files\Common Files\Infragistics\Presets\20082\CLR2x\Win\UltraGridBase\Standard
+====
+
+The following example applies the "FlatGreen" Preset to a WinGrid. Place the following line of code in a Button's Click event handler. Notice that the second argument indicates that the grid should clear the existing preset table settings before applying the new Preset.
+
+*In Visual Basic:*
+[source, vb]
+Private Sub Apply_Presets_at_Run_Time_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UltraGrid1.ApplyPresetFromXml("C:\Program Files\Common Files\Infragistics" & _
+          "\Presets\20082\CLR2x\Win\UltraGridBase\Standard\FlatGreen.xml", True)
+End Sub
+
+*In C#:*
+[source, csharp]
+private void Apply_Presets_at_Run_Time_Load(object sender, EventArgs e)
+{
+        this.ultraGrid1.ApplyPresetFromXml(@"C:\Program Files\Common Files\Infragistics" +
+          @"\Presets\20082\CLR2x\Win\UltraGridBase\Standard\FlatGreen.xml", true);
+}
+
+If you were to view a data bound WinGrid in its default look, it would appear similar to the screen shot below.
+
+image::images\WinGrid_Apply_Presets_at_Run_Time_01.png[alt=""]
+
+If you use the code above, once the form loads it will look similar to the screen shot below.
+
+image::images\WinGrid_Apply_Presets_at_Run_Time_02.png[alt=""]

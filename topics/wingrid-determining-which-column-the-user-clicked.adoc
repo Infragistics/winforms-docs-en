@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-which-column-the-user-clicked",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{79C4A7C7-9E36-4FE4-B49E-348A596F5C92}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining Which Column the User Clicked
+
+== Background
+
+There are times when a program needs to identify the Column associated with a mouse click. WinGrid™ provides this capability through the use of the .DisplayLayout.UIElement.ElementFromPoint method and the .GetContext method of the UIElement.
+
+== Questions
+
+How do I determine which column the user clicked on?
+
+== Solutions
+
+Use the .DisplayLayout.UIElement.ElementFromPoint method to find the UIElement of the mouse click and extract a reference to the Column object with the UIElement .GetContext method.
+
+== Sample Project
+
+This sample project illustrates how to determine which column a user clicked on. When this project is run, the user can click on the cells and the column Key value displays in the text box.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Determining_Which_Column_the_User_Clicked_01.png[determining which column the user clicked in ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event tells the grid to AutoFitStyle:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+* UltraGrid1.MouseUp - The code in the MouseUp event finds the UIElement from the X and Y coordinates of the event, extracts a reference to the Column with the GetContext method, and if a valid Column object reference exists it displays the Column.Key property value in the text box:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_MouseUp(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraGrid1.MouseUp
+	' Retrieve the UIElement from the location of the MouseUp
+	Dim mouseupUIElement As UIElement = _
+	  Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint(New Point(e.X, e.Y))
+	' Retrieve the Column from the UIElement
+	Dim mouseupColumn As UltraGridColumn = mouseupUIElement.GetContext(GetType(UltraGridColumn))
+	' If there is a column object reference, display column key
+	If Not mouseupColumn Is Nothing Then
+		Me.UltraTextEditor1.Text += mouseupColumn.Key + vbCrLf
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_MouseUp(object sender, 
+  MouseEventArgs e)
+{
+	// Retrieve the UIElement from the location of the MouseUp
+	UIElement mouseupUIElement = 
+	  this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X, e.Y));
+	// Retrieve the Column from the UIElement
+	UltraGridColumn mouseupColumn = 
+	  (UltraGridColumn)mouseupUIElement.GetContext(typeof(UltraGridColumn));
+	// If there is a column object reference, display column key
+	if(mouseupColumn != null)
+		this.ultraTextEditor1.Text += mouseupColumn.Key + "\n";
+}
+----
+
+== Review
+
+This project illustrates how to retrieve a Column object reference from the X and Y coordinates of a Mouse event.

@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "touch-gestures",
+    "controlName": [],
+    "tags": [],
+    "guid": "9caf56f0-686d-4772-aece-63cb8490afdb",  
+    "buildFlags": [],
+    "createdOn": "2013-02-25T18:57:37.0129859Z"
+}
+|metadata|
+////
+
+= Touch Gestures
+
+=== Introduction
+
+The topics in this group illustrate Infragistics touch-enabled control’s Touch Gestures.
+
+.Note:
+[NOTE]
+====
+The functionality offered through this feature is only available in a Full Trust environment.
+====
+
+Touch Gestures now support a new link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturesenabled.html[GesturesEnabled] property in the Infragistics link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase_members.html[UltraControlBase] class. This is Boolean property (`True` by default), which allows enabling gestures support for the application. Presented along with each gesture-supported control is an instance of the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturesenabled.html[GesturesEnabled] property. This empowers the controls with the ability to enable and disable the individual gestures separate from the application level.
+
+.Note:
+[NOTE]
+====
+When set explicitly the control settings have precedence over the application settings.
+====
+
+=== Topics
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:touch-gestures-overview.html[Touch Gestures Overview]
+|This topic explains the Infragistics touch-enabled controls’ touch gestures functionality and usage.
+
+| link:touch-gestures-events.html[Touch Gestures Events]
+|This topic introduces the Infragistics touch-enabled controls’ gestures events.
+
+| link:http://msdn.microsoft.com/en-us/library/windows/desktop/dd940543(v=vs.85).aspx[Windows Touch Gestures]
+|This MSDN section describes the various gestures supported by Windows Touch.
+
+|====

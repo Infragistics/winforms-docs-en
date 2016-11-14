@@ -1,0 +1,30 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-multi-stop-linear-gradient-brush-element",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{1B523BF0-ECD6-44B7-9025-F39E2E8ACF33}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Multi Stop Linear Gradient Brush Element
+
+If you want more than two colors to blend in a linear fashion on a property on your gauge, set the brush element to MultiStopLinearGradient. When you select the MultiStopLinearGradient brush element, you can specify more than two colors and the positional offsets for each color. You can apply the Multi-Stop Linear Gradient brush element to the properties on your gauge using:
+
+* link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-using-the-gauge-designer.html[the Gauge Designer]
+* link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-design-time.html[the Gauges collection editor]
+* link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-run-time.html[code]
+
+The following screen shot shows a Linear gauge set to the following Multi-Stop Linear Gradient brush element settings:
+
+* ColorStop 1: Offset = 0, Color = Color.FromArgb(254, 42, 0)
+* ColorStop 2: Offset =0.637, Color=Color.FromArgb( 212, 254, 0)
+* ColorStop 3: Offset = 1, Color = Color.FromArgb(0, 118, 0)
+* Angle -- 90
+
+image::images/Gauge_Multi_Stop_Linear_Gradient_02.png[Wingauge's linear gauge with a multi stop linear gradient brush element applied.]

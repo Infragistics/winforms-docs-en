@@ -1,0 +1,170 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-grouping-rows-by-custom-logic-using-igroupbyevaluator",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Grouping"],
+    "guid": "{4B7D5ECF-CF53-4653-AFC2-B0183A027021}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Grouping Rows by Custom Logic Using IGroupByEvaluator
+
+== Before you Begin
+
+There are different ways of grouping records of a band by a column. The GroupByMode property allows you to select one of several predefined Outlook Group By behaviors by which you can group your data by. It is possible that you might have to group the Grid rows using some custom logic that is above and beyond just setting the GroupByMode property. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator.html[IGroupByEvaluator]"] Interface can be used to supply custom logic for grouping rows whenever none of the GroupByMode values meet your needs. Also if sorting of the rows is not consistent with the grouping criteria, you will need to implement the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex.html[IGroupByEvaluatorEx]"]  Interface.
+
+== What You Will Accomplish
+
+In this walkthrough you will learn how to group rows using a custom logic by implementing the IGroupByEvaluator interface. You will also implement the IGroupByEvaluatorEx Interface in order to perform sorting that is not consistent with the grouping order. For this sample, the grouping is based on the last two characters of the ProductName column and then sorted by first two characters(Descending ordering) of the ProductName column. Understanding how these interfaces are implemented through this walkthrough will allow you to create more advanced and custom implementations to suit your specific needs.
+
+== Follow these Steps
+
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
++
+*In Visual Basic:*
+[source, vb]
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
++
+*In C#:*
+[source, csharp]
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+
+. Drag an UltraGrid™ from the Visual Studio® Toolbox and drop it on to your form. Bind the UltraGrid control to Products table of the Northwind Database. For more information on binding WinGrid™ to a datasource, link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source] Topic.
+
+. Add an UltraButton™ to the form.
+
+. Create a class file named MyGroupByEvaluator that implements IGroupByEvaluator and IGroupByEvaluatorEx interface. This class contains code that implements  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~getgroupbyvalue.html[GetGroupByValue]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~doesgroupcontainrow.html[DoesGroupContainRow]"]  methods that are member of the IGroupByEvaluator interface and also  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex~compare.html[Compare]"]  method that is a member of IGroupByEvaluatorEx interface. Write the following code within MyGroupByEvaluator class.
++
+*In Visual Basic:*
+[source, vb]
+Public Function GetGroupByValue(groupbyRow As UltraGridGroupByRow, row As UltraGridRow) As Object 
+    Dim val As String 
+    ' Get the default value from the groupbyRow. 
+    If groupbyRow.Value Is Nothing Then 
+        val = "" 
+    Else 
+        val = groupbyRow.Value.ToString() 
+    End If 
+    ' If it is longer than 2 characters truncate it. 
+    If val.Length > 2 Then 
+        val = val.Substring((val.Length - 2), 2) 
+    End If 
+    'Get the last two characters 
+    ' Convert the string to uppercase for display in the group-by row's description. 
+    Return val.ToUpper() 
+End Function 
+Public Function DoesGroupContainRow(groupbyRow As UltraGridGroupByRow, row As UltraGridRow) As Boolean 
+    ' Get the related cell's value as a string. 
+    Dim cellValue As String = row.Cells(groupbyRow.Column).Value.ToString() 
+    ' If it is longer than 2 characters truncate it. 
+    If cellValue.Length > 2 Then 
+        cellValue = cellValue.Substring((cellValue.Length - 2), 2) 
+    End If 
+    'Get the last two characters 
+    ' Do a case insensitive compare. 
+    Return 0 = String.Compare(groupbyRow.Value.ToString(), cellValue, True) 
+End Function
+#Region "IGroupByEvaluatorEx Members" 
+Public Function Compare(cell1 As UltraGridCell, cell2 As UltraGridCell) As Integer 
+    ' Get the related cell's value as a string. 
+    Dim cell1Value As String = DirectCast(cell1.Value, String) 
+    'get the first two characters in Cell1 
+    ' If it is longer than 2 characters truncate it. 
+    If cell1Value.Length > 2 Then 
+        cell1Value = cell1Value.Substring(0, 2) 
+    End If 
+    Dim cell2Value As String = DirectCast(cell2.Value, String) 
+    'get the first two characters in Cell2 
+    ' If it is longer than 2 characters truncate it. 
+    If cell2Value.Length > 2 Then 
+        cell2Value = cell2Value.Substring(0, 2) 
+    End If 
+    'this comparison sets the Sorting in Descending Order. 
+    Return cell2Value.CompareTo(cell1Value) 
+End Function 
+#End Region
++
+*In C#:*
+[source, csharp]
+public object GetGroupByValue(UltraGridGroupByRow groupbyRow, UltraGridRow row)
+        {
+            string val;
+            // Get the default value from the groupbyRow.
+            if (groupbyRow.Value == null)
+                val = "";
+            else
+                val = groupbyRow.Value.ToString();
+            // If it is longer than 2 characters truncate it.
+            if (val.Length > 2)
+                val = val.Substring((val.Length - 2), 2); //Get the last two characters 
+            // Convert the string to uppercase for display in the group-by row's description.
+            return val.ToUpper();
+        }
+        public bool DoesGroupContainRow(UltraGridGroupByRow groupbyRow, UltraGridRow row)
+        {
+            // Get the related cell's value as a string.
+            string cellValue = row.Cells[groupbyRow.Column].Value.ToString();
+            // If it is longer than 2 characters truncate it.
+            if (cellValue.Length > 2)
+                cellValue = cellValue.Substring((cellValue.Length - 2), 2); //Get the last two characters
+            // Do a case insensitive compare.
+            return 0 == string.Compare(groupbyRow.Value.ToString(), cellValue, true);
+        }
+#region IGroupByEvaluatorEx Members
+        public int Compare(UltraGridCell cell1, UltraGridCell cell2)
+        {
+            // Get the related cell's value as a string.
+            string cell1Value = (string)cell1.Value;
+            //get the first two characters in Cell1
+            // If it is longer than 2 characters truncate it. 
+            if (cell1Value.Length > 2)
+                cell1Value = cell1Value.Substring(0, 2);
+                  string cell2Value = (string)cell2.Value;
+             //get the first two characters in Cell2
+            // If it is longer than 2 characters truncate it.
+            if (cell2Value.Length > 2)
+                cell2Value = cell2Value.Substring(0, 2);
+            //this comparison sets the Sorting in Descending Order.
+            return cell2Value.CompareTo(cell1Value);
+        }
+        #endregion
+
+. In the button Click event write the following code.
++
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy 
+' Get the ProductName column. 
+Dim column As UltraGridColumn = Me.ultraGrid1.DisplayLayout.Bands(0).Columns("ProductName") 
+' Set the GroupByEvaluator on the column to an instance of MyGroupByEvaluator 
+column.GroupByEvaluator = New MyGroupByEvaluator() 
+' Set the column's HiddenWhenGroupBy property to false since we are 
+' grouping by the 1st 2 characters of each string we want the full 
+' company name to show in each row. 
+column.HiddenWhenGroupBy = DefaultableBoolean.[False] 
+' Now group the rows by the column. 
+Me.ultraGrid1.DisplayLayout.Bands(0).SortedColumns.Add(column, False, True)
++
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy;
+            // Get the ProductName column.
+            UltraGridColumn column = this.ultraGrid1.DisplayLayout.Bands[0].Columns["ProductName "];
+            // Set the GroupByEvaluator on the column to an instance of MyGroupByEvaluator
+            column.GroupByEvaluator = new MyGroupByEvaluator();
+            // Set the column's HiddenWhenGroupBy property to false since we are
+            // grouping by the 1st 2 characters of each string we want the full
+            // company name to show in each row.
+            column.HiddenWhenGroupBy = DefaultableBoolean.False;
+            // Now group the rows by the column.
+            this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Add(column, false, true);
+
+. Run the application. Click the button and you will see that the rows are grouped by the last two characters of the ProductName and sorted by the first two characters(Descending order).
+
+image::Images\WinGrid_Grouping_Rows_by_Custom_Logic_Using_IGroupByEvaluator.png[]

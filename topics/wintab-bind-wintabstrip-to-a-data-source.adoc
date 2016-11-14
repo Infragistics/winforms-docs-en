@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-bind-wintabstrip-to-a-data-source",
+    "controlName": ["WinTab"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{BFF718A6-1D5A-4876-B530-7DA23808CA09}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Bind WinTabStrip to a Data Source
+
+To bind the WinTabStrip™ to a data source perform the following steps:
+
+[start=1]
+. Add an UltraTabStripControl to a form that has a data source available.
+[start=2]
+. Place child controls on its shared controls page.
+[start=3]
+. Set the element's  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabstripcontrol~datasource.html[DataSource]"]  property to the data source.
+[start=4]
+. Set the element's DataMember to the appropriate member. Notice that sample tabs get added to the element at design-time to simulate the look of the element at run-time. These tabs can not be selected or scrolled. They display the name of the column in the data source that will be used to supply the tab's text. By default this is the first column.
+[start=5]
+. Optionally set the element's TabKeyMember, TabTextMember and ToolTipTextMember properties. The image below shows what the element may look like at design-time.
+
+.Note
+[NOTE]
+====
+The sample element's TabLayoutStyle property was set to 'MultiRowTabsPerRow', its TabsPerRow property was set to 4 and its MaxVisibleTabRows property was set to 4.
+====
+
+image::Images\WinTabStrip_Data_Binding_with_WInTabStrip_01.png[ultratabstrip control at design time data bound]
+
+[start=6]
+. The screen shot below shows what the same element looks like at run-time. The 5 textboxes are bound to fields in the same data source. This is done using the data bindings Text property and setting it to the column you want to display. Selecting a tab will automatically position the data source to the related row which will update the textboxes with the appropriate data.
+
+image::Images\WinTabStrip_Data_Binding_with_WInTabStrip_02.png[ultratabstrip control at run time shown data bound]
+
+[start=7]
+. Optionally set the SortMember and SortDirection properties to cause the tabs to be automatically sorted at run-time based on the data values in the specified column.

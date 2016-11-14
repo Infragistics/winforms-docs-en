@@ -1,0 +1,84 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-grammar-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "af1cb6e3-24d6-402d-a6b6-04640483c482",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0238473Z"
+}
+|metadata|
+////
+
+= Grammar Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350527823, Grammar Overview >>
+* <<_Ref349221041, Related Content >>
+
+[[_Ref350527823]]
+== Grammar Overview
+
+[[_Ref349221033]]
+
+=== Grammar summary
+
+The grammar definition represents the structure to which documents must conform if they are to be considered correct. The Infragistics Syntax Parsing Engine supports context-free grammars, which are characterized with the following four items:
+
+* a set of terminal symbols, which are named textual elements
+* a set of non-terminal symbols, which are named sequences of symbols
+* a start symbol, which is the only non-terminal symbol which may exist at the root of the syntax tree
+* a set of productions, each of which indicates one way a non-terminal symbol can represent a sequence of symbols. In this case, symbols are either terminal symbols, non-terminal symbols, or both.
+
+The grammar is represented by the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] class, defined in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace and as one would expect, there are properties on the grammar which relate directly or indirectly to all components of a context-free grammar:
+
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~lexerstates.html[Grammar.LexerStates] – The collection of link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] instances, which each have a Symbols collection, all of which collectively contain the terminal symbols of the grammar.
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~nonterminalsymbols.html[Grammar.NonTerminalSymbols] – The collection of non-terminal symbols of the grammar.
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[Grammar.StartSymbol] – The non-terminal symbol which exists in the `NonTerminalSymbols` collection and is the start symbol for the grammar.
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[NonTerminalSymbol.Rule] – The root of a syntax rule tree which defines all the productions that have this owning non-terminal symbol as their head symbol.
+
+[[_Ref349221041]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====

@@ -1,0 +1,26 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-assigning-an-editor-using-columnstyle",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{1721A544-7827-47DA-AB5D-005865176D2D}",
+    "buildFlags": [],
+    "createdOn": "2008-12-06T16:21:47Z"
+}
+|metadata|
+////
+
+= Assigning an Editor Using ColumnStyle
+
+Each WinGrid™  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column]"]  uses an embeddable editor to allow your end user to change a cell’s value. You can change the type of embeddable editor by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnstyle.html[ColumnStyle]"]  property. For more information, see link:wingrid-embeddable-editors.html[Embeddable Editors].
+
+The following example code demonstrates how to edit a column with a drop-down calendar.
+
+*In Visual Basic:*
+[source, vb]
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownCalendar
+
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownCalendar;

@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-wintimelineview-printing",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I"],
+    "guid": "{1DA8FA56-8F3A-48E6-A296-15BE50DE1AFF}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-12T15:05:21Z"
+}
+|metadata|
+////
+
+= WinTimelineView Printing
+
+When printing WinTimelineView™ content, you can use the control’s link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultrascheduleprintdocument~initializetimelineview_ev.html[InitializeTimelineView] event to make any adjustments that you feel are necessary for the printed output display. This event is invoked when the control is created during the print operation.
+
+This topic assumes that you have the UltraSchedulePrintDocument component dropped onto your form along with the UltraTimelineView control. Printing the control is actually a functionality of WinSchedulePrintDocument™ and WinPrintPreviewDialog™ components. For more information, please see the link:winprintpreviewdialog-winscheduleprintdocument-using-winprintpreviewdialog-with-winscheduleprintdocument.html[Using WinPrintPreviewDialog with WinSchedulePrintDocument] topic.
+
+*In Visual Basic:*
+
+----
+Dim timelineViewDocument As New UltraSchedulePrintDocument()
+AddHandler timelineViewDocument.InitializeTimelineView, AddressOf timelineViewDocument_InitializeTimelineView
+Private Sub timelineViewDocument_InitializeTimelineView(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinSchedule.Printing.InitializeTimelineViewEventArgs)
+    ' Prevent automatic adjustment of the time interval
+    e.AllowAdjustmentOfPrimaryInterval = False
+End Sub
+----
+
+*In C#:*
+
+----
+UltraSchedulePrintDocument timelineViewDocument = new UltraSchedulePrintDocument();
+timelineViewDocument.InitializeTimelineView += new Infragistics.Win.UltraWinSchedule.Printing.InitializeTimelineViewEventHandler(timelineViewDocument_InitializeTimelineView);
+void timelineViewDocument_InitializeTimelineView(object sender, Infragistics.Win.UltraWinSchedule.Printing.InitializeTimelineViewEventArgs e)
+{
+// Prevent automatic adjustment of the time interval
+e.AllowAdjustmentOfPrimaryInterval = false;
+}
+----

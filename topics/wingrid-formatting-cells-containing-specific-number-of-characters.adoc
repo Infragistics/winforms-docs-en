@@ -1,0 +1,134 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-formatting-cells-containing-specific-number-of-characters",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{A52CAA5D-4E5B-4255-8960-45F90E8B9530}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Formatting Cells Containing Specific Number of Characters
+
+== Background
+
+User input into cells which should contain a specific number of characters of input with each character being of a specific input type (ex: US style phone number "(316) 555-1212") are best formatted using the WinGrid™ MaskInput features.
+
+== Questions
+
+* How do I format a Phone number so that it makes the proper US style phone numbers?
+
+== Solutions
+
+User input prompting and formatting can be performed by setting the MaskInput property of the UltraWinGrid to a mask indicating the position of the literals and input characters.
+
+Properties associated with the UltraWinGrid MaskInput feature include:
+
+* MaskClipMode -- Returns or sets a value that determines how cell values for a column will be copied to the clipboard when data masking is in enabled.
+* MaskDataMode -- Returns or sets a value that determines how cell values for a column will be stored by the data source when data masking is enabled.
+* MaskDisplayMode -- Returns or sets a value that determines cell values will be displayed when the cells are not in edit mode and data masking is enabled.
+* MaskInput -- Determines the input mask for the cell. Characters used to create the MaskInput are:
+
+[options="header", cols="a,a"]
+|====
+|Character|Description
+
+|*#*
+|Digit placeholder. Character must be numeric (0-9) and entry is required.
+
+|*.*
+|Decimal placeholder. The actual character used is the one specified as the decimal placeholder by the system's international settings. This character is treated as a literal for masking purposes.
+
+|*,*
+|Thousands separator. The actual character used is the one specified as the thousands separator by the system's international settings. This character is treated as a literal for masking purposes.
+
+|*:*
+|Time separator. The actual character used is the one specified as the time separator by the system's international settings. This character is treated as a literal for masking purposes
+
+|*/*
+|Date separator. The actual character used is the one specified as the date separator by the system's international settings. This character is treated as a literal for masking purposes.
+
+|*\*
+|Treat the next character in the mask string as a literal. This allows you to include the '#', '&', 'A', and '?' characters in the mask. This character is treated as a literal for masking purposes.
+
+|*&*
+|Character placeholder. Valid values for this placeholder are ANSI characters in the following ranges: 32-126 and 128-255 (keyboard and foreign symbol characters).
+
+|*>*
+|Convert all the characters that follow to uppercase.
+
+|*<*
+|Convert all the characters that follow to lowercase.
+
+|*A*
+|Alphanumeric character placeholder. For example: a-z, A-Z, or 0-9. Character entry is required.
+
+|*a*
+|Alphanumeric character placeholder. For example: a-z, A-Z, or 0-9. Character entry is not required.
+
+|*9*
+|Digit placeholder. Character must be numeric (0-9) but entry is not required.
+
+|*-*
+|Optional minus sign to indicate negative numbers. Must appear at the beginning of the mask string.
+
+|*C*
+|Character or space placeholder. Character entry is not required. This operates exactly like the '&' placeholder, and ensures compatibility with Microsoft Access.
+
+|*?*
+|Letter placeholder. For example: a-z or A-Z. Character entry is not required.
+
+| _Literal_ 
+|All other symbols are displayed as literals; that is, they appear as themselves.
+
+|====
+
+* MaskLiteralsAppearance -- If the cell has MaskInput set or is using a UltraMaskedEdit element then this appearance will be applied to the literal chars while in edit mode.
+* PadChar -- Determines the pad character used for formatting text with mask.
+* PromptChar -- Returns or sets a value that determines the prompt character used during masked input.
+
+== Sample Code
+
+The "Phone" column is formatted with the mask "(###) ###-####".
+
+image::Images\WinGrid_Formatting_Cells_Containing_Specific_Number_of_Characters_01.png[formatting cells containing specific number of characters in ultragrid]
+
+UltraGrid1.InitializeLayout -- The "Phone" column MaskInput property is set to the phone number mask. The MaskDataMode is set so the grid doesn't try to put the formatting into the numeric database field. The MaskClipMode is set to IncludeBoth so when the user performs a copy operation on the cell the formatting is placed with the data on the clipboard. The MaskDisplayMode is set to IncludeBoth so the cell is displayed with the mask:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinMaskedEdit
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.Bands(0).Columns("Phone").MaskInput = "(###) ###-####"
+	e.Layout.Bands(0).Columns("Phone").MaskDataMode = MaskMode.Raw
+	e.Layout.Bands(0).Columns("Phone").MaskClipMode = MaskMode.IncludeBoth
+	e.Layout.Bands(0).Columns("Phone").MaskDisplayMode = MaskMode.IncludeBoth
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinMaskedEdit;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Bands[0].Columns["Phone"].MaskInput = "(###) ###-####";
+	e.Layout.Bands[0].Columns["Phone"].MaskDataMode = MaskMode.Raw;
+	e.Layout.Bands[0].Columns["Phone"].MaskClipMode = MaskMode.IncludeBoth;
+	e.Layout.Bands[0].Columns["Phone"].MaskDisplayMode = MaskMode.IncludeBoth;
+}
+----
+
+== Review
+
+This project illustrates the use of the Mask properties to format column information for display, clipboard, database and user input. It also illustrates the versatility of the Data, Clipboard and Display modes so that data can be displayed with or without formatting.

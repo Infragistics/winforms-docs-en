@@ -1,0 +1,114 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpivotgrid-glossary",
+    "controlName": [],
+    "tags": [],
+    "guid": "45fe090b-6a63-44c6-9adb-bef02341f0da",  
+    "buildFlags": [],
+    "createdOn": "2014-03-13T21:33:49.6257528Z"
+}
+|metadata|
+////
+
+= Glossary
+
+=== Introduction
+
+This section lists common terms used in pivot grid topics.
+
+=== Glossary of terms
+
+[options="header", cols="a,a"]
+|====
+|Term|Definition
+
+|Dimension
+|Dimensions are the structural attributes of a hypercube, known as Members – all of which belong to a similar category in the data. 
+
+For example, time dimension may consist of year, quarter, months, etc., likewise cities and countries may make up a region dimension. 
+
+A dimension acts as an index for identifying values within a multidimensional array and offers a way of organizing and selecting data for retrieval, exploration and analysis. Dimensions are the parameters normally seen in the rows and columns of a report.
+
+|Hierarchy
+|Hierarchies represent Parent-Child relationship. It is a way of organizing the members of a dimension into a logical tree structure that defines Parent-Child relationships. 
+
+For example, year is a parent of a quarter, and quarter is a parent of a month. When arranging members of a dimension into a Hierarchy, the OLAP model aggregates the dimension members, and the values of the child members will automatically sum up to a parent member.
+
+|Hypercube
+|Hypercube is an array of data consisting of one or more dimensions. 
+
+A hypercube can be considered a 3-dimensional grid. For example, a company may wish to summarize financial data by product, time, and city to compare budget expenses. The product, time, city and scenario (budget) are the dimensions of the financial data.
+
+|Level (Hierarchy)
+|Members of a dimension with hierarchies are considered to be at the same level if their hierarchies consist of the same number of descendants in a single path. 
+
+==== Example1 
+
+(Path is marked _Italic_ ): 
+
+Dimension1 contains: _[Parent1].[Child1].[Child2]_ 
+
+Dimension2 contains: _[Parent1].[Child1].[Child2]_ 
+
+Both dimensions above are at the same hierarchical level, because the number of descendants in their paths are the same. 
+
+==== Example2 
+
+(Path is marked _Italic_ ): 
+
+Dimension1 contains: _[Parent1].[Child1].[Child2]_ 
+
+Dimension2 contains: _[Parent1].[Child1].[Child2].[Child3]_ 
+
+In this example Dimension2 has more descendants in its path than Demension1, so the level of hierarchies are different.
+
+|Member (Dimension)
+|A member is a combination of values within a dimension. 
+
+Example: _[Date].[2014]_ _[Date].[2014].[July]_ _[Date].[2014].[July].[4th]_ 
+
+Each dimension listed above are considered members. There is also a special member called “All members” for example: 
+
+_[All Periods]_ would apply to all members.
+
+|Measures
+|A measure is a numerical value. It can be the combination of a numeric input column with a summarized value or statistic. It is the returned value of queried Rows/Columns. Measures are loaded from the data source being summarized. One input column can load one or more measures. For example, you can display measures “Amount,” or calculate measures "Sum of Amount" and "Maximum of Amount" from the input column "Amount."
+
+|Online Analytical Processing (OLAP)
+|Online Analytical Processing (OLAP) is a method of retrieving answers to complex analytical queries from Multi-Dimensional data cubes. 
+
+OLAP is attributed to business intelligence, which is similarly attributed to relational reporting and data mining. However, databases that function with OLAP use a Multi-Dimensional data model, enabling users to conduct analytical reports with quick execution time. 
+
+In an OLAP data model, information is viewed conceptually as cubes, which consist of quantitative values (measures) and descriptive categories (dimensions).
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winpivotgrid.html[WinPivotGrid]
+|This section contains topics covering the WinPivotGrid™ control for Infragistics® Windows Forms®.
+
+|====
+
+=== Resources
+
+The following material (available outside the Infragistics family of content) provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Title|Purpose
+
+| link:http://en.wikipedia.org/wiki/OLAP_cube[OLAP]
+|Provides terminology for understanding OLAP cubes.
+
+|====

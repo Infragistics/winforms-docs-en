@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "windropdownbutton-using-the-dropdown-button",
+    "controlName": ["WinDropDownButton"],
+    "tags": [],
+    "guid": "{F6CD6FDF-C3ED-40D3-A742-C27056F33B6C}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the Drop-Down Button
+
+The WinDropdownButton™ provides the features of a standard button and adds the capabilities of pop-up control container. You can use it to provide a series of options that the user can choose from before initiating the action indicated by the button. It can also be used to have a single button perform multiple tasks, depending on the options selected by the user.
+
+To use the drop-down button, you must select a second element that will be used as the drop-down portion. This element handles the displaying of the drop-down and the containment of any controls that will be shown. This container must be one that implements the IPopupItem interface. For example, it can be the stand-alone WinPopupControlContainer™ control that is also included with WinMisc, or it can be the PopupControlContainer tool found in WinToolbarsManager™.
+
+To create a drop-down button:
+
+[start=1]
+. Select the UltraDropDownButton element from the Visual Studio toolbox and double-click it, drag it on to the form, or click it and draw the element onto the form.
+[start=2]
+. Add a second control that will displayed when the drop-down button is clicked. If the interface of the drop-down will consist of multiple WinForms controls, you will want to use a container control such as a Panel. (You may also want to add the contained controls to the container at this point, constructing the interface that will be displayed by the drop-down.) You can also use a non-container control such as a ListView or an UltraWinGrid as the drop-down.
+[start=3]
+. Add the element that will handle the display of the drop-down. If you are using the UltraPopupControlContainer element, double-click it in the toolbox and it will be added to the component tray. If you are using the UltraWinToolbars' PopupControlContainer tool, you will have to add the UtlraToolbarsManager element to your form.
+[start=4]
+. Configure the drop-down handler control to use the pop-up control that is already present from step 2. For the UltraPopupControlContainer control, you do this simply by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapopupcontrolcontainer~popupcontrol.html[PopupControl]"]  property in the Visual Studio property sheet. If you are using an UltraWinToolbars, you must configure it so that it contains a populated PopupControlContainer tool.
+[start=5]
+. Select the DropDownButton on the form and display the Visual Studio property sheet. Locate the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradropdownbutton~popupitem.html[PopupItem]"]  property. This property will contain a list of all the controls on the form that implement the IPopupItem interface. Select the pop-up you just created (UltraPopupControlContainer element or PopupControlContainer tool) from the drop-down list for the property.
+[start=6]
+. Run the project and click the drop-down arrow portion of the button. The pop-up you created will be displayed.
+
+image::images\WinMisc_Using_the_Dropdown_Button_01.png[shows windayview inside of windropdownbutton.]
+
+To implement the functionality of the button itself, you use the Click event just as you would with a standard command button. There is also a ClosedUp event you can use to take action when the drop-down portion of the button is closed.

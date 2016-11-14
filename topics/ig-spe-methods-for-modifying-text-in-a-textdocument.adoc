@@ -1,0 +1,285 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-methods-for-modifying-text-in-a-textdocument",
+    "controlName": [],
+    "tags": [],
+    "guid": "3efd5d7a-bdbd-4415-9139-0c641f94e8fd",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.120857Z"
+}
+|metadata|
+////
+
+= Methods for Modifying Text in a TextDocument
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the `TextDocument` object’s methods for modifying its text. Additionally, code snippets further illustrate the use of these methods.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref327861013,Append Text to the End of a Document – Code Example>>
+
+** <<_Ref326147531,Description>>
+** <<_Ref326147537,Code>>
+
+* <<_Ref335122546,Delete Text from a Document – Code Example>>
+
+** <<_Ref335122550,Description>>
+** <<_Ref335122555,Code>>
+
+* <<_Ref335122560,Insert Text into a Document – Code Example>>
+
+** <<_Ref335122565,Description>>
+** <<_Ref335122568,Code>>
+
+* <<_Ref335122576,Replace All Occurrences of Found Text in a Document – Code Example>>
+
+** <<_Ref335122581,Description>>
+** <<_Ref335122584,Code>>
+
+* <<_Ref335122590,Replace a Single Occurrence of Text Found in a Document – Code Example>>
+
+** <<_Ref335122596,Description>>
+** <<_Ref335122599,Code>>
+
+* <<_Ref335122603,Replace Text at a Specific Location of the Document – Code Example>>
+
+** <<_Ref335122608,Description>>
+** <<_Ref335122611,Code>>
+
+* <<_Ref335122617,Related Content>>
+
+** <<_Ref335122621,Topics>>
+
+[[_Append_Text_to]]
+[[_Ref327861013]]
+[[_Ref324841253]]
+== Append Text to the End of a Document – Code Example
+
+[[_Description]]
+
+=== Description
+
+The Append method adds text to the end of the document, represented by the `TextDocument` class.
+
+The following code example appends the text from a TextBox control to the end of the document.
+
+[[_Code]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+_textDocument.Append(textBox.Text);
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+_textDocument.Append(textBox.Text)
+----
+
+[[_Delete_Text_from]]
+[[_Ref335122546]]
+== Delete Text from a Document – Code Example
+
+[[_Description_1]]
+
+=== Description
+
+The Delete method, removes a specified span of continuous text, up to and including all of the text, within a document. It returns a Boolean, indicating the successful completion off the delete operation.
+
+To delete all of the text, call the Delete method with no parameters.
+
+The following code example deletes the first five characters from a document by passing “0” for the offset and “5” for the length to the Delete method. Upon successful deletion, it writes a message to the Visual Studio Output Window.
+
+[[_Code_1]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+int offset = 0;
+int length = 5;
+if (_textDocument.Delete(offset, length))
+    System.Diagnostics.Debug.WriteLine("Delete characters successful.");
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Dim offset As Integer = 0
+Dim length As Integer = 5
+If _textDocument.Delete(offset, length) Then
+      System.Diagnostics.Debug.WriteLine("Delete characters successful.")
+End If
+----
+
+[[_Insert_Text_into]]
+[[_Ref335122560]]
+== Insert Text into a Document – Code Example
+
+[[_Description_2]]
+
+=== Description
+
+The Insert method inserts text into the document at a specific offset.
+
+The following code sample demonstrates how to insert the string “INSERTED TEXT” at an offset of 10 characters, resulting in the insertion of the text between the eleventh and twelfth character of the existing text.
+
+[[_Code_2]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+_textDocument.Insert(10, "INSERTED TEXT");
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+_textDocument.Insert(10, "INSERTED TEXT")
+----
+
+[[_Replace_All_Occurrences]]
+[[_Ref335122576]]
+== Replace All Occurrences of Found Text in a Document – Code Example
+
+[[_Description_3]]
+
+=== Description
+
+The `FindReplaceAll` method finds and replaces all occurrences of the specified text after the specified offset location in the document. This method uses the TextSearchCritera object, which accepts either a verbatim string or a Regular Expression.
+
+The following code example finds all occurrences of the less-than character “<” located at the beginning of a line in the document and replaces them with a pair of less-than characters “<<.”
+
+[[_Code_3]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+TextSearchCriteria tsc = new TextSearchCriteria(true, "^<", RegexOptions.None);
+_textDocument.FindReplaceAll(tsc,"<<");
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Dim tsc As New TextSearchCriteria(True, "^<", RegexOptions.None)
+_textDocument.FindReplaceAll(tsc,"<<")
+----
+
+[[_Replace_a_Single]]
+[[_Ref335122590]]
+== Replace a Single Occurrence of Text Found in a Document – Code Example
+
+[[_Description_4]]
+
+=== Description
+
+The `FindReplace` method finds and replaces the first occurrence of the specified text string after the offset location specified in the document. This method uses the `TextSearchCritera` object, which accepts either a verbatim string or a Regular Expression.
+
+The following code example finds the first occurrence of the less-than character “<” located at the beginning of a line, starting the search 50 characters into the text. It replaces the less than character “<” with a pair of less-than characters “<<”.
+
+[[_Code_4]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+//Beginning 50 characters into the document, find the first occurrence of a less-than character at the beginning of a line.
+//Replace it with a pair of less-than characters.
+TextSearchCriteria tsc = new TextSearchCriteria(true, "^<", RegexOptions.None);
+_textDocument.FindReplace("<<",tsc,50);
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+'Beginning 50 characters into the document, find the first occurrence of a less-than character at the beginning of a line.
+'Replace it with a pair of less-than characters.
+Dim tsc As New TextSearchCriteria(True, "^<", RegexOptions.None)
+_textDocument.FindReplace("<<", tsc, 0)
+----
+
+[[_Replace_Text_at]]
+[[_Ref335122603]]
+== Replace Text at a Specific Location of the Document – Code Example
+
+[[_Description_5]]
+
+=== Description
+
+The Replace method replaces the text located at a specific location as defined by its offset and length or a `TextSpan` object in the document. The length of the inserted string does not need to be equal to the length of the text that it is replacing.
+
+The following code replaces the 10 characters of text beginning at the 100th character of the document (offset=99) with the string, “REPLACED TEXT”. The resulting document is three characters longer in this case, because a 13-character string replaces 10 characters of existing text.
+
+[[_Code_5]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+_textDocument.Replace("REPLACED TEXT", 99, 10);
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+_textDocument.Replace("REPLACED TEXT", 99, 10)
+----
+
+[[_Related_Content]]
+[[_Ref335122617]]
+== Related Content
+
+[[_Topics]]
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-textdocument-overview.html[TextDocument Overview]
+|This topic describes the Infragistics Syntax Parsing Engine’s main class, `TextDocument`, and contains links to topics that outline its most important methods, events and properties.
+
+| link:ig-spe-events-for-interacting-with-a-textdocument.html[Events for Interacting with a TextDocument]
+|This topic uses descriptive text and code snippets to illustrate the `TextDocument` class events.
+
+| link:ig-spe-properties-for-configuring-a-textdocument.html[Properties for Configuring a TextDocument]
+|This topic uses descriptive text to illustrate the `TextDocument` class properties exposed to enable custom configuration.
+
+| link:ig-spe-implementing-a-textdocument-with-a-richtextbox.html[Implementing a TextDocument with a RichTextBox]
+|This topic uses descriptive text and code snippets to illustrate how to provide use a RichTextBox control to highlight keywords in a document according to a specific language.
+
+|====

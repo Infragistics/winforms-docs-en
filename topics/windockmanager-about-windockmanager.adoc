@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-about-windockmanager",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{72962E85-EE8E-4C60-9A93-4D9B372FBA8E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinDockManager
+
+The following is a list of the key features of WinDockManager™:
+
+* Dockable and floatable windows -- as in Microsoft Visual Studio.Net. Controls may be docked to any side of the host container or displayed in an owned floating window.
+* AutoHide support -- Docked controls can be unpinned to conserve screen real estate. Unpinned controls are represented by a tab in an area along the outside of the container. The control is displayed in a separate window that slides out when the tab is selected.
+* Toggle state -- Double clicking on a pane caption, tab item, or sliding group header will toggle the docked state of the pane(s).
+* Multiple Group Styles -- Dockable controls can be grouped together in any combination when docked or floating. UltraDockManager supports four group styles – horizontal split, vertical split, tab groups and sliding groups.
+* Complete WYSIWYG design-time functionality -- Easily create and position dockable controls at design-time. Access to the settings for individual docked controls is available in Visual Studio's property grid when the control is selected.
+* Saving and Loading -- save and load docked window layouts at design-time and-run-time.
+* Hierarchical control settings -- Docked control settings can be set for an individual pane, children of a group, or for all panes.
+* Window Styles -- A single property, WindowStyle, affects the default appearance of the pane windows, including the caption and tab styles. The settings can be further controlled through pane and group settings. Also, a LayoutStyle property can be used to specify how the dock area panes should manage the client area of the form.
+* Grouping and Moving Panes -- Once docked controls have been created, the panes may be dragged around by pressing down on the caption, tab item, or sliding group header of the pane.
+* Preventing Docking -- If the CTRL key is held down during the dragging of a pane, the drop location for the pane will always be a floating window.
+* Removing/Undocking Controls -- When a docked control is cut, deleted, or dragged out of the dockable window, the associated DockableControlPane is removed. A pane can also be undocked by right clicking on the docked control and unchecking "Dock Controls" on the context menu.

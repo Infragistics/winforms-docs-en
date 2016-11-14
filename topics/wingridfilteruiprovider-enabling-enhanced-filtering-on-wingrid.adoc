@@ -1,0 +1,76 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridfilteruiprovider-enabling-enhanced-filtering-on-wingrid",
+    "controlName": [],
+    "tags": ["Filtering","How Do I"],
+    "guid": "{FE6F5B38-6C51-48D0-80FA-772195428EBA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Enabling Enhanced Filtering on WinGrid
+
+WinGrid™ offers Enhanced filtering as a means of controlling what data is displayed by the end-user. This functionality includes filtering by specific data-types, such as string operations (begins-with, contains, etc), date operations (between dates, before today’s date, etc), or providing the ability to filter by selecting multiple values that appear in a column using a checkbox.
+
+In order to enable the advanced filtering UI on the WinGrid control that mimics the functionality provided by Excel2007, the following three steps need to be performed.
+
+[start=1]
+. Drag and drop the ultraGridFilterUIProvider™ component from the Visual Studio® toolbox on to your Form.
+[start=2]
+. Set the WinGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filteruiprovider.html[FilterUIProvider]"]  property to the ultraGridFilterUIProvider you placed on the Form.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Override.FilterUIProvider = Me.ultraGridFilterUIProvider1
+'This can be set for each Band as well:
+'Me.ultraGrid1.DisplayLayout.Bands(0).Override.FilterUIProvider = Me.ultraGridFilterUIProvider1
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterUIProvider = this.ultraGridFilterUIProvider1;
+//This can be set on each Band as well:
+//this.ultraGrid1.DisplayLayout.Override.FilterUIProvider = this.ultraGridFilterUIProvider1;
+----
+
+[start=3]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowrowfiltering.html[AllowRowFiltering]"]  property to true.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+----
+
+Now data in the WinGrid can be filtered using the advanced Filtering options:
+
+The following screenshot shows a WinGrid populated with the Orders table of the Northwind database. A text filter for the CustomerID column is shown below. You can filter by selecting the checkboxes or by selecting from the context menu and then entering a filter criterion. Pressing the Ok button will filter the Grid rows.
+
+=== Filtering the ‘Text’ Data type(CustomerID) column
+
+image::Images\Wingrid_Excel_Style_Filtering_1.png[]
+
+=== Filtering the ‘Number’ Data type (EmployeeID) column
+
+image::Images\Wingrid_Excel_Style_Filtering_2.png[]
+
+=== Filtering the ‘Date’ Data-type (Order Date) column
+
+image::Images\Wingrid_Excel_Style_Filtering_3.png[]
+
+Related Topics
+
+* link:wingridfilteruiprovider-adding-a-custom-filter-to-enhanced-filtering-ui-on-a-wingrid.html[Adding a Custom Filter to Enhanced Filtering UI]
+* link:wingridfilteruiprovider-applying-enhanced-filter-condition-to-wingrid-at-run-time.html[Applying Enhanced Filter Condition to WinGrid at Run Time]

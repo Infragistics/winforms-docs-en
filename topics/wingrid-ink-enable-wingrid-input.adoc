@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-ink-enable-wingrid-input",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{144E9BDA-272D-45A9-88BA-EF4FA0A51D80}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Ink-Enable WinGrid Input
+
+With the addition of the WinInkProvider™ to the Infragistics suite of Windows Forms products, it becomes very easy to ink-enable the Infragistics elements in your application. If you are deploying an application on the TabletPC platform, follow these simple steps to add ink capability to the WinGrid™ elements in your application:
+
+[start=1]
+. Add the UltraGrid element or elements to your form.
+[start=2]
+. Locate the UltraInkProvider element in the Visual Studio toolbox.
+
+Double-click the UltraInkProvider element in the toolbox. The element will be added to the component tray of your form.
+
+This is all that is required. All of the embeddable editors that the grid uses for text input are now ink-enabled. You (and your users) will see a pen icon button on the right side of any text input field. The user clicks this button with the stylus to open the text input panel for the element.
+
+.Note
+[NOTE]
+====
+Ink recognition can only be performed on a TabletPC running the TabletPC Edition of Windows. If you are developing on a non-TabletPC system, you must have the TabletPC SDK to use the UltraInkProvider element. For more information, see the Requirements for Ink-Enabled Applications topic in the UltraInkProvider help. Also see the WinInkProvider overview for more information.
+====
+
+[start=3]
+. The following snapshot shows ink enabled WinGrid. The text input panel has two parts: Keyboard input and Ink input. This snapshot displays the keyboard input portion. Clicking on the "pen" button on the right switches to the ink input mode.
+
+image::Images/WinGrid_Ink_Enable_WinGrid_Input_01.png[ink enable ultragrid input]
+
+The following is specific to UltraWinGrid.
+[start=4]
+. You can set the ShowInkButton property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object to prevent WinGrid from showing ink buttons in WinGrid. ShowInkButton property is exposed off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object as well so you can enable/disable ink buttons on a per column basis.
+[start=5]
+. By default the UltraWinGrid displays ink buttons when the user hovers the mouse over the cell. You can choose to always display ink buttons by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~buttondisplaystyle.html[ButtonDisplayStyle]"]  property on the UltraGridColumn objects.

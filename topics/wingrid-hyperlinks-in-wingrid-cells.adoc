@@ -1,0 +1,120 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-hyperlinks-in-wingrid-cells",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Navigation"],
+    "guid": "{E71380F1-6F92-4627-8F5D-F5D1CE2C23F9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= HyperLinks in WinGrid Cells
+
+*Before You Begin*
+
+Cells in a WinGrid™ may have Hyperlinks that require a click event to be handled. For instance a WinGrid column may represent your data model’s Primary Key and is set up as a Hyperlink. You may want your end users to click these Hyperlinks and perhaps launch a Browser and navigate to a particular page that is related to clicked record.
+
+*What You Will Accomplish*
+
+This topic will show you how to set up a WinGrid so that one column is a Hyperlink column. The Hyperlink column will be the data model’s Primary Key. When you click on one of the Hyperlinks your default browser will be launched with a URL that includes the Primary Key value within a query string. The URL will essentially be a search performed on the Google® search engine.
+
+*Follow These Steps*
+
+[start=1]
+. This topic assumes that you already have a WinGrid populated with the customers table of the Northwind database.For more information on Data binding to WinGrid see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source] topic.
+[start=2]
+. The a to hyperlink. as column CustomerID the configure steps these Follow Hyperlink. configured is that one
+
+a. Click on the WinGrid control and in the properties window, locate and expand the DisplayLayout property. Under the DisplayLayout, locate and expand the Bands property. Since this is a flat grid, you will only have one Band. Expand its properties and locate the Columns property. Click on the Column Property’s ellipses (…) button to launch the Columns Collection Editor.
+
+b. Locate and select the CustomerId Column. Set its Style property to URL. Click the OK button to close the editor.
+[start=3]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid; 
+Imports Infragistics.Win.FormattedLinkLabel;
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;	
+using Infragistics.Win.FormattedLinkLabel;
+----
+
+[start=4]
+. Handle WinGrid’s Click event and use the following code in the event handler:
+
+*In Visual Basic:*
+
+----
+'Make this reusable, grab the Grid from the Sender event arg    
+        Dim g As UltraGrid = TryCast(sender, UltraGrid)
+        'Attempt to grab the UIElement that was clicked using the following technique 
+        Dim u As UIElement = g.DisplayLayout.UIElement.ElementFromPoint _
+       (g.PointToClient(Form.MousePosition))
+        'Make sure you test for NULL as that is possible. 
+        If u Is Nothing Then
+	Return
+        End If
+        'Observe the various types that you could be clicking (view the Output window to 
+        'see the different types)                                                                                                               
+        System.Diagnostics.Debug.WriteLine(u.[GetType]().ToString())
+        'Since I only care about the LinkLabel that is being clicked, 
+        'I am looking for the following type. If it is this element, then I want to do something   
+        If TypeOf u Is Infragistics.Win.FormattedLinkLabel.TextSectionUIElement Then
+            'use the GetContext method to ask the UIElement to give the Cell associated 
+            'with it"             
+            Dim c As UltraGridCell = TryCast(u.GetContext(GetType(UltraGridCell)), UltraGridCell)
+            'Again, the Cell that we declared may be NULL 
+            If c Is Nothing Then
+		Return
+            End If
+            'Now we have the real underlying Cell that is represented by the
+            'UIElement that we clicked. Access the Cell's Value and do whatever you want                 
+            'with it in this case, launch a browser to Google so it searches using the Cell Value.
+       System.Diagnostics.Process.Start(String.Format("http://www.google.com/search?hl=en&q= {0}_&aq=f&oq=", c.Value.ToString()))
+        End If
+----
+
+*In C#:*
+
+----
+              //Make this reusable, grab the Grid from the Sender event arg
+              UltraGrid g = sender as UltraGrid;
+              //Attempt to grab the UIElement that was clicked using the following technique
+              UIElement u =   g.DisplayLayout.UIElement.ElementFromPoint(g.PointToClient
+                                                                                                              (Form.MousePosition));
+              //Make sure you test for NULL as that is possible. 
+              if (null == u) return;
+              //Observe the various types that you could be clicking (view the Output window to 
+              // see  the different types)
+              System.Diagnostics.Debug.WriteLine(u.GetType().ToString());
+              //Since we need to know about the LinkLabel that is being clicked, 
+              //look for the following type. If it is this element,  do something. 
+              if (u is Infragistics.Win.FormattedLinkLabel.TextSectionUIElement)
+                     {
+                         //use the GetContext method to ask the UIElement to give the Cell associated 
+                         // with it"                                             
+                        UltraGridCell c = u.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+                        //Again, the Cell that we declared may be NULL
+                        if (null == c) return;
+                      //Now we have the real underlying Cell that is represented by the
+                      //UIElement that we clicked. Access the Cell's Value and do whatever you want                 
+                     //with it in this case, launch a browser to Google so it searches using the Cell Value. 
+                     System.Diagnostics.Process.Start(string.Format
+                     ("http://www.google.com/search?hl=en&q={0}&aq=f&oq=", c.Value.ToString()));
+                     }
+----
+
+[start=5]
+. Run the application. When you click on a Hyperlink in the CustomerID column it will launch your default browser to the Google search page showing the results for the corresponding customerID.
+
+image::Images\WinGrid_HyperLink_Cell_Click_Event.png[hyperlinks in ultragrid cells]

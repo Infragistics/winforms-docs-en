@@ -1,0 +1,217 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2012-volume-1",
+    "controlName": [],
+    "tags": ["Breaking Changes"],
+    "guid": "cb75e42c-736c-4998-b256-07cf7fa27a18",  
+    "buildFlags": [],
+    "createdOn": "2012-03-30T16:05:33.5920411Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2012 Volume 1
+
+== IDropDownResizeHandleOwner Interface
+
+A new property of type link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableelementdisplaystyle.html[EmbeddableElementDisplayStyle] called link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner~displaystyle.html[DisplayStyle] was added to the link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface. This additional property is used for determining the proper style to apply to the link:infragistics4.win.v{ProductVersion}~infragistics.win.dropdownresizehandleuielement_members.html[DropDownResizeHandleUIElement]. The new property had to be implemented on anything that implements the link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface, including the UltraPopupControlContainer, the ValueList, the EditorButonBase, and the UltraDropDownBase.
+
+== Infragistics Excel Engine
+
+=== Overview
+
+The following table summarizes the breaking changes in Excel library Format support
+
+[options="header", cols="a,a"]
+|====
+|Change|Description
+
+| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
+|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and derives from link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshape_members.html[WorksheetShape] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText]. This change should only affect people who are storing a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] instance in a variable of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText].
+
+| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
+|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]. The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class defines the same link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods as link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and they perform the same function, but return a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] instead of a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont]. link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] can be used in the same way as link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont] as it defines the same font properties. Unlike the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] class, the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class does not have an link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~unformattedstring.html[UnformattedString] property. However, the unformatted string can be retrieved by calling `ToString()` on the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instance.
+
+|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat_members.html[IWorksheetCellFormat] interface has changed.
+|If you have a custom implementation of this interface, this will cause build errors.
+
+|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworkbookfont_members.html[IWorkbookFont] interface has changed.
+|If you have custom implementation of this interface, this will cause build errors.
+
+|Indexing into the Workbook Styles collection with built-in style names may no longer work correctly.
+|The names of some built in styles have been changed to reflect what is used in Microsoft Excel. If, with previous versions, you had loaded an existing file with built-in styles saved and indexed into the Styles collection with the style names, your code may now return null where it had returned a valid `WorkbookStyle` instance. _In certain cases this may cause your code to break and_ _possibly_ _cause runtime errors._
+
+|Workbook palette is not auto-populated.
+|Now, workbook palette is not auto-populated. For more information, see the <<_Ref320781747, Workbook palette is not auto-populated >> block below.
+
+| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.workbook~styles.html[Styles] collection is pre-populated.
+|`Styles` collection is now pre-populated with all built in styles and clearing the collection will not remove the _Normal_ style as it did in the earlier versions.
+
+|`WorkbookPaletteMode` enumeration has been marked obsolete.
+|The `Work``bookPaletteMode` enumeration and the `Workbook` constructor that takes a `WorkbookPaletteMode` have been marked obsolete. 
+
+If a `Workbook` constructor taking a `WorkbookPaletteMode` is used, the value will be ignored.
+
+|`FillPatternStyle.``Default` value has been marked obsolete
+|`FillPatternStyle` `Default` value has been marked obsolete. It can be still used on the deprecated `IWorksheetCellFormat.``FillPattern` property to indicate unset value.
+
+|The Color properties on the `IWorksheetCellFormat` and `IWorkbookFont` interfaces have been marked obsolete.
+|The Color properties on the `IWorksheetCellFormat` and `IWorkbookFont` interfaces have been marked obsolete. Setting the old property will set the new property to an equivalent value. 
+
+For more information, see the <<_Ref320781793, Set of Color properties have been marked obsolete >> blockbelow.
+
+|The fill related properties on the `IWorksheetCellFormat` instance have been marked obsolete.
+|The fill related properties on the `IWorksheetCellFormat` instance have been marked obsolete and have all been replaced by `IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~fill.html[Fill] property. 
+
+For more information, see the <<_Ref320781827, CellFormat have been marked obsolete >> block below.
+
+|The `Workbook.``DefaultFontHeight` property has been marked obsolete
+|The `Workbook` `DefaultFontHeight` property has been marked obsolete. It is redundant now that the default font height can be set on the _Normal_ style of the workbook. Setting and getting the old property will set and get the font height of the _Normal_ style.
+
+|The `Workbook.``MaxExcelColorCount` constant has been marked obsolete.
+|The `Workbook` `MaxExcelColorCount` constant has been marked obsolete. There is now no limit to the number of unique colors which can be used in a workbook.
+
+|When value of the cell is link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString], its associated fonts must now be fully resolved.
+|When a FormattedString is the value of a cell, its associated fonts, obtained with the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods of the FormattedString instance, must have their fonts fully resolved.
+
+|When a `FormattedString` is the value of a cell and font properties are changed on the cell, font properties will be copied entirely of the `FormattedString`.
+|When a `FormattedString` is the value of a cell and font properties are changed on the cell, font properties will be copied to the entirety of the `FormattedString`. 
+
+For example, if a formatted string in a cell looked like this: _F_ *o* _r_ *m* _a_ *t* _t_ *e* _d_ *S* _t_ *r* _i_ *n* _g_ ”, and the `cell.CellFormat.Font.Bold` value is set to `True`, the formatted string in the cell would look like this: “*_F_ o _r_ m _a_ t _t_ e _d_ S _t_ r _i_ n _g_* ”. This change was made to more closely mimic the functionality of Excel.
+
+|The default font of a workbook is now Calibri 11 pt.
+|The default font of a workbook is no longer Arial 10 pt. font, but is Calibri 11 pt. font. 
+
+This can be changed back by modifying the _Normal_ style of the workbook after it is created.
+
+|====
+
+[[_Ref320781747]]
+
+=== Workbook palette is not auto-populated
+
+Previously, when the workbook was created, it used a custom palette mode by default, which meant any colors set on cell formats and fonts were automatically added to the palette.
+
+Now, the workbook palette is not auto-populated. When a custom color is used, and the file is opened in Excel 2003 or earlier, users may not see the used color. They will see the closest color that was present in the color palette at the time of the file creation.
+
+This can be fixed by manually adding in the used colors in the workbook’s palette at any time before saving the workbook. This is not an issue with Microsoft Excel 2007 or later versions.
+
+[[_Ref320781793]]
+
+=== Set of Color properties have been marked obsolete
+
+The following color properties have been marked obsolete. Setting the old property will set the new property to an equivalent value. Getting the old property will get the actual color which will be seen by the user.
+
+[options="header", cols="a,a"]
+|====
+|Obsolete properties|New properties
+
+|`FormattedFontBase.``Color`
+|`FormattedFontBase` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedfontbase~colorinfo.html[ColorInfo]
+
+|`IWorkbookFont.``Color`
+|`IWorkbookFont` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworkbookfont~colorinfo.html[ColorInfo]
+
+|`IWorksheetCellFormat.``BottomBorderColor`
+|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~bottombordercolorinfo.html[BottomBorderColorInfo]
+
+|`IWorksheetCellFormat.``DiagonalBorderColor`
+|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~diagonalbordercolorinfo.html[DiagonalBorderColorInfo]
+
+|`IWorksheetCellFormat.``LeftBorderColor`
+|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~leftbordercolorinfo.html[LeftBorderColorInfo]
+
+|`IWorksheetCellFormat.``RightBorderColor`
+|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~rightbordercolorinfo.html[RightBorderColorInfo]
+
+|`IWorksheetCellFormat.``TopBorderColor`
+|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~topbordercolorinfo.html[TopBorderColorInfo]
+
+|`WorksheetDisplayOptions.``TabColor`
+|`WorksheetDisplayOptions` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetdisplayoptions~tabcolorinfo.html[TabColorInfo]
+
+|====
+
+[[_Ref320781827]]
+
+=== Set of properties on IWorksheet CellFormat have been marked obsolete
+
+The following properties on `IWorksheetCellFormat` have been marked obsolete and their functionality has been replaced by a new property.
+
+++++
+<table cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <th>
+                <p>Obsolete properties</p>
+            </th>
+
+            <th>
+                <p>New property</p>
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                <p><span class="ig-code-in-text">FillPattern</span></p>
+            </td>
+
+            <td rowspan="3">
+                <p><a href=
+                "Infragistics4.Documents.Excel.v%%ProductVersionShort%%~Infragistics.Documents.Excel.IWorksheetCellFormat~Fill.html">Fill</a></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p><span class="ig-code-in-text">FillPatternBackgroundColor</span></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <p><span class="ig-code-in-text">FillPatternForegroundColor</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table><br />
+++++
+
+Setting the old properties to non-default values will set the `Fill` property to a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.cellfillpattern_members.html[CellFillPattern] instance corresponding to the values that were set. Getting the properties gets the closest match colors it can from the current `Fill` property value. If it is a `CellFillPattern` instance, they will be accurate values, but if the new gradient fills are being used, the old properties will reflect a solid fill with a background color of the first gradient stop.
+
+[[_Ref320017114]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:excelengine-excel-format-support.html[Excel Format Support]
+|This topic explains Infragistics Excel library support for cell formats.
+
+| link:excelengine-excel-2007-color-model.html[Excel 2007 Color Model]
+|This topic explains how to set colors on various cells format properties.
+
+| link:excelengine-using-the-infragistics-excel-engine.html[Using the Infragistics Excel Engine]
+|This section is your gateway to important task-based information that will help you to effectively use the various features and functionalities provided by the Infragistics Excel Engine.
+
+|====
+
+=== Samples
+
+The following samples provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Sample|Purpose
+
+|New Color Model
+|This sample demonstrates way of working with Newer color model on cell formats. You can specify the RGB color and a tint value on all color properties of a cell format. You can use linear and rectangular gradients in cells.
+
+|====

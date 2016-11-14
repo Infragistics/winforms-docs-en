@@ -1,0 +1,121 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-determine-which-winschedule-object-the-user-clicked",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{96BD1935-98D1-4742-B2BD-F350B98FE0D5}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determine Which WinSchedule Object the User Clicked
+
+With any of the WinSchedule™ view's you can easily determine what type of object the mouse is over. The following subroutine demonstrates how to use some of the GetFromPoint methods to detect where a mouse has been right-clicked on the WinMonthViewSingle™.
+
+.Note
+[NOTE]
+====
+This topic assumes you have a WinMonthViewSingle on a form, and have set it's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarinfo.html[CalendarInfo]"]  property to instance of WinCalendarInfo™.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub UltraMonthViewSingle1_MouseDown(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraMonthViewSingle1.MouseDown
+	' If mouse click isn't right mouse click exit
+	If Not e.Button = System.Windows.Forms.MouseButtons.Right Then Exit Sub
+	Dim point As System.Drawing.Point
+	point = New System.Drawing.Point(e.X, e.Y)
+	' Determine where in the control the right button was pressed
+	Dim objAppointment As Appointment
+	Dim objHoliday As Holiday
+	Dim objNote As Note
+	Dim objWeek As Week
+	Dim objDay As Day
+	Dim objDayOfWeek As DayOfWeek
+	objAppointment = Me.UltraMonthViewSingle1.GetAppointmentFromPoint(e.X, e.Y)
+	If Not objAppointment Is Nothing Then
+		' objAppointment found
+		MessageBox.Show("Appointment " + objAppointment.Subject.ToString())
+	End If
+	objHoliday = Me.UltraMonthViewSingle1.GetHolidayFromPoint(e.X, e.Y)
+	If Not objHoliday Is Nothing Then
+		' objHoliday found
+		MessageBox.Show("Holiday " + objHoliday.StartDate.ToString())
+	End If
+	objNote = Me.UltraMonthViewSingle1.GetNoteFromPoint(e.X, e.Y)
+	If Not objNote Is Nothing Then
+	' objNote found
+		MessageBox.Show("Note " + objNote.Date.ToString())
+	End If
+	objWeek = Me.UltraMonthViewSingle1.GetWeekFromPoint(e.X, e.Y)
+	If Not objWeek Is Nothing Then
+	' objWeek found
+		MessageBox.Show("Week " + objWeek.WeekNumber.ToString())
+	End If
+	objDay = Me.UltraMonthViewSingle1.GetDayFromPoint(e.X, e.Y)
+	If Not objDay Is Nothing Then
+		' objDay found
+		MessageBox.Show("Day " + objDay.DayNumber.ToString())
+	End If
+	objDayOfWeek = Me.UltraMonthViewSingle1.GetDayOfWeekFromPoint(e.X, e.Y)
+	If Not objDayOfWeek Is Nothing Then
+		' objDayOfWeek found
+		MessageBox.Show("Day of the Week " + _
+		  objDayOfWeek.DayOfTheWeek.ToString())
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void ultraMonthViewSingle1_MouseDown(object sender, MouseEventArgs e)
+{
+	if ( e.Button != System.Windows.Forms.MouseButtons.Right )
+		return;
+	System.Drawing.Point point = new System.Drawing.Point(e.X, e.Y);
+	// Determine where in the control the right button was pressed
+	Appointment objAppointment = null;
+	Holiday objHoliday = null;
+	Note objNote = null;
+	Week objWeek = null;
+	Infragistics.Win.UltraWinSchedule.Day objDay = null;
+	Infragistics.Win.UltraWinSchedule.DayOfWeek objDayOfWeek = null;
+	objAppointment = this.ultraMonthViewSingle1.GetAppointmentFromPoint(e.X, e.Y);
+	if ( objAppointment != null )
+		// objAppointment found
+		MessageBox.Show("Appointment " + objAppointment.Subject.ToString());
+	objHoliday = this.ultraMonthViewSingle1.GetHolidayFromPoint(e.X, e.Y);
+	if ( objHoliday != null )
+		// objHoliday found
+		MessageBox.Show("Holiday " + objHoliday.StartDate.ToString());
+	objNote = this.ultraMonthViewSingle1.GetNoteFromPoint(e.X, e.Y);
+	if ( objNote != null )
+		// objNote found
+		MessageBox.Show("Note " + objNote.Date.ToString());
+	objWeek = this.ultraMonthViewSingle1.GetWeekFromPoint(e.X, e.Y);
+	if ( objWeek != null )
+		// objWeek found
+		MessageBox.Show("Week " + objWeek.WeekNumber.ToString());
+	objDay= this.ultraMonthViewSingle1.GetDayFromPoint(e.X, e.Y);
+	if ( objDay != null )
+		// objDay found
+		MessageBox.Show("Day " + objDay.DayNumber.ToString());
+	objDayOfWeek = this.ultraMonthViewSingle1.GetDayOfWeekFromPoint(e.X, e.Y);
+	if ( objDayOfWeek != null )
+		// objDayOfWeek found
+		MessageBox.Show("Day of the Week " + 
+		  objDayOfWeek.DayOfTheWeek.ToString());
+}
+----

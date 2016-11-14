@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-texture-brush-element-at-design-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{3164ACB6-DC21-465C-9B29-1C43BBA3A0C0}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Texture Brush Element at Design Time
+
+Applying the Texture brush element to a property of your gauge gives the property a textured look and feel such as a canvas.
+
+*To apply the Texture brush element to a property of your gauge at design time:*
+
+[start=1]
+. Add a Radial Gauge to the Gauges collection.
+[start=2]
+. In the left-hand pane of the Gauges collection editor, click Radial Gauge.
+[start=3]
+. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=4]
+. From the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  drop-down list, select Texture. This will create a new Texture brush element.
+[start=5]
+. Set the following properties:
+
+** EndColor -- Silver
+** StartColor -- DimGray
+** Texture -- Canvas.
+
+== Related Topics
+
+link:wingauge-texture-brush-element.html[Texture Brush Element]
+
+link:wingauge-apply-the-texture-brush-element-at-run-time.html[Apply the Texture Brush Element at Run Time]
+
+link:wingauge-apply-the-texture-brush-element-using-the-gauge-designer.html[Apply the Texture Brush Element Using the Gauge Designer]

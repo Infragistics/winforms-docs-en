@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-angle-and-extents-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{41D56A15-267A-4A3E-8B32-E35C279CA551}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Angle and Extents Pane
+
+The Angle & Extents pane determines the shape of the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property on your Radial gauge. A circular dial has a start angle of 0 and an end angle of 360.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.dialappearance~startangle.html[Start Angle]"]  -- Set the value to an integer from 0 to 360. The start angle is the start point of the dial and rotates in a clockwise direction.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.dialappearance~endangle.html[End Angle]"]  -- Set the value to an integer from 0 to 360. The end angle is the end point of the dial and rotates in a counter-clockwise direction from 360.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.dialappearance~innerextent.html[Inner Extent]"]  -- Set the value to a value from -360 to 360. A positive value displays an inner dial. A negative value displays an outer dial that you can see only if the end angle value is less than 360.
+
+image::images/Angle_and_Extents_Pane_01.png[wingauge's angle and extents pane.]
+
+== Related Topic
+
+link:wingauge-dial-layout-tab.html[Dial Layout Tab]

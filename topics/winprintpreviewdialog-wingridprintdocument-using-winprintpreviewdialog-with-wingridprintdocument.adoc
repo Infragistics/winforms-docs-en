@@ -1,0 +1,134 @@
+﻿////
+
+|metadata|
+{
+    "name": "winprintpreviewdialog-wingridprintdocument-using-winprintpreviewdialog-with-wingridprintdocument",
+    "controlName": [],
+    "tags": [],
+    "guid": "{D7CD2E90-DC84-44DF-BDFC-3682F48D07D7}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using WinPrintPreviewDialog with WinGridPrintDocument
+
+In 2005 Volume 1, a new control was added that allows the ability to Print Preview a PrintDocument. This WinPrintPreviewDialog™ uses two other controls that were also added in 2005 Volume 1, which are the WinPrintPreviewControl™ and WinPrintPreviewThumbnail™. The WinPrintPreviewDialog works with any .NET PrintDocument, this includes the WinGridPrintDocument™ that is used to print the WinGrid™ control. This topic focuses on using the WinGridPrintDocument with the WinPrintPreviewDialog.
+
+[start=1]
+. Create a new Windows Application. With the form open in design view add the UltraGrid, and two Button controls to it. Then add an UltraPrintPreviewDialog, UltraGridPrintDocument, and the UltraDataSource.
+
+.Note
+[NOTE]
+====
+We are using the WinDataSource just to quickly make some generic data to display in the WinGrid.
+====
+
+[start=2]
+. Change both of the Buttons Text property so that one says "Print Preview" and the other says "Close".
+[start=3]
+. Setup the UltraDataSource so it has one band and two columns. The screen shot below shows the two columns used. Add some random sample data into the UltraDataSource's Data Entry area in its designer.
+
+image::Images\WinMisc_Using_the_WinPrintPreviewDialog_with_the_WinGridPrintDocument_01.png[windatasource designer]
+
+[start=4]
+. Go to the form's code file, and create handlers for the Click events of the buttons, as well as for the Form Load event.
+[start=5]
+. In the form's Form Load event add the following code. The comments explain what each line is doing.
+
+*In Visual Basic:*
+
+----
+Private Sub UsingtheWinPrintPreviewDialogwiththeWinGridPrintDocument_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) _
+  Handles MyBase.Load
+	' Set the Grid to use the UltraDataSource as its datasource
+	Me.UltraGrid1.DataSource = Me.UltraDataSource1
+	' Set the UltraGridPrintDocument's Grid property to the Grid to print
+	Me.UltraGridPrintDocument1.Grid = Me.UltraGrid1
+	' Set the UltraPrintPreviewDialog's Document property to the
+	' UltraGridPrintDocument
+	Me.UltraPrintPreviewDialog1.Document = Me.UltraGridPrintDocument1
+End Sub
+----
+
+*In C#:*
+
+----
+private void UsingtheWinPrintPreviewDialogwiththeWinGridPrintDocument_Load(
+  object sender, 
+  System.EventArgs e)
+{
+	// Set the Grid to use the UltraDataSource as its datasource
+	this.ultraGrid1.DataSource = this.ultraDataSource1;
+	// Set the UltraGridPrintDocument's Grid property to the Grid to print
+	this.ultraGridPrintDocument1.Grid = this.ultraGrid1;
+	// Set the UltraPrintPreviewDialog's Document property to the
+	// UltraGridPrintDocument
+	this.ultraPrintPreviewDialog1.Document = this.ultraGridPrintDocument1;
+}
+----
+
+[start=6]
+. Next in the Click event for the button labeled Print Preview place the following code.
+
+*In Visual Basic:*
+
+----
+Private Sub btnPrintPreview_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnPrintPreview.Click
+	Me.UltraPrintPreviewDialog1.ShowDialog(Me)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnPrintPreview_Click(object sender, System.EventArgs e)
+{
+	this.ultraPrintPreviewDialog1.ShowDialog(this);
+}
+----
+
+[start=7]
+. In the Click event for the button labeled Close place the following code.
+
+*In Visual Basic:*
+
+----
+ Private Sub btnClose_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnClose.Click
+	Me.Close()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnClose_Click(object sender, System.EventArgs e)
+{
+	this.Close();
+}
+----
+
+[start=8]
+. If you were to build and run your sample it would look similar to the screen shot below.
+
+image::Images\WinPrintPreviewDialog_WinGridPrintDocument_Using_WinPrintPreviewDialog_with_WinGridPrintDocument_01.png[form that is created following the steps and code above.]
+
+[start=9]
+. If you click on the Print Preview button you will see the WinGrid shown as it would, if you printed.
+
+image::Images\WinPrintPreviewDialog_WinGridPrintDocument_Using_WinPrintPreviewDialog_with_WinGridPrintDocument_02.png[printpreviewdialog showing wingrid.]
+
+.Note
+[NOTE]
+====
+Only the top level bands show in the Print Preview Dialog if you have a hierarchical grid. To also display sub-Bands when you print you need to have them visible on the WinGrid when you go to Print or to view them in Print Preview Dialog.
+====
+
+Related Topics
+
+link:wingridprintdocument-printing-total-number-of-pages[Printing Total Number of Pages]

@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpopupcontrolcontainer-resize-drop-down-in-winpopupcontrolcontainer",
+    "controlName": ["WinPopupControlContainer"],
+    "tags": ["How Do I"],
+    "guid": "97bbdba4-6be1-4990-98f2-70a1d35877b0",  
+    "buildFlags": [],
+    "createdOn": "2010-06-08T13:59:35.4410211Z"
+}
+|metadata|
+////
+
+= Resize Drop Down in WinPopupControlContainer
+
+The drop-down of WinPopupControlContainer™ component can be resized using a handle, which can be positioned at the bottom of the drop down either vertically or diagonally. This handle enables you to resize the drop-down and view any text or item in the drop down that has been truncated due to the size of the control. By default the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapopupcontrolcontainer~dropdownresizehandlestyle.html[DropDownResizeHandleStyle] property is set to ‘None’. When set to a particular style and resized at run time, the resized height and width of the drop-down will be stored for that run of the application. You can also style the handle using the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapopupcontrolcontainer~dropdownresizehandleappearance.html[DropDownResizeHandleAppearance] property.
+
+The following code assumes that you have an UltraPopupControlContainer component, UltraButton and UltraDropDown control dropped onto your form. The UltraDropDown control is bound to the orders data table and is assigned to the PopupControl property of UltraPopupControlContainer. For information on setting up the UltraPopupControlContainer component please see the link:winpopupcontrolcontainer-creating-a-popup-container-control.html[Creating a Pop-up Container Control] topic.
+
+*In Visual Basic:*
+
+----
+' Set the Drop Down Resize handle style for UltraPopupControlContainer
+Me. ultraPopupControlContainer1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize 
+' Set the back color for the handle 
+Me. ultraPopupControlContainer1.DropDownResizeHandleAppearance.BackColor = Color.Blue
+----
+
+*In C#:*
+
+----
+// Set the Drop Down Resize handle style for UltraPopupControlContainer
+this. ultraPopupControlContainer1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize;
+// Set the back color for the handle
+this. ultraPopupControlContainer1.DropDownResizeHandleAppearance.BackColor = Color.Blue;
+----

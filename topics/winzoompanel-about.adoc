@@ -1,0 +1,35 @@
+﻿= About WinZoomPanel
+
+== WinZoomPanel
+The WinZoomPanel™ is a control container which allows the user to zoom into its contents and then to scroll through the zoomed contents. It offers all of the same features as the link:winpanel.html[WinPanel], with the exception of the
+link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultrapanel~autoscroll.html[AutoScroll]
+property, which is forced true because zooming necessitates scrolling to access the entire panel.
+
+== Zooming
+The WinZoomPanel's zooming capability is accessed through the
+link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.zoomproperties.html[ZoomProperties]:
+
+* link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.zoomproperties~allowpanningwithmouse.html[AllowPanningWithMouse]
+allows the user to pan a zoomed in WinZoomPanel using Control + mouse drag. This allows the user to reach portions of the WinZoomPanel offscreen due to zooming.
+* link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.zoomproperties~allowpanningwithmouse.html[AllowZoomingWithMouseWheel]
+allows the user to zoom the WinZoomPanel using Control+mouse wheel. The WinZoomPanel will receive Control+mouse wheel messages to any of its child controls, giving the user a consistent zooming experience anywhere within the WinZoomPanel.
+* link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.zoomproperties~zoomfactor.html[ZoomFactor]
+sets the multiple by which the WinZoomPanel's child controls will be magnified, with 1 as the designed size.
+* link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.zoomproperties~maxzoomfactor.html[MaxZoomFactor]
+sets the maximum multiple beyond which the WinZoomPanel will not continue to zoom in.
+//* link:{placeholder.html[MinZoomFactor]
+//sets the minimum multiple below which the WinZoomPanel will not continue to zoom out. By default, this is set to 1.0, so if zooming out is desired this must be set to a value lower than 1.0.
+
+To implement zooming with our controls, two properties were added to
+link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase.html[ControlBase]
+regarding their zoom:
+
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~supportszooming.html[SupportsZooming]
+toggles whether or not the control will honor a WinZoomPanel's zooming.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~zoomfactor.html[ZoomFactor]
+gets how much the control is currently zoomed.
+
+== Related Topics
+
+* link:winzoompanel-known-limitations.html[Known Limitations]
+* link:winzoompanel-zoom-supported-controls.html[Supported Controls]

@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2011-volume-2",
+    "controlName": [],
+    "tags": ["Breaking Changes"],
+    "guid": "b884d87b-5e6a-4d28-b940-45be3ba8cb68",  
+    "buildFlags": [],
+    "createdOn": "2011-10-20T13:18:15.6528478Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2011 Volume 2
+
+== WinGanttView
+
+[start=1]
+. The base class of the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinganttview.taskcellsettingscollection.html[TaskCellSettingsCollection] has been changed. It used to derive from SubObjectsDictionaryBase<TaskField, TaskCellSettings>. It now derives from SubObjectsDictionaryBase<string, TaskCellSettings>. Notice the first generic parameter has been changed from TaskField to string. This class still supports an indexer which takes a TaskField. So this will only break existing code that was directly referencing the old type.
+[start=2]
+. The base class of the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinganttview.taskcolumnsettingscollection.html[TaskColumnSettingsCollection] has been changed. It used to derive from SubObjectsDictionaryBase<TaskField, TaskColumnSettings>. It now derives from SubObjectsDictionaryBase<string, TaskColumnSettings> (Notice the first generic parameter has been changed from TaskField to string. This class still supports an indexer which takes a TaskField. So this will only break existing code that was directly referencing the old type.
+
+== WinGridRowEditTemplate & WinGridCellProxy
+
+* The UltraGridRowEditTemplate will now enabled or disable the UltraGridCellProxies based on the Activation of the associated grid cell. This means that if you disable an UltraGridCellProxy control, the control will be enabled by the RowEditTemplate at run-time, if the associated cell in the grid is editable. To disable the UltraGridCellProxy, you must disabled editing on the associated grid cell or column.
+
+== WinCalcManager
+
+* The RATE function has two of its parameters swapped so it mimics the signature of the corresponding RATE function in Microsoft Excel.
+
+Old definition:
+
+RATE(nper, pmt, pv, [type], [fv], [guess])
+
+New definition to match the Excel RATE function:
+
+RATE(nper, pmt, pv, [fv], [type], [guess])

@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-statebutton-about-the-statebutton-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{576A780C-A68A-4279-B66D-94666B8BFE4C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the StateButton Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButtonTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"] 
+
+|Description:
+|The StateButton Tool is a toggle-type button which operates in groups much like a radio button. It has a Checked property which reflects its state and an OptionSet property which identifies it as part of a group of StateButtons. All StateButtons that have been assigned to the same OptionSet behave as a group - only one button in the OptionSet can be checked at any given time. In addition, OptionSets have an AllowAllUp property that determines whether all buttons in the group can be 'up' or unchecked at the same time.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_16.png[example of ultratoolbarsmanager statebutton tool] 
+
+|====

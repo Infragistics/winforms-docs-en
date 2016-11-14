@@ -1,0 +1,30 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-about-winlistview",
+    "controlName": ["WinListView"],
+    "tags": ["Getting Started"],
+    "guid": "{E4AE9EE7-D163-4BC1-87D3-A196E8E17270}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinListView
+
+Most developers are familiar with the Microsoft® ListView control, which is used to display a collection of items in various different views. An example of the ListView control in action can be seen in Windows® Explorer in which files in the current directory are displayed. What some developers are not aware of, however, is that the intrinsic ListView control that ships with Visual Studio™ is in actuality a wrapper around the same COM ListView control that was shipped with Visual Basic 6.0.
+
+The Infragistics WinListView™ control is a native .NET control, which means that it was written entirely in the C# programming language, and is 100% CLR-compliant. As with all Infragistics controls, WinListView is built upon the link:win-presentation-layer-framework-plf.html[Infragistics Presentation Layer Framework™]. It utilizes an object-model approach that is consistent with other Infragistics controls, and contains the functionality which users of existing Infragistics controls have come to expect, such as:
+
+* DrawFilter and CreationFilter properties, which provide virtually limitless control over how the control's individual elements appear.
+* The same selection paradigm as that used by controls like WinGrid and WinTree (selection of items is similar to selection of rows or nodes).
+* An EventManager property, which provides a way to determine whether a particular event is currently in progress, as well as suppress the firing of all events or any one particular event.
+* A UIElement-based approach to construction of the control's user interface.
+* A KeyActionMappings collection, which defines the control's default keyboard behavior, as well as extending a way to customize keyboard behavior.
+* Support for Windows XP themes, as well as fine-grained control over which aspects of the control visually depict these themes.
+* All visual aspects of the control are determined by the familiar Infragistics Appearance object model.
+* Editing and rendering of item and sub-item values are handled by the familiar Infragistics embeddable editor architecture.
+
+image::images/WinListView_About_WinListView_01.png[example of ultralistview]

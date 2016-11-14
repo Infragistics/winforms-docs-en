@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-active-cell-border-thickness",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{5B16C2B6-E192-4667-B497-68BAC7F3FDA0}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T14:12:21Z"
+}
+|metadata|
+////
+
+= Setting Active Cell Border Thickness
+
+This topic shows you how to change the border thickness of the active  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  object. This can be achieved by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellborderthickness.html[ActiveCellBorderThickness]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object to an integer value, which corresponds to the border thickness in pixels.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Override.ActiveCellAppearance.BorderColor = Color.RoyalBlue
+Me.ultraGrid1.DisplayLayout.Override.ActiveCellBorderThickness = 4
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.ActiveCellAppearance.BorderColor = Color.RoyalBlue;
+this.ultraGrid1.DisplayLayout.Override.ActiveCellBorderThickness = 4;
+----
+
+image::Images\WinGrid_Set_Active_Cell_Border_Thickness_01.png[]

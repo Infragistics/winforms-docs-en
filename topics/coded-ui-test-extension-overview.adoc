@@ -1,0 +1,166 @@
+﻿////
+
+|metadata|
+{
+    "name": "coded-ui-test-extension-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "6982f6d8-2a9e-4818-8b26-fff4668e2804",  
+    "buildFlags": [],
+    "createdOn": "2012-09-14T17:16:08.0976082Z"
+}
+|metadata|
+////
+
+= Coded UI Test Extension Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains what the Coded UI Test Extension entails; lists its supported controls; and provides system and licensing requirements.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:http://msdn.microsoft.com/en-us/library/dd286726.aspx[Testing the User Interface with Automated Coded UI Tests]
+|MSDN introductory topic for Coded UI Test.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Introduction,Introduction>>
+* <<_Supported_Controls,Supported Controls>>
+* <<_System_Requirements,System Requirements>>
+* <<_Licensing_Requirements,Licensing Requirements>>
+* <<_Related_Content,Related Content>>
+
+[[_Introduction]]
+== Introduction
+
+=== Coded UI Test Extension summary
+
+With the release of Infragistics 2012.2,  _Infragistics Windows Forms_   controls now participate with the Microsoft® Coded UI Test framework to allow record and replay of automated tests. The Coded UI Test Extension is a technology manager that tells Coded UI Test to use UI Automation for  _Infragistics_   controls, and not to use the older Microsoft Active Accessibility (MSAA), by default.
+
+The number of supported controls will increase with subsequent releases.
+
+[[_Supported_Controls]]
+== Supported Controls
+
+=== Controls supporting Coded UI Test record/replay actions
+
+The Coded UT Test’s record and replay actions support the following controls:
+
+* *WinButton*
+* *WinCheckEditor*
+* *WinCombo*
+* *WinComboEditor* $$* $$
+* *WinDateTimeEditor*
+* *WinDropDown*
+* *WinExplorerBar*
+* *WinFormattedLinkLabel*
+* *WinFormattedTextEditor*
+* *WinGrid* $$* $$
+* *WinMaskedEdit*
+* *WinOptionSet*
+* *WinPictureBox*
+* *WinProgressBar*
+* *WinScrollBar*
+* *WinStatusBar*
+* *WinTextEditor*
+* *WinTrackBar*
+* *WinTree*
+* *WinToolBarsManager*
+
+$$*$$ The following control features are not supported at this time:
+
+*WinComboEditor:* Multi-select
+
+*WinGrid:* RowEditTemplates, UltraControlContainerEditor, Multi-select for the combo/dropdown, CustomFilterDialog.
+
+
+[[_System_Requirements]]
+== System Requirements
+
+=== Requirements summary chart
+
+The following table summarizes the system requirements for Coded UI Test Extension.
+
+[options="header", cols="a,a"]
+|====
+|Requirement|Description
+
+|$$.NET$$ Framework
+|Version 4
+
+|Operating System
+|
+* Windows XP with latest SP 
+
+* Windows 7 with latest SP 
+
+* Windows 8 
+
+|Visual Studio version
+|The Premium and Ultimate editions of one of the following: 
+
+* Visual Studio 2010 SP1 
+* Visual Studio 2012 or later
+
+|Visual Studio Hot Fixes
+| link:http://hotfixv4.microsoft.com/Visual%20Studio%202010/sp1/DevDiv969820/40219.396/free/447923_intl_i386_zip.exe[Hot Fix for Coded UI Test]
+
+|Coded UI Test Extension
+|
+* The Infragistics Coded UI Test Extension assembly is installed in the global assembly cache (GAC) along with a copy residing in the following folder required by Coded UI Test: 
+
+`C:\Program Files (x86)\Infragistics\Infragistics 2013.1\Windows Forms\Coded UI Test.`  
+
+* For Visual Studio 2010, the required assembly is 
+
+`{ApiPlatform}Win.CodedUITest.UIA.VS10.v{ProductVersion}.dll.`   
+
+* For Visual Studio 2012, the required assembly is 
+
+`{ApiPlatform}Win.CodedUITest.UIA.VS11.v{ProductVersion}.dll.`   
+
+* The installed version of Coded UI Test Extension must match that of the _Infragistics_ controls being tested (e.g., v{ProductVersion}).   
+
+* If the application under test is using a specific _Infragistics_ Service Release, then the same Service Release build of Coded UI Test Extension should reside on the test machine; in order to achieve predictable results. Run the same Service Release patch installer on the test machine as on the development machine.  
+
+* Multiple versions of Coded UI Test Extension may coexist on the same machine. 
+
+|====
+
+[[_Installation_Requirements]]
+== Installation Requirements
+
+Test Automation engineers need to install the Coded UI Test Extension in order to be able to record and replay their actions on the _Infragistics_ controls. 
+
+.Note
+[NOTE]
+You do not need to install the _Infragistics_ controls on the test machine. The _Infragistics_ installer provides an option to install the Coded UI Test Extension without installing the _Infragistics_ tools suite.
+
+[[_Related_Content]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:using-the-coded-ui-test-extension.html[Using the Coded UI Test Extension]
+|This topic uses simple examples to illustrate Coded UI Test recordings with _Infragistics_ controls.
+
+|====

@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-change-the-orientation-of-tools-on-a-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{777D8630-79CC-47CF-8AE9-DE189F8D8969}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Orientation of Tools on a Toolbar
+
+Tools on a toolbar display horizontally if the toolbar is docked top or bottom and vertically if the toolbar is docked left or right. You can change this default behavior with the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~toolorientation.html[ToolOrientation]"]  property. By setting the ToolOrientation property of the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings.html[ToolbarSettings]"]  class to horizontal, the tools on the toolbar will display horizontally, even if the toolbar is docked left or right. Setting this property to  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolorientation.html[BaseOnToolbarOrientation]"]  will cause the tools to display vertically if attached to a vertically docked toolbar and horizontally if attached to a horizontally docked toolbar. The following code shows how to display vertical tools.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Me.UltraToolbarsManager1.Toolbars(0).Settings.ToolOrientation = _
+  ToolOrientation.Vertical
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+this.ultraToolbarsManager1.Toolbars[0].Settings.ToolOrientation = 
+  ToolOrientation.Vertical;
+----

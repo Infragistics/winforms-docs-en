@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-popupcolorpicker-about-the-popupcolorpicker-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{2D82E954-B682-42FD-B21C-3504CAA24E80}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the PopupColorPicker Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcolorpickertool.html[PopupColorPickerTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase.html[PopupToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase.html[TearawayToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertoolbase.html[PopupControlContainerToolBase]"] 
+
+|Description:
+|The PopupColorPicker Tool displays a popup list of colors from which the user can select. As with all TearawayToolBase derived tools, it has a property called 'AllowTearaway' that allows the color picker to be 'torn away' and floated.
+
+|Sample:
+|Dropped down 
+
+image::Images\WinToolbarsManager_About_Tools_09.png[example of ultratoolbarsmanager popupcolorpicker tool] 
+
+'Torn away' and floated 
+
+image::Images\WinToolbarsManager_About_Tools_10.png[example of ultratoolbarsmanager popupcolorpicker tool] 
+
+|====

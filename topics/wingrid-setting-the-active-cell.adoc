@@ -1,0 +1,120 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-the-active-cell",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{2A2DB8DF-56AB-4AE8-BF39-D02AD97E7A6F}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting the Active Cell
+
+== Background
+
+WinGrid™ uses the concept of an "active cell" when referencing the cell that is current in the grid. The active cell is determined by one of several factors. Any cell that has input focus and is in edit mode is automatically the active cell. The active cell can also be determined by selection. If the user clicks on a cell to select it, that cell becomes the active cell. If the user is performing a range selection, the cell that is defining the farthest extent of the range is the active cell. (The range is determined by the relationship of the position of the active cell to that of the "anchor" cell, or the cell that was active when the range selection was initiated.)
+
+The active cell can be set either by the user or through code. The active cell has a distinct appearance that usually includes the focus rectangle for the element.
+
+== Questions
+
+* Can I tab to the next cell and make it the active cell?
+* Can I set the active cell through program code?
+
+== Solutions
+
+Click on the cell with the left mouse button. Press "Tab" to move between cells. Set the ActiveCell property UltraGrid with a valid Cell object reference.
+
+== Sample Project
+
+This sample project displays a grid containing some rows and columns. The operator can set the active cell by clicking on a cell with the left mouse button. The "Activate Cell with Code" button invokes some program code which sets the active cell to the third row and second column.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Setting_the_Active_Cell_01.png[setting the active cell in ultragrid]
+
+The code in the UltraGrid InitializeLayout event tells the grid to fit the columns to the width of the grid:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+The btnActivateCellwithCode event code retrieves a reference to the third row down, sets the *ActiveRow*, sets the *ActiveCell* and enters edit mode:
+
+.Note
+[NOTE]
+====
+The ActiveCell property can only be set if it resides in the active row (as determined by the ActiveRow property) therefore ActiveRow must be set before the ActiveCell.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub btnActivateCellwithCode_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnActivateCellwithCode.Click
+	' Active the "ContactName" cell in the third row
+	Dim aUGRow As UltraGridRow = Me.UltraGrid1.GetRow(ChildRow.First)
+	Dim intPtr As Integer
+	For intPtr = 1 To 2
+		aUGRow = aUGRow.GetSibling(SiblingRow.Next)
+	Next intPtr
+	Me.UltraGrid1.ActiveRow = aUGRow
+	Me.UltraGrid1.ActiveCell = aUGRow.Cells("ContactName")
+	Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnActivateCellwithCode_Click(object sender, EventArgs e)
+{
+	// Active the "ContactName" cell in the third row
+	UltraGridRow aUGRow = this.ultraGrid1.GetRow(ChildRow.First);
+	for(int intPtr = 1; intPtr $$<=$$ 2; intPtr++)
+	{
+		aUGRow = aUGRow.GetSibling(SiblingRow.Next);
+	}
+	this.ultraGrid1.ActiveRow = aUGRow;
+	this.ultraGrid1.ActiveCell = aUGRow.Cells["ContactName"];
+	this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, false);
+}
+----
+
+== Review
+
+This project demonstrates how to set the active cell using both user input and from code.

@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-excel-style-filtering",
+    "controlName": [],
+    "tags": ["Application Scenarios","Filtering","Grids"],
+    "guid": "39d4e786-e745-4168-9a18-2456929bc0e7",  
+    "buildFlags": [],
+    "createdOn": "2011-08-29T17:59:31.4717784Z"
+}
+|metadata|
+////
+
+= WinGridFilterUIProvider Excel-Style Filtering
+
+Starting with 2011 Volume 2 of Infragistics Windows Forms, the grid filtering functionality works the same as the filtering behavior of Microsoft Excel®. Excel filters the list of cell values to only include the values that have not been filtered out by other columns.
+
+The filtering functionality is provided by the WinGridFilterUIProvider™ component. Previous versions of the WinGridFilterUIProvider left all values in the drop-down tree, regardless of their filtered out status. For backward capability with the old functionality, a new property named link:{ApiPlatform}win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~operandlistfilterbehavior.html[OperandListFilterBehavior] is now available on the UltraGridFilterUIProvider.
+
+== Related Topics
+
+* link:wingridfilteruiprovider-about-wingridfilteruiprovider.html[About WinGridFilterUIProvider]

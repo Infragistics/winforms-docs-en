@@ -1,0 +1,116 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-accessing-a-specific-row-in-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{0913741F-561E-4068-9635-7393966735F7}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Accessing a Specific Row in WinGrid
+
+The way in which you access a particular row depends on the row, as well as the information you have about the row. The following procedure is an example of how to access rows in the WinGrid™ by traversing the WinGrid's structure.
+
+== To traverse the WinGrid to access a specific row:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. In order to traverse the rows in the grid, you must get a reference to a row. Commonly, you will want to access the first row in the grid and work from there. You can do this with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~getrow.html[GetRow]"]  method.
+
+*In Visual Basic:*
+
+----
+Dim aRow As UltraGridRow
+aRow = UltraGrid1.GetRow(ChildRow.First)
+----
+
+*In C#:*
+
+----
+UltraGridRow aRow = this.ultraGrid1.GetRow(ChildRow.First);
+----
+
+[start=3]
+. Once you have access to the first row, you can use several methods to get references to other rows. If you want to get the next row in the same band, you would first check to see if there is a next row. To see if the row has a next sibling, you use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~hasnextsibling.html[HasNextSibling]"]  Method.
+
+*In Visual Basic:*
+
+----
+If aRow.HasNextSibling Then
+----
+
+*In C#:*
+
+----
+if(aRow.HasNextSibling())
+{
+----
+
+[start=4]
+. Once it is established there is a next sibling, you can access it by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getsibling.html[GetSibling]"]  method of the row.
+
+*In Visual Basic:*
+
+----
+	Dim NextRow As UltraGridRow = aRow.GetSibling(SiblingRow.Next)
+	MessageBox.Show("Has Siblings")
+Else
+	MessageBox.Show("Has no Siblings")
+End If
+----
+
+*In C#:*
+
+----
+	UltraGridRow NextRow = aRow.GetSibling(SiblingRow.Next);
+	MessageBox.Show("Has Siblings");
+}
+else
+	MessageBox.Show("Has no Siblings");
+----
+
+[start=5]
+. In a similar way, you can get a reference to a child row by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~haschild.html[HasChild]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getchild.html[GetChild]"]  methods.
+
+*In Visual Basic:*
+
+----
+If aRow.HasChild Then
+	Dim ChildRow As UltraGridRow = _
+	  aRow.GetChild(Infragistics.Win.UltraWinGrid.ChildRow.First)
+	MessageBox.Show("Has a Child")
+Else
+	MessageBox.Show("Has no Child")
+End If
+----
+
+*In C#:*
+
+----
+if(aRow.HasChild())
+{
+	UltraGridRow childRow = aRow.GetChild(Infragistics.Win.UltraWinGrid.ChildRow.First);
+	MessageBox.Show("Has a Child");
+}
+else
+	MessageBox.Show("Has no Child");
+----

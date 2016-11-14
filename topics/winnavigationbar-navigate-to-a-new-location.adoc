@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "winnavigationbar-navigate-to-a-new-location",
+    "controlName": ["WinNavigationBar"],
+    "tags": ["Navigation"],
+    "guid": "{A6D097C6-E70B-4053-BC9F-6231BF09849D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Navigate to a New Location
+
+You can populate WinNavigationBar™  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarlocation.html[Locations]"]  either by fully loading the collection when the form loads, or dynamically as the end user browses through the collection. When you fully load the collection, you can programmatically navigate to one of these locations by calling the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~navigateto.html[NavigateTo]"]  method. Simply pass the path that you need to navigate to as an argument. WinNavigationBar will parse the path and find a location that matches each item along the path. If WinNavigationBar can't find a matching location for one of the items, it fires the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~navigationpathparseerror_ev.html[NavigationPathParseError]"]  event. If the parse succeeds, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~selectedlocationchanging_ev.html[SelectedLocationChanging]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~selectedlocationchanged_ev.html[SelectedLocationChanged]"]  events fire in order.
+
+If you decide to lazily populate WinNavigationBar’s Locations, you should be cautious as to which path you pass in to the NavigateTo method, as it is possible that path won’t exist yet. The best practice for lazily populating WinNavigationBar is to use the InitializeLocations event.  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~initializelocations_ev.html[InitializeLocations]"]  fires the first time you access an individual location. You can populate the location’s children based on the EventArgs.ParentLocation object. For more information on lazily populating WinNavigationBar, see link:winnavigationbar-lazily-populate-winnavigationbar.html[Lazily Populate WinNavigationBar].
+
+The following code will navigate to a location representing the "C:\Program Files" folder.
+
+*In Visual Basic:*
+
+----
+Me.UltraNavigationBar1.NavigateTo("C:\Program Files", True)
+----
+
+*In C#:*
+
+----
+this.ultraNavigationBar1.NavigateTo("C:\\Program Files", true);
+----

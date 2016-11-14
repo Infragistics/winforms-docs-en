@@ -1,0 +1,72 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-syntax-tree-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "8e9544c5-663b-42fa-813f-4313616707b9",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1298579Z"
+}
+|metadata|
+////
+
+= Syntax Tree Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains when the syntax tree is created and how to access it.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview]
+|This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====
+
+== Syntax Tree
+
+=== Overview
+
+The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument.html[TextDocument] triggers lexical analysis automatically because the document is stored as tokens, but it does not do so for syntax analysis. This must be done by using either the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~parse.html[Parse] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~parseasync.html[ParseAsync] methods. There is no difference between these methods other than the fact that `ParseAsync` will analyze the document on a background thread so the calling thread is not blocked. If `ParseAsync` is used to parse a document, the caller must listen to the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~propertychanged_ev.html[PropertyChanged] event to get notified when the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~syntaxtree.html[SyntaxTree] property is updated with the new syntax tree created by the syntax analyzer.
+
+Once syntax analysis is complete, the `TextDocument.SyntaxTree` property will be an instance of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxtree.html[SyntaxTree], a class defined in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace. The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxtree~rootnode.html[SyntaxTree.RootNode] property will always be associated with the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[Grammar.StartSymbol] of the grammar used to parse the document. It is an instance of the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode.html[SyntaxNode] class, a class used to represent all nodes in the syntax tree. Like the snapshot, the syntax tree and all its nodes are immutable - they are for obtaining information only.
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-ignored-content.html[Ignored Content]
+|This topic explains how to access the ignored content produced during syntax analysis.
+
+| link:ig-spe-pruning-the-syntax-tree.html[Pruning the Syntax Tree]
+|This topic explains the syntax tree pruning types performed by the Syntax Parsing Engine.
+
+| link:ig-spe-custom-diagnostics-and-annotations.html[Custom Diagnostics and Annotations]
+|This topic explains how to attach and obtain additional data to and from the syntax tree.
+
+|====

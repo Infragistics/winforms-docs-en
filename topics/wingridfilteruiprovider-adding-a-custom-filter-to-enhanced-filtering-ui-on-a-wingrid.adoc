@@ -1,0 +1,188 @@
+﻿////
+|metadata|
+{
+    "name": "wingridfilteruiprovider-adding-a-custom-filter-to-enhanced-filtering-ui-on-a-wingrid",
+    "controlName": [],
+    "tags": ["Filtering","How Do I"],
+    "guid": "{5E7DFB4E-19EE-44DF-88ED-570CD806FA20}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding a Custom Filter to Enhanced Filtering UI on a WinGrid
+
+=== Before You Begin
+
+All of the items shown in the Enhanced filtering UI are tools that appear in a menu created through the concept of FilterTool. These tools can be rearranged, removed or new tools can be added through the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~beforemenupopulate_ev.html[BeforeMenuPopulate]"]  and  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~aftermenupopulate_ev.html[AfterMenuPopulate]"]  events on the WinGridFilterUIProvider™. When a new tool is added, the required action that has to be performed when the tool is clicked should also be taken care of. This can be achieved by handling the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~buttontoolclick_ev.html[ButtonToolClick]"]  event of the UltraGridFilterUIProvider and using the event arguments to determine which tool was clicked and then take the appropriate action.
+
+=== What You Will Accomplish
+
+Using different tools, custom filters can be added to the Enhanced filtering UI. The following tree shows the inheritance structure of the tools
+
+* FilterTool
+** FilterButtonTool
+*** FilterOperandTool
+** FilterMenuTool
+** FilterTreeTool
+
+.Note
+[NOTE]
+====
+The only tool that cannot be manually created is the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtertreetool.html[FilterTreeTool]"] , though it can be removed or repositioned in the list.
+====
+
+In this walkthrough, you will learn how to create custom Filters and add to the existing Enhanced filters on WinGrid™.
+
+=== Follow these Steps:
+
+This topic assumes that you already have a WinGrid control with Enhanced filtering enabled. For more information on this please refer to the link:wingridfilteruiprovider-enabling-enhanced-filtering-on-wingrid.html[Enabling Enhanced Filtering on WinGrid] topic.
+
+[start=1]
+. Handle the BeforeMenuPopulate and ButtonToolClick event of the UltraGridFilterUIProvider.
+
+*In Visual Basic:*
+
+----
+AddHandler UltraGridFilterUIProvider1.BeforeMenuPopulate, AddressOf ultraGridFilterUIProvider1_BeforeMenuPopulate
+AddHandler UltraGridFilterUIProvider1.ButtonToolClick, AddressOf ultraGridFilterUIProvider1_ButtonToolClick
+----
+
+*In C#:*
+
+----
+ultraGridFilterUIProvider1.BeforeMenuPopulate += new BeforeMenuPopulateEventHandler(ultraGridFilterUIProvider1_BeforeMenuPopulate);
+ultraGridFilterUIProvider1.ButtonToolClick +=new ButtonToolClickEventHandler(ultraGridFilterUIProvider1_ButtonToolClick);
+----
+
+[start=2]
+. Write the following code that manually populates tools (e.g., filter menus that will be shown by the filter provider), within the BeforeMenuPopulate event. A custom Date filter that filters Order Dates is added to the OrderDate column of the WinGrid control. A  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterMenuTool]"]  is created to display the year (1997) and two  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterButtonTools]"]  created to display the month periods( from January to April and from May to August). Also the filtering code is written within the event.
+
+.Note
+[NOTE]
+====
+In this case, the custom filter menu is added to the existing menus in Enhanced filtering UI. If you want your custom filters to be the only filters shown by the Filter provider, you must set the Handled property of the BeforeMenuPopulate’s event arguments to true. This will essentially stop the creation of the intrinsic filter tools and only your custom created tools will show.
+====
+
+*In Visual Basic:*
+
+----
+e.Handled = true
+----
+
+*In C#:*
+
+----
+e.Handled = true;
+----
+
+*In Visual Basic:*
+
+----
+	    'Applying custom Filter only to the OrderDate Column on the WinGrid
+	    If e.ColumnFilter.Column.Key = "OrderDate" Then
+                     'Tool to display the year that can hold child menus(months in this case)
+			Dim yearTool As New FilterMenuTool()
+			yearTool.DisplayText = "1997"
+			'A clickable tool to display month child menu.When this tool is clicked corresponding action can be handled in the ButtonToolClick event
+			Dim monthTool As New FilterButtonTool("1997")
+			monthTool.DisplayText = "January - April"
+			yearTool.Tools.Add(monthTool)
+			'A clickable tool to display month child menu. 
+			monthTool = New FilterButtonTool("1997")
+			monthTool.DisplayText = "May - August"
+			yearTool.Tools.Add(monthTool)
+			e.MenuItems.Add(yearTool)
+           End If
+----
+
+*In C#:*
+
+----
+    //Applying custom Filter only to the OrderDate Column on the WinGrid
+            if (e.ColumnFilter.Column.Key == "OrderDate")
+            {
+		//Tool to display the year that can hold child menus (months in this case)
+                FilterMenuTool yearTool = new FilterMenuTool();
+                yearTool.DisplayText = "1997";
+		//A clickable tool to display month child menu.When this tool is clicked corresponding action can be handled in the ButtonToolClick event
+		FilterButtonTool monthTool = new FilterButtonTool("1997");
+                monthTool.DisplayText = "January - April";
+                yearTool.Tools.Add(monthTool);
+		//A clickable tool to display month child menu.
+                monthTool = new FilterButtonTool("1997");
+                monthTool.DisplayText = "May - August";
+                yearTool.Tools.Add(monthTool);
+                e.MenuItems.Add(yearTool);
+             }
+----
+
+[start=3]
+. Write code for the Filtering condition that is required when the custom filter in ‘OrderDate’ column is clicked. Write the following code in the ButtonToolClick event of the UltraGridFilterUIProvider.
+
+*In Visual Basic:*
+
+----
+'Applying Filter condition only to the 'OrderDate' column on WinGrid 
+        If e.ColumnFilter.Column.Key = "OrderDate" Then
+            'check which ButtonTool is clicked 
+            If e.Tool.Id = "1997" Then
+                Dim fromDate As String = Nothing
+                Dim toDate As String = Nothing
+                If e.Tool.DisplayText = "January - April" Then
+                    fromDate = "1/1/1997"
+                    toDate = "4/30/1997"
+                ElseIf e.Tool.DisplayText = "May - August" Then
+                    fromDate = "5/1/1997"
+                    toDate = "8/31/1997"
+                End If
+               'Define a Row Filter condition for the 'OrderDate' Column. 
+ 	      Dim filter As New FilterCondition(FilterComparisionOperator.GreaterThanOrEqualTo, fromDate) 
+                e.ColumnFilter.FilterConditions.Add(filter) 
+                filter = New FilterCondition(FilterComparisionOperator.LessThanOrEqualTo, toDate)
+                e.ColumnFilter.FilterConditions.Add(filter)
+                 'The Filter condition is to get the Order Dates BETWEEN '01/01/1997' and     '04/30/1997'. 
+                 'Hence the Logical AND operator is used to combine the above two conditions. 
+                e.ColumnFilter.LogicalOperator = FilterLogicalOperator.[And]
+             End If
+  End If
+----
+
+*In C#:*
+
+----
+            //Apply Filter condition only to the 'OrderDate' column on WinGrid
+            if (e.ColumnFilter.Column.Key == "OrderDate")
+            {
+                 // check which ButtonTool is clicked
+                if (e.Tool.Id == "1997")
+                {
+                    string fromDate = null;
+                    string toDate   = null;
+                    if (e.Tool.DisplayText == "January - April")
+                    {
+                        fromDate    = "1/1/1997";
+                        toDate      = "4/30/1997";
+                    }
+                    else if (e.Tool.DisplayText == "May - August")
+                    {
+                        fromDate    = "5/1/1997";
+                        toDate      = "8/31/1997";
+                    }
+                   //Define a Row Filter condition for the 'OrderDate' Column. 
+ 	           FilterCondition filter = new FilterCondition(FilterComparisionOperator.GreaterThanOrEqualTo, fromDate);
+                    e.ColumnFilter.FilterConditions.Add(filter);
+	          filter = new FilterCondition(FilterComparisionOperator.LessThanOrEqualTo, toDate);
+                    e.ColumnFilter.FilterConditions.Add(filter);
+                    //The Filter condition is to get the Order Dates BETWEEN '01/01/1997' and '04/30/1997'. 
+                    //Hence the Logical AND operator is used to combine the above two conditions.
+		 e.ColumnFilter.LogicalOperator = FilterLogicalOperator.And;
+                }
+             }   
+----
+
+[start=4]
+. Run the application. The WinGrid displays the custom Date Filter(1997$$->$$January-April and May-August) in the OrderDate column. When the filter condition in the sub menu January-April is clicked,corresponding rows are filtered and listed.
+
+image::Images\WinGrid_Adding_a_Custom_Filter_to_Enhanced_Filtering_UI_on_a_WinGrid.png[]

@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-brush-elements",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{261E3578-6812-471A-ACF2-6A2CD5B0CF09}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Brush Elements
+
+Due to the graphical nature of the WinGauge control, many elements participate in its rendering. Gauge has been designed in such a way that you have the capability to fully customize each of gauge's individual elements.
+
+This high level of customization granularity has been achieved by leveraging BrushElement properties throughout gauge. Anywhere a BrushElement property is encountered within the gauge object model, complete control and customization can be applied to the element(s) it represents.
+
+There are several intrinsic types of brush elements; each designed to provide a different kind of customization (e.g., renders images, creates simple solid colors, creates gradient patterns).
+
+Gauge also allows you to create your own brush element and provide the painting/drawing logic that will dictate how an element is rendered. Understanding the BrushElement classes will allow you to customize the gauge to any extent.
+
+Click the following links to find information about each brush element:
+
+* link:wingauge-hatch-brush-element.html[Hatch Brush Element]
+* link:wingauge-image-fill-brush-element.html[Image Fill Brush Element]
+* link:wingauge-multi-stop-linear-gradient-brush-element.html[Multi-Stop Linear Gradient Brush Element]
+* link:wingauge-multi-stop-radial-gradient-brush-element.html[Multi-Stop Radial Gradient Brush Element]
+* link:wingauge-radial-gradient-brush-element.html[Radial Gradient Brush Element]
+* link:wingauge-simple-gradient-brush-element.html[Simple Gradient Brush Element]
+* link:wingauge-solid-brush-element.html[Solid Brush Element]
+* link:wingauge-texture-brush-element.html[Texture Brush Element]
+* link:wingauge-apply-brush-elements-at-design-time.html[Apply Brush Elements at Design Time]
+* link:wingauge-apply-brush-elements-at-run-time.html[Apply Brush Elements at Run Time]
+* link:wingauge-apply-brush-elements-using-the-gauge-designer.html[Apply Brush Elements Using the Gauge Designer]

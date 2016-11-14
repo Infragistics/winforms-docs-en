@@ -1,0 +1,135 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-adding-columns-using-outlook-express-style",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{56D6C723-D18E-4A35-B03D-C4BC5602AECB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Columns Using Outlook Express Style
+
+The Outlook Express style can be used when you have homogeneous data, with all rows of data of the same type within a single band and across all bands. Additionally, there will only be one visible set of column headers at the top of the WinTree™ control.
+
+This topic shows you how data is displayed in Outlook Express style. The example shown in this topic is a Newsgroup user interface where one column contains a hierarchy and data in all the levels of the hierarchy share the same columns and all nodes end up under the one and only set of column headers.
+
+It is assumed that you have an UltraTree dropped onto your form.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+Imports Infragistics.Win
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+using Infragistics.Win;
+----
+
+Write the following code in the form load event.
+
+*In Visual Basic:*
+
+----
+'Set the WinTree control's viewStyle 
+Me.ultraTree1.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.OutlookExpress 
+'Define a ColumnSet that represents the common column schema 
+Dim commonColumnSet As New UltraTreeColumnSet()
+'Add columns to the ColumnSet 
+commonColumnSet.Columns.Add("News Groups") 
+commonColumnSet.Columns.Add("Number_of_Responses") 
+Me.ultraTree1.ColumnSettings.RootColumnSet = commonColumnSet 
+'Define a Node that holds the first parent table and add it to the WinTree 
+Dim parentNode1 As UltraTreeNode = Me.ultraTree1.Nodes.Add("10", "Windows Forms NewsGroups")
+commonColumnSet.Columns("News Groups").CanShowExpansionIndicator = Infragistics.Win.DefaultableBoolean.[True] 
+'Set the cell values for the first parent table 
+parentNode1.Cells("News Groups").Value = "Windows Forms NewsGroups" 
+parentNode1.Cells("Number_of_Responses").Value = "4978" 
+'Define a node that holds the first child table and add it to the first parent node 
+Dim winChildNode As UltraTreeNode = parentNode1.Nodes.Add("10~1", "winforms.grid")
+winChildNode.Override.ColumnSet = commonColumnSet 
+'Set the cell values for the child table 
+winChildNode.Cells("News Groups").Value = "Infragistics_for_Windows_forms.grids" 
+winChildNode.Cells("Number_of_Responses").Value = "987" 
+'Define a node that holds the second child table and add it to the first parent node 
+winChildNode = parentNode1.Nodes.Add("10~2", "winforms.doc") 
+winChildNode.Cells("News Groups").Value = "Infragistics_for_Windows_forms.documentation" 
+winChildNode.Cells("Number_of_Responses").Value = "3991" 
+'Define a Node that holds the second parent table and add it to the WinTree 
+Dim parentNode2 As UltraTreeNode = Me.ultraTree1.Nodes.Add("20", "Web NewsGroups")
+'Set the cell values for the second parent table 
+parentNode2.Cells("News Groups").Value = "Web NewsGroups" 
+parentNode2.Cells("Number_of_Responses").Value = "2764" 
+'Define a node that holds the first child table and add it to the second parent node 
+Dim webChildNode As UltraTreeNode = parentNode2.Nodes.Add("20~1", "webFroms.Grid")
+webChildNode.Override.ColumnSet = commonColumnSet 
+'Set the cell values for the child table 
+webChildNode.Cells("News Groups").Value = "Infragistics_for_Web_forms.grids" 
+webChildNode.Cells("Number_of_Responses").Value = "958" 
+'Define a node that holds the second child table and add it to the second parent node 
+webChildNode = parentNode2.Nodes.Add("20~2", "webFroms.documentation") 
+webChildNode.Cells("News Groups").Value = "Infragistics_for_Web_forms.documentation" 
+webChildNode.Cells("Number_of_Responses").Value = "1806"
+----
+
+*In C#:*
+
+----
+//Set the WinTree control's viewStyle
+this.ultraTree1.ViewStyle = Infragistics.Win.UltraWinTree.ViewStyle.OutlookExpress;
+//Define a ColumnSet that represents the common column schema
+UltraTreeColumnSet commonColumnSet = new UltraTreeColumnSet();
+//Add columns to the ColumnSet
+commonColumnSet.Columns.Add("News Groups");
+commonColumnSet.Columns.Add("Number_of_Responses");
+this.ultraTree1.ColumnSettings.RootColumnSet = commonColumnSet;
+//Define a Node that holds the first parent table and add it to the WinTree
+UltraTreeNode parentNode1 = this.ultraTree1.Nodes.Add("10", "Windows Forms NewsGroups");
+commonColumnSet.Columns["News Groups"].CanShowExpansionIndicator = Infragistics.Win.DefaultableBoolean.True;
+//Set the cell values for the first parent table 
+parentNode1.Cells["News Groups"].Value = "Windows Forms NewsGroups";
+parentNode1.Cells["Number_of_Responses"].Value = "4978";
+//Define a node that holds the first child table and add it to the first parent node 
+UltraTreeNode winChildNode = parentNode1.Nodes.Add("10~1", "winforms.grid");
+winChildNode.Override.ColumnSet = commonColumnSet;
+//Set the cell values for the child table
+winChildNode.Cells["News Groups"].Value = "Infragistics_for_Windows_forms.grids";
+winChildNode.Cells["Number_of_Responses"].Value = "987";
+//Define a node that holds the second child table and add it to the first parent node 
+winChildNode = parentNode1.Nodes.Add("10~2", "winforms.doc");
+winChildNode.Cells["News Groups"].Value = "Infragistics_for_Windows_forms.documentation";
+winChildNode.Cells["Number_of_Responses"].Value = "3991";
+//Define a Node that holds the second parent table and add it to the WinTree
+UltraTreeNode parentNode2 = this.ultraTree1.Nodes.Add("20", "Web NewsGroups");
+//Set the cell values for the second parent table
+parentNode2.Cells["News Groups"].Value = "Web NewsGroups";
+parentNode2.Cells["Number_of_Responses"].Value = "2764";
+//Define a node that holds the first child table and add it to the second parent node
+UltraTreeNode webChildNode = parentNode2.Nodes.Add("20~1", "webFroms.Grid");
+webChildNode.Override.ColumnSet = commonColumnSet;
+//Set the cell values for the child table
+webChildNode.Cells["News Groups"].Value = "Infragistics_for_Web_forms.grids";
+webChildNode.Cells["Number_of_Responses"].Value = "958";
+//Define a node that holds the second child table and add it to the second parent node 
+webChildNode = parentNode2.Nodes.Add("20~2", "webFroms.documentation");
+webChildNode.Cells["News Groups"].Value = "Infragistics_for_Web_forms.documentation";
+webChildNode.Cells["Number_of_Responses"].Value = "1806";
+----
+
+image::Images\WinTree_Adding_Columns_Using_Outlook_Express_Style_01.png[]
+
+== Related Topics
+
+* link:wintree-adding-columns-using-freeform-style.html[Adding Columns Using Freeform Style]
+
+* link:wintree-displaying-wintree-with-columns-in-grid-style.html[Displaying WinTree with Columns in Grid Style]

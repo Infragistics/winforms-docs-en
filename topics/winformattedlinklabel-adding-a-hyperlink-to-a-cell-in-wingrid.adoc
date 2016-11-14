@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedlinklabel-adding-a-hyperlink-to-a-cell-in-wingrid",
+    "controlName": ["WinFormattedLinkLabel"],
+    "tags": ["How Do I","Navigation"],
+    "guid": "{020FCFD2-4949-4153-B590-34EAF769BDF1}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding a Hyperlink to a Cell in WinGrid
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  class gives you the ability to add hyperlinks to any Infragistics Windows Forms control which uses embeddable editors. FormattedLinkEditor derives from the embeddable editors base class in order to give Infragistics Windows Forms controls this functionality. This topic will guide you through the task of setting up the WinGrid™ control using the WinDataSource™ component to store unformatted text. You will then use the WinFormattedLinkLabel™ control to format this text and display hyperlinks.
+
+[start=1]
+. *Set up WinDataSource and WinGrid.*
+
+.. Drag the UltraDataSource component onto the form. The ultraDataSource1 component appears in the component tray
+.. Drag the UltraGrid control from the toolbox onto the form.
+.. In the Properties window, find the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~datasource.html[DataSource]"]  property and set it to ultraDataSource1.
+
+[start=2]
+. *Set up the data source.*
+
+.. Right-click the ultraDataSource1 component in the component tray and select "UltraDataSource Designer." The UltraDataSource Designer appears.
+.. Under DataColumns, click the "Add a new column" button
+.. Click Apply.
+.. Click Data Entry from the tree on the left.
+.. In the first cell, enter "<a href="www.infragistics.com">Infragistics</a>" into the cell and then press Enter.
+.. In the second cell, enter "<a href="www.microsoft.com">Microsoft</a>" into the cell and then press Enter.
+.. In the third cell, enter <a href="www.google.com">Google</a>" into the cell and then press Enter.
+.. Click Apply, and then OK.
+
+[start=3]
+. *Set up the WinFormattedLinkLabel control and set it as the column's EditorControl.*
+
+.. Drag the UltraFormattedLinkLabel control onto the form.
+.. Right-click on the grid and select "UltraGrid Designer…"
+.. Under "Band and Column Settings", expand Band [0].
+.. Under "Band [0]", click Columns.
+.. Find the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~editorcomponent.html[EditorComponent]"]  property in the Properties window and set it to ultraFormattedLinkLabel1.
+.. Click Apply, and then OK.
+
+[start=4]
+. *Run the application.*
+
+Click on any of the links and a Microsoft® Internet Explorer window will open with the appropriate link.
+
+.Note
+[NOTE]
+====
+The WinFormattedLinkLabel control will always use the .NET Process class to open a new link. Therefore, it is up to the system, not WinFormattedLinkLabel, to decide how to handle the opened link.
+====

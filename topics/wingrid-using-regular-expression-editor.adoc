@@ -1,0 +1,125 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-regular-expression-editor",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Validation"],
+    "guid": "{3DCB6B2E-185C-42DC-9686-F61CDF611063}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using Regular Expression Editor
+
+WinGrid™ columns can apply a regular expression constraint on the text of their cells. After the user inputs a value into a cell and attempts to move focus out of that cell, the new text in the cell will be validated against the column's regular expression. You can specify the regular expression a column should use via its  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~regexpattern.html[RegexPattern]"]  property.
+
+A complement to this feature is the Regular Expression Editor. This design-time utility allows you to quickly create and test a regular expression. Once you have created the regular expression for a column, simply click the OK button and your regular expression will be assigned to that column's RegexPattern property.
+
+Before going any further, there is one important point to note. The regular expression specified in the RegexPattern property of a column must match all of the text in the cell being validated for the cell's text to be considered valid. The Regular Expression Editor, however, is a generic design-time utility and, as such, does not impose this restriction. For example, suppose a column's regular expression is set to *[a-z]{3}* (which means three consecutive lowercase letters).
+
+The following strings would be considered valid for that column:
+
+* ice
+* oui
+* lop
+
+The following strings would be considered invalid for that column:
+
+* boom
+* 123abc
+* Infragistics
+
+The second set of values listed above would be considered invalid by the WinGrid because all of the characters in the string are not part of the match. The "boo" in "boom" matches the regular expression, but the "m" at the end is not part of the match so the cell's text would be considered invalid. The Regular Expression Editor, on the other hand, does not require that a match include all of the characters in the string. The Regular Expression Editor would have considered all of the values listed above as containing valid matches. Be sure to keep this distinction in mind when creating and testing regular expressions for a column.
+
+*Tip:* If you want the Regular Expression Editor to find matches in the same way that the WinGrid does, you can begin your regular expression with the *^* metacharacter and end it with the *$* metacharacter. Adding these characters to the expression will force the match to be at the beginning of the test data and the last character of the match to be the last character of the test data. Conversely, if you want the WinGrid to find matches in the same way that the Regular Expression Editor does, you can begin and end your regular expression with *.$$*$$* to specify that the match can occur anywhere in the string being tested.
+
+.Note
+[NOTE]
+====
+The grid must have a schema defined at design time in order to use the Regular Expression Editor.
+====
+
+== Opening the Regular Expression Editor
+
+[start=1]
+. You can access the Regular Expression Editor by clicking the grid's "Start!" button or by right-clicking on the WinGrid and selecting "UltraWinGrid Designer".
+
+image::Images/WinGrid_Use_the_Regular_Expression_Editor_01.png[ultragrid designer]
+
+[start=2]
+. In the UltraWinGrid Designer expand the Band and Column Settings node, then expand a Band node.
+
+[start=3]
+. Select the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Columns]"]  node beneath the expanded Band, and in the far right pane the properties for the selected column will be displayed. In the Columns PropertyGrid scroll down to the RegexPattern property. Select this property in the right-hand column and a button with an ellipse on it will appear. Clicking on this button will open the Regular Expression Editor.
+
+image::Images/WinGrid_Regular_Expression_Editor_03.png[use the regular expression editor for ultragrid]
+
+== Example of Using the Regular Expression Editor
+
+[start=1]
+. Suppose that there is a column in your WinGrid which is supposed to only contain telephone numbers. To ensure that cells in this column always contain a valid telephone number you would specify a regular expression to validate the user input. You always want the phone number to be in the following pattern:
+
+*nnn-nnn-nnnn*
+
+where 'n' represents a digit. In this situation you might build a regular expression like this:
+
+*\d{3}-\d{3}-\d{4}*
+[start=2]
+. Once the Regular Expression Editor is opened for the column containing telephone numbers you would type that regular expression into the topmost TextBox.
+[start=3]
+. The next step is to supply test data into the second TextBox. In this example the test data is:
+
+*555-372-9081 90-138 90210 249-8932 (912)-232-1328*
+[start=4]
+. To test your regular expression against the test data just click the "Find Matches" button, and all of the matches will be displayed in the ListBox. If you select one of the matches in the ListBox the corresponding substring in the test data will be highlighted.
+
+image::Images/WinGrid_Regular_Expression_Editor_04.png[use the regular expression editor in ultragrid]
+
+[start=5]
+. If you click the OK button on the Regular Expression Editor the RegexPattern property for the telephone number column will be set to the value in the topmost TextBox. When the application is run that regular expression will be used to validate data inputted into the cells of that column.
+
+== Error Message Displayed
+
+[start=1]
+. Suppose a user were to input "52-2652" into a cell in the telephone number column. When he/she attempts to leave that cell the grid will display the error message box seen below:
+
+image::Images/WinGrid_Regular_Expression_Editor_05.png[displaying error messages in ultragrid when using regular expressions]
+
+[start=2]
+. You can set a customized error message to be displayed when the input value fails validation by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~error_ev.html[Error]"]  event of the WinGrid. You can cancel the event and display your own message box or you can just change the text displayed in the default message box. After you have determined that the ActiveCell is in the telephone number column, you could use the following code in an Error event handler:
+
+== Canceling the Error Event and Displaying a Custom Message Box.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_Error(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.ErrorEventArgs) _
+  Handles UltraGrid1.Error
+	e.Cancel = True
+	If e.ErrorType = ErrorType.Data Then
+		MessageBox.Show("That is not a valid phone number!!")
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_Error(object sender, 
+  Infragistics.Win.UltraWinGrid.ErrorEventArgs e)
+{
+	e.Cancel = true;
+	if(e.ErrorType == ErrorType.Data)
+		MessageBox.Show("That is not a valid phone number!!");
+}
+----
+
+For more information about regular expressions you can view the following MSDN Web page: link:http://msdn.microsoft.com/en-us/library/hs600312(v=vs.110).aspx[.NET Framework Regular Expressions]

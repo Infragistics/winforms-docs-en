@@ -1,0 +1,118 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-mouse-handling",
+    "controlName": [],
+    "tags": ["Application Blocks","Events","Styling","Templating","Tips and Tricks"],
+    "guid": "{6B43BC72-F68A-44D2-8A56-94E35E199580}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Mouse Handling
+
+In addition to the standard mouse events (i.e. MouseDown, MouseMove, MouseUp, MouseEnter, MouseLeave etc.) all PLF based controls expose two new events called  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~mouseenterelement_ev.html[MouseEnterElement]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~mouseleaveelement_ev.html[MouseLeaveElement]"] . The following code writes the type of each element as it is entered and exited to the output window.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_MouseEnterElement(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UIElementEventArgs) _
+  Handles UltraGrid1.MouseEnterElement
+        Debug.WriteLine("Enter Element: " + e.Element.GetType().ToString())
+End Sub
+Private Sub UltraGrid1_MouseLeaveElement(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UIElementEventArgs) _
+  Handles UltraGrid1.MouseLeaveElement
+        Debug.WriteLine("Leave Element: " + e.Element.GetType().ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+using System.Diagnostics;
+private void ultraGrid1_MouseEnterElement(object sender, 
+  Infragistics.Win.UIElementEventArgs e)
+{
+	Debug.WriteLine( "Enter Element: " + e.Element.GetType().ToString() );
+}
+private void ultraGrid1_MouseLeaveElement(object sender, 
+  Infragistics.Win.UIElementEventArgs e)
+{
+	Debug.WriteLine( "Leave Element: " + e.Element.GetType().ToString() );
+}
+----
+
+There are also methods for getting an element from a point and finding out its context information.
+
+The following code shows how to get the element under the point where the user presses the mouse down and gets its context information--in this case a grid cell.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+Private Sub UltraGrid1_MouseDown(ByVal sender As Object, ByVal e As _
+  System.Windows.Forms.MouseEventArgs) Handles UltraGrid1.MouseDown
+    Dim mainElement As Infragistics.Win.UIElement
+    Dim element As Infragistics.Win.UIElement
+    mainElement = Me.UltraGrid1.DisplayLayout.UIElement
+    element = mainElement.ElementFromPoint(New Point(e.X, e.Y))
+    If (Not element Is Nothing) Then
+        Dim cell As UltraGridCell
+        cell = element.GetContext(GetType(UltraGridCell))
+        If (Not cell Is Nothing) Then
+            Debug.WriteLine("Cell text: " + cell.Text)
+        End If
+        Debug.WriteLine("Mouse down on an " + element.GetType().ToString())
+        Debug.Indent()
+        ' Walk up the parent element chain and write out a line
+        ' for each parent element.
+        While Not element.Parent Is Nothing
+            element = element.Parent
+            Debug.WriteLine("is a child of an " + element.GetType().ToString())
+            Debug.Indent()
+        End While
+        ' reset the indent level
+        Debug.IndentLevel = 0
+    End If
+End Sub
+----
+
+*In C#:*
+
+----
+using System.Diagnostics;
+using Infragistics.Win.UltraWinGrid;
+private void ultraGrid1_MouseDown(object sender, 
+  System.Windows.Forms.MouseEventArgs e)
+{
+	Infragistics.Win.UIElement mainElement;
+	Infragistics.Win.UIElement element;
+	mainElement = this.ultraGrid1.DisplayLayout.UIElement;
+	element = mainElement.ElementFromPoint(new Point(e.X, e.Y));
+	if (element != null)
+	{
+		UltraGridCell cell = element.GetContext(typeof(UltraGridCell)) 
+		  as UltraGridCell;
+		if (cell != null)
+			Debug.WriteLine("Cell text: " + cell.Text);
+		Debug.WriteLine("Mouse down on an " + 
+		  element.GetType().ToString());
+		Debug.Indent();
+		// Walk up the parent element chain and write out a line
+		// for each parent element.
+		while (element.Parent != null)
+		{
+			element = element.Parent;
+			Debug.WriteLine("is a child of an " + element.GetType().ToString());
+			Debug.Indent();
+		}
+		// reset the indent level
+		Debug.IndentLevel = 0;
+	}
+}
+----

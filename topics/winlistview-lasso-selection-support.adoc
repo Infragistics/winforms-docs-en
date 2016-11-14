@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-lasso-selection-support",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{C54E6970-A61E-4A70-A779-02CB4F2D36E5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Lasso Selection Support
+
+The phrase “Lasso Selection” refers to the selection rectangle that is dragged by the end user around one or more items in the view, resulting in them being selected. This feature is similar to the Windows Explorer style selection, which allows dragging selection of multiple items, which is now available with the WinListView™ control. The drag operation is initiated when the user presses the left or right mouse button while the cursor is positioned over an area of the control that does not contain an item. As the cursor is moved, the selection rectangle is updated to include the area from the original drag point and the current cursor position. Any items whose bounds intersect with this rectangle are selected.
+
+The Lasso select effect can be enabled by simply setting the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemsettings~lassoselectmode.html[LassoSelectMode]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemsettings.html[UltraListViewItemSettings]"]  class to any of the mouse buttons like LeftMouseButton, RightMouseButton or LeftAndRightMouseButtons. Also, to get this effect the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemsettings~selectiontype.html[UltraListView.ItemSettings.SelectionType]"]  property must be set to ‘Extended’.
+
+.Note
+[NOTE]
+====
+When the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property of ultraListView is set to Details and ViewSettingsDetails.FullRowSelect is set to true, lasso selection will be supported but will be difficult to utilize it. For an easier way of selection, the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewdetailssettings~fullrowselect.html[FullRowSelect]"]  property can be set to false.
+====
+
+*In Visual Basic:*
+
+----
+'Load data into the 'northwindDataSet.Customers' table. 
+Me.customersTableAdapter.Fill(Me.northwindDataSet.Customers) 
+For i As Integer = 0 To Me.northwindDataSet.Tables("Customers").Rows.Count- 1 
+     Dim row As DataRow = Me.northwindDataSet.Tables("Customers").Rows(i)
+     ' Break out the field values for this row 
+     Dim customerID As String = TryCast(row("CustomerID"), String)
+     Dim companyName As String = TryCast(row("CompanyName"), String)
+     'Adding Items to the ultraListView 
+     Me.ultraListView1.Items.Add(customerID, companyName) 
+     ' Allow extended selection for items 
+     Me.ultraListView1.ItemSettings.SelectionType = SelectionType.Extended 
+     'Setting LeftMouseButton to perform Lasso Selection 
+      ultraListView1.ItemSettings.LassoSelectMode= LassoSelectMode.LeftMouseButton 
+Next
+----
+
+*In C#:*
+
+----
+//Load data into the 'northwindDataSet.Customers' table.
+this.customersTableAdapter.Fill(this.northwindDataSet.Customers);
+for (int i = 0; i < this.northwindDataSet.Tables["Customers"].Rows.Count; i++)
+ {
+     DataRow row = this.northwindDataSet.Tables["Customers"].Rows[i];
+     // Break out the field values for this row
+     string customerID = row["CustomerID"] as string;
+     string companyName = row["CompanyName"] as string;
+     //Adding Items to the ultraListView
+     this.ultraListView1.Items.Add(customerID, companyName);
+     //Allow extended selection for items
+     this.ultraListView1.ItemSettings.SelectionType = SelectionType.Extended;
+     //Setting LeftMouseButton to perform Lasso Selection
+     ultraListView1.ItemSettings.LassoSelectMode = LassoSelectMode.LeftMouseButton;
+  }
+----

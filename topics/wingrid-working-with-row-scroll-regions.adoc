@@ -1,0 +1,139 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-row-scroll-regions",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "{729442BF-E8DF-49EF-9242-75C566EB8DCA}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Row Scroll Regions
+
+== Background
+
+A grid with many rows can be difficult to work with when reviewing entries from various sets of rows. Row Scroll Regions allows the user or developer to split the grid to display multiple Regions which can be scrolled separately.
+
+One possible use of this feature is when adding new rows and the user would like to see a row that has scrolled off the display. In this case the user can create a new Row Scroll Region at the top of the grid display area to display the source row and perform the new row addition in the lower Region.
+
+== Questions
+
+* How can I see my currently selected row while adding a new row?
+* How can I turn off the user's ability to create Row Scroll Regions?
+
+== Solutions
+
+The user can create a row scroll region where the currently selected row displays, and use a different row scroll region to add the new row.
+
+Set the .MaxRowScrollRegions property to 1 and the Row Scroll Region splitter box will no longer display.
+
+== Sample Project
+
+This sample project displays a multi-band grid for the user to experiment with Row Scroll Regions. There are also buttons demonstrating the use of code to Split Row Scroll Regions and set the grid back to One Row Scroll Region:
+
+image::Images\WinGrid_Working_with_Row_Scroll_Regions_01.png[working with row scroll regions in ultragrid]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeRow - The InitializeRow event handler expands rows on band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand row 0 nodes
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand row 0 nodes
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+}
+----
+
+Button Events
+
+The Button Events Region contains the following event handlers:
+
+* btnSplitRowScrollRegion.Click - The code in the btnSplitRowScrollRegion event sets the MaxRowScrolRegions to 10 and splits Region(0), Region(1), and Region(2):
+
+*In Visual Basic:*
+
+----
+Private Sub btnSplitRowScrollRegion_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSplitRowScrollRegion.Click
+	Me.UltraGrid1.DisplayLayout.MaxRowScrollRegions = 10
+	Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).Split()
+	Me.UltraGrid1.DisplayLayout.RowScrollRegions(1).Split()
+	Me.UltraGrid1.DisplayLayout.RowScrollRegions(2).Split()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSplitRowScrollRegion_Click(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.MaxRowScrollRegions = 10;
+	this.ultraGrid1.DisplayLayout.RowScrollRegions[0].Split();
+	this.ultraGrid1.DisplayLayout.RowScrollRegions[1].Split();
+	this.ultraGrid1.DisplayLayout.RowScrollRegions[2].Split();
+}
+----
+
+* btnOneRowScrollRegion.Click - The code in the btnOneRowScrollRegion event removes all but Region(0) and sets the MaxRowScrollRegions to 1:
+
+*In Visual Basic:*
+
+----
+Private Sub btnOneRowScrollRegion_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnOneRowScrollRegion.Click
+	' Remove all but one row scroll region
+	If Me.UltraGrid1.DisplayLayout.RowScrollRegions.Count > 1 Then
+		Dim intPtr As Integer
+		For intPtr = Me.UltraGrid1.DisplayLayout.RowScrollRegions.Count - 1 To 1 Step -1
+			Me.UltraGrid1.DisplayLayout.RowScrollRegions.Remove( _
+			  Me.UltraGrid1.DisplayLayout.RowScrollRegions(intPtr))
+		Next
+	End If
+	Me.UltraGrid1.DisplayLayout.MaxRowScrollRegions = 1
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnOneRowScrollRegion_Click(object sender, EventArgs e)
+{
+	// Remove all but one row scroll region
+	if(this.ultraGrid1.DisplayLayout.RowScrollRegions.Count > 1)
+	{
+		for(int intPtr = this.ultraGrid1.DisplayLayout.RowScrollRegions.Count - 1; 
+		  intPtr >= 1; intPtr--)
+		{
+			this.ultraGrid1.DisplayLayout.RowScrollRegions.Remove(
+			  this.ultraGrid1.DisplayLayout.RowScrollRegions[intPtr]);
+		}
+	}
+	this.ultraGrid1.DisplayLayout.MaxRowScrollRegions = 1;
+}
+----
+
+== Review
+
+This sample program demonstrates the manipulation of Row Scroll Regions by showing how to split existing regions, remove regions, and set the Max Regions to 1 to keep the user from creating new regions.

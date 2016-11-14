@@ -1,0 +1,217 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-events-for-interacting-with-a-textdocument",
+    "controlName": [],
+    "tags": [],
+    "guid": "3f2f16cf-205d-413f-8f99-75e10ca4d0b4",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1178567Z"
+}
+|metadata|
+////
+
+= Events for Interacting with a TextDocument
+
+== Topic Overview
+
+=== Purpose
+
+This topic introduces the key `TextDocument` class events and includes code snippets to illustrate their uses.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref335121529,PropertyChanged Event – Code Example>>
+
+** <<_Ref326147531,Description>>
+** <<_Ref326147537,Code>>
+
+* <<_Ref335121552,TextChanged Event – Code Example>>
+
+** <<_Ref335121559,Description>>
+** <<_Ref335121563,Code>>
+
+* <<_Ref335121568,TextChanging Event – Code Example>>
+
+** <<_Ref335121575,Description>>
+** <<_Ref335121580,Code>>
+
+* <<_Ref335121588,TextLoaded Event>>
+
+** <<_Ref335121594,Description>>
+
+* <<_Ref335121599,Related Content>>
+
+** <<_Ref335121607,Topics>>
+
+
+[[_Ref335121529]]
+== PropertyChanged Event – Code Example
+
+[[_Ref326147531]]
+
+=== Description
+
+The PropertyChanged event is raised whenever the value of a `TextDocument’s` property changes.
+
+When handling this event, the `TextDocument` object will be sent to the event handler as “sender,” and the PropertyChangedEventArgs object “e” will contain the name of the property that has changed, as e.PropertyName.
+
+The following code example shows the event handler setup for executing logic when the `TextDocument’s` CurrentSnapshot changes.
+
+[[_Ref326147537]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+void _textDocument_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+{
+    if (e.PropertyName == "CurrentSnapshot")
+    {
+        //TODO:  Do logic as required when a new snapshot is created.
+    }
+}
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Private Sub _textDocument_PropertyChanged(sender As Object, e As System.ComponentModel.PropertyChangedEventArgs)
+      'TODO:  Do logic as required when a new snapshot is created.
+      If e.PropertyName = "CurrentSnapshot" Then
+      End If
+End Sub
+----
+
+
+[[_Ref335121552]]
+== TextChanged Event – Code Example
+
+[[_Ref335121559]]
+
+=== Description
+
+Changes applied to the document raise the TextChanged event. It exposes the before and after snapshots as well as the list of all the changes.
+
+The following code example is handling the TextChanged event and looping through all of the changes made in the document.
+
+[[_Ref335121563]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+void _textDocument_TextChanged(object sender, TextChangedEventArgs e)
+{
+    foreach (TextChange tc in e.Changes)
+    {
+        //TODO: Loop through the text changes to perform logic based on the changes 
+        //that have been made.
+    }
+}
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Private Sub _textDocument_TextChanged(sender As Object, e As TextChangedEventArgs)
+      For Each tc As TextChange In e.Changes
+                'TODO: Loop through the text changes to perform logic based on the
+              'changes that have been made.
+      Next
+End Sub
+----
+
+
+[[_Ref335121568]]
+== TextChanging Event – Code Example
+
+[[_Ref335121575]]
+
+=== Description
+
+Raised before document changes are applied, the TextChanging event may be triggered by any methods that update text within a document, such as Delete, Append, FindReplace, etc. This event is cancellable if its CanCancel property returns true (which it does, unless the source of the change is an undo or redo operation). It exposes the before and after snapshots as well as the list of changes.
+
+The following code example is handling the TextChanging event and checking if the document is growing from this change. It is also cancelling the event in a scenario “someCondition”, specified by the programmer.
+
+[[_Ref335121580]]
+
+=== Code
+
+*In C#:*
+
+[source,csharp]
+----
+void _textDocument_TextChanging(object sender, TextChangingEventArgs e)
+{
+    if (e.After.Document.CurrentSnapshot.Length > e.Before.Document.CurrentSnapshot.Length)
+    {
+        //TODO: Do some logic when the document grows.
+        //TODO: Under some circumstance, cancel the event.
+        if (someCondition == true && e.CanCancel == true)
+            e.Cancel = true;
+    }
+}
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Private Sub _textDocument_TextChanging(sender As Object, e As TextChangingEventArgs)
+      If e.After.Document.CurrentSnapshot.Length > e.Before.Document.CurrentSnapshot.Length Then
+            'TODO: Do some logic when the document grows.
+            'TODO: Under some circumstance, cancel the event.
+            If someCondition = True AndAlso e.CanCancel = True Then
+                  e.Cancel = True
+            End If
+      End If
+End Sub
+----
+
+
+[[_Ref335121588]]
+== TextLoaded Event
+
+[[_Ref335121594]]
+
+=== Description
+
+Calling the Load() or InitializeText() method raises the TextLoaded event. This event is also raised whenever the Language changes on a TextDocument containing text.
+
+
+[[_Ref335121599]]
+== Related Content
+
+[[_Ref335121607]]
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-textdocument-overview.html[TextDocument Overview]
+|This topic describes the Infragistics Syntax Parsing Engine’s main class, `TextDocument`, and contains links to topics that outline its most important methods, events and properties.
+
+| link:ig-spe-methods-for-modifying-text-in-a-textdocument.html[Methods for Modifying Text in a TextDocument]
+|This topic uses descriptive text and code snippets to illustrate the `TextDocument` class methods for text modification.
+
+| link:ig-spe-properties-for-configuring-a-textdocument.html[Properties for Configuring a TextDocument]
+|This topic uses descriptive text to illustrate the `TextDocument` class properties exposed to enable custom configuration.
+
+| link:ig-spe-implementing-a-textdocument-with-a-richtextbox.html[Implementing a TextDocument with a RichTextBox]
+|This topic uses descriptive text and code snippets to illustrate how to provide use a RichTextBox control to highlight keywords in a document according to a specific language.
+
+|====

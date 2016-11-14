@@ -1,0 +1,91 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-5-of-5",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{5EE9AE34-A362-4CF8-AAFB-C04686E1C05E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Complex Gauge Using the Gauge Designer Part 5 of 5
+
+This topic is a continuation of link:wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-4-of-5.html[Creating a Complex Gauge Using the Gauge Designer Part 4 of 5]. This procedure guides you through the process of adding a Digital gauge to the existing Radial gauge.
+
+[start=1]
+. In the Gauge Explorer, expand Gauges.
+[start=2]
+. Click Add Gauge... and select New Digital Gauge.
+[start=3]
+. In the Properties panel, click the link:wingauge-digital-gauge.html[Gauge Layout tab]. In the link:wingauge-bounds-pane.html[Bounds pane], set the following properties:
+
+** X -- 0
+** Y -- 70
+** Width -- 100
+** Height -- 18
+** Units -- Percent
+
+[start=4]
+. In the link:wingauge-margin-pane.html[Margin pane] of the Gauge Layout tab, set the following properties:
+
+** Top -- 15
+** Bottom -- 15
+** Left -- 100
+** Right -- 100
+** Units -- Pixels
+
+[start=5]
+. In the link:wingauge-digital-misc-pane.html[Misc pane] of the Gauge Layout tab, set the following properties:
+
+** Mode -- FourteenSegment
+** Text -- 025
+** Extent -- 48
+** Digits -- 8
+** Digit Spacing -- 6
+
+[start=6]
+. In the Properties panel, click the link:wingauge-appearance-tab.html[Appearance tab]. In the link:wingauge-brush-pane.html[Brush pane], add the following brush elements with the specified properties:
+
+** link:wingauge-multi-stop-linear-gradient-brush-element.html[Multi-Stop Linear Gradient brush element]
+
+*** ColorStop 1 -- Offset = 0, Color = Color.FromArgb(93, 186, 0)
+*** ColorStop 2 -- Offset = 0.5, Color = Color.FromArgb(23, 141, 0)
+*** ColorStop 3 -- Offset = 1, Color = Color.FromArgb(93, 186, 0)
+*** Angle -- 90  *(Property displays at the bottom of the Gradient Editor drop-down window.)* 
+
+** Multi-Stop Linear Gradient brush element
+
+*** ColorStop 1 -- Offset = 0, Color = Color.FromArgb(150, 255, 255, 255)
+*** ColorStop 2 -- Offset = 0.2586207, Color = Color.FromArgb(125, 255, 255, 255)
+*** ColorStop 3 -- Offset = 0.5103447, Color = Transparent
+*** ColorStop 4 -- Offset = 1, Color = Transparent
+*** Angle -- 90  *(Property displays at the bottom of the Gradient Editor drop-down window.)* 
+
+[start=7]
+. In the link:wingauge-stroke-pane.html[Stroke pane] of the Appearance tab, set the following properties:
+
+** Simple Gradient brush element
+
+*** StartColor -- WhiteSmoke
+*** EndColor -- Gainsboro
+*** Gradient Style -- Backward Diagonal
+
+** Thickness -- 5
+
+[start=8]
+. Click the link:wingauge-digit-appearance-tab.html[Digit Appearance tab]. In the link:wingauge-font-brush-pane.html[Font Brush pane], set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(255, 255, 255)
+
+[start=9]
+. In the link:wingauge-unlit-brush-pane.html[Unlit Brush pane] of the Digit Appearance tab, set the following properties:
+
+** Type -- Solid
+** Color -- Color.FromArgb(30, 255, 255, 255)
+
+image::Images/Creating_a_Complex_Gauge_Part_5_Image_1.png[]

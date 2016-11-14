@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-use-winlistview-as-a-listbox",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{239878A5-FCBD-41CC-A824-8EEC0AC91091}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Use WinListView as a ListBox
+
+The WinListView™ control is a versatile control that can emulate ListView, ListBox, and CheckedBox controls. A List Box is similar to a standard text box, but has one item on each line. A List Box is basically a box containing a list of items. To change the WinListView control into a ListBox control, there are two properties that must be set. Setting the WinListView's  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property to  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewstyle.html[List]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewlistsettings~multicolumn.html[MultiColumn]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewlistsettings.html[ViewSettingsList]"]  class to False will cause the WinListView control to behave like a ListBox control.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinListView
+...
+Private Sub Use_WinListView_as_a_ListBox_Load(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraListView1.View = UltraListViewStyle.List
+	Me.UltraListView1.ViewSettingsList.MultiColumn = False
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinListView;
+...
+private void Use_WinListView_as_a_ListBox_Load(object sender, EventArgs e)
+{
+	this.ultraListView1.View = UltraListViewStyle.List;
+	this.ultraListView1.ViewSettingsList.MultiColumn = false;
+}
+----

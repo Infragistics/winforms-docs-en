@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-binding-wintree-to-a-dataset-or-data-table",
+    "controlName": ["WinTree"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{E67014A3-F825-422B-AB00-8EB4A115BE89}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding WinTree to a Dataset or Data Table
+
+In addition to the column support added to the WinTree™ with Infragistics Windows Forms 2005 Volume 2, the ability to bind the control was also added. You can either bind the root nodes collection, using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datasource.html[DataSource]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  properties, or you can use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection~setdatabinding.html[SetDataBindingMethod]"]  of a nodes collection to bind the contents of a specific node's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~nodes.html[Nodes]"]  collection. The WinTree may be bound to an IList or IBindingList datasource and depending upon the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~autogeneratecolumnsets.html[AutoGenerateColumnSets]"]  can automatically generate  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn.html[UltraTreeNodeColumn]"]  objects based on the datasource.
+
+In this topic we will look at binding the WinTree to a DataSet or DataTable. In this example, the data source will be created using an untyped DataSet but you could also bind the WinTree to a typed DataSet (e.g. one created using Visual Studio's Server Explorer).
+
+.Note
+[NOTE]
+====
+By default, when the WinTree is bound, it will resolve the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  property to Grid so there is no need to set the property in this example.
+====
+
+[start=1]
+. Create a new Windows Application and open the form in design view. Add a WinTree to the Form from the toolbox, and set its Dock property to Fill.
+
+You will notice that by adding the WinTree to your project three references were added:
+
+** Infragistics.Shared.v{ProductVersion}
+** Infragistics.Win.UltraWinTree.v{ProductVersion}
+** Infragistics.Win.v{ProductVersion}
+
+[start=2]
+. Add a DataSet to the form from the toolbox. In the "Add DataSet" dialog that is displayed, choose "Untyped dataset" and hit Ok. This will generate a DataSet instance named "dataSet1".
+[start=3]
+. Right click on dataSet1 and choose "Properties". In the property grid, select the Tables property and click the ellipses button. In the Tables Collection Editor that is displayed, press Add and change the TableName property to "Customers".
+[start=4]
+. Next we will define the columns in the Customers DataTable. Select on the Columns property and click on the ellipses button to display the Columns Collection Editor.
+[start=5]
+. Click the Add button to create a new Column and change its ColumnName property to "Last Name". Then repeat this for "First Name", "Middle Name" and "Title" to generate the other 3 columns in the datatable. Then click Ok to close the columns editor and click Ok to close the datatable editor.
+[start=6]
+. To set this DataSet schema as the data source for the WinTree, right click on the WinTree and choose "Properties". In the property grid, select the DataSource property and click the drop down arrow. Choose the DataSet (e.g. dataSet1) that you created. You may notice that the WinTree changes to show a single root node that represents the "Customers" band; this is referred to as a "band" node and is a special type of bound node and displays the name of the list in the underlying data source. You can click on the expansion indicator on this node to see the column structure that was created. Your tree should now look similar to the screenshot below.
+
+.Note
+[NOTE]
+====
+At design-time, if there are no rows in the underlying datasource, the WinTree will populate the nodes collection with two sample nodes.
+====
+
+image::Images/WinTree_Binding_to_a_DataSet_or_DataTable_01.png[ultratree bound to datatable or dataset]
+
+If you now select the DataMember property in the properties grid, a drop down arrow appears and you can select the band you defined in the data source (e.g. "Customers"). If you do this you will notice that the band node is removed and the grid structure appears at the root level.
+
+image::Images/WinTree_Binding_to_a_DataSet_or_DataTable_02.png[ultratree bound to datatable or dataset with datamember set]

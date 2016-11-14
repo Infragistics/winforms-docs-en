@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-determine-whether-a-pane-is-docked",
+    "controlName": ["WinDockManager"],
+    "tags": ["Layouts"],
+    "guid": "{12ACBB6B-03B8-4BC3-A73C-3A43BC7681DA}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determine Whether a Pane is Docked
+
+To determine whether a  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"]  is docked, you must first locate a particular pane. The code snippet below makes use of the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~panefromcontrol.html[PaneFromControl]"]  method, but you can use any of the other similar methods for getting a pane. For more information, see link:windockmanager-locate-a-specific-pane.html[Locate a Specific Pane].
+
+The follow code snippet finds a pane, then checks to see if that pane is docked, if it is docked it makes it a floating pane.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinDock
+...
+Private Sub btnCheck_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnCheck.Click
+	'Checked to see if the pane holding the control is docked
+	If Me.UltraDockManager1.PaneFromControl(Me.UltraDayView1).DockedState = _
+	  DockedState.Docked Then
+		' If it is docked make it a floating pane
+		Me.UltraDockManager1.PaneFromControl(Me.UltraDayView1).Float(True)
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinDock;
+...
+private void btnCheck_Click(object sender, EventArgs e)
+{
+	// Checked to see if the pane holding the control is docked
+	if(this.ultraDockManager1.PaneFromControl(this.ultraDayView1).DockedState == 
+	  DockedState.Docked)
+		// If it is docked make it a floating pane
+		this.ultraDockManager1.PaneFromControl(this.ultraDayView1).Float(true);
+}
+----

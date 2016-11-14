@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-save-and-restore-a-layout",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Layouts"],
+    "guid": "{3C36B64D-D769-4B21-A8B1-5F14C00771CC}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Restore a Layout
+
+You can set up the interface of an WinExplorerBar™ control either at design-time through the property sheet or UltraExplorerBar Designer, or you can do it at run-time by setting various properties through code. When your application runs, the user can further customize the interface by adding Groups, re-arranging Groups, dragging Items from one Group to another, and so on.
+
+At any point, you can save the current layout of the UltraWinExplorerBar element to a file, which can be re-loaded in the future to restore the element's layout. At run-time, you also have the option of persisting the element's layout to (and restoring it from) a storage stream. The layouts persisted by the element include all of the property values maintained by the various Settings objects in the element, which encapsulate all of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearances]"]  used in the element. This includes the objects returned by the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings.html[GroupSettings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[ItemSettings]"]  properties of the element, the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~settings.html[Settings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~itemsettings.html[ItemSettings]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Group]"] , and the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem~settings.html[Settings]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[Item]"] . The Groups collection of the element (and all of the Item objects encapsulated by the Groups within it) are also persisted.
+
+To save a layout at design-time
+
+[start=1]
+. Select the UltraWinExplorerBar control.
+[start=2]
+. Invoke the context menu for the control and select "Save Layout..."
+
+_or_ 
+
+Click on the "Save Layout..." link in the bottom pane of the .NET property sheet.
+
+The Save Layout dialog will appear.
+
+image::images\WinExplorerBar_Saving_and_Restoring_a_Layout_01.png[explains how to save and load ultraexplorerbar's layout]
+
+[start=3]
+. Select the format that will be used for the layout file. Files can be saved in binary or XML format. The binary file format is more compact but it is also proprietary, XML offers a universal format but with generally larger file sizes.
+[start=4]
+. Click the ellipsis (...) button to enter a file name and select a location for the layout file. Available filename extensions are determined by the type of file you selected in the Save Layout dialog. When you have entered the filename, click Save. A file of the type you specified containing the layout information will be created.
+
+To restore a saved layout at design-time
+
+[start=1]
+. Select the UltraWinExplorerBar element.
+[start=2]
+. Invoke the context menu for the element and select "Load Layout..."
+
+_or_ 
+
+Click on the "Load Layout..." link in the bottom pane of the .NET property sheet.
+
+The Load Layout dialog will appear.
+[start=3]
+. Select the format of the layout file you want to load. Layout files can be in binary or XML format.
+[start=4]
+. Click the ellipsis (...) button to enter a file name and select a location for the layout file. Available filename extensions are determined by the type of file you selected in the Save Layout dialog. When you have entered the filename, click Save. A file of the type you specified containing the layout information will be created.
+
+To save a layout at run-time
+
+*In Visual Basic:*
+
+----
+Private Sub btnSave_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnSave.Click
+	Me.UltraExplorerBar1.SaveAsXml("ExplorerBarLayoutFile.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSave_Click(object sender, EventArgs e)
+{
+	this.ultraExplorerBar1.SaveAsXml("ExplorerBarLayoutFile.xml");
+}
+----
+
+To load a layout at run-time
+
+*In Visual Basic:*
+
+----
+Private Sub btnLoad_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnLoad.Click
+	Me.UltraExplorerBar2.LoadFromXml("ExplorerBarLayoutFile.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnLoad_Click(object sender, EventArgs e)
+{
+	this.ultraExplorerBar2.LoadFromXml("ExplorerBarLayoutFile.xml");
+}
+----

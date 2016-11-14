@@ -1,0 +1,68 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-beforeexiteditmode-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{5600E931-AAD9-479F-934A-5E6C65D2F28C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= BeforeExitEditMode Event
+
+Whenever a user is editing data in a WinGrid™ Cell and the Cell loses focus by the act of Tabbing or Clicking on other Form elements, the Cell will exit edit mode. The BeforeExitEditMode event will fire right before this happens, allowing us an event to test for certain conditions and either allow it to exit normally or cancelling it if certain conditions are not met. One important thing to note about the Grid’s ActiveCell within this event is that whatever changed value is currently in this cell is not yet propagated to the Cell.Value property. It is only available in the Cell.Text property. In other words, if we click on a blank Cell and enter the value “Hello” at that moment in time, the Cell.Value is still null or Nothing. The Cell.Text property is the one that has been set to “Hello”. Moving off the Cell and causing it to exit edit mode will then populate the Cell.Value. This is important to understand while working with this event when you need to test to see what values are currently in the active Cell. In the case where you are testing other data types such as Boolean, integers and date times, you can parse the Cell.Text property into the correct data type and then perform your test. In other words if the Cell that is currently being edited and tested is a Boolean and the Column.Style is set to CheckBox, you can parse the Cell.Text into a Boolean and perform your test. The following code example shows how we force the end user to remain in the current cell if the value entered in a sibling Cell “BaseValue” is greater than the current Cell "Bonus":
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_BeforeExitEditMode( _
+   ByVal sender As System.Object, _
+   ByVal e As BeforeExitEditModeEventArgs) _
+   Handles UltraGrid1.BeforeExitEditMode
+   If Me.UltraGrid1.ActiveCell Is Nothing Then Return
+   'Perform this action only on the "Bonus" column:
+   If Me.UltraGrid1.ActiveCell.Column.Key <> "Bonus" Then Return
+   'Make sure that a value exists
+   If Me.UltraGrid1.ActiveCell.Text Is Nothing OrElse _
+      Me.UltraGrid1.ActiveCell.Text = String.Empty Then Return
+   Dim currentValue As Integer = _
+      Integer.Parse(Me.UltraGrid1.ActiveCell.Text)
+   Dim baseValue As Integer = _
+      CType(Me.UltraGrid1.ActiveCell.Row.Cells("BaseValue").Value, Integer)
+   If currentValue < baseValue Then
+      Me.lblError.Text = "Current Value cannot be less than Base Value"
+      e.Cancel = True
+   End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_BeforeExitEditMode(
+   object sender, BeforeExitEditModeEventArgs e)
+{
+   if (this.ultraGrid1.ActiveCell == null) return;
+   //Perform this action only on the "Bonus" column:
+   if (this.ultraGrid1.ActiveCell.Column.Key != "Bonus") return;
+   //Make sure that a value exists
+   if (this.ultraGrid1.ActiveCell.Text == null 
+      || (this.ultraGrid1.ActiveCell.Text == string.Empty))return;
+   int currentValue = 
+      int.Parse(this.ultraGrid1.ActiveCell.Text);
+   int baseValue = 
+      (int)this.ultraGrid1.ActiveCell.Row.Cells["BaseValue"].Value;
+   if (currentValue < baseValue)
+   {
+      this.lblError.Text = 
+         "Current Value cannot be less than Base Value";
+      e.Cancel = true;
+   }            
+}
+----
+
+As you can see, understanding these events can provide you with the tools you need to recreate any kind of programming logic in a quick and timely manner with a code base that is very easy to read and maintain.

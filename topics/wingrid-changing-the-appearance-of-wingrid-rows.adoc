@@ -1,0 +1,128 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-appearance-of-wingrid-rows",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{0D08285C-A41F-4F40-B3B5-F2E4B1CCF6E3}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Appearance of WinGrid Rows
+
+== Background
+
+There are many Row Appearance properties which can significantly enhance readability of the WinGrid™ control.
+
+== Questions
+
+* How can I change the background color of every other row?
+* My users need to see all of the text in a cell even if it requires displaying rows with multiple lines. Can I do this?
+* How do I override the background color of a row based on the row content?
+* I don't like the looks of the Row Selectors. Can I use my own image?
+
+== Sample Project
+
+This sample project illustrates some of the Row Appearance options available with UltraWinGrid. The possibilities are almost endless:
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Changing_the_Appearance_of_WinGrid_Rows_01.png[changing the appearance of ultragrid's rows]
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event tells the UltraWinGrid to display cell text on multiple lines, set the alternate row background color to light yellow, turn row selectors off for band 0, and put a picture in the row selectors:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Display cell text on multiple lines
+	e.Layout.Override.RowSizing = RowSizing.AutoFree
+	e.Layout.Override.CellMultiLine = DefaultableBoolean.True
+	' Set alternate row back color
+	e.Layout.Bands(1).Override.RowAlternateAppearance.BackColor = Color.LightYellow
+	' Turn row selectors off for band 0
+	e.Layout.Bands(0).Override.RowSelectors = DefaultableBoolean.False
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Display cell text on multiple lines
+	e.Layout.Override.RowSizing = RowSizing.AutoFree;
+	e.Layout.Override.CellMultiLine = DefaultableBoolean.True;
+	// Set alternate row back color
+	e.Layout.Bands[1].Override.RowAlternateAppearance.BackColor = Color.LightYellow;
+	// Turn row selectors off for band 0
+	e.Layout.Bands[0].Override.RowSelectors = DefaultableBoolean.False;
+}
+----
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow event tells UltraWinGrid to expand the rows of band 0, and set the row background color when the EmployeeID = 30:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand rows in band 0
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+	' Set row background color when EmployeeID = 1
+	If e.Row.Band.Index = 1 AndAlso e.Row.Cells("EmployeeID").Value = 1 Then
+		e.Row.Appearance.BackColor = Color.Blue
+		e.Row.Appearance.BackColor2 = Color.Red
+		e.Row.Appearance.BackGradientStyle = GradientStyle.Horizontal
+		e.Row.Appearance.ForeColor = Color.White
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand rows in band 0
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+	// Set row background color when EmployeeID = 1
+	if(e.Row.Band.Index == 1 && e.Row.Cells["EmployeeID"].Value.ToString() == "1")
+	{	
+		e.Row.Appearance.BackColor = Color.Blue;
+		e.Row.Appearance.BackColor2 = Color.Red;
+		e.Row.Appearance.BackGradientStyle = GradientStyle.Horizontal;
+		e.Row.Appearance.ForeColor = Color.White;
+	}
+}
+----
+
+== Review
+
+This sample project introduces the developer to almost unlimited Row Appearance options.

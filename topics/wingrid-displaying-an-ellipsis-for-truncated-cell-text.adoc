@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-an-ellipsis-for-truncated-cell-text",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{10DA2AAC-C111-429E-9914-0E264BCD9AD9}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying an Ellipsis for Truncated Cell Text
+
+The following code demonstrates how to use the TextTrimming property of the CellAppearance object to display an ellipsis when the text of a Cell is too long to fit within the visible area of the cell.
+
+.Note
+[NOTE]
+====
+This does not apply to multi-line cells.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub Display_an_Ellipsis_for_Truncated_Cell_Text_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.Override.CellAppearance.TextTrimming = _
+	  TextTrimming.EllipsisCharacter
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void Display_an_Ellipsis_for_Truncated_Cell_Text_Load(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Override.CellAppearance.TextTrimming = 
+	  TextTrimming.EllipsisCharacter;
+}
+----

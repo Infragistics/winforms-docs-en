@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlayoutmanager-using-the-winlayoutmanager components",
+    "controlName": ["WinLayoutManagers"],
+    "tags": ["How Do I","Layouts"],
+    "guid": "{F6686794-5A84-43C1-B063-76D22230D8DE}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the WinLayoutManager Components
+
+WinGridBagLayoutManager™ and WinFlowLayoutManager™ components are exposed in the Infragistics.Win Assemblies. The following section explains the functionality of these classes and their implementation.
+
+To accomplish the Row Layout functionality, a layout engine exists in the Win Assembly. This class is derived from a base layout manager class named  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.layoutmanagerbase.html[LayoutManagerBase]"] , which exposes the infrastructure required for a layout engine including a collection of items and basic layout information about each (e.g., the minimum size and preferred size for each item).
+
+The Flow Layout Manager class provides a simple positioning of items arranging them from left to right (or top to bottom, depending upon the orientation) based on their preferred size. The GridBagLayoutManager utilizes an additional set of constraints to determine how to best size and position the items. The GridBagLayoutManager can be thought of as a way to use a set of invisible columns and rows, and positioning the items based on those cells. The items are positioned within those cells, based on the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.igridbagconstraint~originx.html[Origin X]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~originy.html[Origin Y]"]  of its  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint.html[GridBagConstraint]"] . Each item can span one or more columns or rows using  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~spanx.html[Span X]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~spany.html[Span Y]"] . The layout manager determines the extent of each column and row based on the available area and the constraints of all the visible items including their  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.ilayoutitem~minimumsize.html[Minimum Size]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.ilayoutitem~preferredsize.html[Preferred Size]"] , as well as their Insets,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~weightx.html[Weight X]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~weighty.html[Weight Y]"] . The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~anchor.html[Anchor]"]  property of the GridBagConstraint determines where the item is positioned within its " _cells_ " and. The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.gridbagconstraint~fill.html[Fill]"]  property determines if the item will be stretched to fill the " _cells_ " it occupies.
+
+== Implementing A Layout
+
+The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutmanagerbase.html[ControlLayoutManagerBase]"]  provides the basic framework for a component that utilizes a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.layoutmanagerbase.html[LayoutManagerBase]"]  instance to position controls. The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutmanagerbase~containercontrol.html[ContainerControl]"]  property indicates the control whose children will be positioned by the element. This class uses the .Net extender provider architecture to add three properties to each control contained by the associated ContainerControl; these include MinimumSize, PreferredSize, and IncludeInLayout.  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutitem~includeinlayout.html[IncludeInLayout]"]  determines whether a control will be manipulated (i.e., have its size and/or position altered) by the element; the default value is True, so all controls in the associated ContainerControl will be affected by the element.  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutitem~preferredsize.html[PreferredSize]"]  is the size at which the control is best displayed (by default this size is the current size of the control).  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutitem~minimumsize.html[MinimumSize]"]  is the minimum size at which the control should be displayed.
+
+.Note
+[NOTE]
+====
+Certain layout managers that only affect position may not utilize this information.
+====
+
+image::Images/Understanding_the_Layout_Managers_02.PNG[shows the properties window for a control that can interact with the layout controls.]
+
+Just as with the intrinsic .Net layout-related properties mentioned above, the area of the ContainerControl in which the child controls will be positioned is the DisplayRectangle property of the control. This area may be further-adjusted using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutmanagerbase~margins.html[Margins]"]  property of the element. The child controls are automatically positioned when the Layout event of the ContainerControl is invoked, and also when the various constraints for the items are changed. The element has methods (  pick:[win-forms="Suspend Layout"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.controllayoutmanagerbase~resumelayout.html[Resume Layout]"] ) for temporarily suspending the automatic positioning. This can be useful if there will be many changes to the constraints for the child controls (e.g., changing all the preferred sizes; changing the origin, span, etc., of the GridBagConstraint).
+
+Two layout elements exist in the Misc Assembly - UltraFlowLayoutManager and UltraGridBagLayoutManager.
+
+The UltraFlowLayoutManager utilizes a FlowLayoutManager to position controls. The element exposes four additional properties - Orientation,Alignment, Horizontal Gap and Vertical Gap.  pick:[win-forms="link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultraflowlayoutmanager~orientation.html[Orientation]"]  determines whether the controls are positioned horizontally (i.e., from left to right) or vertically (i.e., from top to bottom). The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.flowlayoutmanager~alignment.html[Alignment]"]  property determines how the items are arranged with their logical row - e.g., when the Orientation is set to horizontal and the alignment is set to Center, which is the default value, all the controls in a single row are centered within the display area of the control.  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.flowlayoutmanager~verticalgap.html[Vertical Gap]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.layout.flowlayoutmanager~horizontalgap.html[Horizontal Gap]"]  determine both the amount of space vertically and horizontally between each item, and also the amount of space between the edge of the display area and the items it contains.
+
+The UltraGridBagLayoutManager utilizes the same GridBagLayoutManager engine that was written for the Grid's Row Layout functionality. The element utilizes the .Net extender provider architecture to add an additional property named GridBagConstraint to each control in the ContainerControl. This is an instance of the Infragistics.Win.Layout.GridBagConstraint class and provides additional information used by the GridBagLayoutManager to manage the size and position of the items.

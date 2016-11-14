@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-a-picture-in-a-cell",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{C2412EA3-C4C7-4F6F-A0CF-040DC167B08B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying a Picture in a Cell
+
+[start=1]
+. You must set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~imagebackground.html[ImageBackground]"]  property of the CellAppearance object to a picture object, or to an image in an image list.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).CellAppearance.ImageBackground = _
+	  Me.ImageList1.Images(0)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].CellAppearance.ImageBackground = 
+	  this.imageList1.Images[0];
+}
+----
+
+[start=2]
+. Place the above snippets into the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event of the WinGrid™.
+[start=3]
+. Run the project and you should see the picture you loaded as the background of the first column on band 0.

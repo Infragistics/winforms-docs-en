@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-about-wincontrolcontainereditor",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["Getting Started"],
+    "guid": "{BC527A2A-9FCD-4F68-9098-BB225F51C4A7}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinControlContainerEditor
+
+The WinControlContainerEditor™ component provides you with the ability to easily embed non-editor controls (e.g. WinChart™, WinGrid™), custom user controls, or any other control into one of the Infragistics Windows Forms suite of controls that support embeddable editors.
+
+Embedding a control that does not implement  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"]  interface into an embeddable editor supporting control is a non-trivial process that requires in depth knowledge about EmbeddableEditors™. The WinControlContainerEditor component takes care of the complexity and plumbing required to implement the IProvidesEmbeddableEditor interface, and therefore offers you an easier approach to accomplish this.
+
+You can embed your control into one of the Infragistics embeddable editor supporting controls using the design-time available UltraControlContainerEditor component that you place on your Form. Alternatively, an instance of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor.html[ControlContainerEditor]"]  object can be created in code and its properties can be set to achieve the same. You will just have to assign your control to the ControlContainerEditor and then embed the ControlContainerEditor within an embeddable editor supporting control (e.g. cell of a WinGrid) through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~editorcomponent.html[EditorComponent]"]  property.
+
+.Note
+[NOTE]
+====
+The EditorComponent property replaces the existing EditorControl property.
+====
+
+== Related Topics
+
+* link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-ultracontrolcontainereditor-component.html[Embed Any Control within WinGrid cell using UltraControlContainerEditor Component]
+* link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-controlcontainereditor-object.html[Embed Any Control within WinGrid cell using ControlContainerEditor Object]
+* link:wincontrolcontainereditor-embed-different-editors-within-wingrid-cells-of-the-same-column.html[Embed Different Editors within WinGrid cells of the Same Column]

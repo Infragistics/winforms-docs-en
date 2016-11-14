@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-new-3d-chart-rendering-engine-whats-new-2006-1",
+    "controlName": [],
+    "tags": ["Charting"],
+    "guid": "{5948FC03-6A2D-4B70-9C86-B62798C46B44}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= New 3D Chart-Rendering Engine
+
+Our 3D Charts that we’re delivering in the 2006 volume 1 release are unlike anything we've offered before. The 3D rendering engine has been revamped so that you can quickly generate 3D charts that are visually stunning and give depth to chart graphs.
+
+Our new 3D engine is based entirely on GDI+ and managed code, allowing it to run in a partially trusted context without having to install a 3D engine such as OpenGL® and DirectX® on the client or server.
+
+Much of the reason for the tremendous improvement in the 3D chart appearance is that our 3D rendering engine utilizes perspective projection to render the charts. In perspective projection, visual rays converge at a point based on the eye position. For example, the parallel lines of a railway track are perceived to meet at a distant point at the horizon, even though the lines never actually converge. Our 3D charts use the same type of perspective distortion in order to provide visually appealing charts.
+
+In addition to perspective projection, our 3D charts now use lighting effects, which add depth and texture to the 3D visual presentation of our charts.
+
+image::Images/WinChart_New_3D_Chart_Rendering_Engine_Whats_New_2006_1_01.png[new 3d chart rendering engine in ultrachart]
+
+== Related Topics
+
+link:winchart-new-and-improved-3d-charts-whats-new-2006-1.html[New and Improved 3D Charts]

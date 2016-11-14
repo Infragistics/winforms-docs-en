@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-wincontrolcontainereditor-embed-editing-or-rendering-control-within-wingrid-cell-using-controlcontainereditor-component-smart-tag",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["Application Scenarios"],
+    "guid": "{61E659F6-AD1F-40F0-BE9E-5C398564E982}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinControlContainerEditor Smart Tag
+
+In Visual Studio 2005/2008 (.NET Framework 2.0/3.5), each Infragistics Windows Forms control/component is equipped with a Smart Tag. By simply selecting the control/component, a Smart Tag anchor appears. When you click this anchor, a pop-up panel appears, providing you with quick and easy access to the most common properties and settings of the control/component.
+
+The WinControlContainerEditor™ Smart Tag contains the name of the component, as well as the following items:
+
+* Appearance - Provides common tasks involving the appearance, look, and feel of the control.
+* Behavior - Provides easy access to properties that govern how the control behaves on the form.
+
+See below for a description of the above mentioned items, as well as the item's corresponding property in the properties grid.
+
+image::Images\WinControlContainerEditor_Smart_Tag.png[]
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance|Description|Corresponding Property
+
+|Apply Owner Appearance To Editing Control
+|If the check-box is checked, the Owner or Parent control’s Appearance settings are set to the Editing control.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~applyownerappearancetoeditingcontrol.html[ApplyOwnerAppearanceToEditingControl]"] 
+
+|Apply Owner Appearance To Rendering Control
+|If the check-box is checked, the Owner or Parent control’s Appearance settings are set to the Rendering control.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~applyownerappearancetorenderingcontrol.html[ApplyOwnerAppearanceToRenderingControl]"] 
+
+|====
+
+ 
+
+[options="header", cols="a,a,a"]
+|====
+|Behavior|Description|Corresponding Property
+
+|Editing Control Property Name
+|Name of a property exposed by the Editing control that provides value to the owner control.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrolpropertyname.html[EditingControlPropertyName]"] 
+
+|Rendering Control Property Name
+|Name of a property exposed by the Rendering control that provides value to the owner control.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrolpropertyname.html[RenderingControlPropertyName]"] 
+
+|Editing Control
+|The name of the control that will be used for Editing.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrol.html[EditingControl]"] 
+
+|Rendering Control
+|The name of the control that will be used for Rendering.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrol.html[RenderingControl]"] 
+
+|====

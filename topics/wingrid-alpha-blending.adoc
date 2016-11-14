@@ -1,0 +1,132 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-alpha-blending",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{3CCB8DED-2954-4178-91B8-B7BF45E62BCA}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Alpha Blending
+
+== Background
+
+For many applications, appearance is everything. WinGrid™ supports alpha blending as a standard part of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object, so the developer can blend images through  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement.html[UIElements]"]  to provide a more pleasant user experience.
+
+== Questions
+
+* How do I blend the grid background picture through my cells?
+
+== Solutions
+
+Set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~backcoloralpha.html[BackcolorAlpha]"]  property of the row to use the Alpha Level, and set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~alphalevel.html[AlphaLevel]"]  property to blend the desired amount of the underlying pixels into the element's background. The AlphaLevel property values range from 0 to 255 with 0 representing 100% blend (opaque) and 255 representing 0% blend (transparent). So, to blend 25% of the underlying pixels, set the AlphaLevel to 192.
+
+== Sample Project
+
+This sample project illustrates the use of alpha blending to blend an underlying picture into the cells:
+
+image::Images\WinGrid_Alpha_Blending_01.png[alpha blending in ultragrid]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event applies a picture to the background of the grid:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.Appearance.ImageBackground = Image.FromFile("Program Dependent Files\Sunset.jpg")
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Appearance.ImageBackground = Image.FromFile(@"Program Dependent Files\Sunset.jpg");
+}
+----
+
+The Other Element Events Region contains the following event handlers:
+
+* chkRowAlpha.CheckedChanged - The code in the CheckBox.CheckedChanged event turns the alpha blending off and on based on the checked status of the element:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub chkRowAlpha_CheckedChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles chkRowAlpha.CheckedChanged
+	If Me.chkRowAlpha.Checked = True Then
+		Me.UltraGrid1.DisplayLayout.Override.RowAppearance.BackColorAlpha = _
+		  Alpha.UseAlphaLevel
+		Me.UltraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = _
+		  Me.spnAlphaLevel.Value
+	Else
+		Me.UltraGrid1.DisplayLayout.Override.RowAppearance.BackColorAlpha = Alpha.Opaque
+		Me.UltraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = 0
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void chkRowAlpha_CheckedChanged(object sender, System.EventArgs e)
+{
+	if(this.chkRowAlpha.Checked == true)
+	{
+		this.ultraGrid1.DisplayLayout.Override.RowAppearance.BackColorAlpha = 
+		  Alpha.UseAlphaLevel;
+		this.ultraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = 
+		  short.Parse(this.spnAlphaLevel.Value.ToString());
+	}
+	else
+	{
+		this.ultraGrid1.DisplayLayout.Override.RowAppearance.BackColorAlpha = 
+		  Alpha.Opaque;
+		this.ultraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = 0;
+	}
+}
+----
+
+* spnAlphaLevel.ValueChanged - The code in the spnAlphaLevel.ValueChanged event sets the alpha level as the value in the element changes:
+
+*In Visual Basic:*
+
+----
+Private Sub spnAlphaLevel_ValueChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles spnAlphaLevel.ValueChanged
+	Me.UltraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = Me.spnAlphaLevel.Value
+End Sub
+----
+
+*In C#:*
+
+----
+private void spnAlphaLevel_ValueChanged(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Override.RowAppearance.AlphaLevel = 
+	  short.Parse(this.spnAlphaLevel.Value.ToString());
+}
+----
+
+== Review
+
+This sample project shows how to apply a picture to the background of the grid and have a percentage of the picture blend through to the cells of a row.

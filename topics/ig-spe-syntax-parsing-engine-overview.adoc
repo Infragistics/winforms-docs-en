@@ -1,0 +1,195 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-syntax-parsing-engine-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "d25cae98-de3f-462b-a9a4-758b6a9d52d9",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0068456Z"
+}
+|metadata|
+////
+
+= Syntax Parsing Engine Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the Syntax Parsing Engine.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349119720, Introduction >>
+* <<_Ref349119733, Syntax parsing engine summary >>
+* <<_Ref349119743, Syntax parsing engine assemblies >>
+* <<_Ref349119748, Analysis Performed by the Syntax Parsing Engine >>
+* <<_Ref349119763, Analysis Not Performed by the Syntax Parsing Engine >>
+* <<_Ref349119780, Related Content >>
+
+[[_Ref349119720]]
+== Introduction
+
+[[_Ref349119733]]
+
+=== Syntax parsing engine summary
+
+The Infragistics Syntax Parsing Engine is a set of classes capable of taking a definition for the grammatical structure of a type of document and producing analyzers to read and process those documents.
+
+Main features:
+
+* Creating analyzers
+* Performing analysis
+
+Other features:
+
+* Analyzing grammar
+* Identifying Errors and Ambiguities
+* Generating C# and Visual Basic language class files
+
+[[_Ref349119743]]
+
+=== Syntax parsing engine assemblies
+
+The main part of the Syntax Parsing Engine is included in the following assembly:
+
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.v{ProductVersion}.dll]
+
+In addition there are several predefined languages in external assemblies:
+
+* C# - link:{ApiPlatform}documents.textdocument.csharp.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.CSharp.v{ProductVersion}.dll]
+* Visual Basic - link:{ApiPlatform}documents.textdocument.visualbasic.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.VisualBasic.v{ProductVersion}.dll]
+* Transact-SQL - link:{ApiPlatform}documents.textdocument.tsql.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.TSql.v{ProductVersion}.dll]
+
+.Note
+[NOTE]
+====
+The internal grammatical structure of these languages, including the structure of the syntax tree created for documents parsed with them, is subject to change. With this in mind, if you are writing code to inspect or traverse a syntax tree you should use the nested link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[SymbolNames] class constants in each language definition to identify the name of each node's symbol (rather than the symbol name as a string literal), so that future changes to these symbol names will be highlighted via compilation errors. In addition, it is good practice to write logic to test assumptions and debug assert about the number and type of child nodes on a particular node so changes to a node’s child structure in the future will be detected and handled gracefully.
+====
+
+[[_Ref349119748]]
+== Analysis Performed by the Syntax Parsing Engine
+
+[[_Ref349119755]]
+
+=== Lexical analysis
+
+Lexical analysis breaks the text into meaningful chunks of text, called tokens. The tokens represent a type of textual element and the text which was read by the lexer to recognize that element.
+
+Example of C# content:
+
+*In C#:*
+
+[source,csharp]
+----
+int x = 12.3;
+----
+
+After parsing the above C# content, the lexer will produce the following tokens (the text for insignificant tokens or tokens which always represent the same text has been omitted):
+
+* IdentifierToken (int)
+* WhitespaceToken
+* IdentifierToken (x)
+* WhitespaceToken
+* EqualsToken
+* WhitespaceToken
+* RealLiteralToken (12.3)
+* SemicolonToken
+
+Tokens produced by the lexer are either identified as significant (keywords, identifiers, braces …) or insignificant (comments or whitespace).
+
+[[_Ref349119759]]
+
+=== Syntax analysis
+
+Syntax analysis reads the significant tokens from left to right and creates a hierarchical grammatical structure as specified by the grammar definition. In the example above these are the significant tokens:
+
+* IdentifierToken (int)
+* IdentifierToken (x)
+* EqualsToken
+* RealLiteralToken (12.3)
+* SemicolonToken
+
+The hierarchical grammatical structure holding the tokens is called a “Syntax Tree” and this is how it will look and where the tokens above are going to reside (highlighted with yellow background):
+
+* ClassKeyword
+* IdentifierToken
+* OpenBraceToken
+* MethodDeclaration
+** Modifiers
+** 
+
+*** …
+
+** Type
+** 
+
+*** IdentifierToken
+
+** IdentifierToken
+** ParametersList
+** 
+
+*** …
+
+** OpenBraceToken
+** 
+
+*** VariableDeclarationStatement
+*** 
+
+**** Type
+**** 
+
+***** IdentifierToken
+
+**** IdentifierToken
+**** EqualsToken
+**** Expression
+**** 
+
+***** RealLiteralToken
+
+**** SemicolonToken
+
+** CloseBraceToken
+
+* CloseBraceToken
+
+[[_Ref349119763]]
+== Analysis Not Performed by the Syntax Parsing Engine
+
+[[_Ref349119767]]
+
+=== Semantic analysis
+
+The Syntax Parsing Engine does not perform semantic analysis, which determines the meaning of the code. Therefore, many errors will not be detected by the syntax analyzer because they are semantic errors. An example of a semantic error is the C# code snippet used above (int x = 12.3), which is grammatically correct. The “int” type however cannot accept the value 12.3, because it stores only integer values.
+
+[[_Ref349119780]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-error-handling.html[Error Handling]
+|The topics in this group explain the error handling mechanisms of the Syntax Parsing Engine.
+
+|====

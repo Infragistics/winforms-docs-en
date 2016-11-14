@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarcombo-create-custom-date-buttons",
+    "controlName": ["WinCalendarCombo"],
+    "tags": ["How Do I"],
+    "guid": "{D04AF41A-A6F6-4D1E-AD05-6479C2FE8E04}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create Custom Date Buttons
+
+You may find it necessary when using the WinCalenderCombo™ to add a  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendarcombo.datebutton.html[DateButton]"]  that performs some custom action when clicked. For example, when the button is clicked it makes the selected date two days from the current date. The following example code shows how you could implement this functionality.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub Create_Custom_Date_Buttons_Load(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim dateButton As CalendarCombo.DateButton
+	dateButton = Me.UltraCalendarCombo1.DateButtons.Add("Custom", _
+	  DateButtonType.Today, "2 days from now")
+	dateButton.Type = DateButtonType.Custom
+	dateButton.Date = DateTime.Today.AddDays(2)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void Create_Custom_Date_Buttons_Load(object sender, EventArgs e)
+{
+	Infragistics.Win.UltraWinSchedule.CalendarCombo.DateButton dateButton;
+	dateButton = this.ultraCalendarCombo1.DateButtons.Add("Custom", 
+	  DateButtonType.Today, "2 days from now");
+	dateButton.Type = DateButtonType.Custom; 
+	dateButton.Date = System.DateTime.Today.AddDays(2);
+}
+----

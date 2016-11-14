@@ -1,0 +1,114 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-syntax-errors",
+    "controlName": [],
+    "tags": [],
+    "guid": "c984ae73-aab0-4557-b44a-9f2efbebdd3c",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0638513Z"
+}
+|metadata|
+////
+
+= Syntax Errors
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349568126, Syntax Errors >>
+* <<_Ref349568130, Overview >>
+* <<_Ref349568133, Example >>
+* <<_Ref349568137, Related Content >>
+
+[[_Ref349568126]]
+== Syntax Errors
+
+[[_Ref349568130]]
+
+=== Overview
+
+Syntax errors occur when the text in a document being analyzed does not conform to the required structure defined by the grammar. Syntax error detection is more complicated than lexical error detection because the analyzer not only needs to make the best guess about what the problem might be, but it also needs to make the best guess about what the solution might be so it can provide meaningful error messages.
+
+[[_Ref349568133]]
+
+=== Example
+
+Example productions for a non-terminal symbol named VariableDeclarationStatement:
+
+VariableDeclarationStatement → Type IdentifierToken SemicolonToken
+
+VariableDeclarationStatement → Type IdentifierToken EqualsToken Expression SemicolonToken
+
+VariableDeclarationStatement → VarKeyword IdentifierToken EqualsToken Expression SemicolonToken
+
+Document content to be parsed: “int x = ;”
+
+During lexical analysis the following significant tokens will be produced:
+
+* <IdentifierToken, “int”>
+* <IdentifierToken, “x”>
+* <EqualsToken, “=”>
+* <SemicolonToken, “;”>
+
+The Syntax Parsing Engine will start syntax analyzing the significant tokens and when it gets to the “SemicolonToken” it will assume an error is found because none of the above production bodies match the processed tokens. The Syntax Parsing Engine will try to figure out what is either missing from the text or not supposed to be there. To do this the parser determines all possible productions that can be built in the current state and tries to match all of them with the tokens parsed.
+
+.Note
+[NOTE]
+====
+At this point the first “IdentifierToken” has been reduced to a Type non-terminal symbol, because of the context in which it is used.
+====
+
+It is clear that the first production is not the one that should be created, because that production has a semicolon immediately after the identifier (and not an equal sign as in the example text). Also it is clear that the third production is not the one to be created, because that production starts with a “var” keyword. In this case the only possible production is the second and based on its definition it is clear that the error in this case is a missing expression.
+
+[[_Ref349568137]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-lexical-errors.html[Lexical Errors]
+|This topic explains the lexical errors found by the Syntax Parsing Engine.
+
+| link:ig-spe-error-handling-strategies.html[Error Handling Strategies]
+|The topics in this group explain the strategies used during the syntax analyzing of the document to identify syntax errors.
+
+| link:ig-spe-semantic-errors.html[Sementic Errors]
+|This topic explains semantic errors, which are not handled by the Syntax Parsing Engine.
+
+|====

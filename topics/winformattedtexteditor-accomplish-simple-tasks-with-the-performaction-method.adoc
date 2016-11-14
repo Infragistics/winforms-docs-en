@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-accomplish-simple-tasks-with-the-performaction-method",
+    "controlName": [],
+    "tags": ["Events","How Do I"],
+    "guid": "{28C13959-1365-4ACB-8B91-FAD583DDE786}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T13:28:41Z"
+}
+|metadata|
+////
+
+= Accomplish Simple Tasks with the PerformAction Method
+
+WinFormattedTextEditor™ includes several  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor~keyactionmappings.html[KeyActionMappings]"]  that make the end user's word processing experience more convenient. Each of these mappings have an associated action along with them. For a complete list of default KeyActionMappings, see link:winformattedtexteditor-default-keyactionmappings-for-winformattedtexteditor.html[Default KeyActionMappings for WinFormattedTextEditor]. By using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~performaction(formattedlinkeditoraction).html[PerformAction]"]  method off the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object, you can perform any action through code that the end user can perform with their keyboard.
+
+The following code demonstrates how to clear the contents of the WinFormattedTextEditor control by selecting all the text and then deleting it. If you want to make sure that the document is blank when your application opens, you can place this code in the FormLoad event.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.FormattedLinkLabel
+Private Sub Accomplish_Simple_Tasks_with_the_PerformAction_Method_Load( _
+  ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UltraFormattedTextEditor1.EditInfo.PerformAction( _
+          FormattedLinkEditorAction.SelectAll)
+        Me.UltraFormattedTextEditor1.EditInfo.PerformAction( _
+          FormattedLinkEditorAction.Delete)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.FormattedLinkLabel;
+private void Accomplish_Simple_Tasks_with_the_PerformAction_Method_Load( 
+  object sender, 
+  EventArgs e)
+{
+        this.ultraFormattedTextEditor1.EditInfo.PerformAction(
+          FormattedLinkEditorAction.SelectAll);
+        this.ultraFormattedTextEditor1.EditInfo.PerformAction(
+          FormattedLinkEditorAction.Delete);
+}
+----

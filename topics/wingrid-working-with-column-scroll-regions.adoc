@@ -1,0 +1,166 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-column-scroll-regions",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Layouts"],
+    "guid": "{2A642201-E01A-4048-A9C6-BB6B08B9928F}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Column Scroll Regions
+
+== Background
+
+A grid with many columns can be difficult to work with on a display with restricted real estate. Column Scroll Regions allow the user or developer to split the display horizontally so different columns can display in each Region.
+
+Another use of column scroll regions is to give you a way to "lock" columns into a region so they will display continuously regardless of what columns show in another region. However, you should note that beginning with Version 3 of the WinGrid™, analogous behavior can be implemented more simply and easily using the built-in Fixed Headers functionality. Fixed Headers give you the ability to lock columns and column groups and prevent them from scrolling by simply setting properties of the Layout and the Header. For more information, see link:wingrid-specifying-fixed-columns.html[Specify Fixed Columns].
+
+While the new Fixed Headers functionality will be the better alternative for locking columns in most instances, there are still reasons why you might want to use the older method described below. One is that Fixed Headers functionality does not operate when the new Row Layout functionality is also enabled. If for any reason you need manual control over the locking of columns, the scroll region technique described here will still prove useful.
+
+== Questions
+
+* How can I split the screen horizontally so I can display more than one set of columns?
+* How can I "lock" columns so they always display?
+* How can I restrict the user so additional Column Scroll Regions can not be created?
+
+== Solutions
+
+The user can split the screen horizontally by dragging the Column Split Box to the Right.
+
+To "lock" columns into a Column Scroll Region, the developer can set the .ExclusiveColumnScrollRegion property of the Column object to an active ColumnScrollRegion. When this property is set the column does not display in the remaining regions.
+
+To remove the Column Split Box from the display so the User can not create a Column Scroll Region, set .DisplayLayout.MaxColScrollRegions = 1.
+
+== Sample Project
+
+This sample project illustrates some of the options relating to Column Scroll Regions. The 'Split Column Scroll Region' button splits region into two new regions. The 'One Column Scroll Region' button removes all but region 0 and sets the MaxColScrollRegions to 1 so the Column Split Box no longer displays. The 'Exclusive Column Scroll Region' button moves column 0 from both bands into region 0:
+
+image::Images\WinGrid_Working_with_Column_Scroll_Regions_01.png[working with column scroll regions in ultragrid]
+
+The UltraWinGrid Events region contains the following event handlers:
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow event causes the rows to expand as they display:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand all rows
+	e.Row.ExpandAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand all rows
+	e.Row.ExpandAll();
+}
+----
+
+Button Events
+
+The Button Events region contains the following event handlers:
+
+* btnSplitColumnScrollRegion.Click - The code in the btnSplitColumnScrollRegion Click event sets the Max Regions to 10 and splits Region 0:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSplitColumnScrollRegion_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSplitColumnScrollRegion.Click
+	' Set max ColScrollRegions and split Region 0
+	Me.UltraGrid1.DisplayLayout.MaxColScrollRegions = 10
+	Me.UltraGrid1.DisplayLayout.ColScrollRegions(0).Split()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSplitColumnScrollRegion_Click(object sender, EventArgs e)
+{
+	// Set max ColScrollRegions and split Region 0
+	this.ultraGrid1.DisplayLayout.MaxColScrollRegions = 10;
+	this.ultraGrid1.DisplayLayout.ColScrollRegions[0].Split();
+}
+----
+
+* btnExclusiveColumnScrollRegion.Click - The code in the btnExclusiveColumnScrollRegion Click event moves column 0 from both bands to ColScrollRegion 0:
+
+*In Visual Basic:*
+
+----
+Private Sub btnExclusiveColumnScrollRegion_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnExclusiveColumnScrollRegion.Click
+	' Place column 0 from both bands into ColScrollRegion 0
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Header.ExclusiveColScrollRegion = _
+	  Me.UltraGrid1.DisplayLayout.ColScrollRegions(0)
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns(0).Header.ExclusiveColScrollRegion = _
+	  Me.UltraGrid1.DisplayLayout.ColScrollRegions(0)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnExclusiveColumnScrollRegion_Click(object sender, EventArgs e)
+{
+	// Place column 0 from both bands into ColScrollRegion 0
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Header.ExclusiveColScrollRegion =
+	  this.ultraGrid1.DisplayLayout.ColScrollRegions[0];
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns[0].Header.ExclusiveColScrollRegion =
+	  this.ultraGrid1.DisplayLayout.ColScrollRegions[0];
+}
+----
+
+* btnOneColumnScrollRegion.Click - The code in the btnOneColumnScrollRegion Click event removes all but region 0 and set the max regions to 1:
+
+*In Visual Basic:*
+
+----
+Private Sub btnOneColumnScrollRegion_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnOneColumnScrollRegion.Click
+	' Remove all but ColScrollRegion 0 and set Max Regions to 1
+	If Me.UltraGrid1.DisplayLayout.ColScrollRegions.Count > 1 Then
+		Dim intPtr As Integer
+		For intPtr = Me.UltraGrid1.DisplayLayout.ColScrollRegions.Count - 1 To 1 Step -1
+			Me.UltraGrid1.DisplayLayout.ColScrollRegions.Remove( _
+			  Me.UltraGrid1.DisplayLayout.ColScrollRegions(intPtr))
+		Next
+	End If
+	Me.UltraGrid1.DisplayLayout.MaxColScrollRegions = 1
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnOneColumnScrollRegion_Click(object sender, EventArgs e)
+{
+	// Remove all but ColScrollRegion 0 and set Max Regions to 1
+	if(this.ultraGrid1.DisplayLayout.ColScrollRegions.Count > 1)
+	{
+		for(int intPtr = this.ultraGrid1.DisplayLayout.ColScrollRegions.Count-1; 
+		  intPtr >= 1; intPtr--)
+		{
+			this.ultraGrid1.DisplayLayout.ColScrollRegions.Remove(
+			  this.ultraGrid1.DisplayLayout.ColScrollRegions[intPtr]);
+		}
+	}
+}
+----
+
+== Review
+
+This sample project illustrates some of the ways to use Column Scroll Regions to increase grid usability with a large number of columns are displayed.

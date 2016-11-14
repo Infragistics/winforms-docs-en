@@ -1,0 +1,166 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2011-volume-1",
+    "controlName": [],
+    "tags": ["Breaking Changes","Known Issues"],
+    "guid": "ee621bba-27ed-409d-aa64-91c20d1c6eb3",  
+    "buildFlags": [],
+    "createdOn": "2011-03-15T20:30:52.3419574Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2011 Volume 1
+
+== Assembly and Namespace Changes
+
+In this release, there are name changes in the Infragistics.Excel and Infragistics.Documents following assemblies, as shown in the tables below.
+
+== Table 1: Changed names in the Infragistics.Excel and Infragistics.Documents assemblies
+
+[options="header", cols="a,a"]
+|====
+|Old Name|New Name
+
+|Infragistics4.Excel.v11.1.dll
+|Infragistics4.Documents.Excel.v11.1.dll
+
+|Infragistics3.Excel.v11.1.dll
+|Infragistics3.Documents.Excel.v11.1.dll
+
+|Infragistics4.Documents.v11.1.dll
+|Infragistics4.Documents.Reports.v11.1.dll
+
+|Infragistics.Excel.dll
+|Infragistics.Documents.Excel.dll
+
+|Infragistics.Documents.dll
+|Infragistics.Documents.Reports.dll
+
+|====
+
+== Table 2: Changed namespace names under the Infragistics.Excel assembly
+
+[options="header", cols="a,a"]
+|====
+|Old Name|New Name
+
+|Infragistics.Excel
+|Infragistics.Documents.Excel
+
+|Infragistics.Excel.CalcEngine
+|Infragistics.Documents.Excel.CalcEngine
+
+|Infragistics.Excel.Serialization.Excel2007
+|Infragistics.Documents.Excel.Serialization.Excel2007
+
+|====
+
+== Table 3: Changed namespace names under the Infragistics.Documents assembly
+
+[options="header", cols="a,a"]
+|====
+|Old Name|New Name
+
+|Infragistics.Documents
+|Infragistics.Documents.Reports
+
+|Infragistics.Documents.Graphics
+|Infragistics.Documents.Reports.Graphics
+
+|Infragistics.Documents.HTML
+|Infragistics.Documents.Reports.HTML
+
+|Infragistics.Documents.PDF
+|Infragistics.Documents.Reports.PDF
+
+|Infragistics.Documents.Report
+|Infragistics.Documents.Reports.Report
+
+|Infragistics.Documents.Report.Band
+|Infragistics.Documents.Reports.Report.Band
+
+|Infragistics.Documents.Report.Bookmarks
+|Infragistics.Documents.Reports.Report.Bookmarks
+
+|Infragistics.Documents.Report.Flow
+|Infragistics.Documents.Reports.Report.Flow
+
+|Infragistics.Documents.Report.Grid
+|Infragistics.Documents.Reports.Report.Grid
+
+|Infragistics.Documents.Report.Index
+|Infragistics.Documents.Reports.Report.Index
+
+|Infragistics.Documents.Report.List
+|Infragistics.Documents.Reports.Report.List
+
+|Infragistics.Documents.Report.Preferences
+|Infragistics.Documents.Reports.Report.Preferences
+
+|Infragistics.Documents.Report.Preferences.PDF
+|Infragistics.Documents.Reports.Report.Preferences.PDF
+
+|Infragistics.Documents.Report.Preferences.Printing
+|Infragistics.Documents.Reports.Report.Preferences.Printing
+
+|Infragistics.Documents.Report.Preferences.XPS
+|Infragistics.Documents.Reports.Report.Preferences.XPS
+
+|Infragistics.Documents.Report.Projection
+|Infragistics.Documents.Reports.Report.Projection
+
+|Infragistics.Documents.Report.QuickList
+|Infragistics.Documents.Reports.Report.QuickList
+
+|Infragistics.Documents.Report.QuickTable
+|Infragistics.Documents.Reports.Report.QuickTable
+
+|Infragistics.Documents.Report.QuickText
+|Infragistics.Documents.Reports.Report.QuickText
+
+|Infragistics.Documents.Report.Section
+|Infragistics.Documents.Reports.Report.Section
+
+|Infragistics.Documents.Report.Segment
+|Infragistics.Documents.Reports.Report.Segment
+
+|Infragistics.Documents.Report.Shapes
+|Infragistics.Documents.Reports.Report.Shapes
+
+|Infragistics.Documents.Report.Table
+|Infragistics.Documents.Reports.Report.Table
+
+|Infragistics.Documents.Report.Text
+|Infragistics.Documents.Reports.Report.Text
+
+|Infragistics.Documents.Report.TOC
+|Infragistics.Documents Reports.Report.TOC
+
+|Infragistics.Documents.Report.Tree
+|Infragistics.Documents.Reports.Report.Tree
+
+|Infragistics.Documents.RTF
+|Infragistics.Documents.Reports.RTF
+
+|Infragistics.Documents.Utils
+|Infragistics.Documents.Reports.Utils
+
+|Infragistics.Documents.XPS
+|Infragistics.Documents.Reports.XPS
+
+|====
+
+== Infragistics Excel
+
+==== New Assembly Reference
+
+The projects containing a reference to the Excel assembly will now require a reference to the new Infragistics.Documents.Core assembly as well. This new Infragistics.Documents.Core assembly is shared by the Excel and Word DOM assemblies.
+
+==== Cell Format
+
+Previously, the CellFormat property on a cell, row or column instance of a Workbook loaded from a file or stream, returned a value initialized with data. For example, the CellFormat.Font.Name returned Arial instead of Null. This was also true for any properties that were not specified in the loaded CellFormat.
+
+Starting with this release, these properties will return the Default value. This indicates that the value is not specified on the CellFormat and the actual value used in the cell is the value either used on the row/column or assumed to be the normal value. To retrieve the resolved values on the cell, use the new GetResolvedCellFormat method.

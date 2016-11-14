@@ -1,0 +1,36 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-improved-logic-of-date-time-intervals-whats-new-2006-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "{1E7521F9-5D9D-4B91-951D-C347B9EFE657}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Improved Logic of Date/Time Intervals
+
+If your chart plots date/time data on a time-scale axis, you can generate the following types of date/time intervals:
+
+* Percentage intervals -- A line Tickmark is shown every  _n_ % along the X-axis from the start date to the end date.
+* Numeric intervals – A number of lines or Tickmarks are shown every  _n_  ticks from the start date to the end date.
+
+By default, the date/time interval is set to Percentage, and the value is 10. Therefore, a Tickmark on the chart will appear at every 10% of the range of data. Considering that standard units of time are not based on 10, labels on a time-scale axis would seem illogical. Notice in the example Gantt chart below that there are certain dates missing along the X-axis.
+
+image::Images/WinChart_Improved_Logic_of_Date_Time_Intervals_Whats_New_2006_1_01.png[improved logic of date/time intervals in ultrachart]
+
+To address this issue, we have improved the logic of date/time intervals in charts that use a time-scale axis. Now you can take advantage of "smart Tickmarks" to allow the Chart control to generate Tickmarks using logical intervals of time (e.g., days, weeks, or months). The example Gantt chart below is using a time-scale axis.
+
+image::Images/WinChart_Improved_Logic_of_Date_Time_Intervals_Whats_New_2006_1_02.png[improved logic of date and time intervals in ultrachart]
+
+== Related Topics
+
+link:chart-display-data-on-a-time-scale-axis.html[Display Data on a Time-Scale Axis]
+
+link:chart-display-labels-at-intervals-on-a-time-scale-axis.html[Displaying Labels at Intervals on a Time-Scale Axis]
+
+link:chart-numeric-set-label-and-date-time-axes.html[Numeric, Set Label, and Date/Time Axes]

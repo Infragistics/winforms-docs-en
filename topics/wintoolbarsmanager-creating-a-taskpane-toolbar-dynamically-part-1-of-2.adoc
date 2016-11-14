@@ -1,0 +1,126 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-creating-a-taskpane-toolbar-dynamically-part-1-of-2",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{D10BF470-6413-46F7-9330-79B345650BB4}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a TaskPane Toolbar Dynamically (Part 1 of 2)
+
+This topic will be looking at how to create the UltraTaskPaneToolbar dynamically.
+
+Starting in Infragistics Windows Forms 2005 Volume 1 a new toolbar type, based off of the Microsoft Office task pane style, was introduced called the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"] . The task pane is implemented as a derived UltraToolbar, and therefore behaves much like a standard toolbar, which may be dragged and displayed within a floating window. The content area of the UltraTaskPaneToolbar is occupied by the Control associated with the selected  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"] .
+
+[start=1]
+. Create a new Windows Application
+[start=2]
+. After that, we need to add the references that we will be using, to the project, since we aren't dragging the control onto the form, these references won't be added automatically. There are three references we need to add to the project:
+
+** Infragistics.Shared.v{ProductVersion}
+** Infragistics.Win.UltraWinToolbars.v{ProductVersion}
+** Infragistics.Win.v{ProductVersion}
+
+[start=3]
+. We will be using the Form Load event as the event where we will be creating items dynamically. Therefore, we need to wire up the form load event.
+
+In C#, with the form selected, click the Events Button (lighting bolt on properties grid) and double click on the Load event, to get
+
+a Form Load event added to your source code.
+
+In Visual Basic, go to the source code and select from the first drop down Form Events, and from the second drop down select Load, this will add
+
+a Form Load event to your source code.
+[start=4]
+. In the code behind we need to include the UltraWinToolbars namespace. So at the top of your code behind page put the following code.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinToolbars
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinToolbars;
+----
+
+[start=5]
+. The first item that has to be created is the UltraToolbarsManager.
+
+*In Visual Basic:*
+
+----
+' Create an UltraToolbarsManager
+Dim myToolbarManager As New UltraToolbarsManager
+' Set the Container that the UltraToolbarsManager will be docked within
+myToolbarManager.DockWithinContainer = Me
+----
+
+*In C#:*
+
+----
+// Create an UltraToolbarsManager
+UltraToolbarsManager myToolbarManager = new UltraToolbarsManager();
+// Set the Container that the UltraToolbarsManager will be docked within
+myToolbarManager.DockWithinContainer = this;
+----
+
+[start=6]
+. Once the UltraToolbarsManager is created, you are ready to create the UltraTaskPaneToolbar.
+
+*In Visual Basic:*
+
+----
+' Create a new UltraTaskPaneToolbar
+Dim myTaskPaneToolbar As New UltraTaskPaneToolbar("myTaskPane")
+' Set the docking location of our UltraTaskPaneToolbar
+myTaskPaneToolbar.DockedPosition = DockedPosition.Right
+' Set the Text for the control
+myTaskPaneToolbar.Text = "myTaskPane"
+' Add the Toolbar to the UltraToolbarsManager Toolbars Collection
+myToolbarManager.Toolbars.AddRange(New UltraToolbar() {myTaskPaneToolbar})
+----
+
+*In C#:*
+
+----
+// Create a new UltraTaskPaneToolbar
+UltraTaskPaneToolbar myTaskPaneToolbar = new UltraTaskPaneToolbar("myTaskPane");
+// Set the docking location of our UltraTaskPaneToolbar
+myTaskPaneToolbar.DockedPosition = DockedPosition.Right;
+// Set the Text for the control
+myTaskPaneToolbar.Text = "myTaskPane";
+// Add the Toolbar to the UltraToolbarsManager Toolbars Collection
+myToolbarManager.Toolbars.AddRange(new UltraToolbar[] {myTaskPaneToolbar});
+----
+
+[start=7]
+. Above are the basics to creating the UltraTaskPaneToolbar. To add the arrows that are shown in the TaskPaneToolbar header, or the drop down menu that is shown in that same header you have to add the following lines of code to your project.
+
+*In Visual Basic:*
+
+----
+' Show the two arrows that allow navigation between the TaskPaneTools
+myTaskPaneToolbar.NavigationButtonStyle = NavigationButtonStyle.History
+' Show the Drop Down Menu in the TaskPaneToolbar Header area
+myTaskPaneToolbar.AllowNavigationViaMenu = DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+// Show the two arrows that allow navigation between the TaskPaneTools
+myTaskPaneToolbar.NavigationButtonStyle = NavigationButtonStyle.History;
+// Show the Drop Down Menu in the TaskPaneToolbar Header area
+myTaskPaneToolbar.AllowNavigationViaMenu = DefaultableBoolean.True;
+----

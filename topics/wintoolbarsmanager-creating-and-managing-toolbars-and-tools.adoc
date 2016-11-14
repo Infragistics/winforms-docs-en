@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-creating-and-managing-toolbars-and-tools",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{30A4DE25-B885-4AAA-8F96-7F46743FF27B}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating and Managing Toolbars and Tools
+
+WinToolbarsManager™ provides a large amount of support and integration with Visual Studio .NET to make it easier to create and manage toolbars and menus. The following is a breakdown of the support available.
+
+== Creating and Modifying Toolbars and Tools
+
+There are two primary ways of interacting with the UltraToolbarsManager at design time:
+
+* link:wintoolbarsmanager-in-place-designer.html[In Place Designer] - Allows interaction with the UltraToolbarsManager within the form/user control designer including the ability to create new tools and toolbars, reposition toolbars, modify the properties of tools and toolbars, etc.
+* link:wintoolbarsmanager-design-time-customize-dialog-box.html[Customize Dialog] - Interact with the UltraToolbarsManager via a separate Customize Dialog.
+
+== UltraToolbarsManager Context Menu
+
+The context menu displayed when you right-click UltraToolbarsManager contains menu items for additional functionality to make the design-time use easier.
+
+image::Images/WinToolbarsManager_Designer_Overview_01.png[shows the ultratoolbarsmanager design time context menu]
+
+The following is a summary of those additional options in the context menu:
+
+* About -- Displays the About dialog box for the element. The dialog box includes license and version information for the element.
+* Custom Property Pages... -- Displays a modal dialog common to all Infragistics components that provides an alternative way to browse and change the properties of the component than can be achieved using Visual Studio's Properties window.
+* Customize... -- Displays the design time link:wintoolbarsmanager-design-time-customize-dialog-box.html[customize dialog] that can be used to create and modify toolbars and tools.
+* Hide Toolbars -- Shows or hides all the toolbars managed by the component.
+* Load/Save Configuration -- Displays a dialog to load or save an UltraToolbarsManager layout containing the tools, toolbars and properties of the UltraToolbarsManager to/from binary or SOAP formatted files.
+* In Place Designer -- Enables or disables the link:wintoolbarsmanager-in-place-designer.html[in place editing] functionality of the UltraToolbarsManager.
+* Import Tools and Toolbars... -- Displays a wizard that allows you to import tools and/or toolbars from an existing UltraToolbarsManager layout file. Note that this is different than loading a layout in that the existing tools and toolbars remain unaffected.

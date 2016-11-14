@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-winganttview-smart-tag",
+    "controlName": ["WinGanttView"],
+    "tags": ["Design Environment"],
+    "guid": "{88D491B2-2C0A-4770-9BF2-1975141B5AEB}",  
+    "buildFlags": [],
+    "createdOn": "2010-12-03T12:04:38Z"
+}
+|metadata|
+////
+
+= WinGanttView Smart Tag
+
+In Visual Studio 2005/2008 (.NET Framework 2.0/3.5), each Infragistics Windows Forms control/component is equipped with a Smart Tag. By simply selecting the control/component, a Smart Tag anchor appears. When you click this anchor, a pop-up panel appears, providing you with quick and easy access to the most common properties and settings of the control/component.
+
+The WinGanttView™ Smart Tag contains the name of the component, as well as the following items:
+
+* *Appearance:* Provides common tasks involving the appearance, look, and feel of the control.
+* *Data:* Refers to any underlying data the control is using such as data sources and data members.
+* *Date/Time Interval:* Refers to the Timeslot settings required by the control that is displayed along a horizontal timeline.
+* *Layout:* Offers properties that will determine where and how the control is placed on the form.
+
+See below for a description of the above mentioned items, as well as the item's corresponding property in the properties grid.
+
+image::Images/WinGanttView_Smart_Tag_01.png[]
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance|Description|Corresponding Property
+
+|Calendar Look
+|Upon clicking the drop-down, all available WinCalendarLook controls on the form will be displayed.
+| pick:[win-forms="link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarlook.html[CalendarLook]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Data|Description|Corresponding Property
+
+|Calendar Info
+|Upon clicking the drop-down, all available WinCalendarInfo controls on the form will be displayed.
+| pick:[win-forms="link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarinfo.html[CalendarInfo]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Date/Time Interval|Description|Corresponding Property
+
+|Additional Intervals
+|Defines the date or time intervals that appear above the primary Interval.
+| pick:[win-forms="link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.timeline~additionalintervals.html[AdditionalIntervals]"] 
+
+|Primary Interval
+|Defines the smallest time interval in effect for the control. Represented in the bottom row of column headers.
+| pick:[win-forms="link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.timeline~primaryinterval.html[PrimaryInterval]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Layout|Description|Corresponding Property
+
+|Dock
+|Choose to dock the WinGanttView top, right, bottom, left, fill, and none.
+|Dock
+
+|====
+
+|====
+|====

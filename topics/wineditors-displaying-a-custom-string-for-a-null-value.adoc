@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-displaying-a-custom-string-for-a-null-value",
+    "controlName": ["WinEditors"],
+    "tags": ["Data Presentation","How Do I"],
+    "guid": "{AB13BDDE-499F-4AE3-A01B-36585C45E750}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying a Custom String for a Null Value
+
+This topic applies to all WinEditor™ controls.
+
+The WinEditor controls provide the ability to display a custom string when the control's current value is null (Nothing in VB). An example of the usefulness of this feature is illustrated in the following scenario:
+
+An WinComboEditor™ control, with its DropDownStyle property set to DropDownList, has no selected item. Rather than displaying no text, the developer might want to display a custom string, for example, "(No item selected)".

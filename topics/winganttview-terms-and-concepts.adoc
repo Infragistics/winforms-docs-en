@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-terms-and-concepts",
+    "controlName": ["WinGanttView"],
+    "tags": [],
+    "guid": "{987F70BC-0BA6-4A8B-86B6-5C5819F0DE6E}",  
+    "buildFlags": [],
+    "createdOn": "2010-05-01T11:03:45Z"
+}
+|metadata|
+////
+
+= Terms and Concepts
+
+This topic will brief you through the various terms and concepts that are used with the WinGanttView™ control.
+
+== Tasks:
+
+Each individual work items that together form individual units of work that compose a project are called  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task.html[Tasks]"] . Tasks are created to break the project work down into smaller pieces. A typical task will have a name, a start and end date/time, and duration. Tasks are hierarchical in nature; a task can contain sub-tasks.
+
+== Project:
+
+A  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.project.html[project]"]  can be used to logically organize tasks. The project's link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.project~startdate.html[StartDate] is used as a reference date by all tasks associated with that project.
+
+== Summary Tasks:
+
+A task that contains child tasks is referred to as a summary task. A summary task is depicted as a summary bar in the chart user interface of the GanttView control. The start and end times for a summary task are read-only, as its start and end times depend upon its sub-tasks.
+
+== Milestones:
+
+A  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~milestone.html[Milestone]"]  is a reference point that marks a major event in a project and is used to monitor the project's progress. Any task with zero duration is automatically displayed as a milestone. You can also mark any other task of any duration as a milestone.
+
+== Deadlines:
+
+Each task can have a  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~deadline.html[Deadline]"]  assigned, which will appear as a symbol on the task.
+
+== Dependencies:
+
+A task can be linked to another task, in such a way as to make the completion of one task dependent on the beginning or completion of another task. A task whose completion is contingent on the status of another task is said to have a  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~dependencies.html[dependency]"] .
+
+== Constraints:
+
+When a start or finish date is set for a task in a Project, it means that the task should not start or finish any earlier than that date.  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~constraint.html[Constraints]"]  can be applied to tasks to impose restrictions on the way that the task's start and finish dates are calculated.
+
+== Related Topics
+
+* link:winganttview-about-winganttview.html[About WinGanttView]
+* link:winganttview-using-winganttview.html[Using WinGanttView]

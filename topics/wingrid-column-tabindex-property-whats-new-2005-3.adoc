@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-column-tabindex-property-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{853FDEDF-60CE-4330-9CE6-87DE974A723B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Column TabIndex Property
+
+By default the WinGrid™ determines the tab order of the cells based on their locations. You can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~tabindex.html[TabIndex]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  to control the order in which the WinGrid traverses cells of a row when the tab key is used. The default value of the property is *-1* . This means that the column will follow the default tab order. You can set the TabIndex of two or more columns to the same value in which case the tab order of those columns will follow the default tab order. You can also specify the TabIndex only on some columns and leave the TabIndex to the default value on other columns. In such a scenario the columns that have their TabIndex set to non-default values take precedence over the columns that do not have their TabIndex set.
+
+== Related Topic
+
+link:wingrid-controlling-the-tab-order-of-cells.html[Controlling the Tab Order of Cells]

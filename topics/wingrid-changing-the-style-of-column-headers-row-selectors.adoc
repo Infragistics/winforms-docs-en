@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-style-of-column-headers-row-selectors",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{32F5A692-5E09-4B6A-A7F8-FE354D1D130E}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Style of Column Headers/Row Selectors
+
+The WinGrid™ control allows you to easily specify the visual appearance of column headers and row selectors. By default, the row selectors will take on the style of the column headers. However, if necessary, you can change the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorstyle.html[RowSelectorStyle]"]  property in order to assign the row selectors a different style than that of the column headers.
+
+== To access the HeaderStyle and RowSelectorStyle properties:
+
+[start=1]
+. Right-click on the WinGrid and select "UltraWinGrid Designer" from the context-sensitive menu.
+[start=2]
+. In the designer on the right-hand side, select the option "Control Settings".
+[start=3]
+. Scroll down and expand the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property.
+[start=4]
+. Scroll down to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property and expand it.
+[start=5]
+. In the Override property, scroll down to either the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headerstyle.html[HeaderStyle]"]  or  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorstyle.html[RowSelectorStyle]"]  properties. Both of these properties have the same four following settings:
+
+* *Default* - The default setting.
+
+**  _HeaderStyle_  - takes on the 'Standard' style
+**  _RowSelectorStyle_  - takes on the 'XPThemed' style
+
+* *Standard* - A flat 'Office 2000' look, with hot-tracking.
+* *WindowsXPCommand* - The look and feel of a command button in Windows XP, with orange hot-tracking around all four sides of the element.
+* *XPThemed* - The themed look drawn by the Windows XP operating system.
+
+The WinGrid in the example image below has its HeaderStyle set to 'WindowsXPCommand' and RowSelectorStyle set to 'Standard'. If you were to run the application with these settings, you would get similar results in which mousing over the column headers produces orange hot-tracking, and the row selectors do not hot-track.
+
+image::Images/WinGrid_Header_Style_and_Row_Selector_Style_01.png[change the style of column headers and row selectors in ultragrid]

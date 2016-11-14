@@ -1,0 +1,197 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-localizing-cell-display-format",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Localization"],
+    "guid": "{BE0441D7-0C92-419B-9780-92EBACC88C0E}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Localizing Cell Display Format
+
+== Background
+
+Many projects must deal with multiple cultures such as English, German and Japanese. The .NET Framework provides excellent support for multiple cultures, and this capability is passed through to the WinGrid™ user.
+
+== Questions
+
+* How do I format dates for different cultures?
+
+== Solutions
+
+Use a combination of Predefined formats and System.Globalization.CultureInfo objects to format the columns to any specific culture.
+
+Commonly used Predefined number formats include:
+
+[options="header", cols="a,a"]
+|====
+|Format Character|Description and Associated Properties
+
+|*c, C*
+|Currency format
+
+|*d, D*
+|Decimal format.
+
+|*e, E*
+|Scientific (exponential) format.
+
+|*f, F*
+|Fixed-point format.
+
+|*g, G*
+|General format.
+
+|*n, N*
+|Number format
+
+|*r, R*
+|Roundtrip format, which ensures that numbers converted to strings will have the same value when they are converted back to numbers.
+
+|*x, X*
+|Hexadecimal format.
+
+|====
+
+Commonly used Predefined date formats include:
+
+[options="header", cols="a,a,a"]
+|====
+|Format Character|Associated Property/Description|Example Format Pattern (en-US)
+
+|*d*
+|ShortDatePattern
+|MM/dd/yyyy
+
+|*D*
+|LongDatePattern
+|dddd, dd MMMM yyyy
+
+|*f*
+|Full date and time (long date and short time)
+|dddd, dd MMMM yyyy HH:mm
+
+|*F*
+|FullDateTimePattern (long date and long time)
+|dddd, dd MMMM yyyy HH:mm:ss
+
+|*g*
+|General (short date and short time)
+|MM/dd/yyyy HH:mm
+
+|*G*
+|General (short date and long time)
+|MM/dd/yyyy HH:mm:ss
+
+|*m, M*
+|MonthDatePattern
+|MMMM dd
+
+|*r, R*
+|RFC1123Pattern
+|ddd, dd MMM yyyy HH':'mm':'ss 'GMT'
+
+|*s*
+|SortableDateTimePattern (based on ISO 8601) using local time
+|yyyy'-'MM'-'dd'T'HH':'mm':'ss
+
+|*t*
+|ShortTimePattern
+|HH:mm
+
+|*T*
+|LongTimePattern
+|HH:mm:ss
+
+|*u*
+|UniversalSortableDateTimePattern using universal time
+|yyyy'-'MM'-'dd HH':'mm':'ss'Z'
+
+|*U*
+|Full date and time (long date and long time) using universal time
+|dddd, dd MMMM yyyy HH:mm:ss
+
+|*y, Y*
+|YearMonthPattern
+|yyyy MMMM
+
+|====
+
+.Note
+[NOTE]
+====
+See the format string topics for NumberFormat and DateTimeFormat in the Visual Studio .NET documentation for a complete list of predefined formats available in the CultureInfo object, along with information on how to create custom culture date formats. You can also refer to the link:wingrid-format-strings.html[Format Strings] topic in the UltraWinGrid help system, which contains much of the same information.
+====
+
+*Warning:* When using the .Format property of the WinGrid use the CultureInfo format characters, not the .NET "format" characters and character strings. If you want a short date, use "d" which is valid as a DateTimeFormat, the "Short Date" value is not valid for the CultureInfo object.
+
+== Sample Project
+
+This sample project displays date columns for US English, German, and Japanese:
+
+image::Images\WinGrid_Localizing_Cell_Display_Format_01.png[localizing cell display format in ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event tells the grid to fit the columns in the available space, right aligns the columns, creates a CultureInfo object for each of the three cultures, sets the date .Format and .FormatInfo properties:
+
+*In Visual Basic:*
+
+----
+Imports System.Globalization
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Fit columns
+	e.Layout.AutoFitStyle = AutoFitStyle.ExtendLastColumn
+	' Create culture objects
+	Dim cultureENUS As CultureInfo = CultureInfo.CreateSpecificCulture("en-us")
+	Dim cultureDEDE As CultureInfo = CultureInfo.CreateSpecificCulture("de-de")
+	Dim cultureJAJP As CultureInfo = CultureInfo.CreateSpecificCulture("ja-jp")
+	' Set date formats
+	e.Layout.Bands(0).Columns("OrderDate").Format = "d"
+	e.Layout.Bands(0).Columns("OrderDate").FormatInfo = cultureENUS
+	e.Layout.Bands(0).Columns("RequiredDate").Format = "d"
+	e.Layout.Bands(0).Columns("RequiredDate").FormatInfo = cultureDEDE
+	e.Layout.Bands(0).Columns("ShippedDate").Format = "d"
+	e.Layout.Bands(0).Columns("ShippedDate").FormatInfo = cultureJAJP
+End Sub
+----
+
+*In C#:*
+
+----
+using System.Globalization;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Fit columns
+	e.Layout.AutoFitStyle = AutoFitStyle.ExtendLastColumn;
+	// Create culture objects
+	CultureInfo cultureENUS = CultureInfo.CreateSpecificCulture("en-us");
+	CultureInfo cultureDEDE = CultureInfo.CreateSpecificCulture("de-de");
+	CultureInfo cultureJAJP = CultureInfo.CreateSpecificCulture("ja-jp");
+	// Set date formats
+	e.Layout.Bands[0].Columns["OrderDate"].Format = "d";
+	e.Layout.Bands[0].Columns["OrderDate"].FormatInfo = cultureENUS;
+	e.Layout.Bands[0].Columns["RequiredDate"].Format = "d";
+	e.Layout.Bands[0].Columns["RequiredDate"].FormatInfo = cultureDEDE;
+	e.Layout.Bands[0].Columns["ShippedDate"].Format = "d";
+	e.Layout.Bands[0].Columns["ShippedDate"].FormatInfo = cultureJAJP;
+}
+----
+
+== Review
+
+This sample project shows how to create CultureInfo objects and apply them to columns to display numbers and dates in different culture specific formats.

@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-disable-and-remove-items-and-groups",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{9D53317B-89CC-4693-8119-537A2CAFAA48}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Disable and Remove Items and Groups
+
+This topic shows you how items and groups added to WinListView™ can be disabled by setting the Item object’s  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem~enabled.html[Enabled]"]  property to false. You will also know how items or an entire group can be removed from WinListView using the Items or Groups object’s  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection~remove.html[Remove]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection~removeat.html[RemoveAt]"]  methods.
+
+*In Visual Basic:*
+
+----
+'Disable a item
+ Me.ultraListView2.Groups[0].Items[1].Enabled = False
+'Disable a Group
+Me.ultraListView1.Groups[1].Enabled = False
+----
+
+*In C#:*
+
+----
+//Disable a item
+  this.ultraListView2.Groups[0].Items[1].Enabled = false;
+//Disable a Group
+  this.ultraListView1.Groups[1].Enabled = false;
+----
+
+Screenshot of WinListView with a disabled Group
+
+image::Images\WinListView_Disable_or_remove_items_and_groups_02.png[]
+
+Screenshot of WinListView with an Item disabled
+
+image::Images\WinListView_Disable_or_remove_items_and_groups_01.png[]
+
+*In Visual Basic:*
+
+----
+' Remove a particular item from a group in WinListView 
+Me.ultraListView1.Items.Remove(Me.ultraListView1.Groups(0).Items(1)) 
+' Remove an item from the specified ordinal(Postion of the items how it was created,and not the visible postion)postion 
+Me.ultraListView1.Items.RemoveAt(3) 
+' Remove a Group 
+Me.ultraListView1.Groups.Remove(Me.ultraListView1.Groups(1)) 
+'Remove a Group by specifying the Ordinal Postion 
+Me.ultraListView1.Groups.RemoveAt(0)
+----
+
+*In C#:*
+
+----
+// Remove a particular item from a group in WinListView
+ this.ultraListView1.Items.Remove(this.ultraListView1.Groups[0].Items[1]);
+// Remove an item from the specified ordinal(Postion of the items how it was created,and not the visible postion)postion
+ this.ultraListView1.Items.RemoveAt(3);
+// Remove a Group
+this.ultraListView1.Groups.Remove(this.ultraListView1.Groups[1]);
+//Remove a Group by specifying the Ordinal Postion
+this.ultraListView1.Groups.RemoveAt(0);
+----

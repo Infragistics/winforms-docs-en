@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-hide-tiles-using-close-button",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I"],
+    "guid": "{4F13DBD3-6D4B-4957-A8E5-3864A061A40C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Hide Tiles using Close Button
+
+A close button can be shown on the Tiles at run-time that allows your end users to hide a tile. It can be displayed for a specific tile by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile.html[UltraTile]"]  object’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~showclosebutton.html[Settings.ShowCloseButton]"]  property to True or can be displayed on all tiles by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel.html[UltraTilePanel]"]  object’s TileSettings.ShowCloseButton property to True.
+
+.Note
+[NOTE]
+====
+When the end user clicks the close button, the tile will be hidden from view and there is no way for the end user to show the hidden tiles. The only way to show a hidden tile is by manually setting its visible property to True.
+====
+
+This topic assumes that you have an UltraTilePanel dropped onto your form. For information on adding tiles to the TilePanel control, please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
+
+*In Visual Basic:*
+
+----
+' Display Close button for a specific tile 
+' tile1.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.[True] 
+' Display Close button for all tiles on the UltraTilePanel control 
+Me.ultraTilePanel1.TileSettings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.[True]
+----
+
+*In C#:*
+
+----
+// Display Close button for a specific tile
+// tile1.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.True;
+// Display Close button for all tiles on the UltraTilePanel control
+this.ultraTilePanel1.TileSettings.ShowCloseButton =    Infragistics.Win.DefaultableBoolean.True;
+----
+
+image::Images/WinTilePanel_Hide_Tiles_using_the_Close_Button_01.png[]
+
+== Related Topics
+
+* link:wintilepanel-styling-the-close-button.html[Styling the Close Button]

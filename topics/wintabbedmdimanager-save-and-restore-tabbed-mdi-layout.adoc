@@ -1,0 +1,106 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintabbedmdimanager-save-and-restore-tabbed-mdi-layout",
+    "controlName": ["WinTabbedMdiManager"],
+    "tags": ["Layouts"],
+    "guid": "{9C079CBE-8436-4B5F-AAD1-C9C70D243BBB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Restore a Tabbed MDI Layout
+
+The current layout of your Tabbed MDI application (including tab position and tab groups) can be saved to a storage stream for later recall. You can use this feature to provide the user with a way to save the state of the application between sessions, or to provide customized views of your application as needs dictate.
+
+.Note
+[NOTE]
+====
+that saving the layout of the tabbed MDI interface does not persist the forms or any of the data they contain, only their arrangement. If the number of forms in your application changes between the time the layout was saved and the time it was reloaded, those changes will not be reflected in the layout. Your application must ensure that the applications state is the same as it was when the layout was saved in order to exactly restore the Tabbed MDI interface to its previous state.
+====
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~storetab_ev.html[StoreTab]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~restoretab_ev.html[RestoreTab]"]  events must be implemented in order to properly load and save the tab layout. Refer to the link:wintabbedmdimanager-tab-serialization.html[Tab Serialization overview] for more information.
+
+To use the ToolClick event of the toolbar to save and load the layout of an WinTabbedMDIManager™.
+
+*In Visual Basic:*
+
+----
+Imports System.IO
+...
+Private Sub UltraToolbarsManager1_ToolClick(ByVal sender As System.Object, _
+  ByVal e As Infragistics.Win.UltraWinToolbars.ToolClickEventArgs) _
+  Handles UltraToolbarsManager1.ToolClick
+	If e.Tool.Key = "Load" Then
+		' Creates the file stream
+		Dim fs As FileStream = Nothing
+		Try
+			' Finds the specified file
+			fs = New FileStream("TabbedMDILayout.dat", FileMode.Open)
+			fs.Seek(0, IO.SeekOrigin.Begin)
+			' Loads the layout from the file
+			Me.UltraTabbedMdiManager1.LoadFromBinary(fs)
+		Catch ex As FileNotFoundException
+			MessageBox.Show(ex.Message.ToString())
+		Finally
+			' Closes the file stream
+			fs.Close()
+		End Try
+	ElseIf e.Tool.Key = "Save" Then
+		' Creates the file stream
+		Dim fs As New FileStream("TabbedMDILayout.dat", FileMode.OpenOrCreate)
+		fs.Seek(0, SeekOrigin.Begin)
+		' Saves the layout to the file stream
+		Me.UltraTabbedMdiManager1.SaveAsBinary(fs)
+		' Closes the file stream
+		fs.Close()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using System.IO;
+...
+private void ultraToolbarsManager1_ToolClick(object sender, 
+  Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+{
+	if(e.Tool.Key == "Load")
+	{
+		// Creates the file stream
+		FileStream fs = null; 
+		try 
+		{ 
+			// Finds the specified file
+			fs = new FileStream("TabbedMDILayout.dat", FileMode.Open);
+			fs.Seek(0, SeekOrigin.Begin); 
+			// Loads the layout from the file
+			this.ultraTabbedMdiManager1.LoadFromBinary(fs); 
+		} 
+		catch (FileNotFoundException ex)
+		{
+			MessageBox.Show(ex.Message.ToString());
+		}
+		finally 
+		{ 
+			// Closes the file stream  
+			fs.Close(); 
+		} 
+	}
+	else if(e.Tool.Key =="Save")
+	{
+		// Creates the file stream
+		FileStream fs = new FileStream(@"TabbedMDILayout.dat", 
+		  FileMode.OpenOrCreate); 
+		fs.Seek(0, SeekOrigin.Begin); 
+		// Saves the layout to the file stream
+		this.ultraTabbedMdiManager1.SaveAsBinary(fs); 
+		// Closes the file stream
+		fs.Close();
+	}
+}
+----

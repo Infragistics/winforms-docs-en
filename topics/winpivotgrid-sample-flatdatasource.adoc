@@ -1,0 +1,896 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpivotgrid-sample-flatdatasource",
+    "controlName": [],
+    "tags": [],
+    "guid": "ce2d6784-d28b-4028-b89c-a1f28f2b46b0",  
+    "buildFlags": [],
+    "createdOn": "2014-09-12T03:50:24.4656757Z"
+}
+|metadata|
+////
+
+= Sample FlatDataSource
+
+In C#:
+
+[source,csharp]
+----
+using Infragistics.Olap.FlatData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace PivotGrid_FlatDataBinding
+{
+    public class SampleFlatData
+    {
+        #region Properties
+        private const int DATA_COUNT = 100;
+        private List<CityData> _cities;
+        private List<string> _sports;
+        private readonly Random _rand = new Random(DateTime.Now.Millisecond);
+        #endregion
+        public SampleFlatData()
+        { }
+        #region Methods
+        #region Initialize SportsData
+        public IEnumerable<SportsData> InitSportsData()
+        {
+            InitCities();
+            InitSports();
+            var items = new List<SportsData>();
+            for (var i = 0; i < DATA_COUNT; i++)
+            {
+                int a = _rand.Next(1, 10);
+                var dt = DateTime.Today.AddDays(a);
+                var cityNation = _cities[_rand.Next(_cities.Count)];
+                var newItem = new SportsData
+                {
+                    Sport = _sports[_rand.Next(_sports.Count)],
+                    Nation = cityNation.Nation,
+                    City = cityNation.City,
+                    Budget = _rand.Next(1000, 1000000) / 100,
+                    Players = _rand.Next(1, 100),
+                    Date = dt
+                };
+                items.Add(newItem);
+            }
+            return items;
+        }
+        #endregion
+        #region Populate SportsData
+        private void InitSports()
+        {
+            if (_sports != null)
+                return;
+            _sports = new List<string>
+                {
+                    "Soccer",
+                    "Soccer",
+                    "Bandy",
+                    "Baseball",
+                    "Billiards",
+                    "Boules",
+                    "Bowling",
+                    "Bridge",
+                    "Chess",
+                    "Cricket",
+                    "Dance",
+                    "Floorball",
+                    "Golf",
+                    "Karate",
+                    "Korfball",
+                    "Lifesaving",
+                    "Motorcycle Racing",
+                    "Mountaineering and Climbing",
+                    "Netball",
+                    "Orienteering",
+                    "Pelota Vasca",
+                    "Polo",
+                    "Powerboating",
+                    "Racquetball",
+                    "Roller Sports",
+                    "Rugby",
+                    "Softball",
+                    "Sport climbing",
+                    "Squash",
+                    "Sumo",
+                    "Surfing",
+                    "Tug of War",
+                    "Underwater Sports",
+                    "Water Ski",
+                    "Wushu"
+                };
+        }
+        #endregion
+        #region Populate CityData
+        private void InitCities()
+        {
+            if (_cities != null)
+                return;
+            _cities = new List<CityData>
+                {
+                    new CityData {City = "Los Angeles", Nation = "United States"},
+                    new CityData {City = "San Diego", Nation = "United States"},
+                    new CityData {City = "San Francisco", Nation = "United States"},
+                    new CityData {City = "Detroit", Nation = "United States"},
+                    new CityData {City = "Miami", Nation = "United States"},
+                    new CityData {City = "Fort Lauderdale", Nation = "United States"},
+                    new CityData {City = "New York", Nation = "United States"},
+                    new CityData {City = "Pittsburgh", Nation = "United States"},
+                    new CityData {City = "Philadelphia", Nation = "United States"},
+                    new CityData {City = "Chicago", Nation = "United States"},
+                    new CityData {City = "Denver", Nation = "United States"},
+                    new CityData {City = "Minneapolis", Nation = "United States"},
+                    new CityData {City = "Kansas City", Nation = "United States"},
+                    new CityData {City = "Memphis", Nation = "United States"},
+                    new CityData {City = "New Orleans", Nation = "United States"},
+                    new CityData {City = "Dallas", Nation = "United States"},
+                    new CityData {City = "Houston", Nation = "United States"},
+                    new CityData {City = "Washington D.C.", Nation = "United States"},
+                    new CityData {City = "Seattle", Nation = "United States"},
+                    new CityData {City = "Portland", Nation = "United States"},
+                    new CityData {City = "Phoenix", Nation = "United States"},
+                    new CityData {City = "Tuscon", Nation = "United States"},
+                    new CityData {City = "Salt Lake City", Nation = "United States"},
+                    new CityData {City = "Boston", Nation = "United States"},
+                    new CityData {City = "Cheyenne", Nation = "United States"},
+                    new CityData {City = "Santa Fe", Nation = "United States"},
+                    new CityData {City = "Virginia Beach", Nation = "United States"},
+                    new CityData {City = "London", Nation = "United Kingdom"},
+                    new CityData {City = "Manchester", Nation = "United Kingdom"},
+                    new CityData {City = "Newcastle", Nation = "United Kingdom"},
+                    new CityData {City = "Belfast", Nation = "United Kingdom"},
+                    new CityData {City = "Cardiff", Nation = "United Kingdom"},
+                    new CityData {City = "Birmingham", Nation = "United Kingdom"},
+                    new CityData {City = "Glasgow", Nation = "United Kingdom"},
+                    new CityData {City = "Dublin", Nation = "Ireland"},
+                    new CityData {City = "Cork", Nation = "Ireland"},
+                    new CityData {City = "Galway", Nation = "Ireland"},
+                    new CityData {City = "Paris", Nation = "France"},
+                    new CityData {City = "Milan", Nation = "Italy"},
+                    new CityData {City = "Venice", Nation = "Italy"},
+                    new CityData {City = "Barcelona", Nation = "Spain"},
+                    new CityData {City = "Seville", Nation = "Spain"},
+                    new CityData {City = "Madrid", Nation = "Spain"},
+                    new CityData {City = "Berlin", Nation = "Germany"},
+                    new CityData {City = "Munich", Nation = "Germany"},
+                    new CityData {City = "Dusseldorf", Nation = "Germany"},
+                    new CityData {City = "Cologne", Nation = "Germany"},
+                    new CityData {City = "Frankfurt", Nation = "Germany"},
+                    new CityData {City = "Warsaw", Nation = "Poland"},
+                    new CityData {City = "Athens", Nation = "Greece"},
+                    new CityData {City = "Sophia", Nation = "Bulgaria"},
+                    new CityData {City = "Amsterdam", Nation = "Netherlands"},
+                    new CityData {City = "Bruges", Nation = "Belgium"},
+                    new CityData {City = "Lisbon", Nation = "Portugal"},
+                    new CityData {City = "Leningrad", Nation = "Russia"},
+                    new CityData {City = "Moscow", Nation = "Russia"},
+                    new CityData {City = "Tel Aviv", Nation = "Israel"},
+                    new CityData {City = "Jerusalem", Nation = "Israel"},
+                    new CityData {City = "Beijing", Nation = "China"},
+                    new CityData {City = "Shanghai", Nation = "China"},
+                    new CityData {City = "Hong Kong", Nation = "China"},
+                    new CityData {City = "Zhengzhou", Nation = "China"},
+                    new CityData {City = "Mumbai", Nation = "India"},
+                    new CityData {City = "Hyderabad", Nation = "India"},
+                    new CityData {City = "Ahmedabad", Nation = "India"},
+                    new CityData {City = "Chennai", Nation = "India"},
+                    new CityData {City = "Chennai", Nation = "India"},
+                    new CityData {City = "Chennai", Nation = "India"},
+                    new CityData {City = "Bangkok", Nation = "Thailand"},
+                    new CityData {City = "Phnom Penh", Nation = "Cambodia"},
+                    new CityData {City = "Ho Chi Minh City", Nation = "Vietnam"},
+                    new CityData {City = "Seoul", Nation = "South Korea"},
+                    new CityData {City = "Tokyo", Nation = "Japan"},
+                    new CityData {City = "Nagano", Nation = "Japan"},
+                    new CityData {City = "Osaka", Nation = "Japan"},
+                    new CityData {City = "Vancouver", Nation = "Canada"},
+                    new CityData {City = "Calgary", Nation = "Canada"},
+                    new CityData {City = "Montreal", Nation = "Canada"},
+                    new CityData {City = "Toronto", Nation = "Canada"},
+                    new CityData {City = "Mexicy City", Nation = "Mexico"},
+                    new CityData {City = "Rio de Janeiro", Nation = "Brazil"},
+                    new CityData {City = "La Pz", Nation = "Bolivia"},
+                    new CityData {City = "Lima", Nation = "Peru"},
+                    new CityData {City = "Quito", Nation = "Ecuador"},
+                    new CityData {City = "Bogota", Nation = "Columbia"},
+                    new CityData {City = "Buenos Aires", Nation = "Argentina"},
+                    new CityData {City = "Havana", Nation = "Cuba"},
+                    new CityData {City = "Port au-Prince", Nation = "Haiti"},
+                    new CityData {City = "Managua", Nation = "Nicaragua"},
+                    new CityData {City = "Antigua", Nation = "Guatemala"},
+                    new CityData {City = "San Jose", Nation = "Costa Rica"},
+                    new CityData {City = "Reykjavik", Nation = "Iceland"},
+                    new CityData {City = "Oslo", Nation = "Norway"},
+                    new CityData {City = "Stockholm", Nation = "Sweden"},
+                    new CityData {City = "Helsinki", Nation = "Finland"},
+                    new CityData {City = "Tirana", Nation = "Albania"},
+                    new CityData {City = "El-Biar", Nation = "Algeria"},
+                    new CityData {City = "Budapest", Nation = "Hungary"},
+                    new CityData {City = "Salzburg", Nation = "Austria"},
+                    new CityData {City = "Sidney", Nation = "Australia"},
+                    new CityData {City = "Perth", Nation = "Australia"},
+                    new CityData {City = "Newcastle", Nation = "Australia"},
+                    new CityData {City = "Timbu", Nation = "Bhutan"},
+                    new CityData {City = "Fada", Nation = "Chad"},
+                    new CityData {City = "Bangui", Nation = "Central African Republic"},
+                    new CityData {City = "Ikelemba", Nation = "Congo"},
+                    new CityData {City = "Auckland", Nation = "New Zealand"},
+                    new CityData {City = "Christchurch", Nation = "New Zealand"},
+                    new CityData {City = "Durban", Nation = "South Africa"},
+                    new CityData {City = "Cape Town", Nation = "South Africa"},
+                    new CityData {City = "Cairo", Nation = "Egypt"},
+                    new CityData {City = "Amman", Nation = "Jordan"},
+                    new CityData {City = "Kingston", Nation = "Jamaica"}
+                };
+        }
+        #endregion
+        #endregion
+    }
+    #region CityData class
+    public class CityData
+    {
+        public string City { get; set; }
+        public string Nation { get; set; }
+    } 
+    #endregion
+    #region SportsData class
+    public class SportsData
+    {
+        [System.ComponentModel.Category("Location")]
+        public string Nation { get; set; }
+        [System.ComponentModel.Category("Location")]
+        public string City { get; set; }
+        [System.ComponentModel.Category("Sport")]
+        public string Sport { get; set; }
+        [System.ComponentModel.Category("Metrics")]
+        public double Budget { get; set; }
+        [System.ComponentModel.Category("Metrics")]
+        public int Players { get; set; }
+        [System.ComponentModel.Category("Calendar")]
+        public System.DateTime Date { get; set; }
+    } 
+    #endregion
+}
+----
+
+In Visual Basic:
+
+[source,vb]
+----
+Imports Infragistics.Olap.FlatData
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Text
+Namespace PivotGrid_FlatDataBinding
+      Public Class SampleFlatData
+            #Region "Properties"
+            Private Const DATA_COUNT As Integer = 100
+            Private _cities As List(Of CityData)
+            Private _sports As List(Of String)
+            Private ReadOnly _rand As New Random(DateTime.Now.Millisecond)
+            #End Region
+            Public Sub New()
+            End Sub
+            #Region "Methods"
+            #Region "Initialize SportsData"
+            Public Function InitSportsData() As IEnumerable(Of SportsData)
+                  InitCities()
+                  InitSports()
+                  Dim items = New List(Of SportsData)()
+                  For i As var = 0 To DATA_COUNT - 1
+                        Dim a As Integer = _rand.[Next](1, 10)
+                        Dim dt = DateTime.Today.AddDays(a)
+                        Dim cityNation = _cities(_rand.[Next](_cities.Count))
+                        Dim newItem = New SportsData() With { _
+                              .Sport = _sports(_rand.[Next](_sports.Count)), _
+                              .Nation = cityNation.Nation, _
+                              .City = cityNation.City, _
+                              .Budget = _rand.[Next](1000, 1000000) \ 100, _
+                              .Players = _rand.[Next](1, 100), _
+                              .[Date] = dt _
+                        }
+                        items.Add(newItem)
+                  Next
+                  Return items
+            End Function
+            #End Region
+            #Region "Populate SportsData"
+            Private Sub InitSports()
+                  If _sports IsNot Nothing Then
+                        Return
+                  End If
+                  _sports = New List(Of String)() From { _
+                        "Soccer", _
+                        "Soccer", _
+                        "Bandy", _
+                        "Baseball", _
+                        "Billiards", _
+                        "Boules", _
+                        "Bowling", _
+                        "Bridge", _
+                        "Chess", _
+                        "Cricket", _
+                        "Dance", _
+                        "Floorball", _
+                        "Golf", _
+                        "Karate", _
+                        "Korfball", _
+                        "Lifesaving", _
+                        "Motorcycle Racing", _
+                        "Mountaineering and Climbing", _
+                        "Netball", _
+                        "Orienteering", _
+                        "Pelota Vasca", _
+                        "Polo", _
+                        "Powerboating", _
+                        "Racquetball", _
+                        "Roller Sports", _
+                        "Rugby", _
+                        "Softball", _
+                        "Sport climbing", _
+                        "Squash", _
+                        "Sumo", _
+                        "Surfing", _
+                        "Tug of War", _
+                        "Underwater Sports", _
+                        "Water Ski", _
+                        "Wushu" _
+                  }
+            End Sub
+            #End Region
+            #Region "Populate CityData"
+            Private Sub InitCities()
+                  If _cities IsNot Nothing Then
+                        Return
+                  End If
+                  _cities = New List(Of CityData)() From { _
+                        New CityData() With { _
+                              .City = "Los Angeles", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "San Diego", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "San Francisco", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Detroit", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Miami", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Fort Lauderdale", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "New York", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Pittsburgh", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Philadelphia", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Chicago", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Denver", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Minneapolis", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Kansas City", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Memphis", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "New Orleans", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Dallas", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Houston", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Washington D.C.", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Seattle", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Portland", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Phoenix", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Tuscon", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Salt Lake City", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Boston", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cheyenne", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Santa Fe", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Virginia Beach", _
+                              .Nation = "United States" _
+                        }, _
+                        New CityData() With { _
+                              .City = "London", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Manchester", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Newcastle", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Belfast", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cardiff", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Birmingham", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Glasgow", _
+                              .Nation = "United Kingdom" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Dublin", _
+                              .Nation = "Ireland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cork", _
+                              .Nation = "Ireland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Galway", _
+                              .Nation = "Ireland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Paris", _
+                              .Nation = "France" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Milan", _
+                              .Nation = "Italy" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Venice", _
+                              .Nation = "Italy" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Barcelona", _
+                              .Nation = "Spain" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Seville", _
+                              .Nation = "Spain" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Madrid", _
+                              .Nation = "Spain" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Berlin", _
+                              .Nation = "Germany" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Munich", _
+                              .Nation = "Germany" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Dusseldorf", _
+                              .Nation = "Germany" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cologne", _
+                              .Nation = "Germany" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Frankfurt", _
+                              .Nation = "Germany" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Warsaw", _
+                              .Nation = "Poland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Athens", _
+                              .Nation = "Greece" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Sophia", _
+                              .Nation = "Bulgaria" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Amsterdam", _
+                              .Nation = "Netherlands" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Bruges", _
+                              .Nation = "Belgium" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Lisbon", _
+                              .Nation = "Portugal" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Leningrad", _
+                              .Nation = "Russia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Moscow", _
+                              .Nation = "Russia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Tel Aviv", _
+                              .Nation = "Israel" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Jerusalem", _
+                              .Nation = "Israel" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Beijing", _
+                              .Nation = "China" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Shanghai", _
+                              .Nation = "China" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Hong Kong", _
+                              .Nation = "China" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Zhengzhou", _
+                              .Nation = "China" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Mumbai", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Hyderabad", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Ahmedabad", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Chennai", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Chennai", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Chennai", _
+                              .Nation = "India" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Bangkok", _
+                              .Nation = "Thailand" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Phnom Penh", _
+                              .Nation = "Cambodia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Ho Chi Minh City", _
+                              .Nation = "Vietnam" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Seoul", _
+                              .Nation = "South Korea" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Tokyo", _
+                              .Nation = "Japan" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Nagano", _
+                              .Nation = "Japan" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Osaka", _
+                              .Nation = "Japan" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Vancouver", _
+                              .Nation = "Canada" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Calgary", _
+                              .Nation = "Canada" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Montreal", _
+                              .Nation = "Canada" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Toronto", _
+                              .Nation = "Canada" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Mexicy City", _
+                              .Nation = "Mexico" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Rio de Janeiro", _
+                              .Nation = "Brazil" _
+                        }, _
+                        New CityData() With { _
+                              .City = "La Pz", _
+                              .Nation = "Bolivia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Lima", _
+                              .Nation = "Peru" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Quito", _
+                              .Nation = "Ecuador" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Bogota", _
+                              .Nation = "Columbia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Buenos Aires", _
+                              .Nation = "Argentina" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Havana", _
+                              .Nation = "Cuba" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Port au-Prince", _
+                              .Nation = "Haiti" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Managua", _
+                              .Nation = "Nicaragua" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Antigua", _
+                              .Nation = "Guatemala" _
+                        }, _
+                        New CityData() With { _
+                              .City = "San Jose", _
+                              .Nation = "Costa Rica" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Reykjavik", _
+                              .Nation = "Iceland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Oslo", _
+                              .Nation = "Norway" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Stockholm", _
+                              .Nation = "Sweden" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Helsinki", _
+                              .Nation = "Finland" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Tirana", _
+                              .Nation = "Albania" _
+                        }, _
+                        New CityData() With { _
+                              .City = "El-Biar", _
+                              .Nation = "Algeria" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Budapest", _
+                              .Nation = "Hungary" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Salzburg", _
+                              .Nation = "Austria" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Sidney", _
+                              .Nation = "Australia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Perth", _
+                              .Nation = "Australia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Newcastle", _
+                              .Nation = "Australia" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Timbu", _
+                              .Nation = "Bhutan" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Fada", _
+                              .Nation = "Chad" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Bangui", _
+                              .Nation = "Central African Republic" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Ikelemba", _
+                              .Nation = "Congo" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Auckland", _
+                              .Nation = "New Zealand" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Christchurch", _
+                              .Nation = "New Zealand" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Durban", _
+                              .Nation = "South Africa" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cape Town", _
+                              .Nation = "South Africa" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Cairo", _
+                              .Nation = "Egypt" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Amman", _
+                              .Nation = "Jordan" _
+                        }, _
+                        New CityData() With { _
+                              .City = "Kingston", _
+                              .Nation = "Jamaica" _
+                        } _
+                  }
+            End Sub
+            #End Region
+            #End Region
+      End Class
+      #Region "CityData class"
+      Public Class CityData
+            Public Property City() As String
+                  Get
+                        Return m_City
+                  End Get
+                  Set
+                        m_City = Value
+                  End Set
+            End Property
+            Private m_City As String
+            Public Property Nation() As String
+                  Get
+                        Return m_Nation
+                  End Get
+                  Set
+                        m_Nation = Value
+                  End Set
+            End Property
+            Private m_Nation As String
+      End Class
+      #End Region
+      #Region "SportsData class"
+      Public Class SportsData
+            <System.ComponentModel.Category("Location")> _
+            Public Property Nation() As String
+                  Get
+                        Return m_Nation
+                  End Get
+                  Set
+                        m_Nation = Value
+                  End Set
+            End Property
+            Private m_Nation As String
+            <System.ComponentModel.Category("Location")> _
+            Public Property City() As String
+                  Get
+                        Return m_City
+                  End Get
+                  Set
+                        m_City = Value
+                  End Set
+            End Property
+            Private m_City As String
+            <System.ComponentModel.Category("Sport")> _
+            Public Property Sport() As String
+                  Get
+                        Return m_Sport
+                  End Get
+                  Set
+                        m_Sport = Value
+                  End Set
+            End Property
+            Private m_Sport As String
+            <System.ComponentModel.Category("Metrics")> _
+            Public Property Budget() As Double
+                  Get
+                        Return m_Budget
+                  End Get
+                  Set
+                        m_Budget = Value
+                  End Set
+            End Property
+            Private m_Budget As Double
+            <System.ComponentModel.Category("Metrics")> _
+            Public Property Players() As Integer
+                  Get
+                        Return m_Players
+                  End Get
+                  Set
+                        m_Players = Value
+                  End Set
+            End Property
+            Private m_Players As Integer
+            <System.ComponentModel.Category("Calendar")> _
+            Public Property [Date]() As System.DateTime
+                  Get
+                        Return m_Date
+                  End Get
+                  Set
+                        m_Date = Value
+                  End Set
+            End Property
+            Private m_Date As System.DateTime
+      End Class
+      #End Region
+End Namespace
+----

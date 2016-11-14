@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-texture-brush-element-using-the-gauge-designer",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{358ABEDF-3098-4875-B6C7-63A29D70F68E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Texture Brush Element Using the Gauge Designer
+
+Applying the texture brush element to a property of your gauge gives the property a textured look and feel such as a canvas.
+
+*To apply a Texture brush element to a property of your gauge using the Gauge Designer:*
+
+[start=1]
+. In the Gauge Explorer or the interactive preview area, select the property to which you want to apply the Texture brush element.
+[start=2]
+. In the Appearance tab of the Properties panel, select Texture from the Type drop-down list.
+[start=3]
+. Click the Details drop-down arrow.
+[start=4]
+. In the small window that appears, set the following properties:
+
+** Back Color - Click the drop-down arrow. The color picker appears. On the left-hand side, click Web, then select the DimGray color.
+** Fore Color - Click the drop-down arrow. The color picker appears. On the left-hand side, click Web, then select the Silver color.
+** Texture Style - From the drop-down list, select Canvas.
+
+image::images/Gauge_Apply_Texture_Using_Gauge_Designer_01.png[WinGauge's appearance tab details drop-down.]
+
+[start=5]
+. When you are finished specifying the properties, click anywhere in the Brush pane.
+[start=6]
+. Click the Relative Bounds editor drop-down arrow.
+[start=7]
+. In the Relative Bounds pane that appears, set the following properties:
+
+** X - 0
+** Y - 0
+** Width - 0
+** Height - 0
+
+[start=8]
+. In the Relative Clip Bounds pane that appears, set the following properties:
+
+** X - 0
+** Y - 0
+** Width - 0
+** Height - 0
+
+image::images/Gauge_Apply_Texture_Using_Gauge_Designer_02.png[WinGauge's appearance tabs relative bounds editor.]
+
+[start=9]
+. You can see the Texture brush element applied to the property of your gauge in the interactive preview area.
+
+== Related Topics
+
+link:wingauge-texture-brush-element.html[Texture Brush Element]
+
+link:wingauge-apply-the-texture-brush-element-at-design-time.html[Apply the Texture Brush Element at Design Time]
+
+link:wingauge-apply-the-texture-brush-element-at-run-time.html[Apply the Texture Brush Element at Run Time]

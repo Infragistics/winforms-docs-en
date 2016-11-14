@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-change-the-visible-position-of-winlistview-columns-in-details-or-tiles-view",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{EEB7921C-9423-49BA-8A01-6795ED1FE5C2}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Visible Position of WinListView Columns in Details or Tiles View
+
+This topic will show you how to re-position columns in WinListView™ in the user-interface, without changing its Ordinal positions. This can be done when the WinListView control’s  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  View property is set to either Details or Tiles; Column positions can be changed by using the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewcolumnbase.html[Column]"]  object’s  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewcolumnbase~visiblepositionindetailsview.html[VisiblePositionInDetailsView]"]  and VisiblePositionInTilesView properties.
+
+This topic assumes that you already have a WinListView control populated with items and sub-items with data from the Customers table of the Northwind database. For more information see the link:winlistview-populate-the-winlistview-control-with-items-clr2.html[Populate the WinListView Control with Items] topic. Also the WinListView control’s View property is set to Details for this topic.
+
+*In Visual Basic:*
+
+----
+'Change the Visible position of sub-item(ContactName)
+Me.ultraListView1.Items(0).SubItems(0).Column.VisiblePositionInDetailsView = 4
+----
+
+*In C#:*
+
+----
+//Change the Visible position of sub-item(ContactName)
+this.ultraListView1.Items[0].SubItems[0].Column.VisiblePositionInDetailsView = 4;
+----
+
+WinListView with list of item and sub-items before changing the display position of a sub-item.
+
+image::Images/WinListView_Change_the_Visible_Postion_of_WinListView_Columns_in_Details_or_Tiles_View_01.png[]
+
+WinListView with list of items and sub-items after changing the display position of the first sub-item (ContactName column) to the user-interface position 4, so that it appears after the sub-item City.
+
+image::Images/WinListView_Change_the_Visible_Postion_of_WinListView_Columns_in_Details_or_Tiles_View_02.png[]
+
+*In Visual Basic:*
+
+----
+' Change the visible position of the item or MainColumn(CompanyName) 
+Me.ultraListView1.MainColumn.VisiblePositionInDetailsView = 3
+----
+
+*In C#:*
+
+----
+// Change the visible position of the item or MainColumn(CompanyName)
+this.ultraListView1.MainColumn.VisiblePositionInDetailsView = 3;
+----
+
+WinListView with list of item and sub-items after changing the display position of item (CompanyName)
+
+image::Images/WinListView_Change_the_Visible_Postion_of_WinListView_Columns_in_Details_or_Tiles_View_03.png[]

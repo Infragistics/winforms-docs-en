@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-gauge-explorer",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{BAF8AB19-A3E6-4993-87F6-4ECA857BE316}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Gauge Explorer
+
+The Gauge Explorer of the designer allows you to add/delete Linear, Digital, and Radial gauges to/from your existing WinGauge control. It also allows for easy navigation through properties of the Gauge control.
+
+The Gauge control can consist of many different gauges -- all of which you can see and manage from the Gauge Explorer. When you select a gauge from the Gauge Explorer, the gauge is highlighted in the interactive preview area, and the Properties panel displays the properties of the selected gauge.
+
+The following screen shot shows the Gauge Explorer of the designer with a Radial gauge selected:
+
+image::Images/Gauge_Gauge_Explorer_02.png[Shows wingauge's designer with the gauge explorer highlighted.]
+
+The Gauge Explorer also allows you to drill down to the individual properties of your gauge. When you select a gauge property from the Gauge Explorer, the property appears highlighted on the gauge in the interactive preview area. For example, if you have a Radial gauge that represents a clock, clicking on the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugeneedle.html[Needle]"]  property of the gauge through the Gauge Explorer highlights the hand of the clock in the interactive preview area, as shown in the following screen shot.
+
+image::Images/Gauge_Gauge_Explorer_01.png[Shows wingauge's designer with a configured radial gauge in the preview area.]

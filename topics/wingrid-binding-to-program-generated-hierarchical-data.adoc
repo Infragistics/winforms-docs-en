@@ -1,0 +1,268 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-binding-to-program-generated-hierarchical-data",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Sample Data Source"],
+    "guid": "{E159D073-F90D-46DD-8DB7-0BD468548848}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding to Program-Generated Hierarchical Data
+
+== Background
+
+This exercise illustrates the building of two DataTables, setting the Relationship between these tables in a DataSet and binding the Hierarchical result to the WinGrid™.
+
+== Overview
+
+This exercise illustrates how to:
+
+[start=1]
+. Create a DataTable with program code.
+[start=2]
+. Create a second DataTable based on values in the first DataTable using program code.
+[start=3]
+. Add these tables to a DataSet and create a relationship between the two tables.
+[start=4]
+. Bind the Hierarchical DataSet to the UltraGrid.
+
+The finished form should look something like this:
+
+image::Images\WinGrid_Binding_to_Program_Generated_Hierarchical_Data_01.png[binding to program generated hierarchical data]
+
+== Start a New Project
+
+[start=1]
+. Create a new Windows Application project.
+[start=2]
+. From the Toolbox Windows Forms tab, add an UltraButton to the form and set the Text property to "Create and Bind Hierarchical Data". (See above screen shot for placement.)
+[start=3]
+. From the Toolbox add an UltraGrid to the form.
+
+== Make Customers DataTable
+
+[start=1]
+. Create a Function Procedure to return the Customers DataTable by adding the following code to the forms code behind.
+
+*In Visual Basic:*
+
+----
+Private Function MakeCustomersDataTable() As DataTable
+	' Declare a DataTable to contain the program generated data
+	Dim dataTable As New DataTable("Customers")
+	' Create and add a CustomerID column
+	Dim colWork As New DataColumn("CustomerID", GetType(Int32))
+	dataTable.Columns.Add(colWork)
+	' Add CustomerID column to key array and bind to DataTable
+	Dim Keys(0) As DataColumn
+	Keys(0) = colWork
+	dataTable.PrimaryKey = Keys
+	' Create and add a CustomerName column
+	colWork = New DataColumn("CustomerName", GetType(String))
+	colWork.MaxLength = 50
+	dataTable.Columns.Add(colWork)
+	' Create and add a LastOrderDate column
+	colWork = New DataColumn("LastOrderDate", GetType(Date))
+	dataTable.Columns.Add(colWork)
+	' Add a row
+	Dim row As DataRow = dataTable.NewRow()
+	row("CustomerID") = 1
+	row("CustomerName") = "John's Widgets"
+	row("LastOrderDate") = Now
+	dataTable.Rows.Add(row)
+	' Add another row
+	row = dataTable.NewRow()
+	row("CustomerID") = 2
+	row("CustomerName") = "Fred's Thingamagigs"
+	row("LastOrderDate") = Now.AddDays(-101)
+	dataTable.Rows.Add(row)
+	Return dataTable
+End Function
+----
+
+*In C#:*
+
+----
+private DataTable MakeCustomersDataTable()
+{
+	// Declare a DataTable to contain the program generated data
+	DataTable dataTable = new DataTable("Customers");
+	// Create and add a CustomerID column
+	DataColumn colWork = new DataColumn("CustomerID", System.Type.GetType("System.Int32"));
+	dataTable.Columns.Add(colWork);
+	// Add CustomerID column to key array and bind to DataTable
+	DataColumn[] Keys = new DataColumn[1];
+	Keys[0] = colWork;
+	dataTable.PrimaryKey = Keys;
+	// Create and add a CustomerName column
+	colWork = new DataColumn("CustomerName", System.Type.GetType("System.String"));
+	colWork.MaxLength = 50;
+	dataTable.Columns.Add(colWork);
+	// Create and add a L=tOrderDate column
+	colWork = new DataColumn("L=tOrderDate", System.Type.GetType("System.DateTime"));
+	dataTable.Columns.Add(colWork);
+	// Add a row
+	DataRow row = dataTable.NewRow();
+	row["CustomerID"] = 1;
+	row["CustomerName"] = "Johns Widgets";
+	row["L=tOrderDate"] = System.DateTime.Now;
+	dataTable.Rows.Add(row);
+	// Add another row
+	row = dataTable.NewRow();
+	row["CustomerID"] = 2;
+	row["CustomerName"] = "Freds Thingamagigs";
+	row["L=tOrderDate"] = System.DateTime.Now.AddDays(-101);
+	dataTable.Rows.Add(row);
+	return dataTable;
+}
+----
+
+== Make Orders DataTable
+
+[start=1]
+. Create a Function Procedure to return the Orders DataTable by adding the following code to the forms code behind.
+
+*In Visual Basic:*
+
+----
+Private Function MakeOrdersDataTable(ByVal v_customersDataTable As DataTable) As DataTable
+	' Declare a DataTable to contain the program generated data
+	Dim dataTable As New DataTable("Orders")
+	' Create and add a CustomerID column
+	Dim colWork As New DataColumn("CustomerID", GetType(Int32))
+	dataTable.Columns.Add(colWork)
+	' Add CustomerID column to key array
+	Dim Keys(1) As DataColumn
+	Keys(0) = colWork
+	' Create and add OrderID column
+	colWork = New DataColumn("OrderID", GetType(String))
+	colWork.MaxLength = 15
+	dataTable.Columns.Add(colWork)
+	' Add OrderID column to key array and bind to DataTable
+	Keys(1) = colWork
+	dataTable.PrimaryKey = Keys
+	' Create and add a EmployeeID column
+	colWork = New DataColumn("EmployeeID", GetType(Int32))
+	dataTable.Columns.Add(colWork)
+	' Create and add a OrderDate column
+	colWork = New DataColumn("OrderDate", GetType(Date))
+	dataTable.Columns.Add(colWork)
+	' Loop through Customer table and add Order rows
+	Dim custRow As DataRow
+	For Each custRow In v_customersDataTable.Rows
+		' Add four rows for each Customer
+		Dim row As DataRow
+		Dim intPtr As Integer
+		For intPtr = 1 To 4
+			row = dataTable.NewRow()
+			row("CustomerID") = custRow("CustomerID")
+			row("OrderID") = intPtr $$*$$ custRow("CustomerID")
+			row("EmployeeID") = intPtr $$*$$ 10
+			row("OrderDate") = Now.AddDays(intPtr)
+			dataTable.Rows.Add(row)
+		Next intPtr
+	Next custRow
+	Return dataTable
+End Function
+----
+
+*In C#:*
+
+----
+private DataTable MakeOrdersDataTable(DataTable v_customersDataTable)
+{
+	// Declare a DataTable to contain the program generated data
+	DataTable dataTable = new DataTable("Orders");
+	// Create and add a CustomerID column
+	DataColumn colWork = new DataColumn("CustomerID", System.Type.GetType("System.Int32"));
+	dataTable.Columns.Add(colWork);
+	// Add CustomerID column to key array
+	DataColumn[] Keys = new DataColumn[2];
+	Keys[0] = colWork;
+	// Create and add OrderID column
+	colWork = new DataColumn("OrderID", System.Type.GetType("System.String"));
+	colWork.MaxLength = 15;
+	dataTable.Columns.Add(colWork);
+	// Add OrderID column to key array and bind to DataTable
+	Keys[1] = colWork;
+	dataTable.PrimaryKey = Keys;
+	// Create and add a EmployeeID column
+	colWork = new DataColumn("EmployeeID", System.Type.GetType("System.Int32"));
+	dataTable.Columns.Add(colWork);
+	// Create and add a OrderDate column
+	colWork = new DataColumn("OrderDate", System.Type.GetType("System.DateTime"));
+	dataTable.Columns.Add(colWork);
+	// Loop through Customer table and add Order rows
+	foreach( DataRow custRow in v_customersDataTable.Rows)
+	{
+		// Add four rows for each Customer
+		DataRow row; 
+		for(Int32 intPtr = 1; intPtr $$<=$$ 4; intPtr++)
+		{
+			row = dataTable.NewRow();
+			row["CustomerID"] = custRow["CustomerID"];
+			row["OrderID"] = intPtr $$*$$ ((Int32)custRow["CustomerID"]);
+			row["EmployeeID"] = intPtr $$*$$ 10;
+			row["OrderDate"] = System.DateTime.Now.AddDays(intPtr);
+			dataTable.Rows.Add(row);
+		}
+	}
+	return dataTable;
+}
+----
+
+== Create DataSet and Bind to Grid
+
+[start=1]
+. Add a Sub Procedure to respond to the "Create and Bind Hierarchical Data" button's Click event and add the following code to the procedure:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraButton1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles UltraButton1.Click
+	' Declare DataSet to contain Hierarchical data
+	Dim dataSet As New DataSet()
+	' Make Customers DataTable
+	dataSet.Tables.Add(MakeCustomersDataTable)
+	' Make Orders DataTable
+	dataSet.Tables.Add(MakeOrdersDataTable(dataSet.Tables("Customers")))
+	' Create customers/orders relationship and add to DataSet
+	Dim relCustOrder As New DataRelation("CustOrder" _
+	  , dataSet.Tables("Customers").Columns("CustomerID") _
+	  , dataSet.Tables("Orders").Columns("CustomerID"))
+	dataSet.Relations.Add(relCustOrder)
+	' Bind the DataSet to the Grid
+	Me.UltraGrid1.DataSource = dataSet
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraButton1_Click(object sender, EventArgs e)
+{
+	// Declare DataSet to contain Hierarchical data
+	DataSet dataSet = new DataSet();
+	// Make Customers DataTable
+	dataSet.Tables.Add(MakeCustomersDataTable());
+	// Make Orders DataTable
+	dataSet.Tables.Add(MakeOrdersDataTable(dataSet.Tables["Customers"]));
+	// Create customers/orders relationship and add to DataSet
+	DataRelation relCustOrder = new DataRelation("CustOrder" 
+	  , dataSet.Tables["Customers"].Columns["CustomerID"] 
+	  , dataSet.Tables["Orders"].Columns["CustomerID"]);
+	dataSet.Relations.Add(relCustOrder);
+	// Bind the DataSet to the Grid
+	this.ultraGrid1.DataSource = dataSet;
+}
+----
+
+== Review
+
+This sample project shows how to create two DataTables with Program Code, add them to a DataSet, add the relationship constraint between the tables, and bind the DataSet to the WinGrid.

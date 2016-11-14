@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpanel-about-winpanel",
+    "controlName": ["WinPanel"],
+    "tags": ["Getting Started"],
+    "guid": "{17010279-11F7-4C23-A8F6-1D352CAC89EC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinPanel
+
+The WinPanel™ control is a container for other controls. It is especially useful when you want to hide/show a group of controls. The WinPanel control is displayed by default without any borders. You can provide a border using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapanel~borderstyle.html[BorderStyle]"]  property to distinguish the area of the panel from other areas on the form. WinPanel provides the ability to control the appearance of the Panel as well as the scrollbars, by providing an UltraControl-derived scrollable container control which has full support for AppStyling. The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapanel~autoscroll.html[AutoScroll]"]  property enables scroll bars in the WinPanel control. When the AutoScroll property is set to true, any controls located within the WinPanel (but outside of its visible region), can be scrolled into view with the scroll bars provided. Much of the included functionality in the intrinsic panel is provided as well as some additional functionality, including:
+
+* Appearance Support – Full Appearance support for setting styles through AppStylist, Alpha Blending, mimic existing styles (Office 2007, Vista, etc) through the ViewStyle property settings.
+* Scrollbar Support - high-fidelity scrollbars that support AppStyling.
+* WinPanel is set to be picked as the container control for all Infragistics Layout Managers.
+
+The following is an image of the Scrollable UltraPanel control with embedded WinGrid and WinMonthViewSingle controls.
+
+image::Images\WinPanel_About_WinPanel.png[]

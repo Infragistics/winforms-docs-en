@@ -1,0 +1,100 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-adding-tasks-to-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": ["How Do I"],
+    "guid": "{D45237B9-50C3-4BE1-B8B1-FE9F8242DDE5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Tasks to WinGanttView
+
+A task is an activity that has a beginning and an end. Project plans are made up of tasks. Tasks can easily be added to the WinGanttView™ control through the context menu, available by right clicking in the Grid section or in the chart section of the control. You can also add tasks and task information using the Task Information dialog. To learn more about the Task Information dialog please see the link:winganttview-task-information-dialog.html[Task Information Dialog] topic. You can also create tasks and task information through code.
+
+The following sample code creates parent and child tasks and applies various task-related settings like deadline, milestone, percentage complete, tasks dependencies and constraints.
+
+*In Visual Basic:*
+
+----
+' Create a new Project other than the Unassigned Project 
+Dim quarterlyProject As Project = Me.ultraCalendarInfo1.Projects.Add("QuartlerlyProject", DateTime.Today) 
+quarterlyProject.Key = "projkey1" 
+' Create a Summary or Parent Task 
+Dim requirementsTask As Task = Me.ultraCalendarInfo1.Tasks.Add(DateTime.Today, TimeSpan.FromDays(5), "Requirements", "projkey1") 
+' Create a child task 
+Dim budgetTask As Task = requirementsTask.Tasks.Add(DateTime.Today, TimeSpan.FromDays(2), "Budget Analysis") 
+' Set Deadline 
+budgetTask.Deadline = DateTime.Today.AddDays(3) 
+'Assign a Resource for this task 
+Dim budgetOwner As Owner = Me.ultraCalendarInfo1.Owners.Add("BudgetOwner", "Bill Isacky") 
+budgetTask.Resources.Add(budgetOwner) 
+' Create another child task 
+Dim teamTask As Task = requirementsTask.Tasks.Add(DateTime.Today.AddDays(3), TimeSpan.FromDays(2), "Team Allocation") 
+' Set a Constraint for this Task 
+teamTask.ConstraintDateTime = DateTime.Today.AddDays(4) 
+teamTask.Constraint = TaskConstraint.FinishNoLaterThan 
+' Create a Summary or Parent Task 
+Dim implemetationTask As Task = Me.ultraCalendarInfo1.Tasks.Add(DateTime.Now.AddDays(7), TimeSpan.FromDays(3), "Implementation", "projkey1") 
+' Create a child task 
+Dim frontendTask As Task = implemetationTask.Tasks.Add(DateTime.Now.AddDays(7), TimeSpan.FromDays(3), "GUI Design") 
+' Set this task as a Milestone 
+frontendTask.Milestone = True 
+' Set Percent Complete for this Task 
+frontendTask.PercentComplete = 40 
+frontendTask.Dependencies.Add(budgetTask, TaskDependencyType.StartToStart) 
+frontendTask.Dependencies.Add(teamTask, TaskDependencyType.FinishToStart) 
+Me.ultraGanttView1.CalendarInfo = Me.ultraCalendarInfo1 
+' Assign the new Project to GanttView so that this Project is shown in GanttView and not the unassigned Project. 
+Me.ultraGanttView1.Project = Me.ultraGanttView1.CalendarInfo.Projects(1)
+----
+
+*In C#:*
+
+----
+// Create a new Project other than the Unassigned Project
+Project quarterlyProject = this.ultraCalendarInfo1.Projects.Add("QuartlerlyProject", DateTime.Today);
+quarterlyProject.Key = "projkey1";
+// Create a Summary or Parent Task
+Task requirementsTask = this.ultraCalendarInfo1.Tasks.Add(DateTime.Today, TimeSpan.FromDays(5), "Requirements", "projkey1");
+// Create a child task
+Task budgetTask = requirementsTask.Tasks.Add(DateTime.Today, TimeSpan.FromDays(2), "Budget Analysis");
+// Set Deadline
+budgetTask.Deadline = DateTime.Today.AddDays(3); 
+//Assign a Resource for this task
+Owner budgetOwner = this.ultraCalendarInfo1.Owners.Add("BudgetOwner", "Bill Isacky");
+budgetTask.Resources.Add(budgetOwner);
+// Create another child task
+Task teamTask = requirementsTask.Tasks.Add(DateTime.Today.AddDays(3), TimeSpan.FromDays(2), "Team Allocation");
+// Set a Constraint for this Task
+teamTask.ConstraintDateTime = DateTime.Today.AddDays(4);
+teamTask.Constraint = TaskConstraint.FinishNoLaterThan;
+// Create a Summary or Parent Task
+Task implemetationTask = this.ultraCalendarInfo1.Tasks.Add(DateTime.Now.AddDays(7), TimeSpan.FromDays(3), "Implementation", "projkey1");
+// Create a child task
+Task frontendTask = implemetationTask.Tasks.Add(DateTime.Now.AddDays(7), TimeSpan.FromDays(3), "GUI Design");
+// Set this task as a Milestone
+frontendTask.Milestone = true;
+// Set Percent Complete for this Task
+frontendTask.PercentComplete = 40;
+frontendTask.Dependencies.Add(budgetTask, TaskDependencyType.StartToStart);
+frontendTask.Dependencies.Add(teamTask, TaskDependencyType.FinishToStart);
+this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
+// Assign the new Project to GanttView so that this Project is shown in GanttView and not the unassigned Project.
+this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
+----
+
+== Related Topics
+
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

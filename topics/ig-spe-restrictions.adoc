@@ -1,0 +1,168 @@
+﻿////
+|metadata|
+{
+    "name": "ig-spe-restrictions",
+    "controlName": [],
+    "tags": [],
+    "guid": "b8631e05-a07b-47dd-9e22-234765d4f7cd",
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0328482Z"
+}
+|metadata|
+////
+
+= Restrictions
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the restrictions placed on grammar definitions.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349293395, Overview >>
+* <<_Ref349293354, Start Symbol Not Set >>
+* <<_Ref349293359, No Symbols Defined for a Lexer State >>
+* <<_Ref349293363, No Rule Defined for a Non-Terminal Symbol >>
+* <<_Ref349293371, A Non-Terminal Symbol’s Rule is Invalid >>
+* <<_Ref349293375, The Grammar’s Start Symbol is not derivable >>
+* <<_Ref349293380, Related Content >>
+
+[[_Ref349293395]]
+== Overview
+
+=== Overview summary
+
+When a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance is complete and used to generate the lexical and syntax analyzers, it must be in a valid state. There are certain things which are not allowed because they are either logical contradictions or because they lack sufficient information needed to create the analyzers. Here are the conditions which make a `Grammar` invalid.
+
+[[_Ref349293354]]
+== Start Symbol Not Set
+
+[[_Ref349221033]]
+
+=== Restriction summary
+
+The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol] is not set – without specifying the start symbol the Syntax Parsing Engine does not know what non-terminal symbol should be at the root of the syntax trees.
+
+.Note
+[NOTE]
+====
+This only applies when link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[Grammar.SupportsParsing] is true.
+====
+
+[[_Ref349293359]]
+== No Symbols Defined for a Lexer State
+
+It is not very useful if a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[LexerState.Symbols] collection is empty. If there are no terminal symbols in a lexer state, it would only create tokens associated with the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol] and it can never be exited. Therefore, each lexer state must contain at least one terminal symbol.
+
+[[_Ref349293363]]
+== No Rule Defined for a Non-Terminal Symbol
+
+A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[NonTerminalSymbol.Rule] is `null` – All non-terminal symbols need to have at least one production and so they need to have at least one rule in their rule tree. If a non-terminal symbol is meant to match nothing (like the omitted argument in Visual Basic), then the `Rule` should be set to an instance of link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule].
+
+[[_Ref349293371]]
+== A Non-Terminal Symbol’s Rule is Invalid
+
+A rule in a non-terminal symbol’s rule tree is invalid based on one of the following conditions:
+
+* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule] has fewer than two child rules – These rules are meant to contain multiple rules. One of many options must be used for an alternation rule and multiple rules must be concatenated together for a concatenation rule. It doesn’t make sense for these rules to contain zero or one child rule.
+* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule] has a `null` link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule~exception.html[Exception] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property.
+* An `ExceptionSyntaxRule.Exception` property is a rule tree which contains one or more recursively defined symbols – recursion is not allowed in syntactic exceptions. This includes repetition symbols (which require recursively defined productions internally). So the following production would be invalid in a grammar
+
+RestrictedBlock → Block-{Statement}
+
+This pseudo-production uses a minus sign “-” to indicate a syntactic exception and curly braces to represent a repetition.
+* An `ExceptionSyntaxRule` has an `Exception` which disallows everything from the `Rule` – For example in this production
+
+Nothing → Statement-Statement
+
+what this basically says is “A ‘Nothing’ can be a ‘Statement’ as long as that ‘Statement’ is not a ‘Statement’”. This is a logical contradiction because ‘Nothing’ can never be found in a document. This type of direct contradiction probably wouldn’t be done accidentally or on purpose, but it is possible to create a contradiction without realizing it. Here is a slightly more complicated example of a contradiction
+
+Letter → a|b|c|…|z
+
+AThruM → a|b|c|…|m
+
+NThruZ → n|o|p|…|z
+
+RestrictedLetter → Letter-(AThruM|NThruZ)
+
+“RestrictedLetter” now has a contradiction and will cause the grammar to be invalid.
+
+* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has a `null` `Rule` property
+* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] has a `null` `Rule` property
+* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule] has a `null` `Rule` property
+* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule] has a Symbol which doesn’t belong to the Grammar
+* A `SymbolReferenceSyntaxRule` references the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~endofstreamsymbol.html[Grammar.EndOfStreamSymbol] and the owning non-terminal symbol is not the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[Grammar.StartSymbol] – Only the start symbol can expect the symbol indicating the end of a document. It doesn’t make sense for another symbol to use it in one of its productions because they are by definition somewhere in the interior of the document. There are even some restrictions to how the start symbol can use it. The start symbol can only reference the end of stream symbol if it has only one production of the following form
+
+StartSymbol → SomeOtherNonTerminalSymbol EndOfStreamSymbol
+
+If it has multiple productions, more than two symbols in the body, references itself in its production body, or requires the `EndOfStreamSymbol` to be first in the body, the rule is invalid and so is the grammar. If a grammar writer would like their start symbol to refer to more than two symbols, use recursion, or have multiple productions, they can easily do so by not referencing the EndOfStreamSymbol:
+
+StartSymbol →
+
+StartSymbol → Symbol1 StartSymbol Symbol2
+
+And then internally, the grammar will create a “resolved” start symbol like this
+
+ResolvedStartSymbol → StartSymbol EndOfStreamSymbol
+
+* A `SymbolReferenceSyntaxRule` references the resolved start symbol for the grammar – If the grammar writer has designed the start symbol to be well formed, meaning it owns a single `ConcatenationSyntaxRule` which requires a reference to another non-terminal symbol followed by the `EndOfStreamSymbol`, the Syntax Parsing Engine will not create a resolved start symbol for the grammar. Their start symbol will be used as the resolved start symbol. In that case, no other non-terminal symbol can reference the start symbol in their production bodies. The resolved start symbol can never be part of a recursive definition, either directly or indirectly.
+
+[[_Ref349293375]]
+== The Grammar’s Start Symbol is not derivable
+
+One way to analyze the syntax of a document is to  _derive_  the start symbol into a sequence of terminal symbols corresponding to the sequence of tokens from the lexical analyzer. A derivation starts with the start symbol and is a set of steps where each non-terminal symbol is replaced by one of its production bodies. In the new sequence, with the production body in place where the head was, if there are still non-terminal symbols, another is replaced by a production body until only terminal symbols are remaining. However it is possible to define a start symbol that can never be derived fully and the sequence of derivation steps is therefore infinite. Consider the following grammar:
+
+StartSymbol → GroupedContent
+
+GroupedContent → (Parens | Brackets)
+
+Parens → OpenParenToken GroupedContent CloseParenToken
+
+Brackets → OpenBracketToken GroupedContent CloseBracketToken
+
+There is no way for the start symbol to ever derive to a sequence of only terminal symbols. Every substitution for the “Parens” or “Brackets” non-terminal symbol leaves another “GroupedContent” non-terminal symbol in the sequence of symbols.
+
+[[_Ref349293380]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-ambiguities.html[Ambiguities]
+|This topic describes the ambiguities that may occur while a document is parsing and how to handle them.
+
+|====

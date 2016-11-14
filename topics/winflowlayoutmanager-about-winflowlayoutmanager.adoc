@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "winflowlayoutmanager-about-winflowlayoutmanager",
+    "controlName": [],
+    "tags": ["Getting Started","Layouts"],
+    "guid": "{E75B6135-F0E4-4DEE-A05D-6936EE775A94}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinFlowLayoutManager
+
+The WinFlowLayoutManager™ component is a component which positions control. It eliminates the task of programmatically positioning the controls on a Form for you. The locations of controls on a Form will be determined based on the size of the control and the following settings:
+
+* Alignment -- Determines the alignment of the controls with respect to the Orientation.
+* HorizontalGap -- The number of pixels between each control horizontally as well as the border of the container and controls.
+* Margins -- The minimal distance between the borders of the containing control and the contained controls.
+* Orientation -- Determines whether the controls flow vertically or horizontally.
+* VerticalGap -- The number of pixels between each control vertically as well as the border of the container and controls.
+* WrapItems -- Determines whether the controls should wrap around to a new line if there is not enough room to display them all on a single line.
+
+In addition to the above settings, the UltraFlowLayoutManager attaches extender properties to the controls it manipulates. The properties allow each individual control to specify layout-related information which only applies to that control. The extender properties are:
+
+* IncludeInLayout -- Determines whether the control's position is managed by the layout manager.
+* PreferredSize -- The preferred size for the control to be used by the layout manager.

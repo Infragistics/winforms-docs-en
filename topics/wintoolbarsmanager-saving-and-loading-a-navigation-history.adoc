@@ -1,0 +1,211 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-saving-and-loading-a-navigation-history",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Navigation","Selection"],
+    "guid": "{79CD7CE6-11EC-42A2-8401-A937CCD2298F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Saving and Loading a Navigation History
+
+== Before You Begin
+
+Saving and loading a user's settings is a standard task that most developers need to handle in an application. The Navigation toolbar exposes a navigation history, which keeps track of the end user's actions. WinToolbarsManager™ does not expose functionality to save the end user's navigation history, but it does offer a means to initialize the history based on arrays of  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationhistoryitem.html[NavigationHistoryItems]"] . It is possible for you to iterate through the end user's back history and record the history items in a text or XML file. You can then load them into a new array of NavigationHistoryItems when the application loads and pass that array to the Navigation toolbar's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~initializehistory.html[InitializeHistory]"]  method.
+
+== What You Will Accomplish
+
+This walkthrough demonstrates how to save and load a navigation history using custom save and load methods. The save method saves just the text of the current item and back and forward history to a text file. The load method loads that text file into a NavigationHistoryItem representing the current item, and an array of NavigationHistoryItems representing the back and forward history. The load method uses the InitializeHistory method to load these two objects into the Navigation toolbar.
+
+== Follow these Steps
+
+[start=1]
+. *Create a method to save the navigation history to a file.*
+
+To save the navigation history, you need to create a method that saves all the locations from the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~backhistory.html[BackHistory]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~forwardhistory.html[ForwardHistory]"]  collections to a file. You will want to pass in the BackHistory and ForwardHistory collections to the method, as well as the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~currentitem.html[CurrentItem]"] . Create two parameters that accepts an array of NavigationHistoryItems and another parameter that accepts a string. Inside the method, you will want to do the following:
+
+.. Create the TextWriter that will write the history to a text file.
+.. Iterate through the history and write a line to the text file for each location in the BackHistory.
+.. Iterate through the history and write a line to the text file for each location in the ForwardHistory.
+.. Write the current location to the text file .
+.. Close the TextWriter and clean up.
+
+*In Visual Basic:*
+
+----
+Private Sub SaveNavItems(ByVal theFilePath As String, ByVal theNavToolbar As NavigationToolbar)
+	Dim theStreamWriter As New StreamWriter(theFilePath, False, Encoding.UTF8)
+	'Iterate through the BackHistory items and write each one to
+	'the file. Note the line item's prefix so that we can
+	'distinguish it as a Back history item.
+	For Each item As NavigationHistoryItem In theNavToolbar.BackHistory
+		theStreamWriter.WriteLine("BAC#" + item.Text)
+	Next
+	'Iterate through the ForwardHistory items and write each one to
+	'the file. Note the line item's prefix so that we can
+	'distinguish it as a Forward history item.
+	For Each item As NavigationHistoryItem In theNavToolbar.ForwardHistory
+		theStreamWriter.WriteLine("FWD#" + item.Text)
+	Next
+	'Write the Current history item to the file. Note the prefix being
+	'used in order to distinguish it as the Current history item.
+	theStreamWriter.WriteLine("CUR#" + theNavToolbar.CurrentItem.Text)
+	'Cleanup.
+	theStreamWriter.Flush()
+	theStreamWriter.Close()
+	theStreamWriter.Dispose()
+End Sub
+----
+
+*In C#:*
+
+----
+private void SaveNavItems(string theFilePath, NavigationToolbar theNavToolbar)
+{
+     StreamWriter theStreamWriter = 
+         new StreamWriter(theFilePath, false, Encoding.UTF8);
+     //Iterate through the BackHistory items and write each one to
+     //the file. Note the line item's prefix so that we can 
+     //distinguish it as a Back history item.
+     foreach (NavigationHistoryItem item in theNavToolbar.BackHistory)
+     {
+          theStreamWriter.WriteLine("BAC#" + item.Text);
+     }
+     //Iterate through the ForwardHistory items and write each one to
+     //the file. Note the line item's prefix so that we can 
+     //distinguish it as a Forward history item.
+     foreach (NavigationHistoryItem item in theNavToolbar.ForwardHistory)
+     {
+         theStreamWriter.WriteLine("FWD#" + item.Text);
+     }
+     //Write the Current history item to the file. Note the prefix being 
+     //used in order to distinguish it as the Current history item.
+     theStreamWriter.WriteLine("CUR#" + theNavToolbar.CurrentItem.Text);
+     //Cleanup.
+     theStreamWriter.Flush();
+     theStreamWriter.Close();
+     theStreamWriter.Dispose();
+}
+----
+
+[start=2]
+. *Create a method to load the navigation history from a file.*
+
+To create a method that loads the end user's navigation history:
+
+.. Create a TextReader that will read the history from a text file.
+.. Create a NavigationHistoryItem that represents the current item.
+.. Create a two Lists of NavigationHistoryItem, one for ForwardHistory and one for BackHistory.
+.. Read through the text file. Add each part of the history to the appropriate List.
+.. Close the TextReader.
+.. Initialize the navigation history by calling the InitializeHistory method.
+
+*In Visual Basic:*
+
+----
+Private Sub LoadNavItems(ByVal theFilePath As String, ByVal theNavToolbar As NavigationToolbar)
+	'This is the file that contains the History Items.
+	Dim theNavItemsFile As New FileInfo(theFilePath)
+	'This list represents the Forward History Items.
+	Dim theForwardHistoryItems As New List(Of NavigationHistoryItem)()
+	'This list represents the Back History Items.
+	Dim theBackHistoryItems As New List(Of NavigationHistoryItem)()
+	'This represents the Current History item.
+	Dim theCurrentNavItem As NavigationHistoryItem = Nothing
+	'This stream reader will be used to get each line of text from the file.
+	Dim theStreamReader As StreamReader = theNavItemsFile.OpenText()
+	'Used to represent the current line item read from the File.
+	Dim theLineItem As String = theStreamReader.ReadLine()
+	While ((theLineItem) IsNot Nothing)
+		'Each line item has been formatted in the following fashion:
+		'BAC#www.infragistics.com
+		'FWD#www.amazon.com
+		'CUR#www.cnn.com
+		'We are splitting each line item and checking to see if
+		'it is a Back, Forward or Current item.
+		Dim theHistItem As String() = theLineItem.Split("#".ToCharArray())
+		Select Case theHistItem(0)
+			Case "BAC"
+				'Add it to the Back History List.
+				theBackHistoryItems.Add(New NavigationHistoryItem(theHistItem(1)))
+			Exit Select
+			Case "FWD"
+				'Add it to the Forward History List.
+				theForwardHistoryItems.Add(New NavigationHistoryItem(theHistItem(1)))
+			Exit Select
+			Case "CUR"
+				'Create a Current Navigation History Item.
+				theCurrentNavItem = New NavigationHistoryItem(theHistItem(1))
+			Exit Select
+		End Select
+		theLineItem = theStreamReader.ReadLine()
+	End While
+	'Cleanup.
+	theStreamReader.Close()
+	theStreamReader.Dispose()
+	'Use the InitializeHistory method to populate the
+	'Navigation Toolbar's Back, Forward and Current History Items.
+	theNavToolbar.InitializeHistory(theBackHistoryItems.ToArray(), theForwardHistoryItems.ToArray(), theCurrentNavItem)
+End Sub
+----
+
+*In C#:*
+
+----
+private void LoadNavItems(string theFilePath, NavigationToolbar theNavToolbar)
+{
+    //This is the file that contains the History Items.
+    FileInfo theNavItemsFile = new FileInfo(theFilePath);
+    //This list represents the Forward History Items.
+    List<NavigationHistoryItem> theForwardHistoryItems = 
+        new List<NavigationHistoryItem>();
+    //This list represents the Back History Items.
+    List<NavigationHistoryItem> theBackHistoryItems = 
+        new List<NavigationHistoryItem>();
+    //This represents the Current History item.
+    NavigationHistoryItem theCurrentNavItem = null;
+    //This stream reader will be used to get each line of text from the file.
+    StreamReader theStreamReader = theNavItemsFile.OpenText();
+    //Used to represent the current line item read from the File.
+    string theLineItem = theStreamReader.ReadLine();
+    while ((theLineItem) != null)
+    {
+        //Each line item has been formatted in the following fashion:
+        //BAC#www.infragistics.com
+        //FWD#www.amazon.com
+        //CUR#www.cnn.com
+        //We are splitting each line item and checking to see if 
+        //it is a Back, Forward or Current item.
+        string[] theHistItem = theLineItem.Split("#".ToCharArray());
+        switch (theHistItem[0])
+        {
+            case "BAC": //Add it to the Back History List.
+                theBackHistoryItems.Add(new NavigationHistoryItem(theHistItem[1]));
+                break;
+            case "FWD": //Add it to the Forward History List.
+                theForwardHistoryItems.Add(new NavigationHistoryItem(theHistItem[1]));
+                break;
+            case "CUR": //Create a Current Navigation History Item.
+                theCurrentNavItem = new NavigationHistoryItem(theHistItem[1]);
+                break;
+        }
+        theLineItem = theStreamReader.ReadLine();
+    }
+    //Cleanup.
+    theStreamReader.Close();
+    theStreamReader.Dispose();
+    //Use the InitializeHistory method to populate the 
+    //Navigation Toolbar's Back, Forward and Current History Items.
+    theNavToolbar.InitializeHistory(theBackHistoryItems.ToArray(), theForwardHistoryItems.ToArray(), theCurrentNavItem);
+}
+----
+
+[start=3]
+. *Call the methods in an appropriate event.*
+
+Now that you've declared the two methods, you need to call them in your application. A good place to call the save method would be in the Form's FormClosing event. You can display a Yes/No MessageBox to your end user asking if they'd like to save their history. A good place to call the load method would be the Form's Load event. Of course, you could call these methods in a menu item on a toolbar, or even in a simple button.

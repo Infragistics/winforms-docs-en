@@ -1,0 +1,84 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-disabling-delete-row-confirmation",
+    "controlName": [],
+    "tags": [],
+    "guid": "01b4c69b-bf23-43a3-806b-6b2bba06ec94",  
+    "buildFlags": [],
+    "createdOn": "2014-01-21T20:10:56.8033457Z"
+}
+|metadata|
+////
+
+= Disabling Delete Row Confirmation
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview on disabling the confirmation dialog when deleting a row.
+
+[[_Ref371933075]]
+[[_Ref371956987]]
+== Disabling Delete Row Confirmation Feature
+
+=== Overview
+
+This feature provides the developer with an additional option for disabling the confirmation dialog when the user attempts to delete a row.
+
+By default, when selecting and deleting a row from the  _WinGrid_  , a confirmation dialog box appears prompting the user to confirm the deletion before actually deleting the row. There are 2 ways of disabling the confirmation dialog. Either set the  _DisplayPromptMsg_   to `False` on the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~beforerowsdeleted_ev.html[BeforeRowsDeleted] event, or change the control’s Boolean property link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~showdeleterowsprompt.html[ShowDeleteRowsPrompt] from its default setting, `True`, to `False`.
+
+Disabling the confirmation dialog.
+
+*In C#:*
+
+[source,csharp]
+----
+ultraGrid1.DisplayLayout.ShowDeleteRowsPrompt = false;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraGrid1.DisplayLayout.ShowDeleteRowsPrompt = False
+----
+
+Disable the confirmation dialog by overriding the event argument.
+
+*In C#:*
+
+[source,csharp]
+----
+private void ultraGrid1_BeforeRowsDeleted(object sender, BeforeRowsDeletedEventArgs e)
+{
+    e.DisplayPromptMsg = false;
+}
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Private Sub ultraGrid1_BeforeRowsDeleted(sender As Object, e As BeforeRowsDeletedEventArgs)
+      e.DisplayPromptMsg = False
+End Sub
+----
+
+[[_Ref370929790]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wingrid-using-wingrid.html[Using WinGrid]
+|This section provides direct links to related topics.
+
+|====

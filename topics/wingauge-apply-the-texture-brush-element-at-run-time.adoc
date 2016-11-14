@@ -1,0 +1,86 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-texture-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{E14873E8-8356-4F57-918F-FF1C2B1272BC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Texture Brush Element at Run Time
+
+Applying the Texture brush element to a property of your gauge gives the property a textured look and feel such as a canvas.
+
+*To apply the Texture brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create instances of the classes:
+
+*In Visual Basic:*
+
+----
+Dim myTextureBrushElement As New TextureBrushElement()
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+----
+
+*In C#:*
+
+----
+TextureBrushElement myTextureBrushElement = new TextureBrushElement();
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+----
+
+[start=4]
+. Set the following properties:
+
+** end color -- Silver
+** start color -- DimGray
+** texture style -- Canvas.
+
+*In Visual Basic:*
+
+----
+myTextureBrushElement.EndColor = System.Drawing.Color.Silver
+myTextureBrushElement.StartColor = System.Drawing.Color.DimGray
+myTextureBrushElement.Texture = Infragistics.UltraGauge.Resources.Texture.Canvas
+myRadialGauge.Dial.BrushElement = myTextureBrushElement
+----
+
+*In C#:*
+
+----
+myTextureBrushElement.EndColor = System.Drawing.Color.Silver;
+myTextureBrushElement.StartColor = System.Drawing.Color.DimGray;
+myTextureBrushElement.Texture = Infragistics.UltraGauge.Resources.Texture.Canvas;
+myRadialGauge.Dial.BrushElement = myTextureBrushElement;
+----
+
+== Related Topics
+
+link:wingauge-texture-brush-element.html[Texture Brush Element]
+
+link:wingauge-apply-the-texture-brush-element-at-design-time.html[Apply the Texture Brush Element at Design Time]
+
+link:wingauge-apply-the-texture-brush-element-using-the-gauge-designer.html[Apply the Texture Brush Element Using the Gauge Designer]

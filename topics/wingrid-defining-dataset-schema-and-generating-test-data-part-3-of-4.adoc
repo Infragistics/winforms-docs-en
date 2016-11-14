@@ -1,0 +1,207 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-defining-dataset-schema-and-generating-test-data-part-3-of-4",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{64C90EC3-B520-4DA8-A373-EB0F466BE854}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Defining DataSet Schema and Generating Test Data (Part 3 of 4)
+
+This topic continues from link:wingrid-generating-the-xsd-schema-part-2-of-4.html[Generating the XSD Schema (Part 2 of 4)].
+
+== Create DataSet Schema
+
+At this point we have created the two fundamental elements in our schema, Customers and Orders. Now we need to specify that the CustID entity in the Customers element/table should act as the primary key. After the primary key has been established we will create a relationship between Customers and Orders based on the CustID field, which exists in both data structures. When we create the DataSet's structure with this schema that relationship will be translated into a DataRelation object which will allow those to tables to be seen as having a parent-child relationship.
+
+[start=1]
+. In the opening <xs:schema> tag we need to add the namespace declaration shown below, right after the id property. This is necessary due to the presence of the msdata:IsDataSet="true" attribute used in the XML markup that you will add in the next step. The attribute is used to inform the DataSet that it should treat the element containing the attribute as its "starting point" when constructing its internal schema/structure. Since that attribute is in a separate namespace we need to indicate that this schema references that namespace, otherwise an exception would be thrown when calling the ReadXmlSchema method of the DataSet.
+
+*XML Schema:*
+
+----
+... xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" ...
+----
+
+[start=2]
+. In the XSD design view right click on the file in the Solution Explorer and select View Code. In the XML view at the bottom before the </xs:schema> tag place the following code.
+
+*XML Schema:*
+
+----
+<xs:element name="DataSet" msdata:IsDataSet="true">
+        <xs:annotation>
+                <xs:documentation>
+                1) Declare the Customers and Orders tables.
+                2) Establish the unique constraint on the CustID field in the Customers table.
+                3) Create a foreign key relationship between the CustID field of the Orders 
+                   table to the CustID field of the Customers table.
+                </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+                <xs:choice maxOccurs="unbounded">
+                        <xs:element ref="Customers" maxOccurs="3" minOccurs="0" />
+                        <xs:element ref="Orders" maxOccurs="3" minOccurs="1" />
+                </xs:choice>
+        </xs:complexType>
+        <xs:key name="CustIDKey">
+                <xs:selector xpath="Customers" />
+                <xs:field xpath="@CustID" />
+        </xs:key>
+        <xs:keyref name="CustIDForeignKey" refer="CustIDKey">
+                <xs:selector xpath="Orders" />
+                <xs:field xpath="@CustID" />
+        </xs:keyref>
+</xs:element>
+----
+
+[start=3]
+. The XSD code above establishes the primary key of the Customers table, defines the relationship between the two tables, and specifies how many occurrences can be made of each type (i.e. the number of rows allowed in each band). From an XML perspective, the maxOccurs and minOccurs attributes represent how many times that element can appear. From a hierarchical data perspective, when those attributes are used in an element which represents a table of data they indicate the number of rows that can appear in that table.
+
+In the markup seen above, we are declaring that the DataSet will contain two tables; Customers and Orders. The maxOccurs attribute used in those elements indicates the maximum number of rows that can appear in those tables. Those attribute settings indicate that the Customers table can contain up to three customers. The WinGrid™ will not allow the end-user to add more rows to that band once there are three rows in it. The maxOccurs on the Orders element indicates that each customer can have up to three orders. The minOccurs attribute indicates the minimal number of rows each band can contain.
+
+The maxOccurs attribute corresponds to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~maxrows.html[MaxRows]"]  property on the *UltraGridBand* class and minOccurs corresponds to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~minrows.html[MinRows]"]  property.
+
+== Generating Test Data
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. First we need to declare a private variable which stores the path to our XSD file. The following code shows this declaration:
+
+*In Visual Basic:*
+
+----
+Private ReadOnly xsdFileName As String = "..\WinGrid\cust-orders.xsd"
+----
+
+*In C#:*
+
+----
+private readonly string xsdFileName = @"..\..\cust-orders.xsd";
+----
+
+[start=3]
+. Now we are ready to create our DataSet. Declare a method (Function) in your Form-derived class called CreateDataSet which takes no arguments and returns a DataSet. Inside this method place the following code:
+
+*In Visual Basic:*
+
+----
+Private Function CreateDataSet() As DataSet
+	Dim ds As New DataSet()
+	' Give the DataSet it's structure based on the XSD schema file
+	ds.ReadXmlSchema(Me.xsdFileName)
+	' Populate the DataSet with data
+	Dim tbl As DataTable = ds.Tables("Customers")
+	' Customers(CustID, Title, FirstName, MiddleInitial, LastName)
+	tbl.Rows.Add(New Object() {1, "Mr.", "David", "J", "SilverTone"})
+	tbl.Rows.Add(New Object() {2, "Dr.", "Jessica", "A", "Monet"})
+	tbl.Rows.Add(New Object() {3, "Ms.", "Alberta", "Q", "Mathersly"})
+	tbl = ds.Tables("Orders")
+	' Orders( CustID, OrderID, ProductName, Price, Quantity )
+	tbl.Rows.Add(New Object() {1, "customer", "132E", "Coleman Grape Jelly", 2.39, 14})
+	tbl.Rows.Add(New Object() {1, "customer", "126A", "Merrick Butter Knife", 12.99, 2})
+	tbl.Rows.Add(New Object() {2, "customer", "21E", "Jamesville Powder", 1.79, 34})
+	tbl.Rows.Add(New Object() {3, "customer", "143R", "Coleman Grape Jelly", 2.39, 6})
+	tbl.Rows.Add(New Object() {3, "customer", "144T", "Bill's Mango Passion", 4.49, 2})
+	tbl.Rows.Add(New Object() {3, "customer", "143R", "Helluva Hot Sauce", 3.99, 1})
+	Return ds
+End Function
+----
+
+*In C#:*
+
+----
+private DataSet CreateDataSet()
+{
+	DataSet ds = new DataSet();
+	// Give the DataSet it's structure based on the XSD schema file.
+	ds.ReadXmlSchema( this.xsdFileName );
+	// Populate the DataSet with data.
+	DataTable tbl = ds.Tables["Customers"];
+	// Customers( CustID, Title, FirstName, MiddleInitial, LastName )
+	tbl.Rows.Add( new object[]{ 1, "Mr.", "David",   "J", "Silvertone" } );
+	tbl.Rows.Add( new object[]{ 2, "Dr.", "Jessica", "A", "Monet"      } );
+	tbl.Rows.Add( new object[]{ 3, "Ms.", "Alberta", "Q", "Mathersly"  } );
+	tbl = ds.Tables["Orders"];
+	// Orders( CustID, OrderID, ProductName, Price, Quantity )
+	tbl.Rows.Add( new object[]{ 1, "customer", "132E", "Coleman Grape Jelly",   2.39, 14 } );
+	tbl.Rows.Add( new object[]{ 1, "customer", "126A", "Merrick Butter Knife", 12.99,  2 } );
+	tbl.Rows.Add( new object[]{ 2, "customer",  "21E", "Jamesville Powder",     1.79, 34 } );
+	tbl.Rows.Add( new object[]{ 3, "customer", "143R", "Coleman Grape Jelly",   2.39,  6 } );
+	tbl.Rows.Add( new object[]{ 3, "customer", "144T", "Bill's Mango Passion",  4.49,  2 } );
+	tbl.Rows.Add( new object[]{ 3, "customer", "143R", "Helluva Hot Sauce",     3.99,  1 } );
+	return ds;
+}
+----
+
+[start=4]
+. In the above code we define a DataSet, supply the DataSet with a schema from our XSD file, and then populate the two tables (Customers and Orders) with some dummy data.
+[start=5]
+. Now create handlers for the Click events of the buttons that were added during the first page of this tutorial. In the Click event handler for the "Load Data" button we need to bind the WinGrid to the DataSet returned by the CreateDataSet method. Paste the following code into the Click event handler for that button:
+
+*In Visual Basic:*
+
+----
+Private Sub btnLoad_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnLoad.Click
+	Dim ds As DataSet = Me.CreateDataSet()
+	Me.UltraGrid1.SetDataBinding(ds, Nothing)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnLoad_Click(object sender, EventArgs e)
+{
+	DataSet ds = this.CreateDataSet();
+	this.ultraGrid1.SetDataBinding( ds, null );
+}
+----
+
+[start=6]
+. Finally we need to create a handler for the WinGrid's InitializeLayout event. This method makes the cells in the Price column use a masked editor and allows the end-user to add new rows to bands. Place the following code inside the event handler:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.Override.AllowAddNew = AllowAddNew.TemplateOnBottom
+	e.Layout.Bands(1).Columns("Price").Editor = New EditorWithMask()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Override.AllowAddNew = AllowAddNew.TemplateOnBottom;
+	e.Layout.Bands[1].Columns["Price"].Editor = new EditorWithMask();
+}
+----

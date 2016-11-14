@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-stroke-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{2670A2D9-9B7A-426E-87EC-7FAABF2F26EF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Stroke Pane
+
+The Stroke pane allows you to add a border around the selected property.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement~brushelement.html[Brush Type]"]  -- This drop-down list lets you change the brush type of your property.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement~brushelement.html[Brush Color]"]  -- Depending on which brush type you select, the brush color list will populate with the colors available for that brush type.
+
+Relative Bounds Editor -- This pop-up menu displays two bounds editors that, link:wingauge-relative-bounds.html[Relative Bounds] and link:wingauge-relative-clip-bounds.html[Relative Clip Bounds], allows you to determine the size and location of your brush element.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement~dashstyle.html[Style]"]  -- This values specifies the dash style of the border.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement~thickness.html[Thickness]"]  -- Set this value to an integer from 0 to 100. This value specifies the thickness of the border.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement~alignment.html[Alignment]"]  -- This value specifies the position of the border.
+
+image::images/Stroke_Pane_01.png[wingauge's stroke pane.]
+
+== Related Topic
+
+link:wingauge-appearance-tab.html[Appearance Tab]

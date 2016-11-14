@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatetimeeditor-restricting-the-range-of-dates-accepted-by-the-datetimeeditor",
+    "controlName": ["WinEditors"],
+    "tags": ["How Do I","Validation"],
+    "guid": "{E22BEED0-D4B4-4E2C-B682-05579055A396}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Restricting the Range of Dates Accepted by the DateTimeEditor
+
+The WinDateTimeEditor™ control provides the ability to restrict the range of dates that will be accepted by the element. This is accomplished by setting the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor~mindate.html[MinDate]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor~maxdate.html[MaxDate]"]  properties. When these properties are set, the element will disallow navigation (via the Drop-down calendar) to dates that lie outside that range. Furthermore, if a date that lies outside the range determined by the MinDate and MaxDate properties is typed into the element's edit portion, the date will revert to the last valid date when the element loses focus.

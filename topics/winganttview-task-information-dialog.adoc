@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-task-information-dialog",
+    "controlName": ["WinGanttView"],
+    "tags": [],
+    "guid": "{7CF42B86-02CC-445D-B285-AE00D6D131A5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Task Information Dialog
+
+The Task Information dialog is a window that provides editing support for a particular Task. You can also create a new Task from scratch. There are several tabs available in the dialog that can be used to set or view various Task settings such as task name, duration, percent complete, start and finish dates, dependency, resources, deadline, constraint, etc. You can invoke the dialog either from the context menu (by right-clicking in the Grid or chart section) or by double-clicking within the Grid or chart section of the control.
+
+.Note
+[NOTE]
+====
+By default the context menu and Task Information dialog can be invoked only from the Grid section of the control. You can allow invoking from different section of the control using the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~autodisplaydefaultcontextmenu.html[AutoDisplayDefaultContextMenu] and link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~autodisplaytaskdialog.html[AutoDisplayTaskDialog] properties.
+====
+
+*In Visual Basic:*
+
+----
+' Allow invoking Task Information dialog from the Grid as well as the chart sections of the control 
+Me.ultraGanttView1.AutoDisplayTaskDialog = Infragistics.Win.UltraWinGanttView.AutoDisplayTaskDialog.GridAreaOrChartArea 
+AddHandler Me.ultraGanttView1.TaskDialogDisplaying, AddressOf ultraGanttView1_TaskDialogDisplaying 
+Private Sub ultraGanttView1_TaskDialogDisplaying(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinGanttView.TaskDialogDisplayingEventArgs) Handles ultraGanttView1.TaskDialogDisplaying
+    ' Get Reference to the Task that invoked the dialog
+    Task taskInDialog = e.Task
+End Sub
+----
+
+*In C#:*
+
+----
+// Allow invoking Task Information dialog from the Grid as well as the chart sections of the control
+this.ultraGanttView1.AutoDisplayTaskDialog = Infragistics.Win.UltraWinGanttView.AutoDisplayTaskDialog. GridAreaOrChartArea;
+this.ultraGanttView1.TaskDialogDisplaying += new Infragistics.Win.UltraWinGanttView.TaskDialogDisplayingHandler
+(ultraGanttView1_TaskDialogDisplaying);
+void ultraGanttView1_TaskDialogDisplaying(object sender, Infragistics.Win.UltraWinGanttView.TaskDialogDisplayingEventArgs e)
+{
+      // Get Reference to the Task that invoked the dialog
+     Task taskInDialog = e.Task;
+}
+----
+
+image::Images\WinGanttView_Task_Inforamtion_Dialog_01.png[]
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

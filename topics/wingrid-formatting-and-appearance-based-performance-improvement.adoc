@@ -1,0 +1,199 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-formatting-and-appearance-based-performance-improvement",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Performance"],
+    "guid": "{F3AC6DA5-1787-402C-8D12-A36C8856F6EF}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Formatting and Appearance based Performance Improvement
+
+=== Painting
+
+Painting Wingrid™, or any other control, can often be a source of performance issues if not taken seriously. This is especially true when multiple operations are performed on the control in code at run-time, each of which causes the control to be invalidated in whole or in part. For example, suppose you have code to loop through every row of the grid and update the value in a cell:
+
+*In Visual Basic:*
+[source, vb]
+For Each row As UltraGridRow In Me.ultraGrid1.Rows
+  row.Cells("Price").Value = CDbl(row.Cells("Price").Value) + 1
+Next
+
+*In C#:*
+[source, csharp]
+foreach (UltraGridRow row in this.ultraGrid1.Rows)
+  {
+    row. Cells ["Price"].Value = (double) row. Cells ["Price"].Value + 1.0;
+  }
+
+Each time a cell is updated, some part of the grid will be invalidated and may re-paint itself on the screen many times. In a case like this, the grid can be explicitly prevented from painting by disabling the painting before the loop begins and re-enabling it once all operations are complete. By using this logic, you can update the Grid millions of times and when you are done and re-enable the painting, it just re-paints once. This alone will yield great savings in CPU usage and results in drastically increased performance. This can all be achieved with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~beginupdate.html[BeginUpdate]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~endupdate.html[EndUpdate]"]  methods.
+
+*Note:* A try…finally block is used here to make sure that no matter what happens, the grid’s painting always gets turned back on eventually.
+
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.BeginUpdate()
+Try
+  For Each row As UltraGridRow In Me.ultraGrid1.Rows
+    row.Cells("Price").Value = CDbl(row.Cells("Price").Value) + 1R
+  Next
+Finally
+  Me.ultraGrid1.EndUpdate()
+End Try
+
+*In C#:*
+[source, csharp]
+this.ultraGrid1.BeginUpdate();
+try
+{
+  foreach (UltraGridRow row in this.ultraGrid1.Rows)
+    {
+       row.Cells["Price"].Value = (double)row.Cells["Price"].Value + 1.0;
+    }
+}
+finally
+{
+    this.ultraGrid1.EndUpdate();
+}
+
+. *Row Synchronization*
++
+When making changes to the Grid’s DataSource directly, most data sources will notify the Grid of changes and as a result, the Grid will perform some internal processing, even if it is not painting. This internal processing can be turned off and some performance can be gained using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~suspendrowsynchronization.html[SuspendRowSynchronization]"] /  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~resumerowsynchronization.html[ResumeRowSynchronization]"]  methods. These methods should always be called inside a block with `BeginUpdate` and `EndUpdate`.
++
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.BeginUpdate() 
+Me.ultraGrid1.SuspendRowSynchronization() 
+Try 
+' Get the DataTable the grid is bound to. This assumes the 
+' data source is a DataTable. 
+Dim dt As DataTable = DirectCast(Me.ultraGrid1.DataSource, DataTable)
+    For Each row As DataRow In dt.Rows 
+        row("Price") = CDbl(row("Price")) + 1R 
+    Next 
+Finally 
+    Me.ultraGrid1.ResumeRowSynchronization() 
+    Me.ultraGrid1.EndUpdate() 
+End Try
++
+*In C#:*
+[source, csharp]
+this.ultraGrid1.BeginUpdate ();
+this.ultraGrid1.SuspendRowSynchronization ();
+try
+{
+  // Get the DataTable the grid is bound to. This assumes the
+  // data source is a DataTable.
+  DataTable dt = (DataTable)this.ultraGrid1.DataSource;
+  foreach (DataRow row in dt.Rows)
+   {
+     row["Price"] = (double)row["Price"] + 1.0;
+   }
+}
+finally
+{
+   this.ultraGrid1.ResumeRowSynchronization();
+   this.ultraGrid1.EndUpdate();
+}
+
+. *CellDisplayStyle Property*
++
+By default, every cell in the grid uses an Editor to display and edit its value. Editors have a lot of power and flexibility, providing valuelists, color pickers, date dropdowns, masking, checkboxes, buttons and many other editor styles. But with all these features come extra overhead and more complex painting. The Grid cannot know what features your application will and will not need at run-time, so by default, all features are enabled. However, if you know you will not be using certain features in a column, you can turn some features off by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~celldisplaystyle.html[CellDisplayStyle]"]  property.
+
+. *EditAreaDisplayStyle Property*
++
+When an item is selected from a WinDropDown (or WinCombo) attached to a cell, the item’s appearance is copied into the WinGrid cell. For example if an image exits in the list of WinDropDown items, the image will appear in the WinGrid cell when the corresponding item is selected from the DropDown. In order to handle this, the WinDropDown searches the list of items to find the largest image and space the cell accordingly. This searching of the list can slow down the painting of the WinGrid. Therefore, by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~editareadisplaystyle.html[EditAreaDisplayStyle]"]  property of WinDropDown to DisplayText, implies that the WinGrid cell displays only Text and it does not display images, based on the items selected from the WinDropDown.
+
+. *ValueLists*
++
+Another common cause of slowdowns in the Grid is the improper use of ValueLists (include ValueList, BindableValueList, UltraCombo, UltraComboEditor, and UltraDropDown). ValueLists can provide a dropdown list in a cell. It is important to realize that the Grid will need to search the list quite often, especially if the DataValue/DisplayValue feature is used and the Grid needs to translate values into user-friendly display text.
+
+.. Make sure data types match
++
+If the DataValue values in the ValueList are of a different DataType than the values in the actual corresponding Grid cells, this can cause performance problems for several reasons. First, the Grid is going to convert the value from one data type to another. Second, this conversion process may result in an InvalidCastException. These exceptions will be caught and handled by the Grid and will take a large toll on performance, even when these exceptions are caught and handled. It is important to make sure that the DataValues in the ValueList are exactly the same data type as the values in the grid. 
+
+.. Make sure every Grid cell value exists in the list
++
+Another common ValueList pitfall is when the value in the Grid cell does not exist on the list. For example, consider a column in the Grid with integer values ranging from 1 to 100 and a ValueList attached to the column with values from 1 to 100. This is fine and, on average, the Grid will need to do 50 comparisons to find the matching item in the list for each cell that paints. But now suppose that every cell in the column starts off with a value of 0. In this case, the Grid must search all 100 value list items for each cell that paints BEFORE it can determine that the item does not exist in the list. Adding a value of 0 to the ValueList would alleviate this problem. 
+
+.. Binary searching
++
+The UltraDropDown control has Binary Search capability. In order to perform a binary search, the DropDown must keep an internal sorted list of the DisplayValues on the list. This means there is a small performance hit the first time the dropdown is used since it has to build the list. But every search after that will be much faster than a linear search would be. So using UltraDropDown may give your application a significant performance boost at the cost of a small initial hit. 
++
+.Note
+[NOTE]
+====
+The UltraDropDown control has a property called DropDownSearchMethod, which defaults to Binary, but can be set to Linear, if binary searching is not required.
+====
+
+. *Recursion*
++
+The WinGrid drills down into its data source and creates a CurrencyManager for every level. If the Grid is bound to a recursive data source, this means that the Grid will, by default, create 100 levels of CurrencyManagers. The number 100 is the default of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~maxbanddepth.html[MaxBandDepth]"]  property. Each level of depth in the data source will increase the number of CurrencyManagers in a logarithmic scale. So the first level of the grid only requires 1 CurrencyManager. The second level requires one CurrencyManager for each row in the first level. The third level of depth requires one CurrencyManager for each row in the second level, and so on. This can quickly add up to a huge memory footprint and make it very difficult for the Grid to synchronize its current row with the current Position of the CurrencyManager.
++
+To alleviate this kind of issue, two things can be done.
++
+.. Set MaxBandDepth to a more reasonable number. Very few end-users will find it useful to drill down into the data 100 levels deep. They will become lost long before they ever reach that point. A value of between 5 and 8 usually gives a good balance between displaying a reasonable depth of data and still having a grid that performs well.
+
+.. Set link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~syncwithcurrencymanager.html[SyncWithCurrencyManager] to false. This tells the grid not to synchronize the current row with the current position of the CurrencyManager. This means that if there are other controls in the application bound to the same data source as the Grid, changing the Grid’s current row will not position the CurrencyManager and thus not update the other controls. But very often, this is not necessary, anyway.
+
+. *Using a BindingSource*
++
+In Visual Studio 2005 (or more accurately in the DotNet Framework CLR 2.0), some changes were made to the .Net BindingManager that might cause performance problems with the Grid when it is bound directly to a DataTable or DataSet under certain conditions. Wrapping the Grid’s Data Source in a BindingSource corrects these issues.
++
+*In Visual Basic:*
+[source, vb]
+BindingSource bs = new BindingSource(ds, "TableName");
+this.ultraGrid1.DataSource = bs;
++
+*In C#:*
+[source, csharp]
+BindingSource bs = new BindingSource(ds, "TableName");
+this.ultraGrid1.DataSource = bs;
+
+. *Exceptions*
++
+As mentioned briefly above (under ValueLists) thrown exceptions can have a big impact on performance, even if the exceptions are caught and handled. So it’s often a good idea to set the Visual Studio IDE to break on all run-time exceptions and reveal any exception that might be occurring. If exceptions are occurring, then where they occur can often provide information on how to avoid them.
+
+. *Deferred Scrolling*
++
+Setting the WinGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~scrollstyle.html[Scroll style]"]  property Deferred causes WinGrid to render rows when scrolling is complete, significantly increasing application usability when dealing with large record quantities.
++
+In deferred mode, WinGrid’s display is not updated when the scrollbar is being dragged. It is updated only when dragging the scrollbar has stopped and the thumb track is released. Since row information is not known until the thumb track is released, scroll tips are provided instead.
++
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.DisplayLayout.ScrollStyle = ScrollStyle.Deferred
++
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.ScrollStyle = ScrollStyle.Deferred;
+
+. *Always showing Expansion Indicators*
++
+Row Expansion Indicators can be shown or hidden depending upon whether or not child records exist for a parent row. Setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~expansionindicator.html[ShowExpansionIndicator]"]  property to always will always display the expansion Indicator for all the bands and thus avoids scanning of each parent record to check for any child records, thus improving WinGrid performance.
++
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.DisplayLayout.Override.ExpansionIndicator= Infragistics.Win.UltraWinGrid.ShowExpansionIndicator.Always
++
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.Override.ExpansionIndicator =
+Infragistics.Win.UltraWinGrid.ShowExpansionIndicator.Always;
+
+. *CellHottrackInvalidationStyle*
++
+WinGrid always invalidates a cell when entering or leaving the cell with the mouse. This causes the cell to redraw itself. In many situations, you may find that there are actually no changes (visually or in the underlying data) taking place and therefore no invalidation is needed. In order to increase performance, you can set  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~cellhottrackinvalidationstyle.html[CellHottrackInvalidationStyle]"]  to Never and WinGrid will never invalidate a cell, which would result in WinGrid not redrawing the cell.
++
+*In Visual Basic:*
+[source, vb]
+Me.ultraGrid1.DisplayLayout.CellHottrackInvalidationStyle= Infragistics.Win.UltraWinGrid.CellHottrackInvalidationStyle.Never
++
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.CellHottrackInvalidationStyle= 
+Infragistics.Win.UltraWinGrid.CellHottrackInvalidationStyle.Never;

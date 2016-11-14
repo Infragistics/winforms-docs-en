@@ -1,0 +1,137 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-binding-to-program-generated-flat-data",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Sample Data Source"],
+    "guid": "{7D2227ED-1A52-4A19-9BF8-5DDF2CF52E27}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding to Program-Generated Flat Data
+
+== Background
+
+This project illustrates the program generation of a DataTable (Flat Data) and binding of this DataTable to the WinGrid™ control.
+
+== Overview
+
+This exercise illustrates how to:
+
+[start=1]
+. Programmatically Create a DataTable.
+[start=2]
+. Add Columns to the DataTable.
+[start=3]
+. Specify a Primary Key for the DataTable.
+[start=4]
+. Add Rows to the DataTable.
+[start=5]
+. Bind the DataTable to the UltraGrid.
+
+The finished form should will something like this:
+
+image::Images\WinGrid_Binding_to_Program_Generated_Flat_Data_01.png[binding to program generated flat data]
+
+== Start a New Project
+
+[start=1]
+. Create a new Windows Application project.
+[start=2]
+. From the Toolbox Windows Forms tab, add an UltraButton to the form and set the Text property to "Create and Bind Flat Data". (See above screen shot for placement.)
+[start=3]
+. From the Toolbox add an UltraGrid to the form.
+
+== Create Flat Data and Bind to Grid
+
+[start=1]
+. Add a Sub Procedure to respond to the "Create and Bind Flat Data" button's Click event and add the following code to the procedure:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraButton1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles UltraButton1.Click
+	' Declare a DataTable to contain the program generated data
+	Dim dataTable As New DataTable("TableTest")
+	' Create and add a CustomerID column
+	Dim colWork As New DataColumn("CustomerID", GetType(Int32))
+	dataTable.Columns.Add(colWork)
+	' Add CustomerID column to key array and bind to DataTable
+	Dim Keys(0) As DataColumn
+	Keys(0) = colWork
+	dataTable.PrimaryKey = Keys
+	' Create and add a CustomerName column
+	colWork = New DataColumn("CustomerName", GetType(String))
+	colWork.MaxLength = 50
+	dataTable.Columns.Add(colWork)
+	' Create and add a LastOrderDate column
+	colWork = New DataColumn("LastOrderDate", GetType(Date))
+	dataTable.Columns.Add(colWork)
+	' Add a row
+	Dim row As DataRow = dataTable.NewRow()
+	row("CustomerID") = 1
+	row("CustomerName") = "John's Widgets"
+	row("LastOrderDate") = Now
+	dataTable.Rows.Add(row)
+	' Add another row
+	row = dataTable.NewRow()
+	row("CustomerID") = 2
+	row("CustomerName") = "Fred's Thingamagigs"
+	row("LastOrderDate") = Now.AddDays(-101)
+	dataTable.Rows.Add(row)
+	' Bind the table to the grid
+	Me.UltraGrid1.DataSource = dataTable
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraButton1_Click(object sender, EventArgs e)
+{
+	// Declare a DataTable to contain the program generated data
+	DataTable dataTable = new DataTable("TableTest");
+	// Create and add a CustomerID column
+	DataColumn colWork = new DataColumn("CustomerID", System.Type.GetType("System.Int32"));
+	dataTable.Columns.Add(colWork);
+	// Add CustomerID column to key array and bind to DataTable
+	DataColumn[] Keys = new DataColumn[1];
+	Keys[0] = colWork;
+	dataTable.PrimaryKey = Keys;
+	// Create and add a CustomerName column
+	colWork = new DataColumn("CustomerName", System.Type.GetType("System.String"));
+	colWork.MaxLength = 50;
+	dataTable.Columns.Add(colWork);
+	// Create and add a LastOrderDate column
+	colWork = new DataColumn("LastOrderDate", System.Type.GetType("System.DateTime"));
+	dataTable.Columns.Add(colWork);
+	// Add a row
+	DataRow row = dataTable.NewRow();
+	row["CustomerID"] = 1;
+	row["CustomerName"] = "Johns Widgets";
+	row["LastOrderDate"] = System.DateTime.Now;
+	dataTable.Rows.Add(row);
+	// Add another row
+	row = dataTable.NewRow();
+	row["CustomerID"] = 2;
+	row["CustomerName"] = "Freds Thingamagigs";
+	row["LastOrderDate"] = System.DateTime.Now.AddDays(-101);
+	dataTable.Rows.Add(row);
+	// Bind the table to the grid
+	this.ultraGrid1.DataSource = dataTable;	
+}
+----
+
+[start=2]
+. Build and Run the Project. The form displays.
+[start=3]
+. Press "Create and Bind Flat Data" and the Program Generated Flat Data displays in the UltraGrid.
+
+== Review
+
+This exercise shows how to create a DataTable with code and bind it to the WinGrid.

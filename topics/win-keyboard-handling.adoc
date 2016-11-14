@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-keyboard-handling",
+    "controlName": [],
+    "tags": ["Application Blocks","Tips and Tricks"],
+    "guid": "{65384227-AA4D-47CC-8F3C-3FEC3E471956}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Keyboard Handling
+
+For complex controls that accept the input focus (e.g. grids, trees etc.) comprehensive keyboard support can be difficult to implement and is potentially error-prone. In addition, an easy-to-use keyboard behavior extensibility mechanism is almost never exposed by third party controls. This has been a sore point for many developers who have had to jump through hoops when trying to customize the keyboard behavior of third party controls.
+
+The Presentation Layer Framework addresses these problems by having each complex control that accepts input focus expose the following:
+
+[start=1]
+. An enumeration of all possible actions the control can perform (e.g. activate the next cell, activate the previous cell, activate the first row, enter edit mode, exit edit mode, drop down a list etc.). Note: these enumerations only have meaning for the control in question.
+[start=2]
+. A method or property that returns the current state of the control as a set of bit flags (e.g. is there an active row, is there an active cell, is the cell in edit mode, is the cell's list dropped down etc.). Note: these flags only have meaning for the control in question.
+[start=3]
+. A collection of KeyActionMapping objects. Each KeyActionMapping object contains the following:
+
+** A keycode (e.g. left arrow, right arrow, home, end, space bar, a letter etc.)
+** An action code (explained in step 1 above)
+** The state (explained in step 2 above) the control must to be in for this mapping to be applicable.
+** The state (explained in step 2 above) the control must NOT be in for this mapping to be applicable.
+** The special keys ('Shift', 'Ctrl' or Alt' ) that must be pressed for this mapping to be applicable.
+** The special keys ('Shift', 'Ctrl' or Alt' ) that must NOT be pressed for this mapping to be applicable.
+
+[start=4]
+. A method for loading the control's default KeyActionMappings (usually from a static table).
+[start=5]
+. A method for performing an action (called "PerformAction"). This method takes an action code (explained in 'A' above) as an input parameter.
+
+The following code illustrates how to add a custom key/action mapping to the grid that will navigate to the first row in the grid when the grid has focus but is not in edit mode and the users presses the 'H' key (unless the 'alt' key is also pressed).
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+Private Sub Form1_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+    Dim newMapping As GridKeyActionMapping
+    newMapping = _
+      New GridKeyActionMapping(Keys.H, UltraGridAction.FirstRowInGrid, _
+      UltraGridState.InEdit, 0, Infragistics.Win.SpecialKeys.Alt, 0)
+    Me.UltraGrid1.KeyActionMappings.Add(newMapping)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+private void Form1_Load(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.KeyActionMappings.Add( 
+		new GridKeyActionMapping( 
+			// the key code
+			Keys.H,
+			// the action to take
+			UltraGridAction.FirstRowInGrid,
+			// disallowed state
+			UltraGridState.InEdit, 
+			// required state (none)
+			0, 
+			// disallowed special keys
+			Infragistics.Win.SpecialKeys.Alt, 
+			// required special keys (none)
+			0 ) );
+}
+----
+
+The following code illustrates how to test what state a grid is in and to perform an action based on the current state, it this case enter edit mode if a cell is selected.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+Private Sub Button1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles Button1.Click
+    Dim state As UltraGridState
+    ' Get the current state of the grid
+    state = Me.UltraGrid1.CurrentState
+    ' Check the state bit flags to see if the 'InEdit' bit is set
+    If ((state And UltraGridState.InEdit) = 0) Then
+        ' since we aren't in edit mode check the bit that
+        ' determines if a cell is selected. If it is then
+        ' call perform action to enter edit mode
+        If ((state And UltraGridState.Cell) = UltraGridState.Cell) Then
+            Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode)
+        End If
+    End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+private void button1_Click(object sender, System.EventArgs e)
+{
+	// Get the current state of the grid
+	UltraGridState state = this.ultraGrid1.CurrentState;
+	// Check the state bit flags to see if the 'InEdit' bit is set
+	if ((state & UltraGridState.InEdit) == 0)
+	{
+		// since we aren't in edit mode check the bit that
+		// determines if a cell is selected. If it is then
+		// call perform action to enter edit mode
+		if ((state & UltraGridState.Cell) == UltraGridState.Cell)
+			this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode);
+	}
+}
+----
+
+Some of the advantages of this approach are:
+
+* By separating most of the control specific logic (in the "PerformAction" method) from the KeyActionMappings collection, changes can be made to either without the risk of introducing errors in the other. It also greatly simplifies the code.
+* The code that processes the "KeyDown" event then searches through the KeyActionMappings collection and calls the "PeformAction" method with the appropriate action code is implemented in the shared assemblies of the PLF. Therefore, all controls can take advantage of this shared implementation.
+* The control now exposes the "PerformAction" method, so a user can call it directly, performing any action that is supported by the control.
+* The KeyActionMappings collection exposes methods for adding, removing and modifying KeyActionMapping objects so the user can easily customize the control's keyboard behavior.

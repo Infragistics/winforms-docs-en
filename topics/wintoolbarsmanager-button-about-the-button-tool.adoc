@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-button-about-the-button-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{FE5E0B16-C87E-46F7-ADFE-F42841335B6A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the Button Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+.Note
+[NOTE]
+====
+*Note:* The button tools do not fire keyboard events (KeyPress, KeyUp, KeyDown) since they do not accept focus. KeyBoard events are fired only when you have a tool that has the ability to accept focus (E.g., TextBoxTool).
+====
+
+[cols="a,a"]
+|====
+|*Class Name:*
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"] 
+
+|*Derived From:*
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] 
+
+|*Description:*
+|The Button tool provides standard toolbar button behavior and look. Button tools can display an image and/or text, and can reside on toolbars or menus. When on a toolbar, ButtonTools behave like command buttons when pressed (i.e. they visually depress, return to the up position, and fire a click event).
+
+|*Sample:*
+|image::Images\WinToolbarsManager_About_Tools_01.png[example of ultratoolbarsmanager button tool] 
+
+image::Images\WinToolbarsManager_About_Tools_02.png[example of ultratoolbarsmanager button tool] 
+
+|====

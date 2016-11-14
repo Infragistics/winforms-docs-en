@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-navigation-toolbar-reset-or-remove-items-from-the-navigation-history",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Navigation"],
+    "guid": "{ADCFF9CD-AC0D-4FA3-A717-5C326C8CBCD9}",  
+    "buildFlags": [],
+    "createdOn": "2007-12-09T12:11:27Z"
+}
+|metadata|
+////
+
+= Reset or Remove Items from the Navigation History
+
+After several hours of browsing the internet or a file system, the navigation history could become quite bloated – especially if you didn't limit the size of the navigation history. Just by calling the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~resetnavigationhistory.html[ResetNavigationHistory]"]  method, you can completely remove all items from the entire navigation history. If you're creating an internet browsing application, you may also wish to expose this functionality to your end user as a means to clear their internet browsing history.
+
+If you aren't keen on destroying the entire navigation history, you can create a method that iterates through the navigation history and removes an individual item or an array of items. You can do this by passing a string, or an array of strings, to the method. These strings will match with the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationhistoryitem.html[NavigationHistoryItem's]"]   pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationhistoryitem~text.html[Text]"]  property. It the strings match, you want to remove that item.
+
+Create a method that creates two Lists of NavigationHistoryItems. Iterate through the navigation history adding each item to the appropriate list if it is not the item to be removed. Once these lists are complete, reinstantiate the navigation history.
+
+*In Visual Basic:*
+
+----
+Private Sub RemoveHistoryItem(ByVal theNavToolbar As NavigationToolbar, ByVal itemToRemove As String)
+    'Create a generic List Of type NavigationHistoryItem for both the Back and Forward collections.
+    'These Lists will then be converted into Arrays when needed.
+    Dim theBackItems As New List(Of NavigationHistoryItem)()
+    Dim theForwardItems As New List(Of NavigationHistoryItem)()
+    'Iterate through the BackHistory collection
+    For Each theItem As NavigationHistoryItem In theNavToolbar.BackHistory
+    	'If the ItemToRemove string does not equal the
+    	'text of the NavigationToolbar's current Item.Text, then add ItemToRemove
+    	'to our new BackItems list. We do NOT want to carry over
+    	'the ItemToRemove if it exists in the current BackHistoryItems collection.
+    	If Not itemToRemove.Equals(theItem.Text) Then
+    		theBackItems.Add(New NavigationHistoryItem(theItem.Text))
+    	End If
+    Next
+    'Iterate through the ForwardHistory collection
+    For Each theItem As NavigationHistoryItem In theNavToolbar.ForwardHistory
+    	'If the ItemToRemove string does not equal the
+    	'text of the NavigationToolbar's current Item.Text, then add ItemToRemove
+    	'to our new ForwardItems list. We do NOT want to carry over
+    	'the ItemToRemove if it exists in the current ForwardHistoryItems collection.
+    	If Not itemToRemove.Equals(theItem.Text) Then
+    		theForwardItems.Add(New NavigationHistoryItem(theItem.Text))
+    	End If
+    Next
+    'Now that we have created new Lists
+    'for the Back and Forward History Items,
+    'we use them through the InitializeHistory Method.
+    'Note how we are reusing the existing value of
+    'the NavigationToolbar's CurrentItem property.
+    theNavToolbar.InitializeHistory(theBackItems.ToArray(), theForwardItems.ToArray(), theNavToolbar.CurrentItem)
+End Sub
+----
+
+*In C#:*
+
+----
+private void RemoveHistoryItem(NavigationToolbar theNavToolbar, string itemToRemove)
+{
+	//Create a generic List Of type NavigationHistoryItem for both the Back and Forward collections.
+	//These Lists will then be converted into Arrays when needed.
+	List<NavigationHistoryItem> theBackItems = new List<NavigationHistoryItem>();
+    	List<NavigationHistoryItem> theForwardItems = new List<NavigationHistoryItem>();
+    	//Iterate through the BackHistory collection	
+    	foreach (NavigationHistoryItem theItem in  theNavToolbar.BackHistory)
+	{
+		//If the ItemToRemove string does not equal the
+		//text of the NavigationToolbar's current Item.Text, then add ItemToRemove
+		//to our new BackItems list. We do NOT want to carry over
+		//the ItemToRemove if it exists in the current BackHistoryItems collection.
+		if (!itemToRemove.Equals(theItem.Text))
+		{
+			theBackItems.Add(new NavigationHistoryItem(theItem.Text));
+		}
+----
+
+----
+	}
+----
+
+----
+    	//Iterate through the ForwardHistory collection	
+    	foreach (NavigationHistoryItem theItem in  theNavToolbar.ForwardHistory)
+	{
+		//If the ItemToRemove string does not equal the
+		//text of the NavigationToolbar's current Item.Text, then add ItemToRemove
+		//to our new ForwardItems list. We do NOT want to carry over
+		//the ItemToRemove if it exists in the current ForwardHistoryItems collection.
+		if (!itemToRemove.Equals(theItem.Text))
+		{
+			theForwardItems.Add(new NavigationHistoryItem(theItem.Text));
+		}	}
+----
+
+----
+	//Now that we have created new Lists
+	//for the Back and Forward History Items,
+	//we use them through the InitializeHistory Method.
+	//Note how we are reusing the existing value of
+	//the NavigationToolbar's CurrentItem property.
+	theNavToolbar.InitializeHistory(theBackItems.ToArray(), theForwardItems.ToArray(), theNavToolbar.CurrentItem);
+}
+----

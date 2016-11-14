@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincombo-displayinghiding-dropdown",
+    "controlName": ["WinCombo"],
+    "tags": ["How Do I"],
+    "guid": "5a76aafa-d9d9-48ed-b2b8-fc5623dd8991",  
+    "buildFlags": [],
+    "createdOn": "2012-03-26T18:42:28.819617Z"
+}
+|metadata|
+////
+
+= Displaying/Hiding the Default DropDown Button Programmatically
+
+== Topic Overview
+
+=== Purpose
+
+Explain how the drop-down button visibility behavior is customizable on the WinCombo™ control.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref319929269,Control Configuration Summary>>
+* <<_Ref319929275,Related Content>>
+
+[[_Ref319929269]]
+== Control Configuration Summary
+
+=== Control configuration summary chart
+
+The following table lists the drop down button visibility configurable aspects of the WinCombo control through the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultracombo~dropdownbuttondisplaystyle.html[DropDownButtonDisplayStyle] property.
+
+[options="header", cols="a,a,a,a"]
+|====
+|Configurable aspects|Details|Enumeration Value|Example
+
+|Always Display Drop-Down Button
+|The drop-down button is always displayed, as is the case with the generic ComboBox control provided by Microsoft
+|
+* `ButtonDisplayStyle.Always` 
+
+|image::images/WinCombo_-_Default_Dropdown_Button_Visibility_1.png[]
+
+|Never Display Drop-Down Button
+|The drop-down button is never displayed
+|
+* `ButtonDisplayStyle.Never` 
+
+|image::images/WinCombo_-_Default_Dropdown_Button_Visibility_2.png[]
+
+|Display Drop-Down Button OnMouseEnter
+|The drop-down button is displayed when the cursor passes into the boundaries of the control, and hidden when it passes outside
+|
+* `ButtonDisplayStyle.OnMouseEnter` 
+
+|image::images/WinCombo_-_Default_Dropdown_Button_Visibility_3.png[]
+
+|====
+
+[[_Ref319929275]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wincombo-binding-wincombo-to-a-data-table.html[Binding WinCombo to a Data Table]
+|This topic shows you how to bind the WinCombo to a data table in a database.
+
+| link:wincombo-selecting-multiple-values-within-wincombo.html[Selecting Multiple Values within WinCombo]
+|This topic shows you how to support multiple item selection in the WinCombo.
+
+|====

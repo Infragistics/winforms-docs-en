@@ -1,0 +1,111 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformmanager-about-winformmanager",
+    "controlName": ["WinFormManager"],
+    "tags": ["Getting Started","Styling"],
+    "guid": "6c4a660b-a192-4b88-9333-bb4182ab058c",  
+    "buildFlags": [],
+    "createdOn": "2010-06-03T22:04:10.9976119Z"
+}
+|metadata|
+////
+
+= About WinFormManager
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the  _WinFormManager_™ component.
+
+== Overview
+
+=== WinFormManager overview
+
+The new  _WinFormManager_   component enables you to style the areas of a form such as the caption area, form borders, and the close, restore, maximize, minimize and context help buttons. The form can be styled through the properties window and also via Infragistics AppStylist. The styling offered for this component is similar to the styling available in  _WinToolbarsManager™_   (see link:wintoolbarsmanager-change-the-style-of-wintoolbarsmanager.html[Change the Style of WinToolbarsManager]).
+
+The styling allows the developer to disable the  _Aero_   and operating system themes on an individual form, and apply colors to the various areas of the form that are considered non-client areas.
+
+Similar to the  _WinToolbarsManager_   component,  _WinFormManager_   will also prompt to add a panel to the form in order to properly position controls inside the client area, when dropped onto the form at design-time. You will have an option to choose between filling the form with  _WinPanel_™ (extensive styling capabilities) or a standard Panel (light-weight).  _WinFormManager_   is defined in the `Infragistics.Win` assembly and derived from `Infragistics.Win.UltraComponentBase` assembly.
+
+Unlike  _UltraWinToolbars_  , the link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle] and link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported] properties disable the  _Aero_   theme, by default, displaying link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawintoolbars.formdisplaystyle.html[RoundedSizable] border with ability to resize.
+
+For example:
+
+[options="header", cols="a,a"]
+|====
+|Property|Default value
+
+| link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle]
+|_Default_ (same as _Standard_ ) 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+This property is in effect if the counterpart component ( _WinToolbarsManager_ ) is not on the same form. 
+
+====
+
+| link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported]
+| _False_ 
+
+|====
+
+.Note:
+[NOTE]
+====
+It is not recommended to include both  _WinFormManager_   and  _WinToolbarsManager_   components on the same form. They are mutually exclusive in managing the form; meaning only one of the components can be docked in the Form.
+====
+
+Even though these two components have mutual exclusive behavior both components can reside in the same form provided each is docked separately onto different container controls. Setting the  _WinToolbarsManager_   component’s link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer] property to the  *Form* , then  _WinFormManager_   disables itself from form management and yield precedence to the  _WinToolbarsManager_  .
+
+The  _WinFormManager_   component also allows you to:
+
+* Provide a consistent appearance to all the forms in your application
+* Style the MDI child menu bar and its buttons, which render when a maximized MDI child form is present on an MDI parent
+* Style the caption area of the form using Infragistics appearance objects like gradients
+
+=== WinToolbarsManager and WinFormManager
+
+The following table lists some of the properties used in both components to customize the same client area of the form.
+
+[options="header", cols="a,a"]
+|====
+|_WinToolbarsManager_|_WinFormManager_
+
+|`ultraToolbarsManager1.Ribbon.Caption`
+|`ultraFormManager1.FormStyleSettings.Caption`
+
+|`ultraToolbarsManager1.Ribbon.CaptionAreaAppearance.BackColor`
+|`ultraFormManager1.FormStyleSettings.CaptionAreaAppearance.BackColor`
+
+|`ultraToolbarsManager1.FormDisplayStyle`
+|`ultraFormManager1.FormStyleSettings.FormDisplayStyle`
+
+|`ultraToolbarsManager1.Style`
+|`ultraFormManager1.FormStyleSettings.Style`
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winformmanager-customize-a-form-with-winformmanager.html[Customize a Form with WinFormManager]
+|This topic illustrates setting up a form with the _WinFormManager_ component and customizing it to style the different areas of the form such as the caption area, the form borders, and the close, restore, maximize, minimize and context help buttons.
+
+| link:wintoolbarsmanager-customizing-non-client-area-with-wintoolbarsmanager.html[Customizing Non-Client Area with WinToolbarsManager]
+|This topic demonstrates customizing of the non-client area with _WinToolbarsManager_ component.
+
+|====

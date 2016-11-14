@@ -1,0 +1,70 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-change-the-active-node",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I"],
+    "guid": "{615AC12E-A99A-4777-AD27-1AC2FA909290}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Active Node
+
+This topic will show you how to change the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~activenode.html[ActiveNode]"]  programmatically.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+----
+
+[start=2]
+. You will need a reference to the node that you want to make active. If you know the key of the node, you can get a reference using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method of the tree.
+
+*In Visual Basic:*
+
+----
+Private Sub Change_the_Active_Node_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim aNode As UltraTreeNode
+	aNode = Me.UltraTree1.GetNodeByKey("Add Unbound Columns to WinGrid")
+End Sub
+----
+
+*In C#:*
+
+----
+private void Change_the_Active_Node_Load(object sender, EventArgs e)
+{
+	UltraTreeNode aNode;
+	aNode = this.ultraTree1.GetNodeByKey("Add Unbound Columns to WinGrid");
+}
+----
+
+[start=3]
+. Once you have a reference to the node, you can set the ActiveNode property of the tree to that node.
+
+*In Visual Basic:*
+
+----
+Me.UltraTree1.ActiveNode = aNode
+----
+
+*In C#:*
+
+----
+this.ultraTree1.ActiveNode = aNode;
+----

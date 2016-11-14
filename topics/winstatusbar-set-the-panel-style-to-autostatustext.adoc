@@ -1,0 +1,91 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-autostatustext",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{DDFCA1E3-256E-498F-BCCA-C59420D0C8E1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to AutoStatusText
+
+The AutoStatusText panel acts like the status bar in a web browser. When you place an AutoStatusText panel on the WinStatusBar™, the controls on the form will gain a new property called "StatusBarText for UltraStatusBar1". Whenever the user passes the mouse pointer over a control, whatever text value you have set for "StatusBarText for UltraStatusBar1" will appear in the AutoStatusText Panel.
+
+== Setting up AutoStatusText Style Panel at Design-Time
+
+[start=1]
+. Add an UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button, this will add a new panel.
+[start=4]
+. Scroll the properties until you come to the Style property. Set the style property equal to "AutoStatusText".
+[start=5]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property equal to what you want the default text value of the status bar to be.
+[start=6]
+. Click OK to close the window and you will see your panel added to the status bar.
+
+image::images\WinStatusBar_WinStatusBar_QuickTour_AutoStatusTextPanel_01.png[shows ultrastatusbar with autostatustext style panel setup at design time]
+
+== Setting up AutoStatusText Style Panel at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+Imports Infragistics.Win.Misc
+...
+Private Sub Set_the_Panel_Style_to_AutoStatusText_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create a Button
+	Dim myButton As New UltraButton()
+	myButton.Text = "Click Me"
+	Me.Controls.Add(myButton)
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.AutoStatusText
+	' Set the default text
+	myPanel.Text = "Status Bar Text DefaultText"
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+	' Set statusbar text for another control on the form
+	Me.UltraStatusBar1.SetStatusBarText(myButton, "Button")
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+using Infragistics.Win.Misc;
+...
+private void Set_the_Panel_Style_to_AutoStatusText_Load(object sender, EventArgs e)
+{
+	// Create a Button
+	UltraButton myButton = new UltraButton();
+	myButton.Text = "Click Me";
+	this.Controls.Add(myButton);
+	// Create new panel
+	UltraStatusPanel myPanel= new UltraStatusPanel();
+	// Set the style for the panel
+	myPanel.Style= PanelStyle.AutoStatusText;
+	// Set the default text
+	myPanel.Text="Status Bar Text DefaultText";
+	// Add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+	// Set statusbar text for another control on the form
+	this.ultraStatusBar1.SetStatusBarText(myButton,"button");
+}
+----
+
+When you mouse over the button WinStatusBar changes to display "button" as shown in the screen shot below.
+
+image::images\WinStatusBar_Set_the_Panel_Style_to_AutoStatusText_01.png[shows ultrastatusbar with an autostatustext panel style that's setup at run time]

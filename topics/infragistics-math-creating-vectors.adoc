@@ -1,0 +1,230 @@
+﻿////
+
+|metadata|
+{
+    "name": "infragistics-math-creating-vectors",
+    "controlName": ["Infragistics Math Library"],
+    "tags": ["Application Blocks","Calculations"],
+    "guid": "0a9cef86-eb62-44b6-9ebd-7e79914b27b4",  
+    "buildFlags": [],
+    "createdOn": "2011-08-01T14:08:05.4877551Z"
+}
+|metadata|
+////
+
+= Creating Vectors
+
+== Introduction
+
+The Infragistics Math Library™ provides several approaches for creating vectors. Though this topic demonstrates how to create only link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances, the approaches shown apply to all vector types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVector]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
+
+== Overview
+
+Following is an outline of the different ways of constructing vectors.
+
+When creating a vector, you can:
+
+* <<Elements_and_Dimensions,Creating a Vector by Specifying Its Elements and Dimensions>>
+* <<Elements,Creating a Vector by Specifying Its Elements>>
+* <<Length,Creating a Vector by Specifying Its Length>>
+* <<Elements_and_the_Length,Creating a Vector by Specifying the Value for the Elements and the Length>>
+* <<Implicit_Conversion,Creating a Vector by Using Implicit Conversion>>
+* <<Empty_Vector,Creating an Empty Vector>>
+
+== Creating Vectors
+
+[[Elements_and_Dimensions]]
+== Creating a Vector by Specifying Its Elements and Dimensions
+
+The most general constructor of link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] takes any *IList<double>* containing the elements of the vector, along with an integer array specifying the dimensions of the vector.
+
+Following is a code snippet, which creates two vectors:
+
+*In Visual Basic:*
+
+----
+'Creates a Vector with 10 elements as a row vector.
+Dim elements As Double() = New Double(9) {}
+Dim dimensions As Integer() = New Integer() {1, 10}
+Dim rowVector As New Vector(elements, dimensions)
+'Creates a Vector with 10 elements as a column vector.
+Dim elements As Double() = New Double(9) {}
+Dim dimensions As Integer() = New Integer() {10, 1}
+Dim columnVector As New Vector(elements, dimensions)
+----
+
+*In C#:*
+
+----
+//Creates a Vector with 10 elements as a row vector.
+double[] elements = new double[10];
+int[] dimensions = new int[]{ 1, 10 };
+Vector rowVector = new Vector(elements, dimensions);
+//Creates a Vector with 10 elements as a column vector.
+double[] elements = new double[10];
+int[] dimensions = new int[]{ 10, 1 };
+Vector columnVector = new Vector(elements, dimensions);
+----
+
+[[Elements]]
+== Creating a Vector by Specifying Its Elements (creates a row vector)
+
+Vectors have two dimensions, but one of those dimensions must be unitary. Vector instances can be constructed in a more straightforward manner by leaving the dimensions array out. The default is to create a row vector:
+
+*In Visual Basic:*
+
+----
+Dim elements As Double() = New Double(9) {}
+Dim x As New Vector(elements)
+----
+
+*In C#:*
+
+----
+double[] elements = new double[10];
+Vector x = new Vector(elements);
+----
+
+If one desires an equivalent column vector, this can be done in two ways. The following snippet demonstrates the two approaches:
+
+*In Visual Basic:*
+
+----
+'This approach creates a row Vector and then transposes it to a column vector.
+Dim elements As Double() = New Double(9) {}
+Dim x As New Vector(elements)
+x.Transpose()
+'Similar to the above approach, but
+'with the Compute.Transpose method.
+Dim elements As Double() = New Double(9) {}
+Dim x As New Vector(elements)
+x = Compute.Transpose(x)
+----
+
+*In C#:*
+
+----
+//This approach creates a row Vector and then transposes it to a column vector.
+double[] elements = new double[10];
+Vector x = new Vector(elements);
+x.Transpose();
+//Similar to the above approach, but
+//with the Compute.Transpose method. 
+double[] elements = new double[10];
+Vector x = new Vector(elements);
+x = Compute.Transpose(x);
+----
+
+These are not two different ways of specifying the same operation. In the instance method, the dimensions integer array is changed on the instance itself. In the second case, the data is copied into a new vector and then the data is transposed. It is worth noting that the instance methods will still return the modified vector. This allows mathematical operations to be chained. For this reason, instance method calls can be assigned to new variables.
+
+In the following code snippet, the variables will point to the same memory locations:
+
+*In Visual Basic:*
+
+----
+Dim elements As Double() = New Double(9) {}
+Dim x1 As New Vector(elements)
+Dim x2 As Vector = x1.Transpose()
+----
+
+*In C#:*
+
+----
+double[] elements = new double[10];
+Vector x1 = new Vector(elements);
+Vector x2 = x1.Transpose();
+----
+
+In the above snippet, both *x1* and *x2* will be column Vectors. In fact, they will be the same vector.
+
+[[Length]]
+== Creating a Vector by Specify Its Length
+
+Passing in an integer length *N* into the constructor will provide a length *N* row vector. This can also be done with the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute~zeros.html[Zeros] method of the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class. The following code snippet demonstrates the two approaches:
+
+*In Visual Basic:*
+
+----
+Dim N As Integer = 10
+Dim x1 As New Vector(N)
+Dim x2 As Vector = Compute.Zeros(N)
+----
+
+*In C#:*
+
+----
+int N = 10; 
+Vector x1 = new Vector(N);
+Vector x2 = Compute.Zeros(N);
+----
+
+[[Elements_and_the_Length]]
+== Creating a Vector by Specifying the Value for the Elements and the Length
+
+A row vector with the same value for all elements can be constructed by passing in a double and an integer length:
+
+*In Visual Basic:*
+
+----
+Dim N As Integer = 10
+Dim c As Double = 1
+Dim x As New Vector(c, N)
+----
+
+*In C#:*
+
+----
+int N = 10;
+double c = 1;
+Vector x = new Vector(c, N);
+----
+
+[[Implicit_Conversion]]
+== Creating a Vector by Using Implicit Conversion
+
+Furthermore, *double[]* implicitly converts to link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], allowing for vectors to be specified element-wise. A constructor exists to do that as well. It takes an enumeration specifying the orientation as the first parameter. In the following example, *x1* and *x2* will contain the same values and have the same orientation:
+
+*In Visual Basic:*
+
+----
+Dim x1 As Vector = New Double() {0, 1, 2, 3, 4}
+Dim x2 As New Vector(VectorType.Row, 0, 1, 2, 3, 4)
+----
+
+*In C#:*
+
+----
+Vector x1 = new double[]{ 0, 1, 2, 3, 4 };
+Vector x2 = new Vector(VectorType.Row, 0, 1, 2, 3, 4);
+----
+
+[[Empty_Vector]]
+== Creating an Empty Vector
+
+The default constructor returns an empty vector, which can also be constructed as a static variable on the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] class:
+
+*In Visual Basic:*
+
+----
+Dim empty1 As New Vector()
+Dim empty2 As Vector = Vector.Empty
+----
+
+*In C#:*
+
+----
+Vector empty1 = new Vector();
+Vector empty2 = Vector.Empty;
+----
+
+== Related Topics
+
+link:infragistics-math-working-with-vectors.html[Working With Vectors]
+
+link:infragistics-math-complex-numbers.html[Complex Numbers]
+
+link:infragistics-math-matrices.html[Matrices]
+
+link:infragistics-math-mathematical-functions.html[Mathematical Functions]
+
+link:infragistics-math-api-overview.html[API Overview]

@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-panel-styles",
+    "controlName": ["WinStatusBar"],
+    "tags": ["Styling"],
+    "guid": "{8469ACBC-CE86-4E86-9FF5-66A9DE070AC3}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Panel Styles
+
+The WinStatusBar™ provides thirteen panel styles:
+
+== AutoStatusText
+
+The WinStatusBar is an extender provider and provides an additional property ('StatusBarText') on every Control of the form or UserControl that contains the status bar. It is also provided on the Windows Forms MenuItem components. The StatusBarText is a text property which controls the text that will be displayed when the mouse is moved over the bounds of the control or a menu item is selected. The AutoStatusText panel style provides functionality similar to that seen in Internet Explorer when the mouse moves over links and menu items.
+
+.Note
+[NOTE]
+====
+Since the control relies upon MouseEnter and MouseLeave notifications, the property may appear to have no effect if set on a control that is completely covered by another control. This is because the MouseLeave event notification is raised as the mouse moves over the child component. To provide a status text on those controls, the property must be set on the child control or at run-time using the Get/Set methods (i.e. SetStatusBarText) of the status bar control.
+====
+
+== Button
+
+Displays a standard push button in the status bar. The Button can display image and text and when clicked will invoke a ButtonClick event on the status bar control.
+
+== Character Position
+
+Displays the current line and character number of an associated RichTextBox control. The RichTextBox is associated with the panel by settings the Control property. The format may be changed using the CharacterPositionFormat of the panel. Also, when this style panel is double clicked, a dialog is displayed similar to that of Visual Studio to allow the end user to navigate to a particular line within the associated RichTextBox.
+
+== Cursor Position
+
+Displays the X and Y coordinates of the mouse in related to the associated Control when the mouse is moved over the bounds of that control.
+
+== Control Container
+
+The ControlContainer style panel re-parent and repositions the associated Control based on the size and position of the panel.
+
+== Date
+
+Displays the current date using the panel's DateTimeFormat property. By default the date is formatted using the current culture's short date format.
+
+== KeyState
+
+Displays the state of a selected key including the NumLock, Insert, ScrollLock and Caps Lock keys. The panel can be set up to either display the OnText as disable when the key is not toggled or can display a different string. The KeyStateInfo property of the panel provides additional properties for this style panel.
+
+== Marquee
+
+Displays a marquee style animation of the text and image of the panel. The panel supports five types of marquee animation including scrolling, sliding, bouncing, flashing and typing. The MarqueeInfo property of the panel provides additional properties for this style panel.
+
+== MDIList
+
+Displays state buttons for each Mdi child form of the form containing the UltraStatusBar. When the state button is clicked, the child form associated with the button is activated.
+
+== Progress
+
+Displays a progress bar in the panel. The panel exposes many of the same properties available on the UltraProgressBar via the panel's ProgressBarInfo property.
+
+== State Button
+
+Displays a toggle-type button in a panel. The Checked property of the panel determines whether the state button is down. When the button is clicked, the state is automatically set and the ButtonClick event is invoked.
+
+== Text
+
+Displays image and text in a panel.
+
+== Time
+
+Displays the current time using the panel's DateTimeFormat property. By default the time is formatted using the current culture's short time format.

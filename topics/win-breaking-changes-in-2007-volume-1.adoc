@@ -1,0 +1,403 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2007-volume-1",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{8491E011-FB52-44F8-A6EC-1E8C1F2A8468}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2007 Volume 1
+
+== Win Assembly
+
+=== Access Modifiers Changed to Private
+
+Some methods that previously had an access modifier of protected (Friend in Visual Basic .NET) or public were changed to private. This means that the methods can no longer be accessed by a programmer. These changes were made to prevent the passing of unintended information into the control.
+
+The following methods have had their access modifier changed to private, listed by class:
+
+* AppearanceEnumStyleEditor class:
+
+** OnDrawItem
+
+* SelectionStrategyBase class:
+
+** HorizontalScrollTimer_Tick
+** VerticalScrollTimer_Tick
+
+* ControlUIElementBase class:
+
+** ProcessClick
+** ProcessDoubleClick
+** ProcessLostFocus
+** ProcessVisibleChanged
+** ProcessResize
+** ProcessMouseMove
+** ProcessMouseHover
+** ProcessParentChanged
+** ProcessMouseEnter
+** ProcessMouseLeave
+
+* UIElement class:
+
+** OnVertTimerTick
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* TabDragManager class:
+
+** OnScrollTimerTick()
+
+* UltraControlDesigner class:
+
+** OnControlDoubleClick()
+
+* UltraParentControlDesigner class:
+
+** OnControlDoubleClick()
+
+* ControlUIElementBase class:
+
+** OnGotFocus()
+** OnLostFocus()
+** ProcessKeyDown()
+** ProcessMouseDown()
+** ProcessMouseUp()
+
+* CustomColorBoxUIElement class:
+
+** OnGotFocus()
+** OnLostFocus()
+
+* FontNameEditor class:
+
+** OnInstalledFontsChange()
+** OnApplicationIdle()
+
+* EmbeddableEditorBase class:
+
+** OnOwnerKeyUp()
+** OnOwnerKeyDown()
+** OnOwnerKeyPress()
+
+* EditorWithMask class:
+
+** OnOwnerKeyUp()
+** OnOwnerKeyDown()
+** OnOwnerKeyPress()
+
+* EditorWithCombo class:
+
+** OnOwnerKeyUp()
+** OnOwnerKeyDown()
+** OnOwnerKeyPress()
+
+* EditorWithTextAndDropDownBase class:
+
+** OnOwnerKeyUp()
+** OnOwnerKeyDown()
+
+* CheckEditor class:
+
+** OnOwnerKeyUp()
+
+* OptionSetEditor class:
+
+** OnOwnerKeyDown()
+
+* DateTimeEditor class:
+
+** OnOwnerKeyDown()
+
+* SplitterIntersectionUIElement class:
+
+** OnElementAdjusted()
+
+* TrackBarEditor class:
+
+** OnEditCancelled()
+** OnValueChange()
+** OnPaintPreview()
+
+== WinEditors
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* UltraWinCalc.CalculatorEngine class:
+
+** OnAfterActionButtonPressed
+** OnAfterCalculateImmediate
+** OnAfterCalculatePending
+** OnAfterCalculationComplete
+** OnBeforeActionButtonPressed
+** OnBeforeButtonClicked
+** OnBeforeCalculateImmediate
+** OnBeforeCalculatePending
+** OnDefaultCalculationFail
+
+* EditorWithTextDropDownControlBase class:
+
+** OnAfterCloseUp
+** OnAfterDropDown
+** OnBeforeDropDown
+** OnEditorKeyDown
+** OnSelectionChangeCommitted
+** OnSelectionChanged
+** OnValueChanged
+
+* TextEditorControlBase class:
+
+** OnAfterEnterEditMode
+** OnAfterExitEditMode
+** OnBeforeEnterEditMode
+** OnBeforeExitEditMode
+** OnEditorKeyDown
+** OnEditorKeyPress
+** OnEditorKeyUp
+** OnFormActivate
+** OnFormDeactivate
+** OnPropChanged
+** OnValueChanged
+
+* UltraColorPicker class:
+
+** OnAfterEnterEditMode
+** OnColorChanged
+** OnColorHtmlChanged
+** OnColorOleChanged
+** OnColorWin32Changed
+** OnValueChanged
+
+* UltraComboEditor class:
+
+** OnAfterCloseUp
+** OnAfterDropDown
+** OnAfterEnterEditMode
+** OnBeforeDropDown
+** OnBeforeExitEditMode
+** OnEditorKeyDown
+** OnSelectionChangeCommitted
+** OnSelectionChanged
+** OnValueChanged
+
+* UltraCurrencyEditor class:
+
+** OnValueChanged
+
+* UltraDateTimeEditor class:
+
+** OnAfterCloseUp
+** OnAfterDropDown
+** OnAfterEnterEditMode
+** OnAfterExitEditMode
+** OnBeforeDropDown
+** OnBeforeEnterEditMode
+** OnBeforeExitEditMode
+** OnEditorKeyDown
+** OnEditorKeyPress
+** OnEditorKeyUp
+** OnFormActivate
+** OnFormDeactivate
+** OnPropChanged
+** OnValueChanged
+
+* UltraNumericEditorBase class:
+
+** OnAfterEnterEditMode
+** OnAfterExitEditMode
+** OnBeforeEnterEditMode
+** OnBeforeExitEditMode
+** OnFormActivate
+** OnFormDeactivate
+** OnPropChanged
+** OnValueChanged
+
+* UltraCalculator class:
+
+** OnAfterActionButtonPressed
+** OnAfterCalculateImmediate
+** OnAfterCalculatePending
+** OnAfterCalculationComplete
+** OnBeforeActionButtonPressed
+** OnBeforeButtonClicked
+** OnBeforeCalculateImmediate
+** OnBeforeCalculatePending
+** OnDefaultCalculationFail
+
+* UltraCalculatorDropDown class:
+
+** OnAfterCalculationComplete
+** OnBeforeButtonClicked
+** OnBeforeCalculatePending
+** OnAfterCalculatePending
+** OnBeforeCalculateImmediate
+** OnAfterCalculateImmediate
+** OnBeforeActionButtonPressed
+** OnAfterActionButtonPressed
+** OnDefaultCalculationFail
+** OnBeforeDropDown
+
+== WinExplorerBar
+
+=== Access Modifiers Changed to Private
+
+Some methods that previously had an access modifier of protected (Friend in Visual Basic .NET) or public were changed to private. This means that the methods can no longer be accessed by a programmer. These changes were made to prevent the passing of unintended information into the control.
+
+The following methods have had their access modifier changed to private, listed by class:
+
+* UltraExplorerBar class:
+
+** OnContextMenuAddGroup
+** OnContextMenuAddItem
+** OnContextMenuLargeImages
+** OnContextMenuLargeImagesWithText
+** OnContextMenuLargeImagesWithTextBelow
+** OnContextMenuRemoveGroup
+** OnContextMenuRemoveItem
+** OnContextMenuRenameGroup
+** OnContextMenuRenameItem
+** OnContextMenuSmallImages
+** OnContextMenuSmallImagesWithText
+** OnNavigationContextMenuNavigationPaneOptions
+** OnNavigationContextMenuOpenInNewWindow
+** OnQuickCustomizeBumpedGroupClicked
+** OnQuickCustomizeGroupClicked
+** OnQuickCustomizeNavigationPaneOptions
+** OnQuickCustomizeShowFewerButtons
+** OnQuickCustomizeShowMoreButtons
+** OnScroll
+** OnScrollValueChanged
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* UltraExplorerBarDesigner class:
+
+* OnControlDoubleClick
+
+== WinGrid
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* UltraGridUIElement class:
+
+** ProcessKeyDown
+
+== WinSchedule
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* SelectedDateRanges class:
+
+** OnCalendarInfoChanged
+
+* UltraCalendarCombo class:
+
+** OnEditorKeyDown
+** OnEditorKeyPress
+** OnEditorKeyUp
+
+* UltraDayView class:
+
+** OnScrollValueChanged
+** OnScroll
+** OnColumnGroupScrollValueChanged
+** OnColumnGroupScroll
+** OnColumnGroupScroll
+
+* UltraMonthViewMultiBase class:
+
+** CalendarInfoChanged
+** CalendarLookChanged
+
+* UltraMonthViewSingleBase class
+
+** OnEditTimerTick
+** OnCalendarInfoChanged
+** OnScrollValueChanged
+** OnInternalScroll
+** OnControlSizeChanged
+** OnHorizontalScroll
+** OnHorizontalScrollValueChanged
+
+* UltraScheduleControlBase class:
+
+** OnCalendarLookChanged
+
+* CalendarComboEditor class
+
+** OnOwnerKeyDown
+
+== WinTab
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* UltraTabControlBaseDesigner class:
+
+** OnControlDoubleClick()
+
+== WinTabbedMdiManager
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* MdiTabDragManager class:
+
+** OnScrollTimerTick
+
+== WinToolbarsManager
+
+=== Method Signatures Changed
+
+Some methods have had their method signature changed. Because of this, the list of parameters has changed in some fashion. The methods are still usable, but any code that calls or overrides these methods must be updated to account for these changes.
+
+The following methods have had their signatures modified, listed by class:
+
+* FloatingToolbarUIElement class:
+
+** OnLostFocus
+
+== WinTree
+
+=== Access Modifiers Changed to Private
+
+Some methods that previously had an access modifier of protected (Friend in Visual Basic .NET) or public were changed to private. This means that the methods can no longer be accessed by a programmer. These changes were made to prevent the passing of unintended information into the control.
+
+The following methods have had their access modifier changed to private, listed by class:
+
+* UltraTree class:
+
+* OnDragHoverTimerTick
+* OnKeyboardTimerTick

@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-extent-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{43BAAEAD-F978-4ED2-B7C7-C703533B04A8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Extent Pane
+
+The Extent pane determines the location and thickness of the scale's range on your Linear or Radial gauge. There are many different ways you can display the range. For example, you can set the range to start thin and increase in thickness to the end point.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentstart.html[Inner Start]"]  -- Set this value to an integer from 0 to 100. This value determines the distance from the center of your Radial gauge to the starting point on the inner rim of the range.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentend.html[Inner End]"]  -- Set this value to an integer from 0 to 100. This value determines the distance from the center of your Radial gauge to the end point on the inner rim of the range.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~outerextent.html[Outer]"]  -- Set this value to an integer from 0 to 100. This value determines the distance from the center of your Radial gauge to every point on the outer rim of the range.
+
+image::images/Range_Scale_Extent_Pane_01.png[Wingauge's range scale extent pane.]
+
+== Related Topic
+
+link:wingauge-range-layout-tab.html[Range Layout Tab]

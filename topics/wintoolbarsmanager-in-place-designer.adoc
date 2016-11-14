@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-in-place-designer",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Design Environment"],
+    "guid": "{23984312-9EEA-466D-B7C2-7A21C6E5D450}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinToolbarsManager In-Place Designer
+
+The In Place Designer allows you to interact with the WinToolbarsManager™ control in the Visual Studio IDE itself. This option, which is enabled by default, can be disabled by right clicking on the UltraToolbarsManager and unchecking In Place Designer. When the UltraToolbarsManager component is selected in IDE, a New Toolbar button is displayed in the top dock area.
+
+image::Images/WinToolbarsManager_In_Place_Designer_01.png[ultratoolbarsmanager on a form at design time]
+
+.Note
+[NOTE]
+====
+If there are no controls on the form whose Dock property is set to Fill, a separate dialog is displayed when the component is first created to determine if the UltraToolbarsManager should create a panel. The panel is created as a place to position the controls that make up the body of the form. This is necessary since controls placed directly on the form with the UltraToolbarsManager may be overlayed by the dock area controls used to display the toolbars as toolbars are docked and undocked.
+====
+
+== New Toolbar Button
+
+When the New Toolbar button is clicked, a dialog is displayed that allows you to create a new UltraToolbar or UltraTaskPaneToolbar. The Toolbar name assigned is used as the key of the new toolbar. The Toolbar Type indicates whether to create a standard toolbar or a TaskPane style toolbar. The Location is used to indicate the initial docked location of the new toolbar (e.g. Left, Right, Top, Bottom or Floating). For information on the toolbar types, see link:wintoolbarsmanager-working-with-toolbar-types.html[Working with Toolbar Types].
+
+image::Images/WinToolbarsManager_In_Place_Designer_02.png[ultratoolbarsmanager new toolbar dialog]
+
+== Insert New Tool Placeholder
+
+Every toolbar and menu tool whose Tools collection may be modified displays a special placeholder tool - [Insert New Tool] - after the existing tools. Clicking on this tool with the left mouse button will display a context menu which provides options for inserting tools into the tools collection. Clicking Insert New Tool... displays the New Tool dialog which is used to create a new tool which will be added both to the UltraToolbarsManager's Tools collection as well as to the Tools collection of the object whose [Insert New Tool] placeholder was clicked. Clicking Insert Existing Tool... displays the Existing Tool dialog which is used to create an instance of a tool already added to the UltraToolbarsManager's Tools collection.
+
+image::Images/WinToolbarsManager_In_Place_Designer_03.png[ultratoolbarsmanager insert new tool placeholder]
+
+== New Tool Dialog
+
+The New Tool dialog is used to create a new tool that should be added to the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~tools.html[Tools]"]  collection of the UltraToolbarsManager. The dialog allows you to specify the type of the tool to create (e.g. ButtonTool, ComboBoxTool, etc.), as well as some basic properties such as its Caption (the text displayed to the end user), Key (the string value used to uniquely identify the tool within the UltraToolbarsManager), Customizer Caption (the string displayed for the tool in the customize dialog, and the Category (the string category name used to group the tools within the customize dialog's Tool tab.
+
+.Note
+[NOTE]
+====
+For information on the available tool types, see link:wintoolbarsmanager-working-with-tool-types.html[Working with Tool Types].
+====
+
+image::Images/WinToolbarsManager_In_Place_Designer_04.png[ultratoolbarsmanager new tool dialog]
+
+== Insert Existing Tool Dialog
+
+The Insert Existing Tool dialog allows you to insert an instance of a previously created tool (i.e. one that has already been added to the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~tools.html[Tools]"]  collection of the UltraToolbarsManager) and provides comboboxes to help filter the list allowing you to more easily locate the tool that should be inserted.
+
+image::Images/WinToolbarsManager_In_Place_Designer_05.png[ultratoolbarsmanager insert existing tool dialog]
+
+== Selecting Tools and Toolbars
+
+When using the In Place designer, it is possible to select a tool or toolbar by left clicking on the item. The selected object is rendered using a thick black outline. In the image below, the PopupMenuTool on the toolbar in the top dock area has been selected. When a tool or toolbar is selected, an additional property tab in the IDE's Properties Window can be used to change that instance's properties. To access the additional tab, you need to click on the 
+
+image::images\UltraToolbarsManager_In_Place_Designer_08.png[icon on properties window]
+
+ icon in the Properties window.
+
+.Note
+[NOTE]
+====
+Only certain areas may be used to select the tool or toolbar. For example, to select a toolbar, you must click on either a grab handle or an area of the toolbar that is not occupied by a tool.
+====
+
+image::Images/WinToolbarsManager_In_Place_Designer_06.png[ultratoolbarsmanager selecting tools and toolbars at design time]
+
+== Tool Context Menu
+
+When a tool is selected in the designer, right clicking on the tool will display a custom context menu. This menu is similar to that displayed by the customize dialog while in customize mode at runtime but includes some additional options.
+
+image::Images/WinToolbarsManager_In_Place_Designer_07.png[ultratoolbarsmanager tool design time context menu]
+
+The following is a breakdown of the options available on the tool context menu:
+
+* Reset -- Invokes the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~resetstate.html[ResetState]"]  method on the tool which is used to reset any customizations.
+* Delete -- Removes this tool instance from the containing Tools collection.
+* Name -- Changes the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolpropsbase~caption.html[Caption]"]  property of the tool to the text entered into the text box.
+* Control -- Used to choose which  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~control.html[Control]"]  is associated with the tool. Note, this is only available for tools that utilize a control such as the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.controlcontainertool.html[ControlContainerTool]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool.html[PopupControlContainerTool]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"] .
+* Style Options -- This is a set of 4 options used to determine the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolpropsbase~displaystyle.html[DisplayStyle]"]  of the tool. Note, this option is only available for some tool types (e.g.  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"] , etc.)
+* Begin a Group -- This option controls the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.instanceprops~isfirstingroup.html[IsFirstInGroup]"]  property of the tool which is used to insert a separator before the tool.
+* Recently Used -- Changes the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.instanceprops~recentlyused.html[RecentlyUsed]"]  property which is used to determine whether the tool should be displayed in the initial drop-down of the containing popup menu. Note, this value is affected by other properties such as  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~alwaysshowmenusexpanded.html[AlwaysShowMenusExpanded]"] .
+* Insert Tools -- Displays a submenu which allows tools to be inserted before this insert tool instance.
+* Change Tool Type... -- Displays a separate dialog that can be used to convert this and all instances of the same tool within the UltraToolbarsManager to a different tool type (e.g. to convert a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"]  to a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButtonTool]"] ).

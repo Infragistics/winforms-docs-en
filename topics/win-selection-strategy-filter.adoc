@@ -1,0 +1,117 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-selection-strategy-filter",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Grids","Selection","Tips and Tricks"],
+    "guid": "{7DD34BB7-F94B-4003-A3E7-53F80D962C2E}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Selection Strategy Filter
+
+Selection strategy filters are often not necessary since the PLF has implemented the most common strategies already and provides enumerated properties to specify the strategy to use (see the section on 'Selection Strategies').
+
+The ISelectionStrategyFilter is a simple interface with a single method:
+
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iselectionmanager~getselectionstrategy.html[GetSelectionStrategy]"]  -- called to return the strategy for a specific type of selectable item.
+
+The following sample code illustrates how to supply a custom selection strategy for cells. Note: this is not usually necessary. Normally, the selection strategy for cells is based on the setting of the SelectTypeCell property of the Override object.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+' Implement the ISelectionStrategyFilter interface on a class
+' (in this case the form)
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+    Implements Infragistics.Win.ISelectionStrategyFilter
+Private cellSelectionStrategy As MyCustomSelectionStrategy
+Private Sub Form1_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' create the custom selection strategy
+	Me.cellSelectionStrategy = New MyCustomSelectionStrategy(Me.UltraGrid1)
+	' Set the grid's SelectionStrategyFilter property to the object that
+	' implements the ISelectionStrategyFilter interface.
+	Me.UltraGrid1.SelectionStrategyFilter = Me
+End Sub
+Public Function GetSelectionStrategy(ByVal item As _
+  Infragistics.Shared.ISelectableItem) _
+  As Infragistics.Win.ISelectionStrategy _
+  Implements Infragistics.Win.ISelectionStrategyFilter.GetSelectionStrategy
+' If the item is a cell return the custom strategy
+	If TypeOf (item) Is UltraGridCell Then
+		Return Me.cellSelectionStrategy
+	End If
+	' Return null to have the grid provide an appropriate strategy
+	Return Nothing
+End Function
+End Class
+' derive a class from one of the selection
+' strategies defines in the PLF 
+Friend Class MyCustomSelectionStrategy
+    Inherits Infragistics.Win.SelectionStrategyExtended
+Public Sub New(ByVal manager As ISelectionManager)
+	MyBase.New(manager)
+End Sub
+Public Overloads Overrides Function OnMouseDown(ByVal item As _
+  Infragistics.Shared.ISelectableItem, _
+  ByRef msginfo As Infragistics.Win.MouseMessageInfo) As Boolean
+	' do some custom mouse down processing
+	' ...
+	Return MyBase.OnMouseDown(item, msginfo)
+End Function
+End Class   
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+// Implement the ISelectionStrategyFilter interface on a class
+// (in this case the form)
+public class Form1 : System.Windows.Forms.Form, 
+  Infragistics.Win.ISelectionStrategyFilter
+{
+private MyCustomSelectionStrategy cellSelectionStrategy;
+private void Form1_Load(object sender, System.EventArgs e)
+{
+	// create the custom selection strategy
+	this.cellSelectionStrategy = new MyCustomSelectionStrategy(this.ultraGrid1);
+	// Set the grid's SelectionStrategyFilter property to the object that
+	// implements the ISelectionStrategyFilter interface.
+	this.ultraGrid1.SelectionStrategyFilter = this;
+}
+public Infragistics.Win.ISelectionStrategy 
+  GetSelectionStrategy(Infragistics.Shared.ISelectableItem item)
+{
+	// If the item is a cell return the custom strategy
+	if (item is UltraGridCell)
+		return this.cellSelectionStrategy;
+	// Return null to have the grid provide an appropriate strategy
+	return null;
+}
+// derive a class from one of the selection
+// strategies defines in the PLF 
+internal class MyCustomSelectionStrategy : SelectionStrategyExtended
+{
+	internal MyCustomSelectionStrategy(ISelectionManager manager) 
+	  : base(manager)
+	{
+	}
+	public override bool OnMouseDown(Infragistics.Shared.ISelectableItem item, 
+	  ref Infragistics.Win.MouseMessageInfo msginfo)
+	{
+		// do some custom mouse down processing
+		// ...
+		return base.OnMouseDown(item, ref msginfo);
+	}
+}
+----

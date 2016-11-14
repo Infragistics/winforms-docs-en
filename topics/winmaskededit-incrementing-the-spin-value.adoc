@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "winmaskededit-incrementing-the-spin-value",
+    "controlName": ["WinMaskedEdit"],
+    "tags": ["How Do I"],
+    "guid": "{E60A7E79-958B-49FA-AC1E-E2B18D961D61}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Incrementing the Spin Value (WinMaskedEdit)
+
+The WinMaskedEdit™ control allows your end user to change a value incrementally with the arrow keys and the spin buttons.
+
+In order to increment by values other than one you will need to set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinmaskededit.v{ProductVersion}~infragistics.win.ultrawinmaskededit.ultramaskededit~spinincrement.html[SpinIncrement]"]  property to a non-negative, rational value. Since WinMaskedEdit can edit different data types, you will also need to set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinmaskededit.v{ProductVersion}~infragistics.win.ultrawinmaskededit.ultramaskededit~editas.html[EditAs]"]  property to a type matching the one chosen for the SpinIncrement property.
+
+The following example code demonstrates how to increment WinMaskedEdit's  pick:[win-forms="link:{ApiPlatform}win.ultrawinmaskededit.v{ProductVersion}~infragistics.win.ultrawinmaskededit.ultramaskededit~value.html[Value]"]  as a Double by 25.
+
+*In Visual Basic:*
+
+----
+Me.UltraMaskedEdit1.EditAs  = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double
+Me.UltraMaskedEdit1.SpinIncrement = 25
+----
+
+*In C#:*
+
+----
+this.ultraMaskedEdit1.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.Double;
+this.ultraMaskedEdit1.SpinIncrement = 25;
+----

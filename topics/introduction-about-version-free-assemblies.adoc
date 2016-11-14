@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "introduction-about-version-free-assemblies",
+    "controlName": [],
+    "tags": ["Getting Started"],
+    "guid": "5b8daefa-9001-4482-992d-ab03beb2445d",  
+    "buildFlags": [],
+    "createdOn": "2010-06-02T17:05:18.4886371Z"
+}
+|metadata|
+////
+
+= About Version-Free Assemblies
+
+The version-free assemblies are libraries that do not have the version number or framework version identifier in their assembly names. For example, Infragistics assembly names like {ApiPlatform}Shared.v{ProductVersion}.dll will be available as Infragistics.Shared.dll. For assemblies with multiple CLR versions (like {ApiPlatform}Documents.Excel.v12.1, Infragistics3.Documents.Excel.v12.1, and Infragistics2.Documents.Excel.v12.1), the version-free assemblies will match the latest CLR version. So, the version-free Excel assembly will be Infragistics.Documents.Excel.dll and is the one built for the CLR4 version.
+
+With the version-free assemblies, you can easily upgrade from one Infragistics version to another using assembly binding redirection supported by .Net, without the need to re-build your application.
+
+.Note
+[NOTE]
+====
+When using the version-free assemblies, you must perform a complete regression test on your application and also review the breaking changes section of our Help, starting from the volume release that you previously had before upgrading.
+====
+
+Assembly binding redirection allows you to tell the .Net runtime that any assembly, binding to some version of the assembly, should redirect to a different version. The bindingRedirect element within the application configuration file (app.config) accepts attributes oldVersion and newVersion, that enable version redirection; and the assemblyIdentity element accepts the name attribute that requires the name of the assembly. With the versioned assembly names, the assembly names change for each release (e.g. {ApiPlatform}Shared.v12.1.dll, {ApiPlatform}Shared.v12.2.dll) and hence cannot be specified for the assemblyIdentity element. With the version-free assembly names, the assembly names will remain the same across every Infragistics volume release and thus you can upgrade from one version to another using bindingRedirect, without the necessity to rebuild your application.
+
+Following is an example of using bindingRedirect within the app.config file in order to redirect the application to use the new version:
+
+[source, xml]
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<runtime>
+<assemblyBinding xmlns = "urn:schemas-microsoft-com:asm.v1">
+<dependentAssembly>
+<assemblyIdentity name = "Infragistics.Shared" publicKeyToken = "7dd5c3163f2cd0cb" culture = "neutral" />
+<bindingRedirect oldVersion = "12.1.20101.0" newVersion = "12.2.20102.50" />
+</dependentAssembly>
+<dependentAssembly>
+<assemblyIdentity name = "Infragistics.Win" publicKeyToken [source] = "7dd5c3163f2cd0cb" culture = "neutral" />
+<bindingRedirect oldVersion = "12.1.20101.0" newVersion = "12.2.20102.50" />
+</dependentAssembly>
+</assemblyBinding>
+</runtime>
+</configuration>
+
+== *Related Topic*
+
+link:introduction-using-version-free-assemblies.html[Using Version-Free Assemblies]

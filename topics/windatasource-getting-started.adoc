@@ -1,0 +1,203 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-getting-started",
+    "controlName": ["WinDataSource"],
+    "tags": ["Application Scenarios","Getting Started"],
+    "guid": "{1AA50902-7762-499F-B6FB-B27EFE8E66A3}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Getting Started
+
+The WinDataSource™ is a powerful component that is included with Infragistics Windows Forms. The power comes from its ability to correctly implement the required interfaces that support design time and run time databinding for one or more hierarchical entities (Bands). This help topic will illustrate how to create a sub-classed WinDataSource that allows us to work with the Northwind Categories Table.
+
+== Some Basic Needs
+
+To create a simple Business Class, we are going to have to have some basic functionality. The minimum things we need are:
+
+* Retrieve data
+* Create Data
+* Delete Data
+* Update Data
+
+The sub-classed WinDataSource will have the ability to accomplish these tasks for us intrinsically. In order to accomplish this, we must understand some of the events that are available to us through the WinDataSource component. The important events are:
+
+OnRowEndEdit
+
+This event occurs whenever the row that has begun an edit operation completes the edit. Normally when bound to a grid and we select each row, the Begin Edit fires and when we move off, the End Edit fires. We will handle this event to perform one of 2 possible tasks: Insert a new record into the Database if it is a new addition OR Update an existing record with the changes.
+
+OnRowAdded
+
+This event occurs after a new row has been inserted into the WinDataSource component. This event is useful for setting Defaults to the newly inserted rows. In this particular example, we will use this event to assign an autonumber to the primary key field. The auto number will not be retrieved from the Database upon the initial row add, but will be used to distinguish a negative number decrementing primary key that will be replaced by the real server provided primary key value upon insertion into the Database.
+
+OnRowDeleting
+
+This event fires before an actual row is being deleted. During this event we will issue the command to delete the corresponding record from the Database.
+
+== Example
+
+Some important highlights that should be covered is how to subclass the WinDataSource component. Create a new Class project and in this project add a new Component called "UltraNorthwindDataSource". Right click on the component designer and view the code. In the code you will need to change the control that is being inherited. Here are the changes:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinDataSource
+Imports Infragistics.Win
+Imports System.Data.SqlClient
+' Below is the change for the class to inherit from the UltraDataSource
+Public Class UltraNorthwindDataSource
+	Inherits UltraDataSource
+----
+
+*In C#:*
+
+----
+using System;
+using System.ComponentModel;
+using System.Collections;
+using System.Diagnostics;
+using Infragistics.Win.UltraWinDataSource;
+using Infragistics.Win;
+using System.Data;
+using System.Data.SqlClient;
+namespace Northwind.Data.CS
+{
+	// Below is the change for the class to inherit from the UltraDataSource
+	public class UltraNorthwindDataSource : UltraDataSource
+----
+
+Whenever creating certain objects in sub-classed components or controls Visual Studio has the tendency of repeating these properties and object in the hosting form's Initialize Component code section. Since we will be customizing the WinDataSource component by adding columns to it in the sub-classed version, we want to avoid the duplication. This is accomplished by the following code in the sub-classed WinDataSource:
+
+*In Visual Basic:*
+
+----
+#Region " Serialization Duplicate Control "
+	' Return False to stop serialization on the form's InitializeComponent
+	Protected Shadows Function ShouldSerializeBand() As Boolean
+		Return False
+	End Function
+	' Stop serialization on the form's InitializeComponent to avoid duplicates
+	<system.ComponentModel.DesignerSerializationVisibility( _
+	  System.ComponentModel.DesignerSerializationVisibility.Hidden)> _
+	Public Shadows ReadOnly Property Band() As Infragistics.Win.UltraWinDataSource.UltraDataBand
+		Get
+			Return MyBase.Band ' Wrap the Band with a NON-serializable version
+		End Get
+	End Property
+#End Region
+----
+
+*In C#:*
+
+----
+#region Serialization Duplicate Control
+	// Return False to stop serialization on the form's InitializeComponent
+	protected new bool  ShouldSerializeBand()
+	{
+		return false;
+	}
+	// Stop serialization on the form's InitializeComponent to avoid duplicates
+	[System.ComponentModel.DesignerSerializationVisibility(
+	  System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+	public new Infragistics.Win.UltraWinDataSource.UltraDataBand Band
+	{
+		get
+		{
+			return base.Band; // Wrap the Band with a NON-serializable version
+		}	
+	}
+#endregion
+----
+
+The following created properties for use in later methods to access the connection string. Also a property is made here to return the next auto number for use inside the class.
+
+*In Visual Basic:*
+
+----
+#Region " Properties "
+	' Connection String that we supply to get the data
+	Private _cn As String = ""
+	Public Property ConnectionString() As String
+		Get
+			Return _cn
+		End Get
+		Set(ByVal Value As String)
+			_cn = Value
+		End Set
+	End Property
+	' This property returns the Next Autonumber that will only be
+	' used in the scope of this particular form. The Real Autonumber
+	' will be retrieved from the Database whenever the real insert occurs.
+	Private _next As Integer = 0
+	Private ReadOnly Property NextAutoNumber() As Integer
+		Get
+			_next -= 1
+			Return _next
+		End Get
+	End Property
+#End Region
+----
+
+*In C#:*
+
+----
+#region Properties
+	// Connection String that we supply to get the data
+	private string _cn = "";
+	public string ConnectionString
+	{
+		get{return _cn;}
+		set{_cn = value;}
+	}
+	private int _next = 0;
+	// This property returns the Next Autonumber that will only be
+	// used in the scope of this particular form. The Real Autonumber
+	// will be retrieved from the Database whenever the real insert occurs.
+	private int NextAutoNumber
+	{
+		get{_next--;return _next;}
+}
+#endregion
+----
+
+Now we are ready to define our WinDataSource Schema. This schema will conform to the Northwind Categories table. Each field in the WinDataSource component will map to a field in the Categories Table. We can add the columns to the WinDataSource component using the following code:
+
+*In Visual Basic:*
+
+----
+Private Sub InitSchema()
+	'So the columns show on the subclassed component
+	'and we work with a strongly typed structure
+	MyBase.Band.Key = "Categories"
+	MyBase.Band.Columns.Add("CategoryID", GetType(Integer)).ReadOnly = DefaultableBoolean.True
+	MyBase.Band.Columns.Add("CategoryName", GetType(String)).AllowDBNull = DefaultableBoolean.False
+	MyBase.Band.Columns.Add("Description", GetType(String)).AllowDBNull = DefaultableBoolean.False
+	MyBase.Band.Columns.Add("Picture", GetType(Byte())).AllowDBNull = DefaultableBoolean.False
+End Sub
+----
+
+*In C#:*
+
+----
+private void InitSchema()
+{
+	// So the columns show on the subclassed component
+	// and we work with a strongly typed structure
+	base.Band.Key = "Categories";
+	base.Band.Columns.Add("CategoryID", typeof(int)).ReadOnly = DefaultableBoolean.True;
+	base.Band.Columns.Add("CategoryName", typeof(String)).AllowDBNull = DefaultableBoolean.False;
+	base.Band.Columns.Add("Description", typeof(String)).AllowDBNull = DefaultableBoolean.False;
+	base.Band.Columns.Add("Picture", typeof(Byte[])).AllowDBNull = DefaultableBoolean.False;
+}
+----
+
+It is important to call this method in the constructor of the sub-classed WinDataSource AFTER the InitializeComponent method. By using this methodology, we are able to have a strongly typed component with all fields and properties visible at design time and can be easily bound to a Grid so that all columns and types will be instantly created for us.
+
+== Related Topics
+
+link:windatasource-retrieving-data-in-your-business-class.html[Retrieving Data in Your Business Class]

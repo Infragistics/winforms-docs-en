@@ -1,0 +1,244 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-populating-winlistview-with-directories-and-files",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{5CB348C1-365E-42B7-991C-20CF4FFFDF8B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Populating WinListView with Directories and Files
+
+== Before You Begin:
+
+Since the WinListView™ control emulates the look and feel of Microsoft® Windows® Explorer, a good example of how to use it is to populate it with actual files and directories. This walkthrough demonstrates how to configure the WinListView control to accomplish this.
+
+The .NET framework provides a way to obtain the names of the directories and files, along with related information such as the size and creation date, through the System.IO namespace. The two classes of interest for our purposes are DirectoryInfo and FileInfo. These classes wrap the Windows API functions that provide access to the file system on your local machine. We'll be using these classes to obtain information about the contents of a directory, which we'll use to populate the WinListView control.
+
+== Follow these Steps:
+
+[start=1]
+. Add the following directives to your project, so that you don't have to type out the fully qualified names of the references that you'll be using frequently:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinListView
+Imports System.IO
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinListView;
+using System.IO;
+----
+
+[start=2]
+. In design view drag a UltraListView and ImageList from the toolbox onto the form. Add a folder looking image to the ImageList. The remaining of the topic is all done in the code behind file.
+[start=3]
+. Add members to the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection to represent the file size, file type, and creation date.
+
+The SubItemColumns collection defines the columns that are displayed by the control when the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property is set to 'Details'. It also defines the additional data that is displayed under the item's text when the View is set to 'Tiles'. Additionally, sub-item values, and the name of the column to which they are associated, are displayed in the item's ToolTips when the ItemSettings' TipStyle property is set to Automatic. Let's add SubItemColumns to represent the file size, file type, and modified date, since that is what Windows Explorer displays by default:
+
+*In Visual Basic:*
+
+----
+' Add some UltraListViewSubItemColumns to the control's SubItemColumns collection
+' to represent the file size, file type, and date modified
+Dim colFileSize As UltraListViewSubItemColumn = _
+  Me.ultraListView1.SubItemColumns.Add("FileSize")
+Dim colFileType As UltraListViewSubItemColumn = _
+  Me.ultraListView1.SubItemColumns.Add("FileType")
+Dim colDateModified As UltraListViewSubItemColumn = _
+  Me.ultraListView1.SubItemColumns.Add("DateModified")
+----
+
+*In C#:*
+
+----
+// Add some UltraListViewSubItemColumns to the control's SubItemColumns collection
+// to represent the file size, file type, and date modified
+UltraListViewSubItemColumn colFileSize = this.ultraListView1.SubItemColumns.Add( "FileSize" );
+UltraListViewSubItemColumn colFileType = this.ultraListView1.SubItemColumns.Add( "FileType" );
+UltraListViewSubItemColumn colDateModified = this.ultraListView1.SubItemColumns.Add( "DateModified" );
+----
+
+[start=4]
+. Set some properties of the UltraListViewSubItemColumn instances we added in step 2.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[UltraListViewSubItemColumn]"]  class exposes some properties that enable you to control the way in which the column and its sub-items appear in the user interface. Let's use some of these properties to achieve a look similar to that of Windows Explorer:
+
+*In Visual Basic:*
+
+----
+' FileSize...
+' Set the DataType property to integer, since we will
+' display the file sizes in kilobtyes
+colFileSize.DataType = GetType(Integer)
+' Set the Format property so that that values are
+' displayed with the thousands separator and trailing
+' zeroes. Also, we want to end each value with the "KB"
+' suffix since the unit we are representing is a kilobyte.
+colFileSize.Format = "#,###,##0 KB"
+' Right-align the sub-item values so the numbers line up
+colFileSize.SubItemAppearance.TextHAlign = HAlign.Right
+' Set the Text property to "Size"
+colFileSize.Text = "Size"
+' FileType...
+' Set the DataType property to string
+colFileType.DataType = GetType(String)
+' Set the Text property to "Type"
+colFileType.Text = "Type"
+' DateModified...
+' Set the DataType property to DateTime
+colDateModified.DataType = GetType(DateTime)
+' Set the Text property to "Date Modified"
+colDateModified.Text = "Date Modified"
+' Set the Format property so that we display the
+' short representation of the date and time, appropriate
+' for the current culture
+Dim shortDateFormat As String = _
+  System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern
+Dim shortTimeFormat As String = _
+  System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern
+colDateModified.Format = String.Format("{0} {1}", shortDateFormat, shortTimeFormat)
+----
+
+*In C#:*
+
+----
+// FileSize...
+// Set the DataType property to integer, since we will
+// display the file sizes in kilobtyes
+colFileSize.DataType = typeof(int);
+// Set the Format property so that that values are
+// displayed with the thousands separator and trailing
+// zeroes. Also, we want to end each value with the "KB"
+// suffix since the unit we are representing is a kilobyte.
+colFileSize.Format = "#,###,##0 KB";
+// Right-align the sub-item values so the numbers line up
+colFileSize.SubItemAppearance.TextHAlign = HAlign.Right;
+// FileType...
+// Set the DataType property to string
+colFileType.DataType = typeof(string);
+// DateModified...
+// Set the DataType property to DateTime
+colDateModified.DataType = typeof(DateTime);
+// Set the Text property to "Type"
+colFileType.Text = "Type";
+// Set the Text property to "Date Modified"
+colDateModified.Text = "Date Modified";
+// Set the Format property so that we display the
+// short representation of the date and time, appropriate
+// for the current culture
+string shortDateFormat = 
+  System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+string shortTimeFormat = 
+  System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+colDateModified.Format = string.Format( "{0} {1}", shortDateFormat, shortTimeFormat );
+----
+
+[start=5]
+. Set some properties of the control's  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~maincolumn.html[MainColumn]"] .
+
+The control's MainColumn property returns a reference to an object of type  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewmaincolumn.html[UltraListViewMainColumn]"] . This column is different than those of the members of the SubItemColumns collection. It represents the column under which an item's value is displayed, and cannot be hidden like the members of the SubItemColumns collection can. However, it derives from the same class as the UltraListViewSubItemColumn class, and as such, exposes many of the same properties. Let's set some of the properties of the MainColumn, which will display the name of the file/directory:
+
+*In Visual Basic:*
+
+----
+' MainColumn...
+' Set the DataType to string
+Me.ultraListView1.MainColumn.DataType = GetType(String)
+' Set the Text property to "Name"
+Me.ultraListView1.MainColumn.Text = "Name"
+----
+
+*In C#:*
+
+----
+// MainColumn...
+// Set the DataType to string
+this.ultraListView1.MainColumn.DataType = typeof(string);
+// Set the Text property to "Name"
+this.ultraListView1.MainColumn.Text = "Name";
+----
+
+[start=6]
+. Now that we have defined the column structure, it's time to start adding some data:
+
+*In Visual Basic:*
+
+----
+' Add an appearance for the folder images, which we will
+' assign to the folder items' Appearance
+Dim appearance As Infragistics.Win.Appearance = Me.ultraListView1.Appearances.Add("folder")
+appearance.Image = Me.ImageList1.Images(0)
+' Get a DirectoryInfo object that represents the C drive
+' of the local machine
+Dim cDriveInfo As DirectoryInfo = New DirectoryInfo("C:\\")
+' Get the directories and files
+Dim directories() As DirectoryInfo = cDriveInfo.GetDirectories()
+Dim files() As FileInfo = cDriveInfo.GetFiles()
+' Iterate the directories and add an item for each one
+Dim i As Integer
+For i = 0 To directories.Length - 1
+	Dim directoryInfo As DirectoryInfo = directories(i)
+	Dim item As UltraListViewItem = Me.ultraListView1.Items.Add(directoryInfo.FullName, directoryInfo.Name)
+	item.SubItems("FileType").Value = "File Folder"
+	item.SubItems("DateModified").Value = directoryInfo.LastWriteTime
+	item.Appearance = Me.ultraListView1.Appearances("folder")
+Next
+' Iterate the files and add an item for each one
+For i = 0 To files.Length - 1
+	Dim fileInfo As FileInfo = files(i)
+	Dim item As UltraListViewItem = Me.ultraListView1.Items.Add(fileInfo.FullName, fileInfo.Name)
+	item.SubItems("FileSize").Value = fileInfo.Length / 1024
+	item.SubItems("FileType").Value = "File"
+	item.SubItems("DateModified").Value = fileInfo.LastWriteTime
+Next
+' Set the View to 'Details'
+Me.ultraListView1.View = UltraListViewStyle.Details
+----
+
+*In C#:*
+
+----
+// Add an appearance for the folder images, which we will
+// assign to the folder items' Appearance
+Infragistics.Win.Appearance appearance = this.ultraListView1.Appearances.Add( "folder" );
+appearance.Image = this.imageList1.Images[0];
+// Get a DirectoryInfo object that represents the C drive
+// of the local machine
+DirectoryInfo cDriveInfo = new DirectoryInfo( "C:\\" );
+// Get the directories and files
+DirectoryInfo[] directories = cDriveInfo.GetDirectories();
+FileInfo[] files = cDriveInfo.GetFiles();
+// Iterate the directories and add an item for each one
+for ( int i = 0; i < directories.Length; i ++ )
+{
+	DirectoryInfo directoryInfo = directories[i];
+	UltraListViewItem item = this.ultraListView1.Items.Add( directoryInfo.FullName, directoryInfo.Name );
+	item.SubItems["FileType"].Value = "File Folder";
+	item.SubItems["DateModified"].Value = directoryInfo.LastWriteTime;
+	item.Appearance = this.ultraListView1.Appearances["folder"];
+}
+// Iterate the files and add an item for each one
+for ( int i = 0; i < files.Length; i ++ )
+{
+	FileInfo fileInfo = files[i];
+	UltraListViewItem item = this.ultraListView1.Items.Add( fileInfo.FullName, fileInfo.Name );
+	item.SubItems["FileSize"].Value = fileInfo.Length / 1024;
+	item.SubItems["FileType"].Value = "File";
+	item.SubItems["DateModified"].Value = fileInfo.LastWriteTime;
+}
+// Set the View to 'Details'
+this.ultraListView1.View = UltraListViewStyle.Details;
+----

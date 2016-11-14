@@ -1,0 +1,111 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-set-template-addrows-to-fixed",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{0DE549B2-C8B4-444B-9E6E-43CF360D86F6}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Template AddRows to Fixed
+
+This feature emulates the behavior of the add-row in Microsoft Outlook, most notably the fact that the add-row is fixed. It does not scroll as other rows are scrolled. Although Microsoft Outlook shows the add-row on the top, WinGrid™ offers the ability to show the fixed add-row on the top or the bottom of the row collection. To facilitate this functionality FixedAddRowOnTop and FixedAddRowOnBottom members are made available on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.allowaddnew.html[AllowAddNew]"]  enum, which is associated with the Override's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property. These enum members differ from the TemplateOnTop and TemplateOnBottom members in the sense that they keep the add-row fixed so it does not scroll as the UltraGrid is scrolled. Although the template add-rows can be displayed in all bands, they will be fixed only in the root band. In addition, adding rows is not supported when rows are grouped by a column.
+
+.Note
+[NOTE]
+====
+that this help topic discusses only a part of the template add-row feature. See link:wingrid-using-addrow-feature.html[Working With the Add Row] help topic for general information regarding the template add-row feature.
+====
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. To enable this functionality set the AllowAddNew property to FixedAddRowOnTop or FixedAddRowOnBottom.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = _
+  AllowAddNew.FixedAddRowOnTop
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.AllowAddNew = 
+  AllowAddNew.FixedAddRowOnTop;
+----
+
+[start=3]
+. You can also display a prompt in the template add-row by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowprompt.html[TemplateAddRowPrompt]"]  property.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.TemplateAddRowPrompt = _
+  "Click here to add rows..."
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.TemplateAddRowPrompt = 
+  "Click here to add rows...";
+----
+
+[start=4]
+. By default the prompt spans across multiple cells. You can confine it to a single cell by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~specialrowpromptfield.html[SpecialRowPromptField]"]  property of the Band to a column's key. The prompt will be confined to this column's cell in the template add-row.
+
+*In Visual Basic:*
+
+----
+' Where Address is the name of the column
+Me.UltraGrid1.DisplayLayout.Bands(0).SpecialRowPromptField = "Address"
+----
+
+*In C#:*
+
+----
+// Where Address is the name of the column
+this.ultraGrid1.DisplayLayout.Bands[0].SpecialRowPromptField = "Address";
+----
+
+[start=5]
+. You can change the appearance of the prompt by using the Override's TemplateAddRowPromptAppearance property. By default the prompt is transparent. You can make the prompt opaque either by setting the BackColor to a desired color or by setting the AlphaLevel to Opaque. The following code sets the ForeColor which controls the color of the prompt text.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.TemplateAddRowPromptAppearance.ForeColor = _
+  Color.Blue
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.TemplateAddRowPromptAppearance.ForeColor = 
+  Color.Blue;
+----
+
+[start=6]
+. The following screen shot shows the fixed template add-row at the top of the row collection.
+
+image::Images/WinGrid_Set_Template_AddRows_to_Fixed_01.png[set template addrows to fixed in ultragrid]

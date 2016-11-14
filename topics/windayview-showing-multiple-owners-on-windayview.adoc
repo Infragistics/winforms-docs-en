@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "windayview-showing-multiple-owners-on-windayview",
+    "controlName": ["WinDayView"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{550DE06E-159C-446A-B3F4-453B31842698}",  
+    "buildFlags": [],
+    "createdOn": "2007-02-05T12:12:17Z"
+}
+|metadata|
+////
+
+= Showing Multiple Owners on WinDayView
+
+WinSchedule's™ support for  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  grouping is realized primarily through the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"]  object. The Owner object usually represents a person, department, or other entity by which the end developer might want to group appointments. The repository for these objects is exposed through the CalendarInfo's  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~owners.html[Owners]"]  collection.
+
+The following code snippet adds a few members in our Owners collection, and sets up the WinDayView™ control to view these owners separately. In addition, it hides the unassigned owner, and sets the TimeSlotInterval on the WinDayView to ThirtyMinutes so we can see more TimeSlots on the screen.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+Private Sub Showing_Multiple_Owners_on_WinDayView_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraCalendarInfo1.Owners.UnassignedOwner.Visible = False
+	Me.UltraCalendarInfo1.Owners.Add("Welby", "Dr. Marcus Welby")
+	Me.UltraCalendarInfo1.Owners.Add("Kimble", "Dr. Richard Kimble")
+	Me.UltraCalendarInfo1.Owners.Add("Quincy", "Dr. Quincy")
+	Me.UltraCalendarInfo1.Owners.Add("Spencer", "Dr. Luke Spencer")
+	Me.UltraDayView1.GroupingStyle = DayViewGroupingStyle.OwnerWithinDate
+	Me.UltraDayView1.TimeSlotInterval = TimeSlotInterval.ThirtyMinutes
+	Me.UltraDayView1.CalendarInfo = Me.UltraCalendarInfo1
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+private void Showing_Multiple_Owners_on_WinDayView_Load(
+  object sender, EventArgs e)
+{
+	this.ultraCalendarInfo1.Owners.UnassignedOwner.Visible = false;
+	this.ultraCalendarInfo1.Owners.Add("Welby", "Dr. Marcus Welby");
+	this.ultraCalendarInfo1.Owners.Add("Kimble", "Dr. Richard Kimble");
+	this.ultraCalendarInfo1.Owners.Add("Quincy", "Dr. Quincy");
+	this.ultraCalendarInfo1.Owners.Add("Spencer", "Dr. Luke Spencer");
+	this.ultraDayView1.GroupingStyle = DayViewGroupingStyle.OwnerWithinDate;
+	this.ultraDayView1.TimeSlotInterval = TimeSlotInterval.ThirtyMinutes;
+	this.ultraDayView1.CalendarInfo = this.ultraCalendarInfo1;
+}
+----
+
+If you run the project at this point, you should see something like the following:
+
+image::Images/WinCalendarInfo_Showing_Multiple_Owners_on_WinDayView_01.png[showing multiple owners on ultradayview]
+
+The white TimeSlots represent the working hours, and the colored ones represent the non-working hours. As you can see from the screen shot, the working day begins and ends at the same time for all of the Owners. See link:windayview-setting-different-working-hours-for-different-owners.html[Setting Different Working Hours for Different Owners] for information on how to change each owners working hours.

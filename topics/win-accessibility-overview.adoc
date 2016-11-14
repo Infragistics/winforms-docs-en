@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-accessibility-overview",
+    "controlName": [],
+    "tags": ["Application Blocks"],
+    "guid": "{52415C83-DAE9-4583-AB12-042E18E3DF3C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Accessibility Overview
+
+Applications built with Windows Forms can be very accommodating to persons with disabilities. Windows® Narrator can recite entire documents. Windows Magnifier can zoom in on the mouse cursor and follow focus. Each of these applications can interact with other applications in a unique way because of the .NET Framework's AccessibleObject class. Through AccessibleObject, applications can open themselves up to Narrator and Magnifier and allow them to see what's contained within each object on the screen. Other instances of AccessibleObject are created to represent smaller UI elements for assistive technology to follow.
+
+Several of our controls use the AccessibleObject, and are fully accessible to applications such as Narrator and Magnifier. Keep in mind, this technology is useful only for visual controls and components; some Infragistics Windows Forms controls and components are not visual, and therefore do not implement accessibility.
+
+The following is a list of our controls/components/dialog boxes that implement accessibility:
+
+* AnimationControl™
+* WinButton™
+* WinActivityIndicator™
+* WinCalcManager (FormulaBuilder)™
+* WinCalculatorDropDown™
+* WinCalendarCombo™
+* WinCalendarInfo (run-time dialog boxes)™
+* WinCheckEditor™
+* WinColorPicker™
+* WinCombo™
+* WinComboEditor™
+* WinCurrencyEditor™
+* WinDateTimeEditor™
+* WinDayView™
+* WinDropDown™
+* WinDropDownButton™
+* WinExpandableGroupBox™
+* WinExplorerBar™
+* WinFontNameEditor™
+* WinFormattedLinkLabel™
+* WinFormattedTextEditor™
+* WinGanttView™
+* WinGrid™
+* WinGridColumnChooser™
+* WinGroupBox™
+* WinLabel™
+* WinListView™
+* WinMaskedEdit™
+* WinMessageBoxManager™
+* WinMonthViewMulti™
+* WinMonthViewSingle™
+* WinNavigationBar™
+* WinNumericEditor™
+* WinOptionSet™
+* WinPanel™
+* WinPictureBox™
+* WinPrintPreviewControl™
+* WinPrintPreviewDialog™
+* WinPrintPreviewThumbnail™
+* WinProgressBar™
+* WinScrollBar™
+* WinSpellChecker™
+* WinSplitter™
+* WinStatusBar™
+* WinTabbedMdiManager™
+* WinTabControl™
+* WinTabStripControl™
+* WinTextEditor™
+* WinTilePanel™
+* WinTimelineView™
+* WinTimeZoneEditor™
+* WinToolbarsManager™
+* WinTrackBar™
+* WinTree™
+* WinWeekView™
+
+The following is a list of controls/components/dialog boxes that do NOT implement accessibility:
+
+* AppStylist® (primarily intended for developers, not users).
+* AppStylistRunTime (dialog boxes are primarily intended for developers, not users )
+* WinCarousel™
+* WinDockManager™
+* WinGrid (Conditional Formatting Dialog Box)
+* WinGridCellProxy™
+* WinGridRowEditTemplate™
+* WinLiveTileView™
+* WinRadialMenu™
+* WinValidator™
+
+The following is a list of controls/components/dialog boxes that have no user interface, and therefore do not implement accessibility:
+
+* DiagnosticsSupport
+* InboxControlStyler™
+* WinCalcManager™
+* WinCalendarLook™
+* WinControlContainerEditor™
+* WinDataSource™
+* WinFlowLayoutManager™
+* WinGridBagLayoutManager™
+* WinGridExcelExport™
+* WinGridFilterUIProvider™
+* WinGridPrintDocument™
+* WinPopupControlContainer™
+* WinPrintDocument™
+* WinSchedulePrintDocument™
+* WinToolTipManager™ (ToolTips technically do have a UI, but since you can't click on them or even mouse over them, they do not require accessibility.)

@@ -1,0 +1,110 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-statebutton",
+    "controlName": ["WinStatusBar"],
+    "tags": ["Events","How Do I","Styling"],
+    "guid": "{3FE25F8B-F3ED-4C86-959C-96A1FE932DF1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to StateButton
+
+The WinStatusBar™ StateButton style mimics the type of button used in Microsoft Word for setting whether the text used is bold, underlined, etc. The StateButton style shows a button in one of two states - the button is either pressed or not pressed. The Checked property of a specific panel with this style will return the status of the StateButton ("True" if pressed, " if not).
+
+== Setting up StateButton Style Panel at Design-Time
+
+[start=1]
+. Add a UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Scroll the properties until you come to the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the Style property equal to StateButton.
+[start=5]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property equal to what you want the default text value of the status bar to be.
+[start=6]
+. Click OK to close the window and you will see your panel added to the status bar as a StateButton.
+
+== Setting up StateButton Style Panel at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+' Create an instance of a TextBox
+Private myTextBox As New TextBox
+...
+Private Sub Set_the_Panel_Style_to_StateButton_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.Controls.Add(myTextBox)
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.StateButton
+	' Set the default text
+	myPanel.Text = "StateButton"
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private TextBox myTextBox;
+...
+private void Set_the_Panel_Style_to_StateButton_Load(object sender, EventArgs e)
+{
+	// Create an instance of a TextBox
+	myTextBox = new TextBox();
+	this.Controls.Add(myTextBox);
+	// Create new panel
+	UltraStatusPanel myPanel = new UltraStatusPanel();
+	// Set the style for the panel
+	myPanel.Style = PanelStyle.StateButton;
+	// Set the default text
+	myPanel.Text="StateButton";
+	// Add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+}
+----
+
+== Event for StateButton Style Panel
+
+The  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"]  event will pass in a panel parameter that will help determine which button was clicked. The following code uses this Panel parameter and the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~checked.html[Checked]"]  property to determine the status of the StateButton and process accordingly. If the button is pressed (Checked = "true") then the ForeColor of the textbox will be black, if not, the ForeColor will be red.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraStatusBar1_ButtonClick(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinStatusBar.PanelEventArgs) _
+  Handles UltraStatusBar1.ButtonClick
+	If e.Panel.Index = 1 And e.Panel.Checked Then
+		myTextBox.ForeColor = Color.Black
+	Else
+		myTextBox.ForeColor = Color.Red
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraStatusBar1_ButtonClick(object sender, 
+  PanelEventArgs e)
+{
+	if (e.Panel.Index == 1 && e.Panel.Checked)
+		myTextBox.ForeColor = Color.Black;
+	else 
+		myTextBox.ForeColor = Color.Red;
+}
+----

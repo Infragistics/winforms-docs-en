@@ -1,0 +1,54 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincomboeditor-suggest-possible-values-with-wincomboeditor",
+    "controlName": ["WinComboEditor"],
+    "tags": ["FAQ","How Do I","Selection"],
+    "guid": "{08AAB486-24E5-4775-AB07-7D54929CD3D2}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Suggest Possible Values with WinComboEditor
+
+You can use WinComboEditor™ to help your end users enter data by supplying them with a pre-populated list of items. Your end user simply needs to click the drop-down arrow to open the drop-down list and then select a value from the list. However, what if you want to make the selection process even easier? What if you wanted to remove all unnecessary mouse actions so that all the end user needs to do is type in the text box while WinComboEditor suggests possible values?
+
+WinComboEditor's link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~autocompletemode.html[AutoCompleteMode] property determines whether your end user will be presented with a drop-down list displaying all possible values based on what they currently have typed. Setting AutoCompleteMode to Suggest does just that, whereas setting AutoCompleteMode to Append will simply append the most likely candidate value to the end of what is currently typed. You also have the option to use both of these features simultaneously by setting AutoCompleteMode to SuggestAppend.
+
+Assuming your form contains a WinComboEditor control, the following example code demonstrates how to suggest possible colors to your end user from the System.Drawing.KnownColor enumeration.
+
+*In Visual Basic:*
+
+----
+Private Sub Form1_Load(ByVal sender As System.Object, _
+                       ByVal e As System.EventArgs) Handles MyBase.Load
+    'get a list of colors from the KnownColor enumeration.
+    For Each s As String In System.Enum.GetNames(GetType(KnownColor))
+        'add each color to WinComboEditor's items collection.
+        Me.UltraComboEditor1.Items.Add(s)
+    Next
+    'Have WinComboEditor suggest possible colors.
+    Me.UltraComboEditor1.AutoCompleteMode = _
+        Infragistics.Win.AutoCompleteMode.Suggest
+End Sub
+----
+
+*In C#:*
+
+----
+private void Form1_Load(object sender, EventArgs e)
+{
+	//get a list of colors from the KnownColor enumeration.
+	foreach (string s in System.Enum.GetNames(typeof(KnownColor)))
+	{
+		//add each color to WinComboEditor's items collection.
+		this.ultraComboEditor1.Items.Add(s);
+	}
+	//Have WinComboEditor suggest possible colors.
+	this.ultraComboEditor1.AutoCompleteMode = 
+		Infragistics.Win.AutoCompleteMode.Suggest;
+}
+----

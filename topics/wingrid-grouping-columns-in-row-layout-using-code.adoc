@@ -1,0 +1,79 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-grouping-columns-in-row-layout-using-code",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Grouping","How Do I"],
+    "guid": "{B11870C3-9070-43B8-899B-C183154F2A1D}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Grouping Columns in Row Layout using code
+
+Grouping Columns is possible in Row Layout mode by setting the WinGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~rowlayoutstyle.html[RowLayoutStyle]"]  property to GroupLayout. This allows for an indefinite number of groupings.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo.html[RowLayoutColumnInfo]"]  object exposed on columns and groups contains a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~parentgroup.html[ParentGroup]"]  property. This indicates the parent group of either a column or a group. In other words, a column or group can be the child of another group.
+
+The following code shows how you can group columns in Row Layout mode. For this topic the WinGrid control is bound to a data source with the following schema. For more information on how to bind WinGrid to data, please review the link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Binding WinGrid to a Flat Data Source] topic.
+
+image::Images/WinGrid_Grouping_Columns_in_Row_Layout_UltraWinGrid_Designer_01.png[]
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+[source, vb]
+Imports Infragistics.Win.UltraWinGrid
+
+*In C#:*
+[source, csharp]
+using Infragistics.Win.UltraWinGrid;
+
+*In Visual Basic:*
+[source, vb]
+Dim band As UltraGridBand = Me.ultraGrid1.DisplayLayout.Bands(0)
+'Arrange the band's columns in Group Layout style 
+Me.ultraGrid1.DisplayLayout.Bands(0).RowLayoutStyle = RowLayoutStyle.GroupLayout 
+'Enbale Column/Group moving 
+Me.ultraGrid1.DisplayLayout.Override.AllowRowLayoutColMoving = Infragistics.Win.Layout.GridBagLayoutAllowMoving.AllowAll 
+'Create a parent group for 1stQuarter and 2ndQuarter columns 
+Dim firstGroup As UltraGridGroup = band.Groups.Add("FirstGroup", "2008 (Jan-June)")
+'Create a parent group for 3rdQuarter and 4thQuarter columns 
+Dim secondGroup As UltraGridGroup = band.Groups.Add("SecondGroup", "2008 (July-Dec)")
+'Create a parent group for 2008 (Jan-June)and 2008 (July-Dec) groups 
+Dim expensesGroup As UltraGridGroup = band.Groups.Add("ExpensesGroup", "Expenses")
+band.Columns("1stQuarter").RowLayoutColumnInfo.ParentGroup = firstGroup 
+band.Columns("2ndQuarter").RowLayoutColumnInfo.ParentGroup = firstGroup 
+band.Columns("3rdQuarter").RowLayoutColumnInfo.ParentGroup = secondGroup 
+band.Columns("4thQuarter").RowLayoutColumnInfo.ParentGroup = secondGroup 
+band.Groups("firstGroup").RowLayoutGroupInfo.ParentGroup = expensesGroup 
+band.Groups("secondGroup").RowLayoutGroupInfo.ParentGroup = expensesGroup
+
+*In C#:*
+[source, csharp]
+UltraGridBand band = this.ultraGrid1.DisplayLayout.Bands[0];
+//Arrange the band's column in Group Layout style
+this.ultraGrid1.DisplayLayout.Bands[0].RowLayoutStyle = RowLayoutStyle.GroupLayout;
+//Enbale Column/Group moving
+this.ultraGrid1.DisplayLayout.Override.AllowRowLayoutColMoving = Infragistics.Win.Layout.GridBagLayoutAllowMoving.AllowAll;
+//Create a parent group for 1stQuarter and 2ndQuarter columns 
+UltraGridGroup firstGroup = band.Groups.Add("FirstGroup", "2008 (Jan-June)");
+//Create a parent group for 3rdQuarter and 4thQuarter columns 
+UltraGridGroup secondGroup = band.Groups.Add("SecondGroup", "2008 (July-Dec)");
+//Create a parent group for 2008 (Jan-June)and 2008 (July-Dec) groups 
+UltraGridGroup expensesGroup = band.Groups.Add("ExpensesGroup", "Expenses");
+band.Columns["1stQuarter"].RowLayoutColumnInfo.ParentGroup = firstGroup;
+band.Columns["2ndQuarter"].RowLayoutColumnInfo.ParentGroup = firstGroup;
+band.Columns["3rdQuarter"].RowLayoutColumnInfo.ParentGroup = secondGroup;
+band.Columns["4thQuarter"].RowLayoutColumnInfo.ParentGroup = secondGroup;
+band.Groups["firstGroup"].RowLayoutGroupInfo.ParentGroup = expensesGroup;
+band.Groups["secondGroup"].RowLayoutGroupInfo.ParentGroup = expensesGroup;
+
+image::Images/WinGrid_Grouping_Columns_in_Row_Layout_UltraWinGrid_Designer_07.png[]
+
+*Related Topics*
+
+* link:wingrid-grouping-columns-in-row-layout-mode-using-the-designer.html[Grouping Columns in Row Layout Mode using the Designer]
+* link:wingrid-collapsing-column-groups.html[Collapsing Column Groups]

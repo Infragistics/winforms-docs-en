@@ -1,0 +1,66 @@
+﻿////
+
+|metadata|
+{
+    "name": "the-chartinfoeventargs-class",
+    "controlName": [],
+    "tags": ["Charting","Events"],
+    "guid": "{FAFE6BA2-287E-477B-841A-F7A8A118044F}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:56:32Z"
+}
+|metadata|
+////
+
+= The ChartInfoEventArgs Class
+
+The purpose of our custom ChartInfoEventArgs class is to expose important information to the developers that wish to populate the chart that represents each row of the grid. This class is exposed through the ChartInfoRequested event which we designed to fire whenever a chart is being initialized for the first time and attached to a grid row. The ChartInfoEventArgs class exposes 2 important events: one of them is a reference to the actual WinChart that is currently initializing and the other property represents the grid row that the chart is being attached to. With both of these properties available, you can easily access the grid row to perhaps use the primary key value to perform a lookup operation and retrieve your chart data and then bind it to the chart.
+
+*In Visual Basic:*
+
+----
+Public Class ChartInfoEventArgs
+	Inherits EventArgs
+	Private _chart As UltraChart = Nothing
+	Private _row As UltraGridRow = Nothing
+	Public Sub New(ByVal Chart As UltraChart, ByVal Row As UltraGridRow)
+		_chart = Chart
+		_row = Row
+	End Sub
+	Public ReadOnly Property WinChart() As UltraChart
+		Get
+			Return _chart
+		End Get
+	End Property
+	Public ReadOnly Property Row() As UltraGridRow
+		Get
+			Return _row
+		End Get
+	End Property
+End Class
+----
+
+*In C#:*
+
+----
+public class ChartInfoEventArgs : EventArgs
+{
+	private UltraChart _chart = null;
+	private UltraGridRow _row = null;
+	public ChartInfoEventArgs(UltraChart Chart, UltraGridRow Row)
+	{
+		_chart = Chart;
+		_row = Row;
+	}
+	public UltraChart WinChart
+	{
+		get { return _chart; }
+	}
+	public UltraGridRow Row
+	{
+		get { return _row; }
+	}
+}
+----
+
+This next topic explains the ChartLayout Class that is used to persist the state of the Chart so that when the Chart is restored to the Active Cell, we can reload the persisted Chart settings and data: link:the-chartlayout-class.html[The ChartLayout Class]

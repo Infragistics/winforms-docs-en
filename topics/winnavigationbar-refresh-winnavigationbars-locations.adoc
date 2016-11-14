@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "winnavigationbar-refresh-winnavigationbars-locations",
+    "controlName": ["WinNavigationBar"],
+    "tags": ["Navigation"],
+    "guid": "{4E0BE6C7-C5A6-4B8D-B8BC-3E3D2105B128}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Refresh WinNavigationBar's Locations
+
+If you are using WinNavigationBar™ to display a file system or a database, you may need to implement a means to refresh the file system or data. If you are populating each Location at once, you can place your initialize code in a method that reloads the data. If you are lazily populating WinNavigationBar and are using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~initializelocations_ev.html[InitializeLocations]"]  event to do so, your work is already done. The meat of this procedure is the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarlocation~reset.html[Reset]"]  method, exposed by every  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarlocation.html[UltraNavigationBarLocation]"]  collection. The Reset method accepts a Boolean value which identifies whether or not the InitializeLocations event should fire again for each location.
+
+In order to refresh WinNavigationBar, create a method that
+
+[start=1]
+. Accepts the current path as a parameter
+[start=2]
+. Resets all the Locations in the RootLocation
+[start=3]
+. Reinitializes WinNavigationBar
+[start=4]
+. Navigates back to the current path
+
+Step 3 will differ depending on how you are initializing WinNavigationBar. You could either call a method which runs initialization code, or leave step 3 empty if you are lazily populating WinNavigationBar.
+
+The following code demonstrates how to refresh the WinNavigationBar control by resetting all its Locations and then navigating back to the current path. Call this method in a button's Click event and pass in the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~selectedlocation.html[SelectedLocation's]"]  full path. You can use the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarlocation~getfullpath.html[GetFullPath]"]  method to retrieve the SelectedLocations's full path.
+
+*In Visual Basic:*
+
+----
+Private Sub RefreshFileSystem(ByVal path As String)
+    ' Reset all of the locations under RootLocation. Also, pass
+    ' True to the Reset method so the InitializeLocations event
+    ' will fire again for each location.
+    Me.UltraNavigationBar1.RootLocation.ResetLocations(True)
+    ' TODO:
+    ' If you are not lazily populating WinNavigationBar, place
+    ' initialization code here.
+    ' Navigate back to the path you stored. As WinNavigationBar
+    ' parses through this path, it will fire InitializeLocations
+    ' for each item in the path.
+    Me.UltraNavigationBar1.NavigateTo(path, True)
+End Sub
+----
+
+*In C#:*
+
+----
+private void RefreshFileSystem(string path)
+{
+	// Reset all of the locations under RootLocation. Also, pass
+	// True to the Reset method so the InitializeLocations event
+	// will fire again for each location.
+	this.ultraNavigationBar1.RootLocation.ResetLocations(true);
+	// TODO:
+	// If you are not lazily populating WinNavigationBar, place
+	// initialization code here.
+	// Navigate back to the path you stored. As WinNavigationBar
+	// parses through this path, it will fire InitializeLocations
+	// for each item in the path.
+	this.ultraNavigationBar1.NavigateTo(path, true);
+}
+----

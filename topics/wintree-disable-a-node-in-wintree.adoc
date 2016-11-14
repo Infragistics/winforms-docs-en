@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-disable-a-node-in-wintree",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{DA2AD3FF-977C-4BB7-AF25-B55BAF4780E9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Disable a Node in WinTree
+
+This topic shows you how you can disable a node in WinTree™. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~enabled.html[Enabled]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode.html[UltraTreeNode]"]  object must be set to false.
+
+*In Visual Basic:*
+
+----
+Me.ultraTree1.Nodes(0).Nodes(1).Enabled = False
+----
+
+*In C#:*
+
+----
+this.ultraTree1.Nodes[0].Nodes[1].Enabled = false;
+----
+
+The following screenshot shows a WinTree with a disabled child node (Printers).
+
+image::Images\WinTree_Disable_a_Node_in_WinTree.png[]

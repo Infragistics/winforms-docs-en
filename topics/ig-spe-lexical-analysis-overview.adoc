@@ -1,0 +1,201 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-lexical-analysis-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "8d33b682-ffac-4d7d-ac54-b311df71ff07",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0478497Z"
+}
+|metadata|
+////
+
+= Lexical Analysis Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349223414, Lexer >>
+* <<_Ref350436192, Overview >>
+* <<_Ref349223418, Lexer states >>
+* <<_Ref349223423, Switching between states >>
+* <<_Ref349223427, Multiline tokens >>
+* <<_Ref349220598, Related Content >>
+
+[[_Ref349223414]]
+== Lexer
+
+[[_Ref350436192]]
+
+=== Overview
+
+Lexical analysis is the process of converting a sequence of characters into a sequence of tokens, which are groups of one or more contiguous characters. A token is associated with the text which was read to create it and the terminal symbol which represents the text. Each terminal symbol defines the types of textual units it can represent.
+
+[[_Ref349223418]]
+
+=== Lexer states
+
+Depending on the context, tokens for certain terminal symbols may not be created. For example, consider the following C# code snippet:
+
+*In C#:*
+
+[source,csharp]
+----
+class Class1 // TODO: implement IEnumerable
+{
+    private string x = "This is some text.";
+}
+----
+
+When parsing this code, the lexical analyzer will interpret “Class1” as an identifier, but “implement” or “IEnumerable” will not be interpreted as identifiers, because they are within a comment. Also “x” will be interpreted as an identifier, but “this” or “text” won’t be because they are part of a string literal. Specifying which terminal symbols can be matched by the lexer in a particular context is possible with the use of lexer states.
+
+The lexer’s states are defined in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~lexerstates.html[Grammar.LexerStates] collection. There is also a default state which is accessible through the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstatecollection~defaultlexerstate.html[Grammar.LexerStates.DefaultLexerState] property.
+
+All lexer states (including the default state), have a symbols collection. This is an ordered set of link:ig-spe-terminal-symbols.html[terminal symbols] which can be matched when that lexer state is the active state on the lexer. Determining which of these terminal symbols to match starting at a particular character position is done using the following rules:
+
+1. Always use the longest possible token.
+
+For example, assume there are terminal symbols called “LessThanToken”, “EqualsToken”, and “LessThanOrEqualsToken” which are defined to match “<”, “=”, and “$$<=$$”, respectively. When creating tokens for the code “if(foo $$<=$$ 10)”, “$$<=$$” should be lexed as a single “LessThanOrEqualsToken”, and not a “LessThanToken” followed by an “EqualsToken”.
+
+2. If two or more tokens are the longest, use the token associated with a terminal symbol which exists earlier (at the lowest index) in the lexer state’s link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[Symbols] collection.
+
+For example, in C#, there is a terminal symbol called “PublicKeyword” which is defined to match “public”. In addition, the “IdentifierToken” terminal symbol is defined to match an underscore or letter followed by zero or more underscores, letters, or digits. By this definition, the text “public” can also be matched by the “IdentifierToken” terminal symbol. Since “PublicKeyword” represents a reserved keyword, it should exist before the “IdentifierToken” terminal symbol in the lexer state’s Symbols collection so it is used when there is a conflict.
+
+[[_Ref349223423]]
+
+=== Switching between states
+
+When the lexer starts analyzing a document, it always starts in the `DefaultLexerState`. It starts reading text and creating tokens using the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] instances in that state. If it creates a token associated with a `TerminalSymbol` that has a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~lexerstatetoenter.html[LexerStateToEnter] set, the state of the lexer will be changed to the new link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] and it will start creating tokens using the `TerminalSymbol` instances in that new `LexerState`. The symbols from the `DefaultLexerState` will be ignored temporarily. This will continue until a token is created that is associated with an  _exit symbol_  . Exit symbols are a designated subset of terminal symbols from a `LexerState` which will cause the lexer to leave that state. All link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~add.html[Add] and link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~insert.html[Insert] overloads on the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[LexerState.Symbols] collection have an optional  _isExitSymbol_   parameter. When it is specified as `true`, the added symbol will be an exit symbol for the `LexerState`. There is also an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~isexitsymbol.html[IsExitSymbol(TerminalSymbol)] method on the Symbols collection which can be used to determine whether a `TerminalSymbol` is an exit symbol for the `LexerState`.
+
+.Note
+[NOTE]
+====
+If a symbol is added to the `DefaultLexerState` and `isExitSymbol` is specified as True, an exception will occur, because the default lexer state cannot be exited.
+====
+
+When an exit symbol is encountered, the lexer will go back to the previous state it was in before the current `LexerState` was entered. In this way, the states of the lexer form a stack, where the top state of the stack is the active state of the lexer. When a token is created which causes a new lexer state to be entered, it is pushed onto the top of the stack. Then when a token is created which causes a lexer state to be exited, it is popped off the stack. A lexer can enter into multiple new states before a state is exited and the stack will just keep getting bigger until a token associated with an exit symbol is created. This is why the `DefaultLexerState` cannot be exited: if it is removed from the stack, the stack will be empty and the lexer will not have an active state.
+
+.Note
+[NOTE]
+====
+If a `TerminalSymbol` exists in multiple lexer states, it can be an exit symbol in some lexer states, but not others. This is why a value indicating whether a terminal symbol is an exit symbol is not a property on `TerminalSymbol`.
+====
+
+This is an example of entering/exiting a lexer state for string literals so that Identifiers are not matched within strings:
+
+*In C#:*
+
+[source,csharp]
+----
+var grammar = new Grammar();
+var defaultLexerState = grammar.LexerStates.DefaultLexerState;
+// ...
+// Include other symbols in the default lexer state.
+// ...
+var doubleQuote = defaultLexerState.Symbols.Add("DoubleQuote", "\"");
+// When the double quote is encountered, enter the StringLiteral lexer state.
+var stringLiteralLexerState = grammar.LexerStates.Add("StringLiteral");
+doubleQuote.LexerStateToEnter = stringLiteralLexerState;
+// String literal content is one or more of: 
+//            anything that is not a quote, slash, or newline character 
+//            -or- 
+//            a slash followed by anything other than a newline character
+var stringLiteralContent = stringLiteralLexerState.Symbols.Add("StringLiteralContent",
+      @"([^""\\\r\n]|(\\[^\r\n]))+", TerminalSymbolComparison.RegularExpression);
+// When the double quote is encountered again, exit the StringLiteral lexer state.
+stringLiteralLexerState.Symbols.Add(doubleQuote, isExitSymbol: true);
+----
+
+.Note
+[NOTE]
+====
+The “DoubleQuote” terminal symbol is used as both the  _enter_   and the  _exit_   symbol for the “StringLiteral” lexer state. When a token is created for a terminal symbol that is an exit symbol for the active lexer state, that terminal symbol’s `LexerStateToEnter` is ignored.
+====
+
+[[_Ref349223427]]
+
+=== Multiline tokens
+
+Most terminal symbols will not create tokens spanning multiple lines. Most terminal symbols will represent an identifier, keyword, or punctuation symbol. But some grammars may require a terminal symbol that can span multiple lines. An example of such a terminal symbol is the symbol representing a verbatim string in C#, which is a string literal preceded by the ‘@’ character and which can span multiple lines. The normal string literal escape sequences are suppressed for verbatim strings and a new one is introduced: double quotes are escaped by placing two double quotes next to each other ("").
+
+Here is how it might be defined:
+
+*In C#:*
+
+[source,csharp]
+----
+var grammar = new Grammar();
+var defaultLexerState = grammar.LexerStates.DefaultLexerState;
+// ...
+// Include other symbols in the default lexer state.
+// ...
+// Define the @" combination which indicates the start of a verbatim string.
+var verbatimStringStart = defaultLexerState.Symbols.Add(
+      "VerbatimStringStart", "@\"");
+// Define the lexer state to capture verbatim strings and make the 
+// VerbatimStringStart symbol enter that state when it is matched.
+var verbatimStringLexerState = grammar.LexerStates.Add("VerbatimString");
+verbatimStringStart.LexerStateToEnter = verbatimStringLexerState;
+// Define the verbatim string content to be one or more of the following:
+//     a non-quote character 
+//     - or -
+//     two quotes in a row
+var verbatimStringContent = verbatimStringLexerState.Symbols.Add(
+      "VerbatimStringContent", 
+      "([^\"]|\"\")+", TerminalSymbolComparison.RegularExpression);
+// Define the end of the verbatim string, which is a double quote ("), and have it 
+// exit the VerbatimString lexer state.
+var verbatimStringEnd = verbatimStringLexerState.Symbols.Add(
+      "VerbatimStringEnd", "\"", isExitSymbol: true);
+// ...
+// Initialize the rest of the grammar.
+----
+
+In this example, the “VerbatimStringContent” terminal symbol matches anything that is not a double-quote, which means it will consume newline characters as well. This is required, because anyone who wants to inspect the lexed tokens to see what was analyzed as the “VerbatimStringContent” text value would expect to find newline characters in that content if it spanned multiple lines. However, other consumers of the lexed content may wish to ignore the fact that this token spanned multiple lines. For example, the XamSyntaxEditor might only want to examine the tokens on a per-line basis because its text display logic lays out individual lines in the control. If a token spanned multiple lines, it could affect this logic and cause display issues. Therefore, the methods which access the tokens give you a choice of whether to split multiline tokens by line or keep them grouped together as they were lexed - as a single unit.
+
+[[_Ref349220598]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-terminal-symbols.html[Terminal Symbols]
+|This topic explains a Grammar’s terminal symbols.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+|====

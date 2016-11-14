@@ -1,0 +1,97 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-non-terminal-symbols",
+    "controlName": [],
+    "tags": [],
+    "guid": "df2e9728-dcaf-47c2-b38d-037d97e45fbc",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0548504Z"
+}
+|metadata|
+////
+
+= Non-Terminal Symbols
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains a grammar’s non-terminal symbols.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview]
+|This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349220593, Non-Terminal Symbols Overview >>
+* <<_Ref349220598, Related Content >>
+
+[[_Ref349220593]]
+== Non-Terminal Symbols Overview
+
+=== Non-terminal symbols summary
+
+Non-terminal symbols represent groupings of textual elements. Like terminal symbols, non-terminal symbols have a unique name so the parser can distinguish them from other symbols. This name must be unique across all terminal and non-terminal symbols in the same grammar.
+
+In addition to this name, the non-terminal symbol also defines sequences of symbols it can represent in the document. Each non-terminal symbol can represent one or more sequences of symbols. For example, a variable declaration in C# can be created in various ways:
+
+* A type followed by an identifier followed by a semicolon.
+* A type followed by an identifier followed by an equals sign followed by an expression followed by a semicolon.
+* The “var” keyword followed by an identifier followed by an equals sign followed by an expression followed by a semicolon.
+* And so on…
+
+The same non-terminal symbol can represent all these variations. If one of these sequences of symbols is found in a document in a place where a variable declaration is expected, the variable declaration non-terminal symbol can be used to represent those symbols.
+
+Each sequence of symbols a non-terminal symbol can represent is called a production. A production is typically written with the non-terminal symbol, known as the head of the production, on the left of an arrow and the sequence of symbols, known as the body of the production, on the right. For example, these might be three productions for a variable declaration symbol:
+
+VariableDeclarationStatement → Type IdentifierToken SemicolonToken
+
+VariableDeclarationStatement → Type IdentifierToken EqualsToken Expression SemicolonToken
+
+VariableDeclarationStatement → VarKeyword IdentifierToken EqualsToken Expression SemicolonToken
+
+And there may be others as well. The productions tell the syntax analyzer the ways in which non-terminal symbols can represent groups of symbols so it can go about constructing a hierarchical syntax tree representing a document.
+
+The productions for a non-terminal symbol, and therefore the sequences of symbols it can represent, are defined by a rule tree exposed by the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[Rule] property on the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] class.
+
+[[_Ref349220598]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-terminal-symbols.html[Terminal Symbols]
+|This topic explains a Grammar’s terminal symbols.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+|====

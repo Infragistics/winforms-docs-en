@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-looping-through-the-entire-grid",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{B4003820-D552-4130-954D-34B666254A0A}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Looping Through the Entire Grid
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~getrowenumerator.html[GetRowEnumerator]"]  method makes it easy to loop through the entire WinGrid™ in order to search for or change a specific row. The GetRowEnumerator method was added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  class to loop through all the rows in a particular band. The method was also added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscollection.html[RowsCollection]"]  class to loop through all rows in a particular rows collection. The code below shows two Foreach loops. The part of the example shows looping through a band. The second part of the example demonstrates looping through a collection of rows.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+' This feature is particularly useful for child bands because previously
+' looping through all the rows of a child band required writing a recursive
+' method.
+Dim band As UltraGridBand = Me.UltraGrid1.DisplayLayout.Bands(1)
+Dim row As UltraGridRow
+For Each row In band.GetRowEnumerator(GridRowType.DataRow)
+	' Write code to process the row
+Next row
+' This will loop through all the rows of the grid, including rows 
+' from child bands.
+Dim row As UltraGridRow
+For Each row In  Me.UltraGrid1.Rows.GetRowEnumerator(GridRowType.DataRow, Nothing, Nothing)
+	' Write code to process the row
+Next row
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+// This feature is particularly useful for child bands because previously
+// looping through all the rows of a child band required writing a recursive
+// method.
+UltraGridBand band = this.ultraGrid1.DisplayLayout.Bands[1];
+foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
+{
+	// Write code to process the row
+}
+// This will loop through all the rows of the grid, including rows 
+// from child bands.
+foreach ( UltraGridRow row in this.ultraGrid1.Rows.GetRowEnumerator( GridRowType.DataRow, null, null ) )
+{
+	// Write code to process the row
+}
+----

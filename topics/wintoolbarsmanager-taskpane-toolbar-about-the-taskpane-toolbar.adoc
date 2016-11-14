@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-taskpane-toolbar-about-the-taskpane-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{AE9487A6-C766-4E84-8C50-8AFA52C9AF0F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the TaskPane Toolbar
+
+Toolbars are 'tool containers' that can contain zero or more tools. Their default visual representation and behavior duplicates that of the toolbars in Microsoft Office. When tools reside on a toolbar, they are rendered as buttons and arranged horizontally or vertically, depending on the orientation of the toolbar. The DisplayStyle property of the tool determines whether the tool is displayed with an image and or Text.
+
+Internally, WinToolbarsManager™ represents toolbars with the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[UltraToolbar]"]  class.
+
+== TaskPane Toolbars
+
+There is another special type of Toolbar called a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"] . TaskPaneToolbars are specialized UltraToolbar objects that provide Microsoft Office style TaskPane look and feel. A TaskPaneToolbar has certain characteristics that make it different from regular UltraToolbar objects:
+
+* It fills the entire dock area row on which it appears. No other toolbar will appear on the same row.
+* Its Tools collection can only contain  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"]  instances.
+* It contains a caption area that looks like a standard toolbar.
+* Its tools are displayed within a popup menu that is displayed in the caption area.
+* A splitter area is displayed on the inner most docked edge of the toolbar that can be used to resize the toolbar when docked.
+* The content area of the task pane displays a single control - the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool~control.html[Control]"]  of the selected TaskPaneTool.
+
+Internally in UltraToolbarsManager, toolbars are represented by the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"]  class.
+
+Here is a screenshot showing the various parts of an TaskPaneToolbar:
+
+image::Images\UltraToolbarsManager_About_Toolbars_03.png[layout of ultratoolbarsmanager taskpane toolbar]
+
+Here is a screenshot showing the TaskPaneToolbar using the Visual Studio 2005 toolbar styles:
+
+image::Images\UltraToolbarsManager_About_Toolbars_04.png[example of ultratoolbarsmanager taskpane toolbar]

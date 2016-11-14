@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincolorpicker-changing-the-background-color-of-the-selectedrows",
+    "controlName": ["WinEditors"],
+    "tags": ["Editing","Styling"],
+    "guid": "{7D18ABA5-9573-40A5-BCBF-F612B63F3878}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Background Color of the SelectedRows
+
+WinColorPicker™ consists of a drop-down list that allows the user to choose a color. When the drop-down list is shown you have the choice between the following three tabs to choose a color from.
+
+* Custom
+* Web
+* System
+
+A example use case, is where you want to allow your end user to specify a different color for the WinGrid's™ selected rows at run time. This can be useful for customers that need a greater contrast then what is supplied in your style. The following example code shows how this scenario could be implemented. The code assumes you have a data bound WinGrid called categoriesUltraGrid.
+
+.Note
+[NOTE]
+====
+We set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~useappstyling.html[UseAppStyling]"]  property to False off WinGrid, because if you are using Application Styling when the customer makes a selection, the setting will have no effect if UseAppStyling is True.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub UltraColorPicker1_ColorChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles UltraColorPicker1.ColorChanged
+	Me.categoriesUltraGrid.UseAppStyling = False
+	Me.categoriesUltraGrid.DisplayLayout.Override.SelectedRowAppearance.BackColor = _
+	  Me.UltraColorPicker1.Value
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraColorPicker1_ColorChanged(object sender, EventArgs e)
+{
+	this.categoriesUltraGrid.UseAppStyling = false;
+	this.categoriesUltraGrid.DisplayLayout.Override.SelectedRowAppearance.BackColor = 
+	  (Color)this.ultraColorPicker1.Value;
+}
+----
+
+If you implemented this code, when a new value is selected from WinColorPicker's drop-down list, all selected rows are changed automatically to reflect the new color choice. In addition, any future rows that are selected use the newly chosen color.
+
+image::images\WinEditors_Changing_the_Background_Color_of_a_Text_Box_01.png[wingrid's selected rows being changed by the wincolorpicker selection]

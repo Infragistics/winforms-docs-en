@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-add-multiple-images-to-a-node",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I"],
+    "guid": "{B51DA64C-6BC3-4122-86C7-BB384228B805}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Multiple Images to a Node
+
+This topic will describe how to add multiple images to a node. Images may be added to the left or right of the node text using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~leftimages.html[LeftImages]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~rightimages.html[RightImages]"]  Collections.
+
+These image collections are in addition to the normal node Image which is part of the node's Appearance.
+
+This can be done with or without an ImageList control.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+----
+
+[start=2]
+. Add an ImageList control to your form to store the different images. You can use any number of images, but for the purposes of this topic, assume you have at least 2 images.
+[start=3]
+. Before you can add images to a node, you will need a reference to the node in question. You can do this in a number of ways. For this topic, you will add images to the first node in the Tree.
+
+*In Visual Basic:*
+
+----
+Private Sub AddMultipleImagestoaNode_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraTree1.ImageList = Me.ImageList1
+	Dim aNode As UltraTreeNode
+	aNode = UltraTree1.Nodes(0)
+End Sub
+----
+
+*In C#:*
+
+----
+private void AddMultipleImagestoaNode_Load(object sender, EventArgs e)
+{
+	this.ultraTree1.ImageList = this.imageList1;
+	UltraTreeNode aNode;
+	aNode = ultraTree1.Nodes[0];
+}
+----
+
+[start=4]
+. To add an image to a node on the left of the text, add the image to the LeftImages Collection. The number 0 in the code above is the index of the image in the ImageList. To add an image to a node on the right of the text, add the image to the RightImages Collection.
+
+*In Visual Basic:*
+
+----
+aNode.LeftImages.Add(0)
+aNode.RightImages.Add(0)
+----
+
+*In C#:*
+
+----
+aNode.LeftImages.Add(0);
+aNode.RightImages.Add(0);
+----
+
+[start=5]
+. You can add as many images as you like to either the LeftImages or RightImages collections. The images will appear on the node in the same order in which they are in the collection.

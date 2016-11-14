@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-synchronizing-check-boxes-of-the-tree-nodes",
+    "controlName": [],
+    "tags": [],
+    "guid": "52c3088f-3df4-4f03-a478-dc07131a2043",  
+    "buildFlags": [],
+    "createdOn": "2014-03-14T00:40:06.4159799Z"
+}
+|metadata|
+////
+
+= Synchronizing Check Boxes of the Tree Nodes
+
+Synchronizing Checkboxes of the Tree Nodes
+
+== Topic Overview
+
+=== Purpose
+
+This topic demonstrates synchronizing checkboxes of the  _WinTree_™ between parent and child nodes.
+
+=== Introduction
+
+In standard view, the  _WinTree_   already has the ability to display checkboxes on nodes. This feature provides the ability to synchronize the checkboxes automatically such that a parent node displays checked, unchecked or in an indeterminate state, based on the checked state of its child nodes.
+
+.Note:
+[NOTE]
+====
+This feature only applies to nodes in the standard view of the tree nodes, not column views.
+====
+
+The following table illustrates how the checkbox states are synchronized and displayed.
+
+[options="header", cols="a,a"]
+|====
+|Checkbox synchronization|Checkbox state
+
+|Parent is checked if all children are checked.
+|image::images/Synchronizing_Checkboxes_of_the_Tree_Nodes_1.png[]
+
+|Parent is unchecked if all children are unchecked.
+|image::images/Synchronizing_Checkboxes_of_the_Tree_Nodes_2.png[]
+
+|Parent is indeterminate if some children are checked and others unchecked.
+|image::images/Synchronizing_Checkboxes_of_the_Tree_Nodes_3.png[]
+
+|====
+
+.Note:
+[NOTE]
+====
+This feature only applies to checkboxes appearing as follows:
+
+* Applies to nodes appearing in front of a result of the link:{ApiPlatform}win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~nodestyle.html[NodeStyle] property
+* Does not apply to nodes displayed as either in a grid or in an  _OutlookExpress_   style
+* Does not apply to checkboxes in cells or columns
+====
+
+=== Example
+
+Following is the code that enables checkbox synchronization via the `NodeStyle` property.
+
+*In C#:*
+
+[source,csharp]
+----
+ultraTree1.Override.NodeStyle = NodeStyle.SynchronizedCheckBox;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraTree1.Override.NodeStyle = NodeStyle.SynchronizedCheckBox
+----
+
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wintree-using-wintree.html[Using WinTree]
+|In this section, you'll find short, task-based topics that explain how to perform a specific task related to the WinTree™ control.
+
+|====

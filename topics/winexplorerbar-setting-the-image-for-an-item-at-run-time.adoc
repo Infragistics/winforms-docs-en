@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-setting-the-image-for-an-item-at-run-time",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{61CD140F-9E6B-4628-9E7D-5C2318E7EFDA}",  
+    "buildFlags": [],
+    "createdOn": "2009-02-02T11:35:56Z"
+}
+|metadata|
+////
+
+= Setting the image for an item at run item
+
+This topic shows how to add an image to an item in a group at run time.
+
+*In Visual Basic:*
+
+----
+' create a new bitmap object to hold the image 
+Dim img As New System.Drawing.Bitmap("C:\sampleImage.bmp")
+' assign the image to the image property 
+ultraExplorerBar1.Groups(0).Items(0).Settings.AppearancesSmall.Appearance.Image = img
+----
+
+*In C#:*
+
+----
+// create a new bitmap object to hold the image
+System.Drawing.Bitmap img = new  System.Drawing.Bitmap("C:\\sampleImage.bmp");
+// assign the image to the image property
+ultraExplorerBar1.Groups[0].Items[0].Settings.AppearancesSmall.Appearance.Image = img;
+----

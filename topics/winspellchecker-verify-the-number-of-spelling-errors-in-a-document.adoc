@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "winspellchecker-verify-the-number-of-spelling-errors-in-a-document",
+    "controlName": ["WinSpellChecker"],
+    "tags": ["Validation"],
+    "guid": "{C3DD154D-D3A7-4210-94D3-50219F1AF9D8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Verify the Number of Spelling Errors in a Document
+
+If all you need to do is quickly verify whether a document contains spelling errors, use the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~checktext.html[CheckText]"]  method of the WinSpellChecker™ component. Using this method, you can pass in the text of any text box, rich text box, WinTextEditor, or any text from any control, and find out how many spelling errors it contains. By using the Count property off the method, you will retrieve the exact amount of spelling errors in the text you pass into it. Therefore, if you test for errors and the count ends up being zero, you know that there are no spelling errors in the text.
+
+With the following code, you can use a button's Click event to test whether or not the text from a rich text box has any spelling errors. If it does, a message box will show the number of errors followed by the string "Spelling Errors Found!" If there are no spelling errors in the text, the message box will display "No Spelling Errors."
+
+*In Visual Basic:*
+
+----
+If Me.UltraSpellChecker1.CheckText(Me.RichTextBox1.Text).Count = 0 Then
+	MessageBox.Show("No Spelling Errors")
+Else
+	If Me.UltraSpellChecker1.CheckText(Me.RichTextBox1.Text).Count > 0 Then
+		MessageBox.Show( _
+		Me.UltraSpellChecker1.CheckText( _
+		Me.RichTextBox1.Text).Count.ToString() + _
+		" Spelling Errors Found!")
+	End If
+End If
+----
+
+*In C#:*
+
+----
+if (this.ultraSpellChecker1.CheckText(this.richTextBox1.Text).Count == 0)
+{
+	MessageBox.Show("No Spelling Errors");
+}
+else if (this.ultraSpellChecker1.CheckText(this.richTextBox1.Text).Count > 0)
+{
+	MessageBox.Show( 
+	this.ultraSpellChecker1.CheckText(
+	this.richTextBox1.Text).Count + 
+	" Spelling Errors Found!");
+}
+----

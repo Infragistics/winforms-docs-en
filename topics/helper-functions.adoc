@@ -1,0 +1,97 @@
+﻿////
+
+|metadata|
+{
+    "name": "helper-functions",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting","Grids"],
+    "guid": "{90E80DFB-619F-4EA9-915E-4CD96EEA546B}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:57:49Z"
+}
+|metadata|
+////
+
+= Helper Functions
+
+The HelperFunctions Class contains two static / shared methods that are responsible for persisting Chart properties to a ChartLayout object as well as applying ChartLayout property values to a Chart.
+
+=== The ChartToLayout method
+
+The ChartToLayout method accepts a WinChart and returns a ChartLayout object instance. The ChartLayout class is simply a class that contains several Chart properties that we wish to persist and pass around. Think of the ChartLayout class as a class that persists the state of a Chart. The ChartToLayout method simply walks the Chart that was passed in and then makes a copy of some of the specific properties that we wish to persist into an instance of a ChartLayout object. One important thing to note is the technique used to save an image representation of the Chart that was passed in. This is done so that we can use the image snapshot of the Chart in its last state so that all inactive Grid cells appear to have a Chart, but instead it is an image. This technique is used for maximum performance and memory conservation. An alternative to this would be to have a separate, new Chart instance shown per Grid cell, which would be much more expensive in terms of resources and would result in a sluggish end user experience.
+
+*In Visual Basic:*
+
+----
+Public Shared Function ChartToLayout(ByVal theChart As UltraChart) As ChartLayout
+	Dim theLayout As New ChartLayout()
+	theChart.Data.DataBind()
+	theLayout.ChartType = theChart.ChartType
+	theLayout.DataSource = theChart.Data.DataSource
+	theLayout.X = theChart.Transform3D.XRotation
+	theLayout.Y = theChart.Transform3D.YRotation
+	theLayout.Z = theChart.Transform3D.ZRotation
+	theLayout.Scale = theChart.Transform3D.Scale
+	theLayout.TitleTop = theChart.TitleTop.Text
+	Dim m As New MemoryStream()
+	theChart.SaveTo(m, ImageFormat.Png)
+	theLayout.Image = Image.FromStream(m)
+	Return theLayout
+End Function
+----
+
+*In C#:*
+
+----
+public static ChartLayout ChartToLayout(UltraChart theChart)
+{
+	ChartLayout theLayout = new ChartLayout();
+	theChart.Data.DataBind();
+	theLayout.ChartType = theChart.ChartType;
+	theLayout.DataSource = theChart.Data.DataSource;
+	theLayout.X = theChart.Transform3D.XRotation;
+	theLayout.Y = theChart.Transform3D.YRotation;
+	theLayout.Z = theChart.Transform3D.ZRotation;
+	theLayout.Scale = theChart.Transform3D.Scale;
+	theLayout.TitleTop = theChart.TitleTop.Text;
+	MemoryStream m = new MemoryStream();
+	theChart.SaveTo(m, ImageFormat.Png);
+	theLayout.Image = Image.FromStream(m);
+	return theLayout;
+}
+----
+
+=== The LayoutToChart method
+
+The LayoutToChart method does the reverse of the ChartToLayout; it accepts a ChartLayout instance as well as a Chart instance. The method simply applies the ChartLayout property values to the corresponding Chart properties. The end result is a Chart that has been restored to whatever state was persisted earlier.
+
+*In Visual Basic:*
+
+----
+Public Shared Sub LayoutToChart(ByVal theLayout As ChartLayout, ByVal theChart As UltraChart)
+	theChart.TitleTop.Text = theLayout.TitleTop
+	theChart.Transform3D.XRotation = theLayout.X
+	theChart.Transform3D.YRotation = theLayout.Y
+	theChart.Transform3D.ZRotation = theLayout.Z
+	theChart.Transform3D.Scale = theLayout.Scale
+	theChart.Data.DataSource = theLayout.DataSource
+	theChart.Data.DataBind()
+End Sub
+----
+
+*In C#:*
+
+----
+public static void LayoutToChart(ChartLayout theLayout, UltraChart theChart)
+{
+	theChart.TitleTop.Text = theLayout.TitleTop;
+	theChart.Transform3D.XRotation = theLayout.X;
+	theChart.Transform3D.YRotation = theLayout.Y;
+	theChart.Transform3D.ZRotation = theLayout.Z;
+	theChart.Transform3D.Scale = theLayout.Scale;
+	theChart.Data.DataSource = theLayout.DataSource;
+	theChart.Data.DataBind();
+}
+----
+
+The next topic explains how an End Developer would use all of this within a Windows Forms Application: link:using-the-winchart-inside-wingrid-drawfilter.html[Using the WinChart inside WinGrid Draw Filter]

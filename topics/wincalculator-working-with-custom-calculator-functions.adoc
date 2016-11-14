@@ -1,0 +1,114 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalculator-working-with-custom-calculator-functions",
+    "controlName": ["WinCalculator"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{180F94B8-EE72-4548-BF04-1B47E43AC649}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Custom Calculator Functions
+
+== Background
+
+Although basic mathematical functions are built in to the WinCalculator™ control, there are many situations where you may want to expand the features of the calculator drop-down. For example, you might want to add buttons to do custom calculations on the number displayed in the element, such as computing a cosine or tangent, converting between English and metric units, or changing the number from decimal to octal. You can add feature such as these by creating custom buttons and adding them to the calculator, then implementing the custom functionality to be invoked when they are clicked.
+
+== Questions
+
+* How can I add a custom function, such as squaring a number, to the calculator?
+
+== Solution
+
+There are several events you can use to implement custom button functionality. The  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforeactionbuttonpressed_ev.html[BeforeActionButtonPressed]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforecalculateimmediate_ev.html[BeforeCalculateImmediate]"]  are just two of the events that you can use to provide ways to implement custom functions.
+
+== Code Discussion
+
+[start=1]
+. In the designer, set the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~showcustombuttons.html[ShowCustomButtons]"]  property to True off the WinCalculator.
+[start=2]
+. In the Properties window find the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~buttons.html[Buttons]"]  collection and navigate down to Button 24 and 25.
+[start=3]
+. On Button 24 change the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.keyedsubobjectbase~key.html[Key]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~text.html[Text]"]  properties to "A1".
+[start=4]
+. With Button 25 change the Key and Text properties to "SQ". In addition, on this button change the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~type.html[Type]"]  property to OperatorImmediateAction.
+[start=5]
+. Wire the WinCalculator's BeforeActionButtonPressed and BeforeCalculateImmediate events.
+[start=6]
+. Inside the BeforeActionButtonPressed event is where we handle the "A1" button's action. We just change the value of a WinLabel™ to show the event has fired. This event could be used to say when the end-user pressed the button to save the value to a database. The following example code shows what this event looks like.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraCalculator1_BeforeActionButtonPressed(ByVal sender As Object, _
+  ByVal e As _
+  Infragistics.Win.UltraWinEditors.UltraWinCalc.OnCalculateImmediateEventArgs) _
+  Handles UltraCalculator1.BeforeActionButtonPressed
+	' Check the key of the button pressed
+	If e.Operation = "A1" Then
+		' You would implement the code here to save to the database, then print
+		' out the data to the user
+		Me.UltraLabel1.Text = "The current Value, " + _
+		  e.CurrentValueDecimal.ToString() + _
+		  ", has been saved to your database."
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraCalculator1_BeforeActionButtonPressed(object sender, 
+  Infragistics.Win.UltraWinEditors.UltraWinCalc.OnCalculateImmediateEventArgs e)
+{
+	// Check the key of the button pressed
+	if(e.Operation == "A1")
+		// You would implement the code here to save to the database, then print 
+		// out the data to the user
+		this.ultraLabel1.Text = "The current Value, "+ e.CurrentValueDecimal + 
+		  ", has been saved to your database.";
+}
+----
+
+[start=7]
+. In the BeforeCalculateImmediate event is where we handle "SQ" button. For this we take the current value in the display and multiply it by itself. The following example code shows what this event looks like.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraCalculator1_BeforeCalculateImmediate(ByVal sender As Object, _
+  ByVal e As _
+  Infragistics.Win.UltraWinEditors.UltraWinCalc.OnCalculateImmediateEventArgs) _
+  Handles UltraCalculator1.BeforeCalculateImmediate
+	' Check whether our custom button was pressed, if it was then square the value 
+	' and place in the calculator
+	If e.Operation = "SQ" Then
+		e.CurrentValueDecimal = e.CurrentValueDecimal $$*$$ _
+		  e.CurrentValueDecimal
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraCalculator1_BeforeCalculateImmediate(object sender, 
+  Infragistics.Win.UltraWinEditors.UltraWinCalc.OnCalculateImmediateEventArgs e)
+{
+	// Check whether our custom button was pressed, if it was then square the value 
+	// and place in the calculator
+	if(e.Operation=="SQ")
+	{
+		e.CurrentValueDecimal=e.CurrentValueDecimal $$*$$ 
+		  e.CurrentValueDecimal;
+	}
+}
+----
+
+== Review
+
+These are just two possible examples. All custom calculations will work similarly. You must determine which event is fired for your particular type of button, get the values passed in along with the operator, perform your calculation and set the Value for the calculator to display the result.

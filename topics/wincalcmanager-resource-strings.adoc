@@ -1,0 +1,3373 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-resource-strings",
+    "controlName": [],
+    "tags": ["Localization","Resource Strings"],
+    "guid": "{FC54F4FE-A987-4D8C-8B08-584690B9FB0F}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinCalcManager Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|CalcSettingsPropertyName_Not_Set
+|PropertyName not set or property could not be found on CalcSettings.
+
+|Error_Internal
+|An internal error occurred in method {0}.
+
+|Error_InvalidFunction
+|Invalid function '{0}' at line {1} col {2}.
+
+|Error_InvalidFunctionArgCountTooFew
+|The function '{0}' referenced at line {1} col {2} does not contain the correct number of arguments. The function requires a minimum of {3} parameter(s).
+
+|Error_InvalidFunctionArgCountTooMany
+|The function '{0}' referenced at line {1} col {2} does not contain the correct number of arguments. The argument count should not exceed {3} parameter(s).
+
+|Error_InvalidOperatorArgCount
+|The '{0}' function must accept {1} arguments.
+
+|Error_NullFunctionResult
+|The evaluation of '{0}' returned a null value.
+
+|Error_ParseRef
+|Unknown reference at line {0} col {1}.
+
+|Error_UnresolvedExternal
+|Unresolved external reference
+
+|FormulaCircularityError_Default_Message
+|A Formula Circularity has been detected in the formula for [{0}]. The Formula is: {1}. No calculations can be performed by the CalcEngine while a Circularity exists.
+
+|FormulaCircularityError_Message_Title
+|Circularity Error
+
+|FormulaSyntaxError_Default_Message
+|A syntax error occured while compiling a formula for: {0}. The error is: {1}
+
+|FormulaSyntaxError_Message_Title
+|Syntax Error
+
+|Func_abs_Arg_0
+|number
+
+|Func_abs_ArgDesc_0
+|Number is the real number of which you want the absolute value
+
+|Func_abs_Category
+|Math
+
+|Func_abs_CategoryURL
+|Math
+
+|Func_abs_Desc
+|Returns the absolute value of a number. The absolute value of a number is the number without its sign
+
+|Func_acos_Arg_0
+|number
+
+|Func_acos_ArgDesc_0
+|Number is the cosine of the angle you want and must be from -1 to 1 radians.
+
+|Func_acos_Category
+|Math
+
+|Func_acos_CategoryURL
+|Math
+
+|Func_acos_Desc
+|Returns the arccosine, or inverse cosine, of a number. The arccosine is the angle whose cosine is number. The returned angle is given in radians in the range 0 (zero) to pi. To convert the result from radians to degrees, multiply it by 180/PI().
+
+|Func_acosh_Arg_0
+|number
+
+|Func_acosh_ArgDesc_0
+|Number is a real number greater than 1 for which you want the inverse hyperbolic cosine
+
+|Func_acosh_Category
+|Math
+
+|Func_acosh_CategoryURL
+|Math
+
+|Func_acosh_Desc
+|Returns the inverse hyperbolic cosine of the given number
+
+|Func_and_Arg_0
+|logical{0}
+
+|Func_and_ArgDesc_0
+|Logical1, logical2, ... are conditions you want to test that can be either TRUE or FALSE
+
+|Func_and_Category
+|Logical
+
+|Func_and_CategoryURL
+|Logical
+
+|Func_and_Desc
+|Returns TRUE if all its arguments are TRUE; returns FALSE if one or more argument is FALSE
+
+|Func_asin_Arg_0
+|number
+
+|Func_asin_ArgDesc_0
+|Number is the sine of the angle you want and must be from -1 to 1 radians.
+
+|Func_asin_Category
+|Math
+
+|Func_asin_CategoryURL
+|Math
+
+|Func_asin_Desc
+|Returns the arcsine, or inverse sine, of a number. The arcsine is the angle whose sine is number. The returned angle is given in radians in the range -pi/2 to pi/2. To express the arcsine in degrees, multiply the result by 180/PI()
+
+|Func_asinh_Arg_0
+|number
+
+|Func_asinh_ArgDesc_0
+|Number is a real number for which you want the inverse hyperbolic sine
+
+|Func_asinh_Category
+|Math
+
+|Func_asinh_CategoryURL
+|Math
+
+|Func_asinh_Desc
+|Returns the inverse hyperbolic sine of the given number
+
+|Func_atan_Arg_0
+|number
+
+|Func_atan_ArgDesc_0
+|Number is the tangent of the angle you want
+
+|Func_atan_Category
+|Math
+
+|Func_atan_CategoryURL
+|Math
+
+|Func_atan_Desc
+|Returns the arctangent, or inverse tangent, of a number. The arctangent is the angle whose tangent is number. The returned angle is given in radians in the range -pi/2 to pi/2. To express the arctangent in degrees, multiply the result by 180/PI().
+
+|Func_atan2_Arg_0
+|x
+
+|Func_atan2_Arg_1
+|y
+
+|Func_atan2_ArgDesc_0
+|X is the x-coordinate of the point
+
+|Func_atan2_ArgDesc_1
+|Y is the y-coordinate of the point
+
+|Func_atan2_Category
+|Math
+
+|Func_atan2_CategoryURL
+|Math
+
+|Func_atan2_Desc
+|Returns the arctangent, or inverse tangent, of the specified x- and y-coordinates. The arctangent is the angle from the x-axis to a line containing the origin (0, 0) and a point with coordinates (x_num, y_num). The angle is given in radians between -pi and pi, excluding -pi.
+
+|Func_atanh_Arg_0
+|number
+
+|Func_atanh_ArgDesc_0
+|Number is a real number between -1 and 1 for which you want the inverse hyperbolic tangent
+
+|Func_atanh_Category
+|Math
+
+|Func_atanh_CategoryURL
+|Math
+
+|Func_atanh_Desc
+|Returns the inverse hyperbolic tangent of the given number
+
+|Func_average_Arg_0
+|number{0}
+
+|Func_average_ArgDesc_0
+|Number1, number2, ... are numeric arguments for which you want the average
+
+|Func_average_Category
+|Statistical
+
+|Func_average_CategoryURL
+|Statistical
+
+|Func_average_Desc
+|Returns the average
+
+|Func_bin2dec_Arg_0
+|Number
+
+|Func_bin2dec_ArgDesc_0
+|Number is a string represeting a binary number.
+
+|Func_bin2dec_Category
+|Engineering
+
+|Func_bin2dec_CategoryURL
+|Engineering
+
+|Func_bin2dec_Desc
+|Returns the decimal value of a string representation of a number in a binary system.
+
+|Func_bin2hex_Arg_0
+|Number
+
+|Func_bin2hex_Arg_1
+|Places
+
+|Func_bin2hex_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_bin2hex_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_bin2hex_Category
+|Engineering
+
+|Func_bin2hex_CategoryURL
+|Engineering
+
+|Func_bin2hex_Desc
+|Converts a string representing a binary number to a string representing the same number in the hexadecimal number system.
+
+|Func_bin2oct_Arg_0
+|Number
+
+|Func_bin2oct_Arg_1
+|Places
+
+|Func_bin2oct_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_bin2oct_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_bin2oct_Category
+|Engineering
+
+|Func_bin2oct_CategoryURL
+|Engineering
+
+|Func_bin2oct_Desc
+|Converts a string representing a binary number to a string representing the same number in the octal number system.
+
+|Func_CategoryURL_Template
+|ms-help://INFRAGISTICS_HELP/Infragisticsv{2}{3}/Win/WinElements/WinCalcManager_{0}_Functions.html#FUNC_{1}
+
+|Func_ceiling_Arg_0
+|number
+
+|Func_ceiling_Arg_1
+|significance
+
+|Func_ceiling_ArgDesc_0
+|Number is the numeric value you want to round
+
+|Func_ceiling_ArgDesc_1
+|Significance is the number to which to round. If omitted, rounding will be done to the nearest whole number.
+
+|Func_ceiling_Category
+|Math
+
+|Func_ceiling_CategoryURL
+|Math
+
+|Func_ceiling_Desc
+|Returns the smallest multiple of the significance (defaults to 1) greater than or equal to the given number.
+
+|Func_char_Arg_0
+|charCode
+
+|Func_char_ArgDesc_0
+|The number to be converted to a character.
+
+|Func_char_Category
+|TextAndData
+
+|Func_char_CategoryURL
+|Text_and_Data
+
+|Func_char_Desc
+|Returns the character specified by the code number from the character set for your computer.
+
+|Func_choose_Arg_0
+|IndexNum
+
+|Func_choose_Arg_1
+|Value{0}
+
+|Func_choose_ArgDesc_0
+|The 1-based index into the rest of the arguments for the value to use.
+
+|Func_choose_ArgDesc_1
+|Value1, Value2, ..., ValueN is any number of values.
+
+|Func_choose_Category
+|LookupAndReference
+
+|Func_choose_CategoryURL
+|Lookup_And_Reference
+
+|Func_choose_Desc
+|Returns one of the values provided in its arguments based on the number in the first argument.
+
+|Func_code_Arg_0
+|string
+
+|Func_code_ArgDesc_0
+|The string which will have it's first character evaluated.
+
+|Func_code_Category
+|TextAndData
+
+|Func_code_CategoryURL
+|Text_and_Data
+
+|Func_code_Desc
+|Returns a numeric code for the first character in a text string using the character set used by your computer.
+
+|Func_combin_Arg_0
+|Number
+
+|Func_combin_Arg_1
+|NumberChosen
+
+|Func_combin_ArgDesc_0
+|Number is the number of items.
+
+|Func_combin_ArgDesc_1
+|NumberChosen is the number of items chosen in each combination.
+
+|Func_combin_Category
+|Math
+
+|Func_combin_CategoryURL
+|Math
+
+|Func_combin_Desc
+|Returns the number of possible combinations given a set of items and a number of chosen items from that set.
+
+|Func_complex_Arg_0
+|RealNumber
+
+|Func_complex_Arg_1
+|ImaginaryNumber
+
+|Func_complex_Arg_2
+|Suffix
+
+|Func_complex_ArgDesc_0
+|RealNumber is the real coefficient of the complex number.
+
+|Func_complex_ArgDesc_1
+|ImaginaryNumber is the imaginary coefficient of the number.
+
+|Func_complex_ArgDesc_2
+|Suffix specifies the suffix to use. The acceptable values are "i" or "j". If omitted, "i" is used. Note that the suffix is case-sensitive; upper case "I" and "J" are not allowed and will result in a #VALUE error.
+
+|Func_complex_Category
+|Engineering
+
+|Func_complex_CategoryURL
+|Engineering
+
+|Func_complex_Desc
+|Returns a complex number represented as a string in the format "x + yi" or "x + yj" by comining a real and imaginary number.
+
+|Func_concatenate_Arg_0
+|text{0}
+
+|Func_concatenate_ArgDesc_0
+|Text1, text2, ... are one or more text items to be joined into a single text item
+
+|Func_concatenate_Category
+|TextAndData
+
+|Func_concatenate_CategoryURL
+|Text_and_Data
+
+|Func_concatenate_Desc
+|Joins all the arguments into one string.
+
+|Func_convert_Arg_0
+|Number
+
+|Func_convert_Arg_1
+|FromUnit
+
+|Func_convert_Arg_2
+|ToUnit
+
+|Func_convert_ArgDesc_0
+|Number is the value to convert.
+
+|Func_convert_ArgDesc_1
+|FromUnit is the unit in which the number is given. Weight and mass units: "g" = gram "sg" = slug "lbm" = pound mass (avoirdupois) "u" = U (atomic mass unit) "ozm" = Ounce mass (avoirdupois) Distance units: "m" = Meter "mi" = Statute mile "Nmi" = Nautical mile "in" = Inch "ft" = Foot "yd" = Yard "ang" = Angstrom "Pica" = Pica (1/72 in.) Time units: "yr" = Year "day" = Day "hr" = Hour "mn" = Minute "sec" = Second Pressure units "Pa" (or "p") = Pascal "atm" (or "at") = Atmosphere "mmHg" = mm of Mercury Force units "N" = Newton "dyn" (or "dy") = Dyne "lbf" = Pound force Energy units: "J" = Joule "e" = Erg "c" = Thermodynamic calorie "cal" = IT calorie "eV" (or "ev") = Electron volt "HPh" (or "hh") = Horsepower-hour "Wh" (or "wh") = Watt-hour "flb" = Foot-pound "BTU" (or "btu") = BTU Power units: "HP" (or "h") = Horsepower "W" (or "w") = Watt Magentism units: "T" = Tesla "ga" = Gauss Temperature units: "C" (or "cel") = Degree Celsius "F" (or "fah") = Degree Fahrenheit "K" (or "kel") = Kelvin Liquid measure units: "tsp" = Teaspoon "tbs" = Tablespoon "oz" = Fluid ounce "cup" = Cup "pt" (or "us_pt") = U.S. pint "uk_pt" = U.K. pint "qt" = Quart "gal" = Gallon "l" (or "lt") = Liter Any metric unit may be prefixed with one of the following: exa ("E") = 1E+18 peta ("P") = 1E+15 tera ("T") = 1E+12 giga ("G") = 1E+09 mega ("M") = 1E+06 kilo ("k") = 1E+03 hecto ("h") = 1E+02 dekao ("e") = 1E+01 deci ("d") = 1E-01 centi ("c") = 1E-02 milli ("m") = 1E-03 micro ("u") = 1E-06 nano ("n") = 1E-09 pico ("p") = 1E-12 femto ("f") = 1E-15 atto ("a") = 1E-18
+
+|Func_convert_ArgDesc_2
+|ToUnit is the units to convert to. Weight and mass units: "g" = gram "sg" = slug "lbm" = pound mass (avoirdupois) "u" = U (atomic mass unit) "ozm" = Ounce mass (avoirdupois) Distance units: "m" = Meter "mi" = Statute mile "Nmi" = Nautical mile "in" = Inch "ft" = Foot "yd" = Yard "ang" = Angstrom "Pica" = Pica (1/72 in.) Time units: "yr" = Year "day" = Day "hr" = Hour "mn" = Minute "sec" = Second Pressure units "Pa" (or "p") = Pascal "atm" (or "at") = Atmosphere "mmHg" = mm of Mercury Force units "N" = Newton "dyn" (or "dy") = Dyne "lbf" = Pound force Energy units: "J" = Joule "e" = Erg "c" = Thermodynamic calorie "cal" = IT calorie "eV" (or "ev") = Electron volt "HPh" (or "hh") = Horsepower-hour "Wh" (or "wh") = Watt-hour "flb" = Foot-pound "BTU" (or "btu") = BTU Power units: "HP" (or "h") = Horsepower "W" (or "w") = Watt Magentism units: "T" = Tesla "ga" = Gauss Temperature units: "C" (or "cel") = Degree Celsius "F" (or "fah") = Degree Fahrenheit "K" (or "kel") = Kelvin Liquid measure units: "tsp" = Teaspoon "tbs" = Tablespoon "oz" = Fluid ounce "cup" = Cup "pt" (or "us_pt") = U.S. pint "uk_pt" = U.K. pint "qt" = Quart "gal" = Gallon "l" (or "lt") = Liter Any metric unit may be prefixed with one of the following: exa ("E") = 1E+18 peta ("P") = 1E+15 tera ("T") = 1E+12 giga ("G") = 1E+09 mega ("M") = 1E+06 kilo ("k") = 1E+03 hecto ("h") = 1E+02 dekao ("e") = 1E+01 deci ("d") = 1E-01 centi ("c") = 1E-02 milli ("m") = 1E-03 micro ("u") = 1E-06 nano ("n") = 1E-09 pico ("p") = 1E-12 femto ("f") = 1E-15 atto ("a") = 1E-18
+
+|Func_convert_Category
+|Engineering
+
+|Func_convert_CategoryURL
+|Engineering
+
+|Func_convert_Desc
+|Converts a value from one system of measurement to another. For example, meters to inches or hours to seconds.
+
+|Func_cos_Arg_0
+|number
+
+|Func_cos_ArgDesc_0
+|Number is the angle in radians for which you want the cosine
+
+|Func_cos_Category
+|Math
+
+|Func_cos_CategoryURL
+|Math
+
+|Func_cos_Desc
+|Returns the cosine of the given angle
+
+|Func_cosh_Arg_0
+|number
+
+|Func_cosh_ArgDesc_0
+|Number is any real number for which you want to find the hyperbolic cosine
+
+|Func_cosh_Category
+|Math
+
+|Func_cosh_CategoryURL
+|Math
+
+|Func_cosh_Desc
+|Returns the hyperbolic cosine of a number
+
+|Func_count_Arg_0
+|value{0}
+
+|Func_count_ArgDesc_0
+|Value1, value2, ... valueN are arguments that can contain or refer to a variety of different types of data, but only numbers are counted
+
+|Func_count_Category
+|Statistical
+
+|Func_count_CategoryURL
+|Statistical
+
+|Func_count_Desc
+|Counts the number of cells that contain numbers and also numbers within the list of arguments
+
+|Func_date_Arg_0
+|year
+
+|Func_date_Arg_1
+|month
+
+|Func_date_Arg_2
+|day
+
+|Func_date_ArgDesc_0
+|Year is the number representing the year
+
+|Func_date_ArgDesc_1
+|Month is a number representing the month of the year
+
+|Func_date_ArgDesc_2
+|Day is a number representing the day of the month
+
+|Func_date_Category
+|DateAndTime
+
+|Func_date_CategoryURL
+|Date_and_Time
+
+|Func_date_Desc
+|Returns the sequential serial number that represents a particular date
+
+|Func_dateadd_Arg_0
+|interval
+
+|Func_dateadd_Arg_1
+|number
+
+|Func_dateadd_Arg_2
+|date
+
+|Func_dateadd_ArgDesc_0
+|String expression representing the time interval you want to add. d = Day y = Day h = Hour n = Minute m = Month q = Quarter s = Second w = Week ww = Calendar week yyyy = Year
+
+|Func_dateadd_ArgDesc_1
+|Value representing the number of intervals you want to add. This value can be positive (to get a DateTime in the future) or negative (to get a DateTime in the past). It can contain a fractional part when Interval specifies hours, minutes, or seconds. For other values of Interval, any fractional part of Number is ignored.
+
+|Func_dateadd_ArgDesc_2
+|The date to which the interval is to be added
+
+|Func_dateadd_Category
+|DateAndTime
+
+|Func_dateadd_CategoryURL
+|Date_and_Time
+
+|Func_dateadd_Desc
+|Returns a .Net DateTime to which the specified interval has been added
+
+|Func_datediff_Arg_0
+|interval
+
+|Func_datediff_Arg_1
+|date1
+
+|Func_datediff_Arg_2
+|date2
+
+|Func_datediff_ArgDesc_0
+|String expression representing the time interval you want to use as the unit of difference between date1 and date2. d = Day y = Day h = Hour n = Minute m = Month q = Quarter s = Second w = Week ww = Calendar week yyyy = Year
+
+|Func_datediff_ArgDesc_1
+|Date1 is subtracted from date2 to produce the difference.
+
+|Func_datediff_ArgDesc_2
+|The date from which date1 is subtracted to produce the difference.
+
+|Func_datediff_Category
+|DateAndTime
+
+|Func_datediff_CategoryURL
+|Date_and_Time
+
+|Func_datediff_Desc
+|Returns a value indicating the number of intervals between two DateTime values.
+
+|Func_datevalue_Arg_0
+|date_text
+
+|Func_datevalue_ArgDesc_0
+|Date_text is text that represents a date in a .NET DateTime format
+
+|Func_datevalue_Category
+|DateAndTime
+
+|Func_datevalue_CategoryURL
+|Date_and_Time
+
+|Func_datevalue_Desc
+|Returns the serial number of the date represented by date_text
+
+|Func_day_Arg_0
+|Date_value
+
+|Func_day_ArgDesc_0
+|Date_value is a .NET DateTime number that represents a particular date
+
+|Func_day_Category
+|DateAndTime
+
+|Func_day_CategoryURL
+|Date_and_Time
+
+|Func_day_Desc
+|Returns the day of a date value
+
+|Func_dayofweek_Arg_0
+|date
+
+|Func_dayofweek_Arg_1
+|returnType
+
+|Func_dayofweek_ArgDesc_0
+|Date is a date.
+
+|Func_dayofweek_ArgDesc_1
+|ReturnType determines which numbering scheme is used for the days of the week. 1 (default) = Sunday (1) through Saturday (7) 2 = Monday (1) through Sunday (7) 3 = Monday (0) through Sunday (6)
+
+|Func_dayofweek_Category
+|DateAndTime
+
+|Func_dayofweek_CategoryURL
+|DateAndTime
+
+|Func_dayofweek_Desc
+|Returns a number representing the day of the week of the specified date.
+
+|Func_days360_Arg_0
+|start_date
+
+|Func_days360_Arg_1
+|end_date
+
+|Func_days360_Arg_2
+|method
+
+|Func_days360_ArgDesc_0
+|Start_date and end_date are the two dates between which you want to know the number of days
+
+|Func_days360_ArgDesc_1
+|Start_date and end_date are the two dates between which you want to know the number of days
+
+|Func_days360_ArgDesc_2
+|Method is a logical value that specifies whether to use the U.S. (false) or European (true) method in the calculation
+
+|Func_days360_Category
+|DateAndTime
+
+|Func_days360_CategoryURL
+|Date_and_Time
+
+|Func_days360_Desc
+|Returns the number of days between two dates based on a 360-day year
+
+|Func_db_Arg_0
+|cost
+
+|Func_db_Arg_1
+|salvage
+
+|Func_db_Arg_2
+|life
+
+|Func_db_Arg_3
+|period
+
+|Func_db_Arg_4
+|month
+
+|Func_db_ArgDesc_0
+|Cost is the initial cost of the asset
+
+|Func_db_ArgDesc_1
+|Salvage is the value at the end of the depreciation (sometimes called the salvage value of the asset)
+
+|Func_db_ArgDesc_2
+|Life is the number of periods over which the asset is being depreciated (sometimes called the useful life of the asset)
+
+|Func_db_ArgDesc_3
+|Period is the period for which you want to calculate the depreciation. Period must use the same units as life
+
+|Func_db_ArgDesc_4
+|Month is the number of months in the first year. If month is omitted, it is assumed to be 12
+
+|Func_db_Category
+|Financial
+
+|Func_db_CategoryURL
+|Financial
+
+|Func_db_Desc
+|Returns the depreciation of an asset for a specified period using the fixed-declining balance method
+
+|Func_dbnull_Category
+|Information
+
+|Func_dbnull_CategoryURL
+|Information
+
+|Func_dbnull_Desc
+|Returns DBNull.Value
+
+|Func_ddb_Arg_0
+|cost
+
+|Func_ddb_Arg_1
+|salvage
+
+|Func_ddb_Arg_2
+|life
+
+|Func_ddb_Arg_3
+|period
+
+|Func_ddb_Arg_4
+|factor
+
+|Func_ddb_ArgDesc_0
+|Cost is the initial cost of the asset
+
+|Func_ddb_ArgDesc_1
+|Salvage is the value at the end of the depreciation (sometimes called the salvage value of the asset)
+
+|Func_ddb_ArgDesc_2
+|Life is the number of periods over which the asset is being depreciated (sometimes called the useful life of the asset)
+
+|Func_ddb_ArgDesc_3
+|Period is the period for which you want to calculate the depreciation. Period must use the same units as life
+
+|Func_ddb_ArgDesc_4
+|Factor is the rate at which the balance declines. If factor is omitted, it is assumed to be 2 (the double-declining balance method)
+
+|Func_ddb_Category
+|Financial
+
+|Func_ddb_CategoryURL
+|Financial
+
+|Func_ddb_Desc
+|Returns the depreciation of an asset for a specified period using the double-declining balance method or some other method you specify
+
+|Func_dec2bin_Arg_0
+|Number
+
+|Func_dec2bin_Arg_1
+|Places
+
+|Func_dec2bin_ArgDesc_0
+|Number is the decimal value to be converted.
+
+|Func_dec2bin_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_dec2bin_Category
+|Engineering
+
+|Func_dec2bin_CategoryURL
+|Engineering
+
+|Func_dec2bin_Desc
+|Returns a string representing the specified decimal value as a binary number.
+
+|Func_dec2hex_Arg_0
+|Number
+
+|Func_dec2hex_Arg_1
+|Places
+
+|Func_dec2hex_ArgDesc_0
+|Number is the decimal value to be converted.
+
+|Func_dec2hex_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_dec2hex_Category
+|Engineering
+
+|Func_dec2hex_CategoryURL
+|Engineering
+
+|Func_dec2hex_Desc
+|Returns a string representing the specified decimal value as a hexadecimal number.
+
+|Func_dec2oct_Arg_0
+|Number
+
+|Func_dec2oct_Arg_1
+|Places
+
+|Func_dec2oct_ArgDesc_0
+|Number is the decimal value to be converted.
+
+|Func_dec2oct_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_dec2oct_Category
+|Engineering
+
+|Func_dec2oct_CategoryURL
+|Engineering
+
+|Func_dec2oct_Desc
+|Returns a string representing the specified decimal value as a octal number.
+
+|Func_degrees_Arg_0
+|Radians
+
+|Func_degrees_ArgDesc_0
+|Radians is a value in radians which will be converted to degrees.
+
+|Func_degrees_Category
+|Math
+
+|Func_degrees_CategoryURL
+|Math
+
+|Func_degrees_Desc
+|Converts radians to degrees.
+
+|Func_delta_Arg_0
+|Number1
+
+|Func_delta_Arg_1
+|Number2
+
+|Func_delta_ArgDesc_0
+|Number1 is a number.
+
+|Func_delta_ArgDesc_1
+|Number2 is a number. If Number2 is not specified, Number1 will be compared to 0.
+
+|Func_delta_Category
+|Engineering
+
+|Func_delta_CategoryURL
+|Engineering
+
+|Func_delta_Desc
+|Compares two numbers and returns 1 if they are equal or 0 if they are not.
+
+|Func_dollarde_Arg_0
+|FractionDollarAmount
+
+|Func_dollarde_Arg_1
+|Fraction
+
+|Func_dollarde_ArgDesc_0
+|FractionDollarAmount is the dollar amount expressed as a fraction.
+
+|Func_dollarde_ArgDesc_1
+|Fraction is the value used as the denominator of the fraction. If this value is not an integer, it will be truncated.
+
+|Func_dollarde_Category
+|Financial
+
+|Func_dollarde_CategoryURL
+|Financial
+
+|Func_dollarde_Desc
+|Converts a dollar amount expressed as a fraction into a dollar amount expressed as a decimal.
+
+|Func_dollarfr_Arg_0
+|DecimalDollarAmount
+
+|Func_dollarfr_Arg_1
+|Fraction
+
+|Func_dollarfr_ArgDesc_0
+|DecimalDollarAmount is the dollar amount expressed as a decimal.
+
+|Func_dollarfr_ArgDesc_1
+|Fraction is the value used as the denominator of the fraction. If this value is not an integer, it will be truncated.
+
+|Func_dollarfr_Category
+|Financial
+
+|Func_dollarfr_CategoryURL
+|Financial
+
+|Func_dollarfr_Desc
+|Converts a dollar amount expressed as a decimal into a dollar amount expressed as a fraction.
+
+|Func_edate_Arg_0
+|date
+
+|Func_edate_Arg_1
+|numberOfMonths
+
+|Func_edate_ArgDesc_0
+|Date is the starting date
+
+|Func_edate_ArgDesc_1
+|NumberOfMonths is a number of months to shift the date. A positive number means a date after the startdate. A negative number indicates a date prior to the start date.
+
+|Func_edate_Category
+|DateAndTime
+
+|Func_edate_CategoryURL
+|DateAndTime
+
+|Func_edate_Desc
+|Returns a date that is the specified number of months before or after the start date.
+
+|Func_eomonth_Arg_0
+|date
+
+|Func_eomonth_Arg_1
+|numberOfMonths
+
+|Func_eomonth_ArgDesc_0
+|Date is the starting date
+
+|Func_eomonth_ArgDesc_1
+|NumberOfMonths is a number of months to shift the date. A positive number means a date after the startdate. A negative number indicates a date prior to the start date.
+
+|Func_eomonth_Category
+|DateAndTime
+
+|Func_eomonth_CategoryURL
+|DateAndTime
+
+|Func_eomonth_Desc
+|Returns a date that is at the end of the month which is the specified number of months before or after the start date.
+
+|Func_errortype_Arg_0
+|error_value
+
+|Func_errortype_ArgDesc_0
+|Error_val is the error value whose identifying number you want to find
+
+|Func_errortype_Category
+|Information
+
+|Func_errortype_CategoryURL
+|Information
+
+|Func_errortype_Desc
+|Returns the type of error value
+
+|Func_even_Arg_0
+|number
+
+|Func_even_ArgDesc_0
+|Number is the value to round
+
+|Func_even_Category
+|Math
+
+|Func_even_CategoryURL
+|Math
+
+|Func_even_Desc
+|Rounds a positive number up and a negative number down to nearest even integer.
+
+|Func_exp_Arg_0
+|number
+
+|Func_exp_ArgDesc_0
+|Number is the exponent applied to the base e
+
+|Func_exp_Category
+|Math
+
+|Func_exp_CategoryURL
+|Math
+
+|Func_exp_Desc
+|Returns e raised to the power of number. The constant e equals 2.71828182845904
+
+|Func_fact_Arg_0
+|Number
+
+|Func_fact_ArgDesc_0
+|Number is a positive number for which the factorial will be calculated.
+
+|Func_fact_Category
+|Math
+
+|Func_fact_CategoryURL
+|Math
+
+|Func_fact_Desc
+|Returns the factorial of a number.
+
+|Func_factdouble_Arg_0
+|Number
+
+|Func_factdouble_ArgDesc_0
+|Number is a positive number for which the double factorial will be calculated.
+
+|Func_factdouble_Category
+|Math
+
+|Func_factdouble_CategoryURL
+|Math
+
+|Func_factdouble_Desc
+|Returns the double factorial of a number.
+
+|Func_false_Category
+|Logical
+
+|Func_false_CategoryURL
+|Logical
+
+|Func_false_Desc
+|Returns the logical value FALSE
+
+|Func_find_Arg_0
+|find_text
+
+|Func_find_Arg_1
+|within_text
+
+|Func_find_Arg_2
+|start_num
+
+|Func_find_ArgDesc_0
+|Find_text is the text you want to find
+
+|Func_find_ArgDesc_1
+|Within_text is the text containing the text you want to find
+
+|Func_find_ArgDesc_2
+|Start_num specifies the character at which to start the search. 1 is assumed if Start_num is omitted.
+
+|Func_find_Category
+|TextAndData
+
+|Func_find_CategoryURL
+|Text_and_Data
+
+|Func_find_Desc
+|FIND finds one text string
+
+|Func_fixed_Arg_0
+|number
+
+|Func_fixed_Arg_1
+|decimals
+
+|Func_fixed_Arg_2
+|no_commas
+
+|Func_fixed_ArgDesc_0
+|The number you want to round and convert to text.
+
+|Func_fixed_ArgDesc_1
+|The number of digits to the right of the decimal point in the return value. If this value is negative, 'number' is rounded to the left of the decimal point. The default value is 2.
+
+|Func_fixed_ArgDesc_2
+|Pass TRUE if commas should not be in the return value. If commas should appear in the return value then you can pass FALSE or simply omit this argument.
+
+|Func_fixed_Category
+|TextAndData
+
+|Func_fixed_CategoryURL
+|Text_and_Data
+
+|Func_fixed_Desc
+|Rounds a number to the specified number of decimals and returns the result as text with or without commas.
+
+|Func_floor_Arg_0
+|number
+
+|Func_floor_Arg_1
+|significance
+
+|Func_floor_ArgDesc_0
+|Number is the numeric value you want to round
+
+|Func_floor_Category
+|Math
+
+|Func_floor_CategoryURL
+|Math
+
+|Func_floor_Desc
+|Returns the smallest multiple of the significance (defaults to 1) less than or equal to the given number.
+
+|Func_fv_Arg_0
+|rate
+
+|Func_fv_Arg_1
+|nper
+
+|Func_fv_Arg_2
+|pmt
+
+|Func_fv_Arg_3
+|pv
+
+|Func_fv_Arg_4
+|type
+
+|Func_fv_ArgDesc_0
+|Rate is the interest rate per period
+
+|Func_fv_ArgDesc_1
+|Nper is the total number of payment periods in an annuity
+
+|Func_fv_ArgDesc_2
+|Pmt is the payment made each period; it cannot change over the life of the annuity
+
+|Func_fv_ArgDesc_3
+|Pv is the present value, or the lump-sum amount that a series of future payments is worth right now
+
+|Func_fv_ArgDesc_4
+|Type is the number 0 or 1 and indicates whether payments are due at the end of the period (default) or the beginning
+
+|Func_fv_Category
+|Financial
+
+|Func_fv_CategoryURL
+|Financial
+
+|Func_fv_Desc
+|Returns the future value of an investment based on periodic
+
+|Func_gcd_Arg_0
+|number{0}
+
+|Func_gcd_ArgDesc_0
+|Number1, Number2, ..., NumberN is any number of integers.
+
+|Func_gcd_Category
+|Math
+
+|Func_gcd_CategoryURL
+|Math
+
+|Func_gcd_Desc
+|Returns the greatest common divisor of two integer values.
+
+|Func_gestep_Arg_0
+|Number1
+
+|Func_gestep_Arg_1
+|Step
+
+|Func_gestep_ArgDesc_0
+|Number is a number.
+
+|Func_gestep_ArgDesc_1
+|Step is a number. If step is not specified, Number will be compared to 0.
+
+|Func_gestep_Category
+|Engineering
+
+|Func_gestep_CategoryURL
+|Engineering
+
+|Func_gestep_Desc
+|Compares two numbers and returns 1 the first number is greater than or equal to the second or returns 0 if not.
+
+|Func_hex2bin_Arg_0
+|Number
+
+|Func_hex2bin_Arg_1
+|Places
+
+|Func_hex2bin_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_hex2bin_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_hex2bin_Category
+|Engineering
+
+|Func_hex2bin_CategoryURL
+|Engineering
+
+|Func_hex2bin_Desc
+|Converts a string representing a hexadecimal number to a string representing the same number in the binary number system.
+
+|Func_hex2dec_Arg_0
+|Number
+
+|Func_hex2dec_ArgDesc_0
+|Number is a string represeting a hexadecimal number.
+
+|Func_hex2dec_Category
+|Engineering
+
+|Func_hex2dec_CategoryURL
+|Engineering
+
+|Func_hex2dec_Desc
+|Returns the decimal value of a string representation of a number in a hexadecimal system.
+
+|Func_hex2oct_Arg_0
+|Number
+
+|Func_hex2oct_Arg_1
+|Places
+
+|Func_hex2oct_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_hex2oct_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_hex2oct_Category
+|Engineering
+
+|Func_hex2oct_CategoryURL
+|Engineering
+
+|Func_hex2oct_Desc
+|Converts a string representing a hexadecimal number to a string representing the same number in the octal number system.
+
+|Func_hour_Arg_0
+|Date_value
+
+|Func_hour_ArgDesc_0
+|Date_value is a .NET DateTime number that represents a particular date
+
+|Func_hour_Category
+|DateAndTime
+
+|Func_hour_CategoryURL
+|Date_and_Time
+
+|Func_hour_Desc
+|Returns the hour of a time value
+
+|Func_if_Arg_0
+|logical_test
+
+|Func_if_Arg_1
+|value_if_true
+
+|Func_if_Arg_2
+|value_if_false
+
+|Func_if_ArgDesc_0
+|The condition to test.
+
+|Func_if_ArgDesc_1
+|The result if the condition is true.
+
+|Func_if_ArgDesc_2
+|The result if the condition is false.
+
+|Func_if_Category
+|Logical
+
+|Func_if_CategoryURL
+|Logical
+
+|Func_if_Desc
+|Returns one value if a condition you specify evaluates to TRUE and another value if it evaluates to FALSE
+
+|Func_imabs_Arg_0
+|ComplexNumber
+
+|Func_imabs_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imabs_Category
+|Engineering
+
+|Func_imabs_CategoryURL
+|Engineering
+
+|Func_imabs_Desc
+|Returns the absolute value of a complex number.
+
+|Func_imaginary_Arg_0
+|ComplexNumber
+
+|Func_imaginary_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imaginary_Category
+|Engineering
+
+|Func_imaginary_CategoryURL
+|Engineering
+
+|Func_imaginary_Desc
+|Returns the imaginary coefficient of a complex number.
+
+|Func_imargument_Arg_0
+|ComplexNumber
+
+|Func_imargument_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imargument_Category
+|Engineering
+
+|Func_imargument_CategoryURL
+|Engineering
+
+|Func_imargument_Desc
+|Returns the argument theta, and angle expressed in radians.
+
+|Func_imconjugate_Arg_0
+|ComplexNumber
+
+|Func_imconjugate_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imconjugate_Category
+|Engineering
+
+|Func_imconjugate_CategoryURL
+|Engineering
+
+|Func_imconjugate_Desc
+|Returns the conjugate of a complex number.
+
+|Func_imcos_Arg_0
+|ComplexNumber
+
+|Func_imcos_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imcos_Category
+|Engineering
+
+|Func_imcos_CategoryURL
+|Engineering
+
+|Func_imcos_Desc
+|Returns the cosine of a complex number.
+
+|Func_imdiv_Arg_0
+|Dividend
+
+|Func_imdiv_Arg_1
+|Divisor
+
+|Func_imdiv_ArgDesc_0
+|Dividend is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imdiv_ArgDesc_1
+|Divisor is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imdiv_Category
+|Engineering
+
+|Func_imdiv_CategoryURL
+|Engineering
+
+|Func_imdiv_Desc
+|Returns the quotient of two complex numbers. (Dividend / Divisor)
+
+|Func_imexp_Arg_0
+|ComplexNumber
+
+|Func_imexp_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imexp_Category
+|Engineering
+
+|Func_imexp_CategoryURL
+|Engineering
+
+|Func_imexp_Desc
+|Returns the exponential of a complex number.
+
+|Func_imln_Arg_0
+|ComplexNumber
+
+|Func_imln_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imln_Category
+|Engineering
+
+|Func_imln_CategoryURL
+|Engineering
+
+|Func_imln_Desc
+|Returns the natural logarithm of a complex number.
+
+|Func_imlog10_Arg_0
+|ComplexNumber
+
+|Func_imlog10_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imlog10_Category
+|Engineering
+
+|Func_imlog10_CategoryURL
+|Engineering
+
+|Func_imlog10_Desc
+|Returns the base-10 logarithm of a complex number.
+
+|Func_imlog2_Arg_0
+|ComplexNumber
+
+|Func_imlog2_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imlog2_Category
+|Engineering
+
+|Func_imlog2_CategoryURL
+|Engineering
+
+|Func_imlog2_Desc
+|Returns the base-2 logarithm of a complex number.
+
+|Func_impower_Arg_0
+|ComplexNumber
+
+|Func_impower_Arg_1
+|Power
+
+|Func_impower_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_impower_ArgDesc_1
+|Power is the power to which ComplexNumber will be raised.
+
+|Func_impower_Category
+|Engineering
+
+|Func_impower_CategoryURL
+|Engineering
+
+|Func_impower_Desc
+|Returns the complex number raised to the specified power.
+
+|Func_improduct_Arg_0
+|ComplexNumber{0}
+
+|Func_improduct_ArgDesc_0
+|ComplexNumber1, ComplexNumber2, ..., ComplexNumberN is any number of complex numbers in the format: "x + yi" or "x + yj" which will be multiplied together.
+
+|Func_improduct_Category
+|Engineering
+
+|Func_improduct_CategoryURL
+|Engineering
+
+|Func_improduct_Desc
+|Returns the product of 1 to n complex numbers.
+
+|Func_imreal_Arg_0
+|ComplexNumber
+
+|Func_imreal_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imreal_Category
+|Engineering
+
+|Func_imreal_CategoryURL
+|Engineering
+
+|Func_imreal_Desc
+|Returns the real coefficient of a complex number.
+
+|Func_imsin_Arg_0
+|ComplexNumber
+
+|Func_imsin_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imsin_Category
+|Engineering
+
+|Func_imsin_CategoryURL
+|Engineering
+
+|Func_imsin_Desc
+|Returns the sine of a complex number.
+
+|Func_imsqrt_Arg_0
+|ComplexNumber
+
+|Func_imsqrt_ArgDesc_0
+|ComplexNumber is a complex number in the format: "x + yi" or "x + yj".
+
+|Func_imsqrt_Category
+|Engineering
+
+|Func_imsqrt_CategoryURL
+|Engineering
+
+|Func_imsqrt_Desc
+|Returns the square root of a complex number.
+
+|Func_imsub_Arg_0
+|ComplexNumber1
+
+|Func_imsub_Arg_1
+|ComplexNumber2
+
+|Func_imsub_ArgDesc_0
+|ComplexNumber1 is a complex number in the format: "x + yi" or "x + yj" from which ComplexNumber2 will be subtracted.
+
+|Func_imsub_ArgDesc_1
+|ComplexNumber2 is a complex number in the format: "x + yi" or "x + yj" which will be subtracted from ComplexNumber1.
+
+|Func_imsub_Category
+|Engineering
+
+|Func_imsub_CategoryURL
+|Engineering
+
+|Func_imsub_Desc
+|Returns the difference between two complex numbers.
+
+|Func_imsum_Arg_0
+|ComplexNumber{0}
+
+|Func_imsum_ArgDesc_0
+|ComplexNumber1, ComplexNumber2, ..., ComplexNumberN is any number of complex numbers in the format: "x + yi" or "x + yj" which will be added together.
+
+|Func_imsum_Category
+|Engineering
+
+|Func_imsum_CategoryURL
+|Engineering
+
+|Func_imsum_Desc
+|Returns the sum of 1 to n complex numbers.
+
+|Func_info_Arg_0
+|Type
+
+|Func_info_ArgDesc_0
+|Type is a string indicating the type of information to return. "directory" = The full path to the current folder. "osversion" = The currently operating system version as a string. "system" = The current operating system. This will always return "pcdos" which indicates Microsoft Windows. The corresponding function in Excel can also return "mac" for Macintosh, but since Infragistics is only supported in Windows, this function will always return "pcdos". The following are supported by Microsoft Excel, but have no correlation in UltraCalcManager: "numfile", "origin", "recalc", "release". The following are supported in older versions of Excel, but not Office2007, and have no correlation in UltraCalcManager: "memavail", "memused", "totmem".
+
+|Func_info_Category
+|Information
+
+|Func_info_CategoryURL
+|Information
+
+|Func_info_Desc
+|Returns information about the current operating environment.
+
+|Func_int_Arg_0
+|number
+
+|Func_int_ArgDesc_0
+|Number is the real number you want to round down to an integer
+
+|Func_int_Category
+|Math
+
+|Func_int_CategoryURL
+|Math
+
+|Func_int_Desc
+|Rounds a number down to the nearest integer
+
+|Func_intrate_Arg_0
+|settlement
+
+|Func_intrate_Arg_1
+|maturity
+
+|Func_intrate_Arg_2
+|investment
+
+|Func_intrate_Arg_3
+|redemption
+
+|Func_intrate_Arg_4
+|basis
+
+|Func_intrate_ArgDesc_0
+|Settlement is the security's settlement date
+
+|Func_intrate_ArgDesc_1
+|Maturity is the security's maturity date
+
+|Func_intrate_ArgDesc_2
+|Investment is the amount invested in the security
+
+|Func_intrate_ArgDesc_3
+|Redemption is the amount to be received at maturity
+
+|Func_intrate_ArgDesc_4
+|Basis is the type of day count basis to use; 0 or omitted = US (NASD) 30/360, 1 = Actual/actual, 2 = Actual/360, 3 = Actual/365, 4 = European 30/360
+
+|Func_intrate_Category
+|Financial
+
+|Func_intrate_CategoryURL
+|Financial
+
+|Func_intrate_Desc
+|Returns the interest rate for a fully invested security
+
+|Func_ipmt_Arg_0
+|rate
+
+|Func_ipmt_Arg_1
+|per
+
+|Func_ipmt_Arg_2
+|nper
+
+|Func_ipmt_Arg_3
+|pv
+
+|Func_ipmt_Arg_4
+|fv
+
+|Func_ipmt_Arg_5
+|type
+
+|Func_ipmt_ArgDesc_0
+|Rate is the interest rate per period
+
+|Func_ipmt_ArgDesc_1
+|Per specifies the period and must be in the range 1 to nper
+
+|Func_ipmt_ArgDesc_2
+|Nper is the total number of payment periods in an annuity
+
+|Func_ipmt_ArgDesc_3
+|Pv is the present value, the total amount that a series of future payments is worth now
+
+|Func_ipmt_ArgDesc_4
+|Fv is the future value, or a cash balance you want to attain after the last payment is made
+
+|Func_ipmt_ArgDesc_5
+|Type is the number 0 or 1 and indicates when payments are due
+
+|Func_ipmt_Category
+|Financial
+
+|Func_ipmt_CategoryURL
+|Financial
+
+|Func_ipmt_Desc
+|Returns the interest payment for a given period for an investment based on periodic
+
+|Func_irr_Arg_0
+|values
+
+|Func_irr_Arg_1
+|guess
+
+|Func_irr_ArgDesc_0
+|A collection of payment (negative values) and income (positive values) values that occur at regular intervals
+
+|Func_irr_ArgDesc_1
+|An optional number that you guess is close to the result. The default is 10%.
+
+|Func_irr_Category
+|Financial
+
+|Func_irr_CategoryURL
+|Financial
+
+|Func_irr_Desc
+|Returns the internal rate of return for a series of cash flows
+
+|Func_isblank_Arg_0
+|value
+
+|Func_isblank_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isblank_Category
+|Information
+
+|Func_isblank_CategoryURL
+|Information
+
+|Func_isblank_Desc
+|Returns TRUE if value is blank
+
+|Func_isdbnull_Arg_0
+|value
+
+|Func_isdbnull_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isdbnull_Category
+|Information
+
+|Func_isdbnull_CategoryURL
+|Information
+
+|Func_isdbnull_Desc
+|Returns TRUE if value refers to DBNull
+
+|Func_iserr_Arg_0
+|value
+
+|Func_iserr_ArgDesc_0
+|Value is the value you want tested
+
+|Func_iserr_Category
+|Information
+
+|Func_iserr_CategoryURL
+|Information
+
+|Func_iserr_Desc
+|Returns TRUE if value refers to any error value except #N/A
+
+|Func_iserror_Arg_0
+|value
+
+|Func_iserror_ArgDesc_0
+|Value is the value you want tested
+
+|Func_iserror_Category
+|Information
+
+|Func_iserror_CategoryURL
+|Information
+
+|Func_iserror_Desc
+|Returns TRUE if value refers to any error value (#N/A, #VALUE!, #REF!, #DIV/0!, #NUM!, #NAME?, or #NULL!)
+
+|Func_iseven_Arg_0
+|value
+
+|Func_iseven_ArgDesc_0
+|Value is the value you want tested
+
+|Func_iseven_Category
+|Information
+
+|Func_iseven_CategoryURL
+|Information
+
+|Func_iseven_Desc
+|Returns TRUE if value is an even number, else return false
+
+|Func_islogical_Arg_0
+|value
+
+|Func_islogical_ArgDesc_0
+|Value is the value you want tested
+
+|Func_islogical_Category
+|Information
+
+|Func_islogical_CategoryURL
+|Information
+
+|Func_islogical_Desc
+|Returns TRUE if value refers to a logical value
+
+|Func_isna_Arg_0
+|value
+
+|Func_isna_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isna_Category
+|Information
+
+|Func_isna_CategoryURL
+|Information
+
+|Func_isna_Desc
+|Returns TRUE if value refers to the #N/A (value not available) error value
+
+|Func_isnontext_Arg_0
+|value
+
+|Func_isnontext_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isnontext_Category
+|Information
+
+|Func_isnontext_CategoryURL
+|Information
+
+|Func_isnontext_Desc
+|Returns TRUE if value refers to any item that is not text
+
+|Func_isnull_Arg_0
+|value
+
+|Func_isnull_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isnull_Category
+|Information
+
+|Func_isnull_CategoryURL
+|Information
+
+|Func_isnull_Desc
+|Returns TRUE if value refers to null (Nothing in VB)
+
+|Func_isnumber_Arg_0
+|value
+
+|Func_isnumber_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isnumber_Category
+|Information
+
+|Func_isnumber_CategoryURL
+|Information
+
+|Func_isnumber_Desc
+|Returns TRUE if value refers to a number
+
+|Func_isodd_Arg_0
+|value
+
+|Func_isodd_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isodd_Category
+|Information
+
+|Func_isodd_CategoryURL
+|Information
+
+|Func_isodd_Desc
+|Returns TRUE if value is an odd number, else return false
+
+|Func_isref_Arg_0
+|value
+
+|Func_isref_ArgDesc_0
+|Value is the value you want tested
+
+|Func_isref_Category
+|Information
+
+|Func_isref_CategoryURL
+|Information
+
+|Func_isref_Desc
+|Returns TRUE if value refers to a reference
+
+|Func_istext_Arg_0
+|value
+
+|Func_istext_ArgDesc_0
+|Value is the value you want tested
+
+|Func_istext_Category
+|Information
+
+|Func_istext_CategoryURL
+|Information
+
+|Func_istext_Desc
+|Returns TRUE if value refers to a text value
+
+|Func_lcm_Arg_0
+|number{0}
+
+|Func_lcm_ArgDesc_0
+|Number1, Number2, ..., NumberN is any number of integers.
+
+|Func_lcm_Category
+|Math
+
+|Func_lcm_CategoryURL
+|Math
+
+|Func_lcm_Desc
+|Returns the least common multiple of integer values.
+
+|Func_left_Arg_0
+|text
+
+|Func_left_Arg_1
+|num_chars
+
+|Func_left_ArgDesc_0
+|Text is the text string that contains the characters you want to extract
+
+|Func_left_ArgDesc_1
+|Num_chars specifies the number of characters you want LEFT to extract
+
+|Func_left_Category
+|TextAndData
+
+|Func_left_CategoryURL
+|Text_and_Data
+
+|Func_left_Desc
+|LEFT returns the first character or characters in a text string
+
+|Func_len_Arg_0
+|text
+
+|Func_len_ArgDesc_0
+|Text is the text whose length you want to find. Spaces count as characters
+
+|Func_len_Category
+|TextAndData
+
+|Func_len_CategoryURL
+|Text_and_Data
+
+|Func_len_Desc
+|Returns the number of characters in a text string
+
+|Func_ln_Arg_0
+|number
+
+|Func_ln_ArgDesc_0
+|Number is the positive real number for which you want the natural logarithm
+
+|Func_ln_Category
+|Math
+
+|Func_ln_CategoryURL
+|Math
+
+|Func_ln_Desc
+|Returns the natural logarithm of a number
+
+|Func_log_Arg_0
+|number
+
+|Func_log_Arg_1
+|base
+
+|Func_log_ArgDesc_0
+|Number is the positive real number for which you want the logarithm
+
+|Func_log_ArgDesc_1
+|Base is the base of the logarithm. If base is omitted, it is assumed to be 10
+
+|Func_log_Category
+|Math
+
+|Func_log_CategoryURL
+|Math
+
+|Func_log_Desc
+|Returns the logarithm of a number to the base you specify
+
+|Func_log10_Arg_0
+|number
+
+|Func_log10_ArgDesc_0
+|Number is the positive real number for which you want the base-10 logarithm
+
+|Func_log10_Category
+|Math
+
+|Func_log10_CategoryURL
+|Math
+
+|Func_log10_Desc
+|Returns the base-10 logarithm of a number
+
+|Func_lower_Arg_0
+|text
+
+|Func_lower_ArgDesc_0
+|Text is the text you want to convert to lowercase
+
+|Func_lower_Category
+|TextAndData
+
+|Func_lower_CategoryURL
+|Text_and_Data
+
+|Func_lower_Desc
+|Converts all uppercase letters in a text string to lowercase
+
+|Func_max_Arg_0
+|number{0}
+
+|Func_max_ArgDesc_0
+|Number1, number2, ... are 1 to 30 numbers for which you want to find the maximum value
+
+|Func_max_Category
+|Statistical
+
+|Func_max_CategoryURL
+|Statistical
+
+|Func_max_Desc
+|Returns the largest number in a set of values
+
+|Func_median_Arg_0
+|number{0}
+
+|Func_median_ArgDesc_0
+|Number1, number2, ... are 1 to 30 numbers for which you want to find the median value
+
+|Func_median_Category
+|Statistical
+
+|Func_median_CategoryURL
+|Statistical
+
+|Func_median_Desc
+|Returns the median of a set of values
+
+|Func_mid_Arg_0
+|text
+
+|Func_mid_Arg_1
+|start_num
+
+|Func_mid_Arg_2
+|num_chars
+
+|Func_mid_ArgDesc_0
+|Text is the text string that contains the characters you want to extract
+
+|Func_mid_ArgDesc_1
+|Num_chars specifies the number of characters you want LEFT to extract
+
+|Func_mid_ArgDesc_2
+|Start_num is the position of the first character you want to extract in text
+
+|Func_mid_Category
+|TextAndData
+
+|Func_mid_CategoryURL
+|Text_and_Data
+
+|Func_mid_Desc
+|MID returns a specific number of characters from a text string
+
+|Func_min_Arg_0
+|number{0}
+
+|Func_min_ArgDesc_0
+|Number1, number2, ... are 1 to 30 numbers for which you want to find the minimum value
+
+|Func_min_Category
+|Statistical
+
+|Func_min_CategoryURL
+|Statistical
+
+|Func_min_Desc
+|Returns the smallest number in a set of values
+
+|Func_minute_Arg_0
+|Date_value
+
+|Func_minute_ArgDesc_0
+|Date_value is a .NET DateTime number that represents a particular date
+
+|Func_minute_Category
+|DateAndTime
+
+|Func_minute_CategoryURL
+|Date_and_Time
+
+|Func_minute_Desc
+|Returns the minute of a time value
+
+|Func_mod_Arg_0
+|number
+
+|Func_mod_Arg_1
+|divisor
+
+|Func_mod_ArgDesc_0
+|Number is the number for which you want to find the remainder
+
+|Func_mod_ArgDesc_1
+|Divisor is the number by which you want to divide number
+
+|Func_mod_Category
+|Math
+
+|Func_mod_CategoryURL
+|Math
+
+|Func_mod_Desc
+|Returns the remainder after number is divided by divisor. The result has the same sign as divisor
+
+|Func_month_Arg_0
+|Date_value
+
+|Func_month_ArgDesc_0
+|Date_value is a .NET DateTime number that represents a particular date
+
+|Func_month_Category
+|DateAndTime
+
+|Func_month_CategoryURL
+|Date_and_Time
+
+|Func_month_Desc
+|Returns the month of a date value
+
+|Func_mround_Arg_0
+|Number
+
+|Func_mround_Arg_1
+|Multiple
+
+|Func_mround_ArgDesc_0
+|Number is a number to be rounded.
+
+|Func_mround_ArgDesc_1
+|Multiple is a number indicating the multiple to which to round.
+
+|Func_mround_Category
+|Math
+
+|Func_mround_CategoryURL
+|Math
+
+|Func_mround_Desc
+|Rounds a number to the nearest multiple of another number.
+
+|Func_multinomial_Arg_0
+|number{0}
+
+|Func_multinomial_ArgDesc_0
+|Number1, Number2, ..., NumberN is any number of numbers.
+
+|Func_multinomial_Category
+|Math
+
+|Func_multinomial_CategoryURL
+|Math
+
+|Func_multinomial_Desc
+|Returns the multinomial of a set of numbers.
+
+|Func_n_Arg_0
+|Value
+
+|Func_n_ArgDesc_0
+|Value is the value to be converted to a number. The following are acceptable values: A number - returns the number. A date - returns the date. True - returns 1. False - returns 0. An error value - returns the error value. Any other value - returns 0\.
+
+|Func_n_Category
+|Information
+
+|Func_n_CategoryURL
+|Information
+
+|Func_n_Desc
+|Converts a value to a number.
+
+|Func_na_Category
+|Information
+
+|Func_na_CategoryURL
+|Information
+
+|Func_na_Desc
+|Returns the error value #N/A
+
+|Func_networkdays_Arg_0
+|startDate
+
+|Func_networkdays_Arg_1
+|endDate
+
+|Func_networkdays_Arg_2
+|holiday{0}
+
+|Func_networkdays_ArgDesc_0
+|StartDate is the date from which to start.
+
+|Func_networkdays_ArgDesc_1
+|EndDate is the date at which to end.
+
+|Func_networkdays_ArgDesc_2
+|Holiday1, holiday2, ..., holidayN is any number of dates or range references containing dates that are to be considered non-working days.
+
+|Func_networkdays_Category
+|DateAndTime
+
+|Func_networkdays_CategoryURL
+|DateAndTime
+
+|Func_networkdays_Desc
+|Returns the total number of whole work days between the specified dates, excluding any specified holidays.
+
+|Func_not_Arg_0
+|logical
+
+|Func_not_ArgDesc_0
+|Logical is a value or expression that can be evaluated to TRUE or FALSE
+
+|Func_not_Category
+|Logical
+
+|Func_not_CategoryURL
+|Logical
+
+|Func_not_Desc
+|Reverses the logic of its argument
+
+|Func_now_Category
+|DateAndTime
+
+|Func_now_CategoryURL
+|Date_and_Time
+
+|Func_now_Desc
+|Returns a .NET DateTime ticks value of the current day and time
+
+|Func_nper_Arg_0
+|rate
+
+|Func_nper_Arg_1
+|pmt
+
+|Func_nper_Arg_2
+|pv
+
+|Func_nper_Arg_3
+|fv
+
+|Func_nper_Arg_4
+|type
+
+|Func_nper_ArgDesc_0
+|Rate is the interest rate per period
+
+|Func_nper_ArgDesc_1
+|Pmt is the payment made each period; it cannot change over the life of the annuity
+
+|Func_nper_ArgDesc_2
+|Pv is the present value, or the lump-sum amount that a series of future payments is worth right now
+
+|Func_nper_ArgDesc_3
+|Fv is the future value, or a cash balance you want to attain after the last payment is made
+
+|Func_nper_ArgDesc_4
+|Type is the number 0 or 1 and indicates whether payments are due at the end of the period (default) or the beginning
+
+|Func_nper_Category
+|Financial
+
+|Func_nper_CategoryURL
+|Financial
+
+|Func_nper_Desc
+|Returns the number of periods for an investment based on periodic
+
+|Func_npv_Arg_0
+|rate
+
+|Func_npv_Arg_1
+|value{0}
+
+|Func_npv_ArgDesc_0
+|Rate is the rate of discount over the length of one period
+
+|Func_npv_ArgDesc_1
+|Value1, value2, ... are 1 to 29 arguments representing the payments and income
+
+|Func_npv_Category
+|Financial
+
+|Func_npv_CategoryURL
+|Financial
+
+|Func_npv_Desc
+|Calculates the net present value of an investment by using a discount rate and a series of future payments
+
+|Func_null_Category
+|Information
+
+|Func_null_CategoryURL
+|Information
+
+|Func_null_Desc
+|Returns null (Nothing in VB)
+
+|Func_oct2bin_Arg_0
+|Number
+
+|Func_oct2bin_Arg_1
+|Places
+
+|Func_oct2bin_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_oct2bin_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_oct2bin_Category
+|Engineering
+
+|Func_oct2bin_CategoryURL
+|Engineering
+
+|Func_oct2bin_Desc
+|Converts a string representing an octal number to a string representing the same number in the binary number system.
+
+|Func_oct2dec_Arg_0
+|Number
+
+|Func_oct2dec_ArgDesc_0
+|Number is a string represeting an octal number.
+
+|Func_oct2dec_Category
+|Engineering
+
+|Func_oct2dec_CategoryURL
+|Engineering
+
+|Func_oct2dec_Desc
+|Returns the decimal value of a string representation of a number in a octal system.
+
+|Func_oct2hex_Arg_0
+|Number
+
+|Func_oct2hex_Arg_1
+|Places
+
+|Func_oct2hex_ArgDesc_0
+|Number is the value to be converted.
+
+|Func_oct2hex_ArgDesc_1
+|Places is the number of characters to use in representing the value. If places is not specified, the mimumum number of characters neccessary to represent the value will be used. Places allows you to specify leading zeros.
+
+|Func_oct2hex_Category
+|Engineering
+
+|Func_oct2hex_CategoryURL
+|Engineering
+
+|Func_oct2hex_Desc
+|Converts a string representing an octal number to a string representing the same number in the hexadecimal number system.
+
+|Func_odd_Arg_0
+|number
+
+|Func_odd_ArgDesc_0
+|Number is the value to round
+
+|Func_odd_Category
+|Math
+
+|Func_odd_CategoryURL
+|Math
+
+|Func_odd_Desc
+|Rounds a positive number up and a negative number down to the nearest odd integer.
+
+|Func_or_Arg_0
+|logical{0}
+
+|Func_or_ArgDesc_0
+|Logical1, logical2, ... are conditions you want to test that can be either TRUE or FALSE
+
+|Func_or_Category
+|Logical
+
+|Func_or_CategoryURL
+|Logical
+
+|Func_or_Desc
+|Returns TRUE if any argument is TRUE; returns FALSE if all arguments are FALSE
+
+|Func_pi_Category
+|Math
+
+|Func_pi_CategoryURL
+|Math
+
+|Func_pi_Desc
+|Returns the number 3.14159265358979
+
+|Func_pmt_Arg_0
+|rate
+
+|Func_pmt_Arg_1
+|nper
+
+|Func_pmt_Arg_2
+|pv
+
+|Func_pmt_Arg_3
+|fv
+
+|Func_pmt_Arg_4
+|type
+
+|Func_pmt_ArgDesc_0
+|Rate is the interest rate for the loan
+
+|Func_pmt_ArgDesc_1
+|Nper is the total number of payments for the loan
+
+|Func_pmt_ArgDesc_2
+|Pv is the present value, or the total amount that a series of future payments is worth now; also known as the principal
+
+|Func_pmt_ArgDesc_3
+|Fv is the future value, or a cash balance you want to attain after the last payment is made
+
+|Func_pmt_ArgDesc_4
+|Type is the number 0 or 1 and indicates whether payments are due at the end of the period (default) or the beginning
+
+|Func_pmt_Category
+|Financial
+
+|Func_pmt_CategoryURL
+|Financial
+
+|Func_pmt_Desc
+|Calculates the payment for a loan based on constant payments and a constant interest rate
+
+|Func_power_Arg_0
+|number
+
+|Func_power_Arg_1
+|power
+
+|Func_power_ArgDesc_0
+|Number is the base number
+
+|Func_power_ArgDesc_1
+|Power is the exponent to which the base number is raised
+
+|Func_power_Category
+|Math
+
+|Func_power_CategoryURL
+|Math
+
+|Func_power_Desc
+|Returns the result of a number raised to a power
+
+|Func_ppmt_Arg_0
+|rate
+
+|Func_ppmt_Arg_1
+|per
+
+|Func_ppmt_Arg_2
+|nper
+
+|Func_ppmt_Arg_3
+|pv
+
+|Func_ppmt_Arg_4
+|fv
+
+|Func_ppmt_Arg_5
+|type
+
+|Func_ppmt_ArgDesc_0
+|Rate is the interest rate per period
+
+|Func_ppmt_ArgDesc_1
+|Per specifies the period and must be in the range 1 to nper
+
+|Func_ppmt_ArgDesc_2
+|Nper is the total number of payment periods in an annuity
+
+|Func_ppmt_ArgDesc_3
+|Pv is the present value, the total amount that a series of future payments is worth now
+
+|Func_ppmt_ArgDesc_4
+|Fv is the future value, or a cash balance you want to attain after the last payment is made
+
+|Func_ppmt_ArgDesc_5
+|Type is the number 0 or 1 and indicates when payments are due
+
+|Func_ppmt_Category
+|Financial
+
+|Func_ppmt_CategoryURL
+|Financial
+
+|Func_ppmt_Desc
+|Returns the payment on the principal for a given period for an investment based on periodic
+
+|Func_product_Arg_0
+|number{0}
+
+|Func_product_ArgDesc_0
+|Number1, number2, ... are arguments for which you want the to multiply together
+
+|Func_product_Category
+|Math
+
+|Func_product_CategoryURL
+|Math
+
+|Func_product_Desc
+|Multiplies all the numbers given as arguments and returns the product
+
+|Func_pv_Arg_0
+|rate
+
+|Func_pv_Arg_1
+|nper
+
+|Func_pv_Arg_2
+|pmt
+
+|Func_pv_Arg_3
+|fv
+
+|Func_pv_Arg_4
+|type
+
+|Func_pv_ArgDesc_0
+|Rate is the interest rate per period
+
+|Func_pv_ArgDesc_1
+|Nper is the total number of payment periods in an annuity
+
+|Func_pv_ArgDesc_2
+|Pmt is the payment made each period; it cannot change over the life of the annuity
+
+|Func_pv_ArgDesc_3
+|Fv is the future value, or a cash balance you want to attain after the last payment is made
+
+|Func_pv_ArgDesc_4
+|Type is the number 0 or 1 and indicates whether payments are due at the end of the period (default) or the beginning
+
+|Func_pv_Category
+|Financial
+
+|Func_pv_CategoryURL
+|Financial
+
+|Func_pv_Desc
+|Returns the present value of an investment
+
+|Func_quotient_Arg_0
+|numerator
+
+|Func_quotient_Arg_1
+|denominator
+
+|Func_quotient_ArgDesc_0
+|Numerator is the dividend
+
+|Func_quotient_ArgDesc_1
+|Denominator is the divisor
+
+|Func_quotient_Category
+|Math
+
+|Func_quotient_CategoryURL
+|Math
+
+|Func_quotient_Desc
+|Returns the integer portion of a division. Use this function when you want to discard the remainder of a division
+
+|Func_radians_Arg_0
+|Degrees
+
+|Func_radians_ArgDesc_0
+|Degrees is a value in degrees which will be converted to radians.
+
+|Func_radians_Category
+|Math
+
+|Func_radians_CategoryURL
+|Math
+
+|Func_radians_Desc
+|Converts degrees to radians.
+
+|Func_rand_Category
+|Math
+
+|Func_rand_CategoryURL
+|Math
+
+|Func_rand_Desc
+|Returns an evenly distributed random number greater than or equal to 0 and less than 1
+
+|Func_randbetween_Arg_0
+|Bottom
+
+|Func_randbetween_Arg_1
+|Top
+
+|Func_randbetween_ArgDesc_0
+|Bottom is the minumum value that will be returned.
+
+|Func_randbetween_ArgDesc_1
+|Top is the maximum value that will be returned.
+
+|Func_randbetween_Category
+|Math
+
+|Func_randbetween_CategoryURL
+|Math
+
+|Func_randbetween_Desc
+|Generates a pseudorandom integer between two specified numbers.
+
+|Func_rate_Arg_0
+|NPer
+
+|Func_rate_Arg_1
+|Pmt
+
+|Func_rate_Arg_2
+|Pv
+
+|Func_rate_Arg_3
+|Type
+
+|Func_rate_Arg_4
+|Fv
+
+|Func_rate_Arg_5
+|Guess
+
+|Func_rate_ArgDesc_0
+|Nper is the total number of payment periods in an annuity.
+
+|Func_rate_ArgDesc_1
+|Pmt is the payment made each period and cannot change over the life of the annuity.
+
+|Func_rate_ArgDesc_2
+|The present value - the total amount that a series of future payments is worth now.
+
+|Func_rate_ArgDesc_3
+|The number 0 or 1 that indicates whether payments are due at the end of the period (default) or the beginning.
+
+|Func_rate_ArgDesc_4
+|The future value, or a cash balance you want to attain after the last payment is made. If fv is omitted, it is assumed to be 0 (the future value of a loan, for example, is 0). For example, if you want to save $50,000 to pay for a special project in 18 years, then $50,000 is the future value. You could then make a conservative guess at an interest rate and determine how much you must save each month. If fv is omitted, you must include the pmt argument. The default value for fv is 0.
+
+|Func_rate_ArgDesc_5
+|An optional number that you guess is close to the result. If guess is unspecified, 10% is used.
+
+|Func_rate_Category
+|Financial
+
+|Func_rate_CategoryURL
+|Financial
+
+|Func_rate_Desc
+|Returns the interest rate per period of an annuity
+
+|Func_replace_Arg_0
+|Old_text
+
+|Func_replace_Arg_1
+|Start_num
+
+|Func_replace_Arg_2
+|Num_chars
+
+|Func_replace_Arg_3
+|New_text
+
+|Func_replace_ArgDesc_0
+|Old_text is text in which you want to replace some characters
+
+|Func_replace_ArgDesc_1
+|Start_num is the position of the character in old_text that you want to replace with new_text; 1 is the index of the first character
+
+|Func_replace_ArgDesc_2
+|Num_chars is the number of characters in old_text that you want REPLACE to replace with new_text
+
+|Func_replace_ArgDesc_3
+|New_text is the text that will replace characters in old_text
+
+|Func_replace_Category
+|TextAndData
+
+|Func_replace_CategoryURL
+|Text_and_Data
+
+|Func_replace_Desc
+|Replaces part of a text string
+
+|Func_right_Arg_0
+|text
+
+|Func_right_Arg_1
+|num_chars
+
+|Func_right_ArgDesc_0
+|Text is the text string that contains the characters you want to extract
+
+|Func_right_ArgDesc_1
+|Num_chars specifies the number of characters you want RIGHT to extract
+
+|Func_right_Category
+|TextAndData
+
+|Func_right_CategoryURL
+|Text_and_Data
+
+|Func_right_Desc
+|RIGHT returns the last character or characters in a text string
+
+|Func_roman_Arg_0
+|Number
+
+|Func_roman_Arg_1
+|Form
+
+|Func_roman_ArgDesc_0
+|Number is the number to convert to roman numerals.
+
+|Func_roman_ArgDesc_1
+|Form is a number or boolean value indicating whether to use classic roman numerals or a more concise version. 0 = (Default) Classic. (499 = "CDXCIX") 1 = More concise. (499 = "LDVLIV") 2 = More concise. (499 = "XDIX") 3 = More concise. (499 = "VDIV") 4 = Simplified. (499 = "ID") TRUE = Classic. FALSE = Simplified.
+
+|Func_roman_Category
+|Math
+
+|Func_roman_CategoryURL
+|Math
+
+|Func_roman_Desc
+|Converts a number into a roman number as a string.
+
+|Func_round_Arg_0
+|number
+
+|Func_round_Arg_1
+|num_digits
+
+|Func_round_Arg_2
+|round_Style
+
+|Func_round_ArgDesc_0
+|Number is the number you want to round
+
+|Func_round_ArgDesc_1
+|Num_digits specifies the number of digits to which you want to round number
+
+|Func_round_ArgDesc_2
+|round_Style specifies the style of rounding to use. 0 - Arithmetic Rounding (default) - This is the style of rounding used by Microsoft Excel. If the last significant digit in the rounding is a 5, the number is rounded up. 1 - Banker's Rounding - This is the style of rounding used by Visual Studio. When the last significant digit is a 5, the preceding digit is used to determine whether to round up or down. If the digit is even, the number is rounded down. If it is odd, then the number is rounded up.
+
+|Func_round_Category
+|Math
+
+|Func_round_CategoryURL
+|Math
+
+|Func_round_Desc
+|Rounds a number to a specified number of digits
+
+|Func_rounddown_Arg_0
+|Number
+
+|Func_rounddown_Arg_1
+|Digits
+
+|Func_rounddown_ArgDesc_0
+|Number is a number to be rounded down.
+
+|Func_rounddown_ArgDesc_1
+|Digits indicates the number of decimal places to round to. Positive numbers indicates places after the decimal point, negative numbers indicate places before the decimal point.
+
+|Func_rounddown_Category
+|Math
+
+|Func_rounddown_CategoryURL
+|Math
+
+|Func_rounddown_Desc
+|Rounds a number to down to the specified number of digits.
+
+|Func_roundup_Arg_0
+|Number
+
+|Func_roundup_Arg_1
+|Digits
+
+|Func_roundup_ArgDesc_0
+|Number is a number to be rounded up.
+
+|Func_roundup_ArgDesc_1
+|Digits indicates the number of decimal places to round to. Positive numbers indicates places after the decimal point, negative numbers indicate places before the decimal point.
+
+|Func_roundup_Category
+|Math
+
+|Func_roundup_CategoryURL
+|Math
+
+|Func_roundup_Desc
+|Rounds a number to up to the specified number of digits.
+
+|Func_second_Arg_0
+|Date_value
+
+|Func_second_ArgDesc_0
+|The time value the second portion of which to return
+
+|Func_second_Category
+|DateAndTime
+
+|Func_second_CategoryURL
+|Date_and_Time
+
+|Func_second_Desc
+|Returns the second of a time value
+
+|Func_seriessum_Arg_0
+|InputValue
+
+|Func_seriessum_Arg_1
+|InitialPower
+
+|Func_seriessum_Arg_2
+|Step
+
+|Func_seriessum_Arg_3
+|Coefficient{0}
+
+|Func_seriessum_ArgDesc_0
+|InputValue is the input value to the power series.
+
+|Func_seriessum_ArgDesc_1
+|InitialPower is the initial power to which the InputValue will be raised.
+
+|Func_seriessum_ArgDesc_2
+|Step is the step which will be used to increase the power for each term in the series.
+
+|Func_seriessum_ArgDesc_3
+|Coefficient1, Coefficient2, ..., CoefficientN is a set of coefficients by which each successive power of InputValue is multiplied.
+
+|Func_seriessum_Category
+|Math
+
+|Func_seriessum_CategoryURL
+|Math
+
+|Func_seriessum_Desc
+|Returns the sum of a power series.
+
+|Func_sign_Arg_0
+|Number
+
+|Func_sign_ArgDesc_0
+|The number whose sign wil be returned.
+
+|Func_sign_Category
+|Math
+
+|Func_sign_CategoryURL
+|Math
+
+|Func_sign_Desc
+|Returns the sign of a number. (-1, 0, or 1)
+
+|Func_sin_Arg_0
+|number
+
+|Func_sin_ArgDesc_0
+|Number is the angle in radians for which you want the sine
+
+|Func_sin_Category
+|Math
+
+|Func_sin_CategoryURL
+|Math
+
+|Func_sin_Desc
+|Returns the sine of the given angle
+
+|Func_sinh_Arg_0
+|number
+
+|Func_sinh_ArgDesc_0
+|Number is any real number
+
+|Func_sinh_Category
+|Math
+
+|Func_sinh_CategoryURL
+|Math
+
+|Func_sinh_Desc
+|Returns the hyperbolic sine of a number
+
+|Func_sln_Arg_0
+|cost
+
+|Func_sln_Arg_1
+|salvage
+
+|Func_sln_Arg_2
+|life
+
+|Func_sln_ArgDesc_0
+|Cost is the initial cost of the asset
+
+|Func_sln_ArgDesc_1
+|Salvage is the value at the end of the depreciation
+
+|Func_sln_ArgDesc_2
+|Life is the number of periods over which the asset is depreciated
+
+|Func_sln_Category
+|Financial
+
+|Func_sln_CategoryURL
+|Financial
+
+|Func_sln_Desc
+|Returns the straight-line depreciation of an asset for one period
+
+|Func_sqrt_Arg_0
+|number
+
+|Func_sqrt_ArgDesc_0
+|Number is the number for which you want the square root
+
+|Func_sqrt_Category
+|Math
+
+|Func_sqrt_CategoryURL
+|Math
+
+|Func_sqrt_Desc
+|Returns a positive square root
+
+|Func_sqrtpi_Arg_0
+|Number
+
+|Func_sqrtpi_ArgDesc_0
+|The number which will be multiplied by Pi.
+
+|Func_sqrtpi_Category
+|Math
+
+|Func_sqrtpi_CategoryURL
+|Math
+
+|Func_sqrtpi_Desc
+|Returns the square root of the specified number times Pi.
+
+|Func_stdev_Arg_0
+|number{0}
+
+|Func_stdev_ArgDesc_0
+|Number1, number2, ... are 1 to 30 argments specifying a sample of a population
+
+|Func_stdev_Category
+|Statistical
+
+|Func_stdev_CategoryURL
+|Statistical
+
+|Func_stdev_Desc
+|Returns the standard deviation of a population sample
+
+|Func_sum_Arg_0
+|number{0}
+
+|Func_sum_ArgDesc_0
+|Number1, number2, ... are arguments for which you want the total value or sum
+
+|Func_sum_Category
+|Math
+
+|Func_sum_CategoryURL
+|Math
+
+|Func_sum_Desc
+|Adds all the numbers in a range of cells
+
+|Func_syd_Arg_0
+|cost
+
+|Func_syd_Arg_1
+|salvage
+
+|Func_syd_Arg_2
+|life
+
+|Func_syd_Arg_3
+|per
+
+|Func_syd_ArgDesc_0
+|Cost is the initial cost of the asset
+
+|Func_syd_ArgDesc_1
+|Salvage is the value at the end of the depreciation (sometimes called the salvage value of the asset)
+
+|Func_syd_ArgDesc_2
+|Life is the number of periods over which the asset is depreciated (sometimes called the useful life of the asset)
+
+|Func_syd_ArgDesc_3
+|Per is the period and must use the same units as life
+
+|Func_syd_Category
+|Financial
+
+|Func_syd_CategoryURL
+|Financial
+
+|Func_syd_Desc
+|Returns the sum-of-years' digits depreciation of an asset for a specified period
+
+|Func_tan_Arg_0
+|number
+
+|Func_tan_ArgDesc_0
+|Number is the angle in radians for which you want the tangent
+
+|Func_tan_Category
+|Math
+
+|Func_tan_CategoryURL
+|Math
+
+|Func_tan_Desc
+|Returns the tangent of the given angle
+
+|Func_tanh_Arg_0
+|number
+
+|Func_tanh_ArgDesc_0
+|Number is the angle in radians for which you want the hyperbolic tangent
+
+|Func_tanh_Category
+|Math
+
+|Func_tanh_CategoryURL
+|Math
+
+|Func_tanh_Desc
+|Returns the hyperbolic tangent of the given angle
+
+|Func_time_Arg_0
+|hour
+
+|Func_time_Arg_1
+|minute
+
+|Func_time_Arg_2
+|second
+
+|Func_time_ArgDesc_0
+|Hour is a number representing the time's hour
+
+|Func_time_ArgDesc_1
+|Minute is a number representing the time's minute
+
+|Func_time_ArgDesc_2
+|Second is a number representing the time's second
+
+|Func_time_Category
+|DateAndTime
+
+|Func_time_CategoryURL
+|Date_and_Time
+
+|Func_time_Desc
+|Returns the .NET DateTime ticks value that represents a particular time
+
+|Func_timevalue_Arg_0
+|time_text
+
+|Func_timevalue_ArgDesc_0
+|Time_text is text that represents a date in the .NET DateTime format
+
+|Func_timevalue_Category
+|DateAndTime
+
+|Func_timevalue_CategoryURL
+|Date_and_Time
+
+|Func_timevalue_Desc
+|Returns the date value of the time represented by time formated in a string
+
+|Func_today_Category
+|DateAndTime
+
+|Func_today_CategoryURL
+|Date_and_Time
+
+|Func_today_Desc
+|Returns the current date. No arguments are passed to this function.
+
+|Func_trim_Arg_0
+|text
+
+|Func_trim_ArgDesc_0
+|Text is the text from which you want spaces removed
+
+|Func_trim_Category
+|TextAndData
+
+|Func_trim_CategoryURL
+|Text_and_Data
+
+|Func_trim_Desc
+|Removes all spaces from text except for single spaces between words
+
+|Func_true_Category
+|Logical
+
+|Func_true_CategoryURL
+|Logical
+
+|Func_true_Desc
+|Returns the logical value TRUE
+
+|Func_trunc_Arg_0
+|number
+
+|Func_trunc_Arg_1
+|num_digits
+
+|Func_trunc_ArgDesc_0
+|Number is the number you want to truncate
+
+|Func_trunc_ArgDesc_1
+|Num_digits is a number specifying the precision of the truncation. The default value for num_digits is 0 (zero)
+
+|Func_trunc_Category
+|Math
+
+|Func_trunc_CategoryURL
+|Math
+
+|Func_trunc_Desc
+|Truncates a number to an integer by removing the fractional part of the number
+
+|Func_type_Arg_0
+|value
+
+|Func_type_ArgDesc_0
+|Value is a number
+
+|Func_type_Category
+|Information
+
+|Func_type_CategoryURL
+|Information
+
+|Func_type_Desc
+|Returns the type of value
+
+|Func_upper_Arg_0
+|text
+
+|Func_upper_ArgDesc_0
+|Text is the text you want to convert to uppercase
+
+|Func_upper_Category
+|TextAndData
+
+|Func_upper_CategoryURL
+|Text_and_Data
+
+|Func_upper_Desc
+|Converts all lowercase letters in a text string to uppercase
+
+|Func_value_Arg_0
+|text
+
+|Func_value_ArgDesc_0
+|Text is the text enclosed in quotation marks or a reference to a cell containing the text you want to convert
+
+|Func_value_Category
+|TextAndData
+
+|Func_value_CategoryURL
+|Text_and_Data
+
+|Func_value_Desc
+|Converts a text string that represents a number to a number
+
+|Func_var_Arg_0
+|number{0}
+
+|Func_var_ArgDesc_0
+|Number1, number2, ... are 1 to 30 argments specifying a sample of a population
+
+|Func_var_Category
+|Statistical
+
+|Func_var_CategoryURL
+|Statistical
+
+|Func_var_Desc
+|Returns the variance of a population sample
+
+|Func_weekday_Arg_0
+|Date
+
+|Func_weekday_Arg_1
+|ReturnType
+
+|Func_weekday_ArgDesc_0
+|Date is a date.
+
+|Func_weekday_ArgDesc_1
+|ReturnType determines which numbering scheme is used for the days of the week. 1 (default) = Sunday (1) through Saturday (7) 2 = Monday (1) through Sunday (7) 3 = Monday (0) through Sunday (6)
+
+|Func_weekday_Category
+|DateAndTime
+
+|Func_weekday_CategoryURL
+|DateAndTime
+
+|Func_weekday_Desc
+|Returns a number representing the day of the week of the specified date.
+
+|Func_weeknum_Arg_0
+|date
+
+|Func_weeknum_Arg_1
+|returnType
+
+|Func_weeknum_ArgDesc_0
+|Date is a date.
+
+|Func_weeknum_ArgDesc_1
+|ReturnType determines which day begins the week. 1 (default) = Sunday is the first day of the week. 2 = Monday is the first day of the week.
+
+|Func_weeknum_Category
+|DateAndTime
+
+|Func_weeknum_CategoryURL
+|DateAndTime
+
+|Func_weeknum_Desc
+|Returns the number of the week into which the specified date falls.
+
+|Func_workday_Arg_0
+|startDate
+
+|Func_workday_Arg_1
+|days
+
+|Func_workday_Arg_2
+|holiday{0}
+
+|Func_workday_ArgDesc_0
+|StartDate is the date from which to start.
+
+|Func_workday_ArgDesc_1
+|Days is the number of work days to offset from the start date.
+
+|Func_workday_ArgDesc_2
+|Holiday1, holiday2, ..., holidayN is any number of dates or range references containing dates that are to be considered non-working days.
+
+|Func_workday_Category
+|DateAndTime
+
+|Func_workday_CategoryURL
+|DateAndTime
+
+|Func_workday_Desc
+|Returns a work day the specified number of days from the specified date, excluding any specified holidays.
+
+|Func_year_Arg_0
+|Date_value
+
+|Func_year_ArgDesc_0
+|Date_value is a .NET DateTime number that represents a particular date
+
+|Func_year_Category
+|DateAndTime
+
+|Func_year_CategoryURL
+|Date_and_Time
+
+|Func_year_Desc
+|Returns the year of a date value
+
+|Func_yearfrac_Arg_0
+|StartDate
+
+|Func_yearfrac_Arg_1
+|EndDate
+
+|Func_yearfrac_Arg_2
+|Basis
+
+|Func_yearfrac_ArgDesc_0
+|Start date is the starting date in the range.
+
+|Func_yearfrac_ArgDesc_1
+|End date is the ending date in the range.
+
+|Func_yearfrac_ArgDesc_2
+|Basis determines the basis for the day count to use. 0 (Default = US (NASD) 30/360 1 = Actual/actual 2 = Actual/360 3 = Actual/365 4 = European 30/360
+
+|Func_yearfrac_Category
+|DateAndTime
+
+|Func_yearfrac_CategoryURL
+|DateAndTime
+
+|Func_yearfrac_Desc
+|Returns a fraction representing the part of a year specified between the specified start date and end date.
+
+|NamedReference_Category_All
+|(All)
+
+|NamedReference_Category_Unassigned
+|(Unassigned)
+
+|Operand_Category_Controls
+|Controls
+
+|Operand_Category_NamedReferences
+|Named References
+
+|TokenPattern_ArgumentSeparator
+|ARG_SEP
+
+|TokenPattern_LeftParen
+|LEFT_PAREN
+
+|TokenPattern_Number
+|NUMBER
+
+|TokenPattern_OperatorConcatenate
+|OP_CONCAT
+
+|TokenPattern_OperatorDivide
+|OP_DIV
+
+|TokenPattern_OperatorDot
+|OP_DOT
+
+|TokenPattern_OperatorEqual
+|OP_EQUAL
+
+|TokenPattern_OperatorExponent
+|OP_EXPON
+
+|TokenPattern_OperatorGreaterThan
+|OP_GT
+
+|TokenPattern_OperatorGreaterThanEqual
+|OP_GE
+
+|TokenPattern_OperatorLessThan
+|OP_LT
+
+|TokenPattern_OperatorLessThanEqual
+|OP_LE
+
+|TokenPattern_OperatorMinus
+|OP_MINUS
+
+|TokenPattern_OperatorMultiply
+|OP_TIMES
+
+|TokenPattern_OperatorNotEqual
+|OP_NE
+
+|TokenPattern_OperatorNotEqualAlternate
+|OP_ALT_NE
+
+|TokenPattern_OperatorPercent
+|OP_PERCENT
+
+|TokenPattern_OperatorPlus
+|OP_PLUS
+
+|TokenPattern_QuotedString
+|QUOTED_STRING
+
+|TokenPattern_RangeSeparator
+|RANGE_SEP
+
+|TokenPattern_Reference
+|REFERENCE
+
+|TokenPattern_RightParen
+|RIGHT_PAREN
+
+|TokenPattern_Text
+|TEXT
+
+|TokenPattern_WhiteSpace
+|WHITESPACE
+
+|====

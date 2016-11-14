@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-more-time-scale-axis-support-whats-new-2006-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "{A1E41CF2-C9F7-499C-8D91-A6F007619E3C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= More Time-Scale Axis Support
+
+If your chart contains data that you want to arrange chronologically by date, you can take advantage of WinChart's™ support for the time-scale axis. Even if your chart data is not in chronological order, the WinChart control can use the time-scale axis to organize the data chronologically.
+
+In previous Infragistics Windows Forms volume releases, the time-scale axis feature was supported only by the link:chart-working-with-step-area-chart-data.html[Step Area], link:chart-working-with-step-line-chart-data.html[Step Line], and link:chart-working-with-gantt-chart-data.html[Gantt] charts. In the 2006 Volume 1 release, the following additional chart controls now support this useful feature:
+
+* link:chart-working-with-2d-area-chart-data.html[Area Chart (2D)]
+* link:chart-working-with-3d-area-chart-data.html[Area Chart (3D)]
+* link:chart-working-with-2d-line-chart-data.html[Line Chart (2D)]
+* link:chart-working-with-3d-line-chart-data.html[Line Chart (3D)]
+* link:chart-working-with-scatter-line-chart-data.html[Scatter Line Chart]
+* link:chart-working-with-2d-spline-chart-data.html[Spline Chart]
+* link:chart-working-with-stacked-area-chart-data.html[Stacked Area Chart]
+* link:chart-working-with-stacked-line-chart-data.html[Stacked Line Chart]
+* link:chart-working-with-stacked-spline-area-chart data.html[Stacked Spline Area Chart]
+* link:chart-working-with-stacked-spline-chart-data.html[Stacked Spline Chart]
+
+Rather than evenly spacing the points across the X-axis, charts that use the time-scale axis plot values across the X-axis according to the elapsed time. This allows the end user to interpret time-based data more accurately.
+
+Below is a screenshot of a line chart using a standard X-axis. Notice that the plotted points are evenly spaced across the X-axis.
+
+image::Images/WinChart_More_Time_Scale_Axis_Support_Whats_New_2006_1_01.png[time scale axis support in ultrachart]
+
+Below is a screenshot of a line chart using a time-scale axis. Notice that the values are irregularly spaced across the X-axis according to the elapsed time.
+
+image::Images/WinChart_More_Time_Scale_Axis_Support_Whats_New_2006_1_02.png[time scale axis support in ultrachart]
+
+== Related Topics
+
+link:chart-display-data-on-a-time-scale-axis.html[Display Data on a Time-Scale Axis]
+
+link:chart-display-labels-at-intervals-on-a-time-scale-axis.html[Display Labels at Intervals on a Time-Scale Axis]

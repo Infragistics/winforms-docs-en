@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-new-style-for-hottracking-cells-whats-new-20063",
+    "controlName": [],
+    "tags": [],
+    "guid": "{EE87F59F-238C-4955-BE39-515963CCE7E4}",  
+    "buildFlags": [],
+    "createdOn": "2006-10-10T16:38:55Z"
+}
+|metadata|
+////
+
+= New Style for HotTracking Cells
+
+We added a new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~cellhottrackinvalidationstyle.html[CellHottrackInvalidationStyle]"]  property to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"] . This property defines how WinGrid™ should react to HotTracking over cells. WinGrid always invalidates a cell when entering or leaving it with the mouse. This causes the cell to redraw itself. In many situations, you may find that there are actually no changes (visually or in the underlying data) taking place. In order to increase performance, you can set  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.cellhottrackinvalidationstyle.html[CellHottrackInvalidationStyle]"]  to Never and WinGrid will never invalidate a cell, which would result in WinGrid not redrawing the cell. If you have a HotTrack appearance set for the cells, you can set CellHottrackingInvalidationStyle to OnlyIfHottrackAppearance. This way WinGrid will only repaint a cell if it has its HotTracking appearance set.

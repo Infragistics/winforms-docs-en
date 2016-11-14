@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-an-image-in-a-cell-button",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{D680917A-5EBF-495D-B9B7-495E50DB05D0}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying an Image in a Cell Button
+
+The following code demonstrates how to display an image in a cell button.
+
+*In Visual Basic:*
+
+----
+Private Sub CustomersUltraGrid_InitializeLayout(ByVal sender As System.Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles CustomersUltraGrid.InitializeLayout
+	Me.CustomersUltraGrid.DisplayLayout.Bands(0).Columns(0).Style = _
+	  Infragistics.Win.UltraWinGrid.ColumnStyle.Button
+	Me.CustomersUltraGrid.DisplayLayout.Override.CellButtonAppearance.Image = _
+	  Me.ImageList1.Images(0)
+End Sub
+----
+
+*In C#:*
+
+----
+private void customersUltraGrid_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.customersUltraGrid.DisplayLayout.Bands[0].Columns[0].Style = 
+	  Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
+	this.customersUltraGrid.DisplayLayout.Override.CellButtonAppearance.Image =
+	  this.imageList1.Images[0];
+}
+----

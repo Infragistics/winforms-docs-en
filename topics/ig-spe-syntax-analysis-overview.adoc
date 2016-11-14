@@ -1,0 +1,74 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-syntax-analysis-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "ebb6a39c-f512-475f-9ca1-14f8cea8059f",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0288478Z"
+}
+|metadata|
+////
+
+= Syntax Analysis Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+|====
+
+[[_Ref349221028]]
+== Syntax Analysis
+
+[[_Ref349221033]]
+
+=== Overview
+
+The Syntax Parsing Engine performs a syntax analysis of the tokens produced by lexical analysis. The result of this analysis is a syntax tree representing the grammatical structure of the document. The syntax analysis is based on definitions of non-terminal symbols in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~nonterminalsymbols.html[Grammar.NonTerminalSymbols] collection.
+
+[[_Ref349233091]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-non-terminal-symbols.html[Non-Terminal Symbols]
+|This topic explains a grammar’s non-terminal symbols.
+
+| link:ig-spe-defining-productions.html[Defining Productions]
+|This topic explains how to create productions for a non-terminal symbol.
+
+| link:ig-spe-restrictions.html[Restrictions]
+|This topic explains the restrictions placed on grammar definitions.
+
+| link:ig-spe-ambiguities.html[Ambiguities]
+|This topic describes the ambiguities that may occur while a document is parsing and how to handle them.
+
+|====

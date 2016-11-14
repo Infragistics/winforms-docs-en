@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "winfontnameeditor-displaying-the-list-of-fonts-in-a-standard-font",
+    "controlName": ["WinFontNameEditor"],
+    "tags": ["Editing","How Do I"],
+    "guid": "{A38164A1-F7AA-4561-A2C1-1D83B10746DC}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying the List of Fonts in a Standard Font
+
+When WinFontNameEditor™ displays its list of fonts, it defaults to displaying each font name formatted using the font itself. However, you can show the font names in the standard font instead. This feature is controlled by the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrafontnameeditor~showfontnamesinfont.html[ShowFontNamesInFont]"]  property.
+
+The sample code below shows you how to turn off formatted font names.
+
+*In Visual Basic:*
+
+----
+Private Sub btnDontShow_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnDont.Click
+	Me.UltraFontNameEditor1.ShowFontNamesInFont = False
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnDontShow_Click(object sender, EventArgs e)
+{
+	this.ultraFontNameEditor1.ShowFontNamesInFont = false;
+}
+----
+
+image::images\WinFontNameEditor_Displaying_the_List_of_Fonts_in_a_Standard_Font_01.png[shows winfontnameeditor with plain text for font names]
+
+The sample code below shows you how to restore formatted font names.
+
+*In Visual Basic:*
+
+----
+Private Sub btnShow_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnShow.Click
+	Me.UltraFontNameEditor1.ShowFontNamesInFont = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnShow_Click(object sender, EventArgs e)
+{
+	this.ultraFontNameEditor1.ShowFontNamesInFont = true;
+}
+----
+
+image::images\WinFontNameEditor_Displaying_the_List_of_Fonts_in_a_Standard_Font_02.png[shows winfontnameeditor with font's styling the text in the drop-down]

@@ -1,0 +1,90 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-modified-method-signatures-whats-new-2006-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "{ACAC887E-2390-478C-B536-42D096BDCCEC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Modified Method Signatures
+
+In Infragistics Windows Forms 2006 Volume 2, several refinements were made to our controls in order to support Application Styling. Included in these refinements were several method signature changes. Below is a list of methods that were modified in this release.
+
+== Infragistics.Win.UltraWinTabs.ICustomMdiTab
+
+[options="header", cols="a,a"]
+|====
+|Member|Change
+
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintabs.icustommditab~resolveappearance.html[ResolveAppearance]"] 
+|The signature of this method was modified to also pass along the UIRole and ResolutionOrder that should be used during the resolution order. This was necessary so that the WinDockManager™ can use the appropriate role and resolution order from the WinTabbedMdiManager™.
+
+|====
+
+== Infragistics.Win.UltraWinToolbarsManager.ToolBase
+
+[options="header", cols="a,a"]
+|====
+|Member|Change
+
+|ResolveAppearancePhase
+|The signature of this protected virtual method has changed. It now passes a structure that contains the old parameters as well as role information to support Application Styling.
+
+|====
+
+== Infragistics.Win.IValueList
+
+[options="header", cols="a,a"]
+|====
+|Member|Change
+
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ivaluelist~resolveitemappearance.html[ResolveItemAppearance]"] 
+|The signature of this method has changed. It now requires the ComponentRole to be passed along to support Application Styling.
+
+|====
+
+== Infragistics.Win.UltraWinSchedule.UltraCalendarLook
+
+[options="header", cols="a,a"]
+|====
+|Member|Change
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolveappointmentappearance.html[ResolveAppointmentAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolvedayappearance.html[ResolveDayAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolvedayheaderappearance.html[ResolveDayHeaderAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolveholidayappearance.html[ResolveHolidayAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolvemonthappearance.html[ResolveMonthAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolvenoteappearance.html[ResolveNoteAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+| pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~resolveweekappearance.html[ResolveWeekAppearance]"] 
+|The signature of this method has changed. It now requires an UltraScheduleControlRoleBase instance to be passed along to support Application Styling. This object can be obtained by casting the ComponentRole property of the WinSchedule™ controls.
+
+|====
+
+== Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager
+
+[options="header", cols="a,a"]
+|====
+|Member|Change
+
+|ResolveSplitterAppearance
+|The signature of this protected virtual method has changed. It now passes the Orientation along to support Application Styling.
+
+|====

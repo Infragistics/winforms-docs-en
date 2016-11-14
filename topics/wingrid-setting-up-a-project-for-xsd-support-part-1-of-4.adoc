@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-up-a-project-for-xsd-support-part-1-of-4",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{4EE19EB4-FE2F-4F47-8796-85E07F219C0D}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting Up a Project for XSD Support (Part 1 of 4)
+
+== Setting up the Project
+
+[start=1]
+. Create a new Windows application.
+[start=2]
+. Increase the size of the form so that there is enough room to put a WinGrid™ and a few buttons.
+[start=3]
+. Next drag an UltraGrid from the Toolbox onto the form. Resize the grid to be large enough to show several rows of data. You will notice that when you added the UltraGrid to the form three references were added to the project:
+
+** {ApiPlatform}Shared.v{ProductVersion}
+** {ApiPlatform}Win.UltraWinGrid.v{ProductVersion}
+** {ApiPlatform}Win.v{ProductVersion}
+
+[start=4]
+. At the bottom of the form add three buttons, labeled "Load Data", "Enforce XSD Constraints", and "Clear XSD Constraints".
+[start=5]
+. When you build and run the application, the form should look similar to the screen shot shown below.
+
+image::Images/WinGrid_Working_with_XSD_Schema_01.png[setting up a project for xsd support]
+
+[start=6]
+. In the next section we will create the XSD schema. link:wingrid-generating-the-xsd-schema-part-2-of-4.html[Generating the XSD Schema (Part 2 of 4)]

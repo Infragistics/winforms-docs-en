@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-ipersistcomponentsettings-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{E02C3267-B377-48FA-ABDD-6133682FCF5E}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= IPersistComponentSettings
+
+This is a new interface in Visual Studio 2005 (.NET Framework 2.0), which is used to automatically serialize and deserialize a user's settings. When the SaveSettings property is set to True, the designer writes a line of code to call the object’s LoadComponentSettings method at the end of the InitializeComponent code. When the component is disposed, it invokes its SaveComponentSettings which internally calls save on the component’s ApplicationSettings instance. The implementation for actually saving the information is handled by the .NET Framework (specifically by the ApplicationSettings class). This is currently implemented in all components/controls that support saving layout information to a stream including UltraPrintDocument, UltraDockManager, UltraExplorerBar, UltraCalendarInfo, UltraCalendarLook, UltraTabbedMdiManager, UltraToolbarsManager and UltraTree.

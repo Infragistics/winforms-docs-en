@@ -1,0 +1,110 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-properties-for-configuring-a-textdocument",
+    "controlName": [],
+    "tags": [],
+    "guid": "ad5305d9-3402-422c-800f-577efbddaea5",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1238573Z"
+}
+|metadata|
+////
+
+= Properties for Configuring a TextDocument
+
+== Topic Overview
+
+=== Purpose
+
+This topic uses descriptive text to illustrate the exposed `TextDocument` class properties to enable custom configuration.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref327861013,IsReadOnly Property>>
+
+** <<_Ref326147531,Description>>
+
+* <<_Ref335122442,Language Property>>
+
+** <<_Ref335122447,Description>>
+
+* <<_Ref335122452,UndoManager Property>>
+
+** <<_Ref335122456,Description>>
+
+* <<_Ref335122461,Related Content>>
+
+** <<_Ref335122466,Topics>>
+
+[[_Append_Text_to]]
+[[_IsReadOnly_Property]]
+[[_Ref327861013]]
+[[_Ref324841253]]
+== IsReadOnly Property
+
+[[_Description]]
+
+=== Description
+
+The `IsReadOnly` property, when set to “true”, prevents the document from accepting any changes made to it.
+
+[[_Code]]
+[[_Delete_Text_from]]
+[[_Language_Property]]
+[[_Ref335122442]]
+== Language Property
+
+[[_Description_2]]
+
+The Language property identifies the code language (for example, C#, Visual Basic, etc…) that applies to a given document. If the Language property is not set it treats the document as a simple text file with no syntax rules. In this case, the property will return an instance of the PlainTextLanguage class.
+
+[[_UndoManager_Property]]
+[[_Ref335122452]]
+== UndoManager Property
+
+[[_Description_1]]
+
+The `UndoManager` property supports unlimited undo/redo of changes.
+
+.Note:
+[NOTE]
+====
+By default, each instance of a `TextDocument` creates its own instance of an UndoManager. However, this property is configurable, so it is possible to share a single instance of an `UndoManager` across multiple documents.
+====
+
+[[_Code_1]]
+[[_Insert_Text_into]]
+[[_Replace_All_Occurrences]]
+[[_Replace_a_Single]]
+[[_Replace_Text_at]]
+[[_Related_Content]]
+[[_Ref335122461]]
+== Related Content
+
+[[_Topics]]
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-textdocument-overview.html[TextDocument Overview]
+|This topic describes the Infragistics Syntax Parsing Engine’s main class, `TextDocument`, and contains links to topics that outline its most important methods, events and properties.
+
+| link:ig-spe-events-for-interacting-with-a-textdocument.html[Events for Interacting with a TextDocument]
+|This topic uses descriptive text and code snippets to illustrate the `TextDocument` class events.
+
+| link:ig-spe-methods-for-modifying-text-in-a-textdocument.html[Methods for Modifying Text in a TextDocument]
+|This topic uses descriptive text and code snippets to illustrate the `TextDocument` class methods for text modification
+
+| link:ig-spe-implementing-a-textdocument-with-a-richtextbox.html[Implementing a TextDocument with a RichTextBox]
+|This topic uses descriptive text and code snippets to illustrate how to provide use a RichTextBox control to highlight keywords in a document according to a specific language.
+
+|====

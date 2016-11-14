@@ -1,0 +1,202 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-create-a-user-control-to-apply-stylesets-at-runtime",
+    "controlName": [],
+    "tags": ["Styling","Theming"],
+    "guid": "{0367ECFB-DE49-4DC8-AB06-6276F65A8A22}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a User Control to apply StyleSets at runtime
+
+*Before You Begin*
+
+If you have ever found yourself writing code to allow your end-users to select styles at runtime, you may have noticed that you may have been repeating code across your Infragistics powered Windows Forms applications. Encapsulating this logic within a user control will allow you to place the control within one of your application’s configuration screens and instantly provide end-user styleability.
+
+*What you will accomplish*
+
+In this topic, a User control is created to allow end-users to dynamically select various AppStylist™ StyleSets and also apply a previously persisted style. By adding this User control to your application, end-users can change the style of the application.
+
+*Follow these Steps*
+
+
+. Create a project named AppStylingLib in Visual Studio® by selecting Windows Forms Control Library under Visual Studio installed Templates .
+
+. Rename the class UserControl1 which is created by default, to AppStyleUserControl for more clarity.
+
+. From the Visual Studio® Toolbox, drag and drop an UltraComboEditor, two UltraLabel controls and an UltraButton control onto your form.
+
+. Set the name of UltraComboEditor to cboStyles
+
+. Set the Text properties of the first UltraLabel to “Style Your Application”, the second UltraLabel to “Select Style” and the UltraButton to “Apply”.
+
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
++
+*In Visual Basic:*
+[source, vb]
+Imports System.IO
+Imports Infragistics.Win.AppStyling
++
+*In C#:*
+[source, csharp]
+using System.IO;
+using Infragistics.Win.AppStyling;
+
+. Define a static / shared property called StylePath of type string.
++
+*In Visual Basic:*
+[source, vb]
+Private Shared _StylePath As String = String.Empty
+'This is static so that we can set this property before we even load the user control instance. e.g., we set this property from the Main( ) method. 
+Public Shared Property StylePath() As String
+    Get
+        Return _StylePath
+    End Get
+    Set(ByVal value As String)
+        _StylePath = value
+    End Set
+End Property
++
+*In C#:*
+[source, csharp]
+private static string _StylePath = string.Empty;
+//This is static so that we can set this property before we even load the user control instance. e.g., we set this property from the Main( ) method.
+public static string StylePath
+    {
+        get { return _StylePath; }
+        set { _StylePath = value; }
+    }
+
+. Create a method called LoadUI () and write code that loads or refresh the controls on the form. Call this method from the Load event of the project so that the WinComboEditor will scan the directory you specified and populate with any style files($$*$$.isl files) during the form load itself.
++
+*In Visual Basic:*
+[source, vb]
+Me.cboStyles.Items.Clear() 
+If Directory.Exists(StylePath) Then 
+  Dim theFiles As String() = Directory.GetFiles(StylePath, "*.isl")
+    If theFiles.Length > 0 Then 
+        For Each theFile As String In theFiles 
+            Me.cboStyles.Items.Add(theFile, Path.GetFileNameWithoutExtension(theFile)) 
+        Next 
+    End If 
+  'Check to see if we have a persisted style 
+  Dim theStyle As String = AppStylingLibSettings.[Default].AppStyle.Trim()
+    If Me.cboStyles.Items.Count > 0 AndAlso theStyle.Length > 0 Then 
+'If we do, then we pre-select the style within the Combo, 
+'so that we know what style is currently applied 
+        Me.cboStyles.Value = Path.Combine(StylePath, theStyle) 
+    End If 
+End If
++
+*In C#:*
+[source, csharp]
+this.cboStyles.Items.Clear();
+if (Directory.Exists(StylePath))
+{
+    string[] theFiles = Directory.GetFiles(StylePath, "*.isl");
+    if (theFiles.Length > 0)
+    {
+        foreach (string theFile in theFiles)
+        {
+            this.cboStyles.Items.Add(theFile, Path.GetFileNameWithoutExtension(theFile));
+        }
+    }
+    //Check to see if we have a persisted style
+    string theStyle = AppStylingLibSettings.Default.AppStyle.Trim();
+    if (this.cboStyles.Items.Count > 0 && theStyle.Length > 0)
+    {
+        //If we do, then we pre-select the style within the Combo,
+        //so that we know what style is currently applied 
+        this.cboStyles.Value = Path.Combine(StylePath, theStyle);
+    }
+}
+
+. Write the following code in the button click event to load a style and persist the currently applied style.
++
+To store and retrieve the style at run time, an AppStyle property is specified in the project’s Application settings. By configuring fields in the Application settings page the AppStyle property can be retrieved dynamically.
++
+For this purpose, in the Application settings page set the Name field to AppStyle, type field to string, and Scope field to User respectively.
++
+.Note
+[NOTE]
+====
+To launch the project’s Application settings page, select the project node in Solution Explorer, and then, on the Project menu, click properties. When the Project Designer appears, click the Settings tab.
+====
++
+*In Visual Basic:*
+[source, vb]
+If Me.cboStyles.SelectedIndex <> -1 Then 
+    Dim theStyleFile As String = Me.cboStyles.SelectedItem.DataValue.ToString()
+    StyleManager.Load(theStyleFile) 
+    AppStylingLibSettings.[Default].AppStyle = Path.GetFileName(theStyleFile) 
+    AppStylingLibSettings.[Default].Save() 
+End If
++
+*In C#:*
+[source, csharp]
+if (this.cboStyles.SelectedIndex != -1)
+{
+    string theStyleFile = this.cboStyles.SelectedItem.DataValue.ToString();
+    StyleManager.Load(theStyleFile);
+    AppStylingLibSettings.Default.AppStyle = Path.GetFileName(theStyleFile);
+    AppStylingLibSettings.Default.Save();
+}
+
+. Create a method called LoadPersistedStyle and write the following code to load the style that was persisted.
++
+*In Visual Basic:*
+[source, vb]
+Dim theStyle As String = AppStylingLibSettings.[Default].AppStyle.Trim()
+If theStyle.Length > 0 Then 
+    StyleManager.Load(Path.Combine(StylePath, theStyle)) 
+End If
++
+*In C#:*
+[source, csharp]
+string theStyle = AppStylingLibSettings.Default.AppStyle.Trim();
+if (theStyle.Length > 0)
+{
+    StyleManager.Load(Path.Combine(StylePath, theStyle));
+}
+
+== Using the User Control in your Windows Forms application
+
+[start=11]
+. Write the following code in the Main() method to set the Path property (where styles can be found) ; also call the LoadPersistedStyle method to load previously applied styles when the application is loaded.
++
+*In Visual Basic:*
+[source, vb]
+'Use the static member to set things up: 
+AppStylingLib.AppStyleUserControl.StylePath = Application.StartupPath & "\Styles"
+AppStylingLib. AppStyleUserControl.LoadPersistedStyle()
++
+*In C#:*
+[source, csharp]
+//Use the static member to set things up: 
+AppStylingLib.AppStyleUserControl.StylePath = Application.StartupPath + @"\Styles";
+AppStylingLib.AppStyleUserControl.LoadPersistedStyle();
+
+. Adding Style Libraries to your Application
+
+.. Add a folder named Styles and add the $$*$$.isl files to it.
++
+.Note
+[NOTE]
+====
+To learn where StyleSets are located, please read the link:getting-started-where-files-are-placed-on-your-file-system-during-installation.html[Where Files are Placed on your File System During Installation] topic.
+====
+
+.. Click and select ALL $$*$$.isl files and set the Copy To Output Directory property to “Copy always”.
+
+. Drag and drop the AppStylingLib User control in your client application.
+
+. Save and run the application. Load the form that contains your user control. Select a Style from the combo and press the Apply button. Notice how your Infragistics powered application changes as you select and apply the different styles.
+
+The following screenshot shows a Windows form with two UltraGrid controls styled by the AppStylist™ StyleSet selected from the WinComboEditor control placed within the User Control.
+
+image::Images\AppStyling_User_Control_to_apply_StyleSets_at_Run_time.png[]

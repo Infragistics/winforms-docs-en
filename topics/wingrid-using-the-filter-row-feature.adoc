@@ -1,0 +1,222 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-the-filter-row-feature",
+    "controlName": ["WinGrid"],
+    "tags": ["Filtering","Grids","How Do I"],
+    "guid": "{5146F2C1-64E3-4145-A3C5-FCE493544B30}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the Filter Row Feature
+
+A filter row is a link:wingrid-specifying-fixed-rows.html[fixed row] in the column header area which provides the user with a means of hiding rows that do not satisfy a specified criteria. The filter row functionality allows you to display a row in which the user can type values to filter other rows by. This provides a convenient and intuitive way for the user to find a certain row or set of rows in the WinGrid™. The values typed into the filter row cells are called filter operands. The filter row can also display user interface elements for selecting filter operators. Filter operators determine how cell values are compared to filter operands during the row filtration process (such as "is greater than", "starts with", etc). Filter rows can only be fixed (i.e. never scrolled vertically out of view) in the root band of the grid.
+
+.Note
+[NOTE]
+====
+At times, you may want to filter items with special characters(e.g."A-E"). If the LIKE operator is used in combination with an operand (e.g: LIKE $$*$$-$$*$$), you may notice that the item is not filtered. In order to filter items with special characters similar to "-", it needs to be escaped by surrounding them in square brackets (e.g.LIKE $$*$$[-]$$* $$).
+====
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. To use filter rows you must first enable  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowrowfiltering.html[AllowRowFiltering]"] .
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.AllowRowFiltering = _
+  DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.AllowRowFiltering = 
+  DefaultableBoolean.True;
+----
+
+[start=3]
+. Next you can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteruitype.html[FilterUIType]"]  property, which specifies the type of user interface displayed for filtering rows. The options are to either display filter icons in the column headers or to display a filter row. The AllowRowFiltering property must be set to True in order for this property to have any effect.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterUIType = _
+  FilterUIType.FilterRow
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterUIType = 
+  FilterUIType.FilterRow;
+----
+
+[start=4]
+. You can specify when the WinGrid should apply a filter. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filterevaluationtrigger.html[FilterEvaluationTrigger]"]  specifies what must happen to cause the row filtration to occur. The default behavior is to apply the filter as soon as the user changes the value of a filter operator or operand.
+
+*In Visual Basic:*
+
+----
+' Set it to fire when the user leaves the cell
+Me.UltraGrid1.DisplayLayout.Override.FilterEvaluationTrigger = _
+  FilterEvaluationTrigger.OnLeaveCell
+----
+
+*In C#:*
+
+----
+// Set it to fire when the user leaves the cell
+this.ultraGrid1.DisplayLayout.Override.FilterEvaluationTrigger = 
+  FilterEvaluationTrigger.OnLeaveCell;
+----
+
+[start=5]
+. You can also specify the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatordefaultvalue.html[FilterOperatorDefaultValue]"]  property. This property represents the default value of the operator cells in a filter row. If operator cells are hidden, this is used as the filter operator for values entered in the associated filter operand cells. This can be overridden by each column. 'Default' is resolved to 'FilterOperatorDefaultValue'.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterOperatorDefaultValue = _
+  FilterOperatorDefaultValue.DoesNotContain
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterOperatorDefaultValue = 
+  FilterOperatorDefaultValue.DoesNotContain;
+----
+
+[start=6]
+. You can also to set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperandstyle.html[FilterOperandStyle]"]  property to specify the style of operand input displayed in the filter row cells. The 'Default' value is be resolved to 'Combo'. This can be overridden on each column using the FilterOperandStyle property.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterOperandStyle = _
+  FilterOperandStyle.DropDownList
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterOperandStyle = 
+  FilterOperandStyle.DropDownList;
+----
+
+[start=7]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatorlocation.html[FilterOperatorLocation]"]  property to specify the style of operator input displayed in the filter row cells. This can be overridden on each column using the FilterOperatorLocation property.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterOperatorLocation = _
+  FilterOperatorLocation.WithOperand
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterOperatorLocation = 
+  FilterOperatorLocation.WithOperand;
+----
+
+[start=8]
+. You also can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatordropdownitems.html[FilterOperatorDropDownItems]"]  to specify which operators should be listed in the filter operator drop down in filter rows. This is only useful if the FilterOperatorLocation is *not* set to 'Hidden'.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterOperatorDropDownItems = _
+  FilterOperatorDropDownItems.All
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterOperatorDropDownItems = 
+  FilterOperatorDropDownItems.All;
+----
+
+[start=9]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filterclearbuttonlocation.html[FilterClearButtonLocation]"]  property to specify if and where "Clear Filter" buttons are displayed in filter rows. The options are to either display them in the filter row selector, filter cells, or both. A "Filter Clear" button is used to reset the filter of a cell or an entire row.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterClearButtonLocation = _
+  FilterClearButtonLocation.Row
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterClearButtonLocation = 
+  FilterClearButtonLocation.Row;
+----
+
+[start=10]
+. One other relevant setting is the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowprompt.html[FilterRowPrompt]"]  property. This property specifies the prompt text to display in the filter row. By default the prompt is an empty string. Once the filter row is activated the prompt disappears (and reappears when it's deactivated).
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FilterRowPrompt = _
+  "Click here to filter rows..."
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FilterRowPrompt = 
+  "Click here to filter rows...";
+----
+
+You can also confine this prompt to a single cell by setting the UltraGridBand.SpecialRowPromptField.
+
+*In Visual Basic:*
+
+----
+' Where ContactTitle is the name of the column
+Me.UltraGrid1.DisplayLayout.Bands(0).SpecialRowPromptField = "ContactTitle"
+----
+
+*In C#:*
+
+----
+// Where ContactTitle is the name of the column
+this.ultraGrid1.DisplayLayout.Bands[0].SpecialRowPromptField = "ContactTitle";
+----
+
+There are four appearance settings that you can use to configure the visual style of filter rows:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearance]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearanceactive.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearanceActive]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~filtercellappearance.html[ultraGrid1.DisplayLayout.Override.FilterCellAppearance]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowselectorappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowSelectorAppearance]"] 
+
+The screen shot below shows the WinGrid using the filter row feature. The filter row has the operator user interface on the left of the operand. When clicked upon, the filter operator drop-down appears for selecting the operator. The button in the row selector is for clearing the filters of all the columns.
+
+image::Images/WinGrid_Use_the_Filter_Row_Feature_01.png[use the filter row feature in ultragrid]

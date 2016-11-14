@@ -1,0 +1,191 @@
+﻿////
+
+|metadata|
+{
+    "name": "infragistics-math-complex-numbers",
+    "controlName": ["Infragistics Math Library"],
+    "tags": ["Application Blocks","Calculations"],
+    "guid": "9cabbdd1-3b20-4b47-b5f6-bee687eb445d",  
+    "buildFlags": [],
+    "createdOn": "2011-08-01T14:05:14.7966877Z"
+}
+|metadata|
+////
+
+= Complex Numbers
+
+The Infragistics Math Library™ provides functionality for working with link:http://en.wikipedia.org/wiki/Complex_numbers[Complex Number].
+
+== Types of Complex Numbers Operations
+
+The operations supported by complex numbers fall into the following basic categories:
+
+* <<Imaginary_Unit,Creating the Imaginary Unit>>
+* <<Complex_Numbers,Creating Complex Numbers>>
+
+** <<Numbers_Using_Properties,Creating Complex Numbers Using Properties>>
+
+* <<Mathematical_Operations,Mathematical Operations (+, -, $$* $$, /, <, $$<=$$, >, >=, ==, !=)>>
+* <<Functions_With_Complex_Numbers,Using Standard Mathematical Functions With Complex Numbers>>
+
+[[Imaginary_Unit]]
+== Creating the Imaginary Unit
+
+The imaginary unit  *_i_*  can be created as a new complex number with a real part equal to 0 and an imaginary part equal to 1. The imaginary unit is also provided in the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant.html[Constant] class.
+
+*In Visual Basic:*
+
+----
+'Create the imaginary unit
+'using a new complex number.
+Dim i As New Complex(0, 1)
+'Creating the imaginary unit
+'using the I contant.
+Dim i As Complex = Constant.I
+----
+
+*In C#:*
+
+----
+//Create the imaginary unit
+//using a new complex number.
+Complex i = new Complex(0, 1);
+//Creating the imaginary unit
+//using the I contant.
+Complex i = Constant.I;
+----
+
+[[Complex_Numbers]]
+== Creating Complex Numbers
+
+Complex numbers have one constructor, specifying the real and imaginary components of the number.
+
+A less formal and less efficient way of constructing a complex number is to use the plus operator along with the imaginary unit.
+
+The following code snippet demonstrates how to create a new link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant.html[Complex] object using the constructor and the plus operator:
+
+*In Visual Basic:*
+
+----
+'Creating a complex number
+'using the constructor.
+Dim z As New Complex(1, 1)
+'Creating a complex number
+'using the plus operator.
+Dim z As Complex = 1 + 1 * Constant.I
+----
+
+*In C#:*
+
+----
+//Creating a complex number
+//using the constructor.
+Complex z = new Complex(1, 1);
+//Creating a complex number 
+//using the plus operator.
+Complex z = 1 + 1 * Constant.I;
+----
+
+The two variables titled *z* will be equivalent. The second notation is less computationally efficient because it involves the construction of link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant~i.html[Constant.I], plus an addition and multiplication operation.
+
+[[Numbers_Using_Properties]]
+== Creating Complex Numbers Using Properties
+
+Complex numbers have four properties, specifying their real and imaginary components, as well as their magnitude and phase. The following code demonstrates how to create of a complex number and use its properties to retrieve its real and imaginary parts, the magnitude, and the phase:
+
+*In Visual Basic:*
+
+----
+Dim z As New Complex(1, 1)
+Dim real As Double = z.Re
+Dim imaginary As Double = z.Im
+Dim magnitude As Double = z.Mag
+Dim phase As Double = z.Phase
+----
+
+*In C#:*
+
+----
+Complex z = new Complex(1, 1);
+double real = z.Re;
+double imaginary = z.Im;
+double magnitude = z.Mag;
+double phase = z.Phase;
+----
+
+These functions also have static versions in the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class, though with slightly different names to specify their functional forms:
+
+*In Visual Basic:*
+
+----
+Dim z As New Complex(1, 1)
+Dim real As Double = Compute.Real(z)
+Dim imaginary As Double = Compute.Imaginary(z)
+Dim magnitude As Double = Compute.Abs(z)
+Dim phase As Double = Compute.Arg(z)
+----
+
+*In C#:*
+
+----
+Complex z = new Complex(1, 1);
+double real = Compute.Real(z);
+double imaginary = Compute.Imaginary(z);
+double magnitude = Compute.Abs(z);
+double phase = Compute.Arg(z);
+----
+
+[[Mathematical_Operations]]
+== Mathematical Operations
+
+The following operations are predefined for complex numbers:
+
+* Arithmetical Operations
+
+** addition (+)
+** subtraction (-)
+** multiplication ($$* $$)
+** division (/)
+** division with remainder (%)
+
+* Comparison Operations
+
+** equal to (==)
+** not equal to (!=)
+** greater than (>)
+** less than (<)
+** greater than or equal to (>=)
+** less than or equal to ($$<=$$)
+
+[[Functions_With_Complex_Numbers]]
+== Using Standard Mathematical Functions With Complex Numbers
+
+The link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class contains static methods, which represent all of the standard mathematical functions extended to use complex numbers. Following is a code example of several mathematical functions:
+
+*In Visual Basic:*
+
+----
+Dim z As New Complex(1, 1)
+Dim sinz As Complex = Compute.Sin(z)
+Dim cosz As Complex = Compute.Cos(z)
+Dim expz As Complex = Compute.Exp(z)
+Dim logz As Complex = Compute.Log(z)
+----
+
+*In C#:*
+
+----
+Complex z = new Complex(1, 1);
+Complex sinz = Compute.Sin(z);
+Complex cosz = Compute.Cos(z);
+Complex expz = Compute.Exp(z);
+Complex logz = Compute.Log(z);
+----
+
+== Related Topics
+
+link:infragistics-math-vectors.html[Vectors]
+
+link:infragistics-math-matrices.html[Matrices]
+
+link:infragistics-math-mathematical-functions.html[Mathematical Functions]

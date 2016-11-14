@@ -1,0 +1,144 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-grammar-analysis",
+    "controlName": [],
+    "tags": [],
+    "guid": "1de4d7d6-7499-415b-a4f8-0c4118de35be",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0378487Z"
+}
+|metadata|
+////
+
+= Grammar Analysis
+
+[[_Ref350782457]]
+== Topic Overview
+
+=== Purpose
+
+This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350782459, Grammar Analysis >>
+* <<_Ref350782472, Grammar analysis summary >>
+* <<_Ref350782476, Obtain warnings >>
+* <<_Ref350782479, Related Content >>
+
+[[_Ref350782459]]
+== Grammar Analysis
+
+[[_Ref350782472]]
+
+=== Grammar analysis summary
+
+There are many things which are not allowed in a grammar definition (for more information refer to the link:ig-spe-restrictions.html[Restrictions] topic). However there are other things which are allowed but may not be what the grammar writer intended or may slow down the lexical or syntax analyzers. Below you can find the issues like this highlighted during grammar analysis and how to avoid them.
+
+[[_Ref350782476]]
+
+=== Obtain warnings
+
+To determine the issues in your grammar definition you can use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~analyze.html[Grammar.Analyze] method and you can configure the analysis by passing an instance of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions.html[GrammarAnalysisOptions].
+
+.Note
+[NOTE]
+====
+If you do not specify a `GrammarAnalysisOptions` object, the Syntax Parsing Engine will use one with the default options set.
+====
+
+The `GrammarAnalysisOptions` contains the following configurable options:
+
+properties:
+
+[options="header", cols="a,a"]
+|====
+|*Properties*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforambiguity.html[AnalyzeForAmbiguity]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[Ambiguity] warnings. This value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforcomplexnonterminalsymbol.html[AnalyzeForComplexNonTerminalSymbol]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[ComplexNonTerminalSymbol] warnings. This value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforsymbolcannotbeparsed.html[AnalyzeForSymbolCannotBeParsed]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[SymbolCannotBeParsed] warnings. This value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforunnecessarysyntaxrule.html[AnalyzeForUnnecessarySyntaxRule]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[UnnecessarySyntaxRule] warnings. This value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~complexnonterminalsymbolproductionlimit.html[ComplexNonTerminalSymbolProductionLimit]
+|The minimum number of productions a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[NonTerminalSymbol] must own before it is considered complex. This value is 100 by default.
+
+|====
+
+The return value of this method is an instance of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisresult.html[GrammarAnalysisResult], which contains the grammar and a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisresult~warnings.html[Warnings] collection containing objects of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning.html[GrammarWarning]. The `GrammarWarning` type has a descriptive link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning~message.html[Message] property of type string and a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning~type.html[Type] property of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[GrammarWarningType], which is an enumeration with the following values:
+
+[options="header", cols="a,a"]
+|====
+|*Value*|*Description*
+
+|`Ambiguity`
+|Indicates when the productions of the grammar may cause an ambiguity when parsing certain text. For more information look at the link:ig-spe-ambiguities.html[Ambiguities] topic. If an ambiguity is known to be acceptable and its warnings are cluttering the warnings produced by analyzing a grammar, they can be suppressed by setting the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[NonTerminalSymbol.SuppressAmbiguityWarnings] property to `true` on one of the non-terminal symbols involved in the ambiguity.
+
+|`ComplexNonTerminalSymbol`
+|Indicates when the rule tree for a non-terminal symbol will internally expand to over 100 productions, although this limit is configurable using the GrammarAnalysisOptions. Having complex non-terminal symbols can significantly slowdown the process of generating the syntax analyzer as well as error reporting.
+
+|`SymbolCannotBeParsed`
+|Indicates that a non-terminal symbol or significant terminal symbol defined in the grammar is not referenced directly or indirectly by the start symbol, meaning it will never have a node representing it in the syntax tree.
+
+|`UnnecessarySyntaxRule`
+|Indicates when a syntax rule is not necessary, such as: 
+
+* Using an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule] within a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]. Concatenating empty onto a sequence of symbols is the same as just having the sequence of symbols. 
+
+* Using an `EmptySyntaxRule` within an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] which is itself the child of an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]. The optional or repetition rule implies that one of the alternatives in addition to those specified is the empty rule. Specifying it is unnecessary. 
+
+* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has as its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property an instance of `RepetitionSyntaxRule`. Having a fixed number of zero or more things is the same as just having zero or more of them, so the use of the `FactorSyntaxRule` is unnecessary and the `RepetitionSyntaxRule` can just be used in its place. 
+
+|====
+
+[[_Ref350782479]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-restrictions.html[Restrictions]
+|This topic explains the restrictions placed on grammar definitions.
+
+| link:ig-spe-ambiguities.html[Ambiguities]
+|This topic describes the ambiguities that may occur while a document is parsing and how to handle them.
+
+| link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview]
+|This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====

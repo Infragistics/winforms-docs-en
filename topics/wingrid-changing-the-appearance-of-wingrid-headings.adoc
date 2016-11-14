@@ -1,0 +1,362 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-appearance-of-wingrid-headings",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{0CB7FD00-3CFF-4BD2-A859-E8326FF98990}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Appearance of WinGrid Headings
+
+== Background
+
+The WinGrid™ displays many different headings (captions), over which the developer has control of the content and appearance.
+
+== Questions
+
+* How do I change the Grid Caption appearance?
+* How do I change the appearance of the column headers?
+* How do I get the band headers to display and how do I change the band header appearance?
+
+== Solutions
+
+The answer to these questions varies based on where the heading information is found. This sample project shows how to change the appearance of most of the headings found in the UltraWinGrid.
+
+== Sample Project
+
+This sample project allows the user to click the buttons and set the corresponding heading.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+----
+
+image::Images\WinGrid_Changing_the_Appearance_of_WinGrid_Headings_01.png[changing the appearance of ultragrid's headings]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow event expands the rows in band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand rows in band 0
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand rows in band 0
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+}
+----
+
+Checkbox Events
+
+The Checkbox Events Region contains the following event handlers:
+
+* chkUseOSThemes.CheckedChanged - The code in this event sets the grid *UseOsThemes* property based on the check box value:
+
+*In Visual Basic:*
+
+----
+Private Sub chkUseOSThemes_CheckedChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles chkSupportThemes.CheckedChanged
+	' Set ultragrid1 themes based on check box value
+	If chkUseOSThemes.Checked = True Then
+		Me.UltraGrid1.UseOsThemes = DefaultableBoolean.True
+	Else
+		Me.UltraGrid1.UseOsThemes = DefaultableBoolean.False
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void chkUseOSThemes_CheckedChanged(object sender, EventArgs e)
+{	
+	// Set ultragrid1 themes based on check box value
+	if(this.chkUseOSThemes.Checked == true)
+		this.ultraGrid1.UseOsThemes = DefaultableBoolean.True;
+	else
+		this.ultraGrid1.UseOsThemes = DefaultableBoolean.False;
+}
+----
+
+Button Events
+
+The Button Events Region contains the following event handlers:
+
+* btnGridHeading.Click - The code of the Grid Heading Button Click event turns off Themes, sets the grid *Text* property and sets the back color of the grid heading area:
+
+*In Visual Basic:*
+
+----
+Private Sub btnGridHeading_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnGridHeading.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.Text = "Test Grid"
+	Me.UltraGrid1.DisplayLayout.CaptionAppearance.BackColor = Color.LightYellow
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnGridHeading_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.Text = "Test Grid";
+	this.ultraGrid1.DisplayLayout.CaptionAppearance.BackColor = Color.LightYellow;
+}
+----
+
+* btnSetBand0Heading.Click - The code of the Set Band 0 Heading Button Click event turns off Themes, turns on the Band Header, sets the caption text and sets the background color of the band heading area:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetBand0Heading_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetBand0Heading.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(0).HeaderVisible = True
+	Me.UltraGrid1.DisplayLayout.Bands(0).Header.Caption = "Band 0 Header"
+	Me.UltraGrid1.DisplayLayout.Bands(0).Header.Appearance.BackColor = _
+	  Color.LightYellow
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSetBand0Heading_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[0].HeaderVisible = true;
+	this.ultraGrid1.DisplayLayout.Bands[0].Header.Caption = "Band 0 Header";
+	this.ultraGrid1.DisplayLayout.Bands[0].Header.Appearance.BackColor = 
+	  Color.LightYellow;
+}
+----
+
+* btnSetBand1Heading.Click - The code of the Set Band 1 Heading Button Click event turns off Themes, turns on the Band Header, sets the caption text and sets the background color of the band heading area:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetBand1Heading_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetBand1Heading.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(1).HeaderVisible = True
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Caption = "Band 1 Header"
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.BackColor = _
+	  Color.LightYellow
+End Sub
+----
+
+*In C#:*
+
+----
+private void SetBand1Heading_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[1].HeaderVisible = true;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Caption = "Band 1 Header";
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.BackColor = 
+	  Color.LightYellow;
+}
+----
+
+* btnSetBand0ColumnHeaders.Click - The code of the Set Band 0 Column Headers Button Click event turns off Themes and sets the background color of the column headers for band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetBand0ColumnHeaders_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetBand0ColumnHeaders.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(0).Override.HeaderAppearance.BackColor = _
+	  Color.LightYellow
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSetBand0ColumnHeaders_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[0].Override.HeaderAppearance.BackColor = 
+	  Color.LightYellow;
+}
+----
+
+* btnSetBand1ColumnHeaders.Click - The code of the Set Band 1 Column Headers Button Click event turns off Themes and sets the background color of the column headers for band 1:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetBand1ColumnHeaders_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetBand1ColumnHeaders.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(1).Override.HeaderAppearance.BackColor = _
+	  Color.LightYellow
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSetBand1ColumnHeaders_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[1].Override.HeaderAppearance.BackColor = 
+	  Color.LightYellow;
+}
+----
+
+* btnSetOrderIDColumnHeader.Click - The code of the Set OrderID Column Header Button Click event turns off Themes, sets the column header caption text, and sets the back color of the column header area:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetOrderIDColumnHeader_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetOrderIDColumnHeader.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderID").Header.Caption = "Order ID"
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderID").Header.Appearance.BackColor = _
+	  Color.LightCoral
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSetOrderIDColumnHeader_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderID"].Header.Caption = "Order ID";
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderID"].Header.Appearance.BackColor = 
+	  Color.LightCoral;
+}
+----
+
+* btnCardViewHeader.Click - The code in the Card View Header Button Click Event turns off Themes, sets band 1 to use Card View, sets the caption field name to use the OrderID field, turns on ShowCaptions, and sets the background and foreground colors of the card caption appearance:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetCardViewHeader_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetCardViewHeader.Click
+	Me.chkUseOSThemes.Checked = False
+	Me.UltraGrid1.DisplayLayout.Bands(1).CardView = True
+	Me.UltraGrid1.DisplayLayout.Bands(1).CardSettings.CaptionField = "OrderID"
+	Me.UltraGrid1.DisplayLayout.Bands(1).CardSettings.ShowCaption = True
+	Me.UltraGrid1.DisplayLayout.Bands(1).Override.CardCaptionAppearance.BackColor = _
+	  Color.Blue
+	Me.UltraGrid1.DisplayLayout.Bands(1).Override.CardCaptionAppearance.ForeColor = _
+	  Color.White
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnCardViewHeader_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	this.ultraGrid1.DisplayLayout.Bands[1].CardView = true;
+	this.ultraGrid1.DisplayLayout.Bands[1].CardSettings.CaptionField = "OrderID";
+	this.ultraGrid1.DisplayLayout.Bands[1].CardSettings.ShowCaption = true;
+	this.ultraGrid1.DisplayLayout.Bands[1].Override.CardCaptionAppearance.BackColor = 
+	  Color.Blue;
+	this.ultraGrid1.DisplayLayout.Bands[1].Override.CardCaptionAppearance.ForeColor = 
+	  Color.White;
+}
+----
+
+* btnGroupHeader.Click - The code in the Group Header Button Click Event turns off Themes, creates a group, sets the level count to 2, applies groups and levels to the columns, and sets the background color of the group heading area:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetGroupHeader_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetGroupHeader.Click
+	Me.chkUseOSThemes.Checked = False
+	If Me.UltraGrid1.DisplayLayout.Bands(1).Groups.Exists("Orders") = True Then Exit Sub
+	Me.UltraGrid1.DisplayLayout.Bands(1).Groups.Add("Orders")
+	Me.UltraGrid1.DisplayLayout.Bands(1).LevelCount = 2
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("CustomerID").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(1).Groups("Orders")
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("CustomerID").Level = 0
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderID").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(1).Groups("Orders")
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderID").Level = 0
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("EmployeeID").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(1).Groups("Orders")
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("EmployeeID").Level = 1
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderDate").Group = _
+	  Me.UltraGrid1.DisplayLayout.Bands(1).Groups("Orders")
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns("OrderDate").Level = 1
+	Me.UltraGrid1.DisplayLayout.Bands(1).Groups("Orders").Header.Appearance.BackColor = _
+	  Color.LightSteelBlue
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnGroupHeader_Click(object sender, EventArgs e)
+{
+	this.chkUseOSThemes.Checked = false;
+	if(this.ultraGrid1.DisplayLayout.Bands[1].Groups.Exists("Orders") == true)
+		return;
+	this.ultraGrid1.DisplayLayout.Bands[1].Groups.Add("Orders");
+	this.ultraGrid1.DisplayLayout.Bands[1].LevelCount = 2;
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["CustomerID"].Group = 
+	  this.ultraGrid1.DisplayLayout.Bands[1].Groups["Orders"];
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["CustomerID"].Level = 0;
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderID"].Group = 
+	  this.ultraGrid1.DisplayLayout.Bands[1].Groups["Orders"];
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderID"].Level = 0;
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["EmployeeID"].Group = 
+	  this.ultraGrid1.DisplayLayout.Bands[1].Groups["Orders"];
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["EmployeeID"].Level = 1;
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderDate"].Group = 
+	  this.ultraGrid1.DisplayLayout.Bands[1].Groups["Orders"];
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns["OrderDate"].Level = 1;
+	this.ultraGrid1.DisplayLayout.Bands[1].Groups["Orders"].Header.Appearance.BackColor = 
+	  Color.LightSteelBlue;
+}
+----
+
+== Review
+
+This sample project shows how to manipulate the many of the headings displayed by the UltraWinGrid.

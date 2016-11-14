@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-add-items-to-winformattedtexteditors-context-menu",
+    "controlName": [],
+    "tags": ["FAQ","How Do I"],
+    "guid": "{1002F353-C88D-4A2B-B11D-F188C5348378}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T13:25:29Z"
+}
+|metadata|
+////
+
+= Add Items to WinFormattedTextEditor's Context Menu
+
+You can add a context menu to each of our controls, including WinFormattedTextEditor™. What makes WinFormattedTextEditor even more convenient is that it comes with a built in context menu which you can add items to. These  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor~contextmenuitems.html[ContextMenuItems]"]  can include dialogs, clipboard operations like cut, copy, and paste, and formatting operations like bold, italics, and underline.
+
+To modify the context menu at design time, make sure the WinFormattedTextEditor is selected and find the ContextMenuItems property in the property window. Click the drop-down arrow and select whichever items you would like to display on the context menu.
+
+The following code demonstrates how to add the bold, italics, and underline items to the context menu. These menu items will display when text is selected. Clicking the respective items will add that style to the selected text.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.FormattedLinkLabel
+...
+Me.UltraFormattedTextEditor1.ContextMenuItems = (FormattedTextMenuItems.Bold Or _
+  FormattedTextMenuItems.Italics Or FormattedTextMenuItems.Underline)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.FormattedLinkLabel;
+...
+this.ultraFormattedTextEditor1.ContextMenuItems = (FormattedTextMenuItems.Bold |
+  FormattedTextMenuItems.Italics | FormattedTextMenuItems.Underline);
+----

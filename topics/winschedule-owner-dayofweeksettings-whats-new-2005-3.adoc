@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-owner-dayofweeksettings-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{9928B779-D37E-42F0-BD3A-E79F3E2B7E7C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Owner DayOfWeekSettings
+
+The Infragistics Windows Forms 2005 Volume 3 Owner DayOfWeekSettings feature is realized through a collection property which is exposed by the existing  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"]  class:  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings.html[DayOfWeekSettings]"] . Like the WinCalendarInfo™ component's  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~daysofweek.html[DaysOfWeek]"]  collection, it contains seven members, each representing a particular day of the week. The members of this DayOfWeekSettings collection are of type DayOfWeekSettings, an object which also exposes three properties named  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslotsettings~isworkday.html[IsWorkDay]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings~workdaystarttime.html[WorkDayStartTime]"] , and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweeksettings~workdayendtime.html[WorkDayEndTime]"] .
+
+The WinDayView™ control, in emulation of MS Outlook, uses different colors for its  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~timeslots.html[TimeSlots]"]  based on whether the time division the slot represents falls within "working hours" - previously defined exclusively by the WinCalendarInfo's DaysOfWeek collection member for that day of the week. With Infragistics Windows Forms 2005 Volume 3's Owner DayOfWeekSettings feature, an additional layer is added to this process, which is applicable when the WinDayView control is displaying Owners separately.
+
+When determining whether a TimeSlot falls within "working hours", the TimeSlot area first evaluates whether it is displaying Owners separately. If it is, the DayOfWeekSettings object for the day of the week in question is obtained from the owner's DayOfWeekSettings collection.The IsWorkDay property of that object is queried; if its value is 'Default', the IsWorkDay property of the corresponding member of the WinCalendarInfo's DaysOfWeek collection is queried, which makes the final determination. If the value of the IsWorkDay property is set to false on either object, the TimeSlot is said to fall in "non-working hours", and the appearances which are specific to non-working hours are applied.
+
+In the case where the IsWorkDay property evaluates to true, the WorkDayStartTime and WorkDayEndTime properties are then queried to determine whether the time division represented by that TimeSlot falls within working hours. If, for example, the WorkDayStartTime property is set to 10AM, and the WorkDayEndTime property is set to 3PM, the TimeSlots which fall in the range of 10AM through 2:59PM are colored as working hour TimeSlots, and all others are colored as non-working hour TimeSlots. The WorkDayStartTime and WorkDayEndTime properties are checked in the same manner as the IsWorkDay property in the preceding paragraph; the owner-specific setting takes precedence, while the WinCalendarInfo's DaysOfWeek collection member makes the final determination.
+
+image::Images/WinSchedule_How_To_Set_Working_Hours_For_An_Owner_03.png[owner day of week settings in ultracalendarinfo]
+
+_The lighter-colored TimeSlots represent the working hours._ 
+
+== Related Topic:
+
+link:windayview-setting-different-working-hours-for-different-owners.html[Setting Different Working Hours for Different Owners]

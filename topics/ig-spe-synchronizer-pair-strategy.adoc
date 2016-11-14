@@ -1,0 +1,119 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-synchronizer-pair-strategy",
+    "controlName": [],
+    "tags": [],
+    "guid": "31867182-5782-4308-98fb-6d47f31eacd6",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0778527Z"
+}
+|metadata|
+////
+
+= Synchronizer Pair Strategy
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the synchronizer pair error handling strategy.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-errors.html[Syntax Errors]
+|This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349636863, Synchronizer Pair Strategy >>
+* <<_Ref349636866, Overview >>
+* <<_Ref349579066, Related Content >>
+
+[[_Ref349636863]]
+== Synchronizer Pair Strategy
+
+[[_Ref349636866]]
+
+=== Overview
+
+The synchronizer pair strategy is similar to the synchronizer symbol strategy, although instead of using a single symbol to synchronize the parser to the token stream, it uses a pair of symbols. It is used whenever the presence of one symbol followed by another unambiguously determines the next position in a production being constructed. A good example of this is in Visual Basic. Most block structures in Visual Basic end with “End <X>” where <X> is the structure being ended. For example, consider this simple Visual Basic program:
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Class X
+    ReadOnly Property A
+        Get
+            Return Nothing
+        End Get
+    End Property
+End Class
+----
+
+There are a bunch of ended blocks here and they are ended with “End Get”, “End Property”, and “End Class”. If one of those is omitted by accident, the parser should be able to figure out what structures are being ended by the other endings. So let’s say the user forgot to type “End Get” or just hasn’t gotten to it yet:
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Class X
+    ReadOnly Property A
+        Get
+            Return Nothing
+    End Property
+End Class
+----
+
+If the synchronizer symbol error handling strategy were to handle this error, it would detect an error at the keyword “Property” on line 5. At this point, it would report two errors:
+
+* “Get” expected
+* “End” expected
+
+The first error indicates the user forgot to type “Get” after the “End” keyword to close the get accessor. The second error indicates that “End” is missing in the “End Property” that was expected (because the actual “End” keyword was used to close the get accessor). Intuitively, it is obvious that this is not ideal. “End Property” should really be treated as a logical unit.
+
+This is where the synchronizer pair error handling strategy can be used. To enable this strategy, the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[Symbol.IsStartOfErrorRecoveryPair] property should be set to True on the terminal symbol representing the “End” keyword. Now if an error occurs and the last created node for the syntax tree is associated with the “End” keyword, the parser will see if any productions being constructed at the time of the error were expecting “End” followed by “Property”. The production representing a property declaration would indicate that is was, so the get accessor will be completed automatically by filling in the missing “End Get” structure and a single error message can be reported which says ‘“End Get” expected’.
+
+[[_Ref349579066]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[cols="a,a"]
+|====
+| link:ig-spe-synchronizer-symbol-strategy.html[Synchronizer Symbol Strategy]
+|This topic explains the synchronizer symbol error handling strategy.
+
+| link:ig-spe-error-production-strategy.html[Error Production Strategy]
+|This topic explains the error production error handling strategy.
+
+| link:ig-spe-backtracking-strategy.html[Backtracking Strategy]
+|This topic explains the backtracking error handling strategy.
+
+|====

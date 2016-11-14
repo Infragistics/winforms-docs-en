@@ -1,0 +1,87 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-generate-grammar-from-an-ebnf-file",
+    "controlName": [],
+    "tags": [],
+    "guid": "6bc59cbd-1079-4af6-9f70-47d1cc8fa456",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0918541Z"
+}
+|metadata|
+////
+
+= Generate Grammar From an EBNF File
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the process of creating a grammar from EBNF content.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview]
+|This topic gives an overview of the EBNF file format used to define a grammar.
+
+|====
+
+== Process Overview
+
+=== Overview
+
+You can create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from an EBNF file using the static methods of the `Grammar` class:
+
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~loadebnf(stream,encoding).html[Grammar.LoadEbnf] - Create a grammar from stream, which contains the EBNF
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~loadebnf(string).html[Grammar.LoadEbnf] - Create a grammar from string, which contains the EBNF
+
+Both these methods return an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult.html[EbnfLoadResult] instance, which has the following properties:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~errors.html[Errors]
+|A collection of link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloaderror.html[EbnfLoadError] instances, which will be empty if `Success` is `true` and non-empty if `Success` is `false.` Each `EbnfLoadError` describes a different error with the EBNF file.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~grammar.html[Grammar]
+|The `Grammar` instance which was created if Success is `true`. This will be `Null` is `Success` is `false`.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~success.html[Success]
+|Indicates whether the EBNF file was successfully loaded. If `true`, the `Grammar` property will be the `Grammar` instance created from the file. If `false`, `Errors` will contain one or more errors describing the problems with the document.
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-special-sequence-format.html[Special Sequence Format]
+|This topic explains the format of the special sequence sections in the EBNF file used to configure the grammar.
+
+| link:ig-spe-ebnf-specification-deviations.html[EBNF Specification Deviations]
+|This topic explains the deviations from the ISO 14977 specification in the EBNF format used by the Syntax Parsing Engine.
+
+| link:ig-spe-generate-ebnf-file-from-a-grammar.html[Generate EBNF File From a Grammar]
+|This topic explains the process of creating EBNF content from a grammar.
+
+|====

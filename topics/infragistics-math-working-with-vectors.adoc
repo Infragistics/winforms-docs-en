@@ -1,0 +1,475 @@
+﻿////
+
+|metadata|
+{
+    "name": "infragistics-math-working-with-vectors",
+    "controlName": ["Infragistics Math Library"],
+    "tags": ["Application Blocks","Calculations"],
+    "guid": "06886099-1ac2-4c7a-9469-9200d7e310bb",  
+    "buildFlags": [],
+    "createdOn": "2011-08-01T14:13:46.7818811Z"
+}
+|metadata|
+////
+
+= Working With Vectors
+
+The instance methods in link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] are all concerned with the size component of a vector. They determine whether the vector is empty, has one element, is a row or column vector, is two-dimensional, or is a square data structure.
+
+This topics demonstrates how to use link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances, but it applies to all vector types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexVector].
+
+== Types of Vector Operations
+
+The operations supported by vectors fall into the following basic categories:
+
+* <<Indexing,Indexing>>
+* <<Arithmetical,Arithmetical Operations (+, -, $$*$$, /, %) – *Vector* and *ComplexVector* only>>
+* <<Logical,Logical Operations (!, &, |) – *BooleanVector* only>>
+* <<Comparison,Comparison Operations (<, $$<=$$, >, >=, ==, !=)>>
+* <<Unitary,Unitary Vector Operations>>
+
+[[Indexing]]
+== Indexing
+
+Indexing retrieves the elements at specified positions in a vector.
+
+== Indexing as Array (Default)
+
+In Infragistics Math Library, vectors can be indexed as arrays:
+
+*In Visual Basic:*
+
+----
+'Create a new vector.
+Dim x As New Vector(1, 10)
+'Get the first element of the vector.
+Dim c As Double = x(0)
+'Set the first element of the vector.
+x(0) = 2
+----
+
+*In C#:*
+
+----
+//Create a new vector.
+Vector x = new Vector(1, 10);
+//Get the first element of the vector.
+double c = x[0];
+//Set the first element of the vector.
+x[0] = 2;
+----
+
+== Indexing With Vectors
+
+When indexing a vector, another vector can provide the required indices. The code below creates a vector with values and a vector with indices. A third vector is later created storing elements from first vector at the positions of the values of the second vector. This type of indexing can be used not only to retrieve values but to set values as well.
+
+*In Visual Basic:*
+
+----
+'Create a new vector.
+Dim v As Vector = New Double() {1, 2, 3, 4, 5}
+'Create a new vector, which
+'will hold the indices for the first
+'vector.
+Dim ind As Vector = New Double() {0, 2, 4}
+Dim result As Vector = v(ind)
+'The new vector 'result' will hold the elements from
+'the vector 'v', which are at positions 0, 2 and 4.
+----
+
+*In C#:*
+
+----
+//Create a new vector.
+Vector v = new double[] { 1, 2, 3, 4, 5 };
+//Create a new vector, which
+//will hold the indices for the first
+//vector.
+Vector ind = new double[] { 0, 2, 4 };
+Vector result = v[ind];
+//The new vector 'result' will hold the elements from
+//the vector 'v', which are at positions 0, 2 and 4.
+----
+
+== Two-Dimensional Indexing
+
+Vectors can also be indexed as matrices – they can be indexed two-dimensionally, but one of the indices must be 0 depending on the orientation (row or column vector).
+
+*In Visual Basic:*
+
+----
+'Indexing a row vector.
+'Create a new row vector.
+Dim rowVector As New Vector(VectorType.Row, 0, 1, 2, 3, 4)
+'Get the element at the first column of the row.
+Dim c0 As Double = rowVector(0, 0)
+'Get the element at the second column of the row.
+Dim c1 As Double = rowVector(0, 1)
+'Get the element at the third column of the row.
+Dim c2 As Double = rowVector(0, 2)
+'Indexing a column vector.
+'Create a new column vector.
+Dim columnVector As New Vector(VectorType.Row, 0, 1, 2, 3, 4)
+'Get the element at the first row of the column.
+Dim r0 As Double = columnVector(0, 0)
+'Get the element at the second row of the column.
+Dim r1 As Double = columnVector(1, 0)
+'Get the element at the third row of the column.
+Dim r2 As Double = columnVector(2, 0)
+----
+
+*In C#:*
+
+----
+//Indexing a row vector.
+//Create a new row vector.
+Vector rowVector = new Vector(VectorType.Row, 0, 1, 2, 3, 4);
+//Get the element at the first column of the row.
+double c0 = rowVector[0, 0]; 
+//Get the element at the second column of the row.
+double c1 = rowVector[0, 1]; 
+//Get the element at the third column of the row.
+double c2 = rowVector[0, 2]; 
+//Indexing a column vector.
+//Create a new column vector.
+Vector columnVector = new Vector(VectorType.Row, 0, 1, 2, 3, 4);
+//Get the element at the first row of the column.
+double r0 = columnVector[0, 0]; 
+//Get the element at the second row of the column.
+double r1 = columnVector[1, 0]; 
+//Get the element at the third row of the column.
+double r2 = columnVector[2, 0];
+----
+
+[[Arithmetical]]
+== Arithmetical Operations
+
+Arithmetical operation are supported for Vector and ComplexVector.
+
+== Supported Operations
+
+Infragistics Math Library’s vectors support the following arithmetical operations:
+
+* addition (+)
+* subtraction (-)
+* multiplication ($$* $$)
+* division (/)
+* division with remainder (%)
+
+All the standard arithmetical operations for matrices are defined also for vectors – multiplication and division are computed by multiplying of dividing corresponding elements (as addition and subtraction).
+
+== Requirements
+
+As with matrices, the vectors need to be of the same dimensions. For example a row vector and a column vector cannot be used in arithmetical operations (if they are used, an exception will be thrown).
+
+== Code Examples
+
+=== Adding Two Row Vectors
+
+The following code example adds two row vectors:
+
+*In Visual Basic:*
+
+----
+Dim a As New Vector(VectorType.Row, 1, 2, 3, 4)
+Dim b As New Vector(VectorType.Row, 1, 5, 4, 1)
+Dim c As Vector = a + b
+'a { 1  2  3  4 }
+'    +  +  +  + 
+'b { 1  5  4  1 }
+'    =  =  =  =
+'c { 2  7  7  5 }
+----
+
+*In C#:*
+
+----
+Vector a = new Vector(VectorType.Row, 1, 2, 3, 4);
+Vector b = new Vector(VectorType.Row, 1, 5, 4, 1);
+Vector c = a + b; 
+//a { 1  2  3  4 }
+//    +  +  +  + 
+//b { 1  5  4  1 }
+//    =  =  =  =
+//c { 2  7  7  5 }
+----
+
+=== Subtracting a Double from a Vector
+
+The following example subtracts a double from a vector. This means that the number is going to be subtracted from all elements of the vector.
+
+*In Visual Basic:*
+
+----
+Dim a As New Vector(VectorType.Row, 1, 2, 3, 4)
+Dim c As Vector = a - 1
+'a { 1  2  3  4 }
+'    -  -  -  - 
+'  { 1  1  1  1 }
+'    =  =  =  =
+'c { 0  1  2  3 }
+----
+
+*In C#:*
+
+----
+Vector a = new Vector(VectorType.Row, 1, 2, 3, 4);
+Vector c = a - 1; 
+//a { 1  2  3  4 }
+//    -  -  -  - 
+//  { 1  1  1  1 }
+//    =  =  =  =
+//c { 0  1  2  3 }
+----
+
+[[Logical]]
+== Logical Operations
+
+The logical operations are defined for BooleanVector.
+
+The logical NOT is executed on each element of the Boolean vector. The logical AND and OR are executed on the counterpart elements of the two vectors. As a result of the logical operations, a new Boolean vector is returned.
+
+== Supported Operations
+
+* AND (&)
+* OR (|)
+* NOT (!)
+
+== Requirements
+
+As with matrices, the vectors need to be of the same dimensions. For example, a row vector and a column vector cannot be used in logical operations. (If they are used, an exception will be thrown.)
+
+== Code Example
+
+The following code snippet demonstrates the use of the logical operations for link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector]:
+
+*In Visual Basic:*
+
+----
+Dim x As BooleanVector = New Boolean() {True, True, False, False}
+Dim y As BooleanVector = New Boolean() {True, False, True, False}
+'NOT
+Dim NOT_x As BooleanVector = Not x
+'{ false, false, true, true }
+'AND
+Dim x_AND_y As BooleanVector = x And y
+'{ true, false, false, false }
+'OR
+Dim x_OR_y As BooleanVector = x Or y
+'{ true, true, true, false }
+----
+
+*In C#:*
+
+----
+BooleanVector x = new bool[] { true, true, false, false };
+BooleanVector y = new bool[] { true, false, true, false };
+//NOT
+BooleanVector NOT_x = !x;
+//{ false, false, true, true }
+//AND
+BooleanVector x_AND_y = x & y;
+//{ true, false, false, false }
+//OR
+BooleanVector x_OR_y = x | y;
+//{ true, true, true, false }
+----
+
+A logical operation can also be performed between a Boolean vector and a Boolean variable – the operation is going to be computed between each element of the vector and the variable.
+
+[[Comparison]]
+== Comparison Operations
+
+== Supported Operations
+
+Infragistics Math Library’s matrices support the following operations for comparison:
+
+* equal to (==)
+* not equal to (!=)
+* greater than (>)
+* less than (<)
+* greater than or equal to (>=)
+* less than or equal to ($$<=$$)
+
+The == and != operators compare the elements and the dimensions of the vector and return a Boolean value.
+
+The <, $$<=$$, >, and >= operators compare the corresponding values in the vectors. These operators return a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] instance and are defined only for link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVectovr].
+
+== *Requirements*
+
+As with matrices, the vectors need to be of the same dimensions. This means that a row vector and a column vector cannot be compared (if they are compared, an exception will be thrown).
+
+== Code Examples
+
+=== Comparing Vectors to Values
+
+Since double and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complex.html[Complex] can be compared, link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVector] are also comparable to each other and to double and Complex.
+
+link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] can be compared also to a Boolean value. The following code snippet compares different vectors to values:
+
+*In Visual Basic:*
+
+----
+Dim a As Vector = New Double() {1, 2, 3, 4, 5}
+Dim a1 As BooleanVector = a > 3
+'a1 = { false, false, false, true, true }
+Dim b As BooleanVector = New Boolean() {True, False, True}
+Dim b1 As BooleanVector = b <> True
+'b1 = { false, true, false }
+----
+
+*In C#:*
+
+----
+Vector a = new double[] { 1, 2, 3, 4, 5 };
+BooleanVector a1 = a > 3;
+//a1 = { false, false, false, true, true }
+BooleanVector b = new bool[] { true, false, true};
+BooleanVector b1 = b != true;
+//b1 = { false, true, false }
+----
+
+=== Comparing Vectors
+
+The following example compares two vectors:
+
+*In Visual Basic:*
+
+----
+Dim x1 As New Vector(1, 10)
+Dim x2 As New Vector(1, 10)
+Dim areEqual As Boolean = x1 = x2
+'True – the dimensions and the elements
+'of x1 and x2 are equal.
+----
+
+*In C#:*
+
+----
+Vector x1 = new Vector(1, 10);
+Vector x2 = new Vector(1, 10);
+bool areEqual = x1 == x2; 
+//True – the dimensions and the elements
+//of x1 and x2 are equal.
+----
+
+=== Storing the Result of the Comparison
+
+The following code compares two link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances and stores the result in a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] instance:
+
+*In Visual Basic:*
+
+----
+Dim a As Vector = New Double() {1, 2, 3}
+Dim b As Vector = New Double() {2, 1, -1}
+Dim c As BooleanVector = a > b
+'a {   1    2    3 }
+'      >    >    >
+'b {   2    1    -1}
+'      =    =    =
+'c { False True True }
+----
+
+*In C#:*
+
+----
+Vector a = new double[] { 1, 2, 3 };
+Vector b = new double[] { 2, 1, -1 };
+BooleanVector c = a > b;
+//a {   1    2    3 }
+//      >    >    >
+//b {   2    1    -1}
+//      =    =    =
+//c { False True True }
+----
+
+=== Indexing a Vector with the Comparison Results
+
+Comparison operators can be used as inputs to the vector indexer. The code below compares all elements of the vector *x* to 7 and uses the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute~find.html[Find] method of the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class to get the indices of all elements that are greater than 7. These indices can be later used to get the values from *x* .
+
+*In Visual Basic:*
+
+----
+'Get the elements greater than 7.
+Dim x As Vector = New Double() {5, 6, 7, 8, 9, 10}
+Dim b As BooleanVector = x > 7
+Dim ind As Vector = Compute.Find(b)
+Dim greaterThan7 As Vector = x(ind)
+'Equivalent.
+Dim x As Vector = New Double() {5, 6, 7, 8, 9, 10}
+Dim greaterThan7 As Vector = x(Compute.Find(x > 7))
+----
+
+*In C#:*
+
+----
+//Get the elements greater than 7.
+Vector x = new double[] { 5, 6, 7, 8, 9, 10 };
+BooleanVector b = x > 7;
+Vector ind = Compute.Find(b);
+Vector greaterThan7 = x[ind];
+//Equivalent.
+Vector x = new double[] { 5, 6, 7, 8, 9, 10 };
+Vector greaterThan7 = x[Compute.Find(x > 7)];
+----
+
+[[Unitary]]
+== Unitary Vector Operations
+
+Unitary vectors are both row and column vectors. Note that doubles can be implicitly converted to unitary vectors. The following code snippet demonstrates various operations with unitary vectors:
+
+*In Visual Basic:*
+
+----
+'Creating a unitary vector.
+Dim x As Vector = 1
+'Unitary Vectors are not empty.
+Dim isEmpty As Boolean = x.IsEmpty()
+'false
+'Unitary Vectors have one element.
+Dim isUnitary As Boolean = x.IsUnitary()
+'true
+'Unitary Vectors have a unitary first dimension.
+Dim isRow As Boolean = x.IsRow()
+'true
+'Unitary Vectors have a unitary second dimension.
+Dim isColumn As Boolean = x.IsColumn()
+'true
+'Unitary Vectors are two-dimensional.
+Dim isTwoDimensional As Boolean = x.IsTwoDimensional()
+'true
+'Unitary Vectors have two equal dimensions.
+Dim isSquare As Boolean = x.IsSquare()
+'true
+----
+
+*In C#:*
+
+----
+//Creating a unitary vector.
+Vector x = 1;
+//Unitary Vectors are not empty.
+bool isEmpty = x.IsEmpty(); //false
+//Unitary Vectors have one element.
+bool isUnitary = x.IsUnitary(); //true
+//Unitary Vectors have a unitary first dimension.
+bool isRow = x.IsRow(); //true
+//Unitary Vectors have a unitary second dimension.
+bool isColumn = x.IsColumn(); //true
+//Unitary Vectors are two-dimensional.
+bool isTwoDimensional = x.IsTwoDimensional(); //true
+//Unitary Vectors have two equal dimensions.
+bool isSquare = x.IsSquare(); //true
+----
+
+== Related Topics
+
+link:infragistics-math-creating-vectors.html[Creating Vectors]
+
+link:infragistics-math-complex-numbers.html[Complex Numbers]
+
+link:infragistics-math-matrices.html[Matrices]
+
+link:infragistics-math-mathematical-functions.html[Mathematical Functions]
+
+link:infragistics-math-api-overview.html[API Overview]

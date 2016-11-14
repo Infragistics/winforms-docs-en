@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatetimeeditor-adding-selected-dates-to-wintree",
+    "controlName": ["WinDateTimeEditor"],
+    "tags": ["How Do I"],
+    "guid": "{48B03CA1-28CF-44CE-9353-F699CB457348}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Selected Dates to WinTree
+
+With WinDateTimeEditor™, you can choose a date which can then be used as a text string. When the button is selected a drop-down calendar similar to the one used in Outlook® displays. The user can click on any date in the calendar. When a date is clicked, the WinDateTimeEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor~value.html[Value]"]  property is returned.
+
+The following example code uses the WinDateTimeEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor~valuechanged_ev.html[ValueChanged]"]  event to add the newly selected date and time as a  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode.html[Node]"]  in the WinTree™.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraDateTimeEditor1_ValueChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles UltraDateTimeEditor1.ValueChanged
+	Me.UltraTree1.Nodes.Add(Me.UltraDateTimeEditor1.Value.ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraDateTimeEditor1_ValueChanged(object sender, System.EventArgs e)
+{
+	this.ultraTree1.Nodes.Add(this.ultraDateTimeEditor1.Value.ToString());
+}
+----
+
+When you select a new date from the drop-down calendar, the selected date is added to the WinTree.
+
+image::images\WinDateTimeEditor_Adding_Selected_Dates_to_WinTree_01.png[shows windatetimeeditor values creating nodes in the wintree]

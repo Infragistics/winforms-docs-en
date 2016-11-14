@@ -1,0 +1,84 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-configuring-initial-sort-order",
+    "controlName": [],
+    "tags": [],
+    "guid": "f68935b0-54bf-4422-bc76-1c9a6d6516df",  
+    "buildFlags": [],
+    "createdOn": "2014-01-21T18:47:25.0832377Z"
+}
+|metadata|
+////
+
+= Configuring Initial Sort Order
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview about setting initial sort order on the  _WinGrid_™ columns.
+
+== Choosing Initial Sort Order
+
+=== Overview
+
+This feature provides the user with the option of applying a predefined sort order upon their first interaction. In some cases the initial order; when the user clicks on the column header first time; is essential for the user’s preference on how to present the order of the data, and therefore we added a property of type `SortDirection` `Enum` called link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~initialsortdirection.html[InitialSortDirection], which by defaults is in  _Ascending_   order, can be used to choose initial sort order. This property is added to link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride_members.html[UltraGridOverride] class and to link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn] class in order to allow developers to choose a sort order for all columns as well as by column level.
+
+Available options for initial sort order are:
+
+*  _Ascending_  
+*  _Default_   ( _Ascending_  )
+*  _Descending_  
+
+The following example applies to all columns, meaning clicking on any of the column header first time; the columns will be sorted in  _Ascending_   order.
+
+*In C#:*
+
+[source,csharp]
+----
+ultraGrid1.DisplayLayout.Override.InitialSortDirection = SortDirection.Ascending;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraGrid1.DisplayLayout.Override.InitialSortDirection = SortDirection.Ascending
+----
+
+The following example applies to a specific column.
+
+*In C#:*
+
+[source,csharp]
+----
+ultraGrid1.DisplayLayout.Bands[0].Columns[2].InitialSortDirection = SortDirection.Ascending;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ultraGrid1.DisplayLayout.Bands(0).Columns(2).InitialSortDirection = SortDirection.Ascending
+----
+
+[[_Ref370929790]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wingrid-using-wingrid.html[Using WinGrid]
+|This section provides direct links to 
+
+== related topic
+.
+
+|====

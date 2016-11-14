@@ -1,0 +1,53 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-embed-different-editors-within-wingrid-cells-of-the-same-column",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["How Do I"],
+    "guid": "{E6F788BA-7E87-4679-BC98-BB3D290C8BDA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Embed Different Editors within WinGrid Cells of the Same Column
+
+The WinGrid™  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  object’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~editor.html[Editor]"]  property allows you to specify a different editor control on a cell-by-cell basis. Traditionally, developers would handle the WinGrid control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializerow_ev.html[InitializeRow]"]  event to test for certain conditions and then provide a specific editor for each cell within a particular column. A simple example of this would be to have a data source where one column’s data type can vary on a cell-by-cell basis. The cell of the first row may be a numeric and the cell of the second row may be a Boolean. You would then write code to specify a numeric editor for the first UltraGridCell and then specify a checkbox editor for the next UltraGridCell. With WinControlContainerEditor™, you can take this concept to the next level by specifying a combination pair of editing/rendering controls on a cell-by-cell basis.
+
+This topic shows you how various controls like the Microsoft® .NET ProgressBar, TrackBar and Infragistics WinGauge™ are embedded within different cells of the same WinGrid column.
+
+It is assumed that a WinGrid control bound to the Products table of the Northwind database is dropped onto the form along with two WinControlContainerEditor components, a ProgressBar, TrackBar, and Infragistics WinGauge control. For information on setting up WinControlContainerEditor, please see the link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-ultracontrolcontainereditor-component.html[Embed Any Control within WinGrid Cell using UltraControlContainerEditor Component] topic. Write the following code within the IntializeLayout event of the WinGrid control.
+
+.Note
+[NOTE]
+====
+*Note:* Please see the link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-controlcontainereditor-object.html[Embed Any Control within WinGrid Cell using ControlContainerEditor Object] topic for information about the Editor class (used in the following code) that sets up the WinGauge control with the ControlContainerEditor Object.
+====
+
+*In Visual Basic:*
+
+----
+e.Layout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFixed 
+Me.ultraControlContainerEditor1.RenderingControl = Me.progressBar1 
+Me.ultraControlContainerEditor2.RenderingControl = Me.trackBar1 
+Me.ultraGrid1.Rows(6).Cells(6).EditorComponent = Me.ultraControlContainerEditor1 
+Me.ultraGrid1.Rows(7).Cells(6).EditorComponent = Me.ultraControlContainerEditor2 
+Dim editor As New Editor(Me.ultraGauge1, Me.numericUpDown1)
+Me.ultraGrid1.Rows(8).Cells(6).Editor = editor
+----
+
+*In C#:*
+
+----
+e.Layout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.AutoFixed;
+this.ultraControlContainerEditor1.RenderingControl = this.progressBar1;
+this.ultraControlContainerEditor2.RenderingControl = this.trackBar1;
+this.ultraGrid1.Rows[6].Cells[6].EditorComponent = this.ultraControlContainerEditor1;
+this.ultraGrid1.Rows[7].Cells[6].EditorComponent = this.ultraControlContainerEditor2;
+Editor editor = new Editor(this.ultraGauge1, this.numericUpDown1);
+this.ultraGrid1.Rows[8].Cells[6].Editor = editor;
+----
+
+image::Images\WinControlContainerEditor_Embedding_different_Editors_within_a_particular_WinGrid_Column_01.png[]

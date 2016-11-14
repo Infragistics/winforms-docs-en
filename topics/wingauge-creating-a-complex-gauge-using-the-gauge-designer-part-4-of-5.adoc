@@ -1,0 +1,76 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-4-of-5",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{941B3D4C-49FE-4154-8553-968A431956F5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Complex Gauge Using the Gauge Designer Part 4 of 5
+
+This topic is a continuation of link:wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-3-of-5.html[Creating a Complex Gauge Using the Gauge Designer Part 3 of 5]. This procedure guides you through the process of adding a new scale and range to the existing Radial gauge.
+
+[start=1]
+. In the Gauge Explorer, expand Scales.
+[start=2]
+. Click Add Scale... and select New Scale.
+
+.Note:
+[NOTE]
+====
+since the scale in this step is not for displaying tick marks use the following configurations to remove the unnecessary visual elements.
+====
+
+** On the Scales Labels appearance, set the color brush to Transparent.
+** On the Major Tickmarks, set the Extent and Width properties to zero.
+
+[start=3]
+. In the Properties panel, click the link:wingauge-scale-layout-tab.html[Scale Layout tab]. In the link:wingauge-sweep-angle-pane.html[Sweep Angle pane], set the following properties:
+
+** Start -- 160
+** End -- 380
+
+[start=4]
+. In the link:wingauge-axis-pane.html[Axis pane] of the Scale Layout tab, set the following properties:
+
+** End Value -- 120.00
+** Start Value -- 0.00
+** Tickmark Interval -- 1.0
+
+[start=5]
+. In the Gauge Explorer, expand Ranges.
+[start=6]
+. Click Add Range... and select New Range.
+[start=7]
+. In the Value pane of the Range Layout tab, set the following properties:
+
+** Start -- 0.00
+** End -- 50.00
+
+[start=8]
+. In the Extent pane of the Range Layout tab, set the following properties:
+
+** Inner Start -- 51
+** Inner End -- 51
+** Outer -- 61
+
+[start=9]
+. Click the Appearance tab. In the Brush pane, add the following brush elements with the specified properties:
+
+** link:wingauge-simple-gradient-brush-element.html[Simple Gradient brush element]
+
+*** StartColor -- Color = Color.FromArgb(232, 0, 154)
+*** EndColor -- Color = Transparent
+*** Gradient Style -- BackwardDiagonal
+
+image::Images/Creating_a_Complex_Gauge_Part_4_Image_1.png[]
+
+== Related Topic
+
+link:wingauge-creating-a-complex-gauge-using-the-gauge-designer-part-5-of-5.html[Creating a Complex Gauge Using the Gauge Designer Part 5 of 5]

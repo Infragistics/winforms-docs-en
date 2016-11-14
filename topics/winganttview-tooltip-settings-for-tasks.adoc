@@ -1,0 +1,93 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-tooltip-settings-for-tasks",
+    "controlName": ["WinGanttView"],
+    "tags": ["How Do I"],
+    "guid": "{472B3D69-5A77-46A6-96B9-E778BBBE0C0D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Tooltip Settings for Tasks
+
+This topic demonstrates the various tooltip customization options available for tasks displayed in the WinGanttView™ control. Tooltips are displayed for tasks that are visible in the chart area of the control. The tooltip settings exist within the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinesettings.html[TimelineSettings] object of the control. For more information on adding tasks to GanttView please see the link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView] topic.
+
+The following code assumes that you have an UltraGanttView control dropped onto the form that displays parent and child tasks.
+
+*In Visual Basic:*
+
+----
+' Tooltip settings for child Tasks 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettings.Appearance.BackColor = Color.BlanchedAlmond 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettings.DisplayCompleteThrough = DefaultableBoolean.[True] 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettings.DisplayStartDateTime = DefaultableBoolean.[False] 
+'Tooltip settings for Milestone 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettingsMilestone.Appearance.BackColor = Color.LightBlue 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettingsMilestone.DisplayEndDateTime = DefaultableBoolean.[True] 
+' Tooltip settings for Percent Complete 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettingsPercentComplete.DisplayDuration = DefaultableBoolean.[True] 
+' Tooltip settings for Deadline 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettingsDeadline.DisplayCompleteThrough = DefaultableBoolean.[True] 
+' Tooltip settings for Summary Tasks 
+Me.ultraGanttView1.TimelineSettings.ToolTipSettingsSummary.DisplayDuration = DefaultableBoolean.[False]
+----
+
+*In C#:*
+
+----
+// Tooltip settings for child Tasks
+this.ultraGanttView1.TimelineSettings.ToolTipSettings.Appearance.BackColor = Color.BlanchedAlmond;
+this.ultraGanttView1.TimelineSettings.ToolTipSettings.DisplayCompleteThrough = DefaultableBoolean.True;
+this.ultraGanttView1.TimelineSettings.ToolTipSettings.DisplayStartDateTime = DefaultableBoolean.False;
+//Tooltip settings for Milestone
+this.ultraGanttView1.TimelineSettings.ToolTipSettingsMilestone.Appearance.BackColor = Color.LightBlue;
+this.ultraGanttView1.TimelineSettings.ToolTipSettingsMilestone.DisplayEndDateTime = DefaultableBoolean.True;
+// Tooltip settings for Percent Complete
+this.ultraGanttView1.TimelineSettings.ToolTipSettingsPercentComplete.DisplayDuration = DefaultableBoolean.True;
+// Tooltip settings for Deadline
+this.ultraGanttView1.TimelineSettings.ToolTipSettingsDeadline.DisplayCompleteThrough = DefaultableBoolean.True;
+// Tooltip settings for Summary Tasks
+this.ultraGanttView1.TimelineSettings.ToolTipSettingsSummary.DisplayDuration = DefaultableBoolean.False;
+----
+
+The link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.tasktooltipdisplayingeventargs.html[TaskToolTipDisplaying] event can be fired to add tooltips to Tasks.
+
+*In Visual Basic:*
+
+----
+this.ultraGanttView1.TaskToolTipDisplaying += new TaskToolTipDisplayingHandler(ultraGanttView1_TaskToolTipDisplaying);
+Private Sub ultraGanttView1_TaskToolTipDisplaying(ByVal sender As Object,   ByVal e As Infragistics.Win.UltraWinGanttView.TaskToolTipDisplayingEventArgs) Handles ultraGanttView1.TaskToolTipDisplaying
+        Dim info As ToolTipInfo = e.ToolTipInfo
+        info.DisplayStyle = ToolTipDisplayStyle.BalloonTip
+        info.ToolTipText = e.Task.Resources.ToString()
+        e.ToolTipInfo = info
+    End Sub
+----
+
+*In C#:*
+
+----
+this.ultraGanttView1.TaskToolTipDisplaying += new TaskToolTipDisplayingHandler(ultraGanttView1_TaskToolTipDisplaying);
+void ultraGanttView1_TaskToolTipDisplaying(object sender, Infragistics.Win.UltraWinGanttView.TaskToolTipDisplayingEventArgs e)
+        {
+            ToolTipInfo info = e.ToolTipInfo;
+            info.DisplayStyle = ToolTipDisplayStyle.BalloonTip;
+            info.ToolTipText = e.Task.Resources.ToString();
+            e.ToolTipInfo = info;
+        }    
+----
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-set-shortcut-mnemonic-keys-for-a-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{7A28335B-6566-43BF-9B6F-6A148FF070EA}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Shortcut (Mnemonic) Keys for a Tool
+
+Shortcut and mnemonic keys can be used to access a tool via the keyboard instead of clicking on the tool with the mouse. Shortcut keys will be displayed in the drop down of a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] .
+
+== At Design Time
+
+In the Customize editor in the Tools tab select one of your tools and under the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  object there is a property called  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~shortcut.html[Shortcut]"]  where you can set a shortcut or mnemonic key for that tool.
+
+== At Run Time
+
+*In Visual Basic:*
+
+----
+Private Sub Set_Shortcut_Mnemonic_Keys_for_a_Tool_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraToolbarsManager1.Tools("Bold").SharedProps.Shortcut = Shortcut.F1
+End Sub
+----
+
+*In C#:*
+
+----
+private void Set_Shortcut_Mnemonic_Keys_for_a_Tool_Load(object sender, EventArgs e)
+{
+	this.ultraToolbarsManager1.Tools["Bold"].SharedProps.Shortcut = Shortcut.F1;
+}
+----

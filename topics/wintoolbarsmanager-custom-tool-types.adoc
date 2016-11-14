@@ -1,0 +1,91 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-custom-tool-types",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{89581D42-26BC-47BA-BF5B-B6906A1C3644}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Custom Tool Types
+
+The WinToolbarsManager™ object model is designed to leverage the object oriented capabilities of .NET's Common Language Runtime. All 15 built-in tool types derive from a common base class called ToolBase which implements the basic functionality required by all tools. The 15 built-in tool types are:
+
+* Button Tool
+* Combo Box Tool
+* Control Container Tool
+* Font List Tool
+* Label Tool
+* List Tool
+* Masked Edit Tool
+* MDI Window List Tool
+* Popup Color Picker Tool
+* Popup Control Container Tool
+* Popup Menu Tool
+* Progress Bar Tool
+* State Button Tool
+* Text Box Tool
+* TaskPane Tool
+
+== Building on the Hierarchy of Built-in Tool Classes
+
+You can derive a custom tool type from any of the 15 built-in tools or you can derive directly from ToolBase if none of the built-in tool types suits your needs. There are several abstract base classes (e.g.,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase.html[TearawayToolBase]"] ) that you can derive from as well. The following diagram shows the inheritance hierarchy for the built-in tool classes. Note that abstract base classes are shown in red:
+
+image::Images\WinToolbars_Custom_Tool_Types_01.png[shows all the ultratoolbarmanager's tools, and what the classes they derive from.]
+
+== Implementing a Custom Tool Type
+
+Both the abstract base classes as well as the built-in tool classes expose virtual methods and properties which can be overridden in derived classes to customize tool behavior and appearance.
+
+.Note
+[NOTE]
+====
+For all virtual properties/methods exposed by the built-in tool classes, a suitable default implementation is included in the base class.
+====
+
+When creating custom tool types there are a number of properties and methods which you will want to override to provide behavior that is appropriate for your tool. For example, to support  _serialization_  of your tool's custom properties you will want to:
+
+[start=1]
+. Mark your class with the Serializable attribute.
+[start=2]
+. Implement a de-serialization constructor so your custom properties can be de-serialized.
+[start=3]
+. Override ToolBase's GetObjectData method to serialize your custom properties.
+
+By doing this your tool's custom properties will be persisted/de-persisted along with base class properties when the Toolbar Manager's Load and Save methods are called.
+
+To define properties on your custom tool that are shared across all instances of your tool (like the properties in ToolBase's SharedProps object) you will need to implement an ExtraSharedProps helper class that defines your shared custom properties, and override the ExtraSharedPropsCount and ExtraSharedProps properties.
+
+The ToolProviderComponent sample shows how to create custom tool types derived from the built-in Button and Combobox tools. It shows how to create tool properties that are persistable and shared across all tool instances with plenty of comments to help you along. (Samples are located in the Samples folder in the location where you installed the Infragistics Professional SDK. If you accepted the installation defaults, this will be one of the following paths, depending on your operating system:
+
+== C# version of the sample:
+
+* XP -- {InstallPathXP}{ProductNameVersion}\Samples\Win\WinToolbars\CS\ToolProvider Component CS
+* Vista -- {InstallPathVista}{ProductNameVersion}\Samples\Win\WinToolbars\CS\ToolProvider Component CS
+
+== Visual Basic version of the sample:
+
+* XP -- {InstallPathXP}{ProductNameVersion}\Samples\Win\WinToolbars\VB\ToolProvider Component VB
+* Vista -- {InstallPathVista}{ProductNameVersion}\Samples\Win\WinToolbars\VB\ToolProvider Component VB
+
+== Showing Your Custom Tool Types in the Design-time Customizer
+
+UltraToolbarsManager provides a mechanism for showing your tools in the "New Tool" dialog of the design-time customizer. This allows you to enhance the design-time experience for you and other developers on your team by allowing design-time selection and manipulation of your custom tools using the UltraToolbarManager's standard design-time customizer.
+
+The ToolProviderComponent sample demonstrates how to register custom tool types with UltraToolbarsManager. Registering custom tool types allows the Customizer's "New Tool" dialog to display the custom tools in the tools list along with the built-in tools. When a custom tool is selected from the list, the "New Tool" dialog asks the tool provider to create an instance of the custom tool.
+
+To add custom tool types to the design-time Customizer, you need to register the tool types with UltraToolbarsManager at design-time using UltraToolbarsManager's static RegisterCustomToolType method. As part of registration you will also provide a reference to an IToolProvider implementation that can create instances of the custom tool types as they are needed by UltraToolbarManager's design-time Customizer.
+
+This means that you need to load an assembly at design-time to perform these functions. This could be done using several different approaches including:
+
+[start=1]
+. Creating a component which implements IToolProvider that the developer can place on the form along with the UltraToolbarsManager element. The ToolProviderComponent class in the ToolProviderComponent sample is an example of this approach.
+[start=2]
+. Creating a class derived from UltraToolbarsManager. With this approach you still need to implement the IToolProvider interface and register your custom tool types using the RegisterCustomToolType method, but the user will not have to place a separate component on the form. The ToolProviderAsManager class in the ToolProviderComponent sample is an example of this approach. One advantage of taking this approach is that you can override the ShowBuiltInToolTypesInCustomizer virtual method to prevent UltraToolbarsManager from registering the built-in tools. By doing this, the Customzer's "New Tool" dialog will only list the custom tool types you have registered.
+[start=3]
+. Creating a Visual Studio add-in.

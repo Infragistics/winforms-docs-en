@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-using-the-winexplorerbar-designer",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["FAQ","How Do I"],
+    "guid": "{76C3A403-A63B-4A0B-8CED-93C97369231A}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the WinExplorerBar Designer
+
+The WinExplorerBar™ Designer provides a convenient interface for configuring the properties of an WinExplorerBar at design-time. Using the designer, you can easily add/remove  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Groups]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[Items]"] , change different aspects of the element's style, load and save element layouts, manage the layout of Groups and Items and import Groups and Items from an WinListbar element.
+
+== Accessing the UltraExplorerBar Designer
+
+The WinExplorerBar Designer can be started by selecting the 'UltraExplorerBar Designer...' option from the element's context menu (displayable by right-clicking the UltraExplorerBar element on a form in the Visual Studio IDE at design-time) or from the list of verbs in the Visual Studio IDE Property Browser as shown below:
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_01.png[shows ultraexplorerbar at design time to show designer options]
+
+The UltraExplorerBar Designer is a tabbed dialog with five tabs. The tabs are:
+
+* *Control Styles* - displays properties that affect the look and basic behavior of the element.
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_02.png[ultraexplorerbar's designer with control styles tab selected]
+
+* *Groups and Items* - provides easy-to-use functions for adding/removing Groups and Items. A property grid is also displayed to allow easy editing of properties for Groups and Items.
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_03.png[ultraexplorerbar's designer with groups and items tab selected]
+
+* *Margins/Spacing* - helps manage the margins around Groups and Items as well as the layout of Group columns when using the ExplorerBar element style.
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_04.png[ultraexplorerbar's designer with margins/spacing tab selected]
+
+* *Load/Save Layout* - provides functions for loading and saving UltraExplorerBar's state.
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_05.png[ultraexplorerbar's designer with load/save layout tab selected]
+
+* *Import Groups/Items* - helps convert existing applications that use UltraListbar to use the UltraExplorerBar. This function copies one or more Group and Item definitions from an UltraListbar element to an UltraExplorerBar element on the same form.
+
+image::Images/WinExplorerBar_WinExplorerBar_Designer_06.png[ultraexplorerbar's designer with import groups/items tab selected]

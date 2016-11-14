@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "touch-gestures-events",
+    "controlName": [],
+    "tags": [],
+    "guid": "0c3d4152-8988-49e0-bffb-738c85e196fd",  
+    "buildFlags": [],
+    "createdOn": "2013-02-25T19:22:51.7716251Z"
+}
+|metadata|
+////
+
+= Touch Gestures Events
+
+== Topic Overview
+
+=== Purpose
+
+This topic introduces the Infragistics touch-enabled controls’ gestures events.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349131264,Introduction>>
+* <<_Ref349131273,Touch Gestures Events>>
+* <<_Ref349131281,Related Content>>
+
+[[_Ref349131264]]
+== Introduction
+
+=== Touch Gestures Events Introduction
+
+New touch gestures handling capabilities are now available to the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase.html[UltraControlBase] class providing you with the ability to allow or prevent their functionalities. The events listed below encapsulate gestures such as  _panning_  ,  _zooming_  ,  _rotating_  ,  _press-and-tap_  ,  _press-and-hold_   and  _two-finger-tap_  .
+
+[[_Ref349131273]]
+== Touch Gestures Events
+
+=== Gesture-Related Events
+
+The following section details the touch gesture events in response to user interactions provided they are not cancelled.
+
+[options="header", cols="a,a"]
+|====
+|Events|Description
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus]
+|Raised when the user initially makes contact with the touch surface. It is the first of the gesture-related events raised upon user interaction. 
+
+Leaving the event argument’s Mode property set to `All`; its default value; enables all gestures and raises their corresponding events.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting]
+|Raised when the system gesture recognizer identifies the user interaction as a gesture supported by the operating system. It always follows the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus] event. 
+
+Setting the event argument’s `Cancel` property to `True` prevents any other events from being raised from this gesture.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pangesture_ev.html[PanGesture]
+|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact. The gesture’s speed determines if the visible content continues to scroll following contact. This behavior is known as `inertia` or `inertial panning`. 
+
+Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture]
+|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact for example, as the user’s fingers move closer together or further apart. 
+
+There is no default action for link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture] event.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture]
+|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the users second finger; non-stationary; continues to move for example, as the user’s finger moves around the pivot point. 
+
+There is no default action for the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture] event.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pressandtapgesture_ev.html[PressAndTapGesture]
+|Raised only once, immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
+
+Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture]
+|Raised only once, immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
+
+There is no default action for link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture] event.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pressandholdgesture_ev.html[PressAndHoldGesture]
+|Raised twice 
+
+* Initially, the first raised event coincides with the elapsing of the `press-and-hold` timeout, for example, when the amount of time specified by the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.gesture.html[PressAndHold] property has elapsed. 
+
+* Additionally, raised a second time when the user loses contact with the touch surface. 
+
+Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
+
+| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturecompleted_ev.html[GestureCompleted]
+|Raised once for each gesture, after the raising of the last gesture-specific event.
+
+|====
+
+[[_Ref349131281]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:touch-gestures.html[Touch Gestures]
+|The topics in this group illustrate Infragistics touch-enabled control’s Touch Gestures.
+
+| link:touch-gestures-overview.html[Touch Gestures Overview]
+|This topic explains the Infragistics touch-enabled controls’ touch gesture functionality and usage.
+
+|====

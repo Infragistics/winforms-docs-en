@@ -1,0 +1,124 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-keeping-the-active-row-visible",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Tips and Tricks"],
+    "guid": "{270DD4C9-6731-4FED-AE71-257AD01BDB46}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Keeping the Active Row Visible
+
+== Background
+
+When adding a new row the WinGrid™ displays the new row at the bottom of the hierarchical section being added to. For a grid with many rows, this means the grid will scroll and whatever row the user was reviewing may scroll out of view. To keep the Active Row visible while adding a new record, create a second Row Scroll Region and add the new row in this new region.
+
+== Questions
+
+* How do I keep the Active Row visible during a new record add?
+
+== Solution
+
+Create a second Row Scroll Region and add the new row in this new region.
+
+== Sample Project
+
+This sample project illustrates how to programmatically add a new Row Scroll Region for adding new rows:
+
+image::Images\WinGrid_Keeping_the_Active_Row_Visible_01.png[keeping the active row visible in ultragrid]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event instructs the grid to display the AddNewBox:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.MaxRowScrollRegions = 2
+	' Show the Add New Box
+	e.Layout.AddNewBox.Hidden = False
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.MaxRowScrollRegions = 2;
+	// Show the Add New Box
+	e.Layout.AddNewBox.Hidden = false;
+}
+----
+
+* UltraGrid1.Paint - The code in the Paint event creates a second Row Scroll Region if there is not one already. The reason for putting this in the Paint event instead of the InitializeLayout event is that the Height property of the grid is not set during InitializeLayout.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_Paint(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.PaintEventArgs) _
+  Handles UltraGrid1.Paint
+	' Create a second region if not already
+	If Me.UltraGrid1.DisplayLayout.RowScrollRegions.Count = 1 Then
+		Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).Split()
+		Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).Height = _
+		  Me.UltraGrid1.Height $$*$$ 0.6
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+{
+	// Create a second region if not already
+	if(this.ultraGrid1.DisplayLayout.RowScrollRegions.Count == 1)
+	{
+		this.ultraGrid1.DisplayLayout.RowScrollRegions[0].Split();
+		this.ultraGrid1.DisplayLayout.RowScrollRegions[0].Height = 
+		  (int)(this.ultraGrid1.Height $$*$$ 0.6);
+	}
+}
+----
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow event causes all band 0 rows to expand:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand band 0 rows
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand band 0 rows
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+}
+----
+
+== Review
+
+This sample project illustrates an approach which allows the user to display the grid data in one pane and perform adds in a second pane.

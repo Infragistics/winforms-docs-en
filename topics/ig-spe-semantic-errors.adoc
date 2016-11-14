@@ -1,0 +1,111 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-semantic-errors",
+    "controlName": [],
+    "tags": [],
+    "guid": "b45fd1c0-3e32-42b4-ae65-318644d35d71",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0688518Z"
+}
+|metadata|
+////
+
+= Semantic Errors
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains semantic errors, which are not handled by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|The topics in this group explain the Infragistics Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349656373, Semantic Errors >>
+* <<_Ref349656380, Overview >>
+* <<_Ref349656384, Example >>
+* <<_Ref349656388, Related Content >>
+
+[[_Ref349656373]]
+== Semantic Errors
+
+[[_Ref349656380]]
+
+=== Overview
+
+The Syntax Parsing Engine cannot recognize semantic errors. Finding these errors currently needs to be done by the developer after the syntax tree is constructed. Here are some examples of semantic errors:
+
+[[_Ref349656384]]
+
+=== Example
+
+A semantic error is text which is grammatically correct but doesn’t make any sense. An example in the context of the C# language will be “int x = 12.3;” - 12.3 is not an integer literal and there is no implicit conversion from 12.3 to int, so this statement does not make sense. But it is grammatically correct. It conforms to the rules built into the C# grammar definition.
+
+Here are some general cases of semantic errors in languages like C# and VB:
+
+* Type mismatches – There are a lot of ways to use the wrong type in C#. The example above is one way. Here are some other possible ways:
+** Passing the wrong type of value to a method.
+** Returning the wrong type of value from a method.
+** Setting the wrong type of value on a property.
+** Setting the wrong type of value on a field.
+** Setting the wrong type of value on a local variable.
+** Using a type in a generic argument list which doesn’t conform to the generic type constraints.
+
+* Arity mismatch – This means using the wrong number of arguments for something and there are many ways to do this as well:
+** Passing the wrong number of arguments to a method call.
+** Passing the wrong number of indexes to an array or indexer.
+** Using the wrong number of generic type arguments for a generic type or method.
+
+* Using undefined names – Using a namespace, type, method, field, variable, or property name which doesn’t exist.
+* Naming collisions – Here are some ways names can collide:
+** Defining two types in the same namespace with the same name
+** Defining two methods in the same class with the same argument list and name.
+** Defining a property, field, or nested type which has the same name as another property, field, or nested type in the same owning type.
+** Defining two local variables in the same or descendant scopes with the same names.
+
+[[_Ref349656388]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-lexical-errors.html[Lexical Errors]
+|This topic explains the lexical errors found by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-errors.html[Syntax Errors]
+|This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+| link:ig-spe-error-handling-strategies.html[Error Handling Strategies]
+|The topics in this group explain the strategies used during the syntax analyzing of the document to identify syntax errors.
+
+|====

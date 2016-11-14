@@ -1,0 +1,215 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-appearance-of-wingrid-bands",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{0986EC5B-D119-476A-97ED-60532F034AA3}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Appearance of WinGrid Bands
+
+== Background
+
+When working with a multi-band WinGrid™ control, there are many different settings related to the way the bands display.
+
+== Questions
+
+* How can I display a header above each band of a multi-band grid?
+* The default setting appears to cause the columns to size the same for all bands. How can I get the grid to size the columns of each band separately?
+* How can I get rid of the Expansion indicators and the dotted lines?
+* How do I change Band Header Appearance?
+
+== Solution
+
+The default setting for bands is to not display the band headers. To turn on the band headers, set the HeaderVisible property of the band to True.
+
+The default setting for column sizing causes all columns sizes to synchronize. To allow columns to size differently for each band set the AllowColSizing property to AllowColSizing.Free.
+
+You set the Band Header Appearance with the properties of the Band.Header.Appearance object. Remember to either turn off Themes for the grid or set the ThemesAlpha to Transparent when you set appearance properties of the Band Header object.
+
+== Sample Project
+
+This sample project demonstrates some of the possible Band Appearance changes. The project initially displays a simple multi-band grid and allows the user to make the band headers visible, allow the columns of the different bands to size freely, remove the expansion indicators, and set the color of the band headers.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Changing_the_Appearance_of_WinGrid_Bands_01.png[changing the appearance of ultragrid's bands]
+
+== UltraGrid Events
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow event expands rows in Band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand rows in band 0
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand rows in band 0
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+}
+----
+
+== Button Events
+
+The Button Events Region contains the following event handlers:
+
+* btnColumnSizing.Click - The code in the btnColumnSizing Click event sets the AllowColSizing property to AllowColSizing.Free:
+
+*In Visual Basic:*
+
+----
+Private Sub btnColumnSizing_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnColumnSizing.Click
+	' Allow columns of bands to size independently
+	Me.UltraGrid1.DisplayLayout.Override.AllowColSizing = AllowColSizing.Free
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnColumnSizing_Click(object sender, EventArgs e)
+{
+	// Allow columns of bands to size independently
+	this.ultraGrid1.DisplayLayout.Override.AllowColSizing = AllowColSizing.Free;
+}
+----
+
+* btnBandHeadersVisible.Click - The code in the btnBandHeadersVisible Click event sets the HeaderVisible property of both bands to True and sets the Caption property of Band 1 to "Orders":
+
+*In Visual Basic:*
+
+----
+Private Sub btnBandHeadersVisible_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnBandHeadersVisible.Click
+	' Make band headers visible and set band 1 header caption
+	Me.UltraGrid1.DisplayLayout.Bands(0).HeaderVisible = True
+	Me.UltraGrid1.DisplayLayout.Bands(1).HeaderVisible = True
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Caption = "Orders"
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnBandHeadersVisible_Click(object sender, System.EventArgs e)
+{
+	// Make band headers visible and set band 1 header caption
+	this.ultraGrid1.DisplayLayout.Bands[0].HeaderVisible = true;
+	this.ultraGrid1.DisplayLayout.Bands[1].HeaderVisible = true;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Caption = "Orders";
+}
+----
+
+* btnExpansionIndicators.Click - The code in the btnExpansionIndicators Click event sets the indention of both bands to 0 and sets the RowConnectorStyle to None:
+
+*In Visual Basic:*
+
+----
+Private Sub btnExpansionIndicators_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnExpansionIndicators.Click
+	' Remove expansion indicators and connectors
+	Me.UltraGrid1.DisplayLayout.Bands(0).Indentation = 0
+	Me.UltraGrid1.DisplayLayout.Bands(1).Indentation = 0
+	Me.UltraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.None
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnExpansionIndicators_Click(object sender, System.EventArgs e)
+{
+	// Remove expansion indicators and connectors
+	this.ultraGrid1.DisplayLayout.Bands[0].Indentation = 0;
+	this.ultraGrid1.DisplayLayout.Bands[1].Indentation = 0;
+	this.ultraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.None;
+}
+----
+
+* btnColorBandHeaders.Click - The code in the btnColorBandHeaders Click event turns off Themes for both band headers by setting the ThemedElementAlpha property to Transparent. The event also sets the background and foreground colors of the band headers. Notice this code uses both system colors and specific colors.
+
+*In Visual Basic:*
+
+----
+Private Sub btnColorBandHeaders_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnColorBandHeaders.Click
+	' Set colors for band headers
+	Me.UltraGrid1.DisplayLayout.Bands(0).Header.Appearance.ThemedElementAlpha = _
+	  Alpha.Transparent
+	Me.UltraGrid1.DisplayLayout.Bands(0).Header.Appearance.BackColor = _
+	  SystemColors.ActiveCaption
+	Me.UltraGrid1.DisplayLayout.Bands(0).Header.Appearance.ForeColor = _
+	  SystemColors.ActiveCaptionText
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.ThemedElementAlpha = _
+	  Alpha.Transparent
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.BackColor = Color.Blue
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.BackColor2 = Color.Red
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.ForeColor = Color.White
+	Me.UltraGrid1.DisplayLayout.Bands(1).Header.Appearance.BackGradientStyle = _
+	  GradientStyle.Horizontal
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnColorBandHeaders_Click(object sender, System.EventArgs e)
+{
+	// Set colors for band headers
+	this.ultraGrid1.DisplayLayout.Bands[0].Header.Appearance.ThemedElementAlpha = 
+	  Alpha.Transparent;
+	this.ultraGrid1.DisplayLayout.Bands[0].Header.Appearance.BackColor = 
+	  SystemColors.ActiveCaption;
+	this.ultraGrid1.DisplayLayout.Bands[0].Header.Appearance.ForeColor = 
+	  SystemColors.ActiveCaptionText;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.ThemedElementAlpha = 
+	  Alpha.Transparent;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.BackColor = Color.Blue;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.BackColor2 = Color.Red;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.ForeColor = Color.White;
+	this.ultraGrid1.DisplayLayout.Bands[1].Header.Appearance.BackGradientStyle = 
+	  GradientStyle.Horizontal;
+}
+----
+
+== Review
+
+This sample program illustrates some of the ways a developer can enhance the appearance of the WinGrid bands.

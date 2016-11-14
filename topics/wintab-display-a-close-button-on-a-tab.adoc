@@ -1,0 +1,52 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-display-a-close-button-on-a-tab",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{85FBE8D8-5F1D-49AA-B84B-6530D75825E7}",  
+    "buildFlags": [],
+    "createdOn": "2008-09-01T10:09:08Z"
+}
+|metadata|
+////
+
+= Display a Close Button on a Tab
+
+WinTab, WinTabStrip, and WinTabbedMdiManager all include a close button which you can display on each tab. With the close button, your end user can close individual tabs without leaving the bounds of the tab itself – they can also click the tab with the middle mouse button to close it. By default, the close button is hidden, so if you want to expose the button to your end user, you'll have to set the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~closebuttonlocation.html[CloseButtonLocation]"]  property to Tab.
+
+.Note
+[NOTE]
+====
+Previous to 2008 Volume 1, the close button for all tabs resided in the header area. You can still place the close button in the header area by setting the CloseButtonLocation property to HeaderArea.
+====
+
+There are two related properties which play an important role in how each close button displays.
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~closebuttonalignment.html[CloseButtonAlignment]"]  – The CloseButtonAlignment property determines on which side of the tabs the close button will appear. The TabCloseButtonAlignment property defaults to AfterContent; therefore, the close button displays after the text. Setting TabCloseButtonAlignment to BeforeContent places the close button before the tab's text.
+*  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~closebuttonvisibility.html[CloseButtonVisibility]"]  – The CloseButtonVisibility property determines in what situations the close button is visible to your end user. By default, TabCloseButtonVisibility resolves to Always, so every tab will include its own close button. However, if you only want the selected tab to have a close button, similar to Microsoft® Internet Explorer® 7, you will need to set CloseButtonVisibility to WhenSelected.
+
+These two properties are not only exposed off the main control/component itself, but off of each individual tab. This convenient object model gives you the opportunity to individualize every tab according to your application's logic.
+
+The following example code demonstrates how to achieve the Internet Explorer 7 tabbed interface by enabling the close button on only the selected tab. Remember, this functionality is the same for WinTab, WinTabStrip, and WinTabbedMdiManager.
+
+image::images/WinTab_Display_a_Close_Button_on_a_Tab_01.png[display a close button on a tab in ultratabcontrol]
+
+*In Visual Basic:*
+
+----
+Me.UltraTabControl1.CloseButtonLocation = _
+	Infragistics.Win.UltraWinTabs.TabCloseButtonLocation.Tab
+Me.UltraTabControl1.TabCloseButtonVisibility = _
+	Infragistics.Win.UltraWinTabs.TabCloseButtonVisibility.WhenSelected
+----
+
+*In C#:*
+
+----
+this.ultraTabControl1.CloseButtonLocation = 
+	Infragistics.Win.UltraWinTabs.TabCloseButtonLocation.Tab;
+this.ultraTabControl1.TabCloseButtonVisibility =
+	Infragistics.Win.UltraWinTabs.TabCloseButtonVisibility.WhenSelected;
+----

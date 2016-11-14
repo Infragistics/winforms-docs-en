@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-right-fixed-headers",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{ED1E91BF-3BA6-417E-890C-F3CF0E3E1472}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Right Fixed Headers
+
+Column Pinning is a feature that allows the end users of your WinGrid™ powered application to selectively affix particular columns to the right or left side of the control. A Pinned Column will always remain in view whenever the end user scrolls horizontally through all the WinGrid columns. This functionality is very useful for end users that must review a data schema with many columns and they need to keep a few key identifying columns within view whenever scrolling horizontally.
+
+When the end user clicks the Column’s Pin icon, the Column will be pinned towards the Right or Left hand side of WinGrid. This behavior is configured through the Column’s Header  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~header.html[FixOnRight]"]  property.
+
+*In Visual Basic:*
+
+----
+'To show the pins on the columns 
+ Me.UltraGrid1.DisplayLayout.UseFixedHeaders = True
+'Pins column1 to the Right 
+ Me.UltraGrid1.DisplayLayout.Bands(0).Columns(1).Header.FixOnRight =   DefaultableBoolean.[True]
+' Fix all the columns to the right
+ Me.UltraGrid1. DisplayLayout.Override.FixHeadersOnRight =DefaultableBoolean.[True]
+----
+
+*In C#:*
+
+----
+//To show the pins on the columns
+this.ultraGrid1.DisplayLayout.UseFixedHeaders = true;
+//Pins column1 to the Right 
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[1].Header.FixOnRight = DefaultableBoolean.True;
+//Fix all the columns to the right
+this.ultraGrid1.DisplayLayout.Override.FixHeadersOnRight = DefaultableBoolean.True;
+----

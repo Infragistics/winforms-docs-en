@@ -1,0 +1,135 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-which-cell-the-user-clicked",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{7A4C8C3F-CE44-4BF0-8533-ABB03574BF8F}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining Which Cell the User Clicked
+
+== Background
+
+Many projects using the WinGrid™ control for navigation need to be able to determine which cell the user clicked on without the cell being selected or becoming active. This is generally required on the MouseUp event.
+
+== Questions
+
+* How do I know which cell was clicked in the MouseUp event?
+
+== Solutions
+
+Use the .DisplayLayout.UIElement.ElementFromPoint method to retrieve the UIElement and UIElement.GetContext to get an object reference to the Cell.
+
+== Sample Project
+
+This sample project displays a hierarchical DataSet and as the user clicks on the various cells displays the band and column name of the cell clicked.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Determining_Which_Cell_the_User_Clicked_01.png[determining which cell the user clicked in ultragrid]
+
+UltraGrid1.MouseUp -- The MouseUp event code retrieves a reference to the UIElement for the mouse point, retrieves a reference to the Cell, and if the Cell reference is not Nothing display the Band and Column Key.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_MouseUp(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraGrid1.MouseUp
+	' Declare and retrieve a reference to the UIElement
+	Dim aUIElement As UIElement = Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint( _
+	  New Point(e.X, e.Y))
+	' Declare and retrieve a reference to the Cell
+	Dim aCell As UltraGridCell = aUIElement.GetContext(GetType(UltraGridCell))
+	' If a cell was found display the band and column key
+	If Not aCell Is Nothing Then
+		Me.txtBand.Text = aCell.Band.Index.ToString
+		Me.txtColumn.Text = aCell.Column.Key
+	Else
+		Me.txtBand.Text = ""
+		Me.txtColumn.Text = ""
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_MouseUp(object sender, MouseEventArgs e)
+{
+	// Declare and retrieve a reference to the UIElement
+	UIElement aUIElement = this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(
+	  new Point(e.X, e.Y));
+	// Declare and retrieve a reference to the cell
+	UltraGridCell aCell = (UltraGridCell)aUIElement.GetContext(typeof(UltraGridCell));
+	// If a cell was found display the band and column key
+	if(aCell != null)
+	{
+		this.txtBand.Text = aCell.Band.Index.ToString();
+		this.txtColumn.Text = aCell.Column.ToString();
+	}
+	else
+	{
+		this.txtBand.Text = "";
+		this.txtColumn.Text = "";
+	}
+}
+----
+
+UltraGrid1.InitializeLayout -- The InitializeLayout event is used to set up the grid's setup when the element is first instantiated on the form. In this case, it is used to set the CellClickAction of the grid's Layout so that the cell will be selected when clicked, rather than going into edit mode. This is needed because if the cell goes into edit mode (the default click action) the MouseDown event is handled by the cell's embedded editor rather than the grid.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+ Handles UltraGrid1.InitializeLayout
+	' Prevent cells from going into edit mode.
+	' If a cell enters edit mode, the grid 
+	' will not receive a MouseDown event because
+	' the MouseDown will go to the embedded editor.
+	e.Layout.Override.CellClickAction = CellClickAction.CellSelect
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Prevent cells from going into edit mode.
+	// If a cell enters edit mode, the grid 
+	// will not receive a MouseDown event because
+	// the MouseDown will go to the embedded editor.
+	e.Layout.Override.CellClickAction = CellClickAction.CellSelect;
+}
+----
+
+== Review
+
+This simple project illustrates a technique for finding a cell from a point of a Mouse Click. It is not a large or complex project, but the technique illustrated allows the developer to find a cell without the cell being activated or selected.
+
+== Related Topics
+
+link:wingrid-doubleclick-events.html[DoubleClick Events]

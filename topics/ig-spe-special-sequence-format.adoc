@@ -1,0 +1,373 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-special-sequence-format",
+    "controlName": [],
+    "tags": [],
+    "guid": "a0a57c08-f88e-4559-9afd-459c662f2589",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0858535Z"
+}
+|metadata|
+////
+
+= Special Sequence Format
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the format of the special sequence sections in the EBNF file used to configure the grammar.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview]
+|This topic gives an overview of the EBNF file format used to define a grammar.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349919800, Special Sequence Sections Overview >>
+* <<_Ref350444319, Special Sequence Section Types >>
+* <<_Ref349918716, Grammar Properties Section >>
+* <<_Ref349918723, Non-Terminal Symbol Attributes Sections >>
+* <<_Ref349919577, Related Content >>
+
+[[_Ref349919552]]
+[[_Ref349919800]]
+== Special Sequence Sections Overview
+
+=== Special sequence sections summary
+
+By using the EBNF format supported by the Syntax Parsing Engine you can supply a lot of descriptive information about grammar instance, lexer states, terminal symbols, and non-terminal symbols.
+
+This information is specified using XML within special sequences of the EBNF file.
+
+[[_Ref350444319]]
+== Special Sequence Section Types
+
+=== Special sequence sections summary chart
+
+[options="header", cols="a,a"]
+|====
+|Section|Details
+
+|<<_Ref349918716,Grammar Properties Section>>
+|The grammar properties section defines the grammar, lexer states, and terminal symbols and is allowed only at the top of an EBNF file.
+
+|<<_Ref349918723,Non-Terminal Symbol Attributes Sections>>
+|This section is used to set specific properties on the `NonTerminalSymbol` instance defined by the next rule.
+
+|====
+
+[[_Ref349918716]]
+== Grammar Properties Section
+
+=== Overview
+
+The grammar properties section defines the grammar, lexer states, and terminal symbols and is allowed only at the top of an EBNF file. There can be only one grammar properties section.
+
+=== Elements
+
+The following tables list all elements allowed in the grammar properties section with their respective parent/child relations:
+
+link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] element:
+
+Description: defines everything in a Grammar instance except the non-terminal symbols and syntax rule trees, which are done in the normal EBNF format.
+
+Parent elements: (none)
+
+[options="header", cols="a,a,a"]
+|====
+|*Attribute*|*Type*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~endofstreamsymbolname.html[EndOfStreamSymbolName]
+|String
+|(optional) The value for the Grammar.EndOfStreamSymbolName property. If not specified, the value will be “EndOfStreamToken”.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~name.html[Name]
+|String
+|(optional) The value for the Grammar.Name property. If not specified, the value will be null.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~newlinesymbolname.html[NewLineSymbolName]
+|String
+|(optional) The value for the Grammar.NewLineSymbolName property. If not specified, the value will be “NewLineToken”
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol]
+|String
+|(optional) The name of the NonTerminalSymbol which should be set as the Grammar.StartSymbol value. If not specified, the first non-terminal symbol defined in the file will be used as the start symbol.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[SupportsParsing]
+|bool
+|(optional) The value for the Grammar.SupportsParsing property. If not specified, the value will be True.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~syntaxtreepruningmode.html[SyntaxTreePruningMode]
+|SyntaxTreePruningMode
+|(optional) The value for the Grammar.SyntaxTreePruningMode property. If not specified, the value will be BasedOnChildrenAndName.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbolname.html[UnrecognizedSymbolName]
+|String
+|(optional) The value for the Grammar.UnrecognizedSymbolName property. If not specified, the value will be “UnrecognizedToken”.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~whitespacesymbolname.html[WhitespaceSymbolName]
+|String
+|(optional) The value for the Grammar.WhitespaceSymbolName property. If not specified, the value will be “WhitespaceToken”.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~whitespacepattern.html[WhitespacePattern]
+|String
+|(optional) The value of the Grammar.WhitespacePattern property. If not specified, the value will be “[ \t]+”.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Child Element*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol]
+|Defines a TerminalSymbol and adds it to the default LexerState of the grammar (Grammar.LexerStates.DefaultLexerState).
+
+|`TerminalSymbolReference`
+|Adds an existing TerminalSymbol to the default LexerState of the grammar.
+
+|====
+
+link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] element:
+
+Description: Creates a new `TerminalSymbol` instance and adds it to the owning lexer state.
+
+Parent Elements: `Grammar`, `LexerState`
+
+[options="header", cols="a,a,a"]
+|====
+|*Attribute*|*Type*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison]
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbolcomparison.html[TerminalSymbolComparison]
+|(optional) The value indicating how the Value attribute should be interpreted. Possible values are `Literal`, `LiteralIgnoreCase`, and `RegularExpression`. If not specified, the value will be Literal.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~isexitsymbol.html[IsExitSymbol]
+|bool
+|(optional) Indicates whether the new `TerminalSymbol` should be added to its owning lexer state as an exit symbol. See the link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview] topic for more information on exit symbols.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~islookaheadnegative.html[IsLookaheadNegative]
+|bool
+|(optional) The value for the `TerminalSymbol. IsLookaheadNegative` property, which indicates whether the `LookaheadPattern` specifies a positive or negative lookahead. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~issignificant.html[IsSignificant]
+|bool?
+|(optional) The value for the `TerminalSymbol.IsSignificant` property. If not specified, the value will be null.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
+|bool
+|(optional) The value for the `TerminalSymbol.IsStartOfErrorRecoveryPair` property. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~languageelementname.html[LanguageElementName]
+|String
+|(optional) The value for the `TerminalSymbol. LanguageElementName` property. If not specified, the value will be “Undefined”.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~lexerstatetoenter.html[LexerStateToEnter]
+|String
+|(optional) The name of the existing link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] which should be set as the `TerminalSymbol. LexerStateToEnter` property. If not specified, the value will be null. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+The lexer state with the specified name may be defined before or after the `LexerStateToEnter` attribute in the document. 
+
+====
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~lookaheadpattern.html[LookaheadPattern]
+|String
+|(optional) The value for the `TerminalSymbol.LookaheadPattern` property, which is a regular expression that makes an assertion about the text that should or should not follow a token associated with this terminal symbol. If not specified, the value will be null.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[Name]
+|String
+|(required) The value for the `TerminalSymbol.Name` property.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~value.html[Value]
+|String
+|(optional) The value for the `TerminalSymbol.Value` property. If not specified, the value from the `Name` attribute will be used.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Child Element*|* Description*
+
+|`LexerState`
+|Defines a `LexerState`, adds it to the `Grammar.LexerStates` collection, and sets that `LexerState` instance as the `TerminalSymbol.LexerStateToEnter` value.
+
+|====
+
+`TerminalSymbolReference` element
+
+Description: Adds an existing `TerminalSymbol` instance to the owning lexer state.
+
+.Note
+[NOTE]
+====
+The definition for the referenced `TerminalSymbol` may occur before or after this element in the document.
+====
+
+Parent Elements: `Grammar`, `LexerState`
+
+[options="header", cols="a,a,a"]
+|====
+|*Attribute*|*Type*|* Description*
+
+|`IsExitSymbol`
+|bool
+|(optional) Indicates whether the new TerminalSymbol should be added to its owning lexer state as an exit symbol or not. See the link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview] topic for more information on exit symbols.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[Name]
+|String
+|(required) The name of the existing `TerminalSymbol` instance to add to the owning lexer state.
+
+|====
+
+link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] element
+
+Description: Defines a new `LexerState` instance and adds it to the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~lexerstates.html[Grammar.LexerStates] collection.
+
+Parent Elements: `TerminalSymbol`
+
+[options="header", cols="a,a,a"]
+|====
+|*Attribute*|*Type*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~name.html[Name]
+|String
+|(required) The name of the new `LexerState` instance.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Child Element*|* Description*
+
+|`TerminalSymbol`
+|Defines a `TerminalSymbol` and adds it to the parent `LexerState`.
+
+|`TerminalSymbolReference`
+|Adds an existing `TerminalSymbol` to the parent `LexerState`.
+
+|====
+
+=== Example
+
+The following is an example of a grammar properties section:
+
+----
+?
+<Grammar Name="My Custom Grammar" NewLineSymbolName="LineBreakToken">
+    <TerminalSymbolReference Name="LineBreakToken" />
+    <TerminalSymbolReference Name="WhitespaceToken" />
+    <TerminalSymbol Name="Word" Value="[\w]+" Comparison="RegularExpression" />
+    <TerminalSymbol Name="Punctuation" Value="\W" Comparison="RegularExpression" />
+    <TerminalSymbol Name="DoubleQuote" Value="&quot;" LanguageElementName="StringLiteral">
+        <LexerState Name="StringLiteral">
+            <TerminalSymbol Name="StringLiteralContent" Value="([^&quot;\\\r\n]|(\\[^\r\n]))+"
+                Comparison="RegularExpression"LanguageElementName="StringLiteral" />
+            <TerminalSymbolReference Name="LineBreakToken" IsExitSymbol="true" />
+            <TerminalSymbolReference Name="DoubleQuote" IsExitSymbol="true" />
+        </LexerState>
+    </TerminalSymbol>
+</Grammar>
+?
+----
+
+[[_Ref349918723]]
+== Non-Terminal Symbol Attributes Sections
+
+=== Overview
+
+The non-terminal symbol attributes sections are allowed immediately before any non-terminal symbol definition. This section is used to set specific properties that will apply only to the next link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] instance defined.
+
+=== Elements
+
+The following table lists all attributes for the NonTerminalSymbolOptions element:
+
+[options="header", cols="a,a,a"]
+|====
+|*Attribute*|*Type*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~haspriority.html[HasPriority]
+|bool
+|(optional) The value for the `NonTerminalSymbol.HasPriority` property. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError]
+|bool
+|(optional) The value for the `NonTerminalSymbol.IsError` property. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
+|bool
+|(optional) The value for the `NonTerminalSymbol.IsStartOfErrorRecoveryPair` property. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~preventpruning.html[PreventPruning]
+|bool
+|(optional) The value for the `NonTerminalSymbol.PreventPruning` property. If not specified, the value will be False.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[SuppressAmbiguityWarnings]
+|bool
+|(optional) The value for the `NonTerminalSymbol.SuppressAmbiguityWarnings` property. If not specified, the value will be False.
+
+|`SuppressErrorRecoveryForSymbols`
+|string
+|(optional) A comma separated list of the names of symbols which should be passed to the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppresserrorrecoveryforsymbol.html[NonTerminalSymbol.SuppressErrorRecoveryForSymbol] method. The named symbols can be defined before or after the `NonTerminalSymbol`.
+
+|====
+
+=== Example
+
+The following is an example of a non-terminal symbol definition along with its attributes section defined with XML between the “?” characters :
+
+----
+Document = {Sentence};
+?<NonTerminalSymbolOptions SuppressErrorRecoveryForSymbols="Punctuation" />?
+Sentence = {Word | StringLiteral}-, Punctuation;
+StringLiteral = DoubleQuote, [StringLiteralContent], DoubleQuote;
+----
+
+[[_Ref349919577]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-ebnf-specification-deviations.html[EBNF Specification Deviations]
+|This topic explains the deviations from the ISO 14977 specification in the EBNF format used by the Syntax Parsing Engine.
+
+| link:ig-spe-generate-grammar-from-an-ebnf-file.html[Generate Grammar From an EBNF File]
+|This topic explains the process of creating a grammar from EBNF content.
+
+| link:ig-spe-generate-ebnf-file-from-a-grammar.html[Generate EBNF File From a Grammar]
+|This topic explains the process of creating EBNF content from a grammar.
+
+|====

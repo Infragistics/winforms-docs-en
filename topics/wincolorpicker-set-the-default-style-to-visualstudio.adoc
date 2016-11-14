@@ -1,0 +1,19 @@
+﻿= Set the DefaultStyle to VisualStudio
+
+By default, all link:wincolorpicker.html[WinColorPickers] will be instantiated with their
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracolorpicker~style.html[Style]
+property set to ColorPalette. This will give the dropdown editor the same UI as the WinColorPalette. If the VisualStudio style is preferred, the Style property can be set on an individual WinColorPicker control basis, such as in the following code snippet:
+
+[source, csharp]
+ultraColorPicker1.Style = Infragistics.Win.UltraColorPalette.ColorPickerEditorStyle.VisualStudio;
+
+Setting all WinColorPickers to VisualStudio style by default is also possible. This can be done by setting the static
+link:{ApiPlatform}win{ApiVersion}~infragistics.win.colorpickereditor~defaultstyle.html[DefaultStyle]
+property on
+link:{ApiPlatform}win{ApiVersion}~infragistics.win.colorpickereditor.html[ColorPickerEditor]
+class, such as in the following code snippet:
+
+[source, csharp]
+Infragistics.Win.ColorPickerEditor.DefaultStyle = Infragistics.Win.UltraColorPalette.ColorPickerEditorStyle.VisualStudio;
+
+Note that this will effect the style with which a WinColorPicker is instantiated. Therefore, if DefaultStyle is set after the WinColorPicker is instantiated, such as on an InitializeForm(), the new setting will have no effect.

@@ -1,0 +1,115 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-initializelayout-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids","Layouts"],
+    "guid": "{FFD2E2FD-1D0D-4B8F-BA25-6C25502E35A9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= InitializeLayout Event
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event is arguably the most important event fired by the WinGrid™ control. The InitializeLayout event fires immediately after you assign a data source to WinGrid. This event is important if you assign a data source to WinGrid at run time. Without setting a data source at design time, WinGrid will not have a schema (Column and entity structure) available; therefore, property settings on elements such as Columns, Bands, and any related element cannot be set because these elements do not exist yet. Assigning a data source to WinGrid at run time will cause it to create a schema and layout according to the data model you are binding to. Since the InitializeLayout event fires at this time, you can use this event to set the properties that would have been normally set at design time. If you provide a data source at design time, the InitializeLayout event will still fire once WinGrid creates the DisplayLayout object.
+
+== Accessing the DisplayLayout Object
+
+The most important event argument available in the InitializeLayout event is e.Layout. This argument is of type  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"]  and it is actually a reference to the Grid. pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property that you can also access directly through the control itself.
+
+The WinGrid’s DisplayLayout property, also accessible through the InitializeLayout event arguments through e.Layout is the property where most of your customizations will take place. Directly under the DisplayLayout property you will find various properties that allow customization of some general elements of the WinGrid. Here you will find properties such as ScrollStyle which allows you to specify Immediate scrolling (when you scroll through rows, the existing rows move up and down) or Deferred scrolling (when you scroll through the rows by dragging the scroll bar, the rows do not move and when you release the mouse button from the scroll bar, the rows within that range will render in the visible Grid area). Other properties that relate to the Grid in general also exist, such as the GroupByBox property. This property allows you to adjust and customize the Outlook GroupBy UI Element at the top of the Grid.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout( _
+ ByVal sender As System.Object, _
+ ByVal e As InitializeLayoutEventArgs) _
+ Handles UltraGrid1.InitializeLayout
+   e.Layout.ScrollBounds = ScrollBounds.ScrollToFill
+   e.Layout.ScrollStyle = ScrollStyle.Deferred
+   e.Layout.UseFixedHeaders = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(
+   object sender, 
+   InitializeLayoutEventArgs e)
+   {
+      e.Layout.ScrollBounds = ScrollBounds.ScrollToFill;
+      e.Layout.ScrollStyle = ScrollStyle.Deferred;
+      e.Layout.UseFixedHeaders = true;
+   }
+----
+
+== Accessing the Bands Collection
+
+The Bands property located within the DisplayLayout property is also very important. If you do not have a data source assigned at design time, the Bands collection will be empty. If you assign a data source at runtime, then the InitializeLayout event is where you will access the Bands collection and perform customizations on each Band as needed.
+
+The Bands collection will essentially contain one Band per public entity in your data model. It is within the Band where you can enable CardView, add Summaries that aggregate the various Colum data, show or hide all Column Headers for that entity and so fourth. Each Band has a Columns collection. The Columns collection is what you use to access specific Columns so that their order can be re-arranged, column styles can be set (Turn a Column into a Button, CheckBox or DropDown) and many more customizations.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout( _
+   ByVal sender As System.Object, _
+   ByVal e As InitializeLayoutEventArgs) _
+   Handles UltraGrid1.InitializeLayout
+      Dim b As UltraGridBand = e.Layout.Bands("Customers")
+      b.CardView = True
+      b.Columns("CustomerID").Hidden = True
+      b.Columns("CompanyName").Header.Caption = "Company Name"
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(
+   object sender, 
+   InitializeLayoutEventArgs e)
+   {
+      UltraGridBand b = e.Layout.Bands["Customers"];
+      b.CardView = true;
+      b.Columns["CustomerID"].Hidden = true;
+      b.Columns["CompanyName"].Header.Caption = "Company Name";
+   }
+----
+
+== Accessing the Override Object
+
+Another important property that will be used often is the Override property located directly under the Grid.DisplayLayout or the event argument e.Layout. This is where all other Grid properties are located. Here you will find properties that allow customizations that either allow or deny the adding of new rows as well as deletion.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout( _
+   ByVal sender As System.Object, _
+   ByVal e As InitializeLayoutEventArgs) _
+   Handles UltraGrid1.InitializeLayout
+      e.Layout.Override.AllowAddNew = AllowAddNew.No
+      e.Layout.Override.ButtonStyle = UIElementButtonStyle.Borderless
+      e.Layout.Override.DefaultRowHeight = 75
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(
+   object sender, 
+   InitializeLayoutEventArgs e)
+{
+   e.Layout.Override.AllowAddNew = AllowAddNew.No;
+   e.Layout.Override.ButtonStyle = UIElementButtonStyle.Borderless;
+   e.Layout.Override.DefaultRowHeight = 75;
+}
+----
+
+An important concept to understand is the order in which properties are resolved. At this time you may have noticed a duplication of properties located within the Override as well as on individual Bands and even on individual Objects. This is by design as it allows a programmer to set general overall properties that will be propagated throughout the Grid and then individual elements and objects can be customized as the exception to the general settings. In other words, you can configure the Grid to allow the adding of records by setting the appropriate property in the Grid.DisplayLayout.Override. This will cause the entire Grid to allow the adding of new records. You can elect to configure one Band in the Grid to NOT allow the adding of records so that all Bands except for this one will allow new records to be added. The same concept applies for all property settings that are seen in multiple places. In the WinGrid and many other Infragistics Windows Forms components, as individual elements are rendered they resolve property settings by first looking at their own properties. If values are found then these values are applied during the resolution process. If none are set or if they are set to the Default values, they climb up the “Ladder” and then check the related properties on its parent. If values are found then those are applied, if not, then the resolution process keeps on moving up the chain until values are found or until the end of the resolution chain is reached and then only Default values are applied.

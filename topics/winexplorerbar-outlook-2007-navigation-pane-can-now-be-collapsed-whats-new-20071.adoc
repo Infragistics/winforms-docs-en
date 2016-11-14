@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-outlook-2007-navigation-pane-can-now-be-collapsed-whats-new-20071",
+    "controlName": [],
+    "tags": [],
+    "guid": "{E8068F40-B3BC-4944-9CB2-4B0A3AD5798A}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-12T15:12:54Z"
+}
+|metadata|
+////
+
+= Outlook 2007 Navigation Pane Can Now Be Collapsed
+
+In the 2006 Volume 3 release, we gave you the Office 2007 look and feel for a number of our controls. WinExplorerBar™ was one of these controls that received the new look and feel. WinExplorerBar can emulate the Outlook 2007 Navigation Pane if its  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property is set to OutlookNavigationPane.
+
+In this release, we've added the capability of collapsing the navigation pane. The main benefit of collapsing the navigation pane is the amount of screen real-estate your end user will be able to recover. Once collapsed, the navigation pane reduces its size significantly by only displaying a small sliver of itself.
+
+The most noticeable difference is the Group Area. The Group Area is where any items or control containers would be displayed. This area is replaced with a "Navigation Pane" button by default (you can change this text to whatever you like). When you click the button, a fly-out appears displaying all of the items that are contained within the Group Area. How, when, and where this fly-out appears is completely customizable through the navigation pane's object model.
+
+[cols="a,a"]
+|====
+|Navigation Pane Expanded
+|Navigation Pane Collapsed
+
+|image::images/WinExplorerBar_Outlook_2007_Navigation_Pane_Can_Now_Be_Collapsed_Whats_New_20071_01.png[ultraexplorerbar outlook 2007 navigation pane] 
+
+|image::images/WinExplorerBar_Outlook_2007_Navigation_Pane_Can_Now_Be_Collapsed_Whats_New_20071_02.png[ultraexplorerbar outlook 2007 navigation pane can now be collapsed] 
+
+|====
+
+== Related Topics
+
+link:winexplorerbar-change-the-size-of-the-navigation-pane-flyout.html[Change the Size of the Navigation Pane Flyout]
+
+link:winexplorerbar-change-the-text-in-the-navigation-pane-group-area.html[Change the Text in the Navigation Pane Group Area]
+
+link:winexplorerbar-show-the-navigation-pane-flyout-at-the-mouse-coordinates-on-a-right-click.html[Show the Navigation Pane Flyout at the Mouse Coordinates on a Right Click]

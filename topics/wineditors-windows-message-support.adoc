@@ -1,0 +1,254 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-windows-message-support",
+    "controlName": ["WinEditors"],
+    "tags": ["Extending"],
+    "guid": "2f5cb4c0-4777-4891-9eee-9145ae6c2def",  
+    "buildFlags": [],
+    "createdOn": "2010-09-16T21:02:05.6001087Z"
+}
+|metadata|
+////
+
+= Windows Message Support
+
+Infragistics WinEditor™ controls provide support for a subset of Native Windows Messages.
+
+The following table lists the messages supported by the WinEditor controls. In this table, the controls are categorized into a few basic categories: TextEditorControlBase, UltraWinEditorMaskedControlBase and UltraFormattedTextEditor. For the editor controls that fall under these specific categories, please see the link:wineditors-editor-controls-classification.html[Editor Controls Classification] topic.
+
+[options="header", cols="a,a,a,a"]
+|====
+|MESSAGES|SUPPORTED BY TEXTEDITORCONTROLBASE CONTROLS|SUPPORTED BYULTRAWINEDITORMASKEDCONTROLBASE CONTROLS|SUPPORTED BYULTRAFORMATTEDTEXTEDITOR
+
+|WM_CLEAR
+|Supported except by UltraTimeSpanEditor when it is not in Edit mode.
+|Only supported when in Edit mode
+|Yes
+
+|WM_GETTEXT
+|Yes
+|Yes
+|Yes
+
+|WM_GETTEXTLENGTH
+|Yes
+|Yes
+|Yes
+
+|EM_GETSEL
+|Yes
+|Yes
+|Yes
+
+|EM_SETSEL
+|Yes
+|Yes
+|Yes
+
+|EM_REPLACESEL
+|Supported except by UltraTimeSpanEditor when it is not in Edit mode. 
+
+wParam (fCanUndo) is supported only in Edit mode.
+|Only supported when in Edit mode. 
+
+wParam (fCanUndo) is not supported.
+|No
+
+|EM_LINEFROMCHAR
+|Yes
+|Yes$$*$$
+|Yes
+
+|EM_LINEINDEX
+|Yes
+|Yes $$*$$ $$* $$
+|Yes
+
+|EM_LINELENGTH
+|Yes
+|Yes
+|Yes
+
+|EM_GETFIRSTVISIBLELINE
+|Yes #
+|Yes $$*$$
+|Yes
+
+|EM_GETLINECOUNT
+|Yes
+|Yes $$*$$ $$*$$ $$* $$
+|Yes
+
+|EM_GETCHARFORMAT
+|No
+|No
+|Yes
+
+|====
+
+The EM_GETCHARFORMAT message has a large number of options. Either a CHARFORMAT structure or a CHARFORMAT2 structure can be passed in as the lParam to this message. There are several fields supported by the CHARFORMAT structure. CHARFORMAT2 includes all of the same fields as CHARFORMAT plus a few more. The following table provides a list of the CHARFORMAT and CHARFORMAT2 fields and whether they are supported by the UltraFormattedTextEditor control.
+
+== CHARFORMAT FIELD SUPPORT
+
+[options="header", cols="a,a"]
+|====
+|CHARFORMAT FIELDS|SUPPORT
+
+|cbSize
+|Yes
+
+|dwMask
+|Yes 
+
+This field indicates which of the other fields are valid. Any exceptions are noted in the descriptions of the other fields.
+
+|dwEffects
+|See following table
+
+|yHeight
+|Yes
+
+|yOffset
+|The yOffset applies to SuperScript or SubScript characters. UltraFormattedTextEditor does not support these characters and hence will always return 0.
+
+|crTextColor
+|Yes
+
+|bCharSet
+|Yes
+
+|bPitchAndFamily
+|Yes
+
+|sZFacename
+|Yes
+
+|CHARFORMAT2 FIELDS
+|
+
+|wWeight
+|Yes
+
+|sSpacing
+|No
+
+|crBackColor
+|Yes
+
+|lcid
+|No
+
+|dwReserved
+|Yes
+
+|sStyle
+|Yes
+
+|wKerning
+|No
+
+|bUnderlineType
+|Since UltraFormattedTextEditor does not support several Underline types, this will always return either CFU_UNDERLINE or CFU_UNDERLINENONE.
+
+|bAnimation
+|Since UltraFormattedTextEditor does not support animation, this will always return 0.
+
+|bRevAuthor
+|Since UltraFormattedTextEditor does not support revision tracking, this will always return 0.
+
+|bReserved1
+|Yes
+
+|====
+
+The dwEffects field is essentially a series of flags which indicate which effects are applied to the text. Some of the flags are only considered when using a CHARFORMAT2 structure.
+
+== CHARFORMAT dwEffects SUPPORT
+
+[options="header", cols="a,a"]
+|====
+|CHARFORMAT EFFECTS|SUPPORT
+
+|CFE_AUTOCOLOR
+|Yes
+
+|CFE_BOLD
+|Yes
+
+|CFE_DISABLED
+|Yes
+
+|CFE_ITALIC
+|Yes
+
+|CFE_STRIKEOUT
+|Yes
+
+|CFE_UNDERLINE
+|Yes
+
+|CFE_PROTECTED
+|Yes
+
+|CHARFORMAT2 EFFECTS
+|
+
+|CFE_ALLCAPS
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_AUTOBACKCOLOR
+|Yes
+
+|CFE_EMBOSS
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_HIDDEN
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_IMPRINT
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_LINK
+|No
+
+|CFE_OUTLINE
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_REVISED
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_SHADOW
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_SMALLCAPS
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_SUBSCRIPT
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|CFE_SUPERSCRIPT
+|UltraFormattedTextEditor has no support for this, so this flag will never be set.
+
+|====
+
+.Note
+[NOTE]
+====
+In cases where a particular feature is not supported by the UltraFormattedTextEditor, the dwMask will return the flag indicating that the field on the CHARFORMAT is valid, but the dwEffects will never include that flag. For example, UltraFormattedTextEditor has no support for protected text. So the dwMask will always include CFM_PROTECTED, indicating that the CFE_PROTECTED flag in the dwEffects is valid. But the CFE_PROTECTED flag will, of course, never be set in the dwEffects field. The net effect is that it will always be indicated that the text is not protected.
+====
+
+*Related Topics:*
+
+link:wineditors-editor-controls-classification.html[Editor Controls Classification]
+
+link:win-known-issues-in-2012-volume-2.html[Known Issues - WinEditors (Limitations for Windows Messages Support)]
+
+$$*$$ This message always returns 0 as these controls do not support multiline text.
+
+$$*$$$$* $$ This message always returns either 0 (for LineIndex 0 or -1) or -1 (for any other index) as these controls do not support multiline text.
+
+$$*$$$$*$$$$* $$ This message always returns 1 as these controls do not support multiline text.
+
+# Scrolling is not supported when not in edit mode. Hence this always returns 0 when not in Edit mode.

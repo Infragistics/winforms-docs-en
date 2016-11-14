@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-change-the-position-of-toolbars",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{B4002F81-D308-437D-AC41-7E965700E3C1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Position of Toolbars
+
+The position of each individual  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[Toolbar]"]  can be changed within a docking area. The row and column that each Toolbar is located can be changed by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar~dockedrow.html[DockedRow]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar~dockedcolumn.html[DockedColumn]"]  properties.
+
+*In Visual Basic:*
+
+----
+Private Sub Change_the_Position_of_Toolbars_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Three toolbars are added and by default all are docked at the top of the form
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("toolbar1")
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("toolbar2")
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("toolbar3")
+	' Toolbar1 was the first toolbar added so its default DockedRow value is 0
+	' Setting DockedRow for toolbar1 to 1 will move the toolbar down a row 
+	' so that it appears between(toolbar2 And toolbar3)
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").DockedRow = 1
+	' The default DockedColumn value for each toolbar is 0 since there 
+	' is only one toolbar in the row. When the DockedColumn property is set to 
+	' 1 for toolbar1,
+	' toolbar1 shifts into the second column of the first row and toolbar2 
+	' moves into the first column of the first row.
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").DockedColumn = 1
+End Sub
+----
+
+*In C#:*
+
+----
+private void Change_the_Position_of_Toolbars_Load(object sender, EventArgs e)
+{
+	// Three toolbars are added and by default all are docked at the top of the form
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("toolbar1");
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("toolbar2");
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("toolbar3");
+	/* Toolbar1 was the first toolbar added so its default DockedRow value is 0
+	   Setting DockedRow for toolbar1 to 1 will move the toolbar down a row 
+	   so that it appears between toolbar2 and toolbar3 */
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].DockedRow = 1;
+	/* The default DockedColumn value for each toolbar is 0 since there 
+	   is only one toolbar in the row. When the DockedColumn property is set to 
+	   1 for toolbar1,
+	   toolbar1 shifts into the second column of the first row and toolbar2 
+	   moves into the first column of the first row.*/
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].DockedColumn=1;
+}
+----

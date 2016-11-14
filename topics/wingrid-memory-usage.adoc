@@ -1,0 +1,107 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-memory-usage",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Tips and Tricks"],
+    "guid": "{8DE224B5-7507-461E-BF62-76D9A69BEA33}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Memory Usage
+
+When the following tips and tricks are applied to your programmatic use of Wingrid™, you can improve performance by reducing the memory footprint that is imposed on the system.
+
+. *Using the GetCellValue Method Instead of Referencing Cell Values Directly*
++
+The WinGrid does not create  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  objects for every row of data. Cells are only created as neccessary. So whenever possible, accessing a cell should be avoided. For example, consider the following code that is placed in the InitializeRow event of the grid with the intent to calculate a total. Since this code references three cells per row directly, each cell that gets referenced is being lazily created in memory.
++
+*In Visual Basic:*
+[source, vb]
+Private Sub ultraGrid1_InitializeRow(ByVal sender As Object, ByVal e As InitializeRowEventArgs)
+    e.Row.Cells("Total").Value = CDbl(e.Row.Cells("Quantity").Value) $$*$$ CDbl(e.Row.Cells("Price").Value)
+End Sub
++
+*In C#:*
+[source, csharp]
+private void ultraGrid1_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            e.Row.Cells["Total"].Value = (double)e.Row.Cells["Quantity"].Value $$*$$ (double)e.Row.Cells["Price"].Value;
+        }
++
+If you wish to avoid the lazy creation of these cells, you can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getcellvalue.html[GetCellValue]"]  method located on the row. This method is designed to simply return specific cell values while avoiding the lazy creation of the entire cell object in memory thus resulting in memory savings.
++
+*In Visual Basic:*
+[source, vb]
+Private Sub ultraGrid1_InitializeRow(ByVal sender As Object, ByVal e As InitializeRowEventArgs)
+    Dim quantityColumn As UltraGridColumn = e.Row.Band.Columns("Quantity")
+    Dim priceColumn As UltraGridColumn = e.Row.Band.Columns("Price")
+    e.Row.Cells("Total").Value = CDbl(e.Row.GetCellValue(quantityColumn)) $$*$$ CDbl(e.Row.GetCellValue(priceColumn))
+End Sub
++
+*In C#:*
+[source, csharp]
+private void ultraGrid1_InitializeRow(object sender, InitializeRowEventArgs e)
+    {
+       UltraGridColumn quantityColumn = e.Row.Band.Columns["Quantity"];
+       UltraGridColumn priceColumn = e.Row.Band.Columns["Price"];
+       e.Row.Cells["Total"].Value = (double)e.Row.GetCellValue(quantityColumn) $$*$$(double)e.Row.GetCellValue(priceColumn);
+    }
+
+. *Re-using Appearances*
++
+Consider applying a custom  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  to a cell based on the Value of that cell. Applying an Appearance to a cell requires getting a reference to the UltraGridCell, so that is unavoidable. However memory can be saved by re-using the same Appearance object for multiple cells. For example, consider you want to change the ForeColor of a cell to red for negative numbers and black for positive numbers. The bigger problem here is that the Appearance property on the cell is also lazily created. This means that for each cell you specifically access, memory is being allocated and used and a new Appearance object for each row is also being created. Also, there are only two possible colors, but we end up creating a large number of identical appearance objects.
++
+If you want to reduce the memory footprint of this type of operation, a better way to do this is to create the Appearances objects that we need up front and then re-use them whenever needed. Another benefit to this approach is that if you change any properties of your single Appearance instance, any object that is using that Appearance will change. In other words, if you have 200 Cells referencing the same Appearance object, changing the property values of that one Appearance object will cause all 200 Cells to change. For example, you might want to use Green instead of Black for positive numbers. The ForeColor of the Positive Appearance object can be set at run-time, and every cell that referenced that Appearance would update automatically.
++
+*In Visual Basic:*
+[source, vb]
+Private Sub ultraGrid1_InitializeLayout(ByVal sender As Object, ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs)
+    ' Create an appearance for negative values 
+    Dim negativeAppearace As Infragistics.Win.Appearance = e.Layout.Appearances.Add("Negative")
+    negativeAppearace.ForeColor = Color.Red
+    ' Create an appearance for positive values 
+    Dim positiveAppearace As Infragistics.Win.Appearance = e.Layout.Appearances.Add("Positive")
+    positiveAppearace.ForeColor = Color.Black
+End Sub
+Private Sub ultraGrid1_InitializeRow(ByVal sender As Object, ByVal e As InitializeRowEventArgs)
+    Dim grid As UltraGrid = DirectCast(sender, UltraGrid)
+    ' Get the value of the Total column. 
+    Dim totalColumn As UltraGridColumn = e.Row.Band.Columns("Total")
+    Dim total As Double = CDbl(e.Row.GetCellValue(totalColumn))
+    If total < 0 Then
+        ' Use the Negative Appearance already defined in the grid's Appearances collection. 
+        e.Row.Cells("Total").Appearance = grid.DisplayLayout.Appearances("Negative")
+    Else
+        ' Use the Positive Appearance already defined in the grid's Appearances collection. 
+        e.Row.Cells("Total").Appearance = grid.DisplayLayout.Appearances("Positive")
+    End If
+End Sub
++
+*In C#:*
+[source, csharp]
+  private void ultraGrid1_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+            // Create an appearance for negative values
+            Infragistics.Win.Appearance negativeAppearace = e.Layout.Appearances.Add("Negative");
+            negativeAppearace.ForeColor = Color.Red;
+            // Create an appearance for positive values
+            Infragistics.Win.Appearance positiveAppearace = e.Layout.Appearances.Add("Positive");
+            positiveAppearace.ForeColor = Color.Black;
+        }
+        private void ultraGrid1_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            UltraGrid grid = (UltraGrid)sender;            
+            // Get the value of the Total column.
+            UltraGridColumn totalColumn = e.Row.Band.Columns["Total"];
+            double total = (double)e.Row.GetCellValue(totalColumn);
+            if (total < 0)
+                // Use the Negative Appearance already defined in the grid's Appearances collection.
+                e.Row.Cells["Total"].Appearance = grid.DisplayLayout.Appearances["Negative"];
+            else
+                // Use the Positive Appearance already defined in the grid's Appearances collection.
+                e.Row.Cells["Total"].Appearance = grid.DisplayLayout.Appearances["Positive"];
+        }

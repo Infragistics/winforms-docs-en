@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-styling-owner-headers",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{EB0B3132-62B1-4B3F-B469-15D7B702ACD3}",  
+    "buildFlags": [],
+    "createdOn": "2009-09-06T10:09:56Z"
+}
+|metadata|
+////
+
+= Styling Owner Headers
+
+This topic shows you how to style the row headers in WinTimelineView™. The row headers represent the owners (e.g. person, department or entity). You can modify the owner header text orientations, change the header appearance and also show the owner scroll bar. The owner header text orientation and header appearance settings can be applied using the WinTimelineView control’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~ownerheadertextorientation.html[OwnerHeaderTextOrientation]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~ownerheaderappearance.html[OwnerHeaderAppearance]"]  properties.
+
+This topic assumes that you have an ultraTimeLineView control associated with owners and timeslots, dropped onto the form. For information on creating a WinTimelineView control with owners and timeslots, please see the link:wintimelineview-assign-multiple-owners-for-wintimelineview.html[Assign Multiple Owners for WinTimelineView] and link:wintimelineview-set-time-and-date-intervals-for-wintimelineview.html[Set Time and Date Intervals for WinTimelineView] topics.
+
+*In Visual Basic:*
+
+----
+' Set the Header text orientation for Owners 
+Me.ultraTimelineView1.OwnerHeaderTextOrientation = TextOrientationInfo.Horizontal45Degrees 
+' Set the back color for Owner header 
+Me.ultraTimelineView1.OwnerHeaderAppearance.BackColor = Color.Yellow 
+Me.ultraTimelineView1.OwnerScrollBarVisibility = TimelineViewOwnerScrollBarVisibility.ShowOnlyWhenNeeded
+----
+
+*In C#:*
+
+----
+// Set the Header text orientation for Owners
+this.ultraTimelineView1.OwnerHeaderTextOrientation = TextOrientationInfo.Horizontal45Degrees;
+// Set the back color for Owner header
+this.ultraTimelineView1.OwnerHeaderAppearance.BackColor = Color.Yellow;
+this.ultraTimelineView1.OwnerScrollBarVisibility = TimelineViewOwnerScrollBarVisibility.ShowOnlyWhenNeeded;
+----
+
+image::Images\WinTimeLineView_Styling_Owner_Headers.png[]

@@ -1,0 +1,375 @@
+﻿////
+|metadata|
+{
+    "name": "winlistview-resource-strings",
+    "controlName": [],
+    "tags": ["Design Environment","Localization","Resource Strings"],
+    "guid": "{B6FC1E3A-DB63-4B63-BA59-C02A6AD2C909}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinListView Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|Accessibility_DefaultAction_ColumnHeader_Sort
+|Sort
+
+|Accessibility_UltraListItem_DefaultAction
+|Edit
+
+|EditErrorEventMessageBoxText
+|The value '{0}' is not valid for this item.
+
+|EditErrorEventMessageBoxTitle
+|Error
+
+|Exception_CannotAddItemToDifferentCollection
+|An UltraListViewItem cannot belong to more than one UltraListViewItemsCollection.
+
+|Exception_CannotAddItemToSameCollection
+|An UltraListViewItem cannot be added to the same UltraListViewItemsCollection to which it already belongs.
+
+|Exception_CannotInitializeFromItem
+|An UltraListViewSubItem instance cannot be initialized from an UltraListViewItem instance.
+
+|Exception_CannotInitializeFromSubItem
+|An UltraListViewItem instance cannot be initialized from an UltraListViewSubItem instance.
+
+|Exception_CannotSelectItemFromDifferentCollection
+|An UltraListViewItem cannot be selected if it does not belong to this control's Items collection.
+
+|UltraListView_P_Appearance
+|Gets/sets the Appearance object which controls formatting for the control.
+
+|UltraListView_P_Appearances
+|Returns a repository in which Appearance objects can be stored.
+
+|UltraListView_P_AutoKeyboardSearch
+|Gets/sets whether the control navigates to items when the end user types alphanumeric characters
+
+|UltraListView_P_BorderStyle
+|Gets/sets the style for the border that is drawn around the control.
+
+|UltraListView_P_DisplayRectangle
+|Returns a Rectangle which represents the client area of the control.
+
+|UltraListView_P_GroupAppearance
+|Gets/sets the general appearance for UltraListViewGroup objects displayed by this UltraListView instance.
+
+|UltraListView_P_GroupHeaderMargins
+|Gets/sets the margins which provide spacing around the headers displayed by an UltraListViewGroup.
+
+|UltraListView_P_GroupHeadersVisible
+|Gets/sets whether UltraListViewGroup headers are displayed in the user interface.
+
+|UltraListView_P_Groups
+|Returns the collection of UltraListViewGroup objects.
+
+|UltraListView_P_ImageTransparentColor
+|Gets/sets the color that is reserved as the transparent color when rendering images displayed by this UltraListView control.
+
+|UltraListView_P_Items
+|Returns the collection of UltraListViewItem objects.
+
+|UltraListView_P_ItemSettings
+|Returns the UltraListViewItemSettings object which defines properties that are specific to items.
+
+|UltraListView_P_MainColumn
+|Returns the UltraListViewMainColumn object which defines the properties of the column under which the item's Value is displayed when the View property is set to 'Details'.
+
+|UltraListView_P_ScrollBarLook
+|Determines the appearance and behavior of the scrollbars for this UltraListView instance.
+
+|UltraListView_P_ScrollbarSmallChangeHorizontal
+|Gets/sets the number of pixels by which the control is scrolled when the end user clicks the right/left scroll arrows on the horizontal scrollbar.
+
+|UltraListView_P_ScrollbarSmallChangeVertical
+|Gets/sets the number of pixels by which the control is scrolled when the end user clicks the up/down scroll arrows on the vertical scrollbar.
+
+|UltraListView_P_ShowGroups
+|Gets/sets whether items are displayed in groups.
+
+|UltraListView_P_SubItemColumns
+|Returns the collection of UltraListViewSubItemColumn objects which define the columns displayed by the control under which sub-items appear.
+
+|UltraListView_P_View
+|Gets/sets how items are displayed in the control.
+
+|UltraListView_P_ViewSettingsDetails
+|Returns the UltraListViewDetailsSettings object which defines properties that are applicable when the control's View property is set to 'Details'.
+
+|UltraListView_P_ViewSettingsIcons
+|Returns the UltraListViewIconsSettings object which defines properties that are applicable when the control's View property is set to 'Icons'.
+
+|UltraListView_P_ViewSettingsList
+|Returns the UltraListViewListSettings object which defines properties that are applicable when the control's View property is set to 'List'.
+
+|UltraListView_P_ViewSettingsThumbnails
+|Returns the UltraListViewThumbnailsSettings object which defines properties that are applicable when the control's View property is set to 'Thumbnails'.
+
+|UltraListView_P_ViewSettingsTiles
+|Returns the UltraListViewTilesSettings object which defines properties that are applicable when the control's View property is set to 'Tiles'.
+
+|UltraListViewCheckedItemsCollection_Exception_SetCheckState
+|The SetCheckState method cannot be called with an UltraListViewItem that does not belong to this control's Items collection.
+
+|UltraListViewColumnBase_Exception_DataTypeNotValid
+|The editor currently assigned to this column does not support the specified data type.
+
+|UltraListViewColumnBase_Exception_EditorAndDataTypeCombinationNotValid
+|The editor '{0}' does not support the type '{1}'.
+
+|UltraListViewColumnBase_Exception_EditorNotValid
+|The specified editor is not valid for this column. Verify that the 'DataType' property is set to a value appropriate for the specified editor.
+
+|UltraListViewColumnBase_P_AllowMoving
+|Gets/sets whether this UltraListViewColumnBase can be repositioned by the end user by the end user by dragging the header to a new location
+
+|UltraListViewColumnBase_P_AllowSizing
+|Gets/sets whether this UltraListViewColumnBase can be resized by the end user by dragging the right edge of its header.
+
+|UltraListViewColumnBase_P_AllowSorting
+|Gets/sets whether this UltraListViewColumnBase can be sorted by the end user by clicking on its header.
+
+|UltraListViewColumnBase_P_AutoSizeMode
+|Gets/sets whether the width of this column is automatically made large enough to display the header text and/or all item/sub-item values when the end user double-clicks on the header.
+
+|UltraListViewColumnBase_P_DataType
+|Gets/sets the Type of the data for the items/sub-items in this UltraListViewColumnBase.
+
+|UltraListViewColumnBase_P_EditorComponent
+|Gets/sets the IProvidesEmbeddableEditor implementor which provides the EmbeddableEditorBase-derived editor that renders the data for the sub-items of this UltraListViewColumnBase.
+
+|UltraListViewColumnBase_P_EditorControl
+|Gets/sets the IProvidesEmbeddableEditor implementor which provides the EmbeddableEditorBase-derived editor that renders the data for the sub-items of this UltraListViewColumnBase.
+
+|UltraListViewColumnBase_P_Format
+|Gets/sets the string format which will be applied to item/sub-item data to control how it is displayed.
+
+|UltraListViewColumnBase_P_FormatProvider
+|Gets/sets the IFormatProvider implementor which controls formatting for the items/sub-items displayed by this column.
+
+|UltraListViewColumnBase_P_HeaderAppearance
+|Gets/sets the appearance that is applied to this UltraListViewColumnBase instance's header.
+
+|UltraListViewColumnBase_P_NullText
+|Gets/sets the string that is displayed by cells whose value is null.
+
+|UltraListViewColumnBase_P_ShowSortIndicators
+|Gets/sets whether sort indicators are displayed for this UltraListViewColumnBase.
+
+|UltraListViewColumnBase_P_Sorting
+|Gets/sets whether and how items are sorted.
+
+|UltraListViewColumnBase_P_Text
+|Gets/sets the string that is displayed in this UltraListViewColumnBase instance's header.
+
+|UltraListViewColumnBase_P_ValueList
+|Gets/sets the IValueList interface implementor used to map data values to text for the items/sub-items associated with this UltraListViewColumnBase.
+
+|UltraListViewColumnBase_P_VisiblePositionInDetailsView
+|Gets/sets the position of this column in the user interface, as relative to the leftmost visible column, when the control's View property is set to 'Details'.
+
+|UltraListViewColumnBase_P_Width
+|Gets/sets the width of this UltraListViewColumnBase, expressed in pixels.
+
+|UltraListViewDetailsSettings_P_AllowColumnMoving
+|Gets/sets whether the end user is permitted to move columns by dragging the column header to a new location.
+
+|UltraListViewDetailsSettings_P_AllowColumnSizing
+|Gets/sets whether the end user is permitted to resize columns by dragging the right edge of the column header.
+
+|UltraListViewDetailsSettings_P_AllowColumnSorting
+|Gets/sets whether the end user is permitted to sort columns by clicking the column header.
+
+|UltraListViewDetailsSettings_P_AutoFitColumns
+|Gets/sets whether the widths of all columns are automatically calculated so that they occupy all available horizontal space, preventing a horizontal scrollbar from appearing.
+
+|UltraListViewDetailsSettings_P_AutoSizeMode
+|Gets/sets whether the width of a column is automatically made large enough to display the header text and/or all item/sub-item values when the end user double-clicks on the header.
+
+|UltraListViewDetailsSettings_P_ColumnHeaderAppearance
+|Gets/sets the appearance that is applied to column headers.
+
+|UltraListViewDetailsSettings_P_ColumnHeaderBorderStyle
+|Gets/sets the border style for the column headers.
+
+|UltraListViewDetailsSettings_P_ColumnHeaderImageList
+|Gets/sets the ImageList which provides images for the column headers.
+
+|UltraListViewDetailsSettings_P_ColumnHeaderImageSize
+|Gets/sets the size at which images are displayed in the column headers.
+
+|UltraListViewDetailsSettings_P_ColumnHeaderStyle
+|Gets/sets the style for the column headers.
+
+|UltraListViewDetailsSettings_P_ColumnsShowSortIndicators
+|Gets/sets whether a sort indicator is displayed for this column.
+
+|UltraListViewDetailsSettings_P_FullRowSelect
+|Gets/sets whether selection is visually depicted across all sub-items or restricted to the item only.
+
+|UltraListViewDetailsSettings_P_SubItemAppearance
+|Gets/sets the appearance for sub-items.
+
+|UltraListViewDetailsSettings_P_SubItemColumnsVisibleByDefault
+|Gets/sets whether columns whose VisibleInDetailsView property is left at the default value are displayed.
+
+|UltraListViewDetailsSettings_P_SubItemTipStyle
+|Gets/sets the style for the column headers.
+
+|UltraListViewGroup_P_Appearance
+|Gets/sets the appearance for this UltraListViewGroup.
+
+|UltraListViewGroup_P_Enabled
+|Gets/sets whether this UltraListViewGroup is enabled in the user interface.
+
+|UltraListViewGroup_P_HeaderMargins
+|Gets/sets the margins which provide spacing around this UltraListViewGroup's header.
+
+|UltraListViewGroup_P_HeaderVisible
+|Gets/sets whether this UltraListViewGroup's header is displayed in the user interface.
+
+|UltraListViewGroup_P_Text
+|Gets/sets the text which is displayed to identify this UltraListViewGroup.
+
+|UltraListViewGroup_P_Visible
+|Gets/sets whether this UltraListViewGroup is displayed in the user interface.
+
+|UltraListViewIconicViewSettingsBase_P_Alignment
+|Gets/sets whether items are laid out in a horizontal or vertical direction before wrapping to the next row or column.
+
+|UltraListViewIconicViewSettingsBase_P_ItemSize
+|Gets/sets the size of the area in which an item is displayed.
+
+|UltraListViewIconicViewSettingsBase_P_MaxLines
+|Gets/sets the maximum number of text lines that will be displayed for items.
+
+|UltraListViewIconicViewSettingsBase_P_Spacing
+|Gets/sets the number of pixels between rows and columns of items. The Width member of the Size struct determines the space between columns and the Height member determines the space between the rows.
+
+|UltraListViewIconicViewSettingsBase_P_TextAreaAlignment
+|Gets/sets the alignment for the item's text area.
+
+|UltraListViewItem_P_CheckState
+|Gets/sets whether this UltraListViewItem is checked, unchecked, or indeterminate.
+
+|UltraListViewItem_P_Enabled
+|Gets/sets whether this UltraListViewItem is enabled in the user interface.
+
+|UltraListViewItem_P_Group
+|Gets/sets the UltraListViewGroup to which this UltraListViewItem belongs.
+
+|UltraListViewItem_P_HotTracking
+|Gets/sets whether this UltraListViewItem objects exhibits hot tracking effects when the cursor passes within the bounds of its UIElement.
+
+|UltraListViewItem_P_MaxLines
+|Gets/sets the maximum number of text lines that will be displayed for this UltraListViewItem.
+
+|UltraListViewItem_P_SubItems
+|Returns the UltraListViewSubItems collection which contains the sub-items for this UltraListViewItem.
+
+|UltraListViewItem_P_Visible
+|Gets/sets whether this UltraListViewItem is displayed in the user interface.
+
+|UltraListViewItemBase_P_Appearance
+|Gets/sets the appearance for this item/sub-item.
+
+|UltraListViewItemSettings_P_ActiveAppearance
+|Gets/sets the appearance that is applied to the ActiveItem.
+
+|UltraListViewItemSettings_P_AllowEdit
+|Gets/sets whether items can be edited by the end user.
+
+|UltraListViewItemSettings_P_Appearance
+|Gets/sets the appearance that is applied to items.
+
+|UltraListViewItemSettings_P_DefaultImage
+|Gets/sets the image that is displayed for items whose resolved appearance contains no image.
+
+|UltraListViewItemSettings_P_HideSelection
+|Gets/sets whether the color properties of the SelectedAppearance are applicable when the control does not have the input focus.
+
+|UltraListViewItemSettings_P_HotTracking
+|Gets/sets whether an item exhibits hot tracking effects when the cursor passes within the bounds of its UIElement.
+
+|UltraListViewItemSettings_P_HotTrackingAppearance
+|Gets/sets the appearance that is applied to an item when the cursor passes within the bounds of its UIElement.
+
+|UltraListViewItemSettings_P_LassoSelectMode
+|Gets/sets whether "lasso" drag selection is supported and if so, which mouse buttons can be used to drag the lasso.
+
+|UltraListViewItemSettings_P_NullText
+|Gets/sets the string that is displayed for items/subitems whose value is null.
+
+|UltraListViewItemSettings_P_SelectedAppearance
+|Gets/sets the appearance that is applied to an item when it is selected.
+
+|UltraListViewItemSettings_P_SelectionType
+|Gets/sets the SelectionType constant which dictates how items can be selected via the user interface.
+
+|UltraListViewItemSettings_P_SubItemsVisibleInToolTipByDefault
+|Gets/sets whether sub-items appear by default in the tooltips that are displayed when the TipStyle property is set to 'Automatic'.
+
+|UltraListViewItemSettings_P_TipStyle
+|Gets/sets whether tooltips are displayed when the end user hovers the cursor over an item, and if so, how they are displayed.
+
+|UltraListViewListSettings_P_ColumnWidth
+|Gets/sets the width of the columns in which items are displayed.
+
+|UltraListViewListSettings_P_MultiColumn
+|Gets/sets whether items are displayed in multiple columns.
+
+|UltraListViewListSettingsBase_P_CheckBoxStyle
+|Gets/sets whether checkboxes are displayed next to items, and also whether the checkboxes are 2 state or 3 state.
+
+|UltraListViewMainColumn_P_ItemAppearance
+|Gets/sets the appearance that is applied to the items displayed by this UltraListViewMainColumn.
+
+|UltraListViewSettingsBase_P_ImageList
+|Gets/sets the ImageList component that is used to provide images for the items displayed with this View setting.
+
+|UltraListViewSettingsBase_P_ImageSize
+|Gets/sets the size at which item images are displayed for this View setting.
+
+|UltraListViewSubItemColumn_P_SubItemAppearance
+|Gets/sets the appearance that is applied to the sub-items displayed by this UltraListViewSubItemColumn.
+
+|UltraListViewSubItemColumn_P_SubItemTipStyle
+|Gets/sets whether a tooltip is displayed when the text of a sub-item in this column is not fully visible.
+
+|UltraListViewSubItemColumn_P_VisibleInDetailsView
+|Gets/sets whether this column is displayed in the user interface when the control's View property is set to 'Details'.
+
+|UltraListViewSubItemColumn_P_VisibleInTilesView
+|Gets/sets whether this column is displayed in the user interface when the control's View property is set to 'Tiles'.
+
+|UltraListViewSubItemColumn_P_VisibleInToolTip
+|Gets/sets whether the value of this column's Text is displayed in the tooltips displayed for an item when the ItemSettings' TipStyle property is set to 'Automatic'.
+
+|UltraListViewSubItemColumn_P_VisiblePositionInTilesView
+|Gets/sets the position of this column in the user interface, as relative to the topmost visible column, when the control's View property is set to 'Tiles'.
+
+|UltraListViewSubItemColumn_P_VisiblePositionInToolTip
+|Gets/sets whether the value of this column's Text, and the associated sub-item's Value, are displayed in the tooltips when the ItemSettings' TipStyle property is set to 'Automatic'.
+
+|UltraListViewTilesSettings_P_NullText
+|Gets/sets the string that is displayed for items/sub-items whose value is null.
+
+|UltraListViewTilesSettings_P_SubItemAppearance
+|Gets/sets the appearance for sub-items.
+
+|UltraListViewTilesSettings_P_SubItemsVisibleByDefault
+|Gets/sets whether sub-items appear by default when the UltraListView control's View property is set to 'Tiles'.
+
+|====

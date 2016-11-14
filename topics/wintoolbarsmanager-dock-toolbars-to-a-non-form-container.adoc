@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-dock-toolbars-to-a-non-form-container",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{66F871EA-C383-4460-8EFA-E839B50289CD}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Dock Toolbars to a Non-Form Container
+
+The WinToolbarsManager™ component can create toolbars that dock to containers other than a form. You can take advantage of this feature by using the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer]"]  property of the element.
+
+== At design time
+
+Add an additional container to the form such as a panel. Go to the Properties window for the UltraToolBarsManager element and select the DockWithinContainer property under Behavior. This will allow the selection of all possible containers within the form for the toolbars to use as a docking area.
+
+== At run time
+
+*In Visual Basic:*
+
+----
+Private Sub Dock_Toolbars_to_a_Non_Form_Container_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Docks the UltraToolBarsManager element to a panel
+	Me.UltraToolbarsManager1.DockWithinContainer = Me.Panel1
+End Sub
+----
+
+*In C#:*
+
+----
+private void Dock_Toolbars_to_a_Non_Form_Container_Load(object sender, EventArgs e)
+{
+	// Docks the UltraToolBarsManager element to a panel
+	this.ultraToolbarsManager1.DockWithinContainer = this.panel1;
+}
+----

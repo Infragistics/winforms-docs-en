@@ -1,0 +1,290 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-defining-productions",
+    "controlName": [],
+    "tags": [],
+    "guid": "d1da8b5c-06cd-489a-ba6e-77b269f8afff",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0578507Z"
+}
+|metadata|
+////
+
+= Defining Productions
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains how to create productions for a non-terminal symbol.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350516964, Productions Overview >>
+* <<_Ref349233072, Productions summary >>
+* <<_Ref349233076, Identical heads >>
+* <<_Ref349233081, Empty body >>
+* <<_Ref349233086, Own head contained in the body >>
+* <<_Ref350517052, Defining a Variable Declaration Statement >>
+* <<_Ref349236370, Initial abstract declaration >>
+* <<_Ref349236375, Presented in a tree format >>
+* <<_Ref349236378, Defined using C# >>
+* <<_Ref349236384, Related Content >>
+
+[[_Ref350516964]]
+== Productions Overview
+
+[[_Ref349233072]]
+
+=== Productions summary
+
+As described in the link:ig-spe-non-terminal-symbols.html[Non-Terminal Symbols] topic, productions are a set of definitions which indicate the various ways a non-terminal symbol can represent a sequence of symbols. Each production body defines the left to right order in which it expects to find a sequence of symbols. There are a few important things to note about productions:
+
+[[_Ref349233076]]
+
+=== Identical heads
+
+There can be multiple productions with the same head – non-terminals symbols do not have to only represent one sequence of symbols. There can be multiple productions for the same non-terminal symbol. For example, these can be some of the productions for the VariableDeclarationStatement non-terminal symbol in C#:
+
+VariableDeclarationStatement → Type IdentifierToken SemicolonToken
+
+VariableDeclarationStatement → Type IdentifierToken EqualsToken Expression SemicolonToken
+
+VariableDeclarationStatement → VarKeyword IdentifierToken EqualsToken Expression SemicolonToken
+
+Now if any of these sequences of symbols are found in a document in places where a variable declaration statement is expected, that sequence can be represented by the VariableDeclarationStatement non-terminal symbol.
+
+[[_Ref349233081]]
+
+=== Empty body
+
+A production body can be empty:
+
+OmittedArgument →
+
+This production is valid and is used by the Visual Basic language. This means if the parser were expecting to find an “OmittedArgument” as the next construct in a document, it could just indicate that it found it in its empty form and the next token actually belongs to the content that was supposed to be found after the “OmittedArgument”. One way to use this might be like so:
+
+OmittedArgument →
+
+Argument → Expression
+
+Argument → OmittedArgument
+
+ArgumentList → OpenParen Argument Comma Argument CloseParen
+
+Now when looking for an argument, if one is missing (which is allowed for VB when the parameter has a default value), the parser can assume that it found the “OmittedArgument” in the place where the “Argument” was expected. So in the argument list “(,)”, there would be two “OmittedArgument” non-terminal symbols found.
+
+[[_Ref349233086]]
+
+=== Own head contained in the body
+
+A production body can contain its own head symbol as one of its symbols. This can be useful for recursive structures and symbols which contain repeated items. For example, a block of code allows for zero or more statements in C#. If we wanted to define a non-terminal symbol called “Statements” to represent a block, it would be impossible without recursively defined symbols because it would require an infinite number of productions: one for each number of statements allowed. But with recursively defined symbols, it is possible to define the following productions to represent all number of statements (the subscripts on the head symbols are only to facilitate the explanation below and do not affect the symbols or productions):
+
+Statements~1~ →
+
+Statements~2~ → Statement *Statements*
+
+The 2nd production refers to the “Statements” non-terminal symbol in the body. “Statements” is now recursively defined. Now the syntax tree will look like the following based on a various numbers of statements found in a possible block:
+
+* If zero statements are found:
++
+Statements~1~
+
+* If one statement is found:
++
+Statements~2~
+
+** Statement
+** Statements~1~
+
+* If two statements are found:
++
+Statements~2
+
+** Statement
+** Statements~2~
+
+*** Statement
+*** Statements~1~
+
+* And so on…
+
+[[_Ref350517052]]
+== Defining a Variable Declaration Statement
+
+[[_Ref349236370]]
+
+=== Initial abstract declaration
+
+As mentioned in link:ig-spe-non-terminal-symbols.html[Non-Terminal Symbols] topic, the following are some of the possible productions for a variable declaration statement in C#:
+
+VariableDeclarationStatement → Type IdentifierToken SemicolonToken
+
+VariableDeclarationStatement → Type IdentifierToken EqualsToken Expression SemicolonToken
+
+VariableDeclarationStatement → VarKeyword IdentifierToken EqualsToken Expression SemicolonToken
+
+Instead of requiring each production to be defined separately, the Syntax Parsing Engine allows for all productions with matching head symbols to be defined together by merging all productions together, like so:
+
+VariableDeclarationStatement →
+
+(Type IdentifierToken [EqualsToken Expression] SemicolonToken)
+
+| (VarKeyword IdentifierToken EqualsToken Expression SemicolonToken)
+
+In this pseudo-production, parentheses group symbols together, square brackets contain optional sequences of symbols, and the bar character ‘|’ separates two alternatives sequences. This notation describes the same three productions above, but in a more compact fashion.
+
+[[_Ref349236375]]
+
+=== Presented in a tree format
+
+The pseudo-production in the example above can be described with a tree structure of syntax rules, the root of which is exposed by the Rule property of the head NonTerminalSymbol. Here is what the tree structure would look like in this case:
+
+----
+NonTerminalSymbol.Rule
+    AlternationSyntaxRule
+        ConcatenationSyntaxRule
+            SymbolReferenceSyntaxRule (Type)
+            SymbolReferenceSyntaxRule (IdentifierToken)
+            OptionalSyntaxRule
+                ConcatenationSyntaxRule
+                    SymbolReferenceSyntaxRule (EqualsToken)
+                    SymbolReferenceSyntaxRule (Expression)
+            SymbolReferenceSyntaxRule (SemicolonToken)
+        ConcatenationSyntaxRule
+            SymbolReferenceSyntaxRule (VarKeyword)
+            SymbolReferenceSyntaxRule (IdentifierToken)
+            SymbolReferenceSyntaxRule (EqualsToken)
+            SymbolReferenceSyntaxRule (Expression)
+            SymbolReferenceSyntaxRule (SemicolonToken)
+----
+
+As you can see the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[Rule] property of the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] class indicates to the syntax analyzer the various ways in which the non-terminal symbol can be formed from other symbols. Here is a table of all available syntax rules:
+
+[options="header", cols="a,a"]
+|====
+|Rule|Description
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule]
+|Represents a single symbol.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule]
+|Represents a child rule which could optionally be used.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]
+|Represents a child rule which could be used zero or more times.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule]
+|Represents a set of two or more child rules, one of which must be used.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]
+|Represents a set of two or more child rules, each of which must be used in order from left to right in the document.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule]
+|Represents no symbols.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule]
+|Represents a syntactic exception, which allows one sequence of symbols to be used as long as the tokens which match that sequence do not match an "exception sequence" of symbols.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule]
+|Represents a syntactic factor, which is a rule repeated a specific number of times.
+
+|====
+
+[[_Ref349236378]]
+
+=== Defined using C#
+
+The above tree may be defined using C# in the following way (Symbol implicitly converts to `SymbolReferenceSyntaxRule`, so symbols can be specified directly when a rule referencing them is needed):
+
+*In C#:*
+
+[source,csharp]
+----
+var grammar = new Grammar();
+var defaultLexerState = grammar.LexerStates.DefaultLexerState;
+// Include the built-in symbols which should be matched in the default lexer state.
+defaultLexerState.Symbols.Add(grammar.WhitespaceSymbol);
+defaultLexerState.Symbols.Add(grammar.NewLineSymbol);
+var equals = defaultLexerState.Symbols.Add("EqualsToken", "=");
+var semicolon = defaultLexerState.Symbols.Add("SemicolonToken", ";");
+var varKeyword = defaultLexerState.Symbols.Add("VarKeyword", "var");
+var identifier = defaultLexerState.Symbols.Add("IdentifierToken",
+      "[_a-zA-Z][_a-zA-Z0-9]*", TerminalSymbolComparison.RegularExpression);
+var type = grammar.NonTerminalSymbols.Add("Type");
+type.Rule = identifier; // Implicit conversion
+var expression = grammar.NonTerminalSymbols.Add("Expression");
+expression.Rule = ...
+var variableDeclarationStatement =
+    grammar.NonTerminalSymbols.Add("VariableDeclarationStatement");
+variableDeclarationStatement.Rule =
+      new AlternationSyntaxRule(
+            new ConcatenationSyntaxRule(
+                        type, // Implicit conversions
+                        identifier,
+                        new OptionalSyntaxRule(
+                              new ConcatenationSyntaxRule(
+                                    equals,
+                                    expression
+                              )
+                        ),
+                        semicolon
+                  ),
+            new ConcatenationSyntaxRule(
+                        varKeyword,
+                        identifier,
+                        equals,
+                        expression,
+                        semicolon
+                  )
+            );
+grammar.StartSymbol = variableDeclarationStatement;
+----
+
+[[_Ref349236384]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-restrictions.html[Restrictions]
+|This topic explains the restrictions placed on grammar definitions.
+
+| link:ig-spe-ambiguities.html[Ambiguities]
+|This topic describes the ambiguities that may occur while a document is parsing and how to handle them.
+
+| link:ig-spe-ebnf-file-format.html[EBNF File Format]
+|The topics in this group explain defining grammar using the EBNF.
+
+|====

@@ -1,0 +1,74 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-using-wincalcmanager-to-create-running-totals-in-wingrid",
+    "controlName": ["WinCalcManager"],
+    "tags": ["How Do I"],
+    "guid": "{E052383D-57A3-4A48-9F08-19D91E869493}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using WinCalcManager to Create Running Totals in WinGrid
+
+== Before You Begin:
+
+In this walkthrough, you will create a running total column in WinGrid™. The running total will display the total of the "Item Total" column (which is itself a calculated column) for the current row and all rows above, but not below it.
+
+This walkthrough is a continuation of link:wincalcmanager-creating-a-calculated-column-in-wingrid.html[Creating a Calculated Column in WinGrid].
+
+== Follow These Steps:
+
+[start=1]
+. Add an unbound column to the grid. Right-click the WinGrid and select "UltraGrid Designer" to launch the grid designer. In the WinGrid designer, drill down to the node: "Band and Column Settings > Band[0] - 'Order Details' > Columns." Selecting this node will display the Columns in this Band in the middle pane.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_Running_Totals_in_the_WinGrid_01.png[wingrid's column layout area in its designer]
+
+[start=2]
+. At the bottom click the button labeled "Add Unbound Column to add an new column to the band.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_Running_Totals_in_the_WinGrid_02.png[wingrid's add unbound column button that's in its designer]
+
+[start=3]
+. Change the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~key.html[Key]"]  of the column to "RunningTotal". Change the Header.Caption of the column to "Running Total". Change the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~datatype.html[DataType]"]  of the column to System.Decimal. Just to make things look a little neater type in c2 into the Format property.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_Running_Totals_in_the_WinGrid_03.png[wingrid's column layout area showing off the properties window for a column]
+
+[start=4]
+. Set up the column formula to display a running total.
+
+Go to the Formula property of the column and click the ellipsis (...) to bring up the FormulaBuilder.
+
+An efficient way to do this is to simply take the total in the previous row of the "Running Total" column and add the "Item Total" from the current row. To achieve this, it is necessary to reference a relative row. This is done by specifying a relative row index, as in this formula:
+
+----
+[ItemTotal] + [RunningTotal(-1)]
+----
+
+[start=5]
+. This appears very simply at first glance, but it will not actually work. The reason is that referring to a relative row will cause an error if the row does not exist. The first row in the grid has no prior sibling, so this formula will cause a reference error.
+
+To get around this, use the if function and the iserror function to check for an error and return either 0 (if there is an error) or the value of the previous cell (if there is no error). The finished formula looks like this:
+
+----
+[ItemTotal] + 
+if	
+( 
+	iserror ( [RunningTotal(-1)] ), 
+	0, 
+	[RunningTotal(-1)] 
+)
+----
+
+Click OK to close the Formula Builder and click Apply to save the changes you have made in the WinGrid designer, then click OK to close the grid designer.
+[start=6]
+. Run the application and you will see your running total column is fully functional.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_Running_Totals_in_the_WinGrid_05.png[resulting wingrid using wincalcmanager to create running totals]
+
+== What You Accomplished:
+
+This topic demonstrated how to create a running totals column in a WinGrid's Column.

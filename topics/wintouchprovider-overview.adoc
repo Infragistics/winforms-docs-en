@@ -1,0 +1,369 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintouchprovider-overview",
+    "controlName": [],
+    "tags": ["API","Layouts","Navigation"],
+    "guid": "c6f78278-4ffd-4333-ad18-51138ae78d52",  
+    "buildFlags": [],
+    "createdOn": "2013-01-09T14:32:28.6442782Z"
+}
+|metadata|
+////
+
+= WinTouchProvider Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the Infragistics touch-enabled controls and components.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref342478844,Touch Functionality>>
+
+** <<_Ref342478851,Introduction>>
+** <<_Ref344975845,Design Consideration>>
+
+* <<_Ref342478869,Touch Support Controls>>
+
+** <<_Ref342478876,Editor controls>>
+** <<_Ref344979818,Tab controls and components>>
+** <<_Ref100100100, _WinDesktopAlert_   control>>
+** <<_Ref100100200, _WinDockManager_   control>>
+** <<_Ref100100300, _WinExplorerBar_   control>>
+** <<_Ref100100400, _WinGanttView_   control>>
+** <<_Ref342478912, _WinGrid_   control>>
+** <<_Ref344979742, _WinListView_   control>>
+** <<_Ref344979750, _WinLiveTileView_   control>>
+** <<_Ref100100500, _WinMessageBox_   control>>
+** <<_Ref100100510, _WinRadialMenu_   control>>
+** <<_Ref100100600, _WinSchedule_   controls>>
+** <<_Ref100100610, _WinTilePanel_   controls>>
+** <<_Ref100100700, _WinTimelineView_   control>>
+** <<_Ref100100800, _WinToolbarsManager_   and ribbon controls>>
+** <<_Ref344979759, _WinTree_   control>>
+
+* <<_Ref342478922,Related Content>>
+
+[[_Ref342478844]]
+== Touch Functionality
+
+[[_Ref342478851]]
+
+=== Introduction
+
+The size of the  _Infragistics_   touch-enabled controls may be the first thing you notice. By design, touch-enabled controls appear larger (wider, taller or both) than buttons, and other elements in the User Interface (UI) making it easier to interact with and operate when using a touch-sensitive surface.
+
+[[_Ref342478859]]
+
+=== Design Consideration
+
+The following measures were taken into consideration in the design process of the touch functionality:
+
+Enabling the Touch functionality occurs at the form level rather than the control level as it is unlikely that both Touch and Non-Touch system use the same application. Adding the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.ultratouchprovider.html[UltraTouchProvider] component to the form enables Form level touch support for  _Infragistics_   controls.
+
+Although other approaches were analyzed for enabling Touch functionality at the application level, none appeared to be a feasible solution allowing you to interact with the touch metrics at design-time to arrange controls on the form using the designer. The only way to enable touch at the application level is via the static property. Since the static property is not available at design-time, best practice dictates enabling the touch functionality at the Form level.
+
+.Note:
+[NOTE]
+====
+There is no Application Styling Framework (AppStylist) support for touch-enabled controls.
+====
+
+[[_Ref342478869]]
+== Touch Support Controls
+
+[[_Ref342478876]]
+
+=== Editor controls
+
+The following is a list of the  _Infragistics_   touch supporting editor controls. To find out more about various elements of each control, follow the 
+
+== related topics
+ink below the list.
+
+* UltraCalculatorDropDown
+* UltraCalendarCombo
+* UltraCheckEditor
+* UltraColorPicker
+* UltraCombo
+* UltraComboEditor
+* UltraCurrencyEditor
+* UltraDateTimeEditor
+* UltraFontNameEditor
+* UltraFormattedTextEditor
+* UltraMaskedEdit
+* UltraNumericEditor
+* UltraOptionSet
+* UltraTextEditor
+* UltraTimeSpanEditor
+* UltraTimeZoneEditor
+
+==== Related Topics:
+
+* link:touch-enabled-editor-controls.html[Touch Enabled Editor Controls]
+
+[[_Ref344979818]]
+
+=== Tab controls and components
+
+The WinForms touch-enabled tab controls have some common touchable elements and other elements specific to a control. The following is a list of the each control’s touchable elements.
+
+==== _WinTab_   and  _WinTabstrip_   (control)
+
+* Close button
+* NotePage (page forward/backward)
+* NotePageFlat (page forward/backward)
+* Scroll buttons
+* Tab
+* Tab list button
+* Tab list items (in drop down)
+
+==== _WinTabbedMdiManager_   (component)
+
+* Close button
+* Scroll buttons
+* Splitter
+* Tab
+* Tab list button
+* Tab list items (in drop down)
+
+==== Related Topics:
+
+* link:touch-enabled-tab-controls.html[Touch Enabled Tab Controls]
+
+[[_Ref100100100]]
+
+=== WinDesktopAlert control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinDesktopAlert
+
+==== Related Topics:
+
+* link:touch-enabled-windesktopalert.html[Touch Enabled WinDesktopAlert]
+
+[[_Ref100100200]]
+
+=== WinDockManager control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinDockManager
+
+==== Related Topics:
+
+* link:touch-enabled-windockmanager.html[Touch Enabled WinDockManager]
+
+[[_Ref100100300]]
+
+=== WinExplorerBar control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinExplorerBar
+
+==== Related Topics:
+
+* link:touch-enabled-winexplorerbar.html[Touch Enabled WinExplorerBar]
+
+[[_Ref100100400]]
+
+=== WinGanttView control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinGanttView
+
+==== Related Topics:
+
+* link:touch-enabled-winganttview.html[Touch Enabled WinGanttView]
+
+[[_Ref342478912]]
+
+=== WinGrid control
+
+When in touch mode the  _WinGrid_   elements appear to be larger. This applies to the grid and the controls embedded in  _WinGrid_  . The following is a list of the  _WinGrid_   touchable elements.
+
+* Card expansion indicator (+/-)
+* Column chooser button
+* Expansion indicator (+/-)
+* Filter clear button
+* Filter drop-down button
+* Filter operator
+* Pin button (for fixed columns)
+* Pin button (for fixed rows)
+* Header check box
+* Row selector image
+* Row selector
+* Row summaries button
+* Swap button
+
+==== Related Topics:
+
+* link:touch-enabled-wingrid-control-elements.html[Touch Enabled WinGrid Control Elements]
+
+[[_Ref344979742]]
+
+=== WinListView control
+
+The  _WinListView_   control provides you with different views for listing items. Some touchable elements may appear in one view and not in another, for example, the column headers or checkboxes can only appear in Details or List view.
+
+==== Related Topics:
+
+* link:touch-enabled-winlistview-control.html[Touch Enabled WinListView Control]
+
+[[_Ref344979750]]
+
+=== WinLiveTileView control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+==== Related Topics:
+
+* link:winlivetileview.html[WinLiveTileView]
+
+[[_Ref100100500]]
+
+=== WinMessageBox control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinMessageBox
+
+==== Related Topics:
+
+* link:touch-enabled-winmessagebox.html[Touch Enabled WinMessageBox]
+
+[[_Ref100100510]]
+
+=== WinRadialMenu control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+==== Related Topics:
+
+* link:winradialmenu.html[WinRadialMenu]
+
+[[_Ref100100600]]
+
+=== WinSchedule controls
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* DayView
+* WeekView
+* MonthViewSingle
+* MonthViewMulti
+* CalendarCombo
+
+==== Related Topics:
+
+* link:touch-enabled-schedule-controls.html[Touch Enabled Schedule Controls]
+
+[[_Ref100100610]]
+
+=== WinTilePanel control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinTilePanel
+
+==== Related Topics:
+
+* link:touch-enabled-wintilepanel.html[Touch Enabled WinTilePanel]
+
+[[_Ref100100700]]
+
+=== WinTimelineView control
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinTimelineView
+
+==== Related Topics:
+
+* link:touch-enabled-wintimelineview.html[Touch Enabled WinTimelineView]
+
+[[_Ref100100800]]
+
+=== WinToolbarsManager and ribbon controls
+
+To find out more about various elements of the control, follow the 
+
+== related topics
+ink below the list.
+
+* WinToolbarsManager
+
+==== Related Topics:
+
+* link:touch-enabled-wintoolbarsmanager-and-ribbon.html[Touch Enabled WinToolbarsManager and Ribbon]
+
+[[_Ref344979759]]
+
+=== WinTree control
+
+The touchable elements in the  _WinTree_   control are the nodes, expansion indicators (+/-), enabled checkboxes or option buttons, and column headers that can appear with any view except for the Standard view.
+
+==== Related Topics:
+
+* link:touch-enabled-wintree-control.html[Touch Enabled WinTree Control]
+
+[[_Ref342478922]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wintouchprovider.html[Touch Support]
+|The section contains links to the specific topics explaining about the feature for developing touch-enabled applications using the Infragistics controls.
+
+| link:wingrid-using-wingrid.html[Using WinGrid]
+|This topic contains a list of sections with brief description and links to 
+
+== related topic
+f the _WinGrid_ control.
+
+|====

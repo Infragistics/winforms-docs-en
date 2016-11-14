@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-combobox-about-the-combobox-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{43C13682-CBC0-4975-AA23-1CA8045B64F4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the ComboBox Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.comboboxtool.html[ComboBoxTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.textboxtool.html[TextBoxTool]"] 
+
+|Description:
+|The ComboBoxTool provides the functionality of a standard windows combo box in the form of a tool that can be placed on a Toolbar or Menu. Events are fired as the list drops down and closes up and when items are selected. Two styles are available - Dropdown and DropdownList.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_03.png[example of ultratoolbarsmanager combobox tool] 
+
+|====

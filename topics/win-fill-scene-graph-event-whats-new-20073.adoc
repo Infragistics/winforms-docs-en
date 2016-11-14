@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-fill-scene-graph-event-whats-new-20073",
+    "controlName": [],
+    "tags": [],
+    "guid": "{67F44254-6A27-4019-9E84-0D067C825D57}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Fill Scene Graph Event
+
+The new FillSceneGraph event eliminates the need for you to create your own custom layer. This event is raised when all of the Primitives have been added to the WinChart's™ scene graph, but before the WinChart is rendered.
+
+The FillSceneGraphEventArgs which is passed to the FillSceneGraphEvent exposes several important members of ChartCore.
+
+== Related Topic
+
+link:chart-fillscenegraph-event.html[Fill Scene Graph Event]

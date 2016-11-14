@@ -1,0 +1,102 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-sorting-overview",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Sorting"],
+    "guid": "{6380DD76-C029-4C1C-9786-DBBDA47552E2}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Sorting Overview
+
+== Background
+
+WinGrid™ can allow the user to sort on both single and multiple columns by clicking on the column headers. The developer can also instruct UltraWinGrid to sort on a column.
+
+== Questions
+
+* How do I instruct UltraWinGrid to allow the user to sort when the user clicks on a column header?
+* The data retrieved from the database is not sorted in the order I would like for it to display in UltraWinGrid. How do I tell UltraWinGrid to sort on a column with code?
+
+== Solutions
+
+Instruct UltraWinGrid to allow user sorting by setting the .HeaderClickAction property to either .SortSingle or .SortMulti.
+
+Instruct UltraWinGrid to sort on a particular column with code by setting the Column.SortIndicator to Descending.
+
+== Sample Project
+
+This sample project displays a multi-band grid configured to sort when the user clicks on the various column headers. It also provides a button which causes the grid to sort on band 1 column 3.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Sorting_Columns_01.png[sorting columns in ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event sets the default HeaderClickAction for all bands and all columns:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+  	e.Layout.Override.HeaderClickAction = HeaderClickAction.SortSingle
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.Override.HeaderClickAction = HeaderClickAction.SortSingle;
+}
+----
+
+Button Events
+
+* Button1.Click - The code in the Button Click event instructs the UltraWinGrid to sort on band 1 column 2 in Descending order:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSortBand1Column2_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSortBand1Column3.Click
+	Me.UltraGrid1.DisplayLayout.Bands(1).Columns(2).SortIndicator = _
+	  SortIndicator.Descending
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSortBand1Column2_Click(object sender, EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Bands[1].Columns[2].SortIndicator = 
+	  SortIndicator.Descending;
+}
+----
+
+== Review
+
+This sample program illustrates the property settings used to allow the user to sort column data when clicking on the column headers, and how to sort on a specified column using code.

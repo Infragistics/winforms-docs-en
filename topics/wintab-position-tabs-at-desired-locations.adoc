@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-position-tabs-at-desired-locations",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Layouts"],
+    "guid": "{3B2F0309-BB5C-49E5-86BC-57BA0DBFEF72}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Position Tabs at desired locations
+
+Tabs in WinTab can be ordered or repositioned at run-time by either manually dragging and re-positioning, provided the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~allowtabmoving.html[AllowTabMoving]"]  property is set to true. It is also possible through code, using the Tab object’s  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~reposition.html[Reposition]"]  method  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~visibleindex.html[VisibleIndex]"]  property.
+
+This topic assumes you have a WinTab control dropped onto the form that has four Tabs in it. The following code shows how Tabs can be re-positioned.
+
+*In Visual Basic:*
+
+----
+' Set the index postion for Tab 0 at postion 2 
+Me.ultraTabControl1.Tabs(0).VisibleIndex = 2 
+' Repostion Tab 0 after Tab 3 
+Me.ultraTabControl2.Tabs(0).Reposition(Me.ultraTabControl2.Tabs(3), Infragistics.Win.RelativePosition.After)
+----
+
+*In C#:*
+
+----
+// Set the index postion for Tab 0 at postion 2
+this.ultraTabControl1.Tabs[0].VisibleIndex = 2;
+// Repostion Tab 0 after Tab 3
+this.ultraTabControl2.Tabs[0].Reposition(this.ultraTabControl2.Tabs[3], Infragistics.Win.RelativePosition.After);
+----

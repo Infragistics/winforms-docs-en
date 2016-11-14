@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-display-a-desktop-alert-window-on-a-second-monitor",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{D89E1E8F-BA11-432A-8BB8-506E3DA2D5D4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Display a Desktop Alert Window on a Second Monitor
+
+In the age of technology and fast-paced working environments, it is not uncommon for an end user to use two monitors. Two monitors effectively doubles the screen real-estate and allows for more efficient multi-tasking. WinDesktopAlert™ takes advantage of the secondary display by allowing you to show a desktop alert window in it. The link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screen.html[Screen] property off the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo.html[UltraDesktopAlertShowWindowInfo] class allows you to choose which display the alert window appears in.
+
+The System.Windows.Forms.Screen class gives you access to an array of system displays through the AllScreens property. AllScreens is an array of all available displays currently attached to your system. AllScreens[0] is always the primary display while AllScreens[1] is the secondary display. By setting the Screen property to Screen.AllScreens[1], the desktop alert window will appear on the secondary display.
+
+Use the following code to display the desktop alert window on the secondary display.
+
+*In Visual Basic:*
+
+----
+' Create a new UltraDesktopAlertShowWindowInfo instance
+' and give it some sample text.
+Dim windowInfo As UltraDesktopAlertShowWindowInfo = _
+  New UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.")
+' Set the screen that the alert window will appear on.
+' AllScreens is an array of all screens attached to
+' your system. If you have two monitors, 0 represents
+' the primary screen and 1 represents the secondary 
+' and so on.
+windowInfo.Screen = Screen.AllScreens(1)
+' Display the desktop alert window with the information above.
+Me.UltraDesktopAlert1.Show(windowInfo)
+----
+
+*In C#:*
+
+----
+// Create a new UltraDesktopAlertShowWindowInfo instance
+// and give it some sample text.
+UltraDesktopAlertShowWindowInfo windowInfo =
+  new UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.");
+// Set the screen that the alert window will appear on.
+// AllScreens is an array of all screens attached to
+// your system. If you have two monitors, 0 represents
+// the primary screen and 1 represents the secondary 
+// and so on.
+windowInfo.Screen = Screen.AllScreens[1];
+// Display the desktop alert window with the information above.
+this.ultraDesktopAlert1.Show(windowInfo);
+----

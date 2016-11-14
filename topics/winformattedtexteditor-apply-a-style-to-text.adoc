@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-apply-a-style-to-text",
+    "controlName": [],
+    "tags": ["Styling"],
+    "guid": "{EC369573-0CF0-418D-B8E4-7E65B7FD7CA1}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T13:01:56Z"
+}
+|metadata|
+////
+
+= Apply a Style to Text
+
+In order to apply formatting to text in the WinFormattedTextEditor™ control, you should have a good understanding of the Style attribute. Once you know how to use The Style Attribute in WinFormattedTextEditor, applying styles to a single word or a block of text is much easier.
+
+You can apply a style by using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~applystyle(string,boolean).html[ApplyStyle]"]  method off the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object. The method takes in two arguments: and stating whether or not to apply the style to blocks of text.
+
+* The style to be applied -- This first argument takes in a string. This string can be one style or multiple styles by separating them with a semi-colon ( ; ).
+* A Boolean -- This argument states whether or not to apply the style to blocks of text (a <p> tag is considered a block of text). Passing True will apply the style to the entire block of text containing the selected text.
+
+The following code demonstrates how to apply a heading style to the title of a document.
+
+*In Visual Basic:*
+
+----
+Me.UltraFormattedTextEditor1.EditInfo.ApplyStyle( _
+  "font-family:Arial; font-size:22pt; color:Blue;", False)
+----
+
+*In C#:*
+
+----
+this.ultraFormattedTextEditor1.EditInfo.ApplyStyle(
+  "font-family:Arial; font-size:22pt; color:Blue;", false);
+----

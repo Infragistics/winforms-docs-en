@@ -1,0 +1,134 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-multi-stop-radial-gradient-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{7CEAB685-27A1-4692-8F20-F45D10A7ED5F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Multi Stop Radial Gradient Brush Element at Run Time
+
+If you want more than two colors on a property of your gauge to blend into each other in a circular way, apply the Multi-Stop Radial Gradient brush element to the property.
+
+*To apply the Multi-Stop Radial Gradient brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create instances of the classes.
+
+*In Visual Basic:*
+
+----
+Dim multiStopRadialGradientBrushElement1 As _
+  New MultiStopRadialGradientBrushElement()
+Dim colorStop1 As NewColorStop()
+Dim colorStop2 As New ColorStop()
+Dim colorStop3 As New ColorStop()
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+Dim centerPoint As New System.Drawing.PointF()
+Dim focusScales As New System.Drawing.PointF()
+----
+
+*In C#:*
+
+----
+MultiStopRadialGradientBrushElement multiStopRadialGradientBrushElement1 = 
+  new MultiStopRadialGradientBrushElement();
+ColorStop colorStop1 = new ColorStop();
+ColorStop colorStop2 = new ColorStop();
+ColorStop colorStop3 = new ColorStop();
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+System.Drawing.PointF centerPoint = new System.Drawing.PointF();
+System.Drawing.PointF focusScales = new System.Drawing.PointF();
+----
+
+[start=4]
+. Set the following properties:
+
+** start color -- Black
+** end color -- 254, 127, 0
+** one color stop (stop: 0.264; color: 186, 0 ,0)
+** focus scale -- 0, 0
+** center point -- 75, 25
+
+*In Visual Basic:*
+
+----
+centerPoint.X = 75
+centerPoint.Y = 25
+focusScales.X = 0
+focusScales.Y = 0
+multiStopRadialGradientBrushElement1.CenterPoint = centerPoint
+colorStop1.Color = System.Drawing.Color.Black
+colorStop2.Color = System.Drawing.Color.FromArgb(CInt(CByte(186)), _
+  CInt(CByte(0)), CInt(CByte(0)))
+colorStop2.Stop = 0.2647059F
+colorStop3.Color = System.Drawing.Color.FromArgb(CInt(CByte(254)), _
+  CInt(CByte(127)), CInt(CByte(0)))
+colorStop3.Stop = 1.0F
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop1)
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop2)
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop3)
+multiStopRadialGradientBrushElement1.FocusScales = focusScales
+multiStopRadialGradientBrushElement1.RelativeBounds = _
+  New System.Drawing.Rectangle(11, 11, 78, 78)
+multiStopRadialGradientBrushElement1.RelativeBoundsMeasure = _
+  Infragistics.UltraGauge.Resources.Measure.Percent
+myRadialGauge.Dial.BrushElement = multiStopRadialGradientBrushElement1
+----
+
+*In C#:*
+
+----
+centerPoint.X = 75;
+centerPoint.Y = 25;
+focusScales.X = 0;
+focusScales.Y = 0;
+multiStopRadialGradientBrushElement1.CenterPoint = centerPoint;
+colorStop1.Color = System.Drawing.Color.Black;
+colorStop2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), 
+  ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+colorStop2.Stop = 0.2647059F;
+colorStop3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), 
+  ((int)(((byte)(127)))), ((int)(((byte)(0)))));
+colorStop3.Stop = 1F;
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop1);
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop2);
+multiStopRadialGradientBrushElement1.ColorStops.Add(colorStop3);
+multiStopRadialGradientBrushElement1.FocusScales = focusScales;
+multiStopRadialGradientBrushElement1.RelativeBounds = 
+  new System.Drawing.Rectangle(11, 11, 78, 78);
+multiStopRadialGradientBrushElement1.RelativeBoundsMeasure = 
+  Infragistics.UltraGauge.Resources.Measure.Percent;
+myRadialGauge.Dial.BrushElement = multiStopRadialGradientBrushElement1;
+----
+
+== Related Topics
+
+link:wingauge-multi-stop-radial-gradient-brush-element.html[Multi-Stop Radial Gradient Brush Element]
+
+link:wingauge-apply-the-multi-stop-radial-gradient-brush-element-at-design-time.html[Apply the Multi-Stop Radial Gradient Brush Element at Design Time]
+
+link:wingauge-apply-the-multi-stop-radial-gradient-brush-element-using-the-gauge-designer.html[Apply the Multi-Stop Radial Gradient Brush Element Using the Gauge Designer]

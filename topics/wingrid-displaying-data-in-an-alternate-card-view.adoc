@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-data-in-an-alternate-card-view",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{4307F217-3F0C-4B4C-BE79-C756ACA46764}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Data in an Alternate Card View
+
+== Background
+
+Not all data presents well with the normal grid view, where there are column headers and rows of cells. The WinGrid™ provides an alternate Card View where the column headers are placed of the left and the rows display as columns.
+
+== Questions
+
+* How can I display my column headers on the left with my row data displayed as columns?
+
+== Solutions
+
+Set the CardView property of the band to True and the column headers will display in a column on the left and the data rows will display as columns.
+
+image::Images\WinGrid_Displaying_Data_in_an_Alternate_Card_View_01.png[displaying data in an alternate card view]
+
+The code in the InitializeLayout event turns on the CardView option for Band 0.
+
+*In Visual Basic:*
+
+----
+Private Sub customersUltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Set the grid with the caption "Card View" to have its band 
+	' appear as card view
+	e.Layout.Bands(0).CardView = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void customersUltraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set the grid with the caption "Card View" to have its band 
+	// appear as card view
+	e.Layout.Bands[0].CardView = true;
+}
+----
+
+== Review
+
+This sample project shows compares the Normal view of data with the Card View, and shows how to set the band property to display in Card View.

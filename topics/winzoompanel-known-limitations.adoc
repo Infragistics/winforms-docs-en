@@ -1,0 +1,54 @@
+﻿= WinZoomPanel Known Limitations
+
+Due to various reasons, some controls have certain limitations when zooming. Below are the limitations and how to avoid or resolve them.
+
+== List of Limitations
+
+=== OS Drawn Glyphs
+
+==== Limitation:
+By default, when we draw some UIElements we delegate this job to the operating system. Such UIElements are the checkbox glyph, dropdown buttons, radio button glyphs, among others. In our framework, we refer to this as OS themes. Many of these elements are drawn with hardcoded size by the OS, making it impossible to enlarge them. For example, the checkbox glyph will always remain 13x13 pixels no matter the control's size. Consequently, by default some of the UIElements in the controls won’t respond to zooming.
+
+==== Resolution:
+When using zooming in your application, we suggest removing OS themes. link:appstylistruntime.html[AppStylist] provides a simple way to do this across the entire application. When creating an ISL file there is an option to turn off themed drawing for all our UIElements. This way you can ensure that all the controls in your application have their themed drawing disabled and you can achieve a consistent look for all controls in your application. To do this you need to select the “Base” role from the Roles panel and set the “ThemedElementAlpha” for the “Normal” state to “Transparent”. Note that most of the ISL libraries that Infragistics provides already do that, so if you are using such library, we have already taken care of this for you. After you have an ISL library with disabled OS themes, you only need to load the library using the following line, before the main form is created:
+
+[source, csharp]
+Infragistics.Win.AppStyling.StyleManager.Load(pathToISL);
+
+Another option is, if you want to disable the themed drawing on a control level, is to use the “UseOSThemes” property. Setting it to false will disable the themed drawing:
+
+[source, csharp]
+this.ultraCheckEditor1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+
+And finally if you want to disable the themed drawing for a specific UIElement, you can set the “ThemedElementAlpha” property of its appearance to “Transparent”:
+
+[source, csharp]
+this.ultraCheckEditor1.Appearance.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+
+
+//This should not be in a ZoomPanel topic, but it currently isn't in the AppStylist topic. In the future, we need to write this as an AppStylist topic and point to it from here.
+
+
+=== Scaling up images
+
+==== The limitation:
+Some of the UIElements in our controls display various images. In order to not bloat our assemblies’ size we have made most of these images as small as possible. This has the side effect that the images get blurry when the UIElement is zoomed.
+
+==== How to resolve this:
+Currently the only way to resolve this is to provide higher resolution images for these UIElements. This can be either done through AppStylist or through the Image and ImageBackground properties of the Appearance class. If the UIElement’s image can’t be modified through an appearance object, the final option is to use the IUIElementDrawFilter interface.
+
+=== Month Calendar
+
+==== The limitation:
+The UltraDateTimeEditor uses the Microsoft MonthCalendar control for its dropdown. This the MonthCalendar has predefined size for its UIElements and this can’t be changed. The UltraDateTimeEditor will scale properly its textbox portion, however it will be unable to scale it dropdown portion.
+
+==== How to resolve this:
+You can replace the UltraDateTimeEditor with UltraCalendarCombo. The UltraCalendarCombo uses a calendar created by Infragistics and we have full control over how its UIElements are drawn. This means that the control will scale itself properly when zoomed. Note that the UltraCalendarCombo is an embeddable editor, so you can replace the UltraDateTimeEditor even if it is embedded in another control.
+
+=== Child controls in various container controls
+
+==== The limitation:
+All Infragistics container controls inside the UltraZoomPanel will scale their own UIElements. However their child controls inside them will not be scaled.
+
+==== How to resolve this:
+You can add an UltraZoomPanel as the child of the container control, then add the child controls that you want to be scaled inside the UltraZoomPanel. For example, if you are using an UltraTabControl and you want to zoom the controls inside a certain tab, you should add an UltraZoomPanel inside the tab and add the child controls inside the UltraZoomPanel. Note that if you are using an UltraPanel and you want to zoom the controls inside it, you need to change the UltraPanel to and UltraZoomPanel. The UltraZoomPanel inherits the UltraPanel, so this shouldn’t affect your application in any way other than enabling zooming. If, because of the container controls in your application, you have more than one UltraZoomPanel and you want to synchronize their ZoomFactor, you can use the ZoomFactorChanged event to do this.

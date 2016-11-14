@@ -1,0 +1,53 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-using-wincalcmanager-to-create-a-calculated-summary-in-wingrid",
+    "controlName": ["WinCalcManager"],
+    "tags": ["How Do I"],
+    "guid": "{9F733E46-57F2-4A89-9BC0-11F32CB194F9}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using WinCalcManager to Create a Calculated Summary in WinGrid
+
+== Before You Begin:
+
+In this walk through you will create a calculated summary in a WinGrid™ column footer using a formula. The summary will show a grand total of the "Item Total" column in the grid. This walk through builds off the link:wincalcmanager-creating-a-calculated-column-in-wingrid.html[Creating a Calculated Column in WinGrid] and link:wincalcmanager-using-wincalcmanager-to-create-running-totals-in-wingrid.html[Using WinCalcManager to Create Running Totals in WinGrid] topics.
+
+== Follow These Steps:
+
+[start=1]
+. Add summary information to the grid column footers.
+
+Right-click the WinGrid and select "UltraGrid Designer" to launch the grid designer.
+
+In the grid designer, drill down to the node: "Band and Column Settings> Band[0] - 'Order Details'."
+
+In the properties grid on the right scroll down to where the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~summaries.html[Summaries]"]  collection is located.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_a_Calculated_Summary_in_the_WinGrid_01.png[wingrid's properties window in its designer]
+
+[start=2]
+. Click the ellipse to open up the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~summarysettings.html[SummarySettings]"]  collection editor. With the editor open click the add Button to add a new SummarySettings.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_a_Calculated_Summary_in_the_WinGrid_02.png[wingrid's summarysettings collection editor]
+
+[start=3]
+. Set in the properties grid on the SummarySettings the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings~summaryposition.html[SummaryPosition]"]  to Right and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula]"]  property to the following formula.
+
+----
+sum ( [ItemTotal] )
+----
+
+[start=4]
+. Now run the project again to view the result: the column footer is filled with the result of the calculation.
+
+image::Images\WinCalcManager_Using_WinCalcManager_to_Create_a_Calculated_Summary_in_the_WinGrid_03.png[running form showing off wingrid and wincalcmanager results]
+
+== What You Accomplished:
+
+This walk through was designed to show you how to add a Calculated Summary in a WinGrid Column footer using the WinCalcManager.

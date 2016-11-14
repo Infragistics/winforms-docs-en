@@ -1,0 +1,142 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintabbedmdimanager-creating-a-wintabbedmdimanager-interface",
+    "controlName": ["WinTabbedMdiManager"],
+    "tags": ["Layouts"],
+    "guid": "{B0BE533C-E30C-44C8-89CC-55661FAFEA8B}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a WinTabbedMdiManager Interface
+
+Creating a TabbedMDI interface is no more difficult than creating a standard MDI interface for your application. Simply by adding the TabbedMDI element, you can covert a standard MDI parent form into one that will manage its MDI children using the tab metaphor found in Visual Studio .NET.
+
+No additional changes must be made to the child MDI forms to use them with TabbedMDI, however you may want to consider designing or re-designing your forms to take the limitations of the Tabbed MDI environment into account. TabbedMDI child windows are always maximized within the parent, and cannot be resized, tiled or cascaded. (Although you can display multiple windows simultaneously using tab groups, which are covered in the next exercise.)
+
+== Questions
+
+* How do I create an application with a Tabbed MDI interface?
+
+== Solution
+
+Create a regular MDI application, then add the TabbedMDI element to the parent MDI form.
+
+== Sample Project
+
+[start=1]
+. Open a new Windows Application project in Visual Studio.
+[start=2]
+. When the project comes up and Form1 is selected, open the Visual Studio Property window. (Shortcut: F4 on your keyboard.) Locate the IsMdiContainer property and change it to True. You'll see the form's appearance change to indicate that it is now an MDI parent form.
+[start=3]
+. Open the Visual Studio toolbox and select the UltraTabbedMdiManager control. Double-click the control in the Toolbox to add it to the form. The control will appear in the component tray of the form.
+[start=4]
+. Double-click the UltraButton control in the Toolbox to add a Button to the form.
+[start=5]
+. On the form, click in the Button control and change that Text property to say "Add Form".
+[start=6]
+. Add a form to the project called "ChildForm".
+[start=7]
+. Open the Toolbox and add one Windows Forms button to the new form. (If you are using C#, select the button and set its Modifiers property to Internal.) Close the form designer window when you are done.
+[start=8]
+. Back on the MDI parent form, open the code view and add the following code to the form:
+
+*In Visual Basic:*
+
+----
+Private Function AddNewForm() As ChildForm
+	Dim newForm As New ChildForm()
+	Dim prevForm As ChildForm
+	Dim numForms As Integer
+	Dim newFormNum As Integer
+	Dim prevFormIndex As Integer
+	' Number of MDI child forms
+	numForms = Me.MdiChildren.GetLength(0)
+	newFormNum = numForms + 1
+	' Define new form
+	newForm.Name = "frmButtons" & CStr(newFormNum)
+	newForm.Text = "Buttons " & CStr(newFormNum)
+	' Arrange the buttons so that they are in
+	' different positions on each form
+	If newFormNum > 1 Then
+		prevFormIndex = newFormNum - 2
+		prevForm = Me.MdiChildren.GetValue(prevFormIndex)
+		' Base button position on position of
+		' button on previous form
+		newForm.UltraButton1.Top = _
+		prevForm.UltraButton1.Top + prevForm.UltraButton1.Height
+	End If
+	' Add new form to MDI parent
+	newForm.MdiParent = Me
+	newForm.Show()
+	Return newForm
+End Function
+----
+
+*In C#:*
+
+----
+private ChildForm addNewForm()
+{
+	ChildForm newForm = new ChildForm();
+	ChildForm prevForm = null;
+	int numForms;
+	int newFormNum;
+	int prevFormIndex;
+	// Number of MDI child forms
+	numForms = this.MdiChildren.GetLength(0);
+	newFormNum = numForms + 1;
+	// Define new form
+	newForm.Name = "frmButtons" + newFormNum.ToString();
+	newForm.Text = "Buttons " + newFormNum.ToString();
+	// Arrange the buttons so that they are in
+	// different positions on each form
+	if (newFormNum > 1) 
+	{
+		prevFormIndex = newFormNum - 2;
+		prevForm = (ChildForm)this.MdiChildren.GetValue(prevFormIndex);
+		// Base button position on position of
+		// button on previous form
+		newForm.ultraButton1.Top = 
+		  prevForm.ultraButton1.Top + prevForm.ultraButton1.Height;
+	}
+	// Add new form to MDI parent
+	newForm.MdiParent = this;
+	newForm.Show();
+	return newForm;
+}
+----
+
+[start=9]
+. Switch back to the designer view and double-click on the "Add Form" button you created. Add the following code to the Click event:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraButton1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles UltraButton1.Click
+	Me.AddNewForm()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraButton1_Click(object sender, EventArgs e)
+{
+	this.addNewForm();
+}
+----
+
+[start=10]
+. Run the project. When the MDI form appears, click the "Add Form" menu item. Each time you click it, you will see a new child window appear in the client area of the MDI parent form, using the tabbed interface. Click on the tabs and you will see the different forms come to the front. Add enough child windows and you will see navigation interface appear to the right of the tabs, providing a way to scroll through the tabs that are not visible. Stop the project when you are done.
+
+== Review
+
+In this exercise you saw how to set up a simple MDI interface for an application using the TabbedMdiManager. Most of the effort went into setting up the parent and child forms; the implementation of the tabbed interface only required adding the control to the parent form.
+
+In the next exercise, you will expand on this application.

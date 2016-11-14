@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-embeddable-editors",
+    "controlName": [],
+    "tags": ["API","Editing","Getting Started"],
+    "guid": "{36D1788B-C467-42CC-9A86-AAA7FF672B90}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Embeddable Editors
+
+Version 2.0 of the PLF introduced a very powerful and flexible extensibility mechanism called embeddable editors.
+
+An embeddable editor is an object that can be embedded within another component's UIElement(s) to render and optionally edit data values. The following summarizes the main players and concepts:
+
+* *Editors* -- these are classes derived from the abstract base class EmbeddableEditorBase. Editors are used to render/edit values from within another component's UIElements.
+* *Editor owners* -- these are classes derived from EmbeddableEditorOwnerBase to provide information to the editors about the values to be displayed. PLF based controls derive classes from this base class.
+* *Editor controls* -- these are stand-alone edit controls that use an editor and an EmbeddableEditorOwnerBase derived class. They can also optionally implement an interface called IProvidesEmbeddableEditor that is used by some custom TypeConverters to populate a drop-down list of editors that can support the editing of specific types of data. For example, the UltraGridColumn exposes a property called EditorControl that has a TypeConverter that iterates over other controls on the form at design time looking for controls that implement IProvidesEmbeddableEditor. These controls are used to populate a drop-down list in the property browser. The IProvidesEmbeddableEditor interface has a single read-only property called 'Editor' that returns an instance of an EmbeddableEditorBase derived class. The editor exposes 2 methods, 'CanRenderType' and 'CanEditType', for determining the capabilities of the editor.
+* *Embeddable elements* -- these are elements derived from the abstract EmbeddableUIElementBase class. The editors define and implement these classes. Instances of the elements get created and returned from calls to the editor's GetEmbeddableElement method. This is normally called from within the PositionChildElements method of a parent element (e.g. a cell element in a grid).
+* *Owner context* -- this is an object that has meaning only to the editor owner. In other words, it is completely opaque to the editor. It is passed in the call to GetEmbeddableElement and is cached as an identifier/cookie by the embeddable element for use when it later calls methods on EmbeddableEditorOwnerBase to get information about the value to be edited or rendered.
+* *Edit mode* -- this is the state when the editor is editing a specific value. Note: although a single editor can be used to render multiple values (e.g. all cells in one or more column of a grid) it can only edit one value at a time. The editor exposes the EnterEditMode and ExitEditMode methods to enter/exit edit mode. It also exposes 4 events, BeforeEnterEditMode (cancelable), AfterEnterEditMode, BeforeExitEditMode (cancelable) and AfterExitEditMode. Since it can only edit one value at a time calling the EnterEditMode method for one cell while editing another cell will cause the editor to exit mode first.
+
+The following describes how UltraGrid makes use of embeddable editors to render cell data:
+
+[start=1]
+. During a draw operation that requires creating/positioning UIElements (i.e. either the initial draw or after some state has changed that marked elements as dirty) the PositionChildElements method of one or more CellUIElements will get called. Inside this method the cell element will ask its associated column for the appropriate editor to use. Note: the application developer could have specified which editor to use by setting either the column's 'Editor' or 'EditorControl' properties. Otherwise, a default editor would be returned by the column based on the column's data type.
+[start=2]
+. The cell element calls the GetEmbeddableElement method off the editor. It passes itself in as the parent element, the column's EmbeddableEditorOwnerBase derived instance as the owner and it passes itself in as the owner context. Note: the owner context could be anything that would identify this specific cell to the owner later on. This is necessary since the same editor will be used to render all cells in this column (and possibly other columns as well).
+[start=3]
+. The EmbeddableUIElementBase derived instance returned by the call in the previous step caches the editor, owner and owner context as well as some additional flags that were passed into the GetEmbeddableElement method. The cell then sizes this element to be within its borders and adds it to its ChildElements collection.
+[start=4]
+. Later on when the element goes to render the cell's data it calls various methods on the EmbeddableEditorOwnerBase derived instance it cached above to get the necessary information (e.g. the cell's data value, appearance etc,). Each of these methods on the owner takes the owner context, which was also cached by the embeddable element above, as a parameter so the owner can identify the specific cell to be rendered.
+
+The following describes how UltraGrid makes use of embeddable editors to edit cell data.
+
+== Entering Edit Mode:
+
+[start=1]
+. The user does something to enter edit mode on a cell (e.g. clicking on the cell or pressing the 'F2' key).
+[start=2]
+. This causes the editor's EnterEditMode method to be called. The method takes an instance of EmbeddableUIElementBase derived class as a parameter. This instance was previously returned from the editor's GetEmbeddableElement method (during step 2 of the rendering logic described above) for a specific cell. Note: since it is a UIElement it has its rectangle set in client coordinates of the control.
+[start=3]
+. The editor fires the BeforeEnterEditMode event which the grid is listening to. The grid then fires its own BeforeEnterEditMode event. If the 'Cancel' property is set to true in the event then the following steps are bypassed and the editor does not enter edit mode.
+[start=4]
+. The editor does what it needs to do to edit the value. For example, some editors might position a textbox over a portion of the element and set its text to the cell's value.
+[start=5]
+. The editor fires the AfterEnterEditMode event which the grid is listening to. The grid then fires its own AfterEnterEditMode event.
+
+The user is now in edit mode and can edit the cell's value based on the UI the editor presents.
+
+== Exiting Edit Mode:
+
+[start=1]
+. The user does something to exit edit mode cell (e.g. activating another cell or pressing the 'F2' or the 'Esc' key).
+[start=2]
+. This causes the Editor's ExitEditMode method to get called.
+[start=3]
+. If the editor has a drop-down portion (e.g. like a combobox) that is dropped down the editor must first close it up by calling its 'CloseUp' method. Note: this triggers the 'AfterCloseUp' event.
+[start=4]
+. The editor fires the BeforeExitEditMode event which the grid is listening to. The grid then fires its own BeforeExitEditMode event. If the 'Cancel' property is set to True in the event then the editor stays in edit mode. Otherwise the grid updates the cell's value based on the edited value and the editor does whatever housekeeping tasks are needed (e.g. hiding the textbox).
+[start=5]
+. The editor fires the AfterExitEditMode event which the grid is listening to. The grid then fires its own AfterExitEditMode event.
+
+== Advantages
+
+* A set of editors are included in the PLF that can be tightly integrated into other controls including stand-alone editor controls.
+* Custom editors can be developed for specialized editing needs.
+* The controls can expose properties (e.g. off grid columns) to allow users to easily substitute editors at design time and runtime.

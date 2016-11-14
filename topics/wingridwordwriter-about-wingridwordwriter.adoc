@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridwordwriter-about-wingridwordwriter",
+    "controlName": ["WinGridWordWriter"],
+    "tags": ["Events","Exporting","How Do I"],
+    "guid": "e504bbd2-65ed-470b-9f6f-4a2280dd325f",  
+    "buildFlags": [],
+    "createdOn": "2011-03-15T15:19:31.430043Z"
+}
+|metadata|
+////
+
+= About WinGridWordWriter
+
+When used with the WinGridWordWriter™ component, the WinGrid™ control is able to write data into a new Microsoft® Word document. Exporting to Word is a process similar to printing grid data, where you have control over how Layouts and Appearances are applied to the data before export. Additionally you are able to control which data is included or excluded in the export. Exporting is not limited to grid data; headers, column groupings, summary rows, and more may all be included in the export.
+
+To write WinGrid data into a new Word document, the WinGridWordWriter component is first added to the application. The WinGridWordWriter component requires reference to two assemblies:Infragistics.Win.UltraWinGrid.WordWriter and Infragistics.Documents.IO. This component allows you to export based on the new link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object within the Infragisitcs.Documents.IO assembly. With the WordDocumentWriter object the UltraWinGrid control is directly exported to a file without creating the document in memory. This approach, known as using a streamer, is valuable because the process uses much less RAM to avoid memory issues caused by exporting large data sets.
+
+.Note
+[NOTE]
+====
+The streamer only creates new documents therefore you cannot export the data from the WinGrid control to an existing Word document.
+====
+
+Writing grid data into a Word document is initiated by invoking the link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~export.html[Export] method of the WinGridWordWriter component, passing it the WinGrid control that you wish to export and the file name or stream or a WordDocumentWriter object as overloads.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Call the Export method on WinGridWordWriter and
+// pass the Grid control and file name as parameters.
+this.ultraGridWordWriter1.Export(ultraGrid1, "C:\Samples_Projects\GridDataInWord.docx");
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Call the Export method on WinGridWordWriter and
+' pass the Grid control and file name as parameters.
+Me.ultraGridWordWriter1.Export(ultraGrid1, "C:\Samples_Projects\GridDataInWord.docx")
+----
+
+Additionally, the WinGridWordWriter component exposes various events such as:
+
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~exportstarted_ev.html[ExportStarted]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~initializerow_ev.html[InitializeRow]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~cellexporting_ev.html[CellExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~rowexporting_ev.html[RowExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~headercellexporting_ev.html[HeaderCellExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~headerrowexporting_ev.html[HeaderRowExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~summarycellexporting_ev.html[SummaryCellExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~summaryrowexporting_ev.html[SummaryRowExporting]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~exportended_ev.html[ExportEnded]
+* link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~exportending_ev.html[ExportEnding]
+
+These events help you gain fine-grained control over the export process.
+
+== Related Topics
+
+* link:wingridwordwriter-export-multiple-wingrid-to-word.html[Export Multiple WinGrid to Word]
+* link:wingridwordwriter-export-wingrid-with-paragraphs-to-word.html[Export WinGrids with Paragraphs to Word]

@@ -1,0 +1,74 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-whats-new-2009.2-wingrid",
+    "controlName": [],
+    "tags": [],
+    "guid": "{3997A92F-B85D-4D12-AB4B-5FF1A99712EE}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T09:46:27Z"
+}
+|metadata|
+////
+
+= WinGrid
+
+==== WinGrid Active Cell Border Style
+
+This new feature will enhance the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  object to honor the Border Color on all four sides. Currently, the Border Color is applied only on one side of the cell. Also a new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellborderthickness.html[ActiveCellBorderThickness]"]  property has been added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object to set the border thickness for the active Cell.
+
+*WinGrid with thick Borders surrounding the Active Cell*
+
+image::Images\WinGrid_Set_Active_Cell_Border_Thickness_01.png[]
+
+*Customizing Column Moving Indicators*
+
+You can now modify or even change the color of the arrow images (column moving indicators) that are visible when you drag and drop a column header from one visible position to another. You can even alter the direction of the arrows in the indicator if they point in different directions. Furthermore, with the new  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.dragdropindicatorsettings~color.html[DragDropIndicatorSettings.Color]"]  property, you can customize the color of the rectangle that is displayed when you drag and drop a column header to an empty space, with WinGrid™ in RowLayout mode.
+
+image::Images\WinGrid_What's_New_Customize_Column_Moving_Indicators.png[]
+
+*Selection Overlay*
+
+When you click and drag across multiple cells in Microsoft® Excel®, a rectangular selection area is overlaid on the selected cells. The appearance of this overlay is color-washed with the underlying cells. This feature is now available in our WinGrid control through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~selectionoverlaycolor.html[SelectionOverlayColor]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~selectionoverlaybordercolor.html[SelectionOverlayBorderColor]"]  property settings.
+
+image::Images\WinGrid_Enable_Selection_Overlay_for_Selected_Cells_01.png[]
+
+*GroupByRow Connector Appearance*
+
+When grouping UltraGridRows in OutlookGroupBy ViewStyle, the area to the left of the expanded groups is known as the GroupByRowConnector. Previously, you were able to control the appearance of this area using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowappearance.html[GroupByRowAppearance]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object. With this release, you can now have more precise control over the GroupBy row connectors using the new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowconnectorappearance.html[GroupByRowConnectorAppearance]"]  property of the UltraGridOverride object. Also it is now possible to set GroupByRow object’s appearance on the column level through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~groupbyrowappearance.html[GroupByRowAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~groupbyrowconnectorappearance.html[GroupByRowConnectorAppearnace]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object.
+
+image::Images\WinGrid_Styling_Rows_and_Row_Connectors_in_Outlook_Group_By_Mode_03.png[]
+
+*Row Selector State-Specific Images*
+
+With this release, it is now possible to alter the default Row Selector images that appear for different states of an  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"]  object. The different states of a row for which the images can be customized are active row, row with pending changes, add new row, active row with pending changes and active add new row. Previously, the images for these row states could not be turned off or modified. Now you can apply custom images or even remove the default state images completely by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[RowSelectorImages]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridLayout]"]  object.
+
+image::Images\WinGrid_Styling_Row_Selector_Images_for_Different_States_of_a_Row_01.png[]
+
+*Appearance Styling for Active Cell Row Selector and Column Header*
+
+Two new Appearance properties have been added that provides the ability to modify appearance styling of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"]  object’s row selector and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[ultraGridColumn]"]  header, for the active  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridcell]"]  . The two new properties,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellrowselectorappearance.html[ActiveCellRowSelectorAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activecellcolumnheaderappearance.html[ActiveCellColumnHeaderAppearance]"]  has been added to the Override object off of UltraGrid as well as off of each Band.
+
+*Active and Selected Cell Appearances*
+
+The new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~defaultselectedbackcolor.html[DefaultSelectedBackColor]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~defaultselectedforecolor.html[DefaultSelectedForeColor]"]  properties provide a way to disable the display of default colors for active selected cells. Previously it was possible to change the ForeColor and BackColor using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~selectedrowappearance.html[SelectedRowAppearance]"]  property on theUltraGridOverride object, but there was no way to not have a color applied to the selected row/cell.
+
+An  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~activeappearance.html[ActiveAppearance]"]  property has been exposed on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  object which can be set whenever the cell is considered in its active state. The UltraGridCell object’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~appearance.html[Appearance]"]  property can be used to set the active cell’s appearance. However if the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object’s ActiveRowAppearance is set, it overrides the appearance settings for a cell set by the Appearance property. Hence a more exclusive ActiveAppearance property has been added for this release.
+
+Also two new properties,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activeappearancesenabled.html[ActiveAppearancesEnabled]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~selectedappearancesenabled.html[SelectedAppearancesEnabled]"]  has been added to the UltraGridOverride object, which provides a way to disable cells from displaying active and selected state specific appearances.
+
+*Filtering support for IDataErrorInfo Implementation*
+
+The WinGrid™ now supports filtering based on whether cells in the column have an error, determined by the IDataErrorInfo implementation of the underlying data source. A new property called  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filteroperatordropdownitems.html[FilterOperandDropDownItems]"]  has been added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  objects. This property can be assigned to an enum that indicates which operands should be shown in the Filter drop down menu. The various flagged options are All, Blanks, CellValues, Custom, ShowNone, Default, Errors, NonBlanks, NonErrors, ShowAll.
+
+== Related Topics
+
+* link:wingrid-setting-active-cell-border-thickness.html[Set Active Cell Border Thickness]
+* link:wingrid-customizing-column-moving-indicators.html[Customize Column Moving Indicators]
+* link:wingrid-enabling-selection-overlay-for-selected-cells.html[Enable Selection Overlay for Selected Cells]
+* link:wingrid-styling-rows-and-row-connectors-in-outlook-group-by-mode.html[Styling Rows and Row Connectors in Outlook Group By Mode]
+* link:wingrid-styling-row-selector-images-for-different-states-of-a-row.html[Styling Row Selector Images for Different States of a Row]
+* link:wingrid-styling-active-cell-row-selector-and-column-header-appearances.html[Styling Active Cell Row Selector and Column Header Appearances]
+* link:wingrid-setting-cell-active-and-selected-appearance.html[Set Cell Active and Selected Appearance]
+* link:wingrid-filtering-rows-with-errors.html[Filtering Rows with Errors]

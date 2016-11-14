@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-save-load-a-layout-to-a-file",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts","Persistence"],
+    "guid": "{B6670D3E-E6E8-4772-B890-237D9D6C3E7C}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save/Load a Layout to a File
+
+WinGrid™ can save and reload a previously saved layout allowing your end users to setup the WinGrid in a particular fashion for their needs and come back and restore it to that layout. For example say an end user always wants the data shown in the grid to be GroupBy a particular column. He could make his GroupBy and save the layout, and then next time he opens the form just reload the saved layout and the GroupBy is applied.
+
+[start=1]
+. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~saveasxml.html[SaveAsXml]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~loadfromxml.html[LoadFromXml]"]  method of the Layout save the WinGrid's Layout into an Xml file.
+
+*In Visual Basic:*
+
+----
+Private Sub btnSave_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSave.Click
+	Me.UltraGrid1.DisplayLayout.SaveAsXml("WinGridLayout.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSave_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.SaveAsXml("WinGridLayout.xml");
+}
+----
+
+[start=2]
+. To Load the layout into the grid is similar to Save.
+
+*In Visual Basic:*
+
+----
+Private Sub btnLoad_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnLoad.Click
+	Me.UltraGrid1.DisplayLayout.LoadFromXml("WinGridLayout.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnLoad_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.LoadFromXml("WinGridLayout.xml");
+}
+----

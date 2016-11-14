@@ -1,0 +1,72 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-use-add-and-insert-methods-with-arrays",
+    "controlName": ["WinDataSource"],
+    "tags": ["How Do I"],
+    "guid": "{547CE961-A3BF-4EB2-BCB1-802A39FEBA17}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Use Add and Insert Methods with Arrays
+
+In 2005 Volume 1, new overloads were added to the  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatarowscollection~add.html[Add]"]  and  pick:[win-forms="link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatarowscollection~insert.html[Insert]"]  methods of the WinDataSource™ component. The new overloads allow you to pass in an array of cell values to initialize a new row.
+
+The following steps walk you through the setup of an application that uses this functionality.
+
+[start=1]
+. Create a new Windows Application. With the form in design view add the UltraGrid control to the form, and add an UltraDataSource component.
+[start=2]
+. Right click on the UltraDataSource component, and select the UltraDataSource Designer from the context menu. This will bring up the UltraDataSource Designer that looks similar to the screen shot below.
+
+image::Images\WinDataSource_Use_Add_and_Insert_Methods_with_Arrays_02.png[WinDataSource Designer]
+
+[start=3]
+. In the second pane labeled DataColumns click the add column button, this will add a new column. In the far right pane select where it says Key and type in "Last Name". Repeat this process again and call this new column "First Name".
+[start=4]
+. Wire the Form_Load event. Inside this event place the following example code. This code adds two rows using the Add method overloads, and two rows using the Insert method overloads.
+
+*In Visual Basic:*
+
+----
+Private Sub Use_Add_and_Insert_Methods_with_Arrays_Load(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Just pass an Array of values to create the row
+	Me.UltraDataSource1.Rows.Add(New Object() {"Jones", "William"})
+	' The boolean is a flag to cause the Add Events on the UltraDataSource
+	' to be raised when calling the Add method
+	Me.UltraDataSource1.Rows.Add(True, New Object() {"Craft", "Joe"})
+	' Just pass an Array of values to be inserted, at the position specified
+	Me.UltraDataSource1.Rows.Insert(2, New Object() {"Crump", "Bethany"})
+	' The boolean is a flag to cause the Add Events on the UltraDataSource
+	' to be raised when calling the Insert method
+	Me.UltraDataSource1.Rows.Insert(0, True, New Object() {"Hill", "Elizabeth"})
+End Sub
+----
+
+*In C#:*
+
+----
+private void Use_Add_and_Insert_Methods_with_Arrays_Load(object sender, EventArgs e)
+{
+	// Just pass an Array of values to create the row
+	this.ultraDataSource1.Rows.Add(new object[] { "Jones", "William" });
+	// The boolean is a flag to cause the Add Events on the UltraDataSource
+	// to be raised when calling the Add method
+	this.ultraDataSource1.Rows.Add(true, new object[] { "Craft", "Joe" });
+	// Just pass an Array of values to be inserted, at the position specified
+	this.ultraDataSource1.Rows.Insert(2, new object[] { "Crump", "Bethany" });
+	// The boolean is a flag to cause the Add Events on the UltraDataSource
+	// to be raised when calling the Insert method
+	this.ultraDataSource1.Rows.Insert(0, true, new object[] { "Hill", "Elizabeth" });
+}
+----
+
+[start=5]
+. In the design view, select the WinGrid™ on the form, and in the Properties window set the *DataSource* property to the UltraDataSource1 that was created. When you build and run your project you will see something similar to the screen shot below.
+
+image::Images\WinDataSource_Use_Add_and_Insert_Methods_with_Arrays_01.png[example of wingrid showing results of code listed above.]

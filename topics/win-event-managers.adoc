@@ -1,0 +1,159 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-event-managers",
+    "controlName": [],
+    "tags": ["Events","How Do I"],
+    "guid": "{93563A27-8BDE-4AAA-98E8-2DB305732A4B}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Event Managers
+
+Some PLF-based controls expose a convenient facility for temporarily disabling their events and for checking if an event is being raised. The following sample code illustrates how it is used.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+Private Sub Button2_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles Button2.Click
+	If Me.ultraGrid1.ActiveRow Is Nothing Then Return
+	Dim eventManager As GridEventManager
+	' Get the grid's event manager.
+	' The event manager is used to temporarily disable events
+	' to prevent them from being raised. This can be very
+	' convenient in a situation where one or more properties
+	' are being set in code and the events they would normally 
+	' raise would cause unnecessary or counter-productive
+	' code to be executed.
+	'
+	' Note: All events are enabled by default.
+	eventManager = Me.ultraGrid1.EventManager
+	' Disable the Before/AfterSelectChange events
+	eventManager.SetEnabled(GridEventIds.BeforeSelectChange, False)
+	eventManager.SetEnabled(GridEventIds.AfterSelectChange, False)
+	' Toggle the selection state of the active row.
+	' Note: This would normally cause the Before/AfterSelectChange 
+	' events to be raised. However, since the above code disabled
+	' the events they won't be.
+	Me.ultraGrid1.ActiveRow.Selected = Not Me.ultraGrid1.ActiveRow.Selected
+	' Re-enable the Before/AfterSelectChange events
+	eventManager.SetEnabled(GridEventIds.BeforeSelectChange, True)
+	eventManager.SetEnabled(GridEventIds.AfterSelectChange, True)
+	' The 'AllEventsEnabled' property lets you enable/disable
+	' all events will a single line of code. If any event is 
+	' disabled the 'AllEventsEnabled' property returns false.
+	If eventManager.AllEventsEnabled = False Then
+		eventManager.AllEventsEnabled = True
+	End If
+	' The event manager also exposes an 'IsEnabled' method
+	' to see if an event is enabled or disbled.
+	If False = eventManager.IsEnabled(GridEventIds.BeforeSelectChange) Then
+		eventManager.SetEnabled(GridEventIds.BeforeSelectChange, True)
+	End If
+	' The grid event manager also exposes overloaded 
+	' 'IsEnabled' and 'SetEnabled' methods that take an 
+	' event group so that, for example all 'Before' or all
+	' 'After' events can be enabled/disabled. If any event
+	' in the group is disabled the 'IsEnabled' method returns
+	' false.
+	If False = eventManager.IsEnabled(EventGroups.BeforeEvents) Then
+		eventManager.SetEnabled(EventGroups.BeforeEvents, True)
+	End If
+	eventManager.SetEnabled(EventGroups.AfterEvents, True)
+	' The 'InProgress' method will return true if the 
+	' specified event is currently being raised. This
+	' is often helpful in methods that can be called
+	' from various points in an application to determine
+	' wahat is triggering the call.
+	If eventManager.InProgress(GridEventIds.BeforeSelectChange) Then
+		' ... 
+	End If
+	' The UltraCombo and UltraDropDown controls also expose 
+	' event managers for their custom events. However,
+	' since they have considerably fewer events they don't
+	' expose overloaded 'IsEnabled' and 'SetEnabled' methods 
+	' to control groups of events.
+	Dim comboManager As ComboEventManager
+	comboManager = Me.ultraCombo1.EventManager
+	comboManager.SetEnabled(ComboEventIds.BeforeDropDown, True)
+	Dim dropDownManager As DropDownEventManager
+	dropDownManager = Me.UltraDropDown1.EventManager
+	dropDownManager.SetEnabled(DropDownEventIds.AfterCloseUp, True)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+private void button2_Click(object sender, System.EventArgs e)
+{
+	if (this.ultraGrid1.ActiveRow == null)
+		return;
+	// Get the grid's event manager.
+	// The event manager is used to temporarily disable events
+	// to prevent them from being raised. This can be very
+	// convenient in a situation where one or more properties
+	// are being set in code and the events they would normally 
+	// raise would cause unnecessary or counter-productive
+	// code to be executed.
+	//
+	// Note: All events are enabled by default.
+	GridEventManager eventManager = this.ultraGrid1.EventManager;
+	// Disable the Before/AfterSelectChange events
+	eventManager.SetEnabled(GridEventIds.BeforeSelectChange, false);
+	eventManager.SetEnabled(GridEventIds.AfterSelectChange, false);
+	// Toggle the selection state of the active row.
+	// Note: This would normally cause the Before/AfterSelectChange 
+	// events to be raised. However, since the above code disabled
+	// the events they won't be.
+	this.ultraGrid1.ActiveRow.Selected = !this.ultraGrid1.ActiveRow.Selected;
+	// Re-enable the Before/AfterSelectChange events
+	eventManager.SetEnabled(GridEventIds.BeforeSelectChange, true);
+	eventManager.SetEnabled(GridEventIds.AfterSelectChange, true);
+	// The 'AllEventsEnabled' property lets you enable/disable
+	// all events will a single line of code. If any event is 
+	// disabled the 'AllEventsEnabled' property returns false.
+	if (!eventManager.AllEventsEnabled)
+		eventManager.AllEventsEnabled = true;
+	// The event manager also exposes an 'IsEnabled' method
+	// to see if an event is enabled or disabled.
+	if (!eventManager.IsEnabled(GridEventIds.BeforeSelectChange))
+		eventManager.SetEnabled(GridEventIds.BeforeSelectChange, true);
+	// The grid event manager also exposes overloaded 
+	// 'IsEnabled' and 'SetEnabled' methods that take an  
+	// event group so that, for example all 'Before' or all
+	// 'After' events can be enabled/disabled. If any event
+	// in the group is disabled the 'IsEnabled' method returns
+	// false.
+	if (!eventManager.IsEnabled(EventGroups.BeforeEvents))
+		eventManager.SetEnabled(EventGroups.BeforeEvents, true);
+	eventManager.SetEnabled(EventGroups.AfterEvents, true);
+	// The 'InProgress' method will return true if the 
+	// specified event is currently being raised. This
+	// is often helpful in methods that can be called
+	// from various points in an application to determine
+	// what is triggering the call.
+	if (eventManager.InProgress(GridEventIds.BeforeSelectChange))
+	{
+		// ... 
+	}
+	// The UltraCombo and UltraDropDown controls also expose 
+	// event managers for their custom events. However,
+	// since they have considerably fewer events they don't
+	// expose overloaded 'IsEnabled' and 'SetEnabled' methods 
+	// to control groups of events.
+	ComboEventManager comboManager = this.ultraCombo1.EventManager;
+	comboManager.SetEnabled(ComboEventIds.BeforeDropDown, true);
+	DropDownEventManager dropDownManager = this.ultraDropDown1.EventManager;
+	dropDownManager.SetEnabled(DropDownEventIds.AfterCloseUp, true);
+}
+----

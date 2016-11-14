@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-clickcell-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{E04C6CB7-E6F7-4440-82CA-00D70ED0CFF9}",  
+    "buildFlags": [],
+    "createdOn": "2008-11-09T11:14:03Z"
+}
+|metadata|
+////
+
+= ClickCell Event
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~clickcell_ev.html[ClickCell]"]  event is useful to monitor which cell the end-user clicked. Using this event you can perform logic that is geared towards individual cells such as populating other Form elements with the individual cell values. The following example shows this event being handled:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_ClickCell (ByVal sender As System. Object, _
+   ByVal e As ClickCellEventArgs) Handles UltraGrid1.ClickCell
+   Me.Text = string.Format("{0}: {1}", e.Cell.Column.Header.Caption, e.Cell.Value.ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_ClickCell (
+   object sender, 
+   ClickCellEventArgs e)
+{
+  this.Text = string.Format("{0}: {1}", e.Cell.Column.Header.Caption, e.Cell.Value.ToString());
+}
+----

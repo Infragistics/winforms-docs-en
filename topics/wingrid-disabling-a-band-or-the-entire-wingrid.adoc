@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-disabling-a-band-or-the-entire-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{A4F3EB22-29D3-49A6-A645-33B7BDCAF851}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Disabling a Band or the Entire WinGrid
+
+Since the WinGrid™ control's inception, end users have been using WinGrid to manipulate data in every way, shape, and form. However, what if you, as the developer, don't want the end user to modify certain data. What if the end user requires a way to keep certain data intact and read only? These scenarios can happen quite a bit, and accommodating these scenarios involves just one property setting. Both the grid itself, and individual bands expose an AllowUpdate property off their respective Overrides. Having these properties in both objects allows you to choose whether you want to allow the end user to update data in a single band, or the entire WinGrid.
+
+Not only can you disable a band or the entire grid, but you can disable individual columns, rows, and cells. To gain this detailed control over WinGrid, see link:wingrid-disabling-a-wingrid-column.html[Disable a WinGrid Column], link:wingrid-disabling-a-wingrid-row.html[Disable a WinGrid Row], and link:wingrid-disabling-a-wingrid-cell.html[Disable a WinGrid Cell] to disable columns, rows, and cells, respectively.
+
+The following code disallows updates on the entire WinGrid, but allows updates on the first band. This topic assumes that you have a WinGrid control on your form with at least one band. For more information on data binding the WinGrid control, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
+
+.Note
+[NOTE]
+====
+Updating and deleting are two separate procedures for WinGrid and expose separate properties. If you want to prevent rows from being deleted, you can set the AllowDelete property to DefaultableBoolean.False off either the grid's or band's Override.
+====
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.AllowUpdate = _
+  Infragistics.Win.DefaultableBoolean.False
+Me.UltraGrid1.DisplayLayout.Bands(0).Override.AllowUpdate = _
+  Infragistics.Win.DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.AllowUpdate = 
+  Infragistics.Win.DefaultableBoolean.False;
+this.ultraGrid1.DisplayLayout.Bands[0].Override.AllowUpdate =
+  Infragistics.Win.DefaultableBoolean.True;
+----

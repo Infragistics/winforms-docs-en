@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-disable-the-current-day-week-month-or-year",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{2A6D99B4-FE07-4E8E-9414-9609B02B1FDE}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Disable the Current Day, Week, Month, or Year
+
+A common task for the WinSchedule™ controls is to disable a particular Day, Week, Month, Year across all the schedule views or WinCalendarCombo™. The WinCalendarInfo™ component allows you to do this, since all the schedule controls can share a WinCalendarInfo.
+
+This topic assumes you have a WinCalendarInfo on your form, and at least one of the schedule views, or the WinCalendarCombo control on the form. Set the schedule view or WinCalendarCombo's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarinfo.html[CalendarInfo]"]  property to the WinCalendarInfo that is also on the form.
+
+* To disable the current day you pass in the DateTime.Today into the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~getday.html[GetDay]"]  method off the UltraCalendarInfo. The following example code shows how to do this.
+
+*In Visual Basic:*
+
+----
+' Disable Today
+Me.UltraCalendarInfo1.GetDay(DateTime.Today, True).Enabled = False
+----
+
+*In C#:*
+
+----
+// Disable Today
+this.ultraCalendarInfo1.GetDay(DateTime.Today, true).Enabled = false;
+----
+
+* To disable the current week you pass in the DateTime.Today into the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~getweek.html[GetWeek]"]  method off the UltraCalendarInfo. The following example code shows how to do this.
+
+*In Visual Basic:*
+
+----
+' Disable the current Week
+Me.UltraCalendarInfo1.GetWeek(DateTime.Today).Enabled = False
+----
+
+*In C#:*
+
+----
+// Disable the current Week
+this.ultraCalendarInfo1.GetWeek(DateTime.Today).Enabled = false;
+----
+
+* To disable the a month that is two months from the current day you pass in the DateTime.Today.AddMonths(2) into the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~getmonth.html[GetMonth]"]  method off the UltraCalendarInfo. The following example code shows how to do this.
+
+*In Visual Basic:*
+
+----
+' Disable the month two months from the current month
+Me.UltraCalendarInfo1.GetMonth(DateTime.Today.AddMonths(2)).Enabled = False
+----
+
+*In C#:*
+
+----
+// Disable the month two months from the current month
+this.ultraCalendarInfo1.GetMonth(DateTime.Today.AddMonths(2)).Enabled = false;
+----
+
+* To disable an entire year you pass in the year into the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~getyear.html[GetYear]"]  method off the UltraCalendarInfo. The following example code shows how to do this.
+
+*In Visual Basic:*
+
+----
+' Disable the year 2008
+Me.UltraCalendarInfo1.GetYear(2008).Enabled = False
+----
+
+*In C#:*
+
+----
+// Disable the year 2008
+this.ultraCalendarInfo1.GetYear(2008).Enabled = false;
+----

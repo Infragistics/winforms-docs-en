@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-sharing-controls-among-wintabs",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{9FD53C68-643A-4E09-A68B-9828B648E4D9}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Sharing Controls Among WinTabs
+
+.Note
+[NOTE]
+====
+This section does not apply to WinTabStrip™ since all of its child controls are shared between tabs.
+====
+
+In contrast, WinTab™ creates a tab page control for each tab to support having different controls on each tab. However, there are situations where it is desirable to have one or more controls that appear on some or all of the tabs. The UltraTabControl facilitates this through the 'shared controls page'. This is an extra page that is automatically created to contain controls that are to be shared between tabs.
+
+When an UltraTabControl is first added to a form at design-time the shared controls page is automatically created and occupies the entire client area of the element. At design-time it displays the string '[Shared controls page]'. Any controls placed on this page are automatically added to the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.sharedcontrolscollection.html[SharedControls]"]  collection. When a tab is selected these controls are automatically re-parented to that tab's tab page.
+
+After tabs have been added, the shared controls page can be redisplayed by selecting the 'Show shared controls' design-time verb. There is also an 'Exclude shared controls...' verb that displays the dialog shown below.
+
+image::Images\WinTabs_Sharing_Controls_Among_WinTabs_01.png[shows ultratabcontrol's exclude shared controls dialog]
+
+Here you can specify those shared controls that should not be re-parented to specific tabs. This allows easy maintenance of the ExcludedSharedControls collection that the UltraTab object exposes.

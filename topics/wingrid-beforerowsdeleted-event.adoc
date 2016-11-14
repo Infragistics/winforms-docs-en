@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-beforerowsdeleted-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{BA82F459-7A8D-46A8-81EB-6D2C5B4CDDB9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= BeforeRowsDeleted Event
+
+WinGrid™ allows Rows to be deleted by providing built in functionality. The end user simply selects one or many rows within the Grid and then presses the Delete keyboard key. The end user will be prompted for the rows that are to be deleted. If the user selects Yes or OK, then the rows will be removed from the Grid. Right before the Rows are deleted, the BeforeRowsDeleted event will fire. The BeforeRowsDeleted event can be handled if you need to access the actual list of rows that are going to be deleted. In this event you can suppress the intrinsic MessageBox that prompts the user for the Delete action so that you can provide your own message. Access to the Rows is provided through the event argument e.Rows. Depending on the situation, you may want to iterate through each Row and perform an action. The following example shows how the BeforeRowsDeleted event is handled so that we can iterate through each Row and access the corresponding ListObject (in this case, Customer) and explicitly call the Customer’s Delete method:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_BeforeRowsDeleted( _
+   ByVal sender As System.Object, _
+   ByVal e As BeforeRowsDeletedEventArgs) _
+   Handles UltraGrid1.BeforeRowsDeleted
+   e.DisplayPromptMsg = True
+   Dim tmp as Integer = e.Rows.Length - 1
+   For i As Integer = 0 To tmp
+      Dim c As Customer = _
+      DirectCast(e.Rows(0).ListObject, Customer)
+      c.Delete()
+   Next
+   DataManager.UpdateAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_BeforeRowsDeleted(
+   object sender, 
+   BeforeRowsDeletedEventArgs e)
+{
+   e.DisplayPromptMsg = true;
+   int tmp = e.Rows.Length;
+   for (int i = 0; i < tmp; i++)
+   {
+      Customer c = e.Rows[0].ListObject as Customer;
+      c.Delete();
+   }
+   DataManager.UpdateAll();
+}
+----
+
+If you notice, by setting e.DisplayPromptMsg to true, WinGrid will provide the end user with the default prompt. In this example, we are also using a custom business object library that contains business entities as well as data managers which allow for create, read update and delete operations with these entities. These custom entities have a Delete method which must be called whenever they are to be deleted. In this event, notice how we are iterating through each row and accessing the Customer object through the ListObject Row property. We then call the Customer’s Delete method. At the end of the loop, we use the custom library’s DataManager class to resolve these record changes, in this case, all the Customers that were marked as deleted will now be resolved to the database. Note the logic used to iterate through the rows. In each iteration we are referring to element 0 within the collection. This is to ensure that we do not exceed the limits of the collection as we remove each Customer. If we simply refer to each entity using e.Rows[i] you will exceed the bounds of the collection because as Entities are deleted and removed and variable i increments, you will exceed the collection limits.

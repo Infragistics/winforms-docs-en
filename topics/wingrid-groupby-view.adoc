@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-groupby-view",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Grouping"],
+    "guid": "{1AFBE586-8F92-4ECA-9DF0-D620B0046BE1}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= GroupBy View
+
+WinGrid™ supports an intuitive and powerful way to organize your data - GroupBy view. GroupBy view gives the user the ability to create custom groupings of records on the fly and to work with customized "mini-datasets" that focus on just the records of interest.
+
+GroupBy mode is similar to a concept found in Microsoft Outlook, and it works in the same way. For a grid that has GroupBy mode enabled, there is an area in each band called the GroupByBox. The user can drag column headers into this area to create custom groupings. When a column is added to the GroupByBox, it is hidden from view (by default - you can override this behavior) and the rows of the band are divided into groups by the appearance of  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridgroupbyrow.html[UltraGridGroupByRows]"] . GroupByRows display the information contained in the column being used to group the data, and they provide a mechanism to expand and collapse the rows that make up the group.
+
+You can enable GroupBy mode by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand]"]  property of the element's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"]  (accessible via the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property.)
+
+The following snapshot displays WinGrid with GroupBy view. Data is grouped by Country and then City in the root band and EmployeeID in the child band.
+
+image::Images/WinGrid_GroupBy_View_01.png[Groupby view in ultragrid]

@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-use-appointmentaction-to-run-an-external-application",
+    "controlName": ["WinSchedule"],
+    "tags": ["Extending"],
+    "guid": "{AA6E9C38-5EFA-4CF1-BFD1-FFA4530CDDE4}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Use AppointmentAction to Run an External Application
+
+This topic's content applies to all WinSchedule™ views. The following code demonstrates how to use the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointmentaction.html[AppointmentAction]"]  of an  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  to run an external application.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub btnCreateAppointment_Click(ByVal sender As System.Object, _
+ByVal e As System.EventArgs) Handles btnCreateAppointment.Click
+	Dim appointment As Appointment
+	appointment = Me.UltraCalendarInfo1.Appointments.Add( _
+	  System.DateTime.Today, "Appointment Subject")
+	appointment.Action.Type = AppointmentActionType.ExecuteProgram
+	appointment.Action.Command = "C:\WINDOWS\Notepad.exe"
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void btnCreateAppointment_Click(object sender, EventArgs e)
+{
+	Appointment appointment;
+	appointment = this.ultraCalendarInfo1.Appointments.Add(
+	  System.DateTime.Today, "Appointment Subject");
+	appointment.Action.Type = AppointmentActionType.ExecuteProgram;
+	appointment.Action.Command = @"C:\Windows\Notepad.exe";
+}
+----

@@ -1,0 +1,68 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-design-time-customize-dialog-box",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Design Environment"],
+    "guid": "{2A068601-FE32-40F7-AC3E-89A22DD06A17}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinToolbarsManager Design-Time Customize Dialog Box
+
+The Customize Dialog, which can be accessed by right clicking on the WinToolbarsManager™ in the component tray and selecting "Customize...", contains four tabs for modifying the component:
+
+* Toolbars -- This tab contains options for creating and modifying the UltraToolbar or UltraTaskPaneToolbar objects.
+* Tools contains options for creating and modifying tools. In addition, you can drag tools from the tools list onto the toolbars of the UltraToolbarsManager in the form/user control designer.
+* PopupMenuTool Designer allows you to create and modify menu tools without the need to place them onto a particular toolbar.
+* Options allows you to change some common settings for the UltraToolbarsManager.
+
+== Toolbars
+
+The Toolbars tab contains options for creating and manipulating toolbars. It also contains buttons in the lower right which may be used to load or save the UltraToolbarsManager tools, toolbars and properties to a layout file as well as an option to import tools and toolbars from a .NET MainMenu or Toolbar located on the form.
+
+.Note
+[NOTE]
+====
+For information on the toolbar types, see link:wintoolbarsmanager-working-with-toolbar-types.html[Working with Toolbar Types].
+====
+
+image::Images\WinToolbarsManager_Design_Time_Customize_Dialog_01.png[Ultratoolbarsmanager customize dialog with toolbars tab selected]
+
+== Tools
+
+The Tools tab contains options for creating and modifying tools. In addition, you can drag tools from the tools list onto the toolbars of the UltraToolbarsManager in the form/user control designer.
+
+.Note
+[NOTE]
+====
+For information on the available tool types, see link:wintoolbarsmanager-working-with-tool-types.html[Working with Tool Types].
+====
+
+image::Images\WinToolbarsManager_Design_Time_Customize_Dialog_02.png[ultratoolbarsmanager customize dialog with tools tab selected]
+
+The image below shows an instance of the "Open" tool being dragged from the Tools tab to the menu tool on the form.
+
+image::Images\WinToolbarsManager_Design_Time_Customize_Dialog_03.png[ultratoolbarsmanager showing drag and drop between dialog and toolbar on form]
+
+== PopupMenuTool Designer
+
+The PopupMenuTool Designer is used to create and modify  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[menu]"]  tools without the need to put an instance of the menu onto a specific toolbar or menu.
+
+.Note
+[NOTE]
+====
+For information on the available using the, see link:wintoolbarsmanager-working-with-tool-types.html[Working with Tool Types].
+====
+
+image::Images\WinToolbarsManager_Design_Time_Customize_Dialog_04.png[ultratoolbarsmanager customize dialog popupmenutool designer tab selected and explained]
+
+== Options
+
+The Options tab contains control used to control some of the more common properties of the UltraToolbarManager component including the type of menu animations, whether to display the tools using large images, etc.
+
+image::Images\WinToolbarsManager_Design_Time_Customize_Dialog_05.png[ultratoolbarsmanager customize dialog options tab selected]

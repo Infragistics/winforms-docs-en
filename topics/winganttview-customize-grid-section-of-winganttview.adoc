@@ -1,0 +1,87 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-customize-grid-section-of-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": ["How Do I"],
+    "guid": "{B2AA5754-A8C2-49CD-9991-268B7DDEC635}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Customize Grid Section of WinGanttView
+
+This topic illustrates settings that can be applied to modify the look and user interaction of the grid section of WinGanttView™. The grid section of the control displays tasks and task information in a tree-like structure. The appearances of cells, columns, column headers, rows, and row selector within the grid portion can be customized through the control’s link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~gridsettings.html[GridSettings] object.
+
+The following example code assumes that you have an UltraGanttView control dropped onto the form that displays tasks and task details.
+
+*In Visual Basic:*
+
+----
+' Set the default appearance for all cells within the grid area of GanttView
+Me.ultraGanttView1.GridSettings.CellAppearance.BackColor = Color.BlanchedAlmond
+' Set the default appearance for all column headers within the grid area of GanttView
+Me.ultraGanttView1.GridSettings.ColumnHeaderAppearance.ThemedElementAlpha = Alpha.Transparent
+Me.ultraGanttView1.GridSettings.ColumnHeaderAppearance.BackColor = Color.Gray
+' Set the Visible position of ‘Resource Names’ column in the grid area of GanttView to 1
+Me.ultraGanttView1.GridSettings.ColumnSettings(TaskField.Resources).VisiblePosition = 1
+' Set the default appearance for cells in the Duration column in the grid area of GanttView
+Me.ultraGanttView1.GridSettings.ColumnSettings(TaskField.Duration).CellAppearance.BackColor = Color.Plum
+' Set the appearance of the row selectors in the grid area of GanttView
+Me.ultraGanttView1.GridSettings.RowSelectorAppearance.BackColor = Color.SkyBlue
+' Set Row selector style in grid area of GanttView
+Me.ultraGanttView1.GridSettings.RowSelectorHeaderStyle = Infragistics.Win.UltraWinGrid.RowSelectorHeaderStyle.ColumnChooserButtonFixedSize
+' Set the default row appearance for a specific task in the grid area of GanttView
+Me.ultraGanttView1.CalendarInfo.Tasks(0).GridSettings.RowAppearance.BackColor = Color.Gray
+' Set the default cell appearance for a specific Task under a specific column in the grid area of GanttView
+Me.ultraGanttView1.CalendarInfo.Tasks(0).Tasks(0).GridSettings.CellSettings(TaskField.Name).Appearance.BackColor = Color.Lime
+' Disable column moving in the grid area of GanttView
+Me.ultraGanttView1.GridSettings.AllowColumnMoving = False
+' Set the selection overlay settings for a selected row in the grid area of GanntView
+Me.ultraGanttView1.GridSettings.SelectionOverlayBorderColor = Color.Red
+Me.ultraGanttView1.GridSettings.SelectionOverlayBorderThickness = 4
+Me.ultraGanttView1.GridSettings.SelectionOverlayColor = Color.Green
+----
+
+*In C#:*
+
+----
+// Set the default appearance for all cells within the grid area of GanttView
+this.ultraGanttView1.GridSettings.CellAppearance.BackColor = Color.BlanchedAlmond;
+// Set the default appearance for all column headers within the grid area of GanttView
+this.ultraGanttView1.GridSettings.ColumnHeaderAppearance.ThemedElementAlpha = Alpha.Transparent;
+this.ultraGanttView1.GridSettings.ColumnHeaderAppearance.BackColor = Color.Gray;
+// Set the Visible position of ‘Resource Names’ column in the grid area of GanttView to 1
+this.ultraGanttView1.GridSettings.ColumnSettings[TaskField.Resources].VisiblePosition = 1;
+// Set the default appearance for cells in the Duration column in the grid area of GanttView
+this.ultraGanttView1.GridSettings.ColumnSettings[TaskField.Duration].CellAppearance.BackColor = Color.Plum;
+// Set the appearance of the row selectors in the grid area of GanttView
+this.ultraGanttView1.GridSettings.RowSelectorAppearance.BackColor = Color.SkyBlue;
+// Set Row selector style in grid area of GanttView
+this.ultraGanttView1.GridSettings.RowSelectorHeaderStyle = Infragistics.Win.UltraWinGrid.RowSelectorHeaderStyle.ColumnChooserButtonFixedSize;
+// Set the default row appearance for a specific task in the grid area of GanttView
+this.ultraGanttView1.CalendarInfo.Tasks[0].GridSettings.RowAppearance.BackColor = Color.Gray;
+// Set the default cell appearance for a specific Task under a specific column in the grid area of GanttView this.ultraGanttView1.CalendarInfo.Tasks[0].Tasks[0].GridSettings.CellSettings[TaskField.Name].Appearance.BackColor = Color.Lime;
+// Disable column moving in the grid area of GanttView
+this.ultraGanttView1.GridSettings.AllowColumnMoving = false;
+// Set the selection overlay settings for a selected row in the grid area of GanntView
+this.ultraGanttView1.GridSettings.SelectionOverlayBorderColor = Color.Red;
+this.ultraGanttView1.GridSettings.SelectionOverlayBorderThickness = 4;
+this.ultraGanttView1.GridSettings.SelectionOverlayColor = Color.Green;
+----
+
+image::Images\WinGanttView_Customize_Grid_Section_of_WinGanttView_01.png[]
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

@@ -1,0 +1,331 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-nodes-overview",
+    "controlName": ["WinTree"],
+    "tags": ["Events","Getting Started","How Do I","Styling"],
+    "guid": "{3995C927-9235-476A-B3F0-F9EAF7A8E7C3}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Nodes Overview
+
+The WinTree™ control is based on a hierarchy of Nodes. Each node in the tree can have a collection of child nodes which displays in an expandable hierarchy.
+
+== Overrides
+
+Many properties of nodes can be controlled on various levels of the tree, allowing for great flexibility and control. The programmer can set properties on a large group of nodes and then override those settings on a group of nodes or a single node. There are  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  objects on 4 levels. Each level has a smaller scope than the level above it, and the smaller the scope the higher the precedence.
+
+Overrides in order of precedence from lowest to highest:
+
+[options="header", cols="a,a,a"]
+|====
+|Name|Scope|Example
+
+|Tree
+|Affects all nodes in the UltraTree control
+|UltraTree1.Override.NodeAppearance
+
+|Indentation
+|Affects all nodes at a particular indentation.
+|UltraTree1.NodeLevelOverrides[0].NodeAppearance
+
+|Collection
+|Affect all nodes in a particular Nodes collection
+|UltraTree1.Nodes.Override.NodeAppearance
+
+|Node
+|Affects only a single node
+|UltraTree1.Nodes[0].Override.NodeAppearance
+
+|====
+
+== Appearances
+
+The Override object has several Appearance properties which are applied to a node based on the state of that node. This makes it easy to add different images, colors, fonts, etc. to a node based on it's current state, such as when the node is expanded, collapsed, active, selected, etc.
+
+Node Appearances in order of precedence from lowest to highest:
+
+[options="header", cols="a,a"]
+|====
+|Name|State
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~nodeappearance.html[NodeAppearance]"] 
+|Default appearance of the node
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~expandednodeappearance.html[ExpandedNodeAppearance]"] 
+|Appearance of the node when it is expanded
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~selectednodeappearance.html[SelectedNodeAppearance]"] 
+|Appearance of the node when it is selected
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~activenodeappearance.html[ActiveNodeAppearance]"] 
+|Appearance of the node when it is Active
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~hottrackingnodeappearance.html[HotTrackingNodeAppearance]"] 
+|Appearance of the node when it is HotTracking
+
+| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~labeleditappearance.html[LabelEditAppearance]"] 
+|Appearance of the pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~labeledit.html[LabelEdit]"] control when the node is in edit mode.
+
+|====
+
+== LeftImages and RightImages
+
+In addition to the standard Image that is applied to a node via the Appearances, nodes can have a series of images displayed to the right or left of the text. Add images to the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~leftimages.html[LeftImages]"]  or  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~rightimages.html[RightImages]"]  collection to display addition images on a node.
+
+== NodeStyle
+
+Several different Styles of node are available for use in the WinTree to provide rich UI for applications. You can change the style of a node or group of nodes by setting the NodeStyle property on the appropriate Override. The table below is a list of Node Styles.
+
+[options="header", cols="a,a"]
+|====
+|Name|Description
+
+|Default
+|Default will display the Standard style, unless an Override somewhere in the hierarchy overrides it.
+
+|Standard
+|The node simply displays text which may or may not be editable.
+
+|CheckBox
+|The node displays a CheckBox which can be checked or unchecked by the user, in addition to whatever Text and Image are displayed. To determine the state of a checkbox on a node, use the pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~checkedstate.html[CheckedState]"] property of the Node.
+
+|TriStateCheckBox
+|Same as CheckBox but with the capacity to show an indeterminate state.
+
+|OptionSet
+|Allows a group of nodes to show option buttons. The OptionSet style will allow only one node in a collection to be checked at a time. To determine if an OptionSet node is checked, use the CheckedState property of the node.
+
+|====
+
+== Working with Nodes
+
+Accessing nodes in the tree can be done by  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~index.html[Index]"]  or by  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~key.html[Key]"] . When adding nodes to the tree, the keys must be unique across the entire tree. So a child node cannot have the same key as its parent node, its child nodes, or any other node anywhere in the same tree control. The only exception to this rule is if the node does not have a key. The key in this case will be null, and there can be an indefinite number of nodes with null keys. However, it is recommended that all nodes in the tree have a unique key so that the node can be accessed more easily.
+
+== Accessing nodes by Index
+
+Nodes are stored in a hierarchy of standard keyed collections. So you can access node via the Index of the node. For example, to loop through all the root nodes in the tree, you could do something like this:
+
+*In Visual Basic:*
+
+----
+Private Sub btnReturnRootNodes_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnReturnRootNodes.Click
+        Dim i As Integer
+        For i = 0 To Me.UltraTree1.Nodes.Count - 1
+                Me.UltraTextEditor1.Text += Me.UltraTree1.Nodes(i).Text
+                Me.UltraTextEditor1.Text += " "
+        Next
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnReturnRootNodes_Click(object sender, EventArgs e)
+{
+        for ( int i=0; i < this.ultraTree1.Nodes.Count; i++ )
+        {
+                this.ultraTextEditor1.Text += this.ultraTree1.Nodes[i].Text;
+                this.ultraTextEditor1.Text += " ";
+        }
+}
+----
+
+== Looping through every node in the tree
+
+Both of the methods above return only the root nodes of the tree. The child nodes are stored in the Nodes collection of each node. So to loop through every node in the tree, you would need to use a recursive method.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+Private Sub btnLoopEveryNode_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnLoopEveryNode.Click
+        Dim rootNode As UltraTreeNode
+        For Each rootNode In Me.UltraTree1.Nodes
+                IterateNodes(rootNode)
+        Next
+End Sub
+Private Sub IterateNodes(ByVal node As UltraTreeNode)
+        Me.UltraTextEditor1.Text += node.Text
+        Me.UltraTextEditor1.Text += " "
+        Dim childNode As UltraTreeNode
+        For Each childNode In node.Nodes
+                IterateNodes(childNode)
+        Next
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+private void btnLoopEveryNode_Click(object sender, EventArgs e)
+{
+        foreach ( UltraTreeNode rootNode in this.ultraTree1.Nodes )
+                IterateNodes( rootNode );
+}
+private void IterateNodes ( UltraTreeNode node )
+{
+        this.ultraTextEditor1.Text += node.Text;
+        this.ultraTextEditor1.Text += " ";
+        foreach ( UltraTreeNode childNode in node.Nodes )
+                IterateNodes ( childNode );
+}
+----
+
+== Accessing a specific node
+
+If you want to access a specific node anywhere in the tree, you can do so if the node has a key by using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method. This method use is demonstrated in the next section Accessing a Relative Node.
+
+== Accessing a relative node
+
+If you want to get a node which is relative to another node, you can do this via the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~hassibling.html[HasSibling]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~getsibling.html[GetSibling]"]  methods of the node.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+Private Sub btnSiblings_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSiblings.Click
+        Dim aNode As UltraTreeNode
+        aNode = Me.UltraTree1.GetNodeByKey("Walkthroughs")
+        Dim firstNode, nextNode, previousNode, lastNode As UltraTreeNode
+        If (aNode.HasSibling(NodePosition.First)) Then
+                firstNode = aNode.GetSibling(NodePosition.First)
+                Me.UltraTextEditor1.Text += firstNode.Text
+                Me.UltraTextEditor1.Text += " "
+        End If
+        If (aNode.HasSibling(NodePosition.Last)) Then
+                lastNode = aNode.GetSibling(NodePosition.Last)
+                Me.UltraTextEditor1.Text += lastNode.Text
+                Me.UltraTextEditor1.Text += " "
+        End If
+        If (aNode.HasSibling(NodePosition.Next)) Then
+                nextNode = aNode.GetSibling(NodePosition.Next)
+                Me.UltraTextEditor1.Text += nextNode.Text
+                Me.UltraTextEditor1.Text += " "
+        End If
+        If (aNode.HasSibling(NodePosition.Previous)) Then
+                previousNode = aNode.GetSibling(NodePosition.Previous)
+                Me.UltraTextEditor1.Text += previousNode.Text
+                Me.UltraTextEditor1.Text += " "
+        End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+private void btnSiblings_Click(object sender, EventArgs e)
+{
+        UltraTreeNode aNode = null;
+        aNode = this.ultraTree1.GetNodeByKey("Walkthroughs");
+        UltraTreeNode firstNode, nextNode, previousNode, lastNode;
+        if (aNode.HasSibling(NodePosition.First)) 
+        {
+                firstNode = aNode.GetSibling(NodePosition.First);
+                this.ultraTextEditor1.Text += firstNode.Text;
+                this.ultraTextEditor1.Text += " ";
+        }
+        if (aNode.HasSibling(NodePosition.Last))
+        {
+                lastNode = aNode.GetSibling(NodePosition.Last);
+                this.ultraTextEditor1.Text += lastNode.Text;
+                this.ultraTextEditor1.Text += " ";
+        }
+        if (aNode.HasSibling(NodePosition.Next))
+        {
+                nextNode = aNode.GetSibling(NodePosition.Next);
+                this.ultraTextEditor1.Text += nextNode.Text;
+                this.ultraTextEditor1.Text += " ";
+        }
+        if (aNode.HasSibling(NodePosition.Previous))
+        {
+                previousNode = aNode.GetSibling(NodePosition.Previous);
+                this.ultraTextEditor1.Text += previousNode.Text;
+                this.ultraTextEditor1.Text += " ";
+        }
+}
+----
+
+== Accessing a node at a mouse position
+
+To get the node under the current position of the mouse, or any set of coordinates within the tree control, use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodefrompoint.html[GetNodeFromPoint]"]  method.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+Private Sub UltraTree1_MouseUp(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraTree1.MouseUp
+        Dim tree As UltraTree
+        tree = DirectCast(sender, UltraTree)
+        Dim aNode As UltraTreeNode
+        aNode = tree.GetNodeFromPoint(e.X, e.Y)
+        If (Not aNode Is Nothing) Then
+                Me.UltraTextEditor1.Text = aNode.Text
+        End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+private void ultraTree1_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+{
+        UltraTree tree;
+        tree = sender as UltraTree;
+        UltraTreeNode aNode;
+        aNode = tree.GetNodeFromPoint(e.X, e.Y);
+        if (aNode != null)
+                this.ultraTextEditor1.Text = aNode.Text;  
+}
+----
+
+== Repositioning Nodes
+
+To move a node to a new position, either within the same parent, to a different parent, or even to a different tree control, you can use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~reposition.html[Reposition]"]  method of the node.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+Private Sub btnReposition_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnReposition.Click
+        Dim myNode As UltraTreeNode
+        myNode = Me.UltraTree1.GetNodeByKey("Walkthroughs")
+        ' Move Node8 to position 0
+        myNode.Reposition(Me.UltraTree1.Nodes, 0)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+private void btnReposition_Click(object sender, EventArgs e)
+{
+        UltraTreeNode myNode;
+        myNode = this.ultraTree1.GetNodeByKey("Walkthroughs");
+        // Move Node8 to position 0
+        myNode.Reposition(this.ultraTree1.Nodes, 0);
+}
+----

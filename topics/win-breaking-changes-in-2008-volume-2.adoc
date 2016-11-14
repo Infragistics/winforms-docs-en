@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2008-volume-2",
+    "controlName": [],
+    "tags": ["Breaking Changes","Known Issues"],
+    "guid": "{B06C2FC3-0A74-4150-8C5E-FCC5B6BD2039}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2008 Volume 2
+
+== Win Assembly
+
+=== Members Added to the IFilterableValueList Interface
+
+We added two members to the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ifilterablevaluelist.html[IFilterableValueList]"]  interface:  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ifilterablevaluelist~applyfilter.html[ApplyFilter]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ifilterablevaluelist~removefilter.html[RemoveFilter]"] . This interface derives from the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ivaluelist.html[IValueList]"]  interface, which is implemented by the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"]  class. If you implemented this interface in your application, the application will fail to compile unless you declare the two new methods.
+
+The methods added to this interface do not require meaningful implementations. The ApplyFilter implementation can simply return -1 to signify that no filter will be applied, and RemoveFilter returns void and thus requires you only to declare it.
+
+== WinCheckEditor
+
+=== The GlyphStyle Property is Obsolete
+
+The GlyphStyle property is exposed by the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams.html[UIElementDrawParams]"] ,  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor.html[UltraCheckEditor]"] , and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset.html[UltraOptionSet]"]  objects. This property allowed you to select which glyphs to use for the WinCheckEditor and WinOptionSet™ controls, choosing between a standard style and the Microsoft® Office® 2007 style.
+
+This property has been replaced by new properties within the existing GlyphInfo object. If you set GlyphStyle, the associated GlyphInfo properties will be set to an appropriate object to maintain compatibility.
+
+For more information on the GlyphInfo object, see link:win-new-designer-for-wincheckeditor-and-winoptionset.html[New Designer for WinCheckEditor and WinOptionSet].
+
+=== CheckBoxGlyphInfo and RadioButtonGlyphInfo are Now Immutable
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.checkboximageglyphinfo.html[CheckBoxImageGlyphInfo]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.radiobuttonimageglyphinfo.html[RadioButtonImageGlyphInfo]"]  classes both contain image properties for WinCheckEditor and WinOptionSet, respectively. These image properties were all gettable and settable; however, we have modified these properties to be read-only and added constructors to allow you to pass in images for various states of the glyphs.
+
+For more information on the GlyphInfo object, see link:win-new-designer-for-wincheckeditor-and-winoptionset.html[New Designer for WinCheckEditor and WinOptionSet].
+
+== WinComboEditor
+
+=== The AutoEdit Property is Obsolete
+
+The AutoEdit property exposed by the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor.html[UltraComboEditor]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultracombo.html[UltraCombo]"] , and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  objects has been deprecated in favor of the new AutoCompleteMode property.
+
+If you set the AutoEdit property to True, the AutoCompleteMode property is set to Append, while setting AutoEdit to False is functionally equivalent to setting AutoCompleteMode to None.
+
+For more information on the new AutoCompleteMode property, see link:win-suggest-mode-for-wincomboeditor.html[Google Suggest for WinComboEditor].
+
+== WinOptionSet
+
+=== The GlyphStyle Property is Obsolete
+
+The GlyphStyle property is exposed by the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams.html[UIElementDrawParams]"] ,  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor.html[UltraCheckEditor]"] , and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset.html[UltraOptionSet]"]  objects. This property allowed you to select which glyphs to use for the WinCheckEditor™ and WinOptionSet controls, choosing between a standard style and the Microsoft® Office® 2007 style.
+
+This property has been replaced by new properties within the existing GlyphInfo object. If you set GlyphStyle, the associated GlyphInfo properties will be set to an appropriate object to maintain compatibility.
+
+For more information on the GlyphInfo object, see link:win-new-designer-for-wincheckeditor-and-winoptionset.html[New Designer for WinCheckEditor and WinOptionSet].
+
+=== CheckBoxGlyphInfo and RadioButtonGlyphInfo are Now Immutable
+
+The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.checkboximageglyphinfo.html[CheckBoxImageGlyphInfo]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.radiobuttonimageglyphinfo.html[RadioButtonImageGlyphInfo]"]  classes both contain image properties for WinCheckEditor and WinOptionSet, respectively. These image properties were all gettable and settable; however, we have modified these properties to be read-only and added constructors to allow you to pass in images for various states of the glyphs.
+
+For more information on the GlyphInfo object, see link:win-new-designer-for-wincheckeditor-and-winoptionset.html[New Designer for WinCheckEditor and WinOptionSet].

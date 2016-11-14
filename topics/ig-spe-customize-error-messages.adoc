@@ -1,0 +1,143 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-customize-error-messages",
+    "controlName": [],
+    "tags": [],
+    "guid": "3bbeffb7-0731-4072-9ce0-8e1ef515aee1",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.100855Z"
+}
+|metadata|
+////
+
+= Customize Error Messages
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains how to customize the error messages produced by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-create-custom-language.html[Create Custom Language]
+|This topic explains the process of creating a custom language.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350251087, Error Messages >>
+* <<_Ref350251090, Overview >>
+* <<_Ref350251095, Customizing error messages >>
+* <<_Ref350251158, Overriding the GetErrorAlias method >>
+* <<_Ref350251163, Overriding the OnError method >>
+* <<_Ref350251108, Related Content >>
+
+[[_Ref350251087]]
+== Error Messages
+
+[[_Ref350251090]]
+
+=== Overview
+
+The Syntax Parsing Engine generates messages when an error is detected. Unless otherwise specified, the error messages will have the following form:
+
+* For skipped tokens: “Unexpected token ‘<text from token>’”
+* For inserted missing nodes:
+** If the node is a non-terminal symbol: “<NonTerminalSymbol.Name> expected”
+** If the node is a terminal symbol with a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison] value of `RegularExpression`: “<TerminalSymbol.Name> expected”
+** If the node is any other terminal symbol: “<TerminalSymbol.Value> expected”
+
+For nodes representing non-terminal symbols with their link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError] value set to `true`: “ _<NonTerminalSymbol.Name>_  is incorrect”
+
+[[_Ref350251095]]
+
+=== Customizing error messages
+
+In some situations, the default error messages may not be suitable for the purpose of the application. In this case you can customize the messages using one of the methods below:
+
+* Override link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias] method on the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] derived class
+* Override the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError] method
+
+[[_Ref350251099]]
+
+=== Overriding the GetErrorAlias method
+
+When an error occurs, the parser will call the `GetErrorAlias` method, which allows the language to provide an alias for the specified link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol.html[Symbol]. It returns `null` by default. If you override it and return a non-null value, the error messages will be changed like so:
+
+* For skipped tokens: “Unexpected token ‘<alias>’”
+* For inserted missing nodes: “<alias> expected”
+* For nodes representing non-terminal symbols with their `IsError` value set to `true`: “<alias> is incorrect”
+
+An example of where this might be used is in the Visual Basic language, which has a symbol named “EndGetStatement” to represent the pair of keywords “End Get”. If a user omits an “End Get” at the end of a property get accessor, it might appear odd to the user if the default error message “EndGetStatement expected” were used. Instead, an implementer of the language would probably want to override `GetErrorAlias` and return ‘End Get’ for this symbol so the error message would appear as “‘End Get’ expected”.
+
+[[_Ref350251103]]
+
+=== Overriding the OnError method
+
+To get more control over the error messages displayed or add or remove error messages, you can alternatively override the `OnError` method. The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext.html[ParseErrorContext] class, which is an argument to the `OnError` method, has the following members for allowing you to inspect and customize the error:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~errors.html[Errors]
+|The collection of errors, which will only contain the single error detected by the parser. This collection can be modified to change the errors attached to the document at the location of the error.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~ismissing.html[IsMissing]
+|Indicates whether the error represents a missing syntax node structure which needed to be inserted because it was expected but not provided by the user.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~isskipped.html[IsSkipped]
+|Indicates whether the error represents skipped content which was unexpected in the document. Only terminal symbols will be skipped.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~snapshotspan.html[SnapshotSpan]
+|Indicates the location of the error in the document with respect to the current link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocumentsnapshot.html[TextDocumentSnapshot] being parsed.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~span.html[Span]
+|Indicates the location of the error in the document. This is the same as `SnapshotSpan`, but is not associated with a snapshot.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~symbol.html[Symbol]
+|The `Symbol` associated with the error which was either skipped or expected.
+
+|====
+
+For example if you have an “IncompleteMember” error non-terminal defined in C# (see the link:ig-spe-error-production-strategy.html[Error Production Strategy] topic for details on this), instead of having an error message that says “IncompleteMember is incorrect”, you might want to replace it entirely by saying “Incomplete member definition in class or struct”.
+
+[[_Ref350251108]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-create-custom-language.html[Create Custom Language]
+|This topic explains the process of creating a custom language.
+
+| link:ig-spe-create-a-textdocument.html[Create a TextDocument]
+|This topic introduces the TextDocument and explains how to set a language on the TextDocument.
+
+| link:ig-spe-working-with-the-syntax-tree.html[Working With the Syntax Tree]
+|The topics in this group explain in detail how to work with the Syntax Tree.
+
+|====

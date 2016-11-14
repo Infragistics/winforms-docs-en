@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-sort-columns-in-wintree",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Sorting"],
+    "guid": "{1CA104A7-AF37-4E56-9CB5-82A4F9EE1E60}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Sort Columns in WinTree
+
+Previous versions of the WinTree™ included the ability to sort nodes programmatically based on the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~text.html[Text]"]  property of the node. With the addition of column support in Infragistics Windows Forms 2005 Volume 2, the WinTree now also includes the ability to sort the nodes based on the values of cells in particular columns. The sort order can be controlled programmatically but may also be changed at runtime by clicking on the column headers.
+
+By default, multi-column sorting is enabled at runtime. When multi-column sorting is enabled, clicking on a column header without holding the {Shift} key will clear the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~sortedcolumns.html[SortedColumns]"]  of the associated  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  and add that column to the collection. If the column was already sorted, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~sorttype.html[SortType]"] , which is the property that indicates the sort direction, would be toggled from Ascending to Descending or vice versa. If the column was not already sorted, the SortType would be initialized to Ascending. Clicking on a column header while holding the {Shift} key would prevent the SortedColumns collection from being cleared. Instead, the column would be added to the end of the collection. As occurs when not holding the Shift key, if the column was already sorted, the SortType would be toggled from Ascending to Descending or vice versa but the column would still be moved to the end of the SortedColumns collection.
+
+To prevent the end-user from changing the sort via the UI, you can set the AllowSorting property on either a specific column (using the column's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~allowsorting.html[AllowSorting]"] ), the entire ColumnSet (using the ColumnSet's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowsorting.html[AllowSorting]"] ) or for all ColumnSets (using the ColumnSetting's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~allowsorting.html[AllowSorting]"]  property).
+
+.Note
+[NOTE]
+====
+By default, the modifier key for adding to the SortedColumns collection is the {Shift} key but this can be changed using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~multisortmodifierkey.html[MultiSortModifierKey]"]  property.
+====
+
+[start=1]
+. We will start with a WinTree that looks similar to the one shown in the screenshot below.
+
+image::Images\WinTree_Sorting_Columns_in_the_WinTree_01.png[starting organization of ultratree in grid style]
+
+[start=2]
+. Click on the Last Name to sort by that column's values. The tree will look similar to that below.
+
+image::Images\WinTree_Sorting_Columns_in_the_WinTree_02.png[ultratree sorted by last name column]
+
+[start=3]
+. If you wanted to change the sort order to only sort by the First Name, you would simply click on the First Name column. However, to sort by both the Last Name and First Name, you need to hold the {Shift} key while clicking on the First Name column.
+
+image::Images\WinTree_Sorting_Columns_in_the_WinTree_03.png[ultratree sorted by last and first name columns]

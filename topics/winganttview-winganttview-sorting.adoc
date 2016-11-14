@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-winganttview-sorting",
+    "controlName": ["WinGanttView"],
+    "tags": ["Sorting"],
+    "guid": "{F4001556-BE85-4691-AF36-8AC8DB17306C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinGanttView Sorting
+
+The WinGanttView™ control allows sorting of single and multiple task fields in the grid section of the control. Tasks can be sorted on multiple field criteria through the user interface by shift+clicking on the column headers in the grid area of the control. Sorting can also be done through code by adding task fields to the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.roottaskscollection~sortedfields.html[SortedFields] collection. You can also perform custom sorting using the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.sortedtaskfieldscollection~comparer.html[Comparer] property.
+
+.Note
+[NOTE]
+====
+Sorting is not supported for all Task properties; for example, sorting on the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~dependencies.html[Dependencies]"]  collection is not supported.
+====
+
+The following example code assumes that you have an UltraGanttView control dropped onto your form that displays tasks and task details.
+
+*In Visual Basic:*
+
+----
+Me.ultraCalendarInfo1.Tasks.SortedFields.Add(SortableTaskField.Name, SortOrder.Ascending) 
+Me.ultraCalendarInfo1.Tasks.SortedFields.Add(SortableTaskField.Duration, SortOrder.Descending) 
+Me.ultraCalendarInfo1.Tasks.SortedFields.Add
+(SortableTaskField.PercentComplete, SortOrder.Descending)
+----
+
+*In C#:*
+
+----
+this.ultraCalendarInfo1.Tasks.SortedFields.Add(SortableTaskField.Name, SortOrder.Ascending);
+----
+
+----
+this.ultraCalendarInfo1.Tasks.SortedFields.Add(SortableTaskField.Duration, SortOrder.Descending);
+----
+
+----
+this.ultraCalendarInfo1.Tasks.SortedFields.
+Add(SortableTaskField.PercentComplete, SortOrder.Descending);
+----
+
+== Custom Sorting
+
+*In Visual Basic:*
+
+----
+' Custom Sorting 
+Me.ultraGanttView1.CalendarInfo.Tasks.SortedFields.Comparer = New MySortComparer ()
+Public Class MySortComparer
+    Implements System.Collections.Generic.IComparer(Of Task)
+    #Region "IComparer Members"
+    Public Function Compare(ByVal x As Task, ByVal y As Task) As Integer
+        Dim xTask As Task = DirectCast(x, Task)
+        Dim yTask As Task = DirectCast(y, Task)
+        'TODO: Logic to compare Task Fields. e.g: 
+         Return xTask.Deadline.CompareTo(yTask.Deadline)
+    End Function
+    #End Region "IComparer Members"
+End Class
+----
+
+*In C#:*
+
+----
+// Custom Sorting
+this.ultraGanttView1.CalendarInfo.Tasks.SortedFields.Comparer = new MySortComparer();
+public class MySortComparer : System.Collections.Generic.IComparer<Task>
+    {
+        #region IComparer Members
+        public int Compare(Task x, Task y)
+        {
+            Task xTask = (Task)x;
+            Task yTask = (Task)y;
+            //TODO:  Logic to compare Task Fields. e.g: 
+            return xTask.Deadline.CompareTo(yTask.Deadline);
+        }
+        #endregion IComparer Members
+    }
+----
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

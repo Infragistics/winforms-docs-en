@@ -1,0 +1,197 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-resizing-columns",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{C57531EE-0DD8-4931-AF63-54EB64AC0414}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Resizing Columns
+
+== Background
+
+WinGrid™ supports many different Column Sizing scenarios. The user can change the column size by dragging the column separator to the left or right, and can request an Auto Resize Column by double-clicking the column separator. The developer can set each column width individually, set the AutoFitColumns property to True and the grid will proportionally resize the columns to fit in width of the grid (less a little space for the vertical scroll bar), set the .Override.AllowColSizing to Free for multi-band grids, and can invoke the PerformAutoResize method of any column object.
+
+== Questions
+
+* How do I get the grid to resize all of my columns so they display in the available grid width?
+* How do I get the grid to resize a column to fit the content?
+* I have a multi-band grid and it appears the band 1 columns follow the width of the band 0 columns. How do I tell the grid to size columns in different bands separately?
+
+== Sample Project
+
+This sample project consists of an UltraWinGrid displaying a multi-band DataSet and five buttons which invoke various column sizing properties and methods. Run the project and click on the various buttons to see how the column sizes change. Notice that the order of the various column sizing options is important.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images/WinGrid_Resizing_Columns_01.png[resizing columns in ultragrid]
+
+The UltraWinGrid Events region contains the following event handlers:
+
+* UltraGrid1.InitializeRow - The code of the InitializeRow event causes all of the rows to expand:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Force rows to expand
+	e.Row.ExpandAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Force rows to expand
+	e.Row.ExpandAll();
+}
+----
+
+Button Events
+
+The Button Events region contains the following event handlers
+
+* btnAutoFitColumns.Click - The code of the AutoFitColumns button Click event sets the AutoFitColumns property of the grid to true:
+
+*In Visual Basic:*
+
+----
+Private Sub btnAutoFitColumns_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnAutoFitColumns.Click
+	' Set AutoFitStyle
+	Me.UltraGrid1.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnAuotFitColumns_Click(object sender, EventArgs e)
+{
+	// Set AutoFitStyle
+	this.ultraGrid1.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+* btnAllowColSizingFree.Click - The code of the AllowColSizingFree button Click event sets the AllowColSizing property of the grid to Free:
+
+*In Visual Basic:*
+
+----
+Private Sub btnAllowColSizingFree_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnAllowColSizingFree.Click
+	' Set AllowColSizing = Free
+	Me.UltraGrid1.DisplayLayout.Override.AllowColSizing = AllowColSizing.Free
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnAllowColSizingFree_Click(object sender, EventArgs e)
+{
+	// Set AllowColSizing = Free
+	this.ultraGrid1.DisplayLayout.Override.AllowColSizing = AllowColSizing.Free;
+}
+----
+
+* btnAutoResizeContactNameColumn.Click - The code of the AutoResizeCustomerNameColumn button Click event invokes the PerformAutoResize method of the "ContactName" column. The PerformAutoResize method sets the column width to meet the requirements of the displayed data:
+
+*In Visual Basic:*
+
+----
+Private Sub btnAutoResizeContactNameColumn_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnAutoResizeContactNameColumn.Click
+	' Perform Auto Resize on ContactName column
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactName").PerformAutoResize()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnAutoResizeContactNameColumn_Click(object sender, EventArgs e)
+{
+	// Perform Auto Resize on Contact column
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactName"].PerformAutoResize();
+}
+----
+
+* btnSetColumnWidthsWithCode.Click - The code of the SetColumnWidthsWithCode button Click event sets the widths of three of the columns in band 0 to specific values:
+
+*In Visual Basic:*
+
+----
+Private Sub btnSetColumnWidthsWithCode_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnSetColumnWidthsWithCode.Click
+	' Set some of the column widths
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).Width = 30
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(1).Width = 50
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(2).Width = 30
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSetColumnWidthsWithCode_Click(object sender, EventArgs e)
+{
+	// Set some of the column widths
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].Width = 30;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[1].Width = 50;
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[2].Width = 30;
+}
+----
+
+* btnResetToDefaults.Click - The code of the ResetToDefaults button Click event sets the grid DataSource to nothing, resets the DisplayLayout, and rebinds the sample DataSet to the grid:
+
+*In Visual Basic:*
+
+----
+Private Sub btnResetToDefaults_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnResetToDefaults.Click
+	' Reset grid layout to defaults
+	Me.UltraGrid1.DataSource = Nothing
+	Me.UltraGrid1.DisplayLayout.Reset()
+	Me.UltraGrid1.DataSource = dataSet
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnResetToDefaults_Click(object sender, EventArgs e)
+{
+	// Reset grid layout to defaults
+	this.ultraGrid1.DataSource = null;
+	this.ultraGrid1.DisplayLayout.Reset();
+	this.ultraGrid1.DataSource = dataSet;
+}
+----
+
+== Review
+
+This sample project illustrates a number of different ways to set column widths and provides a tool to visually observe the results of the various sizing options.

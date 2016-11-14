@@ -1,0 +1,255 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-ebnf-file-format-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "e0f9dc32-473b-4e4d-aaf4-db610ae8f976",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0828532Z"
+}
+|metadata|
+////
+
+= EBNF File Format Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic gives an overview of the EBNF file format used to define a grammar.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349900508, Introduction to EBNF >>
+* <<_Ref349900513, EBNF Syntax Supported by the Infragistics Syntax Parsing Engine >>
+* <<_Ref349900514, Using Symbols before they are Defined >>
+* <<_Ref349900526, Related Content >>
+
+[[_Ref349900508]]
+== Introduction to EBNF
+
+=== EBNF format summary
+
+To define a grammar for the Syntax Parsing Engine you can use EBNF files. EBNF stands for link:http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form[Extended Backus-Naur Form], which is a format used to define context-free grammars. The specification for this format is link:http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=26153[ISO 14977].
+
+.Note
+[NOTE]
+====
+The Syntax Parsing Engine EBNF format slightly differs from the original specification and you can see all differences in the link:ig-spe-ebnf-specification-deviations.html[EBNF Specification Deviations] topic.
+====
+
+EBNF files contain one or more rules which provide concise descriptions of the symbols and productions for a grammar.
+
+=== Example
+
+The following is an example of a non-terminal symbol rule in the EBNF format used in the Syntax Parsing Engine.
+
+VariableDeclarationStatement =
+
+Type, IdentifierToken, [EqualsToken, Expression], SemicolonToken
+
+| VarKeyword, IdentifierToken, EqualsToken, Expression, SemicolonToken;
+
+As you can see the head of the definition is separated from the body with an equals sign, concatenated symbols are separated by commas and the entire rule is ended with a semicolon. If the head symbol hasn’t had a rule to define it yet in the file, a new non-terminal symbol will be created to represent it. If it had been declared already, the productions for this rule would be alternatives to any other productions previously defined. So the VariableDeclarationStatement in this example could have also been defined with multiple rules:
+
+VariableDeclarationStatement =
+
+Type, IdentifierToken, [EqualsToken, Expression], SemicolonToken;
+
+VariableDeclarationStatement =
+
+VarKeyword, IdentifierToken, EqualsToken, Expression, SemicolonToken;
+
+[[_Ref349900513]]
+== EBNF Syntax Supported by the Infragistics Syntax Parsing Engine
+
+=== Supported EBNF format summary
+
+[options="header", cols="a,a,a"]
+|====
+|*Syntax*|*Description*|* Example*
+
+|?...?
+|Special sequence. This can contain any text and it allows the EBNF format to be extended. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+Special sequences in our EBNF format must be XML documents and allow the grammar writer to specify terminal symbols, lexer states, and non-terminal symbol properties all within the same file. See the link:ig-spe-special-sequence-format.html[Special Sequence Format] topic for information on our format. 
+
+====
+|Digit = 
+
+? any Unicode digit character ?;
+
+|($$*$$ … $$* $$)
+|Multiline comment. Comments are ignored and can contain any text.
+|($$*$$ 
+
+TODO: Add other expressions here 
+
+$$*$$) 
+
+Expression = 
+
+DecimalNumber 
+
+| StringLiteral;
+
+|*
+|Syntax Rule. Assigns the productions from the rule tree on the right to the non-terminal symbol named on the left.
+|A = (X | Y), {Z};
+
+|; 
+
+. _(alternate)_
+|Statement terminator. Ends the current assignment statement.
+|A = (X | Y), {Z};
+
+|| 
+
+! _(alternate)_ 
+
+/ _(alternate)_
+|Alternation. Separates a series of rules, one of which must be used.
+|A = X | Y | Z | (A, B, C);
+
+|,
+|Concatenation. Separates a series of rules, each of which must be used in order from left to right.
+|A = X, Y, Z, (A | B | C);
+
+|-
+|Syntactic Exception. Separates a rule which must be used (on the left) from the rule describing what is not allowed to be used (on the right).
+|Consonant = Letter - Vowel; 
+
+OneOrMore = {Something}-;
+
+|$$*$$
+|Syntactic Factor. Separates an integer (on the left) from the rule which must be repeated that many times (on the right). When used in the form of “N $$*$$ [Rule]”, it translates to requiring “0 to N Rule instances”
+|ZipCode = 5 $$*$$ Digit; 
+
+ZeroToFiveDigits = 5 $$*$$ [Digit];
+
+|[ … ] 
+
+(/ … /) _(alternate)_
+|Optional. The rule between the square brackets may or may not be used.
+|TwoOrFourDigitYear = 
+
+[Digit, Digit], Digit, Digit;
+
+|{ … } 
+
+(: … :) _(alternate)_
+|Repetition. The rule between the curly braces may be used zero or more times.
+|Sentence = {Word}, Period;
+
+|(…)
+|Group. Groups the rule within the parentheses so it is treated as a single rule tree.
+|A = (X | Y), (X | Z);
+
+|
+|Empty. Represents nothing. Can be used in an alternation to represent that one alternative is to use nothing or it can be used with a syntactic exception to indicate that empty may not be used.
+|OptionalA = (A|); 
+
+OneOrMore = {Something}-;
+
+|' … ' 
+
+" … " _(alternate)_
+|String literal. Literal strings can be embedded in a rule and for each new literal string encountered a terminal symbol will be automatically generated in the grammar to represent that string. However, this is not the preferred way to create terminal symbol definitions. See the link:ig-spe-special-sequence-format.html[Special Sequence Format] topic for information about the preferred way to create terminal symbols.
+|GetAccessor ='get', "{", Statements, '}';
+
+|====
+
+.Note
+[NOTE]
+====
+In order to conform to the EBNF specification, some of the constructs have an alternate syntax. Here is an alternative example of the VariableDeclarationStatement definition shown in the previous code snippet:
+
+VariableDeclarationStatement =
+
+Type, IdentifierToken, (/ EqualsToken, Expression /), SemicolonToken
+
+/ VarKeyword, IdentifierToken, EqualsToken, Expression, SemicolonToken.
+====
+
+[[_Ref349900514]]
+== Using Symbols before they are Defined
+
+=== Overview
+
+Non-terminal symbols can be used before they are defined. This is required so that context-free grammars can be recursive. Without this it would not be possible to allow nested classes to be defined in a language like C#.
+
+=== Example
+
+This is a simplified definition of the C# language:
+
+Root = {ClassDeclaration};
+
+ClassDeclaration = ['public'], 'class', Identifier, '{', Members, '}';
+
+Members = {Member};
+
+Member = ClassDeclaration | FieldDeclaration;
+
+FieldDeclaration = ['public'], Type, Identifier, ';';
+
+Type = Identifier;
+
+.Note
+[NOTE]
+====
+Some of the declarations (for example “ClassDeclaration” or “Members”) are used before they are defined.
+====
+
+[[_Ref349900526]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-special-sequence-format.html[Special Sequence Format]
+|This topic explains the format of the special sequence sections in the EBNF file used to configure the grammar.
+
+| link:ig-spe-ebnf-specification-deviations.html[EBNF Specification Deviations]
+|This topic explains the deviations from the ISO 14977 specification in the EBNF format used by the Syntax Parsing Engine.
+
+| link:ig-spe-generate-grammar-from-an-ebnf-file.html[Generate Grammar From an EBNF File]
+|This topic explains the process of creating a grammar from EBNF content.
+
+| link:ig-spe-generate-ebnf-file-from-a-grammar.html[Generate EBNF File From a Grammar]
+|This topic explains the process of creating EBNF content from a grammar.
+
+|====

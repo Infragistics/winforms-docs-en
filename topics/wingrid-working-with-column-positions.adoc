@@ -1,0 +1,140 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-column-positions",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{1F6FCE63-356F-41E1-9B9E-7CC04D9AE419}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Column Positions
+
+== Background
+
+Users can change the visible position of columns by first clicking on the column header to select the column, then clicking again on the column header and dragging it to a different position. The developer can change column positions by setting the .Header.VisiblePosition property of the Column object.
+
+The developer can also see the position of any column by looking at the .Header.VisiblePosition property of the Column object.
+
+== Questions
+
+* How do I know where a user has placed a column?
+* How do I change the horizontal position of a column?
+
+== Solutions
+
+The .Header.VisiblePosition property of the Column object can be set and queried to change the position of or query the position of a column.
+
+== Sample Project
+
+This sample project allows the user to drag and drop the columns to change their position.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+Click "Change Column Position" to place the "ContactName" column in the first visible position and click "Display Column Positions" to display the Band, Column and VisiblePosition of each column in the TextBox:
+
+image::Images\WinGrid_Working_with_Column_Positions_01.png[working with column positions in ultragrid]
+
+The UltraWinGrid Events region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the UltraWinGrid InitializeLayout event tells the grid to fit the columns to the width of the grid:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+Button Events
+
+The Button Events region contains the following event handlers:
+
+* btnChangeColumnPositions.Click - The code in the btnChangeColumnPositions Click event sets the VisiblePosition property of the Column 2 Header object to 0, thus moving the column to the left side of the grid:
+
+*In Visual Basic:*
+
+----
+Private Sub btnChangeColumnPositions_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnChangeColumnPositions.Click
+	' Move column 2 to position 0
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns(2).Header.VisiblePosition = 0
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnChangeColumnPositions_Click(object sender, EventArgs e)
+{
+	// Move Column 2 to position 0
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[2].Header.VisiblePosition = 0;
+}
+----
+
+* btnDisplayColumnPositions.Click - The code in the btnDisplayColumnPositions Click event passes each of the column objects and displays the Band Index, Column Index, and Visible Position values:
+
+*In Visual Basic:*
+
+----
+Private Sub btnDisplayColumnPositions_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnDisplayColumnPositions.Click
+	' Display column positions in TextBox
+	Dim aColumn As UltraGridColumn
+	Me.UltraTextEditor1.Text = "Band, Column, VisiblePosition" + vbCrLf
+	For Each aColumn In Me.UltraGrid1.DisplayLayout.Bands(0).Columns
+		Me.UltraTextEditor1.Text += aColumn.Band.Index.ToString + ", " _
+		  + aColumn.Index.ToString + ", " _
+		  + aColumn.Header.VisiblePosition.ToString + vbCrLf
+	Next
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnDisplayColumnPositions_Click(object sender, EventArgs e)
+{
+	// Display column positions in Textbox
+	this.ultraTextEditor1.Text = "Band, Column, VisiblePosition \n";
+	foreach(UltraGridColumn aColumn in this.ultraGrid1.DisplayLayout.Bands[0].Columns)
+	{
+		this.ultraTextEditor1.Text += aColumn.Band.Index.ToString() + "," +
+		  aColumn.Index.ToString() + ", " + aColumn.Header.VisiblePosition.ToString() +
+		  "\n";
+	}
+}
+----
+
+== Review
+
+This sample project illustrates how to change the visible position of a column using code, shows how to access the visible position value of the column header object, and can be used to show the results of user column positioning.

@@ -1,0 +1,20 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-whats-new-2004-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{CF83F468-2D5C-4189-B6C0-EC25C4A42245}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinSchedule 2004.3
+
+* Added AppointmentsDragComplete to WinDayView™.
+* Added ActivitiesDragComplete to WinWeekView™ and WinMonthViewSingle™.
+* Databinding functionality has been added to the notes collection of the WinCalendarInfo™. A DataBindingsForNotes property has been added to the WinCalendarInfo component which can be used in a similar fashion to the DataBindingForOwners and DataBindingForAppointments added in the NA 2004 Vol 2 release.
+* The ability to maintain a second (alternate) selection collection for days, weeks, months has been added. To support this functionality, several new properties were added to the WinCalendarInfo (AlternateSelectedDateRanges, AlternateSelectTypeDay, and MaxAlternateSelectedDays) and one property was added to the base class for the WinSchedule™ controls (UseAlternateSelectedDataRanges). This alternate selection list will enable customers (as well as Infragistics) to create user interfaces that accurately duplicate the UI of Microsoft Outlook. The change will allow dual date selection lists to be maintained which is functionality that the customer cannot easily provide on their own. This change will not include support for automatically displaying an WinDayView, WinWeekView or WinMonthViewSingle control based on the number of selected days – this functionality can be achieved by the customer with some work, and Infragistics will provide a sample that outlines the basics of how to achieve this result.

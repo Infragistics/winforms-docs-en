@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-move-a-node-to-another-parent",
+    "controlName": ["WinTree"],
+    "tags": ["Events","How Do I"],
+    "guid": "{EA36C817-D993-4FE5-94B8-D49B7540D8E1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Move a Node to a Another Parent
+
+This topic will show you how to use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~reposition.html[Reposition]"]  method to move a node in a WinTree™ from one parent to another.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+----
+
+[start=2]
+. Place an UltraTree control on a form.
+[start=3]
+. Add the following code to the Load event of the Form in order to populate the tree. This will create two parent nodes (Parent A and Parent B). Parent A will have one child node (Child 1). Parent B will also have one child node (Child 2).
+
+*In Visual Basic:*
+
+----
+Dim aNode As UltraTreeNode
+aNode = Me.UltraTree1.Nodes.Add("Parent A")
+aNode.Expanded = True
+aNode.Nodes.Add("Child Node 1")
+aNode = Me.UltraTree1.Nodes.Add("Parent B")
+aNode.Expanded = True
+aNode.Nodes.Add("Child Node 2")
+----
+
+*In C#:*
+
+----
+UltraTreeNode aNode;
+aNode = this.ultraTree1.Nodes.Add("Parent A");
+aNode.Expanded = true;
+aNode.Nodes.Add("Child Node 1");
+aNode = this.ultraTree1.Nodes.Add("Parent B");
+aNode.Expanded = true;
+aNode.Nodes.Add("Child Node 2");
+----
+
+[start=4]
+. Place a Button on the form.
+[start=5]
+. Go to the Click event of the Button
+[start=6]
+. Add the following code to move Child Node 2 from Parent B to Parent A
+
+*In Visual Basic:*
+
+----
+Private Sub btnMoveChildNode_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnMoveChildNode.Click
+	Dim ParentNodeA As UltraTreeNode
+	Dim ChildNode As UltraTreeNode
+	ChildNode = Me.UltraTree1.GetNodeByKey("Child Node 2")
+	ParentNodeA = Me.UltraTree1.GetNodeByKey("Parent A")
+	ChildNode.Reposition(ParentNodeA.Nodes)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnMoveChildNode_Click(object sender, EventArgs e)
+{
+	UltraTreeNode ParentNodeA;
+	UltraTreeNode ChildNode;
+	ChildNode = this.ultraTree1.GetNodeByKey("Child Node 2");
+	ParentNodeA = this.ultraTree1.GetNodeByKey("Parent A");
+	ChildNode.Reposition(ParentNodeA.Nodes);
+}
+----
+
+[start=7]
+. Run the program.
+
+You will see two parent nodes. Parent B has a child node.
+[start=8]
+. Click the button
+
+Child Node 2 will change parents, moving from Parent B to Parent A.
+[start=9]
+. You can also pass in an integer as the a second parameter into the Reposition method to specify a specific index to move the node too.

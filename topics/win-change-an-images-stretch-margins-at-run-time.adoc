@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-change-an-images-stretch-margins-at-run-time",
+    "controlName": [],
+    "tags": ["Application Scenarios","Styling"],
+    "guid": "{E7728E05-32CF-4E0E-8996-E44858186F72}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Change an Image's Stretch Margins at Run Time
+
+There may come a time when you need to stretch an image (be it on a label, button, grid cell, or tree node) but you want to keep the corners untouched, essentially stretching just the middle portion of the image. You can do this with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~imagebackgroundstretchmargins.html[ImageBackgroundStretchMargins]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object. With this property, only the middle section of the image will be stretched up and down. The left and right edges will only be stretched vertically and the top and bottom edges will only be stretched horizontally; and, as mentioned before, the corners will not stretch.
+
+Setting this property is simple and requires only one line of code. Of course, you aren't limited to the UltraLabel control specified in the code below. You can use this property with any of our controls that display images. An alternate method of changing the stretch margins is to expand the Appearance object in the Properties window and click the ellipsis (…) next to the ImageBackgroundStretchMargins property. This will open the ImageBackground Stretch Margins Editor.
+
+image::images\Win_PLF_Appearance_Object_How_Do_I_Change_an_Images_Stretch_Margins_at_Run_Time_01.png[example of stretching margins of an image used in the appearance]
+
+*In Visual Basic:*
+
+----
+' When setting the margins, the parameters are left, top, right, and bottom margins.
+Me.ultraLabel1.Appearance.ImageBackgroundStretchMargins = _
+  New Infragistics.Win.ImageBackgroundStretchMargins(10,10,10,10)
+----
+
+*In C#:*
+
+----
+// When setting the margins, the parameters are left, top, right, and bottom margins.
+this.ultraLabel1.Appearance.ImageBackgroundStretchMargins =
+  new Infragistics.Win.ImageBackgroundStretchMargins(10,10,10,10);
+----

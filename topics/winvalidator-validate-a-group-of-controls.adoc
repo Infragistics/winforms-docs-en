@@ -1,0 +1,71 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-validate-a-group-of-controls",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{A21FC864-27E4-485E-9288-DA5DA39F1480}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Validate a Group of Controls
+
+WinValidator™ allows you to validate a single control, validate all controls associated with WinValidator, as well as validate a group of controls. You can create a group of controls by instantiating a new instance of a  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationgroup.html[ValidationGroup]"]  object. Once created, you need to add this object to the WinValidator's  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validationgroups.html[ValidationGroups]"]  collection.
+
+WinValidator extends a  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object to each control to manage validation tasks. Exposed by this object is a  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~validationgroup.html[ValidationGroup]"]  property. You can set this property to a valid ValidationGroup. ValidationGroups allow you to validate controls that have similar conditions are purposes. With ValidationGroups, you can also manage the order of validation if you set the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings~validationtrigger.html[ValidationTrigger]"]  to programmatic.
+
+The following example code demonstrates how to create a ValidationGroup, add two controls to it, and then validate the group.
+
+*In Visual Basic:*
+
+----
+' Create a new group and add it to WinValidator.
+Me.UltraValidator1.ValidationGroups.Add( _
+	New Infragistics.Win.Misc.ValidationGroup("TextGroup"))
+' Get the ValidationSettings objects for two TextBox controls.
+Dim vs1 As Infragistics.Win.Misc.ValidationSettings = _
+	Me.UltraValidator1.GetValidationSettings(Me.textBox1)
+Dim vs2 As Infragistics.Win.Misc.ValidationSettings = _
+	Me.UltraValidator1.GetValidationSettings(Me.textBox2)
+' Create a new condition that will fail validation
+' if the text in the TextBox starts with "ultra".
+Dim condition As Infragistics.Win.OperatorCondition = _
+	New Infragistics.Win.OperatorCondition( _
+		Infragistics.Win.ConditionOperator.DoesNotStartWith, _
+		"ultra")
+' Set the conditions on the two ValidationSettings objects.
+vs1.Condition = condition
+vs2.Condition = condition
+' In an appropriate method or event, validate
+' the group by passing in the group's key.
+Me.UltraValidator1.Validate("TextGroup")
+----
+
+*In C#:*
+
+----
+// Create a new group and add it to WinValidator.
+this.ultraValidator1.ValidationGroups.Add(
+	new Infragistics.Win.Misc.ValidationGroup("TextGroup"));
+// Get the ValidationSettings objects for two TextBox controls.
+Infragistics.Win.Misc.ValidationSettings vs1 = 
+	this.ultraValidator1.GetValidationSettings(this.textBox1);
+Infragistics.Win.Misc.ValidationSettings vs2 =
+	this.ultraValidator1.GetValidationSettings(this.textBox2);
+// Create a new condition that will fail validation
+// if the text in the TextBox starts with "ultra".
+Infragistics.Win.OperatorCondition condition =
+	new Infragistics.Win.OperatorCondition(
+		Infragistics.Win.ConditionOperator.DoesNotStartWith,
+		"ultra");
+// Set the conditions on the two ValidationSettings objects.
+vs1.Condition = condition;
+vs2.Condition = condition;
+// In an appropriate method or event, validate
+// the group by passing in the group's key.
+this.ultraValidator1.Validate("TextGroup");
+----

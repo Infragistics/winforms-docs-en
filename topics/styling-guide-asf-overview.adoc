@@ -1,0 +1,32 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-asf-overview",
+    "controlName": [],
+    "tags": ["Styling","Theming"],
+    "guid": "{6B00CC8C-DDAD-4BB5-ADA8-30626D88D0A4}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= ASF Overview
+
+The Application Styling Framework (ASF) is designed to give you ultimate flexibility when styling your applications. The application developer can utilize the assistance of a graphic designer and save time and resources in the process. This collaboration between developer and graphic designer is at the heart of the ASF. The fully managed code-base of the ASF gives the developer all the tools he/she needs in order to manipulate how the entire application is affected by Application Styling. The standalone application, AppStylist®, is a great tool that graphic designers can use to not only style one application, but any application the developer needs to apply it to.
+
+The ASF works in conjunction with Infragistics' very own Presentation Layer Framework (PLF). The ASF uses the Appearance Object of the PLF in a unique way to style several aspects of most visual controls. You can see this functionality at work in the UI Role Editor of AppStylist's Properties Panel.
+
+== ASF Components
+
+* link:styling-guide-styling-your-application.html[AppStylist] (standalone) -- A complete standalone application that runs outside the Visual Studio® environment. Graphic designers can use this application to style any application using Infragistics components. AppStylist also contains limited support for styling inbox components (inbox components don't have much in the way of styling in the first place).
+* link:appstylistruntime.html[AppStylistRuntime] -- The ASF also ships with a run-time version of AppStylist that the developer can launch using a single method. Using this technique, the developer can make style changes on-the-fly. Another use is to package AppStylist up with your own application so the graphic designer can see how the style changes will affect your application rather than the default canvases that ship with the standalone version of AppStylist.
+* link:win-inboxcontrolstyler.html[InboxControlStyler] -- The InboxControlStyler is required if you want to use AppStylist to style inbox components. Simply placing this component in the component tray is all that is required of the developer to enable AppStylist to style inbox components. Keep in mind, however, that inbox components do not use Appearance Objects or any part of the PLF. Therefore, you only have simple, inbox styling options available to you such as ForeColor, BackColor, and Font changes. The ASF cannot add additional styling options to the inbox components.
+* AppStylistSupport -- The AppStylistSupport assembly contains several of the components which make up AppStylist itself. These components are made available to you, but are currently not supported in the help. This assembly also houses the AppStylistRuntime component, which is supported.
+
+== Advantages
+
+* *Save time* -- Using any aspect of the ASF can save your company time. Instead of applying the same style over and over by using Appearance Objects, the ASF can use one Style Library and apply the same style to any application you choose. There is no need to duplicate work.
+* *Work more efficiently* -- AppStylist was designed to be used by the graphic designer while the developer continues to work on the application itself. Splitting the workload like this causes less work for the developer. It also allows the developer and graphic designer to work at the same time instead of one waiting for the other. This leads to more efficient workflow as well as time being spent more efficiently as well.
+* *World-class support* -- AppStylist comes with its own help system designed from the ground up. Geared toward the graphic designer, the help contents also feature F1 context-sensitive help. The developer isn't left out either; the Developer's Guide in the main Infragistics Windows Forms help also includes assistance specifically geared toward the developer, as well as includes the entire AppStylist help.

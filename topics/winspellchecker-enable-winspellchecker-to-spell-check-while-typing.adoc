@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "winspellchecker-enable-winspellchecker-to-spell-check-while-typing",
+    "controlName": ["WinSpellChecker"],
+    "tags": ["How Do I","Validation"],
+    "guid": "{1C25DAB0-9DAA-4AEA-BD43-3724ABC05867}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Enable WinSpellChecker to Spell Check While Typing
+
+The WinSpellChecker™ engine is very powerful and can check text as the end user types. WinSpellChecker can also automatically replace any misspelled words with words from its  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.suggestioncollection.html[Suggestions]"]  collection.
+
+In order for this to work, the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~mode.html[Mode]"]  property of the WinSpellChecker component must be set to either AsYouType or DialogOnValidatingAndAsYouType. Setting the Mode property to one of these two enumerations will let WinSpellChecker know to underline misspelled words with a red squiggly as the end user types.
+
+In the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~spellerror_ev.html[SpellError]"]  event, you have the option to replace these misspelled words, and what text to replace them with. Setting the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellerroreventargs~action.html[Action]"]  property of the EventArgs to Replace tells WinSpellChecker to replace all spelling errors. By default, if you don't tell WinSpellChecker what to replace the misspelled words with using the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellerroreventargs~replaceword.html[ReplaceWord]"]  property, it will replace the words with themselves, essentially defeating the point of spell checking the document. Setting ReplaceWord to any word will replace the misspelled word of the current error with the word to which you set ReplaceWord. You can set ReplaceWord to the first word in the Suggestions collection for that misspelled word. Therefore, whenever the end user misspells a word, WinSpellChecker will replace it with the most likely word.
+
+Use the following code to enable WinSpellChecker to automatically correct misspelled words as the end user types, using the SpellError event.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSpellChecker
+...
+Private Sub UltraSpellChecker1_SpellError(ByVal sender As Object, ByVal e As _
+  Infragistics.Win.UltraWinSpellChecker.SpellErrorEventArgs) _
+  Handles UltraSpellChecker1.SpellError
+	' Check to see if there are no suggestions. If there are
+	' no suggestions, an ArgumentOutOfRange exception will be
+	' thrown without this line of code.
+	If e.SpellingError.Suggestions.Count = 0 Then 
+		Return
+	End If
+	' Tell the SpellChecker to replace any misspelled words
+	' as they are typed.
+	e.Action = SpellErrorAction.Replace
+	' Tell the SpellChecker to replace the misspelled word
+	' with the first suggestion in the suggestions collection.
+	e.ReplaceWord = e.SpellingError.Suggestions(0).ToString()
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSpellChecker;
+...
+private void ultraSpellChecker1_SpellError(object sender, 
+  Infragistics.Win.UltraWinSpellChecker.SpellErrorEventArgs e)
+{
+	// Check to see if there are no suggestions. If there are
+	// no suggestions, an ArgumentOutOfRange exception will be
+	// thrown without this line of code.
+	if (e.SpellingError.Suggestions.Count == 0) return;
+	// Tell the SpellChecker to replace any misspelled words
+	// as they are typed.
+	e.Action = SpellErrorAction.Replace;
+	// Tell the SpellChecker to replace the misspelled word
+	// with the first suggestion in the suggestions collection.
+	e.ReplaceWord = e.SpellingError.Suggestions[0].ToString();
+}
+----

@@ -1,0 +1,52 @@
+﻿////
+|metadata|
+{
+    "name": "winformattedtexteditor-font-dialog-box",
+    "controlName": [],
+    "tags": ["Styling"],
+    "guid": "{E82892E2-7B9E-41B9-89CC-41F180393EC6}",
+    "buildFlags": [],
+    "createdOn": "2006-12-09T12:13:39Z"
+}
+|metadata|
+////
+
+= Font Dialog Box
+
+WinFormattedTextEditor™ includes three dialog boxes which help the end user format text. These dialog boxes can be accessed through the custom context menu or methods designed to show them. You can display the Font dialog box by invoking the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~showfontdialog.html[ShowFontDialog]"]  method off the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object. This method will only function if there is a selection made in the WinFormattedTextEditor control.
+
+The Font dialog box allows the end user to change styles such as font family, size, and color of formatted text. Below is a screen shot of the Font dialog box along with a description of each option.
+
+image::images/WinFormattedTextEditor_Font_Dialog_Box_01.png[ultraformattedtexteditor font dialog]
+
+* *Font Name* -- Specifies which font the selected text should be. Surrounds the selected text with the following style tag:
+
+----
+<span style="font-family:Arial;"></span>
+----
+
+* *Size* -- Specifies which size the selected text should be. Surrounds the selected text with the following style tag:
+
+----
+<span style="font-size:26pt;"></span>
+----
+
+* *Bold, Italic, Underline* -- Specifies whether the selected text should be bold, italic, or underlined. Surrounds the selected text with the following style tags:
+
+----
+<span style="font-weight:bold;"></span>
+<span style="font-style:italic;"></span>
+<span style="text-decoration:underline;"></span>
+----
+
+* *Text Color* -- Specifies what color the text should be. Surrounds the selected text with the following style tag:
+
+----
+<span style="color:Black;"></span>
+----
+
+* *Background Color* -- Specifies what color the background of the text should be. Surrounds the selected text with the following style tag:
+
+----
+<span style="background-color:White;"></span>
+----

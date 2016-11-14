@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-date",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{DFC40A06-0F55-45E4-9E30-05BB15B9820E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to Date
+
+The WinStatusBar™ Date style is a type of panel used to display the current date.
+
+== Setting up Date Style Panel at Design-Time
+
+[start=1]
+. Add an UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Scroll the properties until you come to the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the Style property equal to Date.
+[start=5]
+. Set the DateTimeFormat property to determine how the date will be displayed. For example, a setting of "
+
+[source]
+----
+MMM-dd-yy hh:mm
+----
+
+" will display the abbreviated month, 2 digit day and year as well as the hour and minute.
+[start=6]
+. Click OK to close the window and you will see a Date panel added to the status bar.
+
+== Setting up Date Style Panel at Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Panel_Style_to_Date_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create new panel
+	Dim myPanel As New UltraStatusPanel()
+	' Set the style for the panel
+	myPanel.Style = PanelStyle.Date
+	' Set the DateTimeFormat property
+	myPanel.DateTimeFormat = "MMM-dd-yy hh:mm"
+	' Add the panel to the element
+	Me.UltraStatusBar1.Panels.Add(myPanel)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Panel_Style_to_Date_Load(object sender, EventArgs e)
+{
+	// Create new panel
+	UltraStatusPanel myPanel = new UltraStatusPanel();
+	// Set the style for the panel
+	myPanel.Style = PanelStyle.Date;
+	// Set the DateTimeFormat property
+	myPanel.DateTimeFormat = "MMM-dd-yy hh:mm";
+	// Add the panel to the element
+	this.ultraStatusBar1.Panels.Add(myPanel);
+}
+----
+
+image::images/WinStatusBar_Set_the_Panel_Style_to_Date_01.png[shows ultrastatusbar with date panel style setup at run time]

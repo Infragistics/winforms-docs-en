@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincomboeditor-using-limittolist-and-itemnotinlist",
+    "controlName": ["WinEditors"],
+    "tags": ["Data Presentation","How Do I"],
+    "guid": "{A74A2F55-D499-44DE-98CC-213505F68AD9}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using LimitToList and ItemNotInList
+
+In 2005 Volume 1, functionality was added to WinComboEditor™ allowing you to limit input text in the WinComboEditor to values only in the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~items.html[Items]"]  collection. In addition, an event was added that fires when ever something is inputted that is not in the Items collection.
+
+The following steps walk you through the creation of an application that uses this functionality.
+
+[start=1]
+. Create a new Windows Application. With the form in design view add the UltraComboEditor control and a button control. The button control is merely here for something to click on after entering a value into WinComboEditor, to remove focus from the WinComboEditor.
+[start=2]
+. On the UltraComboEditor locate in the Properties window the Items collection, and select it to open the ValueListItem Collection Editor. In this editor add some new items to show in the WinComboEditor drop-down list.
+
+image::Images/WinEditors_Use_LimitToList_and_ItemNotInList_01.png[wincomboeditor's valuelistitem collection editor]
+
+[start=3]
+. Wire up the Form Load event in the code behind and place the following code into this event.
+
+*In Visual Basic:*
+
+----
+ Private Sub Use_LimitToList_and_ItemNotInList_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraComboEditor1.LimitToList = True
+	Me.UltraComboEditor1.SelectedIndex = 0
+End Sub
+----
+
+*In C#:*
+
+----
+private void Use_LimitToList_and_ItemNotInList_Load(object sender, 
+  EventArgs e)
+{
+	this.ultraComboEditor1.LimitToList = true;
+	this.ultraComboEditor1.SelectedIndex = 0;
+}
+----
+
+[start=4]
+. Wire a handler for the WinComboEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~itemnotinlist_ev.html[ItemNotInList]"]  event. This event will fire whenever a value is inputted that is not in the Items Collection. You could use this event only, and not set *LimitToList* to True. These two features do not depend upon each other. In the ItemNotInList event place the following code, to show a message box to notify the end user of the error.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraComboEditor1_ItemNotInList(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinEditors.ValidationErrorEventArgs) _
+  Handles UltraComboEditor1.ItemNotInList
+	MessageBox.Show(Me.UltraComboEditor1.Text.ToString() + _
+	  " is not a valid item.")
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraComboEditor1_ItemNotInList(object sender, 
+  Infragistics.Win.UltraWinEditors.ValidationErrorEventArgs e)
+{
+	MessageBox.Show(this.ultraComboEditor1.Text.ToString() + 
+	  " is not a valid item.");
+}	
+----
+
+[start=5]
+. Build and Run the application. Try to input "Soundtrack" into the WinComboEditor, and select the button. The MessageBox displays showing the invalid string you tried to input.
+
+image::Images/WinEditors_Use_LimitToList_and_ItemNotInList_02.png[example of trying to put a value not in valuelist into wincomboeditor]
+
+Notice that having the LimitToList property set to True the control doesn't lose focus and you can't even click the X in the corner of the form to close until a valid item is inputted. Setting LimitToList to False, and typing in an invalid item will still cause the MessageBox to show, but the WinComboEditor will lose focus.

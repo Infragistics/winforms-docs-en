@@ -1,0 +1,145 @@
+﻿////
+
+|metadata|
+{
+    "name": "formattedtexteditor-using-subscript-and-superscript",
+    "controlName": [],
+    "tags": [],
+    "guid": "f468dbef-310d-46d4-9c2e-14931dac4f70",  
+    "buildFlags": [],
+    "createdOn": "2015-06-29T19:05:04.1754355Z"
+}
+|metadata|
+////
+
+= Using Subscript and Superscript
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of how to use subscript and superscript formatting in the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor_members.html[FormattedTextEditor] or link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedlinklabel_members.html[FormattedLinkLabel] controls.
+
+=== Required Background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winformattedtexteditor.html[WinFormattedTextEditor]
+|In this section you'll find any information that will help you to better understand the functionalities of the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor_members.html[FormattedTextEditor] control, as well as why you would want to use it to as part of building your applications.
+
+| link:winformattedlinklabel.html[WinFormattedLinkLabel]
+|This section contains valuable information about link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedlinklabel_members.html[FormattedLinkLabel], ranging from what the control does and why you would want to use it in your application, to step-by-step procedures on how to accomplish a common task using the control.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref423084560,Subscript and Superscript Overview>>
+
+** <<_Ref421266503,Overview>>
+** <<_Ref397371188,Preview>>
+** <<_Ref396219292,Formatting Text>>6
+** <<_Ref423354053,Keyboard support>>
+
+* <<_Ref388439099,Related Content>>
+
+[[_Ref423084560]]
+== Subscript and Superscript Overview
+
+[[_Ref421266503]]
+
+=== Overview
+
+Subscript or Superscript is text that is displayed in a slightly smaller than normal font and is either slightly above or below the normal baseline.
+
+[[_Ref397371188]]
+
+=== Preview
+
+Subscripts are often used in chemical formulas:
+
+H~2~O
+
+C~6~H~12~O~6~
+
+An example of superscript is when using ordinal indicators:
+
+1^st^, 2^nd^, 3^rd^, 4^th^
+
+[[_Ref396219292]]
+
+=== Formatting Text
+
+Subscript and superscript text may be added to the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor_members.html[FormattedTextEditor] or link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedlinklabel_members.html[FormattedLinkLabel] controls in one of two ways: either using a tag or a style.
+
+[options="header", cols="a,a,a,a"]
+|====
+|Format|Sample text|Tag|Style
+
+|Subscript
+|H~2~O
+|H<sub>2</sub>
+|H<span >2</span>0
+
+|Superscript
+|July 4^th^
+|July 4<sup>th</sup>
+|July 4<span >th</span>
+
+|====
+
+Note that Subscript and Superscript can be combined with other formatting attributes. For example, it is possible for the Superscript to be bold or underlined.
+
+[options="header", cols="a,a,a,a"]
+|====
+|Format|Sample text|Tag|Style
+
+|Superscript
+|July ^4th^
+|July 4<u><sup>th</sup></u>
+|July 4<span >th</span>
+
+|====
+
+[[_Ref423354053]]
+
+=== Keyboard support
+
+[options="header", cols="a,a"]
+|====
+|Format|Keyboard shortcut
+
+|Subscript
+|Ctrl + =
+
+|Superscript
+|Ctrl + Shift + =
+
+|====
+
+[[_Ref388439099]]
+== Related Content
+
+[[_Ref386478106]]
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winformattedlinklabel-formatting-text-and-hyperlinks.html[Formatting Text and Hyperlinks]
+|Contains general information on formatting text in the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor_members.html[FormattedTextEditor] or link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedlinklabel_members.html[FormattedLinkLabel]
+
+| link:winformattedtexteditor-style-attribute.html[Style Attribute]
+|Contains specific information about the Style attribute, including the Vertical-align tag sub-attribute which controls superscript and subscript.
+
+|====

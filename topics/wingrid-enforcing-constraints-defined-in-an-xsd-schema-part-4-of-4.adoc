@@ -1,0 +1,80 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-enforcing-constraints-defined-in-an-xsd-schema-part-4-of-4",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{66D7C808-A8C1-4A04-8941-02130485BF8B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Enforcing Constraints Defined in an XSD Schema (Part 4 of 4)
+
+The WinGrid™ has the ability to extract data constraints from an XSD schema and enforce those constraints on data inputted by the end-user. These constraints apply to both the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~band.html[Bands]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~column.html[Columns]"]  of the grid. Band-level constraints involve the number of rows allowed in the Band. Column-level constraints involve restrictions on the data allowed in the cells of columns.
+
+This page is a continues from link:wingrid-defining-dataset-schema-and-generating-test-data-part-3-of-4.html[Defining DataSet Schema and Generating Test Data (Part 3 of 4)].
+
+[start=1]
+. To enforce constraints that you have defined in an XSD file you call the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~enforcexsdconstraints.html[EnforceXSDConstraints]"]  method on the WinGrid. Place the following code in the Click event handler for the button labeled "Enforce XSD Constraints":
+
+*In Visual Basic:*
+
+----
+Private Sub btnEnforce_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnEnforce.Click
+	Me.UltraGrid1.EnforceXsdConstraints(Me.xsdFileName)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnEnforce_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.EnforceXsdConstraints( this.xsdFileName );
+}
+----
+
+[start=2]
+. In the Click event handler of the "Clear XSD Constraints" button place the following code to clear out all of the constraints imposed by the schema that were applied by the EnforceXsdConstraints method:
+
+*In Visual Basic:*
+
+----
+Private Sub btnClear_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnClear.Click
+	Me.UltraGrid1.ClearXsdConstraints()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnClear_Click(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.ClearXsdConstraints();
+}
+----
+
+[start=3]
+. When you run this project click the "Load Data" button, then click on the "Enforce XSD Constraints" button. When the constraints are applied you will notice that the dimensions of the cells change slightly. This is because the Title column is given a ValueList, which requires that the cells be made a little bit larger. Your form should look similar to the one shown below:
+
+image::Images/WinGrid_Working_with_XSD_Schema_09.png[enforcing constraints defined in an xsd schema with ultragrid]
+
+[start=4]
+. At this point the WinGrid is enforcing the constraints it found in the XSD schema that we made. You can test out how the grid enforces the constraints by editing value in a cell and then attempting to leave that cell. The data validation occurs when a cell attempts to exit edit mode.
+
+For example, if you go to the Title column and type in "Mitch" (or any other value which is not in the ValueList), when you attempt to shift input focus to another cell a Data Error message box will be displayed. This is due to the fact that in the XSD schema we made Title column of type TitleType. TitleType uses the enumeration facet to constrain the titles that can be used to only "Mr.", "Mrs.", "Ms.", or "Dr."
+
+image::Images/WinGrid_Working_with_XSD_Schema_10.png[throwing a data error when constraints aren't met in ultragrid]
+
+[start=5]
+. You will notice that the Template AddRow for the Customers band is not visible. This is because the Customers band was restricted to only having 3 rows via the maxOccurs attribute. If you delete a row, the Template AddRow will reappear so that the end-user can add another row to the band.
+[start=6]
+. If you click the "Clear XSD Constraints" button all of the constraints applied by the call to EnforceXsdConstraints will be removed. Both bands will allow you to add/remove any number of rows and the columns will no longer have the data constraints applied to them.
+
+This concludes the tutorial on using XSD schemas with the WinGrid.

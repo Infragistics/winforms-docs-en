@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-appearance-object-gdi-gdi-text-rendering-property-added-whats-new-2006-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "{538F4353-B04F-4F18-8721-E432CA7BFC88}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= GDI/GDI+ Text Rendering Property Added
+
+In the Infragistics Windows Forms 2005 Volume 3 (CLR 2.0) release, if you wanted to render text in GDI+, you had to set the UseGDIPlusTextRenderer to True. Once set to True, all of the controls in your project would render in GDI+. Now, with the new  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.textrenderingmode.html[TextRenderingMode]"]  property added to our base classes, you can select which control(s) on the form you would like to render with GDI+.
+
+== Related Topic:
+
+link:win-render-gdi-text-in-individual-controls.html[Render GDI+ Text in Individual Controls]

@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "winnavigationbar-comparing-winnavigationbar-to-wintree-and-winlistview",
+    "controlName": ["WinNavigationBar"],
+    "tags": ["Navigation","Patterns and Practices"],
+    "guid": "{F8C904BC-C696-4244-BD36-68C9ABCA50F5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Comparing WinNavigationBar to WinTree and WinListView
+
+WinTree™ and WinListView™ have dominated the file-system browsing user interface for several years now. You can use either control to navigate through your file system. The downside to these controls is that they can potentially use up about half of your available screen real estate. Since screen real estate is so valuable, you need a better way to perform the same actions with the same results while using up much less screen real estate. The WinNavigationBar control can accomplish the same tasks as WinTree and WinListView, all-the-while using the same amount of screen real estate as an address bar would in an application such as Microsoft Internet Explorer.
+
+== WinNavigationBar Versus WinTree
+
+WinTree is an excellent control for showing hierarchical data models such as a table of contents or a file system. You can use WinTree for any type of item grouping that your application requires. You can even load its nodes dynamically to save system resources and to speed up the application as a whole. However, in order to make the tree usable, you need to give it a good amount of vertical space to prevent your end users from scrolling too much. This means that WinTree usually ends up on the left-hand side of the application window and docked. Once docked, WinTree could potentially consume almost half of your screen real estate! This is not necessarily a downside, but I'd like to suggest a better way: WinNavigationBar.
+
+WinNavigationBar, ideally sitting near the top of your application window, will use up as much space as a standard text box. What makes the WinNavigationBar control unique is that it is a WinTree-type control, but without all the extraneous nodes that you aren't currently looking at. WinNavigationBar is comprised of several drop-down buttons with text on them. You can map each of these buttons to a node in a tree. Once you click the drop-down button, a list of child locations appears. These child locations can be thought of as the node's children. Once you select a child location (a.k.a. Node), that single location is placed at the end of the path above.
+
+== WinNavigationBar Versus WinListView
+
+WinListView is simply a container of items. WinListView can display its items in several different ways. Using WinListView as a file-system browser, you can either file files and folders as a collection of icons or as a list, that list being as simple or detailed as your application requires. When browsing a file system, the WinListView control is very necessary, contrary to WinTree. WinListView shows the end result of the end user’s navigation; only the files and folders of the current navigation path are shown. In this regard, what makes WinListView more practical than WinNavigationBar are the files.
+
+WinNavigationBar is a navigation interface; the control is best used when showing a hierarchical structure, such as folders in a file system. Showing files, however, defeats the purpose of navigation because it is the end point, there is no navigation afterwards. This is where a listing device, such as WinListView, can assist with file browsing. It may also be impractical to list out every folder’s file in the drop-down list of one of WinNavigationBar’s buttons.

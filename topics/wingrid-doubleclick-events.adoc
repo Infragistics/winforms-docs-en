@@ -1,0 +1,195 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-doubleclick-events",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{87B1D7B4-9318-472E-AD06-8A20D112E6C6}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= DoubleClick Events
+
+Many use cases require that on the double click of an entity (a row in a grid, a node in a tree), actions such as loading a form with detailed information occurs.
+
+== DoubleClickRow
+
+Imagine a WinGrid loaded with records and upon the end user double clicking on a Row, a Form loads with the current record along with all related Form fields for data entry. To help achieve this kind of metaphor, you can easily handle the DoubleClickRow event of the WinGrid. The event arguments present you with the actual Row that was double clicked as well as an enumeration that describes which part of the Row was double clicked (such as the Cell area, the Preview area and so forth)
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_DoubleClickRow( _
+ByVal sender As System.Object, _
+ByVal e As DoubleClickRowEventArgs) _
+Handles UltraGrid1.DoubleClickRow
+   Dim theCust As Customer
+   theCust = DirectCast(e.Row.ListObject, Customer)
+   Dim d As New CustDetailsForm(theCust)
+   d.ShowDialog()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_DoubleClickRow(
+   object sender, 
+   DoubleClickRowEventArgs e)
+{
+   Customer theCust = null;
+   theCust = e.Row.ListObject as Customer;
+   CustDetailsForm d = new CustDetailsForm(theCust);
+   d.ShowDialog();
+}
+----
+
+This example assumes that we are bound to a collection of type Customer. If you notice, on the DoubleClick of the Row, we use the event argument e.Row.ListObject to get a reference to the actual Customer object that this Row represents. We then instantiate the Form that will be used to show the Customer Details (CustDetailsForm) and pass the Customer object into its constructor. We then use the Form’s ShowDialog method to present the Form.
+
+The following example also shows how to further enhance the logic by checking exactly which part of the Row was double clicked. Notice that if the Cell or CellArea was double clicked, we show the Customer Details Form. If the RowSelectorArea is double clicked, then you may want to perform other logic. Either way, it is simple to implement by using the event arguments.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_DoubleClickRow( _
+   ByVal sender As System.Object, _
+   ByVal e As DoubleClickRowEventArgs) _
+   Handles UltraGrid1.DoubleClickRow
+      Select Case e.RowArea
+         Case RowArea.Cell, RowArea.CellArea
+            Dim theCust As Customer
+            theCust = DirectCast(e.Row.ListObject, Customer)
+            Dim d As New CustDetailsForm(theCust)
+            d.ShowDialog()
+            Return
+         Case RowSelectorArea
+            'do something else
+            Return
+      End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_DoubleClickRow(
+   object sender, 
+   DoubleClickRowEventArgs e)
+{
+   switch (e.RowArea)
+   {
+      case RowArea.Cell:
+      case RowArea.CellArea:
+         Customer theCust = null;
+         theCust = e.Row.ListObject as Customer;
+         CustDetailsForm d = new CustDetailsForm(theCust);
+         d.ShowDialog();
+         break;
+      case RowArea.RowSelectorArea:
+         //do something else
+         break;
+   }
+}
+----
+
+== DoubleClickCell and DoubleClickHeader
+
+The DoubleClickCell and DoubleClickHeader events are just as useful. You can use these events to perform logic that is more geared towards individual cells (DoubleClickCell) such as populating other Form elements with the individual cell values. Column level logic can also be easily executed by handling the DoubleClickHeader event. The following examples show these events being handled:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_DoubleClickCell( _
+   ByVal sender As System.Object, _
+   ByVal e As DoubleClickCellEventArgs) _
+   Handles UltraGrid1.DoubleClickCell
+      lblValue.Text = e.Cell.Value.ToString()
+End Sub
+Private Sub UltraGrid1_DoubleClickHeader( _
+   ByVal sender As System.Object, _
+   ByVal e As DoubleClickHeaderEventArgs) _
+   Handles UltraGrid1.DoubleClickHeader
+      Select Case e.Header.Column.Key
+         Case "CustomerID"
+            'do something
+            Return
+         Case "CompanyName"
+            'do something else
+            Return
+      End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_DoubleClickCell(
+   object sender, 
+   DoubleClickCellEventArgs e)
+{
+   lblValue.Text = e.Cell.Value.ToString();
+}
+private void ultraGrid1_DoubleClickHeader(
+   object sender, 
+   DoubleClickHeaderEventArgs e)
+{
+   switch (e.Header.Column.Key)
+   {
+      case "CustomerID":
+         //do something
+         break;
+      case "CustomerName":
+         //do something else
+         break;
+   }
+}
+----
+
+Another good use case for the DoubleClickCell event is for the case when you have an Employee entity with an Image or Bitmap property that represents the Employee. The WinGrid will display the image within the Cells. If you wanted to provide your end users the ability to update this image, you can handle the DoubleClickCell event. In this event, you will test to make sure that the Cell which represents the Employee Image is being double clicked and if it is, you can show a File Browse dialog so the end user can navigate and select an image. Once selected, you can create the Image from the selected file and assign it directly to the Image property on the Employee. The following code shows how to accomplish this:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_DoubleClickCell( _
+   ByVal sender As System.Object, _
+   ByVal e As DoubleClickCellEventArgs) _
+   Handles UltraGrid1.DoubleClickCell
+   Select Case e.Cell.Column.Key
+      Case "EmployeeImage"
+         If Me.OpenFileDialog1.ShowDialog() _
+            = Windows.Forms.DialogResult.OK Then
+            Dim theEmployee As Employee = _
+            DirectCast(e.Cell.Row.ListObject, Employee)
+            theEmployee.EmployeeImage = _
+            Image.FromFile(Me.OpenFileDialog1.FileName)
+         End If
+      End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_DoubleClickCell(
+   object sender, 
+   DoubleClickCellEventArgs e)
+{
+   switch (e.Cell.Column.Key)
+   {
+      case "EmployeeImage":
+         if (this.openFileDialog1.ShowDialog() 
+            == DialogResult.OK)
+         {
+            Employee theEmployee = 
+               e.Cell.Row.ListObject as Employee;
+            theEmployee.EmployeeImage =
+               Image.FromFile(this.openFileDialog1.FileName);
+         }
+         break;
+      }
+}
+----

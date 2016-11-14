@@ -1,0 +1,110 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-radial-gradient-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{7E910E34-9171-45F0-931A-BD843C853972}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Radial Gradient Brush Element at Run Time
+
+If you want two colors on the property of your gauge to blend into each other in circular way, apply the Radial Gradient brush element to the property.
+
+*To apply the Radial Gradient brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create an instances of the classes.
+
+*In Visual Basic:*
+
+----
+Dim radialGradientBrushElement1 As New RadialGradientBrushElement()
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+Dim centerPoint As New System.Drawing.PointF()
+Dim focusScales As New System.Drawing.PointF()
+----
+
+*In C#:*
+
+----
+RadialGradientBrushElement radialGradientBrushElement1 = 
+  new RadialGradientBrushElement();
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+System.Drawing.PointF centerPoint = new System.Drawing.PointF();
+System.Drawing.PointF focusScales = new System.Drawing.PointF();
+----
+
+[start=4]
+. Set the following properties:
+
+** center color -- Peach Puff
+** surround color -- Sandy Brown
+** center point -- 25, 25
+** focus point -- 0, 0
+
+*In Visual Basic:*
+
+----
+centerPoint.X = 25
+centerPoint.Y = 25
+focusScales.X = 0
+focusScales.Y = 0
+radialGradientBrushElement1.CenterColor = System.Drawing.Color.PeachPuff
+radialGradientBrushElement1.CenterPoint = centerPoint
+radialGradientBrushElement1.FocusScales = focusScales
+radialGradientBrushElement1.RelativeBounds = _
+  New System.Drawing.Rectangle(3, 3, 94, 94)
+radialGradientBrushElement1.RelativeBoundsMeasure = _
+  Infragistics.UltraGauge.Resources.Measure.Percent
+radialGradientBrushElement1.SurroundColor = System.Drawing.Color.SandyBrown
+myRadialGauge.Dial.BrushElement = radialGradientBrushElement1
+----
+
+*In C#:*
+
+----
+centerPoint.X = 75;
+centerPoint.Y = 25;
+focusScales.X = 0;
+focusScales.Y = 0;
+radialGradientBrushElement1.CenterColor = System.Drawing.Color.PeachPuff;
+radialGradientBrushElement1.CenterPoint = centerPoint;
+radialGradientBrushElement1.FocusScales = focusScales;
+radialGradientBrushElement1.RelativeBounds = 
+  new System.Drawing.Rectangle(3, 3, 94, 94);
+radialGradientBrushElement1.RelativeBoundsMeasure = 
+  Infragistics.UltraGauge.Resources.Measure.Percent;
+radialGradientBrushElement1.SurroundColor = System.Drawing.Color.SandyBrown;
+myRadialGauge.Dial.BrushElement = radialGradientBrushElement1;
+----
+
+== Related Topics
+
+link:wingauge-radial-gradient-brush-element.html[Radial Gradient Brush Element]
+
+link:wingauge-apply-the-radial-gradient-brush-element-at-design-time.html[Apply the Radial Gradient Brush Element at Design Time]
+
+link:wingauge-apply-the-radial-gradient-brush-element-using-the-gauge-designer.html[Apply the Radial Gradient Brush Element Using the Gauge Designer]

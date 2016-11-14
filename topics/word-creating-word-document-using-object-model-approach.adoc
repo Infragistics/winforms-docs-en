@@ -1,0 +1,439 @@
+﻿////
+
+|metadata|
+{
+    "name": "word-creating-word-document-using-object-model-approach",
+    "controlName": ["Infragistics Word Library"],
+    "tags": ["Exporting","Getting Started","How Do I"],
+    "guid": "92c5d6f6-5e2c-4c58-a03b-6bd540015a3a",  
+    "buildFlags": [],
+    "createdOn": "2011-05-05T20:40:00.9759659Z"
+}
+|metadata|
+////
+
+= Creating Word Document Using Object Model Approach
+
+This topic illustrates how to create a Microsoft®Word® document and its layout elements using the object model approach.
+
+== Overview
+
+The topic is organized as follows:
+
+* <<CreateSimpleDoc,Creating a Simple Word Document>>
+* <<AddHyperlink,Adding a Hyperlink>>
+* <<AddPic,Adding a Picture>>
+
+** <<AddAnchPic,Adding an Anchored Picture>>
+** <<AddInlinePic,Adding an Inline Picture>>
+
+* <<HeaderFooter,Setting the Header and the Footer>>
+
+** <<Header,Adding and Setting the Header>>
+** <<Footer,Adding and Setting the Footer>>
+
+* <<ExCode,Example Code: Full Code Sample>>
+* <<RelatedTopics,Related Topics>>
+
+[[CreateSimpleDoc]]
+== Creating a Simple Word Document
+
+The entire Word document is encapsulated by the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document.html[Document] class. The Document class is the root-level entity in the object hierarchy, under which all other objects are grouped. It serves as a container for block-level content such as paragraphs and tables. Block-level content is contained within the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~contentblocks.html[ContentBlocks] collection.
+
+Individual paragraphs in the document are encapsulated by the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph.html[Paragraph] class. The Paragraph class exposes a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph~contentruns.html[ContentRuns] collection, which provides a way to add content to the paragraph.
+
+To generate a Word document, create an instance of the Document class and manipulate it using publicly exposed properties and methods, and then call a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~save.html[Save] method.
+
+The various properties of the Word document such as Author, Title, Subject, etc., can be set using the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~documentproperties.html[DocumentProperties] property. These information can be accessed in Word 2007 by clicking the Office Button and navigating to Prepare > Properties section. Similarly in Word 2010 by clicking the File tab the document properties can be accessed from the right side of the backstage view.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+string documentName = @"C:\TestWordDOMDoc.docx";
+Document doc = new Document();
+// Set the document properties, such as title, author, etc.
+doc.DocumentProperties.Title = "Sample Document";
+doc.DocumentProperties.Author = string.Format("Infragistics.{0}", SystemInformation.UserName);
+Infragistics.Documents.Word.Font font = doc.CreateFont();
+font.Bold = true;
+font.Size = 15;
+font.Underline = Underline.Double;
+// Add a Paragraph to the document
+Paragraph para1 = doc.ContentBlocks.AddParagraph();
+para1.ContentRuns.AddTextRun("Sample Word Document with Hyperlinks,Images,Headers and Footers", font);
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+Dim documentName As String = "C:\TestWordDOMDoc.docx"
+Dim doc As New Document()
+' Set the document properties, such as title, author, etc.
+doc.DocumentProperties.Title = "Sample Document"
+doc.DocumentProperties.Author = String.Format("Infragistics.{0}", SystemInformation.UserName)
+Dim font As Infragistics.Documents.Word.Font = doc.CreateFont()
+font.Bold = True
+font.Size = 15
+font.Underline = Underline.[Double]
+' Add a Paragraph to the document
+Dim para1 As Paragraph = doc.ContentBlocks.AddParagraph()
+para1.ContentRuns.AddTextRun("Sample Word Document with Hyperlinks,Images,Headers and Footers", font)
+----
+
+[[AddHyperlink]]
+== Adding a Hyperlink to the Word Document
+
+The Infragistics Word library supports hyperlinks. The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addhyperlink.html[AddHyperlink] method adds a TextHyperlink to the associated paragraph.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Add a Paragraph to the document
+Paragraph para2 = doc.ContentBlocks.AddParagraph();
+para2.ContentRuns.AddTextRun("Hyper link:  ");
+// Add a Hyperlink
+para2.ContentRuns.AddHyperlink("http://www.infragistics.com", "Infragistics Inc.");
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Add a Paragraph to the document
+Dim para2 As Paragraph = doc.ContentBlocks.AddParagraph()
+para2.ContentRuns.AddTextRun("Hyper link:  ")
+' Add a Hyperlink
+para2.ContentRuns.AddHyperlink("http://www.infragistics.com", "Infragistics Inc.")
+----
+
+[[AddPic]]
+== Adding a Picture
+
+[[AddAnchPic]]
+== Adding Anchored Picture
+
+The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.anchoredpicture.html[AnchoredPicture] class encapsulates a picture or image that is anchored to a specific location within the document. link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.anchorscollection~addanchoredpicture.html[AddAnchoredPicture] method adds an anchored picture to the associated paragraph.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Get Image
+Image img = Image.FromFile(@"..\..\Ballon_New_Year.jpg");
+// Add a paragraph to the Document
+Paragraph para3 = doc.ContentBlocks.AddParagraph();
+para3.ContentRuns.AddTextRun("Anchored Picture: An Anchored picture or image is one that is anchored to a specific location within the document. Unlike an inline picture, which moves along with adjacent content, an Anchored Picture remains at a fixed location within the paragraph, with adjacent text flowing around it.");
+// Create an Anchored picture
+AnchoredPicture anchPic = doc.CreateAnchoredPicture(img);
+// Assign the picture outline properties for anchored image
+anchPic.AlternateTextDescription = "Word Image";
+anchPic.Outline.Color = Color.Brown;
+anchPic.Outline.Style = PictureOutlineStyle.Single;
+anchPic.Outline.LineWidth = 1;
+// Add the Anchored picture to anchor section of the paragraph
+para3.Anchors.AddAnchoredPicture(anchPic);
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Get Image
+Dim img As Image = Image.FromFile("..\..\Ballon_New_Year.jpg")
+' Add a paragraph to the Document
+Dim para3 As Paragraph = doc.ContentBlocks.AddParagraph()
+para3.ContentRuns.AddTextRun("Anchored Picture: An Anchored picture or image is one that is anchored to a specific location within the document. Unlike an inline picture, which moves along with adjacent content, an Anchored Picture remains at a fixed location within the paragraph, with adjacent text flowing around it.")
+' Create an Anchored picture
+Dim anchPic As AnchoredPicture = doc.CreateAnchoredPicture(img)
+' Assign the picture outline properties for anchored image
+anchPic.AlternateTextDescription = "Word Image"
+anchPic.Outline.Color = Color.Brown
+anchPic.Outline.Style = PictureOutlineStyle.[Single]
+anchPic.Outline.LineWidth = 1
+' Add the Anchored picture to anchor section of the paragraph
+para3.Anchors.AddAnchoredPicture(anchPic)
+----
+
+[[AddInlinePic]]
+== Adding Inline Picture
+
+The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.inlinepicture.html[InlinePicture] class encapsulates a picture, which appears inline with the textual content within the document. link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addinlinepicture.html[AddInlinePicture] method adds an inline picture to the associated paragraph.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Get Image
+Image img = Image.FromFile(@"..\..\Ballon_New_Year.jpg");
+// Add a Paragraph to the document
+Paragraph para4 = doc.ContentBlocks.AddParagraph();
+para4.ContentRuns.AddTextRun("Inline Picture: An inline picture moves with the adjacent content");
+// Create an Inline picture
+InlinePicture inlinePic = doc.CreateInlinePicture(img);
+inlinePic.AlternateTextDescription = "Word Image";
+// Add the Inline picture to a content section of the paragraph
+para4.ContentRuns.AddInlinePicture(inlinePic);
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Get Image
+Dim img As Image = Image.FromFile("..\..\Ballon_New_Year.jpg")
+' Add a Paragraph to the document
+Dim para4 As Paragraph = doc.ContentBlocks.AddParagraph()
+para4.ContentRuns.AddTextRun("Inline Picture: An inline picture moves with the adjacent content")
+' Create an Inline picture
+Dim inlinePic As InlinePicture = doc.CreateInlinePicture(img)
+inlinePic.AlternateTextDescription = "Word Image"
+' Add the Inline picture to a content section of the paragraph
+para4.ContentRuns.AddInlinePicture(inlinePic)
+----
+
+The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.section.html[Section] class encapsulates the pagination properties and header/footer content for a document section.
+
+[[HeaderFooter]]
+== Setting the Header and the Footer
+
+[[Header]]
+== Adding and Setting the Header
+
+The following code example shows how to display text and image in the header section of all pages.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Add a paragraph to the Document
+Paragraph para5 = doc.ContentBlocks.AddParagraph();
+// Add text to Paragraph
+Section sec = doc.Sections.Add(para5);
+// Header
+Paragraph headerPara = sec.HeaderAllPages.ContentBlocks.AddParagraph();
+// The header text alignment is set to right
+headerPara.Properties.Alignment = ParagraphAlignment.Right;
+// Create an Anchored Image to display in the Header
+AnchoredPicture headeranchPic = doc.CreateAnchoredPicture(img);
+// Display Anchored Image in Header
+headerPara.Anchors.AddAnchoredPicture(headeranchPic);
+// Display Text in Header
+headerPara.ContentRuns.AddTextRun("This is a header");
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Add a paragraph to the Document
+Dim para5 As Paragraph = doc.ContentBlocks.AddParagraph()
+' Add text to Paragraph
+Dim sec As Section = doc.Sections.Add(para5)
+' Header
+Dim headerPara As Paragraph = sec.HeaderAllPages.ContentBlocks.AddParagraph()
+' The header text alignment is set to right
+headerPara.Properties.Alignment = ParagraphAlignment.Right
+' Create an Anchored Image to display in the Header
+Dim headeranchPic As AnchoredPicture = doc.CreateAnchoredPicture(img)
+' Display Anchored Image in Header
+headerPara.Anchors.AddAnchoredPicture(headeranchPic)
+' Display Text in Header
+headerPara.ContentRuns.AddTextRun("This is a header")
+----
+
+[[Footer]]
+== Adding and Setting the Footer
+
+The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addpagenumberfield.html[AddPageNumberField] method adds a PageNumberField to the associated paragraph.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+// Add a paragraph to the Document
+Paragraph para5 = doc.ContentBlocks.AddParagraph();
+// Add section which defines pagination for specified paragraph
+Section sec = doc.Sections.Add(para5);
+//Footer
+Paragraph footerPara = sec.FooterAllPages.ContentBlocks.AddParagraph();
+// The footer text alignment is set to right
+footerPara.Properties.Alignment = ParagraphAlignment.Right;
+// Display Text in Footer
+footerPara.ContentRuns.AddTextRun("This is a footer");
+// Add Page numbers to the Footer
+footerPara.ContentRuns.AddPageNumberField(PageNumberFieldFormat.Ordinal);
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+' Add a paragraph to the Document
+Dim para5 As Paragraph = doc.ContentBlocks.AddParagraph()
+' Add section which defines pagination for specified paragraph
+Dim sec As Section = doc.Sections.Add(para5)
+'Footer
+Dim footerPara As Paragraph = sec.FooterAllPages.ContentBlocks.AddParagraph()
+' The footer text alignment is set to right
+footerPara.Properties.Alignment = ParagraphAlignment.Right
+' Display Text in Footer
+footerPara.ContentRuns.AddTextRun("This is a footer")
+' Add Page numbers to the Footer
+footerPara.ContentRuns.AddPageNumberField(PageNumberFieldFormat.Ordinal)
+----
+
+[[ExCode]]
+== Example Code: Full Code Sample
+
+Following is the complete functional code used in the examples in this topic.
+
+*In C#:*
+
+----
+using Infragistics.Documents.Word;
+string documentName = @"C:\TestWordDOMDoc.docx";
+Document doc = new Document();
+// Set the document properties, such as title, author, etc.
+doc.DocumentProperties.Title = "Sample Document";
+doc.DocumentProperties.Author = string.Format("Infragistics.{0}", SystemInformation.UserName);
+Infragistics.Documents.Word.Font font = doc.CreateFont();
+font.Bold = true;
+font.Size = 15;
+font.Underline = Underline.Double;
+// Add a Paragraph to the document
+Paragraph para1 = doc.ContentBlocks.AddParagraph();
+para1.ContentRuns.AddTextRun("Sample Word Document with Hyperlinks,Images,Headers and Footers", font);
+para1.ContentRuns.AddNewLine();
+Paragraph para2 = doc.ContentBlocks.AddParagraph();
+para2.ContentRuns.AddTextRun("Hyper link:  ");
+// Add a Hyperlink
+para2.ContentRuns.AddHyperlink("http://www.infragistics.com", "Infragistics Inc.");
+para2.ContentRuns.AddNewLine();
+// Get Image
+Image img = Image.FromFile(@"..\..\Ballon_New_Year.jpg");
+// Add a paragraph to the Document
+Paragraph para3 = doc.ContentBlocks.AddParagraph();
+para3.ContentRuns.AddTextRun("Anchored Picture: An Anchored picture or image is one that is anchored to a specific location within the document. Unlike an inline picture, which moves along with adjacent content, an Anchored Picture remains at a fixed location within the paragraph, with adjacent text flowing around it.");
+// Create an Anchored picture
+AnchoredPicture anchPic = doc.CreateAnchoredPicture(img);
+// Assign the picture outline properties for anchored image
+anchPic.AlternateTextDescription = "Word Image";
+anchPic.Outline.Color = Color.Brown;
+anchPic.Outline.Style = PictureOutlineStyle.Single;
+anchPic.Outline.LineWidth = 1;
+// Add the Anchored picture to anchor section of the paragraph
+para3.Anchors.AddAnchoredPicture(anchPic);
+// Add a Paragraph to the document
+Paragraph para4 = doc.ContentBlocks.AddParagraph();
+para4.ContentRuns.AddTextRun("Inline Picture: An inline picture moves with the adjacent content");
+// Create an Inline picture
+InlinePicture inlinePic = doc.CreateInlinePicture(img);
+inlinePic.AlternateTextDescription = "Word Image";
+// Add the Inline picture to a content section of the paragraph
+para4.ContentRuns.AddInlinePicture(inlinePic);
+// Add a paragraph to the Document
+Paragraph para5 = doc.ContentBlocks.AddParagraph();
+// Add text to Paragraph
+Section sec = doc.Sections.Add(para5);
+// Header
+Paragraph headerPara = sec.HeaderAllPages.ContentBlocks.AddParagraph();
+// The header text alignment is set to right
+headerPara.Properties.Alignment = ParagraphAlignment.Right;
+// Create an Anchored Image to display in the Header
+AnchoredPicture headeranchPic = doc.CreateAnchoredPicture(img);
+// Display Anchored Image in Header
+headerPara.Anchors.AddAnchoredPicture(headeranchPic);
+// Display Text in Header
+headerPara.ContentRuns.AddTextRun("This is a header");
+//Footer
+Paragraph footerPara = sec.FooterAllPages.ContentBlocks.AddParagraph();
+// The footer text alignment is set to right
+footerPara.Properties.Alignment = ParagraphAlignment.Right;
+// Display Text in Footer
+footerPara.ContentRuns.AddTextRun("This is a footer");
+// Add Page numbers to the Footer
+footerPara.ContentRuns.AddPageNumberField(PageNumberFieldFormat.Ordinal);
+doc.Save(documentName);
+----
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Documents.Word
+Dim documentName As String = "C:\TestWordDOMDoc.docx"
+Dim doc As New Document()
+' Set the document properties, such as title, author, etc.
+doc.DocumentProperties.Title = "Sample Document"
+doc.DocumentProperties.Author = String.Format("Infragistics.{0}", SystemInformation.UserName)
+Dim font As Infragistics.Documents.Word.Font = doc.CreateFont()
+font.Bold = True
+font.Size = 15
+font.Underline = Underline.[Double]
+' Add a Paragraph to the document
+Dim para1 As Paragraph = doc.ContentBlocks.AddParagraph()
+para1.ContentRuns.AddTextRun("Sample Word Document with Hyperlinks,Images,Headers and Footers", font)
+para1.ContentRuns.AddNewLine()
+Dim para2 As Paragraph = doc.ContentBlocks.AddParagraph()
+para2.ContentRuns.AddTextRun("Hyper link:  ")
+' Add a Hyperlink
+para2.ContentRuns.AddHyperlink("http://www.infragistics.com", "Infragistics Inc.")
+para2.ContentRuns.AddNewLine()
+' Get Image
+Dim img As Image = Image.FromFile("..\..\Ballon_New_Year.jpg")
+' Add a paragraph to the Document
+Dim para3 As Paragraph = doc.ContentBlocks.AddParagraph()
+para3.ContentRuns.AddTextRun("Anchored Picture: An Anchored picture or image is one that is anchored to a specific location within the document. Unlike an inline picture, which moves along with adjacent content, an Anchored Picture remains at a fixed location within the paragraph, with adjacent text flowing around it.")
+' Create an Anchored picture
+Dim anchPic As AnchoredPicture = doc.CreateAnchoredPicture(img)
+' Assign the picture outline properties for anchored image
+anchPic.AlternateTextDescription = "Word Image"
+anchPic.Outline.Color = Color.Brown
+anchPic.Outline.Style = PictureOutlineStyle.[Single]
+anchPic.Outline.LineWidth = 1
+' Add the Anchored picture to anchor section of the paragraph
+para3.Anchors.AddAnchoredPicture(anchPic)
+' Add a Paragraph to the document
+Dim para4 As Paragraph = doc.ContentBlocks.AddParagraph()
+para4.ContentRuns.AddTextRun("Inline Picture: An inline picture moves with the adjacent content")
+' Create an Inline picture
+Dim inlinePic As InlinePicture = doc.CreateInlinePicture(img)
+inlinePic.AlternateTextDescription = "Word Image"
+' Add the Inline picture to a content section of the paragraph
+para4.ContentRuns.AddInlinePicture(inlinePic)
+' Add a paragraph to the Document
+Dim para5 As Paragraph = doc.ContentBlocks.AddParagraph()
+' Add text to Paragraph
+Dim sec As Section = doc.Sections.Add(para5)
+' Header
+Dim headerPara As Paragraph = sec.HeaderAllPages.ContentBlocks.AddParagraph()
+' The header text alignment is set to right
+headerPara.Properties.Alignment = ParagraphAlignment.Right
+' Create an Anchored Image to display in the Header
+Dim headeranchPic As AnchoredPicture = doc.CreateAnchoredPicture(img)
+' Display Anchored Image in Header
+headerPara.Anchors.AddAnchoredPicture(headeranchPic)
+' Display Text in Header
+headerPara.ContentRuns.AddTextRun("This is a header")
+'Footer
+Dim footerPara As Paragraph = sec.FooterAllPages.ContentBlocks.AddParagraph()
+' The footer text alignment is set to right
+footerPara.Properties.Alignment = ParagraphAlignment.Right
+' Display Text in Footer
+footerPara.ContentRuns.AddTextRun("This is a footer")
+' Add Page numbers to the Footer
+footerPara.ContentRuns.AddPageNumberField(PageNumberFieldFormat.Ordinal)
+doc.Save(documentName)
+----
+
+[[RelatedTopics]]
+== Related Topics
+
+* link:word-create-a-word-document.html[Creating a Word Document]
+* link:word-apply-formatting-to-word-document.html[Applying Formatting to Word Document]
+* link:word-add-table-to-word-document.html[Adding Table to Word Document]
+* link:word-add-images-to-word-document.html[Adding Images to Word Document]
+* link:word-headers-footers-and-page-numbers.html[Headers Footers and Page Numbers]
+* link:word-understanding-infragistics-word-library.html[Understanding Infragistics Word Library]

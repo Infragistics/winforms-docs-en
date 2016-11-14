@@ -1,0 +1,32 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintabbedmdimanager-convert-an-exisiting-mdi-app-to-tabbed-mdi",
+    "controlName": ["WinTabbedMdiManager"],
+    "tags": [],
+    "guid": "{DDEB0E33-92FE-423F-BD3C-2329814E75CB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Convert an Existing MDI Application to Tabbed MDI
+
+The WinTabbedMdiManager™ component makes it very easy to convert an existing MDI application into a tabbed window interface application like Visual Studio.NET. The element automatically manages any MDI child windows of the MDI parent form it is placed on.
+
+To convert an MDI application to a Tabbed MDI application:
+
+[start=1]
+. Open the main MDI parent form of the existing application.
+[start=2]
+. Select the  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager.html[UltraTabbedMdiManager]"]  element in the Visual Studio toolbox and double-click it to add it to the MDI parent form.
+
+When you next run the application, the tabbed MDI interface will be in use with all features available. You can click on tabs to select MDI child windows, drag tabs within the header area to re-order them, and create vertical and horizontal tab groups either by dragging tabs or right-clicking on them.
+
+.Note
+[NOTE]
+====
+When a tabbed MDI interface is being used, child MDI windows are always maximized within the client area of the MDI parent form.
+====

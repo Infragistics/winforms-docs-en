@@ -1,0 +1,121 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-custom-diagnostics-and-annotations",
+    "controlName": [],
+    "tags": [],
+    "guid": "cc91ec0c-1ab0-42dc-9420-87cde4bd7770",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1378587Z"
+}
+|metadata|
+////
+
+= Custom Diagnostics and Annotations
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains how to attach and obtain additional data to and from the syntax tree.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-syntax-tree-overview.html[Syntax Tree Overview]
+|This topic explains when the syntax tree is created and how to access it.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350326109, Introduction >>
+* <<_Ref350326113, Adding Annotations >>
+* <<_Ref350326117, Adding Diagnostics >>
+* <<_Ref350326121, Related Content >>
+
+[[_Ref350326109]]
+== Introduction
+
+=== Overview
+
+In addition to obtaining information from a syntax tree, you may want to store information on it as well. The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxtree.html[SyntaxTree] and all objects within it are immutable, so the only way to store additional information is to make a copy of the tree with the additional data included. This can be done for either diagnostic information (such as semantic errors or warnings) or annotations, which can be any kind of data. The methods which allow you to attach this data to the tree are defined on `SyntaxTree`.
+
+.Note
+[NOTE]
+====
+When attaching annotations or diagnostic information a new tree is created containing the same snapshot as the original tree. Both trees represent the same textual content and have an identical node structure and can logically be considered "sibling trees". Since they have the same node structure, you can specify a node from any sibling tree when you want to attach information to a tree.
+====
+
+[[_Ref350326113]]
+== Adding Annotations
+
+=== Annotations summary
+
+To attach annotations use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxtree~addannotation.html[AddAnnotation] method of the `SyntaxTree` and provide the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxannotation.html[SyntaxAnnotation] you want to attach. The `SyntaxAnnotation` class can be derived so you can attach any data to a node. As a result the `AddAnnotation` method will return a copy of the Syntax Tree with the new annotation attached to the specified node.
+
+To obtain annotation information on a specific node use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~hasannotations.html[HasAnnotations] property to determine whether that specific node has annotations, link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~getannotations.html[GetAnnotations] overloaded methods for getting the annotations attached to that specific node, and link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~getannotatednodes.html[GetAnnotatedNodes] overloaded methods for enumerating the nodes with annotations in that node’s sub-tree. Both methods mentioned here have overloads taking a `Type` so you get annotations or nodes with annotations whose `SyntaxAnnotation` instances are of the specified Type or derived.
+
+The following is an example of how to attach annotations:
+
+*In C#:*
+
+[source,csharp]
+----
+var document = new TextDocument();
+document.Language = CSharpLanguage.Instance;
+// ... Parse a document
+var originalTree = document.SyntaxTree;
+var node1 = originalTree.RootNode.GetChild(0);
+var node2 = originalTree.RootNode.GetChild(1);
+var annotatedTree = originalTree.AddAnnotation(node1, new SyntaxAnnotation());
+var annotatedTreeAgain = annotatedTree.AddAnnotation(node2, new SyntaxAnnotation());
+----
+
+.Note
+[NOTE]
+====
+Notice how `node2` is obtained from `originalTree` but passed to `annotatedTree`. This is legal because `originalTree`, `annotatedTree`, and `annotatedTreeAgain` are sibling trees.
+====
+
+[[_Ref350326117]]
+== Adding Diagnostics
+
+=== Diagnostics summary
+
+To attach diagnostic information use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxtree~adddiagnostic.html[AddDiagnostic] method of the `SyntaxTree` which takes the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.diagnostic.html[Diagnostic] and the tree node to which you want to attach the diagnostic. As a result the `AddDiagnostic` method will return a copy of the Syntax Tree with the new diagnostic attached to the specified node.
+
+To obtain diagnostic information use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~containsdiagnostics.html[ContainsDiagnostics] property and the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~getdiagnostics.html[GetDiagnostics] methods on the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode.html[SyntaxNode] class. These methods do not distinguish between Syntax Parsing Engine’s diagnostics and custom diagnostics, so those members automatically return all diagnostics information from the node and its descendants.
+
+[[_Ref350326121]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-ignored-content.html[Ignored Content]
+|This topic explains how to access the ignored content produced during syntax analysis.
+
+| link:ig-spe-pruning-the-syntax-tree.html[Pruning the Syntax Tree]
+|This topic explains the syntax tree pruning types performed by the Syntax Parsing Engine.
+
+|====

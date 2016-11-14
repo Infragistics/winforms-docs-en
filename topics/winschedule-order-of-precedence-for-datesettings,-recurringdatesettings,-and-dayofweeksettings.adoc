@@ -1,0 +1,30 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-order-of-precedence-for-datesettings,-recurringdatesettings,-and-dayofweeksettings",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{33C8BDDB-4393-4DAE-8FDE-87401F101D86}",  
+    "buildFlags": [],
+    "createdOn": "2009-02-02T09:50:14Z"
+}
+|metadata|
+////
+
+= Order of precedence for DateSettings, RecurringDateSettings, and DayofWeekSettings
+
+There may be instances where any combination of these settings:  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~datesettings.html[DateSettings]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~recurringdatesettings.html[RecurringDateSettings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~dayofweeksettings.html[DayofWeekSettings]"]  are assigned for a particular date. For example, if the working hours on the 25th of every month are set from 9am to 5pm (RecurringDateSettings) and if this needs to change for a single date (DateSettings), say on the 25th of December 2009 (e.g., Christmas day), the single date can be set as a non-workday. In order to support this functionality, the CalendarInfo determines which settings to apply for any given date based on a specific order of precedence.
+
+The order of precedence is as follows:
+
+[start=1]
+. Each member of the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"]  object’s *_DateSettings_* collection takes precedence over all other Owner settings such as RecurringDateSettings, DayOfWeekSettings, and the WinCalendarInfo™ component’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~daysofweek.html[DaysOfWeek]"]  property setting. When you explicitly set the DateSettings Object’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek~isworkday.html[IsWorkDay]"]  property to false, then that date will be marked as a non-workday. On the other hand, if you set the IsWorkDay property to True, or if you populate the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslotsettings~workinghours.html[WorkingHours]"]  collection, then that date will be a workday.
+[start=2]
+. If no Owner DateSettings are set for the given date, or if the IsWorkday property is set to false and no members exist in its WorkingHours collection, then the Owner object’s *_RecurringDateSettings_* collection will be checked for a recurrence which will have an occurrence on the given date.
+[start=3]
+. If no Owner DateSettings or RecurringDateSettings are set for a given date or if the IsWorkDay property is set to false and no members exist in their WorkingHours collections, then the Owner object’s *_DayOfWeekSettings_* collection will be checked for the associated day of the week.
+[start=4]
+. If no Owner DateSettings, RecurringDateSettings or DayofWeekSettings exists for a given date, then the UltraCalendarInfo component’s *_DaysOfWeek_* property is used to determine whether the associated date is a workday.
+
+For more information on the order of precedence please refer the Remarks section of  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslotsettings~workinghours.html[WorkingHours]"]  property.

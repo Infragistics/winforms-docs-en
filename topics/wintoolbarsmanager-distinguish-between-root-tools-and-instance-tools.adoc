@@ -1,0 +1,51 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-distinguish-between-root-tools-and-instance-tools",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{210980FD-04EE-4277-BCFA-23EDAAB50DA5}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Distinguish Between Root Tools and Instance Tools
+
+The WinToolbarsManager™ component contains two types of tools: root tools and instance tools. A root tool is a tool that belongs to the Tools collection of the UltraToolbarsManager. An instance tool belongs to the tools collection of a particular toolbar or menu, and is an occurrence of a root tool.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~isroottool.html[IsRootTool]"]  property of the tool can be used to differentiate between root tools and instance tools. This property will return True if the tool is a root tool and it will return False if the tool is an instance tool.
+
+*In Visual Basic:*
+
+----
+Private Sub btnToolbar_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnToolbar.Click
+	' Will return False
+	MessageBox.Show(Me.UltraToolbarsManager1.Toolbars(1).Tools(0).IsRootTool)
+End Sub
+Private Sub btnTools_Click(ByVal sender As System.Object, _
+ ByVal e As System.EventArgs) Handles btnTools.Click
+	' Will return True
+	MessageBox.Show(Me.UltraToolbarsManager1.Tools(0).IsRootTool)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnToolbar_Click(object sender, EventArgs e)
+{
+	// Will return false
+	MessageBox.Show(
+	  this.ultraToolbarsManager1.Toolbars[1].Tools[0].IsRootTool.ToString());
+}
+private void btnTools_Click(object sender, System.EventArgs e)
+{
+	// Will return true
+	MessageBox.Show(
+	  this.ultraToolbarsManager1.Tools[0].IsRootTool.ToString());
+}
+----

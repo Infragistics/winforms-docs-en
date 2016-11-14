@@ -1,0 +1,48 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-uielements",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Application Scenarios","Grids"],
+    "guid": "{BF05103A-0F84-4464-8D98-D79BFD9210E0}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= UIElements
+
+The UIElement abstraction (along with Appearance objects) forms the key to the Presentation Layer Framework.
+
+A UIElement is defined as any discreet area rendered by a control and may contain one or more child UIElements. The illustration below highlights some UIElements of UltraGrid.
+
+image::Images\PLF_UIElements_01.png[Shows some of the UIElement that make up the wingrid]
+
+The UIElement base class (which maintains its client rectangle as well as a child UIElements collection) is implemented in the Presentation Layer Framework's shared assemblies along with a set of common UIElement-derived classes that can be used by any control (e.g. TextUIElment, ButtonUIElement, ImageUIElement, SplitterUIElement etc.).
+
+Each UIElement-derived class also maintains context information (the base class has a protected property named 'PrimaryContext' that is normally adequate for this purpose). For example, in UltraGrid, a RowUIElement would keep a reference to the Row object it was logically associated with. Likewise a CellUIElement would keep a reference to its associated Cell object.
+
+Note: one reason that the RowUIElement is a separate object from the Row object is that there can be more that one RowScrollRegion (separated by splitterbars) and the same logical row could appear in more than one region. In this case there would be multiple RowUIElements rendering a single Row object. This approach ensures that when the Row's state changes it will be automatically reflected in all regions.
+
+There is also a special abstract base class called ControlUIElementBase that a control's main element must derive from. This ControlUIElementBase-derived element normally takes up the entire client area of the control. This is also the starting element for several tasks like drawing the control and hit-testing to determine which element the mouse is over.
+
+In addition, the ControlUIElementBase class automatically hooks the control's mouse and key events and fires 2 new events that all of our controls expose, MouseEnterElement and MouseLeaveElement. This lets user's of our controls know exactly what area of the control the mouse is over.
+
+Most of the drawing, hit-testing and mouse tracking logic is implemented in the shared assemblies as well. The beauty of this design is that most of these operations are implemented as simple recursive routines. For example, drawing begins by calling the 'Draw' method the ControlUIElementBase derived element. It calls the 'DrawElement' method which draws the element's background, borders and foreground (by calling a series of virtual methods). It then just iterates over its child elements calling the same DrawElement method on each one. This has the effect of performing a naturally layered painting algorithm.
+
+Abstracting the UIElement base class allows us to place all of the driving logic for these operations in the shared assemblies. These UIElement base methods perform their operations by calling several virtual methods and properties of UIElement. These have default implementations but may be overridden in the derived classes.
+
+The following are some of the many benefits of the UIElement abstraction:
+
+* Normally complex operations like painting and hit-testing can be reliably implemented in very simple recursive routines. This adds to stability and reduces code size.
+* The naturally layered drawing algorithm (described in the section above) allows us to automatically support some advanced effects like alpha blending.
+* MouseEnterElement and MouseLeaveElement events are exposed by our controls providing detailed mouse location information.
+* Users can attach their own draw filters (by implementing a simple interface) and override the background, border and/or foreground drawing of any element.
+* Users can attach their own child element creation filters (by implementing another simple interface) and add to, reposition and/or replace the child elements of any element.
+* Users can attach their own cursor filters (by implementing another simple interface) to supply a custom cursor to be used when the mouse is over any element.
+* Users can attach their own selection strategy filters (by implementing another simple interface) to customize keyboard and mouse selection logic.
+* The above filters (draw, creation, cursor and selection strategy) expose an incredibly powerful extensibility mechanism that no other controls on the market can come close to matching.
+* Since the logic is implemented in the shared assemblies for all of our controls (as well as our customers controls), users can easily leverage all of these powerful capabilities.
+* Several common UIElement base classes are implemented in the framework and they can also be leveraged. For example, the SplitterUIElement takes care of supplying the appropriate splitter cursor, capturing the mouse and inverting the splitter during a drag operation. A class can be derived from SplitterUIElement and all it has to do is override the ApplyAdjustment method.

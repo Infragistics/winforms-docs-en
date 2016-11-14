@@ -1,0 +1,24 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-editing-cell-values-in-place-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{DF29F264-E725-45CA-9CC1-72F2C01FCA74}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Editing Cell Values In-Place
+
+You can now edit cell values in-place. In addition to the in-place cell editing support, the control has been modified to support writing the result of an edit mode session back to the corresponding data field, in the case where the control is data-bound.
+
+Since the WinGrid™ control automatically assigns the appropriate embeddable editor to be used by a column based on its data type, the WinTree™ has been modified to do the same thing. Note that to maintain backward compatibility, editors will not be automatically selected unless the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowcelledit.html[AllowCellEdit]"]  property is set to a non-default value for the column, or its associated ColumnSet (or ColumnSettings).
+
+* Added support to edit cells in-place via the existing embeddable editor architecture.
+* Added basic support to navigate between cells with the keyboard.
+* Added support for committing the values entered by the end user during an edit mode session to the corresponding data field.
+* Added support to automatically select the most appropriate editor based on a column's data type.

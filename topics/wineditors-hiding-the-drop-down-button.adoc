@@ -1,0 +1,58 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-hiding-the-drop-down-button",
+    "controlName": ["WinEditors"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{9EFBEDCD-3E2E-4707-9BB6-C36D6E518FE6}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Hiding the Drop-Down Button
+
+This topic applies to the following WinEditor™ controls.
+
+* WinCalculatorDropDown™
+* WinColorPicker™
+* WinComboEditor™
+* WinDateTimeEditor™
+* WinFontNameEditor™
+* WinTimeZoneEditor™
+
+pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.editorwithtextdropdowncontrolbase~dropdownbuttondisplaystyle.html[DropDownButtonDisplayStyle]"]  property makes it possible to prevent the Drop-down button from appearing in the element.
+
+The following code will prevent the Drop-down button from displaying:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub Hide_the_Drop_Down_Button_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraComboEditor1.DropDownButtonDisplayStyle = ButtonDisplayStyle.Never
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void Hide_the_Drop_Down_Button_Load(object sender, EventArgs e)
+{
+	this.ultraComboEditor1.DropDownButtonDisplayStyle = ButtonDisplayStyle.Never;
+}
+----
+
+image::images/WinEditors_Hide_the_Drop-Down_Button_01.png[shows wincomboeditor with its drop-down button hidden.]
+
+.Note
+[NOTE]
+====
+Setting the DropDownButtonDisplayStyle property such that the Drop-down button is hidden does not prevent the drop-down list (or drop-down calendar) from being displayed when the F4 key is pressed.
+====

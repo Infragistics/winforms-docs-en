@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-about-windesktopalert",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","Appointments","Getting Started"],
+    "guid": "{5F521684-B235-43AD-8FFD-8AA55100215A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinDesktopAlert
+
+The WinDesktopAlert™ component is a small window that pops up in the lower-right corner of a computer screen in order to notify the end user of a time-sensitive or important situation. This situation can be an incoming mail, a database update, or perhaps a change in the file system. The list of possible scenarios is endless. Whenever an event fires, call the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~show.html[Show]"]  method and the desktop alert window appears.
+
+*Two styles* -- The WinDesktopAlert component is available in two styles: Outlook2007 and WindowsLiveMessenger. The Outlook2007 style emulates the Microsoft® Outlook® Desktop Alerts while the WindowsLiveMessenger style emulates the Windows Live™ Messenger alerts. Setting the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~style.html[Style] property is all you need to do to take advantage of these two built-in styles.
+
+[cols="a,a"]
+|====
+|image::images/WinDesktopAlert_About_WinDesktopAlert_01.png[example of ultradesktopalert]
+|image::images/WinDesktopAlert_About_WinDesktopAlert_02.png[Windows Live Messenger ultradesktopalert window]
+
+|Office2007
+|WindowsLiveMessenger
+
+|====
+
+*Multiple monitor support* -- WinDesktopAlert gives you the option of displaying a desktop alert window on the primary monitor by default, or a secondary monitor by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screen.html[Screen]"]  property.
+
+*Desktop alert window* -- The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo.html[UltraDesktopAlertShowWindowInfo]"]  object exposes several useful properties allowing you to customize the desktop alert windows to your application's needs. Set caption, description, and footer text; each can be clicked by the end user and handled by the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~desktopalertlinkclicked_ev.html[DesktopAlertLinkClicked]"]  event. The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~data.html[Data]"]  property allows you to pass any object from any event to the WindowInfo object of the DesktopAlertLinkClicked or  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~alertbuttonclicked_ev.html[AlertButtonClicked]"]  events. This allows you to get a hold of certain objects from events that would otherwise be inaccessible. For an example of this scenario, see link:windesktopalert-displaying-a-desktop-alert-window-when-a-winschedule-reminder-comes-due.html[Displaying a Desktop Alert Window when a WinSchedule Reminder Comes Due].

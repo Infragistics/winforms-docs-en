@@ -1,0 +1,380 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpivotgrid-using-flatdatasource",
+    "controlName": [],
+    "tags": [],
+    "guid": "53998306-ee5f-4bb0-8edd-aad7639fcb53",  
+    "buildFlags": [],
+    "createdOn": "2014-09-12T01:46:08.5134189Z"
+}
+|metadata|
+////
+
+= Using FlatDataSource
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains how to use the link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.flatdatasource_members.html[FlatDataSource] class for displaying  _IEnumerable_   data in the  _WinPivotGrid_™.
+
+=== Application Requirements
+
+Start with a Windows Forms project.
+
+Ensure that your application is created based on  *.Net Framework 4* , not  *.Net Framework 4 Client Profile*  that does not include  _System.Web.Extensions_  .
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref398123026,Using FlatDataSource>>
+
+** <<_Ref398123035,Introduction>>
+** <<_Ref381022248,Requirements>>
+
+* <<_Ref398123073,Code Example>>
+
+** <<_Ref398123080,Conceptual Overview>>
+** <<_Ref398123086,Code>>
+** <<_Ref398233057,Adding OlapDataSelector>>
+
+* <<_Ref381022312,Related Content>>
+
+[[_Ref398123026]]
+== Using FlatDataSource
+
+[[_Ref398123035]]
+
+=== Introduction
+
+FlatDataSource class obtains its data from an  _IEnumerable_   implementation, which encapsulates a list of items, each item referencing an instance of a .NET class. FlatDataSource can be seen as a special data adapter using 2-dimentional ( _IEnumerable_  ) data and display it structured as cubes for pivot grid.
+
+[[_Ref381022248]]
+
+=== Requirements
+
+To complete the procedure you need the following:
+
+[options="header", cols="a,a"]
+|====
+|Requirement category|Requirement listing
+
+|Assemblies
+|{ApiPlatform}Olap.Core 
+
+{ApiPlatform}Olap.DataPivotGrid.Admod 
+
+{ApiPlatform}Olap.DataSource.Mdx 
+
+{ApiPlatform}Olap.DataSource 
+
+{ApiPlatform}Olap.DataSource.Xmla 
+
+{ApiPlatform}Shared 
+
+{ApiPlatform}Win.UltraWinEditors 
+
+{ApiPlatform}Win.UltraWinPivotGrid 
+
+{ApiPlatform}Win.UltraWinTree 
+
+{ApiPlatform}Win 
+
+{ApiPlatform}Olap.DataProvider.Flat 
+
+{ApiPlatform}Olap.DataSource.Flat
+
+|Using/Imports
+|Add the following _Using/Imports_ statement in your application form: 
+
+Infragistics.Olap 
+
+Infragistics.Olap.FlatData 
+
+System.Collections.Generic
+
+|====
+
+[[_Ref398123073]]
+== Code Example
+
+[[_Ref398123080]]
+
+=== Conceptual Overview
+
+Unlike the  _XmlaDataSource_   and  _AdomdDataSource_   classes, which obtain their respective schemas from the OLAP server to which they are connected, a consumer of the  _FlatDataSource_   class must define the schema manually.
+
+A  _FlatDataSource_   instance requires a reference to an  _IEnumerable_   implementation, which contains a homogeneous list of standard .NET objects.
+
+This section describes the process which makes it possible to simulate the OLAP experience using 2-dimensioanl data. In this exercise we will use a class named  _SportsData_  , with a structure as outlined in the following table:
+
+[options="header", cols="a,a,a"]
+|====
+|Property|Data Type|Description
+
+|Nation
+|String
+|Name of the country
+
+|City
+|String
+|Name of the city
+
+|Sport
+|String
+|Name of the type of sport
+
+|Budget
+|int
+|Allocated budget
+
+|Players
+|String
+|Player’s name
+
+|Date
+|DateTime
+|The date the competition takes place
+
+|====
+
+When a FlatDataSource is instantiated with a reference to the `List<SportsData>` and calls the link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.flatdatasource~generatecube.html[GenerateCube] method, the following sequence of events take place:
+
+1. A list of link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.olapaxiselementdescriptorbase~propertydescriptor.html[PropertyDescriptor] objects describing the publicly exposed properties for that class is obtained via the `TypeDescriptor.GetProperties` method.
+
+2. The property descriptor list is iterated.
+
+3. Each property of a numeric type (in this example, the “Budget” and “Players” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.measuredescriptor_members.html[MeasureDescriptor], which defines the schematic attributes of the resulting Measures which can appear on the measures slice of the cube.
+
+4. Each property of a non-numeric type (in this example, the “Nation”, “City” and “Sport” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor], which defines the schematic attributes of the resulting Hierarchies which can appear on the row, column, or filter dimensions.
+
+5. For each link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor] a corresponding link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.leveldescriptor_members.html[LevelDescriptor] objects of the `HierarchyDescriptor` are generated.
+
+* Non-numeric members are represented by two levels that are generated as “All Member” level and default level. Headers for the “All Member” level are expandable, and allow to show or hide the headers which represent data members of that dimension on a default level.
+* DateTime member is represented by three levels, generated as: (1) for the year, (2) for the month, and (3) for the date. Expanding the year will show one or more months, each of which is also expandable. Finally, expanding a month header shows the dates in that month.
+
+6. After execution returns from the  _GenerateCube_   method you need to call  _InitializeAsync_   method, and bind the  _UltraPivotGrid_   control to the data.
+
+[[_Ref398123086]]
+
+=== Code
+
+To complete the implementation with the following code example, you need to copy the link:winpivotgrid-sample-flatdatasource.html[Sample FlatDataSource] to your project.
+
+*In C#:*
+
+[source,csharp]
+----
+using System;
+using Infragistics.Olap;
+using Infragistics.Olap.FlatData;
+using System.Collections.Generic;
+using System.Windows.Forms;
+namespace PivotGrid_FlatDataBinding
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            Load += SampleForm_Load;
+        } 
+        private void SampleForm_Load(object sender, EventArgs e)
+        {
+            FlatDataSource ds = InitializePivotData();
+            // Generate cubes and call "InitializeAsync" method passing the control the data is bound to.
+            var parameters = new CubeGenerationParameters();
+            ds.GenerateCube(parameters);
+            ds.InitializeAsync(ultraPivotGrid1);
+            // Bind the PivotGrid and DataSelector to data.
+            ultraPivotGrid1.DataSource = ds;
+            olapDataSelector1.DataSource = ds;
+            // Optinally, set compact mode on PivotGrid
+            ultraPivotGrid1.RowHeaderLayout = Infragistics.Win.UltraWinPivotGrid.RowHeaderLayout.Compact;
+        } 
+        public FlatDataSource InitializePivotData()
+        {
+            // Initialize the data
+            SampleFlatData data = new SampleFlatData();
+            IEnumerable<SportsData> itemSource = data.InitSportsData();
+            // Use "FlatDataSourceInitialSettings" object to initialize Hierarchies and Measures
+            var settings = new FlatDataSourceInitialSettings();
+            settings.Rows = "[SportsData].[Nation], [SportsData].[Date]";
+            settings.Columns = "[SportsData].[Sport]";
+            settings.Measures = "[Measures].[Budget]";
+            // Create an instance of the FlatDataSource
+            var ds = new FlatDataSource(itemSource, typeof(SportsData), settings);
+            // Initialize Hierarchy Descriptor
+            ds.InitializeHierarchyDescriptor += ds_InitializeHierarchyDescriptor;
+            // Initialize Measure Descriptor
+            ds.InitializeMeasureDescriptor += ds_InitializeMeasureDescriptor;
+            // Aggregate measures to produce totals
+            ds.AggregateMeasure += ds_AggregateMeasure;
+            return ds;
+        }
+        void ds_InitializeHierarchyDescriptor(object sender, InitializeHierarchyDescriptorEventArgs e)
+        {
+            LevelDescriptor level;
+            if (e.HierarchyDescriptor.LevelDescriptors.TryGetItem("all", out level))
+            {
+                switch (e.HierarchyDescriptor.PropertyDescriptor.Name)
+                {
+                    case "Nation":
+                        level.MemberProvider = item => "All Nations";
+                        break;
+                    case "City":
+                        level.MemberProvider = item => "All Cities";
+                        break;
+                    case "Sport":
+                        level.MemberProvider = item => "All Sports";
+                        break;
+                }
+            }
+        }
+        void ds_InitializeMeasureDescriptor(object sender, InitializeMeasureDescriptorEventArgs e)
+        {
+            if (e.MeasureDescriptor.Name == "Budget")
+            {
+                e.MeasureDescriptor.DisplayFormat = "$#";
+                e.MeasureDescriptor.Aggregation = MeasureAggregation.Average;
+            }
+        }
+        void ds_AggregateMeasure(object sender, AggregateMeasureEventArgs e)
+        {
+            if (e.MeasureDescriptor.Name == "Budget")
+            {
+                double total = 0f;
+                double count = 0f;
+                foreach (object o in e.Items)
+                {
+                    var item = o as SportsData;
+                    if (item != null)
+                        total += item.Budget;
+                    count += 1f;
+                }
+                e.Value = total / count;
+                e.Handled = true;
+            }
+        }
+    }
+}
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Imports Infragistics.Olap
+Imports Infragistics.Olap.FlatData
+Imports System.Collections.Generic
+Imports System.Windows.Forms
+Namespace PivotGrid_FlatDataBinding
+      Public Partial Class Form1
+            Inherits Form
+            Public Sub New()
+                  InitializeComponent()
+                  AddHandler Load, AddressOf SampleForm_Load
+            End Sub
+            Private Sub SampleForm_Load(sender As Object, e As EventArgs)
+                  Dim ds As FlatDataSource = InitializePivotData()
+                  ' Generate cubes and call "InitializeAsync" method passing the control the data is bound to.
+                  Dim parameters = New CubeGenerationParameters()
+                  ds.GenerateCube(parameters)
+                  ds.InitializeAsync(ultraPivotGrid1)
+                  ' Bind the PivotGrid and DataSelector to data.
+                  ultraPivotGrid1.DataSource = ds
+                  olapDataSelector1.DataSource = ds
+                  ' Optinally, set compact mode on PivotGrid
+                  ultraPivotGrid1.RowHeaderLayout = Infragistics.Win.UltraWinPivotGrid.RowHeaderLayout.Compact
+            End Sub
+            Public Function InitializePivotData() As FlatDataSource
+                  ' Initialize the data
+                  Dim data As New SampleFlatData()
+                  Dim itemSource As IEnumerable(Of SportsData) = data.InitSportsData()
+                  ' Use "FlatDataSourceInitialSettings" object to initialize Hierarchies and Measures
+                  Dim settings = New FlatDataSourceInitialSettings()
+                  settings.Rows = "[SportsData].[Nation], [SportsData].[Date]"
+                  settings.Columns = "[SportsData].[Sport]"
+                  settings.Measures = "[Measures].[Budget]"
+                  ' Create an instance of the FlatDataSource
+                  Dim ds = New FlatDataSource(itemSource, GetType(SportsData), settings)
+                  ' Initialize Hierarchy Descriptor
+                  AddHandler ds.InitializeHierarchyDescriptor, AddressOf ds_InitializeHierarchyDescriptor
+                  ' Initialize Measure Descriptor
+                  AddHandler ds.InitializeMeasureDescriptor, AddressOf ds_InitializeMeasureDescriptor
+                  ' Aggregate measures to produce totals
+                  AddHandler ds.AggregateMeasure, AddressOf ds_AggregateMeasure
+                  Return ds
+            End Function
+            Private Sub ds_InitializeHierarchyDescriptor(sender As Object, e As InitializeHierarchyDescriptorEventArgs)
+                  Dim level As LevelDescriptor
+                  If e.HierarchyDescriptor.LevelDescriptors.TryGetItem("all", level) Then
+                        Select Case e.HierarchyDescriptor.PropertyDescriptor.Name
+                              Case "Nation"
+                                    level.MemberProvider = Function(item) "All Nations"
+                                    Exit Select
+                              Case "City"
+                                    level.MemberProvider = Function(item) "All Cities"
+                                    Exit Select
+                              Case "Sport"
+                                    level.MemberProvider = Function(item) "All Sports"
+                                    Exit Select
+                        End Select
+                  End If
+            End Sub
+            Private Sub ds_InitializeMeasureDescriptor(sender As Object, e As InitializeMeasureDescriptorEventArgs)
+                  If e.MeasureDescriptor.Name = "Budget" Then
+                        e.MeasureDescriptor.DisplayFormat = "$#"
+                        e.MeasureDescriptor.Aggregation = MeasureAggregation.Average
+                  End If
+            End Sub
+            Private Sub ds_AggregateMeasure(sender As Object, e As AggregateMeasureEventArgs)
+                  If e.MeasureDescriptor.Name = "Budget" Then
+                        Dim total As Double = 0F
+                        Dim count As Double = 0F
+                        For Each o As Object In e.Items
+                              Dim item = TryCast(o, SportsData)
+                              If item IsNot Nothing Then
+                                    total += item.Budget
+                              End If
+                              count += 1F
+                        Next
+                        e.Value = total / count
+                        e.Handled = True
+                  End If
+            End Sub
+      End Class
+End Namespace
+----
+
+[[_Ref398233057]]
+
+include::winpivotgrid-adding-olapdataselector.adoc[]
+
+[[_Ref381022312]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winpivotgrid.html[WinPivotGrid]
+|This section contains topics covering the _WinPivotGrid_™ control for Infragistics® Windows Forms®.
+
+| link:winpivotgrid-using-xmla.html[Using XMLA]
+|This topic explains and demonstrates the _WinPivotGrid_™ data binding using XMLA data Source/Provider.
+
+| link:winpivotgrid-using-adomd.html[Using ADOMD]
+|This topic explains and demonstrates the _WinPivotGrid_™ data binding to ADOMD data Source/Provider.
+
+| link:winpivotgrid-using-the-flatdatasource-dataadapter-classes.html[Using the FlatDataSource DataAdapter classes]
+|This topic explains and demonstrates the FlatDataSource DataAdapter classes to easily bind to the WinPivotGrid.
+
+|====

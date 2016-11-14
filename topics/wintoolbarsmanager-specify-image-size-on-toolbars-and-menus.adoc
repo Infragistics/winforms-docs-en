@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-specify-image-size-on-toolbars-and-menus",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{BFC46728-E646-44BE-B257-CFACDB58B09F}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Specify Image Size on Toolbars and Menus
+
+The WinToolbarsManager™ component can display either large (32 x 32) or small (16 x 16) images on toolbars and menus. A large image and a small image can be selected for each tool. The image size to be displayed can be specified for the toolbars or menus by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~uselargeimagesonmenu.html[UseLargeImagesonMenu]"]  or  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~uselargeimagesontoolbar.html[UseLargeImagesonToolbar]"]  properties of the element.
+
+== At Design Time
+
+You can add an ImageList control to the form. Images can then be added to the imagelist, and the size can be set so that it will either contain large or small images. The Height and Width properties should both be set to 32 for a large imagelist, or to 16 for a small imagelist. The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~imagelistsmall.html[ImageListSmall]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~imagelistlarge.html[ImageListLarge]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolBarsManager]"]  element can then be assigned to the corresponding imagelist that was created.
+
+To specify which image size is to be used on menus and toolbars, set the UseLargeImagesonMenu and UseLargeImagesonToolBar properties. To add an image from an imagelist to a tool, right click on the UltraToolBarsManager element and select "Customize". Go to the Tools tab, select the tool, and then "Basic Props" on the right. A small and a large image can be assigned to the tool by selecting them from the small and large imagelists.
+
+== At Run Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Specify_Image_Size_on_Toolbars_and_Menus_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Sets the menus to display large images
+	Me.UltraToolbarsManager1.UseLargeImagesOnMenu = True
+	' Sets the toolbars to display small images
+	Me.UltraToolbarsManager1.UseLargeImagesOnToolbar = False
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Specify_Image_Size_on_Toolbars_and_Menus_Load(
+  object sender, EventArgs e)
+{
+	// Sets the menus to display large images
+	this.ultraToolbarsManager1.UseLargeImagesOnMenu = true;
+	// Sets the toolbars to display small images
+	this.ultraToolbarsManager1.UseLargeImagesOnToolbar = false;
+}
+----

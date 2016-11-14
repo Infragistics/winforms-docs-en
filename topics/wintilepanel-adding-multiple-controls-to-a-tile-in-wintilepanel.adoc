@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-adding-multiple-controls-to-a-tile-in-wintilepanel",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I"],
+    "guid": "{D9A04106-8EF8-4F48-9832-5A3DF31379EB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Multiple Controls to a Tile in WinTilePanel
+
+Often there may be scenarios where you want to have a tile that is composed of more than one control. In such cases you should assign a Panel, UltraPanel, User control or some other container to the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile.html[Tile]"]  object’s  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~control.html[Control]"]  property and then add multiple controls to that container.
+
+This topic shows you how multiple controls can be added to a tile in WinTilePanel™ using the WinPanel™ container control. It is assumed that you have an UltraTilePanel, UltraPanel, UltraDayView and UltraWeekView controls dropped onto your form.
+
+*In Visual Basic:*
+
+----
+'Create and add a new tile to the UltraTilePanel.Tiles collection 
+Dim tile1 As New Infragistics.Win.Misc.UltraTile()
+tile1.BackColor = Color.PaleTurquoise 
+tile1.Name = "Tile1" 
+Me.ultraTilePanel1.Tiles.Add(tile1) 
+' Place UltraPanel container control on a tile
+tile1.Control = Me.ultraPanel1 
+Me.ultraPanel1.AutoScroll = True 
+' Add controls to the ultraPanel container control 
+Me.ultraPanel1.ClientArea.Controls.Add(Me.ultraDayView1) 
+Me.ultraPanel1.ClientArea.Controls.Add(Me.ultraWeekView1)
+----
+
+*In C#:*
+
+----
+//Create and add a new tile to the UltraTilePanel.Tiles collection
+Infragistics.Win.Misc.UltraTile tile1 = new Infragistics.Win.Misc.UltraTile();
+tile1.BackColor = Color.PaleTurquoise;
+tile1.Name = "Tile1";
+this.ultraTilePanel1.Tiles.Add(tile1);
+// Place UltraPanel container control on a tile
+tile1.Control = this.ultraPanel1;
+this.ultraPanel1.AutoScroll = true;
+----
+
+----
+// Add controls to the ultraPanel container control
+this.ultraPanel1.ClientArea.Controls.Add(this.ultraDayView1);
+this.ultraPanel1.ClientArea.Controls.Add(this.ultraWeekView1);
+----
+
+image::Images\WinTilePanel_Adding_Multiple_Controls_to_a_Tile_in_WinTilePanel_01.png[]
+
+== Related Topics
+
+* link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code]

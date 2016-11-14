@@ -1,0 +1,26 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-scrolling-a-row-into-view",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{FAA13791-6E9F-4E77-B679-032C668AB189}",
+    "buildFlags": [],
+    "createdOn": "2008-12-06T17:03:47Z"
+}
+|metadata|
+////
+
+= Scrolling a Row into View
+
+If you need to scroll a particular row to the top of WinGrid™, you can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscrollregion~firstrow.html[FirstRow]"]  property to the desired row.
+
+To scroll the 22nd row to the top of WinGrid, place the following example code in an event handler such as a button’s Click event.
+
+*In Visual Basic:*
+[source, vb]
+Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).FirstRow = Me.UltraGrid1.DisplayLayout.Rows(21)
+
+*In C#:*
+[source, csharp]
+this.ultraGrid1.DisplayLayout.RowScrollRegions[0].FirstRow = this.ultraGrid1.DisplayLayout.Rows[21];

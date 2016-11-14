@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimezoneeditor-interacting-with-timezoneinfo-objects",
+    "controlName": ["WinTimeZoneEditor"],
+    "tags": ["How Do I"],
+    "guid": "{9C088C7E-640B-4218-9B9F-F1C95E185F73}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Interacting with TimeZoneInfo Objects
+
+The following code demonstrates how to use the Infragistics.Win.TimeZoneInfo object to obtain information about the time zones registered on the local computer.
+
+Drag and drop the UltraTimeZoneEditor control and an UltraButton on to your Windows Form. Write the following code in the button click event.
+
+*In Visual Basic:*
+
+----
+Dim tzInfo As Infragistics.Win.TimeZoneInfo = DirectCast(ultraTimeZoneEditor1.SelectedItem.DataValue, Infragistics.Win.TimeZoneInfo)
+Console.WriteLine("The time zone selected is: {0}", tzInfo.DisplayName) 
+'Get the local Time Zone 
+'Infragistics.Win.TimeZoneInfo tzInfo = Infragistics.Win.TimeZoneInfo.CurrentTimeZone 
+' Display the names for standard time and daylight saving time for the local time zone. 
+Console.WriteLine("Daylight saving time name: {0}", tzInfo.DaylightName) 
+Console.WriteLine("Standard time name: {0}", tzInfo.StandardName) 
+Console.WriteLine("The time zone selected's offset from Coordinated Universal Time(UTC) is: {0}", tzInfo.UtcOffset.ToString()) 
+Console.WriteLine("The Daylight savings Time Begins on:{0}", tzInfo.DaylightDate.ToLongDateString()) 
+Console.WriteLine("Standard time begins on: {0} " & tzInfo.StandardDate.ToLongDateString())
+----
+
+*In C#:*
+
+----
+Infragistics.Win.TimeZoneInfo tzInfo = (Infragistics.Win.TimeZoneInfo) ultraTimeZoneEditor1.SelectedItem.DataValue;
+Console.WriteLine("The time zone selected is: {0}", tzInfo.DisplayName);
+//Get the local Time Zone 
+//Infragistics.Win.TimeZoneInfo tzInfo = Infragistics.Win.TimeZoneInfo.CurrentTimeZone;
+// Display the names for standard time and daylight saving time for the local time zone.
+Console.WriteLine("Daylight saving time name: {0}", tzInfo.DaylightName);
+Console.WriteLine("Standard time name: {0}", tzInfo.StandardName);
+Console.WriteLine("The time zone selected's offset from Coordinated Universal Time(UTC) is:  {0}", tzInfo.UtcOffset.ToString());
+Console.WriteLine("The Daylight savings Time Begins on:{0}", tzInfo.DaylightDate.ToLongDateString());
+Console.WriteLine("Standard time begins on: {0} " + tzInfo.StandardDate.ToLongDateString());
+----
+
+The above code generates the following output , when the button is clicked after selecting Eastern Time (US & Canada) time zone from the ComboEditor.
+
+[source]
+----
+/* The time zone selected is: (GMT-05:00) Eastern Time (US & Canada)
+----
+
+[source]
+----
+Daylight saving time name: Eastern Daylight Time
+----
+
+[source]
+----
+Standard time name: Eastern Standard Time
+----
+
+[source]
+----
+The time zone selected's offset from Coordinated Universal Time(UTC) is: 05:00:00
+----
+
+[source]
+----
+The Daylight savings Time Begins on:Sunday, March 08, 2009
+----
+
+[source]
+----
+Standard time begins on Sunday, November 01, 2009*/
+----

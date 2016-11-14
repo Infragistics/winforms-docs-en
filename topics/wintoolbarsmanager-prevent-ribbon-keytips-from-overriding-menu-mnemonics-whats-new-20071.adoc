@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-prevent-ribbon-keytips-from-overriding-menu-mnemonics-whats-new-20071",
+    "controlName": [],
+    "tags": [],
+    "guid": "{1D6F7FB2-C074-4C02-B487-B9DD72E5024C}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-12T15:27:19Z"
+}
+|metadata|
+////
+
+= Prevent Ribbon KeyTips from Overriding Menu Mnemonics
+
+Standard toolbars and main menus from WinToolbarsManager™ cannot be displayed while the Ribbon is displayed if the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~office2007uicompatibility.html[Office2007Compatibility]"]  property is set to True. However, these toolbars and menus are hidden, not removed. Therefore, the end user can still access those toolbars and menus if they know the correct mnemonic. However, in the 2006 Volume 3 release, the Ribbon would automatically assign KeyTips to the Quick Access Toolbar, Application Menu, Tabs, and Tools without regard to what the hidden main menu mnemonics were.
+
+By setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~reservemenubarkeytips.html[ReserveMenuBarKeyTips]"]  property to True, the Ribbon will not create a KeyTip that conflicts with the mnemonics on a hidden main menu bar. When the end user types in a reserved mnemonic, a message appears with whatever text you place in the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~reservedkeytiptooltiptext.html[ReservedKeyTipToolTipText]"]  property. The end user can then continue navigating through the hidden menu to a tool.
+
+== Related Topics
+
+link:wintoolbarsmanager-prevent-ribbon-keytips-from-conflicting-with-hidden-main-menu-mnemonics.html[Prevent Ribbon KeyTips from Conflicting with Main Menu Mnemonics]

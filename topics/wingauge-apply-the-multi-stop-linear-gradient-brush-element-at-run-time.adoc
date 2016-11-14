@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{FEAEF449-649B-41B4-9032-7231E7D665E2}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Multi Stop Linear Gradient Brush Element at Run Time
+
+If you want more than two colors of a property of your gauge to blend into each other in a linear way, apply the Multi-Stop Linear Gradient brush element to the property.
+
+*To apply the Multi-Stop Linear Gradient brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create instances the classes.
+
+*In Visual Basic:*
+
+----
+Dim myMultiStopLinearGradientBrushElement As _
+  New MultiStopLinearGradientBrushElement()
+Dim colorStop1 As New ColorStop()
+Dim colorStop2 As New ColorStop()
+Dim colorStop3 As New ColorStop()
+Dim myLinearGauge As LinearGauge = Me.UltraGauge1.Gauges(0)
+----
+
+*In C#:*
+
+----
+MultiStopLinearGradientBrushElement myMultiStopLinearGradientBrushElement = 
+  new MultiStopLinearGradientBrushElement();
+ColorStop colorStop1 = new ColorStop();
+ColorStop colorStop2 = new ColorStop();
+ColorStop colorStop3 = new ColorStop();
+LinearGauge myLinearGauge = this.ultraGauge1.Gauges[0] as LinearGauge;
+----
+
+[start=4]
+. Set the following properties:
+
+** start color -- 254, 42, 0,
+** end color -- 0, 118, 0
+** color stop -- Offset: 0.637; Color: 212, 254, 0
+** angle -- 90
+
+*In Visual Basic:*
+
+----
+myMultiStopLinearGradientBrushElement.Angle = 90.0F
+colorStop1.Color = System.Drawing.Color.FromArgb(CInt(CByte(254)), _
+  CInt(CByte(42)), CInt(CByte(0)))
+colorStop2.Color = System.Drawing.Color.FromArgb(CInt(CByte(212)), _
+  CInt(CByte(254)), CInt(CByte(0)))
+colorStop2.Stop = 0.637931F
+colorStop3.Color = System.Drawing.Color.FromArgb(CInt(CByte(0)), _
+  CInt(CByte(118)), CInt(CByte(0)))
+colorStop3.Stop = 1.0F
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop1)
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop2)
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop3)
+myLinearGauge.BrushElement = myMultiStopLinearGradientBrushElement
+----
+
+*In C#:*
+
+----
+myMultiStopLinearGradientBrushElement.Angle = 90F;
+colorStop1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), 
+  ((int)(((byte)(42)))), ((int)(((byte)(0)))));
+colorStop2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), 
+  ((int)(((byte)(254)))), ((int)(((byte)(0)))));
+colorStop2.Stop = 0.637931F;
+colorStop3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), 
+  ((int)(((byte)(118)))), ((int)(((byte)(0)))));
+colorStop3.Stop = 1F;
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop1);
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop2);
+myMultiStopLinearGradientBrushElement.ColorStops.Add(colorStop3);
+myLinearGauge.BrushElement = myMultiStopLinearGradientBrushElement;
+----
+
+== Related Topics
+
+link:wingauge-multi-stop-linear-gradient-brush-element.html[Multi-Stop Linear Gradient Brush Element]
+
+link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-at-design-time.html[Apply the Multi-Stop Linear Gradient Brush Element at Design Time]
+
+link:wingauge-apply-the-multi-stop-linear-gradient-brush-element-using-the-gauge-designer.html[Apply the Multi-Stop Linear Gradient Brush Element Using the Gauge Designer]

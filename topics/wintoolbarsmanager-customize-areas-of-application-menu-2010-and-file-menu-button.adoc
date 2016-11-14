@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-customize-areas-of-application-menu-2010-and-file-menu-button",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "2bd8f852-1c2b-4928-88f7-1e87b17ced3d",  
+    "buildFlags": [],
+    "createdOn": "2010-09-23T21:33:24.8113339Z"
+}
+|metadata|
+////
+
+= Customize Areas of Application Menu 2010 and File Menu Button
+
+The Office 2010 style application menu of the Ribbon consists of the navigation menu, the content area and the header. These areas can be customized using Appearance properties.
+
+The following example code assumes that an UltraToolbarsManager component is dropped onto your form and the FileMenuStyle property is set to ApplicationMenu2010. For information about application menu 2010 please see the link:wintoolbarsmanager-office-2010-style-application-menu.html[Office 2010 Style Application Menu] topic.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+' The application menu 2010 is displayed by clicking on the File Menu button in the upper left corner of the ribbon. 
+' This object can be accessed via the ApplicationMenu2010 property of the Ribbon
+Dim appMenu2010 As ApplicationMenu2010 = Me.UltraToolbarsManager1.Ribbon. ApplicationMenu2010
+' Appearance settings for Navigation Menu, Content Area and Header of Office 2010 style application menu
+appMenu2010.NavigationMenu.Settings.Appearance.BackColor = Color.BlanchedAlmond
+appMenu2010.NavigationMenu.Settings.HotTrackAppearance.BackColor = Color.LightBlue
+appMenu2010.ContentArea.Settings.Appearance.BackColor = Color.Ivory
+appMenu2010.ContentArea.Settings.PressedAppearance.BackColor = Color.Brown
+appMenu2010.HeaderAppearance.BackColor = Color.Red
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+// The application menu 2010 is displayed by clicking on the File Menu button in the upper left corner of the ribbon. 
+// This object can be accessed via the ApplicationMenu2010 property of the Ribbon
+ApplicationMenu2010 appMenu2010= this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010;
+// Appearance settings for Navigation Menu, Content Area and Header of Office 2010 style application menu
+appMenu2010.NavigationMenu.Settings.Appearance.BackColor = Color.BlanchedAlmond;
+appMenu2010.NavigationMenu.Settings.HotTrackAppearance.BackColor = Color.LightBlue;
+appMenu2010.ContentArea.Settings.Appearance.BackColor = Color.Ivory;
+appMenu2010.ContentArea.Settings.PressedAppearance.BackColor = Color.Brown;
+appMenu2010.HeaderAppearance.BackColor = Color.Red;
+----
+
+The file menu button, visible on the top left corner of the Ribbon, drops down the default application menu or the Office 2010 style application menu depending upon the FileMenuStyle property setting. If FileMenuStyle is set to None, the menu button will be hidden and hence none of the application menu will be displayed.
+
+The FileMenuButtonCaptionVisible property can be set to False to hide the caption. By default it is set to True and the button displays a default caption "File". You can change the caption using the FileMenuButtonCaption property.
+
+The following code example shows you the customization options available for the file menu button.
+
+*In Visual Basic:*
+
+----
+' Appearance settings for the File Menu Button
+Me.UltraToolbarsManager1.Ribbon.FileMenuButtonActiveAppearance.BackColor = Color.Green
+Me.UltraToolbarsManager1.Ribbon.FileMenuButtonAppearance.BackColor = Color.Yellow
+Me.UltraToolbarsManager1.Ribbon.FileMenuButtonCaption = "FileMenu"
+Me.UltraToolbarsManager1.Ribbon.FileMenuButtonHotTrackAppearance.BackColor = Color.Red
+----
+
+*In C#:*
+
+----
+// Appearance settings for the File Menu Button
+this.ultraToolbarsManager1.Ribbon.FileMenuButtonActiveAppearance.BackColor = Color.Green;
+this.ultraToolbarsManager1.Ribbon.FileMenuButtonAppearance.BackColor = Color.Yellow;
+this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = "FileMenu";
+this.ultraToolbarsManager1.Ribbon.FileMenuButtonHotTrackAppearance.BackColor = Color.Red;
+----
+
+Related Topic:
+
+link:wintoolbarsmanager-add-tools-to-application-menu-2010.html[Add Tools to Application Menu 2010]

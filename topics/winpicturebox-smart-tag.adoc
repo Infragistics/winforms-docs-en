@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpicturebox-smart-tag",
+    "controlName": ["WinPictureBox"],
+    "tags": ["Getting Started"],
+    "guid": "{7DC85868-B2D3-4995-8C4B-4C61F01B0224}",  
+    "buildFlags": [],
+    "createdOn": "2005-09-11T00:00:00Z"
+}
+|metadata|
+////
+
+= WinPictureBox Smart Tag
+
+In Visual Studio 2005 (.NET Framework 2.0), each Infragistics Windows Forms control/component is equipped with a Smart Tag. By simply selecting the control/component, a Smart Tag anchor appears. When you click this anchor, a pop-up panel appears, providing you with quick and easy access to the most common properties and settings of the control/component.
+
+The WinPictureBox™ Smart Tag contains the name of the control, as well as the following sections:
+
+* Appearance -- Provides common tasks involving the appearance, look, and feel of the control.
+* Layout -- Offers properties that will determine where and how the control is placed on the form.
+
+See below for a description of the item (e.g., field, drop-down list, checkbox) in each section, as well as the item's corresponding property in the properties grid.
+
+image::images/WinEditors_The_WinPictureBox_Smart_Tag_01.png[ultrapicturebox's smart tag]
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance|Description|Corresponding Property
+
+|Image
+|Click the ellipsis (...) and an open file dialog will display. Choose the image you would like to show in the WinPictureBox.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrapicturebox~image.html[Image]"] 
+
+|Image Transparent Color
+|Click the drop-down and a color picker will display. Choose the color that will show as transparent in the image.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrapicturebox~imagetransparentcolor.html[ImageTransparentColor]"] 
+
+|Reset Image
+|Clicking this will reset the WinPictureBox's Image property to default (no picture).
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrapicturebox~image.html[Image]"] 
+
+|Reset Image Transparent 
+
+Color
+|Clicking this will reset the WinPictureBox's ImageTransparentColor property to default (no transparent color).
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrapicturebox~imagetransparentcolor.html[ImageTransparentColor]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Layout|Description|Corresponding Property
+
+|AutoSize
+|Checking this checkbox will cause the WinPictureBox to resize itself based on the dimensions of the image inside.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrapicturebox~autosize.html[AutoSize]"] 
+
+|====

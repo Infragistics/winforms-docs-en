@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-linear-misc-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{3A8AE257-D2EC-45C6-B029-32C0AF8644A3}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Misc Pane
+
+The Misc pane is used so that a gauge can scale with a Radial gauge.
+
+*Misc* -- Setting this value to True constrains the source bounds to a square, just like Radial gauges have always done by default so that they appear circular and not oblique. The default value for this property is false, except for radial gauges. So, if you have a gauge and you want it to scale properly with a Radial gauge which is underneath, set its Square property to true and its bounds will scale along with the Radial gauge (whose Square property is set to true by default).
+
+image::images/Linear_Misc_Pane_01.png[wingauge's linear misc pane.]
+
+== Related Topic
+
+link:wingauge-linear-gauge.html[Linear Gauge]

@@ -1,0 +1,108 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-specifying-fixed-columns",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{CF3598F9-9A7E-438D-A020-3B7E850D9114}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Specifying Fixed Columns
+
+In previous versions of the WinGrid™, locking columns so that they could not be scrolled out of view was a manual process, requiring you to create a column scrolling region, assign columns to it exclusively, and set various properties. New properties of the DisplayLayout and HeaderBase objects make it possible to quickly set up non-scrolling columns and groups without having to use column scroll regions.
+
+To enable fixed (non-scrolling) columns, take the following steps:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. Enable Fixed Headers for the Grid. Fixed Headers must be enabled or disabled at the grid level, because using them causes the record selectors to remain visible when scrolling, and this applies to all bands. To enable fixed headers grid-wide, add the following code to the grid's InitializeLayout event:
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.UseFixedHeaders = True
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.UseFixedHeaders = true;
+----
+
+[start=3]
+. Once you have enabled fixed headers, you specify which column(s) or group(s) in a specific band you want to remain fixed by setting the Fixed property of the associated Header object. The following code illustrates how to do this at the column level:
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns("CustomerID").Header.Fixed = True
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns("ContactName").Header.Fixed = True
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["CustomerID"].Header.Fixed = true;
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["ContactName"].Header.Fixed = true;
+----
+
+[start=4]
+. When you set the UseFixedHeaders property to True, the columns will display a "fix column" push-pin icon in their header by default. This gives the user a quick and easy interface they can use to select which columns/groups will be frozen. You have several options for controlling this interface. You can use the default push-pin button in the column/group header. If you have column & group swapping enabled, you can remove the button and instead show options to fix or unfix columns in the group/column swapping drop-down. Or you can hide the interface completely in order to retain control in code over the freezing and unfreezing of columns.
+
+Note that because you can set this option at the band level, you can control fixed columns on a band-by-band basis, even though the feature is enabled grid-wide. If you want fixed columns only in a single band, set them up in that band and remove the UI elements that provide access to the feature from the other bands.
+
+Use the following code to disable the display of the push-pin icon in the column and group headers of a band:
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Override.FixedHeaderIndicator = FixedHeaderIndicator.None
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Override.FixedHeaderIndicator = FixedHeaderIndicator.None;
+----
+
+[start=5]
+. If you want to alter the appearance of the fixed headers, you can do so by using the FixedHeaderAppearance property of the Override object. Likewise you can alter the appearance of the cells associated with the fixed headers by using the FixedCellAppearance property of the Override object. You can also change the color of the single pixel wide line that's displayed between the fixed cells and non-fixed cells by using the FixedCellSeparatorColor property of the Override object.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.FixedHeaderAppearance.BackColor = Color.LightYellow
+Me.UltraGrid1.DisplayLayout.Override.FixedCellAppearance.BackColor = Color.LightYellow
+Me.UltraGrid1.DisplayLayout.Override.FixedCellSeparatorColor = Color.Red
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.FixedHeaderAppearance.BackColor = Color.LightYellow;
+this.ultraGrid1.DisplayLayout.Override.FixedCellAppearance.BackColor = Color.LightYellow;
+this.ultraGrid1.DisplayLayout.Override.FixedCellSeparatorColor = Color.Red;
+----
+
+The following snapshot displays fixed headers in WinGrid. The columns appearing in the LightYellow color are the fixed columns.
+
+image::Images\WinGrid_Specify_Fixed_Columns_01.png[specify fixed columns in ultragrid]

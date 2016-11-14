@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincolorpicker-smart-tag",
+    "controlName": ["WinColorPicker"],
+    "tags": ["API"],
+    "guid": "{AEC87A80-F5A3-4D93-A6A8-EC4D674C9856}",  
+    "buildFlags": [],
+    "createdOn": "2005-09-11T00:00:00Z"
+}
+|metadata|
+////
+
+= WinColorPicker Smart Tag
+
+In Visual Studio 2005 (.NET Framework 2.0), each Infragistics Windows Forms control/component is equipped with a Smart Tag. By simply selecting the control/component, a Smart Tag anchor appears. When you click this anchor, a pop-up panel appears, providing you with quick and easy access to the most common properties and settings of the control/component.
+
+The WinColorPicker™ Smart Tag contains the name of the control, as well as the following sections:
+
+* Appearance -- Provides common tasks involving the appearance, look, and feel of the control.
+* Behavior -- Provides easy access to properties that govern how the control behaves on the form.
+* Misc -- Provides various options that will enhance the overall look or performance of the control.
+
+See below for a description of the item (e.g., field, drop-down list, checkbox) in each section, as well as the item's corresponding property in the properties grid.
+
+image::images/WinEditors_The_WinColorPicker_Smart_Tag_01.png[ultracolorpicker's smart tag]
+
+[options="header", cols="a,a,a"]
+|====
+|Appearance|Description|Corresponding Property
+
+|Display Style
+|Change the style of the WinColorPicker to make it look like Office 2000, Office XP, Office 2003, Visual Studio 2005, Office 2007.
+| pick:[win-forms="link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.texteditorcontrolbase~displaystyle.html[DisplayStyle]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Behavior|Description|Corresponding Property
+
+|Show Overflow Indicator
+|When the Text property is too long to be seen in the editor, a small box with two right arrows shows up to indicate that there is more text.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.texteditorcontrolbase~showoverflowindicator.html[ShowOverflowIndicator]"] 
+
+|Color
+|Select a color for the WinColorPicker.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracolorpicker~color.html[Color]"] 
+
+|Default Color
+|Select a default color for the WinColorPicker.
+| pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracolorpicker~defaultcolor.html[DefaultColor]"] 
+
+|====
+
+[options="header", cols="a,a,a"]
+|====
+|Misc|Description|Corresponding Property
+
+|Buttons Left
+|Click the ellipsis (...) to open the ButtonsLeft collection. This is a collection of custom buttons that can be placed on the left of the editor.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.editorbuttoncontrolbase~buttonsleft.html[ButtonsLeft]"] 
+
+|Buttons Right
+|Click the ellipsis (...) to open the ButtonsRight collection. This is a collection of custom buttons that can be placed on the right of the editor.
+| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.editorbuttoncontrolbase~buttonsright.html[ButtonsRight]"] 
+
+|====

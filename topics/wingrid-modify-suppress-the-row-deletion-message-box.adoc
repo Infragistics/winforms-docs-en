@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-modify-suppress-the-row-deletion-message-box",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{9C888D82-13C7-4827-81BF-1BB497B3B46B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Modify/Suppress the Row Deletion Message Box
+
+If you would like to create your own message box when rows are deleted or merely wish to suppress the default message box from appearing, it only takes one line of code.
+
+Place this code within the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~beforerowsdeleted_ev.html[BeforeRowsDeleted]"]  event of the WinGrid™ control. This event passes in specific  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.beforerowsdeletedeventargs.html[BeforeRowsDeletedEventArgs]"] .
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_BeforeRowsDeleted(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs) _
+  Handles UltraGrid1.BeforeRowsDeleted
+	e.DisplayPromptMsg = False
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_BeforeRowsDeleted(object sender, 
+  Infragistics.Win.UltraWinGrid.BeforeRowsDeletedEventArgs e)
+{
+	e.DisplayPromptMsg = false;
+}
+----

@@ -1,0 +1,59 @@
+﻿////
+|metadata|
+{
+    "name": "winschedule-display-week-numbers",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{9DA534C8-D6D8-4CCA-B589-ABFDF7DC3B84}","buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Display Week Numbers
+
+This topic applies to the following WinSchedule™ controls:
+
+* WinMonthViewSingle™
+* WinMonthViewMulti™
+* WinCalendarCombo™
+
+Week numbers can be displayed in a number of the WinSchedule controls. In this code the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsingle~weeknumbersvisible.html[WeekNumbersVisible]"]  property is used to display week numbers in the `WinMonthViewSingle`, `WinMonthViewMulti`, and the `WinCalendarCombo`.
+
+
+*In Visual Basic:*
+[source, vb]
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub Display_Week_Numbers_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UltraMonthViewSingle1.WeekHeaderDisplayStyle = _
+          WeekHeaderDisplayStyle.WeekNumber
+        Me.UltraMonthViewMulti1.WeekNumbersVisible = True
+        Me.UltraCalendarCombo1.WeekNumbersVisible = True
+End Sub
+
+
+
+*In C#:*
+[source, csharp]
+using Infragistics.Win.UltraWinSchedule;
+...
+private void Display_Week_Numbers_Load(object sender, EventArgs e)
+{
+        this.ultraMonthViewSingle1.WeekHeaderDisplayStyle = 
+          WeekHeaderDisplayStyle.WeekNumber;
+        this.ultraMonthViewMulti1.WeekNumbersVisible = true;
+        this.ultraCalendarCombo1.WeekNumbersVisible = true;
+}    
+
+The following screen shots show what each one of the controls looks like with the week numbers displaying on them.
+
+*WinMonthViewSingle* +
+image:images\WinSchedule_Display_Week_Numbers_01.png[alt=""]
+
+*WinMonthViewMulti* +
+image:images\WinSchedule_Display_Week_Numbers_02.png[alt=""]
+
+*WinCalendarCombo* +
+image:images\WinSchedule_Display_Week_Numbers_03.png[alt=""]

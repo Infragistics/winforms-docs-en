@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-display-a-checkbox-for-the-statebutton-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{C816B700-A191-4373-A2AA-A63AD501ED51}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Display a Checkbox for the StateButton Tool
+
+A  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButton]"]  tool allows the user to select a tool that will toggle between two different states. When the StateButton is located on a menu, it may be necessary to display a checkbox next to the tool to indicate to the user which state is currently selected.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool~menudisplaystyle.html[MenuDisplayStyle]"]  property for the tool can be set at design-time or at run-time. At design-time, right-click on the UltraToolBarsManager and select "Customize". Go to the "Tools" tab and add a new StateButton Tool if one has not yet been added. Select the tool and then change the MenuDisplayStyle property on the right to "DisplayCheckmark".
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Display_a_Checkbox_for_the_StateButton_Tool_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create a statebutton tool and a menu tool
+	Dim statebuttontool1 As New StateButtonTool("Align")
+	Dim menu1 As New PopupMenuTool("Layout")
+	' Set the caption for each tool
+	menu1.SharedProps.Caption = "Layout"
+	statebuttontool1.SharedProps.Caption = "Align"
+	' Add the tools to the Tool collection
+	Me.UltraToolbarsManager1.Tools.Add(statebuttontool1)
+	Me.UltraToolbarsManager1.Tools.Add(menu1)
+	' Add the statebutton tool to the menu
+	menu1.Tools.Add(statebuttontool1)
+	' Add the menu tool to the main menu bar
+	Me.UltraToolbarsManager1.Toolbars(0).Tools.Add(menu1)
+	' Set the display style to display a checkbox rather than an image
+	statebuttontool1.MenuDisplayStyle = _
+	  StateButtonMenuDisplayStyle.DisplayCheckmark
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Display_a_Checkbox_for_the_StateButton_Tool_Load(
+  object sender, EventArgs e)
+{
+	// Create a statebutton tool and a menu tool
+	StateButtonTool statebuttontool1 = new StateButtonTool("Align");
+	PopupMenuTool menu1 = new PopupMenuTool("Layout");
+	// Set the caption for each tool
+	menu1.SharedProps.Caption = "Layout";
+	statebuttontool1.SharedProps.Caption = "Align";
+	// Add the tools to the Tool collection
+	this.ultraToolbarsManager1.Tools.Add(statebuttontool1);
+	this.ultraToolbarsManager1.Tools.Add(menu1);
+	// Add the statebutton tool to the menu
+	menu1.Tools.Add(statebuttontool1);
+	// Add the menu tool to the main menu bar
+	this.ultraToolbarsManager1.Toolbars[0].Tools.Add(menu1);
+	// Set the display style to display a checkbox rather than an image
+	statebuttontool1.MenuDisplayStyle = 
+	  StateButtonMenuDisplayStyle.DisplayCheckmark;
+}
+----

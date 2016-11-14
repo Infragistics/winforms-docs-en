@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-about-wineditor-controls",
+    "controlName": ["WinEditors"],
+    "tags": ["Data Presentation","Getting Started","Validation"],
+    "guid": "{B0944F7F-7FEB-49A4-929E-15DFE54B3BFB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinEditor Controls
+
+The group of WinEditor™ controls are comprised of thirteen controls.
+
+* link:wincalculator.html[WinCalculator]™ -- Customizable calculator with features such as Appearance Support, Built-in Theming and Customizable Actions :
+* link:wincalculatordropdown.html[WinCalculatorDropDown]™ -- Drop-down customizable calculator with the features such as Appearance support, Overflow Indicator and Nul text.
+* link:wincheckeditor.html[WinCheckEditor]™-- Similar to the check box provided with the .NET framework, but with additional features such as Automatic Text Wrapping and Multiple Check Styles.
+* link:wincolorpicker.html[WinColorPicker]™ -- Emulates the Visual Studio color picker and displays custom colors, web colors, and a customized palette.
+* link:wincomboeditor.html[WinComboEditor]™ -- Similar to the combo box provided with the .NET framework, but with additional features such as List Sorting and Limit to Last Validation.
+* link:wincurrencyeditor.html[WinCurrencyEditor]™ -- Flexible currency editor that supports internationalization and masked display mode.
+* link:windatetimeeditor.html[WinDateTimeEditor]™ -- Similar to the data time editor provided with the .NET framework, but with additional features such as Restrict User Selection and Spin Button.
+* link:winfontnameeditor.html[WinFontNameEditor]™ -- ComboBox-like control with additional features such as Automatic Word Completion, and List sorting.
+* link:winnumericeditor.html[WinNumericEditor]™ -- Flexible numeric editor that supports integral and double types with a masked display mode.
+* link:winoptionset.html[WinOptionSet]™ -- Provides a mutually exclusive selection similar to a set of radio buttons.
+* link:winpicturebox.html[WinPictureBox]™ -- Displays a single image similar to the one provided in the .NET framework, but with additional features such as Bindable Image and Image Scaling.
+* link:wintexteditor.html[WinTextEditor]™ -- Provides a text editor similar to the one provided in the .NET framework, but with additional features such as Appearance Support and Built-in Theming.
+* link:wintimezoneeditor.html[WinTimeZoneEditor]™ -- Provides a ComboBox-like control, with additional features such as Appearance Support and List Sorting.
+
+Using the powerful Infragistics link:win-plf-overview.html[Presentation Layer Framework™], most the stand-alone Windows Forms editors can also be embedded within the Infragistics WinGrid™, WinTree™, WinExplorerBar™, and WinSchedule™ controls, thereby appearing as intrinsic parts of the host control. The WinEditor controls use an EmbeddableEditor object model that makes it possible for a developer to design a highly customized editor that can be used in any Infragistics Windows Forms element that supports EmbeddableEditors. Support for embeddable editors results in improvements and additions to editing functionality, as well as benefits such as automatic support for ink handling on the Tablet PC platform.
+
+Infragistics Embeddable Editors give you a wide range of options when designing the data input features of your application. Embeddable editors are implemented in two ways: either as stand-alone controls, or as intrinsic parts of other controls. Typically, an embeddable editor that works within another control is associated with an object of that control that is responsible for data typing or data entry. For example, in the UltraWinGrid the editors are associated with the UltraGridColumn object, because that object that determines the type of data being edited.
+
+== Editor Details
+
+Editor Buttons: Editor buttons are displayed inside the editor control to the left and/or right of the text area. Editor buttons generate events, which can be used to take actions such as invoke a custom editing interface or modify the value contained in the editor. There are five types of Editor Buttons available: Standard Button, Auto Repeat Button, State Button, Spin Button and Drop Down Button.
+
+Appearances: Editors use Infragistics' Presentation Layer Framework Appearance object to apply colors, fonts, images, text alignment, etc.
+
+Selectable Text: SelectionStart and SelectionLength properties are provided.
+
+Event Listening: Editors use standard KeyDown, KeyPress, KeyUp, and ValueChanged events.
+
+Auto Reset Method: Resets the editor to it's specified default value, eliminating serialization.
+
+Ink Support for Windows® XP Tablet PC Edition: All Infragistics editors that support text editing have been ink-enabled for compatibility with applications designed for the Tablet PC environment, through the UltraInkProvider.

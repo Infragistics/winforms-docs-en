@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridprintdocument-printing-total-number-of-pages",
+    "controlName": ["WinGridPrintDocument"],
+    "tags": ["Grids","How Do I","Printing"],
+    "guid": "{79F83BCD-533D-4AD5-95AE-7CB73D653F26}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Printing Total Number of Pages
+
+Often it is required to print the total number of pages in a format similar to Page 1of N (N being total number of pages). This is possible with the help of a replacement string (<##> or <Total Pages>) and it can be printed either in the header or footer of the printed document.
+
+The following code can be used to print the total number of pages on a page. Events like  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.ultraprintdocument~pageheaderprinting_ev.html[ultraGridPrintDocument1_PageHeaderPrinting]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.printing.ultraprintdocument~pagefooterprinting_ev.html[ultraGridPrintDocument1_PageFooterPrinting]"]  can be handled for this purpose.
+
+*In Visual Basic:*
+
+----
+'Sets the current page number along with the total number of pages in the footer section
+e.Section.TextRight = "Page <#> of <##>"
+' e. Section.TextRight = “Page<#>of<Total Pages>.”
+----
+
+*In C#:*
+
+----
+//Sets the current page number along with the total number of pages in the footer section
+e.Section.TextRight = "Page <#> of <##>";
+// e. Section.TextRight = "Page<#>of<Total Pages>.”;
+----

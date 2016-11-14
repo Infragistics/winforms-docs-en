@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-searching-for-text-or-a-phrase-in-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{3885A56D-6217-48FC-BD19-39707F209C17}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Searching for Text or a Phrase in WinGrid
+
+This topic shows how you can find text or a phrase in your WinGrid cells. Looking for particular text in WinGrid will require iterating through each cell and checking the cell object’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~text.html[Text]"]  property to see if the string exists. This topic uses the string. Contains method to perform the check. A more elaborate implementation may use more advanced pattern matches such as regular expressions. You can copy and paste this method into your application to add text searching in your WinGrid.
+
+*In Visual Basic:*
+
+----
+''' <summary> 
+    ''' Finds the phrase. 
+    ''' </summary> 
+    ''' <param name="grid">The WinGrid reference.</param> 
+    ''' <param name="s">The string you want to look for.</</param> 
+    Public Shared Sub FindPhrase(ByVal grid As UltraGrid, ByVal s As String)
+        For Each row As UltraGridRow In grid.Rows
+            For Each cell As UltraGridCell In row.Cells
+                If cell.Text.Contains(s) Then
+                    'The cell must be activated first 
+                    cell.Activate()
+                    'Cell must be in edit mode to perform selection 
+                    grid.PerformAction(UltraGridAction.EnterEditMode)
+                    'Start the selection 
+                    cell.SelStart = cell.Text.IndexOf(s)
+                    'For this length 
+                    cell.SelLength = s.Length
+                    'For eye candy, make this the first visible row 
+                    grid.DisplayLayout.RowScrollRegions(0).FirstRow = row
+                    Exit Sub
+                End If
+            Next
+        Next
+    End Sub
+----
+
+*In C#:*
+
+----
+/// <summary>
+        /// Finds the phrase.
+        /// </summary>
+        /// <param name="grid">The WinGrid reference.</param>
+        /// <param name="s">The string you want to look for.</</param>
+        public static void FindPhrase(UltraGrid grid, String s)
+        {
+                       foreach (UltraGridRow row in grid.Rows)
+            {
+                foreach (UltraGridCell cell in row.Cells)
+                {
+                    if (cell.Text.Contains(s))
+                    {
+                        //The cell must be activated first
+                        cell.Activate();
+                        //Cell must be in edit mode to perform selection
+                        grid.PerformAction(UltraGridAction.EnterEditMode);
+                        //Start the selection
+                        cell.SelStart = cell.Text.IndexOf(s);
+                        //For this length
+                        cell.SelLength = s.Length;
+                        //For eye candy, make this the first visible row
+                        grid.DisplayLayout.RowScrollRegions[0].FirstRow = row;
+                        return;
+                    }
+                }
+            }
+        }
+----

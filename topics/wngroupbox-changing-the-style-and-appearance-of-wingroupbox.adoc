@@ -1,0 +1,63 @@
+﻿////
+
+|metadata|
+{
+    "name": "wngroupbox-changing-the-style-and-appearance-of-wingroupbox",
+    "controlName": ["WinGroupBox"],
+    "tags": ["Design Environment","Grouping","How Do I","Styling"],
+    "guid": "{2DF9A314-99AB-4155-9A37-4167B2B91737}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Style and Appearance of WinGroupBox
+
+In 2005 Volume 1, the WinGroupBox™ control was added to the list of Windows Forms controls Infragistics offers. This control has the ability to take on the style of XP, Office2000, Office2003, VisualStudio2005, and Office2007. It also has the ability to show a caption and an image with the caption, and help you contain your controls on your form.
+
+== Styles and Appearances
+
+[start=1]
+. Create a new C# or VB.NET Windows Application. With the form open in design view locate in your Toolbox the UltraGroupBox control and drag one onto your form. You will notice that adding this control to your project added three references to the reference list:
+
+** Infragistics.Shared.v{ProductVersion}
+** Infragistics.Win.Misc.v{ProductVersion}
+** Infragistics.Win.v{ProductVersion}
+
+[start=2]
+. The first property we will look at off the UltraGroupBox is the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultraexpandablegroupbox~viewstyle.html[ViewStyle]"] . Toggling this property will change the look of the control.
+
+____
+The XP style changes the caption text to blue, and also rounds off the corners.
+
+image::Images/WinMisc_Introduction_to_the_WinGroupBox_01.png[shows the wingroupbox's available style changes]
+____
+
+[start=3]
+. The next property we will look at is the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragroupbox~headerposition.html[HeaderPosition]"] . This property determines where the header will be displayed at on the UltraGroupBox. It has several options including:
+
+** *Default* -- Header appears in the default location, based on the ViewStyle of the control.
+** *TopOnBorder* -- Header appears on the upper edge of the control, on the border.
+** *TopInsideBorder* -- Header appears on the upper edge of the control, within the border.
+** *TopOutsideBorder* -- Header appears on the upper edge of the control, outside of the border.
+** *RightOnBorder* -- Header appears on the right edge of the control, on the border.
+** *RightInsideBorder* -- Header appears on the right edge of the control, within the border.
+** *RightOutsideBorder* -- Header appears on the right edge of the control, outside of the border.
+** *BottomOnBorder* -- Header appears on the lower edge of the control, on the border.
+** *BottomInsideBorder* -- Header appears on the lower edge of the control, within the border.
+** *BottomOutsideBorder* -- Header appears on the lower edge of the control, outside of the border.
+** *LeftOnBorder* -- Header appears on the left edge of the control, on the border.
+** *LeftInsideBorder* -- Header appears on the left edge of the control, within the border.
+** *LeftOutsideBorder* -- Header appears on the left edge of the control, outside of the border.
+
+The screenshot below shows the GroupBox with the HeaderPosition property set to RightOnBorder.
+
+image::Images/WinMisc_Introduction_to_the_WinGroupBox_05.png[shows wingroupbox with its style changed, and header positioned to the right.]
+
+[start=4]
+. You can also change the location of the Caption by changing the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragroupbox~captionalignment.html[CaptionAlignment]"]  property. There are the following three options:
+
+** *Near*
+** *Far*
+** *Center*

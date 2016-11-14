@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-creating-scrolling-region-in-row-or-column",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "{82563B91-C59B-4C01-97D7-23DC138CD3FA}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating Scrolling Region in Row or Column
+
+By default, the WinGrid™ starts out with one  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.colscrollregion.html[ColScrollRegion]"]  and one  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscrollregion.html[RowScrollRegion]"] .
+
+== To create a new ColScrollRegion or RowScrollRegion:
+
+To create a new RowScrollRegion or ColScrollRegion, you must use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscrollregion~split.html[Split]"]  method on an existing region. You can optionally specify the starting position of the new region.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.ColScrollRegions(0).Split(0)
+Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).Split(200)
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.ColScrollRegions[0].Split(0);
+this.ultraGrid1.DisplayLayout.RowScrollRegions[0].Split(200);
+----
+
+Specifying a value will create a new region at the specified point within the region. (The value specified must not be greater than the current width or height of the region.) Specifying 0 (or nothing) for the extent of the new region will split the existing region in half.
+
+The following is a snapshot displaying WinGrid with split scroll regions.
+
+image::Images\WinGrid_Create_a_Scrolling_Region_in_a_Row_or_Column_01.png[create a scrolling region in a row or column]

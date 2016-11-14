@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-wintab-and-wintabstrip-terms-and-concepts",
+    "controlName": ["WinTab"],
+    "tags": ["Getting Started"],
+    "guid": "{52949E29-ADBC-4561-8CD4-61772A547313}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinTab and WinTabStrip Terms and Concepts
+
+* *Tab* -- the basic element of the element. Each tab is represented by an UltraTab object which exposes a set on properties and methods relating to its specific tab.
+* *Tabs collection* -- the element exposes a Tabs property that returns a collection of UltraTab objects. Indexers are provided to access a tab via its Index or Key property settings.
+* *VisibleTabs collection* -- the element exposes a VisibleTabs property that returns a collection of the same UltraTab objects. However, this collection maintains the order of the tabs as they are displayed. An indexer is provided to access a tab via its VisibleIndex property setting. This collection also exposes a Sort method to change the display order of the tabs.
+* *Tab header area* -- this is the area of the element that displays the tabs and scroll buttons.
+* *Tab page element* -- this is an UltraTabPageControl that the UltraTabControl creates for each tab in its Tabs collection. When the tab is selected its tab page control is shown in the tab page area and all other tab page controls are hidden.
+
+*Note* the UltraTabStripControl uses the SharedControlsPage for every tab. Per-tab controls are not supported.
+* *Tab Page area* -- this is the area of the element that contains the selected tab's TabPage control.
+* *Client area* -- this is the entire area of the element excluding the Tab header area.
+* *Tab page margins* -- this is the margin area inside the client area surrounding the Tab Page area. The TabPageMargins property is used to specify the left, top, right and bottom margin extents.
+* *Shared controls* -- these are controls that are shared among some or all of the tabs.
+* *Shared controls page* -- Shared controls are placed on a special SharedControlsPage that is automatically created by the tab element. When a tab is selected these controls are re-parented to that tab's tab page.
+
+*Note* There is a design-time verb to show the shared controls page.
+* *Shared controls collection* -- The SharedControls collection keeps track of all shared controls. This collection is automatically maintained at design-time whenever a control is added or removed from the shared controls page.
+* *Excluded shared controls* -- The UltraTab object exposes an ExcludedSharedControls property that returns a collection of the shared controls that should not be re-parented when the tab is selected. Note: there is a design-time verb that brings up a dialog to facilitate the maintenance of this collection.
+* *Active and Selected tabs* -- The ActiveTab is the tab with focus and the SelectedTab is the tab whose tab page is visible. At any time there is only one active tab and one selected tab, however they don't have to be the same tab. For example, if the element has focus and the user presses a navigation key (tab or an arrow key) an appropriate tab is activated, raising the ActiveTabChanging and ActiveTabChanged events. The NavigationStyle property setting determines if that tab is also automatically selected, raising the SelectedTabChanging and SelectedTabChanged events. Pressing the space or enter keys selects the active tab if it isn't already selected.
+
+*Note* When the user clicks on a tab it is first activated then selected regardless of the NavigationStyle setting.

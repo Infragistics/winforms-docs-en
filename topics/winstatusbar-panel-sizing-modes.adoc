@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-panel-sizing-modes",
+    "controlName": ["WinStatusBar"],
+    "tags": ["Getting Started"],
+    "guid": "{BDDF8A05-4770-476E-B353-A18D33D846B3}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Panel Sizing Modes
+
+The WinStatusBar™ provides four modes for controlling the width of the panel. The mode is controlled via the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~sizingmode.html[SizingMode]"]  property of the panel. The panel also exposes a  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~minwidth.html[MinWidth]"]  property to control the minimum width of the panel.
+
+== Adjustable
+
+The panel's size is based upon its  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~width.html[Width]"]  property but the panel may be resized at run-time or design-time by dragging the rightmost edge of the panel. The size of the space available for dragging will depend upon the InterPanelSpacing of the status bar. The  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~resizestyle.html[ResizeStyle]"]  of the status bar determines whether the panel is automatically sized as the drag operation occurs or whether a splitter is rendered during the drag operation to indicate the new width of the panel. In addition, when the adjustable area to the right of a panel is double clicked, the width of the panel is set to the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~autosizewidth.html[AutoSizeWidth]"]  if available for the style of that panel.
+
+== Automatic
+
+The width of the panel is based on the size of its image and text. The text used to determine the AutoSizeWidth is based on the style of panel. For example, for an AutoStatusText style panel, the width of the StatusBarText from each Control is tested.
+
+.Note
+[NOTE]
+====
+This style is not valid for all  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.panelstyle.html[PanelStyles]"] . When this style is used for ProgressBar, ControlContainer, and MDIList style panels, a SizingMode of Fixed is assumed.
+====
+
+== Fixed
+
+The width of the panel is set to the value of the Width property.
+
+== Spring
+
+Once all the panels have been sized based on their respective widths, the remaining space is distributed amongst the Spring style panels. This style panel may also be used to right align other panels by placing a spring sized panel before the panels that you wish to be displayed on the right.

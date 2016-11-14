@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-radial-gradient-brush-element-at-design-time",
+    "controlName": ["WinGauge"],
+    "tags": [],
+    "guid": "{1E36EED9-0091-4F31-8C6D-38F65A843AAF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Radial Gradient Brush Element at Design Time
+
+If you want two colors of a property of your gauge to blend into each other in a circular way, apply the Radial Gradient brush element to the property.
+
+*To apply the Radial Gradient brush element to a property of your gauge at design time:*
+
+[start=1]
+. Add a Radial Gauge to the Gauges collection.
+[start=2]
+. In the left-hand pane of the Gauges collection editor, click Radial Gauge.
+[start=3]
+. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=4]
+. From the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  drop-down list, select Radial Gradient. This will create a new Radial Gradient brush element.
+[start=5]
+. Expand the newly created BrushElement property, and set the following properties:
+
+** CenterColor - Click the drop-down arrow. The color picker appears. On the top, click Web, then select the PeachPuff color.
+** SurroundColor - Click the drop-down arrow. The color picker appears. On the top, click Web, then select the SandyBrown color.
+** CenterPoint - 25, 25.
+** FocusScales - 0,0\.
+
+== Related Topics
+
+link:wingauge-radial-gradient-brush-element.html[Radial Gradient Brush Element]
+
+link:wingauge-apply-the-radial-gradient-brush-element-at-run-time.html[Apply the Radial Gradient Brush Element at Run Time]
+
+link:wingauge-apply-the-radial-gradient-brush-element-using-the-gauge-designer.html[Apply the Radial Gradient Brush Element Using the Gauge Designer]

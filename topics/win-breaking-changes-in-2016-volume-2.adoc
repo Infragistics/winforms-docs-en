@@ -1,0 +1,13 @@
+﻿= Breaking Changes in 2016 Volume 2
+
+== WinColorPicker
+
+Previously, the link:wincolorpicker.html[WinColorPicker]'s editor mimicked Visual Studio's color picker found in the property grid, allowing the user to choose from a set of colors. With the addition of the WinColorPalette UI, which allows the user more freedom in creating a color, we have given this same experience as an option to the WinColorPicker by setting the
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracolorpicker~style.html[Style]
+property to ColorPalette.
+
+The WinColorPicker now has Style set to ColorPalette by default, which is a breaking change to existing applications with WinColorPickers. If you wish to reset this change and retain the old style, any WinColorPicker's Style can be set to VisualStudio.
+
+Setting the default style of all WinColorPickers of a Form is trivial using the
+link:{ApiPlatform}win{ApiVersion}~infragistics.win.colorpickereditor~defaultstyle.html[ColorPickerEditor.DefaultStyle].
+See link:wincolorpicker-set-the-default-style-to-visualstudio.html[Set the DefaultStyle to VisualStudio] for more information.

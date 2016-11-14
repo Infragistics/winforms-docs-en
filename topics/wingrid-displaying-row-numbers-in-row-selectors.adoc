@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-row-numbers-in-row-selectors",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{51B30B79-B467-4E35-9A9B-C02F1B182E6A}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Row Numbers in Row Selectors
+
+You can easily display row numbers in the row selectors of the WinGrid™ using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectornumberstyle.html[RowSelectorNumberStyle]"]  property.
+
+This property has four settings:
+
+* *None* - No row numbers are displayed. This is the default setting.
+* *ListIndex* - This is the index associated with  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~listindex.html[ListIndex]"]  property. These row numbers represent the index of a row in the data source.
+* *RowIndex* - This is the index associated with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~index.html[Index]"]  property. These row numbers represent the index of a row in its parent's row collection.
+* *VisibleIndex* - This is the index associated with  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~visibleindex.html[VisibleIndex]"]  property. These row numbers represent a row's visible index in its parent's row collection.
+
+*Note:* Make sure that you have  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectors.html[RowSelectors]"]  set to "true" when using row numbers.
+
+== To access the RowSelectorNumberStyle property:
+
+[start=1]
+. Right-click on the WinGrid at design time, and select UltraWinGrid Designer.
+[start=2]
+. In the designer on the right-hand side, select the option called "Control Settings".
+[start=3]
+. Scroll down and expand the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property.
+[start=4]
+. Scroll down to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property and expand it.
+[start=5]
+. In the Override property, scroll down to the RowSelectorNumberStyle property.
+
+For example, if you set this property to RowIndex, the WinGrid will appear similar to the following image:
+
+image::Images/WinGrid_Row_Numbers_in_Row_Selectors_01.png[display row numbers in row selectors in ultragrid]

@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "using-the-winchart-inside-wingrid-drawfilter",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting","Grids"],
+    "guid": "{FF792BE4-4A07-42E4-9BD8-43F2D7C4CED3}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:58:18Z"
+}
+|metadata|
+////
+
+= Using the WinChart inside WinGrid Draw Filter
+
+This topic explains how to use the ChartInsideGridCellDrawFilter class within a Windows Forms Application along with WinGrid™. This topic will demonstrate which event to handle in order to populate the individual Charts that represent each Row of WinGrid.
+
+An instance of the ChartInsideGridCellDrawFilter class is instantiated in the Form’s constructor and then wired to the ChartInfoRequested event handler.This event will fire once per WinGrid row that is initialized. This will provide you with the opportunity to use the event arguments to identify the Row that is being initialized and use the information in that Row to go and get the data to populate the Chart. The Draw Filter is then assigned to the Grid’s DrawFilter property so that it will apply our custom logic to the rendering of this WinGrid.
+
+*In Visual Basic:*
+
+----
+Public Sub New()
+	InitializeComponent()
+	Dim _filter As New ChartInsideGridCellDrawFilter(Me.UltraGrid1)
+	AddHandler _filter.ChartInfoRequested, AddressOf _filter_ChartInfoRequested
+	Me.UltraGrid1.DrawFilter = _filter
+End Sub
+----
+
+*In C#:*
+
+----
+public Form1()
+{
+	InitializeComponent();
+	ChartInsideGridCellDrawFilter _filter = new ChartInsideGridCellDrawFilter(this.ultraGrid1);
+	_filter.ChartInfoRequested += new ChartInsideGridCellDrawFilter.ChartInfoRequestedDelegate(_filter_ChartInfoRequested);
+	this.ultraGrid1.DrawFilter = _filter;
+}
+----
+
+The ChartInfoRequested event is handled so that you, the Developer, can populate the Chart attached to each WinGrid Row. The event Arguments expose the WinGrid Row as well as the Chart so that you can navigate the values of the current WinGrid Cells and use that information to retrieve relevant data which can then be used as a Data Source for the Chart. For example, you may want to use the CustomerID value located in one of the Row’s Cells so that you can retrieve their Orders or other metrics that you may want to place in the Chart.
+
+Handling this event is simply all about setting the various Chart properties such as ChartType, TitleTop and DataSource.
+
+.Note
+[NOTE]
+====
+*Note:* In order to keep this example simple and to the point, the Chart’s DataSource is composed of sample data that is retrieved through the UltraChart.Data.DemoTable.AllPositive() method. A more complex and real-world application will most definitely retrieve real data as well as set properties such as ChartType, ColorModel and other properties through values stored in a DataBase or XML file.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub _filter_ChartInfoRequested(ByVal Sender As Object, ByVal e As ChartInfoEventArgs)
+	e.WinChart.ChartType = ChartType.BarChart3D
+	e.WinChart.Transform3D.YRotation = 20
+	e.WinChart.ColorModel.ModelStyle = ColorModels.CustomLinear
+	e.WinChart.ColorModel.CustomPalette = New Color() {Color.LightGreen, Color.Yellow, Color.Red}
+	e.WinChart.TitleTop.Text = "Orders For: " + e.Row.Cells("CustomerID").Value.ToString()
+	e.WinChart.Data.DataSource = Infragistics.UltraChart.Data.DemoTable.AllPositive()
+End Sub
+----
+
+*In C#:*
+
+----
+void _filter_ChartInfoRequested(object Sender, ChartInfoEventArgs e)
+{
+	e.WinChart.ChartType = ChartType.BarChart3D;
+	e.WinChart.Transform3D.YRotation = 20;
+	e.WinChart.ColorModel.ModelStyle = ColorModels.CustomLinear;
+	e.WinChart.ColorModel.CustomPalette = new Color[] { Color.LightGreen, Color.Yellow, Color.Red };
+	e.WinChart.TitleTop.Text = 
+		"Orders For: " + e.Row.Cells["CustomerID"].Value.ToString();
+	e.WinChart.Data.DataSource = 
+		Infragistics.UltraChart.Data.DemoTable.AllPositive();
+}
+----
+
+=== Summary
+
+Now that you have read these topics, you have been taken through a code review of the design and implementation of a custom Draw Filter and related Classes that allows us to show WinChart within the cells of a specific WinGrid column. Understanding this design and implementation will hopefully spark your creativity and thinking so that you can implement your own interesting Draw Filter implementations.

@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-row-layouts",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{F8DA0D80-3F34-4844-8491-EF9F1ED7CEC6}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Row Layouts
+
+Row layouts give you a great deal of flexibility in designing the look of the WinGrid™ in your application. You can use row layouts to create a form-like look for data display and entry in both the conventional row view style and the Card View style of the grid.
+
+== Use the Design-Time Row Layout Editor
+
+[start=1]
+. Add an UltraWinGrid to your form and bind it to a data source. (If you need assistance with this process, see  pick:[win-forms="link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source]"]  or  pick:[win-forms="link:wingrid-binding-wingrid-to-a-hierarchical-data-source-clr2.html[Bind WinGrid to a Hierarchical Data Source]"] .)
+
+.Note
+[NOTE]
+====
+that the Row Layout functionality has certain restrictions associated with it: you cannot use fixed column headers, column swapping or column repositioning in the band that has Row Layouts enabled, so by default Row Layouts are disabled for all bands.
+====
+
+[start=2]
+. Right-click on the grid and choose "UltraGrid Designer..." from the context menu, or select the grid and click the "UltraGrid Designer..." link in the bottom pane of the property sheet. The UltraGrid Designer dialog will appear. Expand the "Band and Column Settings" item of the tree in the left hand side of the dialog. You will notice the root band as one of the sub-items. Expand this item and depending on your preference settings you will see any of the child bands listed as the sibling of the root band or as the child items of the root band, if you have a hierarchical dataset.
+[start=3]
+. Expand the band you want to create the row-layout for. Select the "Column Arrangement Overview" subitem. In the panel right of the tree, you will notice two radio options: "Use Row Layout" and "Use Groups And Levels". Select "Use Row Layout" and click the "Design Column Arrangement Now" button that's on the right of the radio group.
+[start=4]
+. You will see the row-layout designer appear in a separate form. For more information about the Row Layout Designer see the link:wingrid-row-layouts.html[Row Layouts] topic.
+
+== Repositioning Cells In The Layout
+
+[start=1]
+. The right hand pane shows a representation of the data fields and headers of the band you are working with. This area is interactive: you use the mouse to reposition elements in the pane in order to create the layout.
+
+Click inside one of the fields on the row and drag it it over the other fields. As it moves, you will see the display change to indicate how the field may be placed. Red arrows appear to indicate how the field will be positioned when dropped. Drop the field into the desired location. You will see the fields and headers re-arrange themselves accordingly.
+
+== Resizing Cells In The Layout
+
+[start=1]
+. Click the edge of one of the fields and drag. You will see that you can resize any object in the layout in either the horizontal or vertical direction. resize any cells to the desired width and/or height.
+
+While you are working with fields, you may notice two things. One is that blank areas open up in the layout. You can drag fields into these blank areas, and the drop target will be indicated with a red outline instead of the red arrows.
+[start=2]
+. To resize a cell so that it spans across two or more cells either horizontally or vertically, you must alter the Span settings for the cell. There are two ways to accomplish this:
+
+** Hold down the CTRL key on the keyboard, click on one of the edges of the cell, and drag as you did for resizing. With the CTRL key held down, you can dynamically alter the Span settings of a cell using the visual interface. This approach displays the relevant SpanX and SpanY settings in a tooltip for your reference.
+** Click on a cell in the Layout area to select the cell and its header, then click the Column Settings tab on the left. Scroll down in the property grid until you locate the SpanX and SpanY properties. You can enter new values for the properties directly in the grid.
+
+You may find the SpanX and SpanY properties counter-intuitive at first. For example, the default setting for these properties is 2, but that setting seemingly does not cause the cell to actually span any columns or rows. These settings make sense only in the context of the underlying virtual grid on which row layouts are based. For a better understanding of how to set these properties.
+
+== To Change the Relative Position of Data And Labels
+
+[start=1]
+. Data labels default to appearing above the cells in a regular layout and to the left of the cells in a Card View layout. There are several changes you can make that will affect how the labels and cells are arranged.
+
+Click the Column Settings tab in the left part of the dialog and locate the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~labelposition.html[LabelPosition]"]  property in the property grid. This property only applies under certain conditions. In regular row view, LabelPosition is only used when the "Keep headers with cells" View option has been selected on the Band Info tab. In card view, LabelPosition applies when either the "MergedLabels" or "Compressed" View option is selected. In all other circumstances, the setting of the property is ignored except when it's set to None or LabelsOnly. Selecting  _None_  will hide the column header and selecting  _LabelsOnly_  will hide the cells of the column.
+
+Click the drop-down for the property and select one of the available options to change the setting for the currently selected cell/label pair. You can position labels on any edge of the cell.
+[start=2]
+. To keep labels directly connected to their data, take one of the following actions, depending on the view style you are using:
+
+** If you are using  _Regular View_, click the Layout Design tab on the left and expand the Standard/Card View then expand the Standard View and check the box labelled "Keep headers with cells".
+** If you are using  _Card View_, click the Layout Design tab on the left and expand the Standard/Card View then expand the Card View and select either the StandardLabels, Merged Labels, or Compressed option form the drop-down. Either of these view settings will keep labels in proximity to the data.
+
+== Save or Load a Row Layout
+
+[start=1]
+. Row layouts are stored as part of the Grid's DisplayLayout. You can use the Load/Save tab of the dialog to save multiple row layouts to the DisplayLayout of the element.
+[start=2]
+. To save the row layout to a file on disk, you must save the Layout of the entire grid. Clicking the Load/Save tab in the Row Layout Designer, and select the Save Layout As... button. This will cause a dialog to appear asking for a Layout Key to be entered. Once you have entered the key click the OK button and the drop down on the Load/Save tab now shows the Layout as an option to be selected.
+
+== Resetting the Row Layout
+
+[start=1]
+. In the Load/Save tab click the Reset Layout button to reset the Row Layout. A message box will appear asking you to confirm the reset. Clicking Yes will restore the default row layout.
+
+== Snapshots
+
+[start=1]
+. The following snapshots show some of the possible ways of presenting data using the Row Layouts functionality.
+
+** Row layout in conventional view with "Keep headers with cells" option.
+
+image::Images\WinGrid_Work_with_Row_Layouts_02.png[row layout with headers along with cells]
+
+** Row layout in card view with StandardLabels card style.
+
+image::Images\WinGrid_Work_with_Row_Layouts_03.png[row layout in card view with standard labels]
+
+** Row layout in card view with Compressed card style.
+
+image::Images\WinGrid_Work_with_Row_Layouts_04.png[row layout in card view with compressed card style]

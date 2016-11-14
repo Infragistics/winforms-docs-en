@@ -1,0 +1,135 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-style-attribute",
+    "controlName": ["WinFormattedLinkLabel"],
+    "tags": ["Extending","Styling"],
+    "guid": "{B670FC04-E2F9-440A-824D-63163BBDB286}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T15:41:10Z"
+}
+|metadata|
+////
+
+= Style Attribute
+
+In 2006 Volume 3, we added the style attribute to FormattedLinkEditor. This attribute allows you to apply several styles to formatted text. Every tag supports the style attribute, but not all tags support every sub-attribute. For example, you can apply the style attribute to both the <br> and <p> tags. However, applying the Height sub-attribute to both tags will result in setting the height for the <p> tag only.
+
+To use one of the style sub-attributes, place the style attribute inside a tag. Each sub-attribute is set with a colon ":" and separated by a semi-colon ";". The following example demonstrates how to set the height and width of a <p> tag, as well as change the background color to blue, and foreground color to white.
+
+----
+<p >Text</p>
+----
+
+image::images/WinFormattedLinkLabel_The_Style_Attribute_01.png[example of style attribute applied to ultraformattedtexteditor]
+
+The table below identifies the sub-attributes you can use, what they do, and what tags will be affected by them.
+
+[options="header", cols="a,a,a"]
+|====
+|STYLE sub-attribute|Supported by|Description
+
+|Background-color
+|<p>, <span>, <img>, <br>, <hr>
+|Specifies the background color of the element. Possible values are .NET colors (System.Drawing.Color) and hexadecimal values (e.g. #rrggbb). 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+these values are valid for any sub-attribute specifying a color. 
+
+====
+
+|Background-color2
+|<p>, <span>, <img>, <br>, <hr>
+|Specifies the second background color of the element when using a gradient.
+
+|Background-gradient-style
+|<p>, <span>, <img>, <br>, <hr>
+|Specifies which, if any, gradient to use when drawing a gradient background. Possible values are found in the pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.gradientstyle.html[Infragistics.Win.GradientStyle]"] enumeration.
+
+|Border-color
+|<p>, <img>
+|Specifies the border color of the element.
+
+|Border-color-3d-base
+|<p>, <img>
+|Sets the color of the 3D portion of a 3D border.
+
+|Border-sides
+|<p>, <img>
+|If the Border-style sub-attribute has been set, this determines which sides of the element to draw the border on. Possible values are None, All, Left, Right, Top, and Bottom. You can specify more than one border by separating the values with a space.
+
+|Border-style
+|<p>, <img>
+|Specifies which border style to use when drawing a border around an element. Possible values are found in the pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementborderstyle.html[Infragistics.Win.UIElementBorderStyle]"] enumeration.
+
+|Clear
+|<p>, <span>, <br>, <hr>, <img>
+|Ensures that the following element will be positioned after any floating objects. Possible values are left, right, and all.
+
+|Color
+|
+|Specifies the foreground (usually text) color of the element.
+
+|Float
+|<p>, <img>
+|Causes an object (e.g. an image) to float next to the contents of a tag. The contents of the tag will wrap around the object. Possible values are left and right.
+
+|Font-family
+|All tags
+|Specifies which font to use for the element.
+
+|Font-size
+|All tags
+|Specifies how large or small the font should be. You can specify font size in points or in relative size. The relative size of a font (e.g., 1 to 6 prefixing either a negative or plus sign) is calculated using the base font of the control, not the parent tag.
+
+|Font-style
+|All tags
+|Italicizes text. Possible values are italics and normal.
+
+|Font-weight
+|All tags
+|Bolds text. Possible values are bold and normal.
+
+|Height
+|<p>, <img>
+|Specifies the height of the element.
+
+|Margin
+|<p>, <img>
+|Controls the height and width of an element's margins. The margins appear outside of an element's borders. You can specify one to four values separated by a space. If specifying one value, all four margins will be affected. If specifying two values, the first value affects the top and bottom margins while the second value affects the left and right margins. If specifying three values, the first value affects the top margin, the second value affects the left and right margins, and the third value affects the bottom margin. Specifying four values will affect the top, right, bottom, and left margins; respectively.
+
+|Margin-left, Margin-right, Margin-top, Margin-bottom
+|<p>, <img>
+|Specifies the size of individual margins.
+
+|Padding
+|<p>, <img>
+|Controls the height and width of an element's padding. The padding appears inside an element's borders. You can also specify one to four values just as with the margin sub-attribute.
+
+|Padding-left, Padding-right, Padding-top, Padding-bottom
+|<p>, <img>
+|Specifies the size of padding on individual sides of an element.
+
+|Text-align
+|<p>, <hr>
+|Specifies how to align text. Possible values are left, center, right, and justify.
+
+|Text-Smoothing-Mode
+|All tags
+|Draws text anti-aliased. Possible values are AntiAlias and None.
+
+|Verical-align
+|Inline text and images
+|Specifies how to vertically align the contents of an element. Possible values are baseline, middle, top, and bottom.
+
+|Width
+|<p>, <img>
+|Specifies the width of the element. You can append the value with a percent '%' sign. Doing so will cause the width to be that percentage of the available width.
+
+|====

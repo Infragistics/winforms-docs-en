@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-load-and-save-the-configuration-layout-of-wintoolbarsmanager",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts","Persistence"],
+    "guid": "{1EFF2E6A-F033-41BB-A464-EA8D0CDE91EB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Load and Save the Configuration Layout of WinToolbarsManager
+
+You can load and save a configuration layout of the WinToolbarsManager™ each time the application is run. This file can be saved in Binary or XML format. This file contains the layout and properties of the toolbars and tools and can be used multiple applications.
+
+== At Design Time
+
+Right click on the UltraToolBarsManager and choose Load/Save configuration. If a file exists already you can load it by choosing the format and locating the file. To save a toolbar layout, choose the save option for the layout you have created, choose the format and save it for later use.
+
+== At Run Time
+
+*In Visual Basic:*
+
+----
+Private Sub LoadandSaveWinToolbarsLayoutandStateofToolbarsandTools_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	LoadToolbarLayout()
+End Sub
+Private Sub LoadToolbarLayout()
+	If Not File.Exists( _
+	  "Program Dependent Files\WinToolbarsManager_HSB.xml") Then
+		Return
+	End If
+	Try
+		Me.UltraToolbarsManager1.LoadFromXml("Program Dependent Files\WinToolbarsManager_HSB.xml")
+	Catch ex As Exception
+		MessageBox.Show( _
+		  "An Error occurred Loading the file " & ex.Message.ToString())
+	End Try
+End Sub
+Private Sub _
+  Load_and_Save_the_Configuration_Layout_of_WinToolbarsManager_FormClosing( _
+  ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) _
+  Handles Me.FormClosing
+	SaveToolbarLayout()
+End Sub
+Private Sub SaveToolbarLayout()
+	Me.UltraToolbarsManager1.SaveAsXml("WinToolbarsManager_HSB.xml", True)
+End Sub
+----
+
+*In C#:*
+
+----
+private void LoadandSaveWinToolbarsLayoutandStateofToolbarsandTools_Load( 
+  object sender, System.EventArgs e)
+{
+	LoadToolbarLayout();
+}
+private void LoadToolbarLayout()
+{
+	if (!File.Exists(@"Program Dependent Files\WinToolbarsManager_HSB.xml"))
+		return;
+	try
+	{
+		this.ultraToolbarsManager1.LoadFromXml(
+		  @"Program Dependent Files\WinToolbarsManager_HSB.xml");
+	}
+	catch (Exception ex)
+	{
+		MessageBox.Show(
+		  "An Error occurred Loading the file " + ex.Message.ToString());
+	}
+}
+private void 
+  Load_and_Save_the_Configuration_Layout_of_WinToolbarsManager_FormClosing(
+  object sender, FormClosingEventArgs e)
+{
+	SaveToolbarLayout();
+}
+private void SaveToolbarLayout()
+{
+	this.ultraToolbarsManager1.SaveAsXml("WinToolbarsManager_HSB.xml", true);
+}
+----

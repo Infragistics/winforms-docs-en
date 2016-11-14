@@ -1,0 +1,70 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-change-the-image-of-nodes-when-expanded-or-collapsed",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I"],
+    "guid": "{247D7C5D-7E28-4F3A-9914-4B7249DA5875}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Image of Nodes When Expanded or Collapsed
+
+This topic will describe how to have nodes in a WinTree™ that show an image, and make that image change when the node is Expanded.
+
+This can be done with or without an ImageList control.
+
+[start=1]
+. Add an ImageList to your form, and add at least two images to it. For the purposes of simplicity, the collapsed image will be referred to as image 0 and the expanded image will be image 1.
+[start=2]
+. Then, you need to attach the ImageList to the UltraTree.
+
+To do this, select the UltraTree control on the form, and find the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~imagelist.html[ImageList]"]  Property.
+
+Drop down the list and choose the appropriate ImageList control.
+[start=3]
+. Go to the Load event of the Form.
+[start=4]
+. This code will set the image of every node in the tree. This will be the collapsed image.
+
+*In Visual Basic:*
+
+----
+Me.UltraTree1.Override.NodeAppearance.Image = 0
+----
+
+*In C#:*
+
+----
+this.ultraTree1.Override.NodeAppearance.Image = 0;
+----
+
+[start=5]
+. Next, you must apply the expanded image to the nodes. You can do this by using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~expandednodeappearance.html[ExpandedNodeAppeance]"]  of the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"] .
+
+*In Visual Basic:*
+
+----
+Me.UltraTree1.Override.ExpandedNodeAppearance.Image = 1
+----
+
+*In C#:*
+
+----
+this.ultraTree1.Override.ExpandedNodeAppearance.Image = 1;
+----
+
+[start=6]
+. Run the program.
+[start=7]
+. All the nodes in the UltraTree will show the collapsed image by default.
+[start=8]
+. If any nodes are expanded, they will show the expanded image.
+[start=9]
+. Expand a node and the node's image will change to the expanded image.
+[start=10]
+. Collapse a node and it will show the collapsed image.

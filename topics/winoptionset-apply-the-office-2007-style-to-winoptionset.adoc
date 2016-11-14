@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "winoptionset-apply-the-office-2007-style-to-winoptionset",
+    "controlName": ["WinOptionSet"],
+    "tags": ["Grouping","How Do I","Styling"],
+    "guid": "{D5CDC60D-0DDF-45EC-B742-604ADF890572}",  
+    "buildFlags": [],
+    "createdOn": "2006-10-10T11:31:11Z"
+}
+|metadata|
+////
+
+= Apply the Office 2007 Style to WinOptionSet
+
+In the 2006 volume 3 release, we added the Office 2007 look and feel to several of our controls. WinOptionSet™ is one of these controls that has gained the new look and feel; however, the look and feel is achieved in a little different way than other controls. Other controls have a ViewStyle property that changes the look and feel, WinOptionSet has a GlyphInfo property. In addition, to see the Office 2007 look and feel, you will need to turn off OS themes.
+
+.Note
+[NOTE]
+====
+If you want to view instances of UltraOptionSet inside WinGrid™, WinTree™, WinListView™, etc. (not as an embeddable editor) in the Office 2007 style, you need to set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams~radiobuttonglyphinfo.html[RadioButtonGlyphInfo]"]  property off of  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams.html[Infragistics.Win.UIElementDrawParams]"]  instead. This is an application-wide setting and will affect all WinCheckEditors and WinOptionSets displayed in any of the previously mentioned controls. You can still set the WinOptionSet control's GlyphStyle property if it is being used as an embeddable editor.
+====
+
+View WinOptionSet in the Office 2007 look and feel by setting the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset~glyphinfo.html[GlyphInfo]"]  property to Office2007, and UseOsThemes to False.
+
+image::images/WinOptionSet_Apply_the_Office_2007_Style_to_WinOptionSet_01.png[apply the office 2007 style to ultraoptionset]
+
+*In Visual Basic:*
+
+----
+Me.UltraOptionSet1.UseOsThemes = _    Infragistics.Win.DefaultableBoolean.FalseMe.UltraOptionSet1.GlyphInfo = _    Infragistics.Win.UIElementDrawParams.Office2007RadioButtonGlyphInfo
+----
+
+*In C#:*
+
+----
+this.ultraOptionSet1.UseOsThemes =     Infragistics.Win.DefaultableBoolean.False;this.ultraOptionSet1.GlyphInfo =     Infragistics.Win.UIElementDrawParams.Office2007RadioButtonGlyphInfo;
+----

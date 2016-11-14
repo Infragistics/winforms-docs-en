@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-sort-tabs",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Sorting"],
+    "guid": "{F7CD49E2-F916-4A4E-99E4-1F26201BD3A4}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Sort Tabs
+
+The tabs in the control appear in the order that they occupy in the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabscollection.html[Tabs]"]  collection. Once the control has been populated with tabs, you can choose to sort the tabs alphabetically based on the text they are displaying.
+
+This capability is available in both the WinTab™ and WinTabStrip™ controls, although it is typically more useful in the WinTabStrip control. With the WinTab control, the programmer can always determine the order in which Tabs are added (and therefore appear.) But with the WinTabStrip control, the text of the tabs may be populated from a data source, causing the tabs to appear in the order they are retrieved. By sorting the tabs after the WinTabStrip control is populated, you can present an easy-to-use, alphabetized interface to the user.
+
+Both controls give you control over the direction of the sort. The WinTab control always sorts based on the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~text.html[Text]"]  property of the tab. In the WinTabStrip control, you can specify which field from the data source should be used as the basis for the sort by using the control's  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabstripcontrol~sortmember.html[SortMember]"]  property.
+
+Use the following code to sort the tabs in the control.
+
+== For the WinTab Control
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTabControl
+...
+Private Sub Sort_Tabs_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Sorts all visible tabs in ascending order 
+	' using the Text property
+	Me.UltraTabControl1.VisibleTabs.Sort(SortDirection.Ascending)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTabControl;
+...
+private void Sort_Tabs_Load(object sender, EventArgs e)
+{
+	// Sorts all visible tabs in ascending order 
+	// using the Text property
+	this.ultraTabControl1.VisibleTabs.Sort(SortDirection.Ascending);
+}
+----
+
+image::images\WinTab_Sort_Tabs_01.png[shows ultratabcontrol with sorted tabs]
+
+== For the WinTabStrip Control
+
+*In Visual Basic:*
+
+----
+Private Sub Sort_Tabs_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Tabs will be sorted by the CustomerID field in the DataSource
+	Me.UltraTabStripControl1.SortMember = "CustomerID"
+	' Tabs are sorted in descending order
+	Me.UltraTabStripControl1.SortDirection = SortDirection.Descending
+End Sub
+----
+
+*In C#:*
+
+----
+private void Sort_Tabs_Load(object sender, EventArgs e)
+{
+	// Tabs will be sorted by the CustomerID field in the DataSource
+	this.ultraTabStripControl1.SortMember = "CustomerID";
+	// Tabs are sorted in descending order
+	this.ultraTabStripControl1.SortDirection = SortDirection.Descending;
+}
+----
+
+image::images\WinTab_Sort_Tabs_02.png[shows ultratabstripcontrol with sorted tabs]

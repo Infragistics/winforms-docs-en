@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-expandingcollapsing-groups-in-different-modes",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{0213A7FD-1234-4BFA-A492-444B1B0702A1}",  
+    "buildFlags": [],
+    "createdOn": "2009-02-02T10:42:57Z"
+}
+|metadata|
+////
+
+= Expanding/Collapsing Groups in different modes
+
+The link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~selected.html[Selected] property on the link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Group] object is used to open or expand the groups that are in Toolbox or Listbar mode. In these modes only one group can be expanded at a time.
+
+The link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~expanded.html[Expanded] property on the Group object is applicable only for the ExplorerBar mode where multiple groups can be expanded at a time.
+
+*In Visual Basic:*
+
+----
+' Open a Listbar/Toolbox group 
+  ultraExplorerBar1.Groups(0).Selected = True
+' Collapse an ExplorerBar group 
+  ultraExplorerBar2.Groups(0).Expanded = False
+----
+
+*In C#:*
+
+----
+// Open a Listbar/Toolbox group 
+   ultraExplorerBar1.Groups[0].Selected = true;
+// Collapse an ExplorerBar group
+   ultraExplorerBar2.Groups[0].Expanded = false;
+----

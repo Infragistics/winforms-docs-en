@@ -1,0 +1,427 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-terminal-symbols",
+    "controlName": [],
+    "tags": [],
+    "guid": "ffa5d977-1379-490f-bb22-f15061b8ccf7",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0518501Z"
+}
+|metadata|
+////
+
+= Terminal Symbols
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains a Grammar’s terminal symbols.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview]
+|This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349222014, Terminal Symbols Overview >>
+* <<_Ref349222032, Defining Terminal Symbols >>
+* <<_Ref349222036, Regular Expression Support >>
+* <<_Ref349220598, Related Content >>
+
+[[_Ref349222014]]
+== Terminal Symbols Overview
+
+=== Terminal symbols summary
+
+Terminal symbols define a group of characters the lexical analyzer should recognize as a unit when it is creating tokens. In addition to a unique name allowing the parser to distinguish it from other symbols, it also defines what text it can possibly represent. For example, a grammar might have a terminal symbol named “SemicolonToken” which indicates it can only represent “;” and a terminal symbol named “IdentifierToken” which indicates it can represent an underscore or letter followed by zero or more underscores, letters, or digits.
+
+The terminal symbols are represented by the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] class in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace.
+
+[[_Ref349222032]]
+== Defining Terminal Symbols
+
+=== Defining terminal symbols summary
+
+Each link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] has a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[Symbols] collection containing the `TerminalSymbol` instances that can be matched by the lexer when it is in that state. In addition to containing the `TerminalSymbol` instances, the `Symbols` collection is also the means by which new `TerminalSymbol`s are created since `TerminalSymbol` does not have a public constructor. Here is the signature of the Add method on the Symbols collection which creates a `TerminalSymbol`:
+
+*In C#:*
+
+[source,csharp]
+----
+public TerminalSymbol Add(
+    string name,
+    string value = null,
+    TerminalSymbolComparison comparison = TerminalSymbolComparison.Literal,
+    bool isExitSymbol = false)
+----
+
+.Note
+[NOTE]
+====
+There is another link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~add.html[Add] method on the `Symbols` collection which takes a `TerminalSymbol` instance. This can be used to add a `TerminalSymbol` to multiple lexer states. It can be created in one `LexerState`, and then the created instance can be added into other `LexerState` in the same link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar]. In this way, a `TerminalSymbol` can be matched in multiple states of the lexer.
+====
+
+[[_Ref349222036]]
+== Regular Expression Support
+
+=== Summary
+
+In the `Symbols` collection `Add` method, If the comparison specified for a new `TerminalSymbol` is `RegularExpression`, the value parameter is interpreted as a regular expression string. Regular expressions allow for a concise description of a set of strings.
+
+=== Basic features
+
+In addition to literal strings in the expression, there are certain operators that can be used to combine and enhance regular expressions to define larger and more complex sets. Here is a breakdown of some very basic regular expression features supported by the Syntax Parsing Engine:
+
+[options="header", cols="a,a,a,a"]
+|====
+|*Construct*|*Description*|*Example*|* Set of strings described by the example*
+
+|_literal character_
+|Any literal character which is not reserved as another kind of construct. This represents the set consisting of one string of just that character.
+|A
+|{ “A” }
+
+|( _expression_ )
+|Grouping. Groups a regular expression within the parentheses and does not change the set described by that expression.
+|(A)
+|{ “A” }
+
+|_expression1_ | _expression2_
+|Alternation. Any two regular expressions separated by a ‘|’. Represents the set of all strings described by either the first expression or the second.
+|A|B
+|{ “A”, “B” }
+
+|_expression1 expression2_
+|Concatenation. Any regular expression followed by another regular expression. Represents the set of all strings in the set of the first expression concatenated with all strings in the set of the second expression.
+|(A|B)C
+|{ “AC”, “BC” }
+
+|_expression_ $$*$$
+|Kleene Closure. A regular expression followed by ‘$$*$$’. Represents zero or more concatenations of the set described by the expression preceding the ‘$$* $$’.
+|(A|B)$$*$$
+|{ “”, “A”, “B”, “AA”, “AB”, “BA”, “BB”, “AAA”, “AAB”, … }
+
+|====
+
+=== Supported functionality
+
+The Syntax Parsing Engine conforms to the same syntax as link:http://msdn.microsoft.com/en-us/library/hs600312.aspx[.NET Framework Regular Expressions] but only supports a subset of its functionality. This allows for a much faster lexical analysis at a cost of ability to define certain regular expressions. Here is the list of .NET Framework Regular Expression features as well as the features currently supported by the Parsing Engine (this list is taken from MSDN, which can be found link:http://msdn.microsoft.com/en-us/library/az24scfc.aspx[here]):
+
+[options="header", cols="a,a,a"]
+|====
+|*Feature*|*Description*|*Is supported in* *Syntax* *Parsing* *Engine** ?*
+
+|*\a*
+|Matches a bell character, \u0007.
+|image::images/Yes.png[]
+
+|*\b*
+|In a character class, matches a backspace, \u0008.
+|image::images/Yes.png[]
+
+|*\t*
+|Matches a tab, \u0009.
+|image::images/Yes.png[]
+
+|*\r*
+|Matches a carriage return, \u000D.
+|image::images/Yes.png[]
+
+|*\v*
+|Matches a vertical tab, \u000B.
+|image::images/Yes.png[]
+
+|*\f*
+|Matches a form feed, \u000C.
+|image::images/Yes.png[]
+
+|*\n*
+|Matches a new line, \u000A.
+|image::images/Yes.png[]
+
+|*\e*
+|Matches an escape, \u001B.
+|image::images/Yes.png[]
+
+|*\* _nnn_
+|Uses octal representation to specify a character ( _nnn_ consists of two or three digits).
+|image::images/Yes.png[]
+
+|*\x* _nn_
+|Uses hexadecimal representation to specify a character ( _nn_ consists of exactly two digits).
+|image::images/Yes.png[]
+
+|*\c* _X_ 
+
+*\c* _x_
+|Matches the ASCII control character that is specified by _X_ or _x_, where _X_ or _x_ is the letter of the control character.
+|image::images/No.png[]
+
+|*\u* _nnnn_
+|Matches a Unicode character by using hexadecimal representation (exactly four digits, as represented by _nnnn_ ).
+|image::images/Yes.png[]
+
+|*\*
+|When followed by a character that is not recognized as an escaped character in this tables in this topic, matches that character. For example, *\$$*$$* is the same as *\x2A*, and *\.* is the same as *\x2E*. This allows the regular expression engine to disambiguate language elements (such as $$*$$ or ?) and character literals (represented by \$$* $$ or \?).
+|image::images/Yes.png[]
+
+|*[* _character_group_ * ]*
+|Matches any single character in _character_group_ . By default, the match is case-sensitive. Example: [ae]
+|image::images/Yes.png[]
+
+|*[^* _character_group_ * ]*
+|Negation: Matches any single character that is not in _character_group_ . By default, characters in _character_group_ are case-sensitive. Example: [^ae]
+|image::images/Yes.png[]
+
+|_first_ *-* _last_
+|Character range: Matches any single character in the range from first to last. Can only be used within a character group or negation character group.
+|image::images/Yes.png[]
+
+|*.*
+|Wildcard: Matches any single character except \n. 
+
+To match a literal period character (. or *\u002E*), you must precede it with the escape character (*\.* ).
+|image::images/Yes.png[]
+
+|*\p{* _name_ * }*
+|Matches any single character in the Unicode general category or named block specified by _name_ . Example: \p{IsCyrillic}
+|image::images/Yes.png[]
+
+|*\P{* _name_ * }*
+|Matches any single character that is not in the Unicode general category or named block specified by _name_ . Example: \P{Lu}
+|image::images/Yes.png[]
+
+|*\w*
+|Matches any word character.
+|image::images/Yes.png[]
+
+|*\W*
+|Matches any non-word character.
+|image::images/Yes.png[]
+
+|*\s*
+|Matches any white-space character.
+|image::images/Yes.png[]
+
+|*\S*
+|Matches any non-white-space character.
+|image::images/Yes.png[]
+
+|*\d*
+|Matches any decimal digit.
+|image::images/Yes.png[]
+
+|*\D*
+|Matches any character other than a decimal digit.
+|image::images/Yes.png[]
+
+|*^*
+|The match must start at the beginning of the string or line.
+|image::images/No.png[]
+
+|*$*
+|The match must occur at the end of the string or before *\n* at the end of the line or string.
+|image::images/No.png[]
+
+|*\A*
+|The match must occur at the start of the string.
+|image::images/No.png[]
+
+|*\Z*
+|The match must occur at the end of the string or before \n at the end of the string.
+|image::images/No.png[]
+
+|*\z*
+|The match must occur at the end of the string.
+|image::images/Yes.png[]
+
+|*\G*
+|The match must occur at the point where the previous match ended.
+|image::images/No.png[]
+
+|*\b*
+|The match must occur on a boundary between a *\w* (alphanumeric) and a *\W* (nonalphanumeric) character.
+|image::images/No.png[]
+
+|*\B*
+|The match must not occur on a *\b* boundary.
+|image::images/No.png[]
+
+|*(* _subexpression_ * )*
+|Captures the matched subexpression and assigns it a zero-based ordinal number.
+|image::images/Yes.png[]
+
+|*(?<* _name_ *>* _subexpression_ * )*
+|Captures the matched subexpression into a named group.
+|image::images/No.png[]
+
+|*(?<* _name1_ *-* _name2_ *>* _subexpression_ * )*
+|Defines a balancing group definition.
+|image::images/No.png[]
+
+|*(?:* _subexpression_ * )*
+|Defines a noncapturing group.
+|image::images/Yes.png[]
+
+|*(?:imnsx-imnsx:* _subexpression_ * )*
+|Applies or disables the specified options within _subexpression_ . Available options: 
+
+* i – Use case-insensitive matching. 
+
+* m – Use multiline mode. ^ and $ match the beginning and end of a line, instead of the beginning and end of a string. 
+
+* n – Do not capture unnamed groups. 
+
+* s – Use single-line mode. 
+
+* x – Ignore unescaped white space in the regular expression pattern. 
+
+|.Note 
+
+[NOTE] 
+
+==== 
+
+(but only for the option *i* ) 
+
+====
+
+|*(?=* _subexpression_ * )*
+|Zero-width positive lookahead assertion.
+|image::images/No.png[]
+
+|*(?!* _subexpression_ * )*
+|Zero-width negative lookahead assertion.
+|image::images/No.png[]
+
+|*(?$$<=$$* _subexpression_ * )*
+|Zero-width positive lookbehind assertion.
+|image::images/No.png[]
+
+|*(?<!* _subexpression_ * )*
+|Zero-width negative lookbehind assertion.
+|image::images/No.png[]
+
+|*(?>* _subexpression_ * )*
+|Nonbacktracking (or "greedy") subexpression.
+|image::images/No.png[]
+
+|*$$* $$*
+|Matches the previous element zero or more times. Example: \d$$*$$\.\d
+|image::images/Yes.png[]
+
+|*+*
+|Matches the previous element one or more times.
+|image::images/Yes.png[]
+
+|*?*
+|Matches the previous element zero or one time.
+|image::images/Yes.png[]
+
+|*{* _n_ * }*
+|Matches the previous element exactly _n_ times. Example: ,\d{3}
+|image::images/Yes.png[]
+
+|*{* _n_ * ,}*
+|Matches the previous element at least _n_ times.
+|image::images/Yes.png[]
+
+|*{* _n_ *,* _m_ * }*
+|Matches the previous element at least _n_ times, but no more than _m_ times.
+|image::images/Yes.png[]
+
+|*$$* $$?*
+|Matches the previous element zero or more times, but as few times as possible.
+|image::images/No.png[]
+
+|*+?*
+|Matches the previous element one or more times, but as few times as possible.
+|image::images/No.png[]
+
+|*??*
+|Matches the previous element zero or one time, but as few times as possible.
+|image::images/No.png[]
+
+|*{* _n_ * }?*
+|Matches the preceding element exactly _n_ times.
+|image::images/No.png[]
+
+|*{* _n_ * ,}?*
+|Matches the previous element at least _n_ times, but as few times as possible.
+|image::images/No.png[]
+
+|*{* _n_ *,* _m_ * }?*
+|Matches the previous element between _n_ and _m_ times, but as few times as possible.
+|image::images/No.png[]
+
+|*\* _number_
+|Backreference. Matches the value of a numbered subexpression. Example: (\w)\1
+|image::images/No.png[]
+
+|*\k<* _name_ * >*
+|Named backreference. Matches the value of a named expression. Example: (?<char>\w)\k<char>
+|image::images/No.png[]
+
+|*|*
+|Matches any one element separated by the vertical bar (|) character. Example: th(e|is|at)
+|image::images/Yes.png[]
+
+|*(?(* _expression_ *)* _yes_ *|* _no_ * )*
+|Matches _yes_ if the regular expression pattern designated by _expression_ matches; otherwise, matches the optional _no_ part. _expression_ is interpreted as a zero-width assertion. Example: (?(A)A\d{2}\b|\b\d{3}\b)
+|image::images/No.png[]
+
+|*(?(* _name_ *)* _yes_ *|* _no_ * )*
+|Matches _yes_ if name, a named or numbered capturing group, has a match; otherwise, matches the optional _no_ . Example: (?<quoted>")?(?(quoted).+?"|\S+\s)
+|image::images/No.png[]
+
+|*(?#* _comment_ * )*
+|Inline comment. The comment ends at the first closing parenthesis.
+|image::images/Yes.png[]
+
+|*#* _[to end of line]_
+|X-mode comment. The comment starts at an unescaped # and continues to the end of the line.
+|image::images/No.png[]
+
+|====
+
+[[_Ref349220598]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-non-terminal-symbols.html[Non-Terminal Symbols]
+|This topic explains a grammar’s non-terminal symbols.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-analysis.html[Grammar Analysis]
+|This topic explains the grammar analysis performed by the Syntax Parsing Engine.
+
+|====

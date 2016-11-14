@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "methods-reference-for-adding-undounits-to-the-undo-history",
+    "controlName": [],
+    "tags": ["API","Editing","Events","Getting Started","How Do I"],
+    "guid": "6d98bb4b-b437-4e5f-9658-3b7dc6112cc1",  
+    "buildFlags": [],
+    "createdOn": "2012-09-06T12:08:35.3680125Z"
+}
+|metadata|
+////
+
+= Methods Reference for Adding UndoUnits to the Undo History
+
+== Topic Overview
+
+=== Purpose
+
+This topic lists the available methods for adding an UndoUnit derived class object to the undo history.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:undomanager-properties-and-methods-reference.html[UndoManager Properties and Methods Reference]
+|This topic lists some of the important properties and methods of the UndoManager class.
+
+| link:undounit-derived-classes-properties-and-methods-reference.html[UndoUnit Derived Classes, Properties and Methods Reference]
+|This topic lists the derived classes and some of the important properties and methods of the UndoUnit class.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref320835295, Methods Reference for Adding UndoUnits to the Undo History >>
+** <<_Ref320837974,Introduction>>
+** <<_Ref320837982,Methods reference summary>>
+
+* <<_Ref320834804, Related Content >>
+
+[[_Ref320834798]]
+[[_Ref320835295]]
+== Methods Reference for Adding UndoUnits to the Undo History
+
+[[_Ref320837974]]
+
+=== Introduction
+
+The UndoManager class provides a number of helper methods that construct an UndoUnit and add the unit to the undo history.
+
+[[_Ref320837982]]
+
+=== Methods reference summary
+
+The following table summarizes the purpose and functionality of the UndoManager methods for adding UndoUnits to the undo history.
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addchange.html[AddChange]
+|This is an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] method that may be used to add any link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] derived class object to the undo history. 
+
+The method has numerous overloads. 
+
+For all overloads except the AddChange(UndoUnit), the UndoUnit representing the change will automatically add itself back into the history (calling `AddChange` passing in itself). Therefore these delegates should not result in the same `AddChange` method being invoked. 
+
+These methods ultimately delegate the creation of the UndoUnit instance to the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory_members.html[UndoUnitFactory] of the UndoManager whose history will be updated. It is possible to change the UndoUnit instance that is used for these operations without needing to change the call to these methods.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addcollectionchange.html[AddCollectionChange]
+|This method adds an UndoUnit for collection change in the history. 
+
+There are several overloads that take a collection of type _ICollection<T>_ and information about the type of change that occurred in the collection as parameters.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addpropertychange.html[AddPropertyChange]
+|This method adds an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase] for the specified property value change to the undo history. 
+
+The method has numerous overloads that take as parameters: 
+
+* the reference to the object whose property was changed 
+
+* the old value of the property 
+
+* the new value of the property 
+
+* additional information that identifies the property that was changed 
+
+|====
+
+[[_Ref320834804]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:methods-reference-for-removing-undounits-from-the-history.html[Methods Reference for Removing UndoUnits from the History]
+|This topic lists the available methods for removing the UndoUnit instances from the undo/redo history.
+
+| link:methods-reference-for-registering-unregistering-objects.html[Methods Reference for Registering and Unregistering Objects]
+|This topic lists the methods that register/unregister a specific object to an UndoManager instance.
+
+| link:methods-reference-for-performing-undo-redo-operations.html[Methods Reference for Performing Undo Redo Operations]
+|This topic lists the available methods for performing undo and redo operations.
+
+| link:methods-and-properties-reference-for-performing-transactions.html[Methods and Properties Reference for Performing Transactions]
+|This topic lists the available methods and properties for performing undo/redo transactions.
+
+| link:methods-and-properties-reference-for-merging-undoredo-operations.html[Methods and Properties Reference for Merging Undo Redo Operations]
+|This topic lists the available methods and properties related to the merging of undo/redo operations.
+
+| link:methods-reference-for-suspending-and-resuming-saving-history.html[Methods Reference for Suspending and Resuming Saving History]
+|This topic lists the available methods for suspending and resuming the saving of the undo/redo operations in history.
+
+| link:methods-and-properties-reference-for-creating-custom-undounit.html[Methods and Properties Reference for Creating Custom UndoUnit]
+|This topic lists the available methods and properties related to creating of a custom UndoUnit in the Infragistics Undo/Redo Framework™.
+
+|====

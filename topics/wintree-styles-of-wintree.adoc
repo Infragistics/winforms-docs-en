@@ -1,0 +1,82 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-styles-of-wintree",
+    "controlName": ["WinTree"],
+    "tags": ["Getting Started","How Do I","Styling"],
+    "guid": "{6DB67659-943D-43FC-92FB-DAA82368D716}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Styles of WinTree
+
+Starting in Infragistics Windows Forms 2005 Volume 2, WinTree™ was updated to have multi-column functionality in several basic styles. With the addition of columns, the ability to bind to these columns on each node to fields in an IList or IBindingList datasource, was added. This initial addition of functionality includes only reading data.
+
+The Tree is essentially a navigational tool, so no data is written back to the data source. Much of this functionality is very grid-like and may seem more suited to the WinGrid™ than the WinTree. However, the tree has some advantages:
+
+* The ability to display non-homogenous data. This mostly applies to the FreeForm style. The Tree is able to display data within the same rows collection which is not the same type. The WinGrid cannot do this.
+* The ability to show variable-depth data. In the WinGrid, the schema of the entire data set is determined by the first row. So in a case where you are using a recursive relationship, no row in the grid may have a depth greater than the first row. The UltraWinTree does not have this limitation.
+
+In this topic we will be using a simple datasource to show the basic look of the different ViewStyles. Below is the code to create this simple DataTable.
+
+There are three basic styles of Column Structure.
+
+== The Basic styles
+
+The major differences between the three styles are when column headers are displayed, and what kind of assumptions the tree makes about the data. In OutlookExpress style, the tree assumes that all data in all levels has the same basic structure (same columns and same DataTypes). In Grid style, the tree assumes that the schema is the same in each  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.treenodescollection.html[Nodes Collection]"] . In FreeForm style, the tree checks each node individually. This does not mean you cannot use Outlook Express style or Grid style with non-homogenous data; it just means that it will not work by default without a little extra work by the developer.
+
+== Outlook Express style
+
+This style would typically be used where you have homogenous data with a recursive relationship. In this style, all of the rows of data are the same type within a single band and across all bands.
+
+In this style, there is only one visible set of column headers at the top of the tree. If any row of data does not use the same set of columns, then those columns will display as cells in the column whose VisiblePosition matches their own. Columns without a matching visible column will not be displayed. This rule applies whether the column is in the same nodes collection or in a child nodes collection. For example, suppose there are 2 nodes in the tree. The displayed columns are based on the RootColumnSet. Suppose the columns are A, B, and C. The first node in the tree has no ColumnSet assigned and has data which matches up to A, B, and C – so it displays normally. The second Node in the tree has a ColumnSet with Column D, E, and F. This node will display the value of Column D under column A, the value of column E under column B, and the value of column F under column C. No Column headers are displayed for columns D, E, and F – they are visually merged into columns A, B, and C.
+
+The screenshot below shows a sample of what data would look like in the WinTree, with it in Outlook Express style (top control) compared to the same data in the WinGrid (bottom control).
+
+image::Images\WinTree_Overview_of_Styles_01.png[ultratree showing off outlook express style compared to ultragrid]
+
+In this style, there is always one column which is designated as the Expansion Indicator Column. This is the column that shows the expansion indicator. There can only be one such column, although the column may change, such as when columns are dragged around. The way WinTree's Outlook Express style does this is that it uses the first text column to show the Expansion Indicators. Each column will have a DefaultableBoolean  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~canshowexpansionindicator.html[CanShowExpansionIndicators]"]  property. By default, this will be based on the DataType of the column – Text column will resolve to true, other columns will resolve false. The left-most visible column in the tree on which CanHaveExpansionIndicators is true will show them.
+
+== Grid style
+
+This style would typically be used to display hierarchical data where the data is not recursive. In Grid style, the data is displayed in a hierarchy where the rows in each band are different types. In this style each collection of nodes in the tree can display different columns or no columns.
+
+In a bound situation, the root nodes would be rows from the root level band of the data source and a relationship is defined for the child rows. In this case, this data is essentially homogenous on each level, but not across levels.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~showbandnodes.html[ShowBandNodes]"]  property will determine if nodes are created for each child band to separate the band from other sibling bands. BandNodes will always be shown when there are sibling bands in the data. For example, if there is a root band in the data called "Root" and a this band has two child bands "Child Band 1" and "Child Band 2" the tree would create nodes like so:
+
+* Root Node
+
+** Child Band 1
+
+*** Child Node
+*** Child Node
+
+* Root Node
+
+** Child Band 2
+
+*** Child Node
+*** Child Node
+
+The screenshot below shows a sample of what data would look like in the WinTree, with it in Grid style (top control) compared to the same data in the WinGrid (bottom control).
+
+image::Images\WinTree_Overview_of_Styles_02.png[ultratree showing off grid style compared to ultragrid]
+
+This inserts an artificial level into the hierarchy to represent the band itself. The Root nodes and Child Nodes in the example above would likely display columns (although this is not required), but the "Child Band 1", and "Child Band 2" nodes would not. ShowBandNodes allows the addition of band nodes for cases where there are no Sibling bands. But by default, these Band nodes are only need to separate sibling bands.
+
+Just as in OutlookExpress style, a node within a nodes collection may contain different columns than the rest of the nodes in the collection. But they will not display headers. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn.html[Column]"]  headers displayed in each nodes collection are defined on the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  for the Nodes collection, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.nodeleveloverridescollection.html[NodeLevelOverride]"] , the Tree, or the RootColumnSet. The individual Node  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[ColumnSets]"]  are not considered. Any node whose columns differ from the visible column headers will display merged and without column headers.
+
+== FreeForm style
+
+This final style is completely free form. Each Override in the tree can have a completely different set of columns (or no columns). This means that even individual nodes within the same collection can display different data and different columns.
+
+The screenshot below shows a sample of what data would look like in the WinTree, with it in FreeForm style.
+
+image::Images\WinTree_Overview_of_Styles_03.png[ultratree showing off freeform style compared to ultragrid]
+
+In this style, every node in the tree will display its own set of column headers. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~labelstyle.html[LabelStyle]"]  property on the NodeLayout is essentially ignored and all labels are displayed with the cells.

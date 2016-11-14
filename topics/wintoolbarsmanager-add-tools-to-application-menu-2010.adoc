@@ -1,0 +1,112 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-tools-to-application-menu-2010",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "3556f393-e6e9-43db-a0f0-d50456ca9e75",  
+    "buildFlags": [],
+    "createdOn": "2010-09-23T21:32:15.6526815Z"
+}
+|metadata|
+////
+
+= Add Tools to Application Menu 2010
+
+The Office 2010 style application menu of the UltraToolbarsManager™ component consists of the Header, Navigation Menu and the Content area. The application menu 2010 can be opened by clicking the menu button in the upper-left corner of the Ribbon. For other ways of invoking Office 2010 style application menu, please see the link:wintoolbarsmanager-office-2010-style-application-menu.html[Office 2010 style Application Menu] topic. The Office 2010 style application menu stretches to fill all space below the ribbon tabs, which is different from the standard application menu.
+
+The navigation menu of the Office 2010 style application menu can display Button tools, PopupMenu tools PopupControlContainer tools and nearly all tools supported by menus.
+
+The following code assumes that you have already dropped a WinToolbarsManager™ component from the toolbox onto the form and the link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~filemenustyle.html[FileMenuStyle] property of link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon.html[ultraToolbarsManger.Ribbon] object is set to ApplicationMenu2010.
+
+The example code demonstrates how to create a button tool, PopupMenu tool and PopupControlContainer tool, add them to the tools collection of ultraToolbarsManager component, and then add them to the navigation menu area of the application menu 2010. For the following example an ultraMonthViewMulti control is added to the form that is set to the Control property of the PopupControlContainerTool.
+
+.Note
+[NOTE]
+====
+If you need the Office 2010 style file menu button, set the UltraToolbarsManager.Style property to Office2010\.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+' create a Button Tool that is displayed in Navigation menu
+Dim newBtnTool As New ButtonTool("NewBtnTool")
+newBtnTool.SharedProps.Caption = "New"
+' Add Button Tool to the tools collection of UltraToolbarsManager
+Me.UltraToolbarsManager1.Tools.Add(newBtnTool)
+' Create a List Tool that can be added to the PopupMenu Tool
+' This tool will be displayed in the content area
+Dim recentTool As New ListTool("Recent")
+recentTool.ListToolItems.Add("doc1", "Document 1")
+recentTool.ListToolItems.Add("doc2", "Document 2")
+recentTool.ListToolItems.Add("doc3", "Document 3")
+Me.UltraToolbarsManager1.Tools.Add(recentTool)
+' Create a PopupMenu Tool that is displayed in navigation menu
+Dim popupMenu1 As New PopupMenuTool("PopupRecent")
+popupMenu1.Settings.PopupStyle = PopupStyle.Menu
+popupMenu1.SharedProps.Caption = "Recent"
+' Add PopupMenu Tool to the tools collection of UltraToolbarsManager
+Me.UltraToolbarsManager1.Tools.Add(popupMenu1)
+popupMenu1.Tools.AddTool("Recent")
+' Create a PopupControlContainer Tool that is displayed in navgation menu and ' its control is displayed in the content area
+Dim applicationmenu2010ContainerTool As New PopupControlContainerTool("PopupControlContainerTool")
+applicationmenu2010ContainerTool.Control = Me.ultraMonthViewMulti1
+applicationmenu2010ContainerTool.SharedProps.Caption = "Custom"
+' Add PopupControlContainer Tool to the tools collection of UltraToolbarsManager
+Me.UltraToolbarsManager1.Tools.Add(applicationmenu2010ContainerTool)
+Dim appmenu2010 As ApplicationMenu2010 = Me.UltraToolbarsManager1.Ribbon. ApplicationMenu2010
+' Add Button tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("NewBtnTool")
+' Add Popup tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("PopupRecent")
+' Add PoupControlContainer tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("PopupControlContainerTool")
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+// create a Button Tool that is displayed in Navigation menu 
+ButtonTool newBtnTool = new ButtonTool("NewBtnTool");
+newBtnTool.SharedProps.Caption = "New";
+// Add Button Tool to the tools collection of UltraToolbarsManager
+this.ultraToolbarsManager1.Tools.Add(newBtnTool);
+// Create a List Tool that can be added to the PopupMenu Tool
+// This tool will be displayed in the content area
+ListTool recentTool = new ListTool("Recent");
+recentTool.ListToolItems.Add("doc1", "Document 1");
+recentTool.ListToolItems.Add("doc2", "Document 2");
+recentTool.ListToolItems.Add("doc3", "Document 3");
+this.ultraToolbarsManager1.Tools.Add(recentTool);
+// Create a PopupMenu Tool that is displayed in navigation menu
+PopupMenuTool popupMenu1 = new PopupMenuTool("PopupRecent");
+popupMenu1.Settings.PopupStyle = PopupStyle.Menu;
+popupMenu1.SharedProps.Caption = "Recent";
+// Add PopupMenu Tool to the tools collection of UltraToolbarsManager
+this.ultraToolbarsManager1.Tools.Add(popupMenu1);
+popupMenu1.Tools.AddTool("Recent");
+// Create a PopupControlContainer Tool that is displayed in navgation menu 
+// and its control is displayed in the content area
+PopupControlContainerTool applicationmenu2010ContainerTool = new PopupControlContainerTool("PopupControlContainerTool");
+applicationmenu2010ContainerTool.Control = this.ultraMonthViewMulti1;
+applicationmenu2010ContainerTool.SharedProps.Caption = "Custom";
+// Add PopupControlContainer Tool to the tools collection of UltraToolbarsManager
+this.ultraToolbarsManager1.Tools.Add(applicationmenu2010ContainerTool);
+ApplicationMenu2010 appmenu2010 = this.ultraToolbarsManager1.Ribbon. ApplicationMenu2010;
+// Add Button tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("NewBtnTool");
+// Add Popup tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("PopupRecent");
+// Add PoupControlContainer tool to the Navigation Menu of Office 2010 style application menu
+appmenu2010.NavigationMenu.Tools.AddTool("PopupControlContainerTool");
+----
+
+Related Topic:
+
+link:wintoolbarsmanager-customize-areas-of-application-menu-2010-and-file-menu-button.html[Customize Areas of Application Menu 2010 and File Menu Button]

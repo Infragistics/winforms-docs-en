@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-ignored-content",
+    "controlName": [],
+    "tags": [],
+    "guid": "40e4bde7-37d7-43ef-b2f6-4749a4280ff5",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1318581Z"
+}
+|metadata|
+////
+
+= Ignored Content
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains how to access the ignored content produced during syntax analysis.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview]
+|This topic explains the lexical analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-analysis-overview.html[Syntax Analysis Overview]
+|This topic explains the syntax analysis performed by the Syntax Parsing Engine.
+
+| link:ig-spe-syntax-tree-overview.html[Syntax Tree Overview]
+|This topic explains when the syntax tree is created and how to access it.
+
+|====
+
+== Ignored Content
+
+=== Overview
+
+Even though the syntax analyzer ignores insignificant tokens and skips unexpected tokens, they are still stored in the syntax tree because the syntax tree must represent the full content of the document. When the syntax analyzer comes across content which it can ignore, it gathers it up and stores it as “ignored content” on the next token node which is not ignored. This content is then accessible with the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~getleadingignoredcontent.html[GetLeadingIgnoredContent] method on the token node and all its ancestor nodes for which it is the first token node. This method returns an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist.html[IgnoredContentList] class, which is a collection with the following key members:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~count.html[Count]
+|The number of pieces of ignored content in the collection.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Indexer*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~item.html[Item]
+|The piece of ignored content at the specified zero-based index in the collection.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Method*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~gettext.html[GetText]
+|Returns a string containing the text of all ignored content in the collection.
+
+|====
+
+The indexer of the `IgnoredContentList` collection returns link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontent.html[IgnoredContent] values, which represent a single piece of ignored content.
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-pruning-the-syntax-tree.html[Pruning the Syntax Tree]
+|This topic explains the syntax tree pruning types performed by the Syntax Parsing Engine.
+
+| link:ig-spe-custom-diagnostics-and-annotations.html[Custom Diagnostics and Annotations]
+|This topic explains how to attach and obtain additional data to and from the syntax tree.
+
+|====

@@ -1,0 +1,139 @@
+﻿////
+|metadata|
+{
+    "name": "winmessageboxmanager-setting-up-the-startposition-and-startlocation-properties",
+    "controlName": [],
+    "tags": [],
+    "guid": "c8a61992-8eae-4db6-a6b2-18a92d5cefd6",
+    "buildFlags": [],
+    "createdOn": "2015-07-01T21:01:03.0812596Z"
+}
+|metadata|
+////
+
+= Setting up the StartPosition and StartLocation properties
+
+== Topic Overview
+
+=== Purpose
+
+This topic demonstrates the usage of the StartPosition and StartLocation properties for the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultramessagebox.ultramessageboxinfo_members.html[UltraMessageBoxInfo] control.
+
+=== Required Background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:winmessageboxmanager-working-with-winmessageboxmanager.html[Working with WinMessageBoxManager]
+|Contains a tutorial that demonstrates the basic use of the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultramessagebox.ultramessageboxinfo_members.html[UltraMessageBoxInfo].
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref423428887,StartPosition>>
+
+** <<_Ref421266503,Overview>>
+** <<_Ref423429317,Specifies start up position of the dialog>>
+** <<_Ref423429116,Example>>
+
+* <<_Ref423429125,StartLocation>>
+
+** <<_Ref423529891,Overview>>
+** <<_Ref423529941,Specifies start up location of the dialog>>
+** <<_Ref423529958,Example>>
+
+[[_Configuring_a_Custom]]
+[[_Ref423428887]]
+[[_Ref386478097]]
+== StartPosition
+
+[[_Ref421266503]]
+
+=== Overview
+
+The StartPosition property specifies the initial position of the dialog from a set of predefined positions (DialogStartPosition Enumeration). If the property is set to DialogStartPosition.Manual, then the location of the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultramessagebox.ultramessageboxmanager_members.html[UltraMessageBoxManager] is determined by the StartLocation property.
+
+StartPosition properties exist on the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultramessagebox.ultramessageboxinfo_members.html[UltraMessageBoxInfo] and link:infragistics4.win.v{ProductVersion}~infragistics.win.ultramessagebox.ultramessageboxmanager_members.html[UltraMessageBoxManager] classes, allowing the position to be set for all message boxes associated with the instance of the WinMessageBoxManager, or on a per UltraMessageBox basis.
+
+[[_Ref423429317]]
+
+=== Specifies start up position of the dialog
+
+StartPosition determines the start position of the dialog from a set of predefined positions.
+
+[options="header", cols="a,a,a"]
+|====
+|Property Name|Property Type|Description
+
+|StartPosition
+|DialogStartPosition
+|Specify the initial position of the dialog. 
+
+If the enumeration is set to Manual, then the location of the form is determined by the StartLocation property.
+
+|====
+
+[[_Ref423429116]]
+
+=== Example
+
+An example of setting the StartPosition in code behind.
+
+*In C#:*
+
+[source, csharp]
+messageBoxInfo.StartPosition = DialogStartPosition.CenterActiveScreen;
+
+*In Visual Basic:*
+
+[source, vb]
+messageBoxInfo.StartPosition = DialogStartPosition.CenterActiveScreen
+
+[[_Ref423429125]]
+== StartLocation
+
+[[_Ref423529891]]
+
+=== Overview
+
+The StartLocation properties specifies the initial location of the message box when the StartPosition property is set to Manual.
+
+[[_Ref423529941]]
+
+=== Specifies start up location of the dialog
+
+StartLocation determines the specific point where the dialog will be displayed.
+
+[options="header", cols="a,a,a"]
+|====
+|Property Name|Property Type|Description
+
+|StartLocation
+|Point
+|Specifies the initial location of the message box. 
+
+This value is taken under consideration only when StartPosition property is set to Manual.
+
+|====
+
+[[_Ref423529958]]
+
+=== Example
+
+An example of setting the StartLocation in code behind.
+
+*In C#:*
+
+[source, csharp]
+messageBoxInfo.StartPosition = DialogStartPosition.Manual;messageBoxInfo.StartLocation = new Point(500, 300);
+
+*In Visual Basic:*
+
+[source, vb]
+messageBoxInfo.StartPosition = DialogStartPosition.ManualmessageBoxInfo.StartLocation = new Point(500, 300)

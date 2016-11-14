@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-minimize-and-maximize-a-window",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{EBDE681D-C8A4-466B-8135-D75FAE2419BC}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Minimize and Maximize a Window
+
+Dockable windows can be  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase~minimized.html[Minimized]"]  and  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase~maximized.html[Maximized]"] . When they are maximized, they take up the entire  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]  area. When they are minimized, the other controls are made larger, and take up the space vacated my the minimized pane.
+
+A window can be Minimized and Maximized in code, or by the user at run-time.
+
+The following code shows you how to minimize a window using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnMinimized_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnMinimize.Click
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Minimized = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnMinimized_Click(object sender, System.EventArgs e)
+{
+	this.ultraDockManager1.DockAreas[0].Panes[0].Minimized = true;
+}
+----
+
+The following code shows you how to Maximize a window using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnMaximized_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnMaximized.Click
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Maximized = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnMaximized_Click(object sender, System.EventArgs e)
+{
+	this.ultraDockManager1.DockAreas[0].Panes[0].Maximized = true;
+}
+----
+
+A user can also minimize or maximize a pane by clicking the appropriate icon in the upper right corner of a pane.
+
+To enable/disable the users ability to toggle minimizing and maximizing of a single pane, use the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.panesettings~allowminimize.html[AllowMinimize]"]  or  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.panesettings~allowmaximize.html[AllowMaximize]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.panesettings.html[Settings]"]  object of the pane.
+
+If you want to enable/disable the users ability to maximize or minimize of all your windows, turn off the icons by using the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~showmaximizebutton.html[ShowMaximizeButton]"]  and  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~showminimizebutton.html[ShowMinimizeButton]"]  off the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager.html[UltraDockManager]"] . By default, both ShowMaximizeButton and ShowMinimizeButton are set to False. Be sure to turn this on if you want them.

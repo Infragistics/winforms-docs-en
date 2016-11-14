@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-enabling-selection-overlay-for-selected-cells",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Selection"],
+    "guid": "{20AA442B-18B7-4F60-94DB-CA0406BD011F}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T14:47:18Z"
+}
+|metadata|
+////
+
+= Enabling Selection Overlay for Selected Cells
+
+In Microsoft® Excel®, a rectangular selection area is overlaid on selected cells and this overlay provides a color-washed appearance for the underlying cells. The same effect can be achieved for the WinGrid™ control by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~selectionoverlaycolor.html[SelectionOverlayColor]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~selectionoverlaybordercolor.html[SelectionOverlayBorderColor]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"]  object.
+
+.Note
+[NOTE]
+====
+The Border for selection overlay will be drawn only when you perform a single, contiguous rectangular region of selection. For example, if you select two set of columns that aren’t next to each other, the borders will not be drawn. Similarly, different cell selection ranges, or row selection ranges also will not have borders, similar to how Excel® behaves.
+====
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.SelectionOverlayColor = Color.DarkBlue
+Me.ultraGrid1.DisplayLayout.SelectionOverlayBorderColor = Color.Magenta
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.SelectionOverlayColor = Color.DarkBlue;
+this.ultraGrid1.DisplayLayout.SelectionOverlayBorderColor = Color.Magenta;
+----
+
+*WinGrid showing a Rectangular selection area with a blue color-washed appearance and a Magenta border.*
+
+image::Images\WinGrid_Enable_Selection_Overlay_for_Selected_Cells_01.png[]

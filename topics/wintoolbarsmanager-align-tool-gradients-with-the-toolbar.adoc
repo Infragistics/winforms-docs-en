@@ -1,0 +1,97 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-align-tool-gradients-with-the-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Styling"],
+    "guid": "{4ECC9587-4151-4152-A237-E0F8DC390589}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Align Tool Gradients with the Toolbar
+
+When you specify a gradient on a toolbar, each tool on the toolbar uses that gradient to draw its background. So if you specify a vertical gradient (i.e., a color fade from top to bottom) on a horizontally oriented toolbar, the vertical gradients on each tool will 'line up' across the toolbar and the gradient will look like one continuous gradient along the entire length of the toolbar.
+
+If you then take the toobar and drag it so that it docks to the left or right, the results are not what you would expect. Since the tools on the toolbar are now positioned one beneath the other, the individual vertical gradients painted on each tool don't 'line up' along the length of the toolbar.
+
+The solution to this problem is to change the gradient from vertical to horizontal when the toolbar is docked to the left or right. The following code in the ToolbarModified event of UltraToolbarsManager will accomplish this:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub UltraToolbarsManager1_ToolbarModified(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinToolbars.ToolbarModifiedEventArgs) _
+  Handles UltraToolbarsManager1.ToolbarModified
+	Select Case e.ToolbarChangeType
+		Case ToolbarChangeType.Docked
+			If e.Toolbar.Key = "UltraToolbar2" Then
+				If e.Toolbar.DockedPosition = DockedPosition.Left Or _
+				  e.Toolbar.DockedPosition = DockedPosition.Right _
+				   Then
+					e.Toolbar.Settings. _
+					Appearance.BackGradientStyle = _
+					GradientStyle.Horizontal
+				Else
+					e.Toolbar.Settings. _
+					Appearance.BackGradientStyle = _
+					GradientStyle.Vertical
+				End If
+			End If
+		Case ToolbarChangeType.Undocked
+			e.Toolbar.Settings.Appearance.BackGradientStyle = _
+			  GradientStyle.Vertical
+	End Select
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinToolbars;
+...
+private void ultraToolbarsManager1_ToolbarModified(object sender, 
+  Infragistics.Win.UltraWinToolbars.ToolbarModifiedEventArgs e)
+{
+	switch (e.ToolbarChangeType)
+	{
+		case ToolbarChangeType.Docked:
+			if (e.Toolbar.Key == "UltraToolbar2")
+			{
+				if (e.Toolbar.DockedPosition == DockedPosition.Left ||
+					 e.Toolbar.DockedPosition == 
+					 DockedPosition.Right)
+					e.Toolbar.Settings.
+					 Appearance.BackGradientStyle = 
+					 GradientStyle.Horizontal;
+				else
+					e.Toolbar.Settings.
+					 Appearance.BackGradientStyle = 
+					 GradientStyle.Vertical;
+			}
+			break;
+		case ToolbarChangeType.Undocked:
+			e.Toolbar.Settings.Appearance.BackGradientStyle = 
+			  GradientStyle.Vertical;
+			break;
+	}
+}
+----
+
+[cols="a,a"]
+|====
+|image::images/WinToolbarsManager_Align_Tool_Gradients_with_the_Toolbar_01.png[shows how to align ultratoolbarsmanager toolbar gradient on a horizontal toolbar] 
+
+|image::images/WinToolbarsManager_Align_Tool_Gradients_with_the_Toolbar_02.png[shows how to align ultratoolbarsmanager toolbar gradient on a vertical toolbar] 
+
+|Horizontal Toolbar
+|Vertical Toolbar
+
+|====

@@ -1,0 +1,102 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-ebnf-specification-deviations",
+    "controlName": [],
+    "tags": [],
+    "guid": "794b3bee-64e3-4352-971d-db8c85b524d6",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0888538Z"
+}
+|metadata|
+////
+
+= EBNF Specification Deviations
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the deviations from the ISO 14977 specification in the EBNF format used by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview]
+|This topic gives an overview of the EBNF file format used to define a grammar.
+
+| link:ig-spe-special-sequence-format.html[Special Sequence Format]
+|This topic explains the format of the special sequence sections in the EBNF file used to configure the grammar.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349920929, Deviations Summary >>
+* <<_Ref349920866, Special Sequence Deviation >>
+* <<_Ref349920871, Symbol Naming Deviation >>
+* <<_Ref349920946, Related Content >>
+
+[[_Ref349920929]]
+== Deviations Summary
+
+=== Deviations summary chart
+
+Although the Syntax Parsing Engine conforms to the majority of the EBNF specification, there are some deviations introduced, which are listed in the table below:
+
+[options="header", cols="a,a"]
+|====
+|Configurable aspect|Details
+
+|<<_Ref349920866,Special Sequence Deviation>>
+|It is possible to use the “?” character within a special sequence.
+
+|<<_Ref349920871,Symbol Naming Deviation>>
+|It is possible to use underscores in a symbol’s name.
+
+|====
+
+[[_Ref349920866]]
+== Special Sequence Deviation
+
+=== Description
+
+The Syntax Parsing Engine allows the usage of the “?” character in special sequences, because the grammar properties section most likely contains regular expressions, which often use the “?” character. If the “?” were not allowed, all places where it is needed would need to be written as “&#x3F;”, which is the XML escape sequence for the “?” character. This would cause all regular expression patterns to be less readable.
+
+[[_Ref349920871]]
+== Symbol Naming Deviation
+
+The Syntax Parsing Engine allows the usage of the underscore (“_”) in symbol names. Although the EBNF specification only allows symbol names to start with a letter, followed by zero or more letters or digits, the Syntax Parsing Engine extends this by allowing underscores anywhere in the symbol name. This is allowed to facilitate syntax tree pruning. See link:ig-spe-pruning-the-syntax-tree.html[Pruning the Syntax Tree] topic for more information.
+
+[[_Ref349920946]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-generate-grammar-from-an-ebnf-file.html[Generate Grammar From an EBNF File]
+|This topic explains the process of creating a grammar from EBNF content.
+
+| link:ig-spe-generate-ebnf-file-from-a-grammar.html[Generate EBNF File From a Grammar]
+|This topic explains the process of creating EBNF content from a grammar.
+
+|====

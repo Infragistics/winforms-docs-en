@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-customization-of-charts-on-a-per-series-basis-whats-new-2006-3",
+    "controlName": [],
+    "tags": ["Charting"],
+    "guid": "{57FDC5E5-37B9-41FF-B4EA-6D4AD4638586}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-08T18:03:58Z"
+}
+|metadata|
+////
+
+= Customization of Charts on a Per-Series Basis
+
+To make your line charts and area charts even more representative and informative, we have provided new settings that you can enable separately for each series of your chart. These settings can be applied to the following types of 2D line and spline charts:
+
+* link:chart-area-chart-2d.html[Area]
+* link:chart-stacked-area-chart.html[Stacked Area]
+* link:chart-line-chart-2d.html[Line]
+* link:chart-stacked-line-chart.html[Stacked Line]
+* link:chart-spline-chart-2d.html[Spline]
+* link:chart-spline-area-chart-2d.html[Spline Area]
+* link:chart-stacked-spline-chart.html[Stacked Spline]
+* link:chart-stacked-spline-area-chart.html[Stacked Spline Area]
+
+== Draw Style
+
+Previously, when a  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.resources.appearance.axisappearance~linedrawstyle.html[LineDrawStyle]"]  (e.g., Solid, Dash, Dot) was applied to a Line chart, it was applied on a chart-wide basis. Starting in 2006 Volume 3, you can set a style for each series of a line or spline chart, allowing each series to be visually unique. For example, if you want to display rainfall amounts in four cities over a period of one month in your 2D Stacked Line chart, you can set a different draw style for each series of the chart.
+
+image::Images/WinChart_Customization_of_Charts_on_a_Per_Series_Basis_Whats_New_2006_3_01.png[customization of charts on a per-series basis]
+
+== Spline Tension
+
+To change how tightly the spline curve fits through the data points of your chart, you must set the  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.resources.appearance.splinechartappearance~splinetension.html[SplineChartAppearance.SplineTension]"]  property. Now, in the 2006 Volume 3 release, you can set the spline tension for each series of your chart by setting the new  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.resources.appearance.lineappearance~splinetension.html[LineAppearance.SplineTension]"]  property. For example, if your Spline chart displays the rise and fall of stock prices in various companies over a period of time, you can differentiate between each series of stock prices by increasing or decreasing the spline tension value for each series.
+
+image::Images/WinChart_Customization_of_Charts_on_a_Per_Series_Basis_Whats_New_2006_3_02.png[customization of ultrachart on a per-series basis]
+
+== Icons for Anchor Points
+
+Previously, line and spline charts allowed only a small midpoint anchor at each vertex of a line. Starting in the 2006 Volume 3 release, you can specify a different icon for the anchor points of each line in your chart. Furthermore, you can even use custom icons that uniquely identify each series of your chart. By customizing the appearance of icons for the chart's line points, you can improve the readability of the data for your end users.
+
+image::Images/WinChart_Customization_of_Charts_on_a_Per_Series_Basis_Whats_New_2006_3_03.png[customization of winchart on a per-series basis]
+
+== Related Topic
+
+link:chart-customize-the-appearance-of-lines-in-line-and-area-charts.html[Customize the Appearance of Lines in Line and Area Charts]
+
+link:chart-line-appearances.html[Line Appearances]

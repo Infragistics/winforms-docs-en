@@ -1,0 +1,81 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-ultracontrolcontainereditor-component",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["How Do I"],
+    "guid": "{C48A7D81-6DD5-4246-AD1A-E71F13DB5F55}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Embed Any Control within WinGrid Cell using UltraControlContainerEditor Component
+
+The ControlContainerEditor component is an embeddable Editor that allows you to specify a control that will be used for standard rendering as well as a control that will be used when entering edit mode. You may even choose to display the same control for both standard rendering as well as edit mode rendering. The rendering control is used to render the value while not in edit mode.
+
+.Note
+[NOTE]
+====
+The Rendering control will be drawn to a Bitmap. Hence any control used as the Rendering control must support the DrawToBitmap method.
+====
+
+The editing control enables the end-user to edit cells while in edit mode. When used with WinGrid, if no editing control is specified, editing will not be possible; the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  will essentially be a renderer and not an editor. Similarly, if no Rendering control is specified the UltraGridCell will simply display the value of the cell as text. 
+
+By default, when the editor is not in edit mode, the rendering control is displayed with the same appearances (BackColor, ForeColor, Font etc.,) similar to its owner or parent control.
+
+This example code shows that you can either assign only an Editing control or only a Rendering control to ControlContainerEditor, which can then be embedded into a control that supports embeddable editors. For information on how to assign both Editing and Rendering controls to the ControlContainerEditor component, please see the link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-controlcontainereditor-object.html[Embed Any Control within WinGrid Cell using ControlContainerEditor Object] topic.
+
+The Editing or Rendering controls can be assigned to either the design -time available  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor.html[UltraControlContainerEditor]"]  component or to an instance of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor.html[ControlContainerEditor]"]  object.
+
+This topic assumes that you have an UltraGrid control, a .Net TrackBar control and an UltraControlContainerEditor component dropped onto your Form. The WinGrid control is bound to the Products DataTable of Northwind database.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinEditors
+...
+Me.ultraControlContainerEditor1.EditingControl = Me.trackBar1
+Me.ultraControlContainerEditor1.EditingControlPropertyName = "Value"
+' Assign ControlContainerEditor to a column in WinGrid
+Me.ultraGrid1.DisplayLayout.Bands[0].Columns["UnitsInStock"].EditorComponent = Me.ultraControlContainerEditor1
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinEditors;
+...
+this.ultraControlContainerEditor1.EditingControl = this.trackBar1;
+this.ultraControlContainerEditor1.EditingControlPropertyName = "Value";
+// Assign ControlContainerEditor to a column in WinGrid
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["UnitsInStock"].EditorComponent = this.ultraControlContainerEditor1;
+----
+
+*WinGrid with a Trackbar as Editing control in ‘UnitsInStock’ column. Since no Rendering control is specified, the value of the cells in ‘UnitsInStock’ column is simply displayed as Text.*
+
+image::Images\WinControlContainerEditor_Embed_Any_Control_Within_WinGrid_cell_using_UltraControlContainerEditor_Component_01.png[]
+
+*In Visual Basic:*
+
+----
+Me.ultraControlContainerEditor1.RenderingControl = Me.trackBar1
+Me.ultraControlContainerEditor1.RenderingControlPropertyName = "Value"
+'Assign ControlContainerEditor to a column in WinGrid
+Me.ultraGrid1.DisplayLayout.Bands[0].Columns["UnitsInStock"].EditorComponent = Me.ultraControlContainerEditor1
+----
+
+*In C#:*
+
+----
+this.ultraControlContainerEditor1.RenderingControl = this.trackBar1;
+this.ultraControlContainerEditor1.RenderingControlPropertyName = "Value";
+// Assign ControlContainerEditor to a column in WinGrid
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["UnitsInStock"].EditorComponent = this.ultraControlContainerEditor1;
+----
+
+*WinGrid with a Trackbar as Rendering control in ‘UnitsInStock’ column. Since no Editing control is specified, the cells in ‘UnitsInStock’ column cannot be edited.*
+
+image::Images\WinControlContainerEditor_Embed_Any_Control_Within_WinGrid_cell_using_UltraControlContainerEditor_Component_02.png[]

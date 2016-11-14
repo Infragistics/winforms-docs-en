@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-about-wintoolbarsmanager",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{D4C7A0D8-01E8-4303-8C06-2805842C7FC1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinToolbarsManager
+
+The following is a list of the key features of WinToolbarsManager™:
+
+* *Multi-level cascading menus* as in Microsoft Office
+* *Dockable and floatable toolbars* as in Microsoft Office
+* Choice of *Office2000, OfficeXP, Office 2003, Visual Studio 2005, or Office 2007 look and feel* via a single property setting
+* *Works on any container control* - not just the form. It is possible to have multiple UltraToolbarsManager elements providing menus and toolbars to different container controls on the same form as well as the form itself.
+* A *WYSIWYG design-time customizer* that lets you easily create menus, toolbars and tools. UltraToolbarsManager supports both use of a design time customize dialog as well as support for in-place creation of the tools and toolbars within the Visual Studio IDE.
+* *TaskPane Toolbars* as in Microsoft Office.
+* A *run-time customizer* that your application's users can invoke to customize the toolbars and menus in your application. The customizer uses a drag and drop interface to duplicate the behavior of the customizer in Microsoft Office.
+* Complete support for *automatic MDI menu merging* . MDI child and container forms that contain an UltraToolbarsManager element will have their toolbars and menus automatically merged when an instance of the child form becomes active. No code is required to achieve this behavior. All events relating to child toolbars, menus and tools are fired in the child form allowing complete encapsulation of your toolbar handling logic in child forms.
+* *Tearaway menu support* . Any menu can be displayed with a 'tearaway bar' at the top of the menu, which enables end users to tearaway the menu and float it as a toolbar. This is controlled by setting a single property (AllowTearaway) on the menu
+* *Display PopupMenus using a toolbar style* - when this option is set, tools on the menu are represented by buttons arranged in snaking a fashion as on floating toolbars. This style can be used on PopupMenus that are displayed as context menus, creating 'context toolbars'.
+* *Menu Animations* - choose from the same menu animation types available in Microsoft Office (None, Random, Unfold, Slide and Fade)
+* *Context Menu Ultra* - easily add an UltraToolbars popup menu to any control, replacing the default context menu. Once you place an UltraToolbarManager control on a form, any control on that form that has a ContextMenu property will also display a ContextMenuUltra property. Use this property to assign an UltraToolbars menu as the context menu for the control.
+* Tools can display *large or small icons* in the toolbars or menus.
+* *Flexible text placement options* on tools. The CaptionPlacement property gives you full control over how text is displayed on a Button Tool relative to the tool's image (above, below, to the left or right of the image).
+* Programmatically *Load and Save toolbar configurations* using binary streams or SOAP formatted (XML) streams.
+* *Full range of events* that signal your application when any toolbar or menu activity occurs.
+* *Rich set of tool types* for use on menus and toolbars including:
+
+** *Button Tool*
+** *ComboBox Tool*
+** *Control Container Tool* - can host any .NET control
+** *FontList Tool* - displays a drop-down list of available fonts, using each entry's font
+** *Label Tool* - displays a static label on a toolbar or menu
+** *List Tool* - contains a programmable collection of strings that are displayed on a menu as individual menu items. Great for MRU lists.
+** *Masked Edit Tool* - a textbox-like tool that restricts input.
+** *MDIWindowList Tool* - used on a PopupMenu tool to display a list of the currently available MDI child windows along with the standard MDI window commands such as Cascade, Tile etc.
+** *ProgressBar Tool* - displays a progress bar which shows how much of a certain task is completed.
+** *PopupColorPicker Tool* - displays a drop-down list of colors as in Microsoft Office
+** *PopupControlContainer Tool* - displays a tool on a menu or toolbar which, when clicked, drops down a window containing any control you specify
+** *PopupMenu Tool* - displays drop-down menus as well as context menus.
+** *StateButton Tool* - acts like a radio button. Its state can be toggled programmatically or by the end user.
+** *Textbox Tool*
+** *TaskPane Tool* - represents an item in a task pane.
+
+* A *one-step menu import* feature that lets you convert existing menus in your .NET application to UltraToolbarsManager menus
+* A toolbar import feature that lets you convert existing .Net toolbars in your application to UltraToolbarsManager toolbars
+* *Personalized Menus and Toolbars* feature shows only recently used toolbar and menu items. On menus, non-recently used items reveal themselves after a programmable delay or immediately if the double downward-pointing chevron at the bottom of the menu is clicked. On toolbars, non-recently used tools are 'bumped' to a popup menu off the toolbar's QuickCustomize button.
+* *QuickCustomize button* on toolbars lets your end users customize toolbars at run-time via an 'Add or Remove Buttons' submenu.
+* *Flexible tool image support* automatically generates images for each button state (up, pressed and disabled) from the single image you provide for each tool
+* *Menu sidestrips* - enable the display of a vertical strip at the left edge of a menu which can contain vertically drawn text and/or an image. Sidestrips duplicate the look of the StartMenu in Windows 2000\.
+* *Floating Toolbar fade delay* - fades floating toolbars to 20% opacity after a specified time interval has elapsed. When the mouse pointer passes over the toolbar, it quickly returns to full opacity.
+* *Tool images from Imagelists or image files* - tool images may be specified by setting the relevant tool image property directly to an image or by setting it to an index representing an occurrence of an image in an Imagelist

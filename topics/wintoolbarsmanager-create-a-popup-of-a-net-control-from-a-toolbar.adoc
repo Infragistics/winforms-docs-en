@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-create-a-popup-of-a-net-control-from-a-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{94C44B02-492E-4EF7-88F6-F2F5C2D5C8C0}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a Popup of a .NET Control from a Toolbar
+
+You can create a popup of a .NET control from a toolbar or menu by using the WinPopupControlContainer™ tool. This topic will demonstrate how to do so with the WinCalendarCombo™ control.
+
+== To create a popup of a .NET control at design time
+
+[start=1]
+. Add the UltraCalendarCombo element to the Toolbox and then add it to the form. Set the Visible property of this element to False.
+[start=2]
+. To configure the UltraWinToolbar element, open the design-time customizer by right-clicking on the UltraToolbarManager element and selecting "Customize"
+[start=3]
+. To create a new Tool, click the "Tools" tab in the customizer, and then the "New..." button.
+[start=4]
+. Select Popup Menu and PopupControlContainer as your Tool Types and click on the Add button.
+[start=5]
+. Set the Control property on the PopupControlContainer to the UltraCalendarCombo.
+[start=6]
+. Click the "ToolBars" tab in the customizer, and then the "New..." button.
+[start=7]
+. Click the "Tools" tab and drag the Popup Menu tool to the ToolBar residing on the form.
+[start=8]
+. Drag the PopupControlContainer to the Popup Menu.
+
+== To create a popup of a .NET control at run time
+
+This code depends on the form having a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[Toolbar]"]  on it, and also that you have an WinCalendarCombo named UltraCalendarCombo1, and its Visible property set to false.

@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "infragistics-math-infragistics-math-library",
+    "controlName": ["Infragistics Math Library"],
+    "tags": ["Application Blocks","Calculations"],
+    "guid": "9554301a-ad51-43a7-8f5b-e9e412eae577",  
+    "buildFlags": [],
+    "createdOn": "2011-08-01T14:09:20.4762532Z"
+}
+|metadata|
+////
+
+= Infragistics Math Library
+
+The Infragistics Math Library™ is a library of mathematical and statistical structures and functions that you can use with all Infragistics products. It extends the operations in the link:http://msdn.microsoft.com/en-us/library/system.math.aspx[System.Math] class to several new mathematical objects:
+
+* link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complex.html[Complex Numbers]
+* link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant.html[Mathematical constants]
+* link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vectors]
+
+** link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[Complex vectors]
+** link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[Boolean vectors]
+
+* link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrices]
+
+** link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[Complex matrices]
+** link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[Boolean matrices]
+
+== Requirements
+
+To use the Infragistics Math Library, you need:
+
+* A Microsoft® {PlatformName}™ application
+* The following references to your project (in the Solution Explorer):
+
+** {ApiPlatform}v{ProductVersion}.dll
+** {ApiPlatform}Math.v{ProductVersion}.dll
+
+* The following namespace declaration to the source file using the Infragistics Math Library.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Math
+----
+
+*In C#:*
+
+----
+using Infragistics.Math;
+----
+
+== Features
+
+This section lists links to topics that describe in detail features of the Infragistics Math Library.
+
+link:infragistics-math-complex-numbers.html[Complex Numbers]
+
+link:infragistics-math-vectors.html[Vectors]
+
+link:infragistics-math-matrices.html[Matrices]
+
+link:infragistics-math-mathematical-functions.html[Mathematical Functions]
+
+== API Overview
+
+This topic lists the namespaces and classes that you will be working with while programming with the Infragistics Math Library. The namespaces and classes listed in this topic link conveniently into the API Reference Guide section of the {ProductName} help.

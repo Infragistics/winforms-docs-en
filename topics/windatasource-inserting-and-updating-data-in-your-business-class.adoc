@@ -1,0 +1,142 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-inserting-and-updating-data-in-your-business-class",
+    "controlName": ["WinDataSource"],
+    "tags": ["Application Scenarios","Getting Started"],
+    "guid": "{597AAB0D-E5FC-422A-928C-64A3A00322ED}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Inserting and Updating Data in Your Business Class
+
+This help topic is a continuation of a five-part tutorial that picks up from link:windatasource-retrieving-data-in-your-business-class.html[Retrieving Data in Your Business Class].
+
+To handle Inserts and Updates, we can handle the OnRowEndEdit event. In this event, we basically check the field that represents the Primary Key. If the value in this field is less than 0 then we know that it is a new record, otherwise it is an existing record. Why choose the negative number scheme? Because in the Database, we are sure that there will never be a negative number so it is safe to use as a temporary client scoped ID until we get the real server generated primary key value.
+
+*In Visual Basic:*
+
+----
+' This fires the same as the IBindingList End Edit. In here you can 
+' write to the Database as an Insert or Update. You can improve this to 
+' Only write if the row is dirty or is an insert.
+Protected Overrides Sub OnRowEndEdit(ByVal e As Infragistics.Win.UltraWinDataSource.RowEndEditEventArgs)
+  MyBase.OnRowEndEdit(e)
+	' If Has Changes Equals False Then Return
+	Dim cn As New SqlConnection(_cn)
+	Dim cm As SqlCommand = cn.CreateCommand()
+	Dim strCmd As New System.Text.StringBuilder()
+	Dim insert As Boolean = (CType(e.Row.Item("CategoryID"), Integer) < 0)
+	If insert Then
+		strCmd.Append(" INSERT INTO Categories (")
+		strCmd.Append(" CategoryName,")
+		strCmd.Append(" Description )")
+		strCmd.Append(" VALUES ( ")
+		strCmd.Append(" @CategoryName, ")
+		strCmd.Append(" @Description) ")
+		strCmd.Append("; SELECT @CategoryID=SCOPE_IDENTITY();")
+	Else
+		strCmd.Append(" UPDATE Categories SET ")
+		strCmd.Append(" CategoryName=@CategoryName,")
+		strCmd.Append(" Description=@Description ")
+		strCmd.Append(" WHERE CategoryID=@CategoryID;")
+	End If
+	Dim Col As String
+	Dim prm As SqlParameter
+	Dim i As Integer
+	For i = 0 To e.Row.Band.Columns.Count - 1
+		Col = e.Row.Band.Columns(i).Key
+		prm = cm.Parameters.AddWithValue("@" + Col, e.Row.Item(Col))
+		Select Case Col
+			Case "CategoryID"
+				If insert Then
+					prm.Direction = ParameterDirection.Output
+				End If
+			Case Else
+				' Other columns here
+		End Select
+	Next
+	cm.Commandtype = CommandType.Text
+	cm.Commandtext = strCmd.ToString()
+	cn.Open()
+	cm.ExecuteNonQuery()
+	If insert Then
+		e.Row.Band.Columns("CategoryID").readonly = DefaultableBoolean.False
+		e.Row.Item("CategoryID") = cm.Parameters("@CategoryID").Value
+		e.Row.Band.Columns("CategoryID").readonly = DefaultableBoolean.True
+	End If
+	cn.Dispose()
+End Sub
+----
+
+*In C#:*
+
+----
+// This fires the same as the IBindingList End Edit. In here you can 
+// write to the Database as an Insert or Update. You can improve this to 
+// Only write if the row is dirty or is an insert.
+protected override void OnRowEndEdit(RowEndEditEventArgs e)
+{
+	base.OnRowEndEdit (e);
+	// If Has Changes Equals False Then Return
+	SqlConnection cn = new SqlConnection(_cn);
+	SqlCommand cm = cn.CreateCommand();
+	System.Text.StringBuilder strCmd = new System.Text.StringBuilder();
+	bool insert = (bool)((int)e.Row["CategoryID"] < 0);
+	if (insert)
+	{
+		strCmd.Append(" INSERT INTO Categories (");
+		strCmd.Append(" CategoryName,");
+		strCmd.Append(" Description )");
+		strCmd.Append(" VALUES ( ");
+		strCmd.Append(" @CategoryName, ");
+		strCmd.Append(" @Description) ");
+		strCmd.Append("; SELECT @CategoryID=SCOPE_IDENTITY();");		
+	}
+	else
+	{
+		strCmd.Append(" UPDATE Categories SET ");
+		strCmd.Append(" CategoryName=@CategoryName,");
+		strCmd.Append(" Description=@Description ");
+		strCmd.Append(" WHERE CategoryID=@CategoryID;");
+	}
+		string col; 
+		SqlParameter prm;
+	for (int i = 0; i < e.Row.Band.Columns.Count; i++)
+	{
+		col = e.Row.Band.Columns[i].Key;
+		prm = cm.Parameters.AddWithValue("@" + col, e.Row[col]);
+		switch(col)
+		{
+			case "CategoryID":
+				if(insert)
+				{
+					prm.Direction = ParameterDirection.Output;
+				}
+				break;
+			default:
+				// Other column special handling here
+				break;
+		}
+	}
+	cm.Commandtype = CommandType.Text;
+	cm.CommandText = strCmd.ToString();
+	cn.Open();
+	cm.ExecuteNonQuery();
+	if(insert)
+	{
+		e.Row.Band.Columns["CategoryID"].readonly = DefaultableBoolean.False;
+		e.Row["CategoryID"] = cm.Parameters["@CategoryID"].Value;
+		e.Row.Band.Columns["CategoryID"].readonly = DefaultableBoolean.True;
+	}
+	cn.Dispose();
+}
+----
+
+== Related Topics
+
+link:windatasource-initializing-field-values-with-the-onrowadded-event.html[Initializing Field Values with the OnRowAdded Event]

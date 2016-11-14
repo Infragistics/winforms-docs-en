@@ -1,0 +1,68 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridexcelexporter-export-wingrid-asynchronously",
+    "controlName": ["WinGridExcelExporter"],
+    "tags": ["Exporting","Grids","Reporting"],
+    "guid": "9cce0d13-eb32-4a83-aa58-999a684ec5f0",  
+    "buildFlags": [],
+    "createdOn": "2011-08-04T14:25:06.1878662Z"
+}
+|metadata|
+////
+
+= Export WinGrid Asynchronously
+
+The WinGridExcelExporter™ component enables you to asynchronously export your entire WinGrid™ directly into a Microsoft Excel file. You do this by calling the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~exportasync.html[ExportAsync] method of the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter.html[UltraGridExcelExporter] object.
+
+== Introduction
+
+Asynchronous exporting, as opposed to synchronous, allows users to interact with the user interface of the application while the export process is executing. You must ensure that neither the WinGrid, nor its data source is accessed by your application in any way while the asynchronous export is in progress. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~isexportasyncinprogress.html[IsExportAsyncInProgress] property of the WinGrid is used to determine whether or not the asynchronous export is still in progress to avoid any access conflicts.
+
+== Requirements
+
+* A Microsoft Visual Studio solution using .NET Framework 3.0 or higher
+* A Windows Forms Application Solution using the WinGrid and bound to data
+* A WinGridExcelExporter control on the form
+
+== Overview
+
+[start=1]
+. <<One,Exporting the WinGrid asynchronously>>
+[start=2]
+. <<Two,(Optional) Verifying the result>>
+
+== Steps
+
+[[One]]
+[start=1]
+. Export the WinGrid asynchronously.
+
+*In C#:*
+
+----
+this.ultraGridExcelExporter1.ExportAsync(this.ultraGrid1, "C:\\Reports\\ExcelExport.xls");
+----
+
+*In Visual Basic:*
+
+----
+Me.UltraGridExcelExporter1.ExportAsync(Me.UltraGrid1, "C:\Reports\ExcelExport.xls")
+----
+
+[[Two]]
+[start=2]
+. (Optional) Verify the result.
+
+To verify the result, run your application and perform the export (Figure 1).
+
+image::images/WinGridExcelExporter_Export_WinGrid_Asynchronously_01.png[]
+
+Figure 1: WinGrid asynchronously exporting to a Microsoft Excel file
+
+== Related Topics
+
+* link:wingridexcelexporter-export-grid-data-to-excel.html[Export Grid Data to Excel]
+* link:wingridexcelexporter-exporting-formulas-to-excel.html[Exporting Formulas to Excel]
+* link:wingridexcelexporter-exporting-to-xlsx-format-(using-clr-3-5).html[Exporting to xlsx format (Using CLR 3.5)]

@@ -1,0 +1,77 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-manage-settings-of-toolbars-and-menus",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{F9EA1CDB-1701-46A4-8A6C-D35F1EB6B8DD}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Manage Settings of Toolbars and Menus
+
+The WinToolbarsManager™ Toolbar and Menu objects have properties you can set that will affect all toolbars and menus or just specific toolbars and menus.
+
+This topic assumes that your form already has the WinToolbarsManager on it and has two  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[Toolbars]"]  added to it. It also requires a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  with  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase~key.html[Key]"]  FontWeight to exist on your second toolbar.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Manage_Settings_of_Toolbars_and_Menus_Load( _
+  ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim Window As New PopupMenuTool("Window")
+	popupmenu1.SharedProps.Caption = "Window"
+	' Adds a Popup Menu to the Tools Collection
+	Me.UltraToolbarsManager1.Tools.Add(Window)
+	Me.UltraToolbarsManager1.Toolbars(0).Tools.Add(Window)
+	' Manages settings that affect all toolbars
+	Me.UltraToolbarsManager1.ToolbarSettings.Appearance.BackColor = Color.LightYellow
+	' Manages settings that affect a specific toolbar
+	Me.UltraToolbarsManager1.Toolbars(1).Settings.Appearance.ForeColor = Color.LawnGreen
+	' Manages settings that affect all menus on toolbar
+	Me.UltraToolbarsManager1.MenuSettings.Appearance.BackColor = Color.PapayaWhip
+	' Manages settings that affect a specific menu added programmatically
+	Window.Settings.Appearance.ForeColor = System.Drawing.Color.Purple
+	' Gets a reference to a Popup Menu created in the design-time customizer and 
+	' manages settings that affect this specific Popup menu
+	Me.UltraToolbarsManager1.Toolbars(1).Tools("FontWeight").SharedProps. _
+	  AppearancesSmall.Appearance.ForeColor = Color.Purple
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Manage_Settings_of_Toolbars_and_Menus_Load(
+  object sender, EventArgs e)
+{
+	PopupMenuTool Window = new PopupMenuTool("Window");
+	popupmenu1.SharedProps.Caption = "Window";
+	// Adds a Popup Menu to the Tools Collection
+	this.ultraToolbarsManager1.Tools.Add(Window);
+	this.ultraToolbarsManager1.Toolbars[0].Tools.Add(Window);
+	// Manages settings that affect all toolbars
+	this.ultraToolbarsManager1.ToolbarSettings.Appearance.BackColor = 
+	  Color.LightYellow;
+	// Manages settings that affect a specific toolbar
+	this.ultraToolbarsManager1.Toolbars[1].Settings.Appearance.ForeColor = 
+	  Color.LawnGreen;
+	// Manages settings that affect all menus on toolbar
+	this.ultraToolbarsManager1.MenuSettings.Appearance.BackColor = 
+	  Color.PapayaWhip;
+	// Manages settings that affect a specific menu added programmatically
+	Window.Settings.Appearance.ForeColor = Color.Purple;
+	// Gets a reference to a Popup Menu created in the design-time customizer and 
+	// manages settings that affect this specific Popup menu
+	this.ultraToolbarsManager1.Toolbars[1].Tools["FontWeight"].SharedProps
+	  .AppearancesSmall.Appearance.ForeColor = Color.Purple;
+}
+----

@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-about-winformattedtexteditor",
+    "controlName": [],
+    "tags": ["Getting Started"],
+    "guid": "{AD6B11BC-90CC-4133-87D0-BEEB7A7FC998}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinFormattedTextEditor
+
+In 2006 Volume 1, we introduced a new control called WinFormattedLinkLabel™. This control can display several types of link:winformattedlinklabel-formatting-text-and-hyperlinks.html[formatted text and hyperlinks]. The WinFormattedLinkLabel control can also be embedded into controls like WinGrid™ and WinTree™, but is not editable. In 2006 Volume 3, we released the editable counterpart to WinFormattedLinkLabel™: the WinFormattedTextEditor control.
+
+Using WinFormattedTextEditor, you can display all the types of formatted text that WinFormattedLinkLabel can display and edit them as well. WinFormattedTextEditor surpasses many of the in-box RichTextBox editing and displaying capabilities. With the link:winformattedlinklabel-whats-new-2006-3.html[new additions] to WinFormattedLinkLabel in the 2006 Volume 3 release, you can essentially create and edit simple Web pages (keep in mind that the WinFormattedTextEditor still uses a well-formed XML document to display its contents), including hyperlinks, with the unique link:winformattedtexteditor-style-attribute.html[STYLE attribute]. Furthermore, WinFormattedTextEditor contains an editing object allowing you to apply styles, capture styles, and insert new text with simple methods such as  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~applystyle(string,boolean).html[ApplyStyle]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~getcurrentstyle.html[GetCurrentStyle]"] , and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~insertvalue(string).html[InsertValue]"] .
+
+WinFormattedTextEditor also supports a completely editable context menu from which the user can access dialog boxes such as the Font, Image, and Link dialog boxes, also available to display at run time with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~showfontdialog.html[ShowFontDialog]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~showimagedialog.html[ShowImageDialog]"] , and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~showlinkdialog.html[ShowLinkDialog]"]  methods. These special editing options are made available by the Infragistics.Win.SupportDialogs assembly. Using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditor~contextmenuitems.html[ContextMenuItems]"]  property, you can pick and choose which edit items (e.g. Cut, Copy, Paste, Select All, Delete, etc.) or dialog boxes you want to display on the context menu.

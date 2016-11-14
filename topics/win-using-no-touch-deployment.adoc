@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-using-no-touch-deployment",
+    "controlName": [],
+    "tags": [],
+    "guid": "{46C49D6D-A020-4C69-973C-E512C2D885EF}",  
+    "buildFlags": [],
+    "createdOn": "2005-10-08T00:00:00Z"
+}
+|metadata|
+////
+
+= Using No-Touch Deployment
+
+A new type of deployment scenario included with .NET is a technology called No-Touch deployment. This technology allows an application to be downloaded, installed and run--all from a web server. The Windows Forms deployment method has several advantages including centralizing the application to a single server much like a Web application. Additionally, No-Touch deployment does not require any alterations to the users system registry or shared system components.
+
+== Additional Resources
+
+To learn more about No-Touch deployment and deploying Infragistics Windows Forms elements using this method see the following resources:
+
+* link:http://msdn.microsoft.com/en-us/library/aa289511(v=vs.71).aspx[No-Touch Deployment in the .NET Framework]
+
+=== Security Policy Implications when using No-Touch Deployment
+
+Code Access Security in .NET is imposed using a mixture of imperative and declarative security. The primary difference between the two security types is that imperative security is handled using instances of security objects created at runtime, while declarative security is based on attributes placed on methods, properties, etc. As an application executes, the .NET Framework uses both imperative and declarative security types to determine whether or not sections of code should be allowed to execute.
+
+When an application is deployed using No-Touch deployment, Internet Explorer uses a utility named IEExec to download the executing assembly and referenced assemblies and establish the permission levels for the application. The permission levels for the application are determined by the security settings in IE and the policy information on the client system. Depending upon these settings, the application will usually run under the default Intranet or Internet security zones. The default Intranet security zone settings provide a subset of the security rights available under a Full Trust environment. The default Internet security zone is a further subset of the Intranet security zone settings.
+
+While the Infragistics WinFoms controls have been developed to gracefully degrade when run under limited security settings where ever possible, there are situations when this is not possible. In many cases, the default Internet Explorer security zone settings will not allow the objects to be instantiated. This is because Microsoft has added declarative security to methods in the base classes from which control features are derived and which require elevated privileges.
+
+An example of this is the IsInputKey method of the base System.Windows.Forms.Control class. This commonly overridden method which indicates to .NET the keys used for input by a control (e.g. arrow keys) has an InheritanceDemand for AllWindow UIPermission (declarative security). If a control being used in the application overrides this method, Code Access Security will prevent the control from being instantiated if the current security context the application is running under does not have UIPermission rights.
+
+Additionally, the .NET Framework will throw a SecurityException exception when it encounters an attempted violation of its Code Access Security policies. Unfortunately the SecurityException cannot be caught by the offending class since it occurs prior to the class being instantiated, and therefore the class cannot be involved in handling the exception.
+
+For example, if you have an application that shows a form which contains an instance of a control that overrides the IsInputKey method, and it attempts to execute with security context that does not allow UIPermission, the form will not be displayed and the application will throw a SecurityException exception.
+
+In order to avoid this problem, wherever possible, the Infragistics Windows Forms tools avoid overriding methods that require elevated levels of security. This helps to ensure that controls can be used under the default Intranet security zone settings, although some of the controls functionality may not be available in that context.
+
+== Additional Resources
+
+To learn more about Code Access Security in the .NET Framework and Internet Explorer security zones please see the following resources:
+
+* link:http://msdn.microsoft.com/en-us/library/930b76w0(v=vs.90).aspx[.NET Framework Developer's Guide: Code Access Security]
+* link:http://www.microsoft.com/windows/ie/using/howto/security/settings.mspx[Working with Internet Explorer 6 Security Settings]
+* link:http://www.microsoft.com/windows/ie/using/howto/security/setup.mspx[Setting Up Internet Explorer Security Zones]
+
+=== Using caspol.exe to Modify Assembly Rights
+
+So why do the Microsoft in-box controls not exhibit these code access security issues when deployed using No-Touch deployment? In order for the client to run a .NET application, they must install the .NET Framework. When the .NET Framework is installed, Microsoft grants unrestricted rights to the framework assemblies which contains the control classes included with the framework by automatically adding them to the Full Trust security zone. You can view these rights (as well as modify which rights are granted to an assembly) using caspol.exe, an utility distributed as part of the .NET Framework. Specifying the -listfulltrust parameter will let you view all assemblies that can run with Full Trust on the system.
+
+You can use caspol.exe to control the security rights of your own applications assemblies, allowing you to grant the assemblies the proper security rights on the users' system. In an intranet type environment, this can be done by network administrators by updating the configuration on the end user's system using caspol.exe.
+
+== Additional Resources
+
+link:http://msdn.microsoft.com/en-us/library/vstudio/ee191568(v=vs.100).aspx[.NET Framework Developer's Guide: Configuring Security Policy Using the Code Access Security Policy Tool (Caspol.exe)]

@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-render-gdi-text-in-individual-controls",
+    "controlName": [],
+    "tags": ["Extending","How Do I","Styling","Tips and Tricks"],
+    "guid": "{A67D77EA-DE24-4A67-92C3-338ACD4F8733}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Render GDI+ Text in Individual Controls
+
+In the Infragistics Windows Forms 2005 volume 3 release for CLR 2.0, you could render GDI text using the new TextRenderer class. If you wanted to render text in GDI+, however, you would need to set the DrawUtility.UseGDIPlusTextRendering property to True. Consequently, every control on the form would render in GDI+ once this property was set. If you needed to render text in both GDI and GDI+ modes, that was not possible. To rectify this problem, we created a  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~textrenderingmode.html[TextRenderingMode]"]  property and added it to all of our base classes.
+
+With the TextRenderingMode property, you can now specify which controls on your form will render with GDI or GDI+. To enable GDI+ text rendering on a specific control, find the TextRenderingMode property in the Properties Window and select GDIPlus from the drop-down list. The code below will allow the WinListView™ control to render it's text using GDI+ rendering.
+
+.Note
+[NOTE]
+====
+The same restrictions from the Infragistics Windows Forms 2005 volume 3 release still apply when rendering text. When rendering rotated text, GDI+ is still used as the TextRenderer class does not support rotated text. If you need to print a document, you must use GDI+ rendering. Finally, the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"]  class always uses GDI+ when rendering.
+====
+
+*In Visual Basic:*
+
+----
+Me.ultraListView1.TextRenderingMode = Infragistics.Win.TextRenderingMode.GDIPlus
+----
+
+*In C#:*
+
+----
+this.ultraListView1.TextRenderingMode = Infragistics.Win.TextRenderingMode.GDIPlus;
+----

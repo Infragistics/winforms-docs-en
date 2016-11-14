@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-styling-state-change-buttons",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{A61DC0BD-6B30-462A-AA53-55CE12B6E1B2}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Styling StateChangeButtons
+
+The StateChangeButtons are displayed by default on the headers of each tile. These buttons are used to switch tiles between the normal and large states. The appearance of the StateChangeButton can be modified and it can also totally be hidden from view.
+
+The following code assumes that you have an UltraTilePanel control dropped onto your form. For information on adding tiles to the UltraTilePanel control please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
+
+*In Visual Basic:*
+
+----
+' Hide State Change button for a specific tile 
+tile1.Settings.ShowStateChangeButton = Infragistics.Win. DefaultableBoolean.[False] 
+' Set the appearance for the state change button when the Tile is in Large state 
+tile2.Settings.StateChangeButtonLargeAppearance.BackColor = Color.Red 
+' Set the appearance for the state change button when the Tile is in Normal state 
+tile3.Settings.StateChangeButtonNormalAppearance.BackColor = Color.GreenYellow 
+' Set the Hot track appearance for state change button when the Tile is in Large state
+tile4.Settings.StateChangeButtonLargeHotTrackAppearance.BackColor = Color. LightPink
+----
+
+*In C#:*
+
+----
+// Hide State Change button for a specific tile
+tile1.Settings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.False;
+// Set the appearance for the state change button when the Tile is in Large state
+tile2.Settings.StateChangeButtonLargeAppearance.BackColor = Color.Red;
+// Set the appearance for the state change button when the Tile is in Normal state
+tile3.Settings.StateChangeButtonNormalAppearance.BackColor = Color.GreenYellow;
+// Set the Hot track appearance for state change button when the Tile is in Large state
+tile4.Settings.StateChangeButtonLargeHotTrackAppearance.BackColor = Color. LightPink;
+----
+
+image::Images\WinTilePanel_Styling_State_Change_Buttons_01.png[]

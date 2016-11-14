@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-retrieving-data-in-your-business-class",
+    "controlName": ["WinDataSource"],
+    "tags": ["Application Scenarios","Getting Started"],
+    "guid": "{F3857F44-61B4-494C-A657-CDBCD3BF711E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Retrieving Data in Your Business Class
+
+This help topic is a continuation of a five-part tutorial that picks up from link:windatasource-getting-started.html[Getting Started].
+
+== Example Continued
+
+Now that we set up some important and needed elements, we can get started with the Retrieve, Delete, Create and Update functionality.
+
+To Retrieve data we add a method called FillData() whose responsibility is to get all the records in this particular table. In this implementation, we are unconditionally getting all records. In a more advanced and feature rich object model, we would provide several overloaded versions of this method so that it is possible to do filtering, sorting on one or many fields.
+
+*In Visual Basic:*
+
+----
+' Method that Fills the WinDataSource with Data from our SQL Server. This can 
+' be scaled so that you have Overloads that may take Keys, Search Criteria and Sort Order
+Public Sub FillData()
+	Dim cn As New SqlConnection(_cn)
+	Dim cm As SqlCommand = cn.CreateCommand()
+	cm.CommandText = "SELECT CategoryID,CategoryName,Description," + _
+	  "Picture FROM Categories ORDER BY CategoryName ASC"
+	cm.CommandType = CommandType.Text
+	cn.Open()
+	Dim dr As SqlDataReader = cm.ExecuteReader(CommandBehavior.Default)
+	Dim rowCount As Integer
+	While dr.Read = True
+		rowCount += 1
+		MyBase.Rows.Add(New Object() {dr("CategoryID"), _
+		  dr("CategoryName"), _
+		  dr("Description"), _
+		  dr("Picture")})
+	End While
+	MyBase.Rows.SetCount(rowCount)
+	dr.Close()
+	cn.Dispose()
+End Sub
+----
+
+*In C#:*
+
+----
+// Method that Fills the WinDataSource with Data from our SQL Server. This can 
+// be scaled so that you have Overloads that may take Keys, Search Criteria and Sort Order
+public void FillData()
+{
+	SqlConnection cn = new SqlConnection(_cn);
+	SqlCommand cm = cn.CreateCommand();
+	cm.CommandText = "SELECT CategoryID,CategoryName,Description," +
+	  "Picture FROM Categories ORDER BY CategoryName ASC";
+	cm.CommandType = CommandType.Text;
+	cn.Open();
+	SqlDataReader dr = cm.ExecuteReader(CommandBehavior.Default);
+	int rowCount = 0;
+	while(dr.Read())
+	{
+		rowCount++;
+		base.Rows.Add(new object[] { dr["CategoryID"], dr["CategoryName"],  
+		  dr["Description"],dr["Picture"] }); 
+	}
+	base.Rows.SetCount(rowCount);
+	dr.Close();
+	cn.Dispose();
+}
+----
+
+In this method we simply use a SqlDataReader to load the rows of the WDS internally. The performance is very good and it can be even faster if used with stored procedures instead of ad hoc queries.
+
+== Related Topics
+
+link:windatasource-inserting-and-updating-data-in-your-business-class.html[Inserting and Updating Data in Your Business Class]

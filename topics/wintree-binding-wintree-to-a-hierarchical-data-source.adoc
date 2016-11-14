@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-binding-wintree-to-a-hierarchical-data-source",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{D73C398A-5C7E-42D0-AC87-C632F35124BA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Binding WinTree to a Hierarchical Data Source
+
+*Before You Begin*
+
+The WinTree™control can be used to represent hierarchical data in a tree like structure. In addition to the column support, it has the ability to bind to a data source. When bound to a data source,  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn.html[UltraTreeNodeColumn]"]  objects are automatically generated since the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~autogeneratecolumnsets.html[AutoGenerateColumnSets]"]  property is set to true by default.
+
+What you will Accomplish
+
+You will learn how to bind WinTree to the Customers and Orders table of the Northwind database.
+
+*Follow these Steps*
+
+[start=1]
+. From the Microsoft® Visual Studio® Toolbox, drag and drop an UltraTree onto your form.
+[start=2]
+. In the WinTree control’s Properties window, select the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datasource.html[DataSource]"]  property to display the drop-down list. In the drop-down list, click the “Add Project Data Source…” link.
+
+image::Images\WinTree_Binding_WInTree_to_a_Hierarchical_Data_Source_01.png[]
+
+[start=4]
+. The Data Source Configuration Wizard will appear. Select Database and click Next.
+[start=5]
+. Click New Connection to configure the connection string. The Add Connection dialog appears.
+[start=6]
+. Make sure you have Microsoft SQL Server (Sql Client) under Data Source. Set the server name to the server you are using, .\SQLEXPRESS in this case. Set the database to Northwind.
+
+image::Images\WinTree_Binding_WInTree_to_a_Hierarchical_Data_Source_02.png[]
+
+[start=8]
+. Click OK. You are returned to the Choose your Data Connection screen.
+[start=9]
+. Click Next.
+[start=10]
+. Expand the Tables node and select the checkboxes next to Customers and Orders Table. Click Finish.
+
+image::Images\WinTree_Binding_WInTree_to_a_Hierarchical_Data_Source_03.png[]
+
+[start=12]
+. In the WinTree control’s DataSource property window, drop-down the dialog, and expand the Other Data Sources section. A Northwind dataset will be listed with the Customers and Orders table. Select the Orders table associated with the dataset first, as this will represent the child table. Then select the Customers table which will represent the parent table. A dataset, BindingSource, and TableAdapter will be generated and added as components to your form.
+[start=13]
+. Now the WinTree will display the columns that will be shown when it is rendered.
+
+image::Images\WinTree_Binding_WInTree_to_a_Hierarchical_Data_Source_04.png[]
+
+[start=15]
+. Save and run the application. You will see the WinTree control filled with data from the Customers table, and if you expand a node, the associating Orders table will be visible.
+
+image::Images\WinTree_Binding_WInTree_to_a_Hierarchical_Data_Source_05.png[]

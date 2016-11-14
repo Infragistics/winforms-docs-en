@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridexcelexporter-exporting-to-xlsx-format-(using-clr-3.5)",
+    "controlName": ["WinGridExcelExporter"],
+    "tags": ["Exporting"],
+    "guid": "{EC70A0CF-8531-4DDD-A363-79E44D94088B}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-09T17:09:38Z"
+}
+|metadata|
+////
+
+= Exporting to xlsx format (Using CLR 3.5)
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~export.html[Export]"]  method of the WinGridExcelExporter™ component accepts the  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~export(ultragrid,string,workbookformat).html[WorkBookFormat]"]  parameter which defines the format type as Excel2007 or Excel97To2003.
+
+For more information on project dependencies and references when exporting to the xlsx format, please review the topic link:excelengine-office-2007-xlsx-file-generation-references-and-dependencies.html[Office® 2007 xlsx file generation references and dependencies.]
+
+The example code below shows you how to export WinGrid into the xlsx file format using the WinGridExcelExporter
+
+*In Visual Basic:*
+
+----
+Private Sub btnExport_Click (ByVal sender As System. Object, _
+  ByVal e As System.EventArgs) Handles btnExport.Click
+    Me.UltraGridExcelExporter1.Export (Me.ultraGrid1, "C:\GridData.xlsx", Infragistics.Documents.Excel.WorkbookFormat.Excel2007)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnExport_Click (object sender, EventArgs e)
+{
+this.ultraGridExcelExporter1.Export (this.ultraGrid1, @"C:\GridData.xlsx", Infragistics.Documents.Excel.WorkbookFormat.Excel2007);
+}
+----

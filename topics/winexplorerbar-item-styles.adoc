@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-item-styles",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Styling"],
+    "guid": "{D167B9AA-65BF-4B1D-A456-2F66675F182E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Item Styles
+
+When creating the Items that make up the WinExplorerBar™ interface, you can choose from among several different types. These types provide basic functionality for a point-and-click interface. The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~style.html[Style]"]  property of the Item determines how it will interact with the user.
+
+The Style property is not located directly on the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"]  object, but on the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[UltraExplorerBarItemSettings]"]  object. This provides encapsulation of Item formatting and behavior. For more information, see link:winexplorerbar-control-the-appearance-of-groups-and-items.html[Controlling Group and Item Appearance]. Other properties discussed below are also found on the UltraExplorerBarItemSettings object, except as noted.
+
+.Note
+[NOTE]
+====
+You can use WinForms controls in place of Items by setting the Group's Style property to ControlContainer. You can then use any WinForms control to design the UltraWinExplorerBar interface. However, WinForms Controls may not be mixed with Items within a single Group.
+====
+
+There are four possible Styles for Items:
+
+[start=1]
+. Button - The Item behaves like a button, visibly depressing and returning when clicked. Clicking the Item triggers an action you specify in code.
+[start=2]
+. State Button - This Item style is similar to Button, except that the item toggles between the "pressed" and "unpressed" states when it is clicked.
+
+An Item that uses the State Button style comes under the control of the UltraExplorerBar's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~statebuttoncheckstyle.html[StateButtonCheckStyle]"]  property. This property regulates state button exclusivity. By default, the element sets the exclusivity of state buttons in a way consistent with the element's Style, but you can also choose to have state buttons be exclusive within Groups or within the entire element (across Groups).
+[start=3]
+. Label - An Item with this style behaves as a label in the Group. It's purpose is to display information.
+[start=4]
+. Separator - This style is used to group Items together by inserting a visible separator between them, similar to the way a line separates buttons on a toolbar that are grouped according to functionality. When an Item is functioning as a separator, its text and icon are not displayed; it is rendered as a line.
+
+An Item with this style is affected by the SeparatorStyle property, which specifies how the separator will be rendered.
+
+== Default Values
+
+An Item's default setting for the Style property depends upon the Style setting being used for the element. For the ExplorerBar, ListBar, and OutlookNavigationPane element styles, Items default to the Button item style. For the Toolbox and VisualStudio2005Toolbox element styles, Items default to the State Button item style.

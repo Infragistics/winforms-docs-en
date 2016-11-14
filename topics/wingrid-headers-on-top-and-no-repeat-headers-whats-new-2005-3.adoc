@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-headers-on-top-and-no-repeat-headers-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{825F80F4-D38D-49F9-B2CD-23705B1FDC5F}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Headers on Top and No Repeat Headers
+
+A  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headerplacement.html[HeaderPlacement]"]  property has been added to  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"] . This specifies if and how headers are displayed. This property is of  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerplacement.html[HeaderPlacement]"]  enumeration type.
+
+The enumeration has the following members:
+
+* Default -- The default is resolved to RepeatOnBreak.
+* RepeatOnBreak -- Headers are repeated on every band break. The current row displays headers if the previous row is from a different row collection. This is the default behavior.
+* FixedOnTop -- Headers of all the bands are displayed on top. They always remain visible, even if a row from that band is currently not visible. You can hide headers of certain bands by setting the existing  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~colheadersvisible.html[ColHeadersVisible]"]  property of the band.
+* OncePerRowIsland -- Headers are displayed only once per row island. When a row is expanded with visible children, the next sibling does not display the headers.
+* OncePerGroupedRowIsland -- Same as OncePerRowIsland however when rows are grouped by one or more columns, the headers are displayed above the group-by-rows. Here the row island is taken to mean the collection of rows associated with an IList.
+
+image::Images/WinGrid_How_to_Control_Header_Placement_01.png[headers on top and no repeat headers in ultragrid]
+
+_RepeatOnBreak - Headers are repeated on every band break._ 
+
+== Related Topic
+
+link:wingrid-control-the-placement-of-headers.html[Control the Placement of Headers]

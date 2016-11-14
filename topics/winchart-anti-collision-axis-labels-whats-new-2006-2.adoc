@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-anti-collision-axis-labels-whats-new-2006-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "{9043F21D-7458-49E1-9043-B551FF779702}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Anti-Collision Axis Labels
+
+Previously, depending on the size and content of your chart, x-axis and y-axis labels may have collided or overlapped. For example, in the Column chart below, notice the x-axis labels have been cut off by the horizontal series labels.
+
+image::Images/WinChart_Anti_Collision_Axis_Labels_Whats_New_2006_2_01.png[anti collision axis labels]
+
+Starting in the 2006 Volume 2 release, the  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.resources.appearance.axislabelappearancebase~layout.html[AxisLabelAppearanceBase.Layout]"]  property has been added to the Chart control. This feature allows you to configure each chart axis to use various anti-collision strategies in order to prevent chart labels from colliding into each other. These strategies include font scaling, text wrapping, rotation, label staggering in alternate rows, and text clipping. Additionally, you can configure the chart axes to use a built-in intelligent anti-collision layout algorithm to prevent label collisions, or you can manually define a set of anti-collision strategies that the chart will use to prevent label collisions.
+
+The Column chart below is an example of the new Anti-Collision Axis Labels feature in effect. Notice the automatic layout changes that the feature made to ensure there is enough room to display the long x-axis labels, along with the series labels. It scaled the font of the axis labels, wrapped the text of the axis labels, and clipped the text of the series labels.
+
+image::Images/WinChart_Anti_Collision_Axis_Labels_Whats_New_2006_2_02.png[anti collision axis labels]
+
+== Related Topics
+
+link:chart-axis-label-layout-behaviors.html[Axis Label Layout Behaviors]
+
+link:chart-using-the-behaviors-collection.html[Using the Behaviors Collection]

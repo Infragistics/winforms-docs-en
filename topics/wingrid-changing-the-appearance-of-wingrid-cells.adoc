@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-appearance-of-wingrid-cells",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{4F70AE22-3112-46DE-B7DD-6B1F70FA70DB}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Appearance of WinGrid Cells
+
+== Background
+
+When cells need to be embellished with color, images or other unique properties, WinGrid™ allows the developer to set Appearance properties for each cell.
+
+== Issues
+
+* How do I set the background color of all cells with a specific content?
+
+== Sample Project
+
+The sample project displays a small table with various CellAppearance properties for the first column and descriptive information in the second column.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Changing_the_Appearance_of_WinGrid_Cells_01.png[changing the appearance of ultragrid's cells]
+
+UltraGrid1.InitializeLayout
+
+In the InitializeLayout event of the UltraWinGrid: Set the appearance properties of all cells in the grid, override the appearance for a specific band, override for a specific column of a band in the grid, and finally set the proportional width of the columns and ask for AutoFitStyle:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Set Appearance Properties for all Cells in the Grid
+	e.Layout.Override.CellAppearance.BackColor = Color.LightYellow
+	' Set Appearance Properties for all Cells in a Band of the Grid
+	e.Layout.Bands(0).Override.CellAppearance.BackColor = Color.LightGoldenrodYellow
+	' Set Appearance Properties for a Column of a Band of the Grid
+	e.Layout.Bands(0).Columns(1).CellAppearance.BackColor = Color.LightYellow
+	' Set proportional width and AutoFitColumns
+	e.Layout.Bands(0).Columns(0).Width = 30
+	e.Layout.Bands(0).Columns(1).Width = 100
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set Appearance Properties for all Cells in the Grid
+	e.Layout.Override.CellAppearance.BackColor = Color.LightYellow;
+	// Set Appearance Properties for all Cells in a Band of the Grid
+	e.Layout.Bands[0].Override.CellAppearance.BackColor = Color.LightGoldenrodYellow;
+	// Set Appearance Properties for a Column of a Band of the Grid
+	e.Layout.Bands[0].Columns[1].CellAppearance.BackColor = Color.LightYellow;
+	// Set proportional width and AutoFitColumns
+	e.Layout.Bands[0].Columns[0].Width = 30;
+	e.Layout.Bands[0].Columns[1].Width = 100;
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+}
+----
+
+== Review
+
+This sample project illustrated the hierarchy of overrides and CellAppearance objects used to set default appearance properties for grid cells. It also demonstrates the use of some of the cell appearance properties.

@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "winprintpreview-about-winprintpreview",
+    "controlName": ["WinPrintPreviewControl"],
+    "tags": ["Getting Started","Printing"],
+    "guid": "{C2F7F56B-E1D5-4DF2-AF7E-69B6EBFBDA1A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinPrintPreview
+
+The WinPrintPreview™ component includes a superset of the functionality of the .Net PrintPreviewControl. The WinPrintPreviewThumbnail™ control is used in conjunction with the UltraPrintPreviewControl to provide a thumbnail view of the generated pages similar to the thumbnails you might see in Microsoft Word or Adobe Acrobat.
+
+image::Images\WinMisc_Overview_07.PNG[example of ultraprintpreview]
+
+The controls have a Settings property that includes several common properties between the two control. The following is a list of the main Settings properties:
+
+* Columns -- This value indicates the number of columns (i.e. pages) per row. By default, the value will be 0 which will be handled differently based on the current ZoomMode. When the ZoomMode is set to AutoFlow, the pages will be arranged without a maximum value and will wrap the pages to the subsequent row when the page cannot fit in the visible area. When Columns is set to a value > 0 and the ZoomMode is set to AutoFlow, this value will indicate the maximum number of columns in each row. For all other zoom modes, a value of 0 will be interpreted as 1.
+* Rows -- This value indicates the number of rows per view. When set to 0, which is the default value, the pages will be organized in a continuous arrangement - the pages are arranged from left to right (columns) and top to bottom in a single scrollable continuous view. This type of arrangement is used in Microsoft Word while editing a document. In this mode, the bottom of a page is immediately followed by the start of a new page until the last page. When set to a value greater than 0, the preview will be broken up into a series of "views". The number of rows per view is based on the Rows property (although it could be a smaller value depending upon the number of pages or when the ZoomMode is set to AutoFlow). When scrolling within in this view, attempting to scroll above the topmost row in the view or below the bottommost row in the view will bring the bottommost/topmost portion of the previous/next view respectively. This type of arrangement can be seen in the thumbnail view of Word, the print preview of Word, and in Adobe Acrobat Reader when using a Single Page or Two Page layout. Note: it is possible for each view (or group of preview rows) to have a different zoom level when the zoom is being automatically calculated.
+
+Zoom -- The zoom property is used to reduce or magnify the view of the pages. The value is not unless the ZoomMode is set to Standard or AutoFlow.
+
+ZoomMode -- This property will determine the zoom level for the preview pages. It includes the following options:
+
+[start=1]
+. Standard -- The zoom is based on the Zoom property.
+[start=2]
+. AutoFlow -- The value of the Zoom property is used to determine the zoom level, but the number of columns per row is based on how many pages can fit into the visible area (with a minimum of one page per row). If Rows is set to a value greater than 0, the number of rows displayed will be based on how many rows can be displayed in the preview page area.
+[start=3]
+. PageWidth -- The value of the zoom is calculated based on the widest row of the current view. For example, if the Columns property is set to 1, then the zoom will be calculated based on the widest page in the current view. However, if Columns is set to 2, then the zoom will be calculated based on the widest set of pages in the current view.
+[start=4]
+. MarginsWidth -- The value of the zoom is calculated based on the widest margin width in a row of the current view.
+[start=5]
+. WholePage -- The value of the zoom is calculated based on the extent required to show the largest row completely in the visible area.
+
+PageNumberStyle -- Determines where page numbers will be displayed in the preview area. It includes the following options:
+
+[start=1]
+. None -- No page number indicator is displayed
+[start=2]
+. LeftOfRow -- A page number is positioned to the left of the row. The page number is that of the first page in the row.
+[start=3]
+. BelowEachPage -- A page number is displayed below each page.
+
+The following is a breakdown of the main control-specific differences:
+
+UltraPrintPreviewControl
+
+* Document -- Determines what PrintDocument will be used to generate the preview pages.
+* DisplayPreviewStatus -- Determines whether a dialog is displayed while the preview pages are being generated.
+* AutoGeneratePreview -- Determines whether the control will automatically generate a preview when the control is initialized. When set to false, the GeneratePreview method must be invoked to cause the control to generate the preview pages.
+* MaximumPreviewPages -- Determines the maximum number of preview pages that should be generated. Note: changing this property after the preview pages have been generated will not affect how many preview pages are displayed.
+* UseAntialias -- Determines whether the preview images are antialiased when generated. Setting this property will reset any current preview information.
+* ViewHistory -- The PreviewControl maintains a history of the pages that have been viewed as well as the zoom and zoommode at which they were viewed (similar to the way Adobe Acrobat reader functions). The control exposes two properties (HasPreviousView and HasNextView) that can be used to determine if the PerformAction method may be used to navigate the view history. There is also a ViewHistoryChanged event that is invoked when entries are added or removed from the view history and when navigating within the view history. This can be used to update the UI if the ability to navigate the previous history is exposed.
+* MouseAction -- Determines the action performed while using the mouse within the preview page area of the UltraPrintPreviewControl. It will include the following options:
+
+.. None -- The mouse buttons do not cause any action to occur.
+.. Hand -- An open hand cursor image is displayed while over the preview page area. While the mouse button is pressed down, the cursor is changed to a closed hand and the current view can be scrolled by dragging the mouse.
+.. Snapshot -- The mouse is dragged to create a selection rectangle. When the mouse is released, the selected area is copied to the clipboard as an image. This is only available while the mouse is within a single page.
+.. DynamicZoom -- The mouse is used to zoom in or out. When the mouse is dragged up, the page is zoomed in; when the mouse is dragged down, the page is zoomed out.
+.. ZoomOut -- The mouse is dragged to create a selection rect where the difference between the selected rect and the current view size determines the zoomed display.
+.. ZoomIn -- The mouse is dragged to create a selection rect where the selected area is zoomed into.
+
+UltraPrintPreviewThumbnail
+
+* PreviewControl -- Indicates the associated UltraPrintPreviewControl whose preview pages should be displayed.
+* ViewBox -- The thumbnail control will display what is hereafter referred to as a viewbox. Essentially, the view box is an element displayed within each preview page that indicates what portion of that page is currently in view within the associated UltraPrintPreviewControl. This view box can be dragged to change the view.
+* CurrentPreviewPage[Number]Appearance -- Controls the appearance of the page and page number associated with the CurrentPage of the PreviewControl.
+* ViewBoxDisplayStyle -- Determines which thumbnail pages will display a viewbox. By default, a view box will be displayed in every thumbnail page that is currently in view in the associated PreviewControl.
+* ViewBoxDragMode -- Determines how the view box may be dragged. By default, the view box may be dragged anywhere within the page; holding down the control key while this property is set to default is used to restrict the viewbox within the page to make it easier to stay within the page.

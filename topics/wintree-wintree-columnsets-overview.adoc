@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-wintree-columnsets-overview",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{8BD264A3-6A3D-4828-982F-D1213D928898}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinTree ColumnSets Overview
+
+WinTree™ supports single or multi-column display of data. This functionality is controlled by the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~columnsettings.html[ColumnSettings]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree.html[UltraTree]"]  object. The ColumnSettings property defines all the properties that apply to the columns displayed by the WinTree control.
+
+If you have experience with the Infragistics WinGrid™ control, then it may be helpful to know that some of these properties are similar to the properties found in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object.
+
+.Note
+[NOTE]
+====
+Though these properties are similar to those in the UltraGridOverride object, they do not necessarily behave the same way in the WinTree as they do in WinGrid.
+====
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~columnset.html[ColumnSets]"]  property is of type  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.columnsetscollection.html[ColumnSetsCollection]"] , which is a collection of  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  objects each of which define a set of  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn.html[UltraTreeNodeColumns]"] . The UltraTreeColumnSet object defines properties for a set of columns in the tree. Using these properties it is possible to restrict several end-user manipulations of columns. For instance,  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowcolmoving.html[AllowColMoving]"]  determines whether the user can drag-and-drop columns to change their visible positions (for more information, see the link:wintree-move-columns-in-wintree.html[Move Columns in WinTree] topic). Another commonly used property is  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowsorting.html[AllowSorting]"]  (for more information, see the link:wintree-sort-columns-in-wintree.html[Sort Columns in WinTree] topic) that determines whether or not the end-user can click on a column header to sort the rows on that column. All these property settings are applicable to the entire ColumSets Collection in the WinTree through the UltraTreeColumnSettings object. Also each individual ColumnSet can be overridden using the properties of UltraTreeColumnSet and UltraTreeNodeColumn objects.
+
+.Note
+[NOTE]
+====
+All the properties of the UltraTreeColumnSet and UltraTreeColumnSettings object s are applicable only when the WinTree control’s  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  property is set to a value other than ‘Standard’.
+====

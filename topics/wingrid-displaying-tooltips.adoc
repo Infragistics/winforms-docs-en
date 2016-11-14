@@ -1,0 +1,105 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-tooltips",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{31AD5BA9-D828-406D-9034-0ED65C546D9F}",  
+    "buildFlags": [],
+    "createdOn": "2005-12-09T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying ToolTips
+
+The WinGrid™ exposes the ToolTipText property on  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase.html[HeaderBase]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue.html[SummaryValue]"]  objects. These properties let you conveniently set ToolTip information on specific rows, cells, headers, and summaries. The ToolTip is displayed when the user hovers over the object with the mouse.
+
+== To display Tooltips:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. The following code sets tool tip on a column header, row, cell, summary settings and a summary value.
+
+*In Visual Basic:*
+
+----
+Private Sub Display_ToolTips_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Set tool tip on a column.
+	Me.UltraGrid1.DisplayLayout.Bands(0).Columns("CustomerID").Header.ToolTipText = _
+	  "This field contains user ID of the customer."
+	' Set tool tip on a row.
+	Me.UltraGrid1.Rows(0).ToolTipText = "This is a row tool tip."
+	' Set tool tip on a cell.
+	Me.UltraGrid1.Rows(0).Cells(0).ToolTipText = "This is a cell tool tip."
+	' Add a summary.
+	Dim summary As SummarySettings = _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Summaries.Add("count", _
+	  SummaryType.Count, _
+	  Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0), _
+	  SummaryPosition.UseSummaryPositionColumn)
+	' Set the tooltip on the summary settings object. This tool tip will 
+	' be displayed on every summary value instance associated with this
+	' summary settings object.
+	summary.ToolTipText = String.Format("Count of column {0}.", _
+	  summary.SourceColumn.Header.Caption)
+	' Tooltip can be set on individual summary value objects as well, in case  you
+	' want to display a different tool tip based on the calculated value. A good place
+	' to set such summary value specific tool tips is in SummaryValueChanged event.
+	Me.UltraGrid1.Rows.SummaryValues("count").ToolTipText = _
+	  String.Format("Count of column {0}.", summary.SourceColumn.Header.Caption)
+End Sub
+----
+
+*In C#:*
+
+----
+private void Display_ToolTips_Load(object sender, EventArgs e)
+{
+	// Set tool tip on a column.
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns["CustomerID"].Header.ToolTipText = 
+	  "This field contains user ID of the customer.";
+	// Set tool tip on a row.
+	this.ultraGrid1.Rows[0].ToolTipText = "This is a row tool tip.";
+	// Set tool tip on a cell.
+	this.ultraGrid1.Rows[0].Cells[0].ToolTipText = "This is a cell tool tip.";
+	// Add a summary.
+	SummarySettings summary =
+	  this.ultraGrid1.DisplayLayout.Bands[0].Summaries.Add( "count",
+	  SummaryType.Count, 
+	  this.ultraGrid1.DisplayLayout.Bands[0].Columns[0], 
+	  SummaryPosition.UseSummaryPositionColumn );
+	// Set the tooltip on the summary settings object. This tool tip will 
+	// be displayed on every summary value instance associated with this
+	// summary settings object.
+	summary.ToolTipText = string.Format( "Count of column {0}.", 
+	  summary.SourceColumn.Header.Caption );
+	// Tooltip can be set on individual summary value objects as well, in case  you
+	// want to display a different tool tip based on the calculated value. A good place
+	// to set such summary value specific tool tips is in SummaryValueChanged event.
+	this.ultraGrid1.Rows.SummaryValues[ "count" ].ToolTipText = 
+	  string.Format( "Count of column {0}.", 
+	  summary.SourceColumn.Header.Caption );
+}
+----
+
+[start=3]
+. The following image shows a WinGrid displaying a column header ToolTip.
+
+image::Images/WinGrid_Display_ToolTips_01.png[displaying tooltips in ultragrid]

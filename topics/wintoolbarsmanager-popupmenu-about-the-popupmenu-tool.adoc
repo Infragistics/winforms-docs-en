@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-popupmenu-about-the-popupmenu-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{1EB7FEC4-B693-4762-A800-A1D321A75E94}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the PopupMenu Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase.html[PopupToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase.html[TearawayToolBase]"] 
+
+|Description:
+|The PopupMenu Tool lets you display a menu of tools from a toolbar, from another menu (i.e., as a sub-menu) or as a context menu anywhere on the desktop. The menu can optionally be display with a SideStrip which is a vertical strip at the left edge of the menu that can contain vertically drawn text and/or an image. The SideStrip duplicates the look of the StartMenu in Windows 2000. As with all TearawayToolBase derived tools, it has a property called 'AllowTearaway' that allows the menu to be 'torn away' and floated in its own window.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_12.png[example of ultratoolbarsmanager popupmenu tool] 
+
+Menu With PopupStyle = Menu 
+
+image::Images\WinToolbarsManager_About_Tools_13.png[example of ultratoolbarsmanager popupmenu tool] 
+
+Same menu with PopupStyle = Toolbar 
+
+image::Images\WinToolbarsManager_About_Tools_14.png[example of ultratoolbarsmanager popupmenu tool toolbar popupstyle] 
+
+Menu with PopupStyle = Toolbar shown as a context menu 
+
+image::Images\WinToolbarsManager_About_Tools_15.png[example of ultratoolbarsmanager popupmenu tool as a context menu] 
+
+|====

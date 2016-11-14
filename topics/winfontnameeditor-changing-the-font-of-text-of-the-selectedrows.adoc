@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "winfontnameeditor-changing-the-font-of-text-of-the-selectedrows",
+    "controlName": ["WinEditors"],
+    "tags": ["Application Scenarios","Editing","Grids","How Do I"],
+    "guid": "{4D275A2C-8F85-44D9-BC47-EE4958C2075F}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Font of Text of the SelectedRows
+
+WinFontNameEditor™ changes the current font of a text item. Upon clicking the button on the drop-down box, every font installed on the current computer will be listed. The user can click any font and that font name will be returned as a text string. In order to change a font, create a new font object and apply the settings of the new font to the font object of the text being changed.
+
+The following example code shows you how to change the font of the selected rows in WinGrid™ when a new font is chosen.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraFontNameEditor1_ValueChanged(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles UltraFontNameEditor1.ValueChanged
+	Me.categoriesUltraGrid.UseAppStyling = False
+	Me.categoriesUltraGrid.DisplayLayout.Override.SelectedRowAppearance.FontData.Name = _
+	  Me.UltraFontNameEditor1.Value
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraFontNameEditor1_ValueChanged(object sender, EventArgs e)
+{
+	this.categoriesUltraGrid.UseAppStyling = false;
+	this.categoriesUltraGrid.DisplayLayout.Override.SelectedRowAppearance.FontData.Name =
+	  this.ultraFontNameEditor1.Value.ToString();
+}
+----
+
+When the value of the FontEditor is changed, FontEditor creates a new font. It passes the text of the control (the font face) to the new font as well as the size of the font (12 pt). The FontEditor then sets the font of the label to the new font object.
+
+image::images\WinEditors_Changing_the_Font_of_Text_of_the_SelectedRows_01.png[example results of wingrid changing the font of a selected row.]

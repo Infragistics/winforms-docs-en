@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincombo-resize-drop-down-in-wincombo",
+    "controlName": ["WinCombo"],
+    "tags": ["Selection"],
+    "guid": "6b2b2ca7-ad64-4d32-b65e-eb0761667b0c",  
+    "buildFlags": [],
+    "createdOn": "2010-06-03T21:23:06.0717108Z"
+}
+|metadata|
+////
+
+= Resize Drop Down in WinCombo
+
+The drop down of WinCombo™ control can be resized using a handle, which can be positioned at the bottom of the drop-down either vertically or diagonally. This handle enables you to resize the drop-down and view any text or item in the drop-down that has been truncated due to the size of the control. By default the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~dropdownresizehandlestyle.html[DropDownResizeHandleStyle] property is set to ‘None’. When set to a particular style and resized at run time, the resized height and width of the drop down will be stored for that run of the application. You can also style the handle using the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~dropdownresizehandleappearance.html[DropDownResizeHandleAppearance] property.
+
+The following code assumes that you have an UltraCombo control dropped onto your form and bound to data.
+
+*In Visual Basic:*
+
+----
+' Set the Drop Down Resize handle style for UltraCombo
+Me.ultraCombo1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize 
+' Set the back color for the handle 
+Me.ultraCombo1.DropDownResizeHandleAppearance.BackColor = Color.Blue
+----
+
+*In C#:*
+
+----
+// Set the Drop Down Resize handle style for UltraCombo
+this. ultraCombo1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize;
+// Set the back color for the handle
+this. ultraCombo1.DropDownResizeHandleAppearance.BackColor = Color.Blue;
+----

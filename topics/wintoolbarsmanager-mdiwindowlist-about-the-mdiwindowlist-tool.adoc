@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-mdiwindowlist-about-the-mdiwindowlist-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{EDF8E6DE-36CC-418C-BA46-954912390E4A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the MDIWindowList Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.mdiwindowlisttool.html[MdiWindowListTool]"] 
+
+|Derived From:
+| link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase] › link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.listtool.html[ListTool]
+
+|Description:
+|When used on a menu belonging to an MDI parent form, the MdiWindowList Tool displays a list of the current open MDI child windows belonging to the parent. It can also optionally display one or more window manipulation commands related to the MDI child windows. No code is required to achieve this behavior - simply place an MdiWindowListTool on a menu and it handles the rest.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_08.png[example of ultratoolbarsmanager MDIWindowList tool] 
+
+|====

@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-you-can-now-clear-modified-cells-from-allocated-memory-whats-new-20063",
+    "controlName": [],
+    "tags": [],
+    "guid": "{04AE1CD7-BFB2-48F7-8183-B70893406232}",  
+    "buildFlags": [],
+    "createdOn": "2006-10-10T13:41:59Z"
+}
+|metadata|
+////
+
+= You Can Now Clear Modified Cells from Allocated Memory
+
+Whenever the end user makes a modification to a cell (such as an appearance change), that modification is stored in memory. Previously, there was no way to manipulate how these modifications were allocated in memory. Now, you can use the new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~deallocatecells.html[DeallocateCells]"]  method on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscollection.html[RowsCollection]"]  to clear any cell modifications allocated in memory. Doing so will negate any previous cell modifications.

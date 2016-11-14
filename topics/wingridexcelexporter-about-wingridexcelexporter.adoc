@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridexcelexporter-about-wingridexcelexporter",
+    "controlName": ["WinGridExcelExporter"],
+    "tags": [],
+    "guid": "{967BCD02-E6E0-430C-8694-33BCEB878AB0}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinGridExcelExporter
+
+This topic gives a general overview of the Excel exporting process and the elements involved. For step-by-step instructions on how to export Excel data, see the link:wingridexcelexporter-export-grid-data-to-excel.html[Export Grid Data to Excel] topic in the help.
+
+With this release, the WinGrid™ gains the ability to export data in Microsoft Excel spreadsheet format. Exporting to Excel format is a process similar to printing grid data, in that you have control over how Layouts and Appearances are applied to the data before export, and which data is included or excluded. Excel export can take advantage of many of the advanced formatting features of Excel, and export is not limited to grid data; headers, column groupings, summary rows, and more can all be included in the export.
+
+Excel exporting is handled by two new assemblies. The Infragistics.Win.UltraWinGrid.ExcelExport assembly interacts with the WinGrid to manage all the communication that takes place during export. (This assembly has a dependency on the Infragistics.Win.UltraWinGrid assembly.) The Infragistics.Documents.Excel assembly communicates only with the Infragistics.Win.UlltraWinGrid.ExcelExport assembly and handles the nuts-and-bolts details of exporting data into the Excel format. The WinGridExcelExporter™ element must be added to your application in order to export cell data from an UltraWinGrid. Adding the element automatically adds a reference to the Infragistics.Documents.Excel assembly to your project.
+
+You begin the export process by invoking the Export method of the WinGridExcelExporter, passing it the WinGrid from which you wish to export, and the filename of the Excel file you wish to create. The WinGrid and the WinGridExcelExporter communicate extensively during the export process. Communication is handled by the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.iultragridexporter.html[IUltraGridExporter]"]  interface. The WinGrid exposes this interface, which is used to export data in a generic fashion. The grid calls methods of this interface to export grid objects such as rows, headers, summaries, and so on. The WinGridExcelExporter implements these methods to convert the data coming from the grid into corresponding "objects" in the Excel format.
+
+.Note
+[NOTE]
+====
+that these may not be objects in the strict sense of the word, they may simply be expressed as text and formatting attributes that will be applied to one or more Excel cells.
+====
+
+As the WinGridExcelExporter is processing the data from the grid, it will raise events so that you have control over the export process. You can perform various tasks in these events, affecting both the data included in the export and the disposition of that data in the resulting Excel file. Events include  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~beginexport_ev.html[BeginExport]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~initializerow_ev.html[InitializeRow]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~initializecolumn_ev.html[InitializeColumn]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexporting_ev.html[CellExporting]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexported_ev.html[CellExported]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~rowexporting_ev.html[RowExporting]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~rowexported_ev.html[RowExported]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~endexport_ev.html[EndExport]"] . This is only a partial listing, as there are multiple events for the different types of objects included in the export. For a complete list, see link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter_members.html[UltraGridExcelExporter Class Members].
+
+Internally, the UltraGridExcelExporter passes the WinGrid a helper class that implements the IUltraGridExporter interface. The WinGrid clones the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[DisplayLayout]"]  (raising the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[IntializeLayout]"]  event) and loads the rows from the data source, raising an InitializeRow event for each one. Once the complete layout has been cloned, the WinGrid invokes the methods of the passed-in helper class' interface to export different types of grid objects. The implementations of those methods in the helper class call corresponding methods in WinGridExcelExporter, which in turn raises events in that element as it converts the grid data into Excel data. This process continues until the entire grid is exported, or the process is terminated by canceling one of the events. Finally, the Excel data is written to the file and the Export method of the WinGridExcelExporter returns.

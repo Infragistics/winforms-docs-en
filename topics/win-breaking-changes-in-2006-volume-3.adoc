@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2006-volume-3",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{54883031-0D6E-4C40-AC96-47CC2B4D1E4D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2006 Volume 3
+
+== WinFormattedLinkLabel
+
+=== Instantiating FormattedLinkEditor at Run Time
+
+pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  is the base class for both the WinFormattedLinkLabel and WinFormattedTextEditor™ controls. Since the WinFormattedLinkLabel was developed, there was no editing capabilities involved with the FormattedLinkEditor class. In 2006 Volume 3, we added WinFormattedTextEditor which does have editing capabilities. Because of this, it was necessary to add editing capabilities to the base class, FormattedLinkEditor.
+
+It is possible that this breaking change will not affect your project. If you build your project and it compiles with no errors, you don't have to worry. If you get a compile-time error when building, read on to find out what may be wrong.
+
+FormattedLinkEditor has an extra parameter in its constructor; a boolean (supportsEditing) identifying whether or not that instance will support editing. If you've instantiated this class in a previous project, you will have to add this extra parameter; True if you wish FormattedLinkEditor to have editing capabilities and False if you don't need editing capabilities.

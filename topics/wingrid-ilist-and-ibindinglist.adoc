@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-ilist-and-ibindinglist",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Sample Data Source"],
+    "guid": "{202D02B7-1039-46E2-A1FA-EB805A91C517}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= IList and IBindingList
+
+WinGrid™ is most widely used with database related data sources. WinGrid is designed to handle the display of hierarchical data. However, because of the object oriented nature of .NET applications, WinGrid can be bound to data models which implement interfaces presented by the DataTable, DataSet, and DataView controls. The simplest of these is the IList Interface.
+
+== IList
+
+The Array class implements the IList interface and you can bind a single dimensional array to the WinGrid. You can not bind multi-dimensional arrays to the WinGrid because the internal storage of multi-dimensional data is incompatible with the storage technologies WinGrid understands.
+
+You can create your own class implementing the IList interface, thus allowing you complete control over the data presented to the WinGrid.
+
+== IBindingList
+
+The IBindingList Interface is one of the most popular interfaces since it is the interface exposed by the DataTable and DataSet objects. The WinGrid queries the Binding Manager for each level of entities in order to create its schema based on the underlying object model. If we bind to a DataSet that contains several entities (Customers, Orders and Order Details) the Binding Manager will correctly publish the schemas of each entity simultaneously so that they are all available at the same time in a hierarchical display. The same thing must be true for any custom designed business objects as well. The Grid can only represent the structure that is provided by the Binding Manager. If the Binding Manager does not recognize the custom collection and child members, then the WinGrid cannot either.

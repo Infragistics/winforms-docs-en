@@ -1,0 +1,51 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-move-columns-in-wintree",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I","Layouts"],
+    "guid": "{462FFEAE-5B54-4ACC-9997-10D9EE1DC011}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Move Columns in WinTree
+
+With the addition of column support in Infragistics Windows Forms 2005 Volume 2, WinTree™ also supports the ability to reposition columns. Columns may be repositioned programmatically by changing the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodelayoutinfo~originx.html[OriginX]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodelayoutinfo~originy.html[OriginY]"]  of each column's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~layoutinfo.html[LayoutInfo]"] . In addition, end-users may reposition columns by dragging and dropping column headers.
+
+You can prevent end-users from being able to reposition columns on a per-column basis (using the column's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~allowmoving.html[AllowMoving]"] ), for all columns in a ColumnSet (using the UltraTreeColumnSet's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowcolmoving.html[AllowColMoving]"] ) or for all ColumnSets (using the UltraTreeColumnSetting's AllowColMoving property).
+
+.Note
+[NOTE]
+====
+At design time, you may customize the layout of the columns in an UltraTreeColumnSet using the link:wintree-columnset-layout-designer.html[ColumnSet Layout Designer].
+====
+
+We will start with a WinTree that looks similar to the one shown in the screen shot below.
+
+image::Images\WinTree_Moving_Columns_in_the_WinTree_01.png[ultratree starts like this]
+
+To move a column, press the left mouse button down on a column header and drag the column to its new location. As you drag the column header, drop indicators (a pair of red arrows when positioning the item adjacent to another column or a red rectangle when dropping the column into an empty slot) will be displayed to indicate that you are over a valid drop location.
+
+For example if you want to have the "First Name" column before the "Last Name" column, click on "First Name" column header and drag it over the "Last Name" column header. When you are over the left edge of the "Last Name" column header, red arrows similar to that displayed in the screenshot below will be displayed along the leading edge of the column indicating that the "First Name" column will be positioned to the left of the "Last Name" column.
+
+image::Images\WinTree_Moving_Columns_in_the_WinTree_02.png[showing column being moved in ultratree]
+
+When the mouse is released, the column will be repositioned based on the location of the red drop indicators.
+
+.Note
+[NOTE]
+====
+If the mouse is released while no drop indicators are displayed, the drag operation will be cancelled and the position of the column will not be changed.
+====
+
+image::Images\WinTree_Moving_Columns_in_the_WinTree_03.png[shows column moved in ultratree]
+
+.Note
+[NOTE]
+====
+Since WinTree does not currently support column selection, only one column may be repositioned at a time.
+====

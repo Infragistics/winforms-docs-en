@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-solid-fill-brush-element-at-design-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting","Design Environment"],
+    "guid": "{98FCDDEA-A809-4ED1-815C-465CFAD794FE}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Solid Fill Brush Element at Design Time
+
+If you want a property of your gauge to be one solid color, apply the Solid brush element to the property.
+
+*To apply the Solid brush element to a property of your gauge at design time:*
+
+[start=1]
+. Add a Radial Gauge to the Gauges collection.
+[start=2]
+. In the left-hand pane of the Gauges collection editor, click Radial Gauge.
+[start=3]
+. Expand the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=4]
+. From the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  drop-down list, select Solid Fill. This will create a new Solid Fill brush element.
+[start=5]
+. Expand the newly created BrushElement property, and locate the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[Color]"]  property.
+[start=6]
+. Set the Color property to Black.
+
+== Related Topics
+
+link:wingauge-solid-brush-element.html[Solid Brush Element]
+
+link:wingauge-apply-the-solid-brush-element-at-run-time.html[Apply the Solid Brush Element at Run Time]
+
+link:wingauge-apply-the-solid-brush-element-using-the-gauge-designer.html[Apply the Solid Brush Element Using the Gauge Designer]

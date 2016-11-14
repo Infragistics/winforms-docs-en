@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-default-design-time-look",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Theming"],
+    "guid": "{3E193807-9C5B-486D-8D42-6848E96E5B01}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Default Design-Time Look
+
+In 2005 Volume 2, the WinGrid™ control was given a new look at design time, it will automatically take on this new more modern look. This look is specified in a Preset file, and a developer can specify a different preset to apply to all new WinGrids created at design time if they want to.
+
+If you drag and drop the WinGrid onto your form you will see this new default look.
+
+image::Images\WinGrid_New_Default_Look_01.png[default design time look in ultragrid]
+
+You can change this look by right clicking on the Grid and selecting UltraWinGrid Designer on the context menu. Then in the Designer dialog under Basic Settings expand the Presets node, and select Manage Presets. In the middle pane if you select the tab labeled look, then click to view the drop down you will see the presets. If you select one of the presets from the drop down you will notice the Grid in the pane on the right changes to reflect the changes to the Grid that will occur.
+
+Then if you notice right below the middle area a checkbox labeled "Apply this Preset to grids created at design-time.". If you select this checkbox your Grids from now on at design-time will use this preset.
+
+As an example select "Silver Gradients" and then check the checkbox, click on the Apply Preset button, and also click on the Apply button down in the lower right corner. When you close out the UltraWinGrid Designer you notice how your Grid on your form in design view has taken on this preset. If you were to close this project and make a new one and add a Grid to the form in the project the same preset will be applied. Also if you make another Grid in the same project this preset will be used.

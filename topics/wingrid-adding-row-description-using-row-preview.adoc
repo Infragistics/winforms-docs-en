@@ -1,0 +1,94 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-adding-row-description-using-row-preview",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{D85B5CF6-0634-4091-A31F-EFA91FA33B6B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Row Description Using Row Preview
+
+Row previewing allows you to add a description to a row.
+
+== To add a description to a row:
+
+[start=1]
+. In order to use row preview, it must first be enabled. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~autopreviewenabled.html[AutoPreviewEnabled]"]  property is a property of each Band object in the grid. This can be done in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	Me.UltraGrid1.DisplayLayout.Bands(0).AutoPreviewEnabled = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.Bands[0].AutoPreviewEnabled = true;
+}
+----
+
+[start=2]
+. You can then set a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~description.html[Description]"]  for any  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Row]"]  in the grid.
+
+Typically you would do this inside the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializerow_ev.html[InitializeRow]"]  event handler so the description is displayed when the row first appears.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	e.Row.Description = "Row Description"
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	e.Row.Description = "Row Description";
+}
+----
+
+[start=3]
+. However, you could also change the description at other times, to give feedback to your users.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_AfterRowInsert(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.RowEventArgs) _
+  Handles UltraGrid1.AfterRowInsert
+	Me.UltraGrid1.DisplayLayout.ActiveRow.Description = _
+	  "Data changed in this row will not be added to the " & _
+	  "database until you press the Update button."
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_AfterRowInsert(object sender, 
+  Infragistics.Win.UltraWinGrid.RowEventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.ActiveRow.Description = 
+	  "Data changed in this row will not be added to the database" + 
+	  " until you press the Update button.";
+}
+----

@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-prevent-the-navigator-from-being-displayed",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{630BB79C-4833-4AC8-9E60-21C19B0DE467}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Prevent the Navigator from Being Displayed
+
+If you do not want the WinDockManager's™ Navigator to display when the user presses Ctrl-Tab, set the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.navigatorsettings~enabled.html[Enabled]"]  property under  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.navigatorsettings.html[NavigatorSettings]"]  to False. Setting the Enabled property to False only disables the Navigator from the user (Ctrl-Tab). Even if this property is set to False, you can still display the Navigator through code. If you would like to show the Navigator using code (i.e. when a button is clicked), see link:windockmanager-show-the-navigator-programmatically.html[Show the Navigator Programmatically].
+
+.Note
+[NOTE]
+====
+If your WinDockManager is on a form that will be a MDI child, you will need to show the navigator programmatically as the key combination will not show the navigator in this scenario by design.
+====

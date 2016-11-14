@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-display-a-currency-mask-without-the-currency-symbol-whats-new-20063",
+    "controlName": [],
+    "tags": [],
+    "guid": "{D8C10F0B-A52C-480E-9BD0-E2E67CAFF3A6}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Display a Currency Mask Without the Currency Symbol
+
+We've added a flag to the already existing currency mask used by both the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"]  base class and WinCurrencyEditor™ control. The  _no_symbol_  flag will allow you to specify a specific culture's currency without using the actual currency symbol (i.e., ¥, £, €, $). For example, you can use the {currency:n.m:no_symbol} mask to display dollars and cents in the US culture without displaying the dollar sign ($5.50 would display as 5.50). For more information on these masks, see the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultranumericeditor~maskinput.html[MaskInput]"]  property.

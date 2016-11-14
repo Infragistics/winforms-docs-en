@@ -1,0 +1,54 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-culture-specific-formatting",
+    "controlName": ["WinEditors"],
+    "tags": ["Data Presentation","Extending","How Do I"],
+    "guid": "{37A372BB-8147-4F3A-984C-F6AD728D3B50}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Culture-Specific Formatting
+
+This topic applies to the following WinEditor™ controls:
+
+* WinCurrencyEditor™
+* WinNumericEditor™
+* WinDateTimeEditor™
+
+When using the WinEditor controls, the need may arise to have the editors display in a culture that differs from the culture of the current machine's operating system. In these cases, the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formatproviderpropertyeditor~formatprovider.html[FormatProvider]"]  property can prove very helpful. This property grants the developer the ability to set the element's format to be consistent with any culture detailed within the CultureInfo class.
+
+The WinEditor controls (WinCurrencyEditor, WinNumericEditor and WinDateTimeEditor) contain a FormatProvider property which makes it possible to assign these elements a specific culture.
+
+The following code will set the culture of the WinEditors to French (France).
+
+*In Visual Basic:*
+
+----
+Private Sub Use_the_FormatProvider_Property_to_Manipulate_the_Cultures_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim culture As New System.Globalization.CultureInfo("fr-FR")
+	Me.UltraCurrencyEditor1.FormatProvider = culture
+End Sub   
+----
+
+*In C#:*
+
+----
+private void Use_the_FormatProvider_Property_to_Manipulate_the_Cultures_Load( 
+  object sender, 
+  EventArgs e)
+{
+	System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("fr-FR");
+	this.ultraCurrencyEditor1.FormatProvider = culture;
+}   
+----
+
+The string parameter passed into the culture declaration can be modified to reflect numerous other cultures.
+
+image::images/WinEditors_Use_the_FormatProvider_Property_to_Manipulate_the_Culture_01.png[shows wincurrencyeditor using a formatprovider property]

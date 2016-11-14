@@ -1,0 +1,100 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-progress",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{41101022-55FF-4B22-A16D-3A0C77BE9775}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to Progress
+
+The progress bar style Panel displays a progress bar and its associated label. You can use it to provide feedback to the user on lengthy processes and how close they are to completion.
+
+== Setting up Progress Style Panel at Design-Time
+
+[start=1]
+. Add a UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property of the panel to "Progress". Give it a unique name by setting the Key property to "Progress".
+[start=5]
+. Open the ProgressInfo object, and examine the various properties. Note that they mirror the properties of a standard progress bar. In addition there are Appearance objects.
+[start=6]
+. Change the colors and fonts if you like. Leave the other properties alone for this example. Note that the progress bar appears in the panel you chose.
+
+While the above steps will place the progress bar on the status bar, it currently has no progress to measure and will not have anything to display. To provide a simple process for which progress can be displayed, add a button to your application and put the following code in the Click event:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Dim i As Integer
+For i = 1 To 100
+	Me.UltraStatusBar1.Panels("Progress").ProgressBarInfo.Value = i
+	Me.UltraStatusBar1.Refresh()
+	System.Threading.Thread.Sleep(50)
+Next
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+for(int i=1; i$$<=$$100; i++)
+{
+	this.ultraStatusBar1.Panels["Progress"].ProgressBarInfo.value = i;
+	this.ultraStatusBar1.Refresh();
+	System.Threading.Thread.Sleep(50);
+}
+----
+
+== Setting up Progress Style Panel at Run-Time
+
+To add a panel and set its type to "Progress" at run-time, use the following code:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Panel_Style_to_Progress_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraStatusBar1.Panels.Add("Progress", PanelStyle.Progress)
+	Me.UltraStatusBar1.Panels("Progress").ProgressBarInfo.Label = "value"
+	Dim i As Integer
+	For i = 1 To 100
+		Me.UltraStatusBar1.Panels("Progress").ProgressBarInfo.Value = i
+		Me.UltraStatusBar1.Refresh()
+		System.Threading.Thread.Sleep(50)
+	Next
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Panel_Style_to_Progress_Load(object sender, EventArgs e)
+{
+	this.ultraStatusBar1.Panels.Add("Progress", PanelStyle.Progress);
+	this.ultraStatusBar1.Panels["Progress"].ProgressBarInfo.Label = "value";
+	for(int i=1; i$$<=$$100; i++)
+	{
+		this.ultraStatusBar1.Panels["Progress"].ProgressBarInfo.Value = i;
+		this.ultraStatusBar1.Refresh();
+		System.Threading.Thread.Sleep(50);
+	}
+}
+----

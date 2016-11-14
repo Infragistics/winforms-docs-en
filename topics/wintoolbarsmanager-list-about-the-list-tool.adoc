@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-list-about-the-list-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{0C826417-DCD5-4E17-847A-91C5FF746FF5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the List Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.listtool.html[ListTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] 
+
+|Description:
+|The List Tool displays a list of strings on a menu. Each list item is displayed as a separate tool on the menu. Each list item can have a value associated with it that is independent of the entry's text. Each list item also has an Appearance object associated with it. The List tool is great for creating file MRU lists.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_07.png[example of ultratoolbarsmanager list tool] 
+
+|====

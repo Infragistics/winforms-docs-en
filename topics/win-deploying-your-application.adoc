@@ -1,0 +1,24 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-deploying-your-application",
+    "controlName": [],
+    "tags": [],
+    "guid": "{C9C35F8F-5E25-467F-914E-FCD35E07A849}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Deploying Your Application
+
+After you have compiled a .NET application that contains Infragistics Windows Forms controls/components, you will then need to deploy the application. For Windows Forms applications, you generally deploy the application to any individual client workstation that will be using the application.
+
+Click the links below to learn about the various deployment methods.
+
+* link:win-deployment-overview.html[Deployment Overview] -- Contains a list of links to topics that outline the specific resources you will need to deploy when a particular Infragistics Windows Forms control/component is included in your Windows Forms application.
+* link:win-using-xcopy-deployment.html[Using XCOPY Deployment] -- Introduces you to XCOPY, a simple command-line utility that allows you to copy complete tree structures from one area on disk to another. Review how to use XCOPY deployment to deploy the Infragistics Windows Forms controls/components of your application.
+* link:win-using-global-assembly-cache-gac-deployment.html[Using Global Assembly Cache (GAC) Deployment] -- Discusses the GAC, a central reserved location used to store assemblies for applications running on a machine. The GAC enables the sharing of assemblies among multiple applications, as well as the installation of multiple assembly versions on the same computer. Learn how to deploy the Infragistics Windows Forms controls/components of your application to the GAC.
+* link:win-using-no-touch-deployment.html[Using No-Touch Deployment] -- Explains no-touch deployment, a new technology introduced with the .NET Framework. No-touch deployment simplifies and centralizes the deployment of applications over a network.

@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-new-assembly-dependencies-whats-new-2006-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "{DA1F29FD-8FFD-4323-A5DA-B2DC5D721F00}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= New Assembly Dependencies
+
+Application Styling is an exciting concept and many developers/graphic designers will reap the benefits from it. However, gaining these benefits required that we refine some of our controls. One of these changes involve specific dialog boxes in the WinToolbarsManager™ and WinSchedule™ controls and components. In changing these dialog boxes, we referenced several other Infragistics assemblies. Therefore, when deploying these controls, you must deploy other assemblies that previously you didn't need to. Below is a list of assemblies that need to be deployed with these two controls along with the control's assembly.
+
+== Infragistics.Win.UltraWinToolbarsManager
+
+* Infragistics.Win.Misc
+* Infragistics.Win.UltraWinEditors
+* Infragistics.Win.UltraWinStatusBar
+* Infragistics.Win.UltraWinTabControl
+
+== Infragistics.Win.UltraWinSchedule
+
+* Infragistics.Win.Misc
+* Infragistics.Win.UltraWinEditors
+* Infragistics.Win.UltraWinTabControl
+* Infragistics.Win.UltraWinToolbars

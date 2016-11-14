@@ -1,0 +1,120 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalculator-wincalculator-button-types-and-events",
+    "controlName": ["WinCalculator"],
+    "tags": ["Events"],
+    "guid": "{E69FBFA3-1071-4614-92A3-EDC770EC5670}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinCalculator Button Types and Events
+
+The following is the list of Settings available for any WinCalculator™ and WinCalculatorDropDown™ button's Type property and the events they fire.
+
+[options="header", cols="a,a,a"]
+|====
+|Type Of Button|Description|Events Fired
+
+|Numeric Button
+|A standard Numeric Button such as 3, 6, 8.
+|BeforeButtonClicked
+
+|ActionButton
+|Acts as a Standard button on the calculator that can perform actions but does not effect the display in any way. For example, MC, CE or C Buttons
+|BeforeButtonClicked 
+
+BeforeActionButtonPressed 
+
+AfterActionButtonPressed
+
+|Operator
+|Acts as an operator, such as +, -, /. Will clear the display once the next numeric key is pressed.
+|BeforeButtonClicked 
+
+BeforeCalculatePending 
+
+AfterCalculatePending
+
+|OperatorImmediateAction
+|Performs a calculation immediately and is not entered into the queue and does not clear the other operators either. The square root button would be an example.
+|BeforeButtonClicked 
+
+BeforeCalculateImmediate 
+
+AfterCalculateImmediate
+
+|OperatorPerformImmediateThenPendingCalculations
+|Performs a calculation immediately, the same as the OperatorImmediateAction but then also performs any remaining operations. For example, the % key. An example of how this is different from OperatorImmediateAction would be when using the square root button and another operator, the following buttons would need to be pressed to find a result: 
+
+[source]
+---- 
+12 * 9Sqrt =
+---- 
+
+ (would produce 36) 
+
+While to find 10% of 12 you would only have to press: 
+
+[source]
+---- 
+12 * 10%
+---- 
+
+ (would produce 1.2, no *=* key required) 
+
+The % key is an OperatorPerformImmediateThenPendingCalculations key, so after it is pressed it performs all waiting operations.
+|BeforeButtonClicked 
+
+BeforeCalculateImmediate 
+
+AfterCalculateImmediate 
+
+BeforeCalculatePending 
+
+AfterCalculatePending
+
+|OperatorPerformPendingCalculations
+|Performs pending operations such as the = key
+|BeforeButtonClicked BeforeCalculatePending AfterCalculatePending
+
+|====
+
+Below is a list of Events and a definition of each:
+
+[options="header", cols="a,a"]
+|====
+|Event|Description
+
+|BeforeButtonClickedEventHandler BeforeButtonClicked:
+|Fires before any button is clicked
+
+|System.EventHandler AfterCalculationComplete:
+|Since some calculations may actually contain multiple steps, this event fires when all calculations initiated by operator clicks are completed.
+
+|BeforeCalculatePendingEventHandler BeforeCalculatePending:
+|Fires on before pending Calculation, allowing user to cancel default calculation and or change the values
+
+|System.EventHandler AfterCalculatePending:
+|Fires after pending calculation
+
+|BeforeCalculateImmediateEventHandler BeforeCalculateImmediate:
+|Fires on before immediate Calculation, allowing user to cancel default calculation and or change the values
+
+|System.EventHandler AfterCalculateImmediate:
+|Fires after immediate calculation
+
+|DefaultCalculationFailEventHandler DefaultCalculationFail:
+|Fired on Failure of default calculation
+
+|BeforeCalculateImmediateEventHandler BeforeActionButtonPressed:
+|Fires on before action occurs, allowing user to cancel default calculation and or change the values
+
+|System.EventHandler AfterActionButtonPressed:
+|Fires After Action Button is Pressed
+
+|====

@@ -1,0 +1,132 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintabbedmdimanager-create-a-custom-context-menu",
+    "controlName": ["WinTabbedMdiManager"],
+    "tags": [],
+    "guid": "{8430A0E9-1D7A-4DFE-B5A8-B3B19F46AD7E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a Custom Context Menu
+
+When the user drags and drops a tab into the client area of a TabbedMDI window, a context menu appears prompting them to select either a horizontal or vertical tab group. A similar menu appears when the user right-clicks on a tab. These context menus are set up to automatically provide the essential functionality for the element with no effort on your part. However, if these menus do not meet the needs of your application, you can customize them. Customization can range from simply changing the icons displayed in the menu to incorporating completely new functionality that replaces the existing functionality.
+
+To customize a context menu, you use the  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~initializecontextmenu_ev.html[InitializeContextMenu]"]  event. The e parameter that is passed to this event contains information about the context menu that has been invoked by the user, and gives you the ability to customize the display of the menu. You can specify whether the menu should or should not be displayed, determine which type of menu has been invoked, as well as examine and change the contents of the menu.
+
+The following code illustrates how to remove the contents of an existing menu item and add two custom items.
+
+.Note
+[NOTE]
+====
+This code illustrates the process of creating the menu items; implementing their functionality is an extra step.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTabbedMdi
+...
+Private Sub UltraTabbedMdiManager1_InitializeContextMenu(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinTabbedMdi.MdiTabContextMenuEventArgs) _
+  Handles UltraTabbedMdiManager1.InitializeContextMenu
+	If e.ContextMenuType = MdiTabContextMenu.Default Then
+		' Removes the existing menu items
+		e.ContextMenu.MenuItems.Clear()
+		' Creates new menu items
+		Dim item1 As New Infragistics.Win.IGControls.IGMenuItem("Move To First Group")
+		Dim item2 As New Infragistics.Win.IGControls.IGMenuItem("Move To Last Group")
+		' Sets the indexes of the images to be displayed from the ImageList
+		item1.Image = 0
+		item2.Image = 1
+		' Adds the menu items to the context menu
+		e.ContextMenu.MenuItems.Add(item1)
+		e.ContextMenu.MenuItems.Add(item2)
+		' Set the Tag to the tab that called this
+		item1.Tag = e.Tab
+		item2.Tag = e.Tab
+		AddHandler item1.Click, New EventHandler(AddressOf OnCustomMenuItemMoveFirst)
+		AddHandler item2.Click, New EventHandler(AddressOf OnCustomMenuItemMoveLast)
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTabbedMdi;
+...
+private void ultraTabbedMdiManager1_InitializeContextMenu(object sender, 
+  Infragistics.Win.UltraWinTabbedMdi.MdiTabContextMenuEventArgs e)
+{
+	if (e.ContextMenuType == MdiTabContextMenu.Default)
+	{
+		// Removes the existing menu items
+		e.ContextMenu.MenuItems.Clear();
+		// Creates new menu items
+		Infragistics.Win.IGControls.IGMenuItem item1 = 
+		  new Infragistics.Win.IGControls.IGMenuItem("Move To First Group");
+		Infragistics.Win.IGControls.IGMenuItem item2 = 
+		  new Infragistics.Win.IGControls.IGMenuItem("Move To Last Group");
+		// Sets the indexes of the images to be displayed from the ImageList
+		item1.Image = 0;
+		item2.Image = 1;
+		// Adds the menu items to the context menu
+		e.ContextMenu.MenuItems.Add(item1);
+		e.ContextMenu.MenuItems.Add(item2);
+		// Set the Tag to the Index of the tab that called this
+		item1.Tag = e.Tab;
+		item2.Tag = e.Tab;
+		item1.Click+=new EventHandler(OnCustomMenuItemMoveFirst);
+		item2.Click+=new EventHandler(OnCustomMenuItemMoveLast);
+	}
+}
+----
+
+In order to process the events for the custom menu items you have added, you must implement an event handler for the them. The last two lines of code in the above code snippet inside the if statement are setting up this event handlerNext, add the following code to the form:
+
+*In Visual Basic:*
+
+----
+Private Sub OnCustomMenuItemMoveFirst(ByVal sender As Object, ByVal e As EventArgs)
+	Dim mi As Infragistics.Win.IGControls.IGMenuItem = CType(sender, _
+	  Infragistics.Win.IGControls.IGMenuItem)
+	mi.Tag.MoveToGroup( _
+	  Infragistics.Win.UltraWinTabbedMdi.MdiTabGroupPosition.First)
+End Sub
+Private Sub OnCustomMenuItemMoveLast(ByVal sender As Object, ByVal e As EventArgs)
+	Dim mi As Infragistics.Win.IGControls.IGMenuItem = CType(sender, _
+	  Infragistics.Win.IGControls.IGMenuItem)
+	mi.Tag.MoveToGroup( _
+	  Infragistics.Win.UltraWinTabbedMdi.MdiTabGroupPosition.Last)
+End Sub
+----
+
+*In C#:*
+
+----
+private void OnCustomMenuItemMoveFirst( object sender, EventArgs e )
+{
+    Infragistics.Win.IGControls.IGMenuItem mi = 
+      sender as Infragistics.Win.IGControls.IGMenuItem;
+    Infragistics.Win.UltraWinTabbedMdi.MdiTab tab = 
+      mi.Tag as Infragistics.Win.UltraWinTabbedMdi.MdiTab;
+    tab.MoveToGroup(
+      Infragistics.Win.UltraWinTabbedMdi.MdiTabGroupPosition.First);
+}
+private void OnCustomMenuItemMoveLast( object sender, EventArgs e )
+{
+    Infragistics.Win.IGControls.IGMenuItem mi = 
+      sender as Infragistics.Win.IGControls.IGMenuItem;
+    Infragistics.Win.UltraWinTabbedMdi.MdiTab tab = 
+      mi.Tag as Infragistics.Win.UltraWinTabbedMdi.MdiTab;
+    tab.MoveToGroup( 
+      Infragistics.Win.UltraWinTabbedMdi.MdiTabGroupPosition.Last);
+}
+----
+
+This code will handle the events from the customized context menu, and perform the action that was requested.

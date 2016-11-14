@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2013-volume-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "f417c68b-31bd-4100-b8f6-671662a75625",  
+    "buildFlags": [],
+    "createdOn": "2013-09-15T22:27:46.426458Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2013 Volume 2
+
+== Touch Support
+
+=== Breaking Changes
+
+Infragistics touch enabled controls and components are equipped to support both touch and non-touch applications. Touch capability is activated on a form (Not individual controls) as soon as you add the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.ultratouchprovider_members.html[UltraTouchProvider]™ component to the form. By default, the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.ultratouchprovider_members.html[UltraTouchProvider] component’s  _Enabled_   property is set to `True`. When the controls are in touch-enabled mode they appear slightly larger to accommodate easier user interaction on a touch monitor. The same is true for touch-enabled components, but since the components do not have design view representation, they will appear larger at runtime.
+
+Currently only one control is exempt from this. The  _WinToolbarsManager_™ control has its own link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~touchenabled.html[TouchEnabled] property that overrides the  _UltraTouchProvider_  ’s state; however, when  _WinToolbarsManager_   control’s link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~touchenabled.html[TouchEnabled] property is set to `Default`, this control too takes the  _UltraTouchProvider_  ’s state.
+
+Disable touch capability by setting the  _UltraTouchProvider_  ’s  _Enabled_   property to `False`. This will affect all touch-enabled controls and components on the form with the exception of  _WinToolbarsManager_   control when its link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~touchenabled.html[TouchEnabled] property is explicitly set to `True`.
+
+== Infragistics Excel Libraries
+
+The Infragistics Excel libraries now require a reference to `Documents.Core` assembly.
+
+The following public types (previously defined in the `Infragistics.Documents.Excel` assembly), are now defined in the `Infragistics.Documents.Core` assembly. They have been moved from their original namespace `Infragistics.Documents.Excel` to the `Infragistics.Documents.Core.Packaging` namespace.
+
+* IPackage
+
+* IPackageFactory
+
+* IPackagePart
+
+* IPackageRelationship
+
+* RelationshipTargetMode
+
+A method named  _GetRelationship(string)_   has been added to the  _IPackage_   interface, that is now in the `Infragistics.Documents.Core.Packaging` namespace.

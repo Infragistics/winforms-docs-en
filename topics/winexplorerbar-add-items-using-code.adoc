@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-add-items-using-code",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{96AE3376-0871-49E8-8044-1BED65A05A64}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Items Using Code
+
+There are several ways to add  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[Items]"]  to a  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Group]"]  in WinExplorerBar™ at run time. Items are contained by the Items collection of individual Group objects, and you can use standard collection methods to add and work with Items. Items are also part of the element's layout, and can be created by restoring a layout that has been saved to a binary or XML file.
+
+Note that in order to add Items, you must first determine which Group you will be adding the items to. Groups can be accessed through the element's Groups collection. If the Group that will contain the Items has a Key value set, you can use that to easily choose which Group to work with. Otherwise, you can access Groups using their index in the collection. Alternatively, you can use the ActiveGroup property of the element to return the currently selected Group.
+
+Use one of the following methods to add Items to a Group:
+
+* *Items collection Add method* - You can add Items to a group by invoking the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemscollection~add.html[Add]"]  method. The Add method will return the newly added Item, which you can then use to set any Item-related properties. You can also use the Add method to create the new Item with a specific  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem~text.html[Text]"]  and/or Key value.
+
+The code below illustrates several ways of using the Add method:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinExplorerBar
+...
+Private Sub Add_Items_Using_Code_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim aGroup As New UltraExplorerBarGroup()
+	Dim anItem As New UltraExplorerBarItem()
+	aGroup.Text = "Employee Info"
+	aGroup.Key = "g_EmployeeInfo"
+	Me.UltraExplorerBar1.Groups.Add(aGroup)
+	anItem.Key = "i_BeckyJohnson"
+	anItem.Text = "Becky Johnson"
+	aGroup.Items.Add(anItem)
+	aGroup.Items.Add("i_SteveWalls", "Steve Walls")
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinExplorerBar;
+...
+private void Add_Items_Using_Code_Load(object sender, EventArgs e)
+{
+	UltraExplorerBarGroup aGroup = new UltraExplorerBarGroup();
+	UltraExplorerBarItem anItem = new UltraExplorerBarItem();
+	aGroup.Text = "Employee Info";
+	aGroup.Key = "g_EmployeeInfo";
+	this.ultraExplorerBar1.Groups.Add(aGroup);
+	anItem.Key = "i_BeckyJohnson";
+	anItem.Text = "Becky Johnson";
+	aGroup.Items.Add(anItem);
+	aGroup.Items.Add("i_SteveWalls", "Steve Walls");
+}
+----
+
+image::images\WinExplorerBar_Add_Items_Using_Code_01.png[resulting ultraexplorerbar based on code above]
+
+* *Items collection AddRange method* - The Items collection also supports an  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemscollection~addrange.html[AddRange]"]  method that can be used to add multiple Items at once from an array of Item objects. This method provides functionality consistent with the .NET form generator code for instantiating elements.
+* *Load Items from Saved Layout* - The WinExplorerBar can save its group and item information in either an XML or a binary file. You can later load this file into the element to restore the Groups that previously existed and the Items they contained, as well as setting any other saved attributes.
+* You can also add items at design time. For information, see link:winexplorerbar-add-groups-and-items-at-design-time.html[Add Groups and Items at Design Time].

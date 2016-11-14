@@ -1,0 +1,188 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-customizing-the-focus-rectangle-on-an-active-element-using-drawfilter",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Styling"],
+    "guid": "{9F4320A4-B08A-4263-9D29-86E72552D11B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Customizing the Focus Rectangle on an Active Element Using DrawFilter
+
+*Before You Begin*
+
+The Active element of the WinGrid™ control displays a Focus Rectangle (the dotted lines) surrounding the active cell or row. The WinGrid does not have an intrinsic way to change this Focus Rectangle. However, there is a way to leverage the Infragistics Presentation Layer Framework (PLF)™ to change the painting of this rectangle.
+
+*What You Will Accomplish*
+
+In this walkthrough, you will learn how to customize the Focus Rectangle (dotted lines) surrounding an active cell or row by creating a Draw Filter Class that implements the link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter] Interface.
+
+*Follow These Steps*
+
+[start=1]
+. Drag and drop an UltraGrid control from the Visual Studio® Toolbox onto your Form.
+[start=2]
+. Bind the WinGrid control to the Customers table of the Northwind database. For information on this see, Bind WinGrid to a Flat Data Source topic.
+[start=3]
+. Create a class named ActivationObjectDrawFilter that implements the IUIElementDrawFilter Interface. In this Draw Filter implementation, the two methods  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~drawelement.html[DrawElement]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter~getphasestofilter.html[GetPhasesToFilter]"]  are defined. The DrawElement method is passed a UIElementDrawParams structure and a bit flag indicating which single draw phase is being performed. The method returns a boolean. If False is returned then the default drawing for that phase will be performed. If True is returned for a 'Before' phase then the default drawing for that phase will be skipped. Write the following code within the ActivationObjectDrawFilter class.
+
+*In Visual Basic:*
+
+----
+Private _theFocusPen As Pen = Nothing
+Private _xOffset As Integer = 0
+Private _yOffset As Integer = 0
+Private _wOffset As Integer = 0
+Private _hOffset As Integer = 0
+Public Sub New(ByVal theFocusPen As Pen, ByVal xOffset As Integer, ByVal yOffset As Integer, ByVal wOffset As Integer, ByVal hOffset As Integer)
+    _theFocusPen = theFocusPen
+    _xOffset = xOffset
+    _yOffset = yOffset
+    _wOffset = wOffset
+    _hOffset = hOffset
+End Sub
+Public Function DrawElement(ByVal drawPhase As Infragistics.Win.DrawPhase, ByRef drawParams As Infragistics.Win.UIElementDrawParams) As Boolean Implements Infragistics.Win.IUIElementDrawFilter.DrawElement
+    Dim retVal As Boolean = False
+    'if we return FALSE then none of 
+    'this custom code will be used by the user of this Draw Filter. 
+    'Returning True insures that this custom code is used. 
+    'It is good practice to test which DrawPhase is calling 
+    'this method. You may have configured this DrawFilter to 
+    'be used in more than one DrawPhase. 
+    If drawPhase = Infragistics.Win.DrawPhase.BeforeDrawFocus Then
+        Dim regularRect As Rectangle = drawParams.Element.Rect
+        'This is the Element's full rectangle 
+        Dim clippedRect As Rectangle = drawParams.Element.ClipRect
+        'If the element is being clipped by other elements, this is its Clipped off rectangle 
+        Dim theFocusRectangle As Rectangle
+        'Test to see if the element is getting clipped off 
+        'by another element. 
+        If (clippedRect.Width < regularRect.Width) OrElse (clippedRect.Height < regularRect.Height) Then
+            theFocusRectangle = clippedRect
+        Else
+            theFocusRectangle = regularRect
+        End If
+        'This allows us to change the actual rectangle and tweak its size. This is needed 
+        'so that you can tweak 
+        theFocusRectangle = New Rectangle(theFocusRectangle.X + _xOffset, theFocusRectangle.Y + _yOffset, theFocusRectangle.Width + _wOffset, theFocusRectangle.Height + _hOffset)
+        'At this point, we have a Rectangle that outlines the 
+        'Element that is going to have a Focus Rectangle drawn 
+        'on top if it. 
+        drawParams.Graphics.DrawRectangle(_theFocusPen, theFocusRectangle)
+        retVal = True
+        'ensure that this custom code is applied. 
+    End If
+    Return retVal
+End Function
+----
+
+*In C#:*
+
+----
+        private Pen _theFocusPen = null;
+        private int _xOffset = 0;
+        private int _yOffset = 0;
+        private int _wOffset = 0;
+        private int _hOffset = 0;
+        public ActivationObjectDrawFilter(Pen theFocusPen, int xOffset, int  yOffset, int wOffset, int hOffset)
+        {
+            _theFocusPen = theFocusPen;
+            _xOffset = xOffset;
+            _yOffset = yOffset;
+            _wOffset = wOffset;
+            _hOffset = hOffset;
+        }
+        #region IUIElementDrawFilter Members
+        public bool DrawElement(Infragistics.Win.DrawPhase drawPhase, ref Infragistics.Win.UIElementDrawParams drawParams)
+        {
+            bool retVal = false; //if we return FALSE then none of 
+            //this custom code will be used by the user of this Draw Filter.
+            //Returning True ensures that this custom code is used. 
+            //It is good practice to test which DrawPhase is calling
+            //this method. You may have configured this DrawFilter to
+            //be used in more than one DrawPhase.
+            if (drawPhase == Infragistics.Win.DrawPhase.BeforeDrawFocus)
+            {
+                Rectangle regularRect = drawParams.Element.Rect; //This is the Element's full rectangle
+                Rectangle clippedRect = drawParams.Element.ClipRect; //If the element is being clipped by other elements, this is its Clipped off rectangle
+                Rectangle theFocusRectangle;
+                //Test to see if the element is getting clipped off
+                //by another element. 
+                if (
+                    (clippedRect.Width < regularRect.Width)
+                    ||
+                    (clippedRect.Height < regularRect.Height)
+                   )
+                {
+                    theFocusRectangle = clippedRect;
+                }
+                else
+                {
+                    theFocusRectangle = regularRect;
+                }
+                //This allows us to change the actual rectangle and tweak its size. This is needed
+                //so that you can tweak
+                theFocusRectangle = 
+                    new Rectangle(
+                        theFocusRectangle.X + _xOffset, theFocusRectangle.Y + _yOffset,
+                        theFocusRectangle.Width + _wOffset, theFocusRectangle.Height + _hOffset);
+                //At this point, we have a Rectangle that outlines the
+                //Element that is going to have a Focus Rectangle drawn
+                //on top of it. 
+                drawParams.Graphics.DrawRectangle(_theFocusPen, theFocusRectangle);
+                retVal = true; //ensure that this custom code is applied.
+            }
+            return retVal;
+        }
+----
+
+[start=4]
+. The GetPhasesToFilter method is passed a UIElementDrawParams structure and returns a bit flag enumeration called DrawPhase. The returned DrawPhase bit flag specifies which phase(s) of the drawing operation to filter for this element. Write the following code also in the ActivationObjectDrawFilter class.
+
+*In Visual Basic:*
+
+----
+Public Function GetPhasesToFilter(ByRef drawParams As Infragistics.Win.UIElementDrawParams) As Infragistics.Win.DrawPhase Implements Infragistics.Win.IUIElementDrawFilter.GetPhasesToFilter
+    'The DrawPhases that you return from this method 
+    'will be the DrawPhases where the DrawElement method is 
+    'of this DrawFilter is called. 
+    Return Infragistics.Win.DrawPhase.BeforeDrawFocus
+End Function
+----
+
+*In C#:*
+
+----
+public Infragistics.Win.DrawPhase GetPhasesToFilter(ref Infragistics.Win.UIElementDrawParams drawParams)
+        		{
+            //The DrawPhases that you return from this method
+            //will be the DrawPhases where the DrawElement method 
+            //of this DrawFilter is called. 
+            return Infragistics.Win.DrawPhase.BeforeDrawFocus;
+        }
+----
+
+[start=5]
+. In the Form1 class assign the created ActivationObjectDrawFilter class to the UltraGrid’s DrawFilter property. If you notice, the constructor of our Draw Filter has been designed to accept several parameters in order to allow for more flexibility and tweaking. These parameters represent the Brush that will be used to render the Focus Rectangle as well as 4 more parameters that represent Width and Height offsets as well as X and Y rectangle starting point offsets. These allow us to fine tune the starting point of the Rectangle with great precision.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DrawFilter = New ActivationObjectDrawFilter(New Pen(Brushes.Red, 1F), 1, 1, -3, -3)
+----
+
+*In C#:*
+
+----
+ this.ultraGrid1.DrawFilter = new ActivationObjectDrawFilter(new Pen(Brushes.Red, 1f), 1, 1, -3, -3);
+----
+
+[start=6]
+. Run the application. The WinGrid displays the customers table of the Northwind database. Click on any row or cell and notice that instead of the default dotted line focus rectangle, we get a solid red rectangle surrounding an active row or cell .
+
+image::Images\WinGrid_Removing_Focus_Rectangle_on_an_Active_Element_USing_Draw_Filter.png[]

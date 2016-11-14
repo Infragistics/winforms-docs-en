@@ -1,0 +1,78 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-replace-a-controls-context-menu-with-a-popupmenu-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{F46D4655-CB8A-4EC6-B268-64F82B5536A3}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Replace a Control's Context Menu with a PopupMenu Tool
+
+The WinToolbarsManager™ component has the functionality to display a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  as the context menu for any other control on the form. This can be done by setting the ContextMenuUltra property.
+
+== At Design-Time
+
+Add a PopupMenuTool to the Tools collection, and some other tools to show inside the pop-up menu. Using the PopupMenuTool designer you can place these tools inside the PopupMenuTool. Then add a different control such as a text box to the Form. In the text box's properties, there will be a property called ContextMenuUltra on UltraToolBarsManager1. When this property is selected, all of the pop-up menu tools in the UltraToolBarsManager element will be available to be selected as the context menu for the text box.
+
+== At Run-Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub Replace_a_Controls_Context_Menu_with_a_PopupMenu_Tool_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Creates a new popup menu and some buttons
+	Dim FontWeight As New PopupMenuTool("FontWeight")
+	Dim Bold As New ButtonTool("Bold")
+	Dim Underline As New ButtonTool("Underline")
+	' Adds the menu and the buttons to the tools collection
+	Me.UltraToolbarsManager1.Tools.Add(FontWeight)
+	Me.UltraToolbarsManager1.Tools.Add(Bold)
+	Me.UltraToolbarsManager1.Tools.Add(Underline)
+	' Adds the button tools to the menu
+	FontWeight.Tools.Add(Bold)
+	FontWeight.Tools.Add(Underline)
+	'  Sets the caption to be displayed for the button tools
+	Bold.SharedProps.Caption = "Bold"
+	Underline.SharedProps.Caption = "Underline"
+	' Sets the context menu for the TextBox control to the popup menu tool created
+	Me.UltraToolbarsManager1.SetContextMenuUltra(Me.UltraTextEditor1, "FontWeight")
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void Replace_a_Controls_Context_Menu_with_a_PopupMenu_Tool_Load(
+  object sender, 
+  EventArgs e)
+{
+	// Creates a new popup menu and some buttons
+	PopupMenuTool FontWeight = new PopupMenuTool("FontWeight");
+	ButtonTool Bold = new ButtonTool("Bold");
+	ButtonTool Underline = new ButtonTool("Underline");
+	// Adds the menu and the buttons to the tools collection
+	this.ultraToolbarsManager1.Tools.Add(FontWeight);
+	this.ultraToolbarsManager1.Tools.Add(Bold);
+	this.ultraToolbarsManager1.Tools.Add(Underline);
+	// Adds the button tools to the menu
+	FontWeight.Tools.Add(Bold);
+	FontWeight.Tools.Add(Underline);
+	// Sets the caption to be displayed for the button tools
+	Bold.SharedProps.Caption = "Bold";
+	Underline.SharedProps.Caption = "Underline";
+	// Sets the context menu for the TextBox control to the popup menu tool created
+	this.ultraToolbarsManager1.SetContextMenuUltra(this.ultraTextEditor1, "FontWeight");
+}
+----

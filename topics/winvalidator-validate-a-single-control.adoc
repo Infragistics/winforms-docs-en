@@ -1,0 +1,63 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-validate-a-single-control",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{DAF9CD81-C135-4ABA-A3BC-D1B618731643}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Validate a Single Control
+
+WinValidator™ can validate any in-box control. You can validate a control during its Validating event, one of its property changed events, or manually by calling the Validate method. The simplest of these types of validation is calling the Validate method.
+
+The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validate.html[Validate]"]  method has several overloads for you to choose from. If you need to validate a specific control, you simply need to pass the control itself as a parameter. However, the drawback to this method is that you need to manually call it each time you want to validate the control. If you'd prefer to validate a control, such as the WinNumericEditor™ control, during its TextChanged event, see link:winvalidator-validate-during-a-specific-event.html[Validate during a Specific Event].
+
+The following example code demonstrates how to manually validate the TextBox control.
+
+*In Visual Basic:*
+
+----
+' Retrieve the settings that determine 
+' how the TextBox will be validated.
+Dim vs As Infragistics.Win.Misc.ValidationSettings = _
+	Me.UltraValidator1.GetValidationSettings(Me.textBox1)
+' Turn off automatic validation so WinValidator will
+' only validate when the Validate method is called.
+vs.ValidationTrigger = _
+	Infragistics.Win.Misc.ValidationTrigger.Programmatic
+' Create a condition that will fail validation if
+' the text in the TextBox starts with "ultra".
+vs.Condition = _
+	New Infragistics.Win.OperatorCondition( _
+		Infragistics.Win.ConditionOperator.DoesNotStartWith, _
+		"ultra")
+' Validate the TextBox.
+Me.UltraValidator1.Validate(Me.textBox1)
+----
+
+*In C#:*
+
+----
+// Retrieve the settings that determine 
+// how the TextBox will be validated.
+Infragistics.Win.Misc.ValidationSettings vs =
+	this.ultraValidator1.GetValidationSettings(this.textBox1);
+// Turn off automatic validation so WinValidator will
+// only validate when the Validate method is called.
+vs.ValidationTrigger = 
+	Infragistics.Win.Misc.ValidationTrigger.Programmatic;
+// Create a condition that will fail validation if
+// the text in the TextBox starts with "ultra".
+vs.Condition =
+	new Infragistics.Win.OperatorCondition(
+		Infragistics.Win.ConditionOperator.DoesNotStartWith,
+		"ultra");
+// Validate the TextBox.
+this.ultraValidator1.Validate(this.textBox1);
+----

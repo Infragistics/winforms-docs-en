@@ -1,0 +1,86 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-set-timeline-intervals-in-chart-area-of-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": [],
+    "guid": "{138B7285-C2FE-4C01-82B9-199993497627}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Timeline Intervals in Chart Area of WinGanttView
+
+The WinGanttView™ control displays a timeline in the column header within the chart area of the control that can be customized. You can modify the primary interval that is displayed by default and also add additional intervals using the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinesettings.html[TimelineSettings] object.
+
+The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeinterval.html[TimeInterval] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dateinterval.html[DateInterval] objects allow you to define the time and date intervals. The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.datetimeinterval~interval.html[Interval] property of type integer defines the number of periods in a cycle, and the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dateinterval~intervalunits.html[IntervalUnits] property defines the unit of time, with its value being expressed in minutes or hours (for the TimeInterval object), or days, weeks, months or years (for the DateInterval object).
+
+The duration of each division of time presented in a column can be defined through the PrimaryInterval property. Any number of additional date or time intervals can be displayed above the primary interval by adding members to the AdditionalIntervals collection. When one or more members exist in the AdditionalIntervals collection, multiple date/time intervals are displayed from top to bottom in order of descending duration, e.g., the time intervals with longer durations appear above those whose duration is shorter. Once your TimeInterval and/or DateInterval objects are configured, they can then be assigned to the TimelineSettings.PrimaryInterval or TimelineSettings.AdditionalIntervals property of the GanttView control.
+
+The following code customizes the primary interval and additional interval added to the timeline column headers in the chart section of the control.
+
+*In Visual Basic:*
+
+----
+' Define TimeInterval object and pass Interval and IntervalUnits as parameters to set Primary interval
+Dim ganttTimeInterval As New TimeInterval(30, TimeIntervalUnits.Minutes)
+Me.ultraGanttView1.TimelineSettings.PrimaryInterval = ganttTimeInterval
+ganttTimeInterval.HeaderAppearance.BackColor = Color.Silver
+ganttTimeInterval.HeaderTextFormat = "T"
+ganttTimeInterval.HeaderTextFormatStyle = TimelineViewHeaderTextFormatStyle.FullRange
+' Define DateInterval object and pass Interval and IntervalUnits as parameters to set additional interval
+Dim ganttAddInterval1 As New DateInterval(1, DateIntervalUnits.Days)
+Me.ultraGanttView1. TimelineSettings.AdditionalIntervals.Add(ganttAddInterval1)
+ganttAddInterval1.HeaderTextFormat = "dddd"
+Me.ultraGanttView1.TimelineSettings.WorkingHourAppearance.BackColor = Color.LightBlue
+Me.ultraGanttView1.TimelineSettings.NonWorkingHourAppearance.BackColor = Color.BlanchedAlmond
+Me.ultraGanttView1.TimelineSettings.ColumnAutoSizing = TimelineViewColumnAutoSizing. PrimaryIntervalOnly
+Me.ultraGanttView1.TimelineSettings.ColumnWidth = 180
+----
+
+*In C#:*
+
+----
+// Define TimeInterval object and pass Interval and IntervalUnits as  parameters to set Primary interval
+TimeInterval ganttTimeInterval = new TimeInterval(30, TimeIntervalUnits.Minutes);
+this.ultraGanttView1.TimelineSettings.PrimaryInterval = ganttTimeInterval;
+ganttTimeInterval.HeaderAppearance.BackColor = Color.Silver;
+ganttTimeInterval.HeaderTextFormat = "T";
+ganttTimeInterval.HeaderTextFormatStyle = TimelineViewHeaderTextFormatStyle.FullRange;
+// Define DateInterval object and pass Interval and IntervalUnits as  parameters to set additional interval
+DateInterval ganttAddInterval1 = new DateInterval(1, DateIntervalUnits.Days);
+this.ultraGanttView1.TimelineSettings.AdditionalIntervals.Add(ganttAddInterval1);
+ganttAddInterval1.HeaderTextFormat = "dddd";
+this.ultraGanttView1.TimelineSettings.WorkingHourAppearance.BackColor = Color.LightBlue;
+this.ultraGanttView1.TimelineSettings.NonWorkingHourAppearance.BackColor = Color.BlanchedAlmond;
+this.ultraGanttView1.TimelineSettings.ColumnAutoSizing = TimelineViewColumnAutoSizing.PrimaryIntervalOnly;
+this.ultraGanttView1.TimelineSettings.ColumnWidth = 180;
+----
+
+There are several events that can be handled to customize the time and date intervals applied to the column headers in the chart area of the control. Some of these events are:
+
+link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinecolumnheaderinitializing_ev.html[TimelineColumnHeaderInitializing]
+
+link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinecolumnheadertooltipdisplaying_ev.html[TimelineColumnHeaderToolTipDisplaying]
+
+link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinedatenavigationbuttonclicked_ev.html[TimelineDateNavigationButtonClicked]
+
+link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelineprimaryintervalchanged_ev.html[TimelinePrimaryIntervalChanged]
+
+link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinevisibledatetimerangechanged_ev.html[TimelineVisibleDateTimeRangeChanged]
+
+image::Images\WinGanttView_Set_Timeline_Intervals_in_Chart_Area_of_WinGanttView_01.png[]
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]

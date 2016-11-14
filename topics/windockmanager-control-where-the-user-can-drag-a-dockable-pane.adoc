@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-control-where-the-user-can-drag-a-dockable-pane",
+    "controlName": ["WinDockManager"],
+    "tags": ["Layouts"],
+    "guid": "{EB6D5ACE-2865-4D92-8ABB-8B76273A0127}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Control Where the User Can Drag a Dockable Pane
+
+It may be necessary to limit where a user can move a dockable  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"] . Each pane has a  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase~settings.html[Settings]"]  object that has Allow properties that can control where a pane can be docked.
+
+The following code uses a form that has two controls on it. One control is docked left and the other is docked right. The first two lines of code makes the control on the left ( pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~dockareas.html[DockArea]"]  - 0) so that it can't be Docked Bottom or can't be turned into a floating pane. The last line of code makes the control on the right (DockArea - 1) so you can't drag it around to re-dock it.
+
+.Note
+[NOTE]
+====
+The control on the right can't be dragged around, but it still can be undocked. In this undocked state it still can't be dragged though.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub Control_Where_the_User_Can_Drag_a_Dockable_Pane_Load( _
+  ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Sets the Pane so that you can't Dock it Bottom or make it a floating pane
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Settings.AllowDockBottom = _
+	  DefaultableBoolean.False
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Settings.AllowFloating = _
+	  DefaultableBoolean.False
+	' Makes the pane undraggable
+	' This pane can still be undocked though, but even in undocked mode 
+	' you can't drag the pane around
+	Me.UltraDockManager1.DockAreas(1).Panes(0).Settings.AllowDragging = _
+	  DefaultableBoolean.False
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void Control_Where_the_User_Can_Drag_a_Dockable_Pane_Load(object sender, 
+  EventArgs e)
+{
+	// Sets the Pane so that you can't Dock it Bottom or make it a floating pane
+	this.ultraDockManager1.DockAreas[0].Panes[0].Settings.AllowDockBottom = 
+	  DefaultableBoolean.False;
+	this.ultraDockManager1.DockAreas[0].Panes[0].Settings.AllowFloating = 
+	  DefaultableBoolean.False;
+	// Makes the pane undraggable
+	// This pane can still be undocked though, but even in undocked mode
+	// you can't drag the pane around
+	this.ultraDockManager1.DockAreas[1].Panes[0].Settings.AllowDragging = 
+	  DefaultableBoolean.False;
+}
+----

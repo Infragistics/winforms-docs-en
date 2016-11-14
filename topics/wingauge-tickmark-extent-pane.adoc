@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-tickmark-extent-pane",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{7B139E54-E755-42A1-9792-535C25CEB815}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Extent Pane
+
+The Extent pane determines the start and end point of the tick mark on the scale. This sets the length of the tick mark. In a Radial gauge the start and end values are measured from the center and in a Linear gauge the start and end values are measured from the left of the gauge.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugescaletickmarkappearance~startextent.html[Start]"]  -- Set this value to an integer from 0 to 100. This value sets the start position of the tick mark.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugescaletickmarkappearance~endextent.html[End]"]  -- Set this value to an integer from 0 to 100. This value sets the end position of the tick mark.
+
+image::images/Tickmark_Extent_Pane_01.png[wingauge's tickmark extent pane.]
+
+== Related Topic
+
+link:wingauge-tickmark-layout-tab.html[Tickmark Layout Tab]

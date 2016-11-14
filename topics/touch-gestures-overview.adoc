@@ -1,0 +1,258 @@
+﻿////
+
+|metadata|
+{
+    "name": "touch-gestures-overview",
+    "controlName": [],
+    "tags": ["API"],
+    "guid": "d27510fc-2a1f-4646-aadd-173bc194a84f",  
+    "buildFlags": [],
+    "createdOn": "2013-02-25T19:06:56.4089815Z"
+}
+|metadata|
+////
+
+= Touch Gestures Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the Infragistics touch-enabled controls’ touch gesture functionality and usage.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349131097,Introduction>>
+* <<_Ref349134101,Gesture-Support Controls>>
+* <<_Ref349131108,Panning Gestures>>
+
+** <<_Ref349045950,Slow vertical panning>>
+** <<_Ref349131123,Fast vertical panning>>
+** <<_Ref349046163,Multi-directional pan scroll>>
+** <<_Ref349131139,Multi-directional pan select>>
+** <<_Ref349131146,Multi-directional pan extended selection>>
+
+* <<_Ref349131153,Press and Tap Gestures>>
+
+** <<_Ref349131162,Press and hold>>
+** <<_Ref349131170,Press and tap>>
+** <<_Ref349131200,Normal tap>>
+** <<_Ref349131209,Captured tap and drag>>
+
+* <<_Ref349131219,Related Content>>
+
+[[_Ref349131097]]
+== Introduction
+
+=== Touch Gestures Introduction
+
+Windows Forms controls prior to Windows 7 did not natively support gestures of user interaction with a touch input digitizer surface through managed code. You may administer Windows7 supported link:http://msdn.microsoft.com/en-us/library/ee220935.aspx[WM_GESTURE] message in unmanaged code to provide support for the recognized Windows gestures.
+
+One well-known gesture,  _kinetic scrolling_   with link:http://msdn.microsoft.com/en-us/library/windows/desktop/dd371570(v=vs.85).aspx[inertia], also referred to as  _touch panning_   occurs when the user drags a finger across a touch surface, with the speed and direction of the movement determining the direction of and speed at which the window scrolls. The scrolling continues, even after the user withdrawals his or her finger, gradually decelerating before coming to a complete stop, a behavior known as  _panning inertia_  . Any user interaction occurring during this deceleration immediately stops the inertial panning. This behavior is prevalent on smart phones and tablet devices such as iPhone, iPad and Windows touch-enabled Surface devices.
+
+Another application of the panning gesture is drag selection, where the user drags a  _lasso_   around the screen, selecting any items captured within the bounds of the  _lasso_   rectangle.
+
+Other gestures also have default behaviors associated with them, for example, displaying context menu using a `press-and-hold` gesture. This is where the user holds a finger down on the touch surface without moving it – displays a context menu after a short time.
+
+[[_Ref349134101]]
+== Gesture-Support Controls
+
+=== Controls
+
+The following list contains the  _Infragistics_   touch-enabled controls with gestures support.
+
+*  _UltraCalendarCombo_  
+*  _UltraCombo_  
+*  _UltraDayView_  
+*  _UltraDesktopAlert_  
+*  _UltraDockManager_  
+*  _UltraExplorerBar_  
+*  _UltraGanttView_  
+*  _UltraGrid_  
+*  _UltraListView_  
+*  _UltraLiveTileView_  
+*  _UltraMonthViewMulti_  
+*  _UltraMonthViewSingle_  
+*  _UltraMessageBox_  
+*  _UltraRadialMenu_  
+*  _UltraTimelineView_  
+*  _UltraTree_  
+*  _UltraToolbarsManager(Ribbon)_  
+*  _UltraWeekView_  
+
+The  _Infragistics_   controls emulate the Windows operating system’s standard user interface behavior. We apply this paradigm to support touch gestures handling our controls.
+
+[[_Ref349131108]]
+== Panning Gestures
+
+[[_Ref349045950]]
+
+=== Slow vertical panning
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User’s finger makes contact with touch surface and moves it _slowly_ in an upward direction, and then loses contact with the touch surface.
+|As the user’s finger moves across the touch surface, the control’s scroll position incrementally increases by one item each time the finger traverses a distance approximately equal to the height of one item. The scrollbar’s thumb element moves downward, while the viewport shifts in an upward direction. Items, which were previously below the viewable area, move into view. When the user’s finger is withdrawn, the control stops scrolling immediately.
+
+|====
+
+[[_Ref349131123]]
+
+=== Fast vertical panning
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with touch surface with one finger and moves it _quickly_ in an upward direction, and then loses contact with the touch surface.
+|Same behavior as with the <<_Ref349045950,Slow vertical panning>>, except that the control continues to scroll after the user’s finger is withdrawn, gradually decelerating before coming to a complete stop.
+
+|====
+
+[[_Ref349046163]]
+
+=== Multi-directional pan scroll
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with touch surface with one finger and moves it at a moderate speed in an upward direction, then, after moving upward an inch or so, moves it _quickly toward the left_ and then releases the finger, losing contact with the touch surface.
+|The control initially scrolls as it does in the <<_Ref349045950,Slow vertical panning>>, with a slightly faster scroll speed. As the user changes the direction of their swipe from vertical to horizontal the control begins to scroll horizontally, with the thumb moving toward the right, and the viewport shifting toward the left. The control continues to scroll horizontally after the finger loses contact with the touch surface, gradually decelerating before coming to a complete stop.
+
+|====
+
+[[_Ref349131139]]
+
+=== Multi-directional pan select
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with touch surface with one finger and moves it _slowly toward the left_, then, after moving an inch or so, moves it around the touch surface within the bounds of the control.
+|After the initial horizontal movement, a semi-transparent drag rectangle, also known as a _lasso_, appears with the corners defined by the initial point of contact and the finger’s current location. As the rectangle changes its size, it selects those items whose bounds intersect with the drag rectangle, and items whose bounds once intersected but not anymore, are deselected.
+
+|====
+
+[[_Ref349131146]]
+
+=== Multi-directional pan extended selection
+
+.Note:
+[NOTE]
+====
+The following use case requires one or more items to be selected in the control before initiating the action.
+====
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|While holding the Control key down, the user makes contact with one finger on the touch surface and moves _slowly toward the left_, then, after moving an inch or so, moves it around the touch surface within the bounds of the control.
+|Similar behavior to <<_Ref349046163,Multi-directional pan scroll>> use case with the following exception: 
+
+When the _lasso_ intersects with items that were selected before the drag selection operation began, those items become deselected. Such items become re-selected again when the _lasso_ no longer intersects with them. 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+Releasing the control key during the drag selection operation, results in the pre-selected items follow the normal selection rules from that point forward. 
+
+====
+
+|====
+
+[[_Ref349131153]]
+== Press and Tap Gestures
+
+[[_Ref349131162]]
+
+=== Press and hold
+
+.Note:
+[NOTE]
+====
+The following use case requires that the control has a context menu.
+====
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with touch surface with one finger and maintains contact _without significant movement for approximately two seconds_, and then loses contact with the touch surface.
+|After approximately two seconds elapse since initial making contact, a faded gray ring-like indicator appears around the point of contact. When the user removes the finger, the control’s context menu appears.
+
+|====
+
+[[_Ref349131170]]
+
+=== Press and tap
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with touch surface with one finger and maintains contact _without significant movement_, taps with a second finger at an arbitrary location, and then removes both fingers
+|Removing both fingers from contact with the touch screen, the control’s context menu appears.
+
+|====
+
+[[_Ref349131200]]
+
+=== Normal tap
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes brief contact with touch surface with one finger and releases, for example _tapping the surface at an arbitrary location._
+|The control behaves as it does to a left mouse button click. 
+
+* If the tap location coincides with a selectable item, the item is selected. 
+
+* If the tap location coincides with a clickable element such as a button, the button’s click action is invoked. 
+
+|====
+
+[[_Ref349131209]]
+
+=== Captured tap and drag
+
+[options="header", cols="a,a"]
+|====
+|User Action|Result
+
+|User makes contact with a user interface element, which typically captures mouse movement, holds the finger stationary for a few seconds, and then drags the finger across the touch surface.
+|The behavior observed is identical to captured mouse drag operation. A scroll of a thumb, for example, will move along with the user’s finger.
+
+|====
+
+[[_Ref349131219]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:touch-gestures.html[Touch Gestures]
+|The topics in this group illustrate Infragistics touch-enabled control’s Touch Gestures.
+
+| link:touch-gestures-events.html[Touch Gestures Events]
+|This topic introduces the Infragistics touch-enabled controls’ gestures events.
+
+| link:http://msdn.microsoft.com/en-us/library/windows/desktop/dd940543(v=vs.85).aspx[Windows Touch Gestures Overview]
+|This MSDN section describes the various gestures supported by Windows Touch.
+
+|====

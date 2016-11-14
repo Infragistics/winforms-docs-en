@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-hide-toolbars",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{1B62F423-86ED-4202-99F9-D8CB6CD9E562}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Hide Toolbars
+
+The toolbars in the WinToolbarsManager™ component can be hidden at design-time by right clicking on the element in the component tray and selecting "Hide ToolBars," or by right-clicking on the toolbars on the form and selecting "Hide ToolBars." The element will not be visible on the form at design-time but will be visible when the application is run. To make hidden toolbars visible at design-time, right-click on UltraToolBarsManager in the component tray and select "Hide ToolBars" again so the option will be toggled and the toolbars will no longer be hidden.
+
+All of the toolbars in the WinToolbarsManager control can be hidden at design-time but remain visible at run-time, or a specific toolbar can be hidden. The second option is only accessible for toolbars and not for menu-bars.
+
+A specific toolbar can be hidden by setting its  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~visible.html[Visible]"]  property to False. It can be made visible again by setting its Visible property to True.

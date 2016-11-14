@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-control-the-placement-of-headers",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Layouts"],
+    "guid": "{8F60EB26-A308-4AE7-B61A-95108DA9B80A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Control the Placement of Headers
+
+You can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headerplacement.html[HeaderPlacement]"]  property to control how headers are displayed.
+
+The following is a list of the available options:
+
+* *Default* - The Default specifies that the parent object's settings should be used. If the parent object also has the property set to Default then RepeatOnBreak will be used.
+* *RepeatOnBreak* - Headers are repeated on every band break. The current row displays headers if the previous row is from a different row collection. This is the default behavior. The following snapshot shows a WinGrid™ using this header placement style. As you can see the headers are repeated on a row if the previous row is from a different band.
+
+image::Images/WinGrid_How_to_Control_Header_Placement_01.png[headerplacement repeatonbreak in ultragrid]
+
+* *FixedOnTop* - Headers of all the bands are displayed on top. They always remain visible, even if a row from that band is currently not visible. You can hide headers of certain bands by setting the existing ColHeadersVisible property of the band. The following snapshot shows a WinGrid using this header placement style. As you can see the headers of all bands are displayed on top. They are never repeated - displayed more than once. Also the headers never scroll out of view.
+
+image::Images/WinGrid_How_to_Control_Header_Placement_02.png[headerplacement fixedontop in ultragrid]
+
+* *OncePerRowIsland* - Headers are displayed only once per row island. When a row is expanded with visible children, the next sibling does not display the headers. The following snapshot shows a WinGrid using this header placement style. Notice that the second row of the root band doesn't display the headers. This is because the headers for that rows collection are already displayed with the 0th row.
+
+image::Images/WinGrid_How_to_Control_Header_Placement_03.png[headerplacement onceperrowisland in ultragrid]
+
+ 
+* *OncePerGroupedRowIsland* - Same as OncePerRowIsland however when rows are grouped by one or more columns, the headers are displayed above the group-by-rows. Here the a row island is taken to mean the collection of rows associated with an IList. The following snapshot shows a WinGrid using this header placement style. Notice that the headers are displayed above the group-by row.
+
+image::Images/WinGrid_How_to_Control_Header_Placement_04.png[headerplacement oncepergroupedrowisland in ultragrid]
+
+ 
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles ultraGrid1.InitializeLayout
+    ' Set the HeaderPlacement on the layout's Override object. This affects all
+    ' the bands of the WinGrid.
+    e.Layout.Override.HeaderPlacement = HeaderPlacement.OncePerGroupedRowIsland
+    ' You can override it on a specific band by setting the property on the
+    ' band's Override object.
+    e.Layout.Bands(0).Override.HeaderPlacement = HeaderPlacement.FixedOnTop
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set the HeaderPlacement on the layout's Override object. This affects all
+	// the bands of the WinGrid.
+	e.Layout.Override.HeaderPlacement = HeaderPlacement.OncePerGroupedRowIsland;
+	// You can override it on a specific band by setting the property on the
+	// band's Override object.
+	e.Layout.Bands[0].Override.HeaderPlacement = HeaderPlacement.FixedOnTop;
+}
+----

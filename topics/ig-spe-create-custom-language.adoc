@@ -1,0 +1,215 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-create-custom-language",
+    "controlName": [],
+    "tags": [],
+    "guid": "ed3be8c9-7734-4c7e-8429-465506a343b6",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0978547Z"
+}
+|metadata|
+////
+
+= Create Custom Language
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the process of creating a custom language.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview]
+|This topic gives an overview of the EBNF file format used to define a grammar.
+
+| link:ig-spe-generate-grammar-from-an-ebnf-file.html[Generate Grammar From an EBNF File]
+|This topic explains the process of creating a grammar from EBNF content.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref350245523, Create Custom Language >>
+* <<_Ref350245527, Overview >>
+* <<_Ref350245532, Using the CustomLanguage class >>
+* <<_Ref350245535, Generate a language class >>
+* <<_Ref350245540, Related Content >>
+
+[[_Ref350245523]]
+== Create Custom Language
+
+[[_Ref350245527]]
+
+=== Overview
+
+Once a grammar definition is complete you can use it to parse documents which must conform to that grammatical structure. Here are the steps for doing this:
+
+* create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from the EBNF grammar definition or construct a Grammar instance with code
+* create a custom language class, which derives from link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] and owns the Grammar instance
+* create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument.html[TextDocument] and set its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~language.html[Language] property to an instance of the custom language class
+
+.Note
+[NOTE]
+====
+Once a `Grammar` is used to create a language, it can never be modified again. Trying to change the `Grammar` or any object directly or indirectly owned by the `Grammar` will throw an exception. A Grammar which has been used to create a language will have its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~ismutable.html[IsMutable] readonly property set to False.
+====
+
+There are two ways to create a custom language from a grammar:
+
+* using the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.customlanguage.html[CustomLanguage] class
+* generating a language class
+
+[[_Ref350245532]]
+
+=== Using the CustomLanguage class
+
+You can create a custom language for a grammar by passing the `Grammar` instance to the constructor of the `CustomLanguage` class, which is derived from `LanguageBase`. This will create a `CustomLanguage` instance specifically built to parse documents based on the provided `Grammar` instance.
+
+The following table contains the members that are publicly exposed on the `CustomLanguage` class:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~grammar.html[Grammar]
+|The `Grammar` instance used to create the instance.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~servicesmanager.html[ServicesManager]
+|An instance for managing services available to an editor when documents are edited in this language.
+
+|====
+
+[options="header", cols="a,a"]
+|====
+|*Event*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.customlanguage~globalambiguitydetected_ev.html[GlobalAmbiguityDetected]
+|Occurs when a global ambiguity is detected while parsing a document. For more information, please refer to the link:ig-spe-ambiguities.html[Ambiguities] topic.
+
+|====
+
+[[_Ref350245535]]
+
+=== Generate a language class
+
+You can create a custom language from a grammar by generating a `LanguageBase`-derived class specifically built to parse documents with a specific grammar definition. Creating a `CustomLanguage` can be thought of as dynamic creation of a language whereas generating a language class can be thought of as pre-compiling a language. Building the lexical and syntax analyzers can be slow for complex grammars. If the `CustomLanguage` approach is used, that building phase needs to happen the first time a document is parsed for each run of the application. This may be acceptable for simple languages or when debugging a grammar definition on a developer’s machine, but for a complex language being used on a user’s machine, it may not be. By using the language generation approach, the lexical and syntax analyzers are built once on the developer’s machine. Then information about how to reconstruct the analyzers and `Grammar` is written out to a generated class file. Each class file generated derives from `LanguageBase`, has a static property named Instance returning a singleton instance of itself, and a public constructor in case two copies of the language need to be created with different services in their `ServicesManager`. In addition, the generated class has a `Grammar` property which returns an identical copy of the `Grammar` used to generate the language.
+
+.Note
+[NOTE]
+====
+Although the `Grammar` property returns a copy of the original `Grammar`, accessing the `Grammar` property on different instances of the same generated language type will always return the same `Grammar` instance.
+====
+
+One of the options for generating the language class is to give it the “partial” modifier. This allows you to create another file for the derived language so you can override certain members on `LanguageBase` or add your own. The members that can be overridden on `LanguageBase` are as follows
+
+[options="header", cols="a,a"]
+|====
+|*Protected Virtual Method*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias]
+|Returns a string containing a display name for the symbol when used in error messages. For more information please refer to the link:ig-spe-customize-error-messages.html[Customize Error Messages] topic.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~initializedefaultservices.html[InitializeDefaultServices]
+|Initializes the default services in the `ServicesManager` for the language.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError]
+|Called when the syntax analyzer discovers an error. For more information please refer to the link:ig-spe-customize-error-messages.html[Customize Error Messages] topic.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onglobalambiguitydetected.html[OnGlobalAmbiguityDetected]
+|Called when a global ambiguity is detected when parsing text. For more information, please refer to the link:ig-spe-ambiguities.html[Ambiguities] topic.
+
+|====
+
+You can generate a language by using the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator.html[LanguageGenerator] class in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace. This class has the following static methods:
+
+[options="header", cols="a,a"]
+|====
+|*Static Method*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams).html[GenerateClass]
+|Generates a language file using the specified options and returns the string containing the content of the file.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams,stream,encoding).html[GenerateClass]
+|Generates a language file using the specified options and writes it to the specified stream.
+
+|====
+
+The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams.html[LanguageGenerationParams] class used as argument in the `GenerateClass` methods has several options to customize the language generation process. They are as follows:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~classname.html[ClassName]
+|The name to give the generated language class.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~format.html[Format]
+|Indicates in which coding language the class file should be generated. Available values are 
+
+* `CSharp` 
+
+* `VisualBasic` 
+
+The value is `CSharp` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~generatesymbolnameconstants.html[GenerateSymbolNameConstants]
+|Indicates whether to generate a nested `SymbolNames` class in the generated language which contains constants for the names of all symbol which could have nodes represent them in the syntax tree (symbols which will always be pruned out of the syntax tree will not have symbol name constants generated). The value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~grammar.html[Grammar]
+|The `Grammar` instance which will be used to generate the class.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~ispartial.html[IsPartial]
+|Indicates whether the "partial" modifier should be added to the class. The value is `false` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~ispublic.html[IsPublic]
+|Indicates whether the “public” modifier should be added to the class. If `false`, the “internal” modifier will be added instead. The value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~issealed.html[IsSealed]
+|Indicates whether the “sealed” modifier should be added to the class. The value is `true` by default.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~namespacename.html[NamespaceName]
+|The namespace in which to place the generated language class. If `null`, it will be placed in the `Infragistics.Documents.Parsing` namespace.
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~summary.html[Summary]
+|The documentation summary comment to add to the class.
+
+|====
+
+[[_Ref350245540]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-customize-error-messages.html[Customize Error Messages]
+|This topic explains how to customize the error messages produced by the Syntax Parsing Engine.
+
+| link:ig-spe-create-a-textdocument.html[Create a TextDocument]
+|This topic introduces the TextDocument and explains how to set a language on the TextDocument.
+
+| link:ig-spe-working-with-the-syntax-tree.html[Working With the Syntax Tree]
+|The topics in this group explain in detail how to work with the Syntax Tree.
+
+|====

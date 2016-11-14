@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-select-nodes-in-different-levels-of-the-tree",
+    "controlName": ["WinTree"],
+    "tags": [],
+    "guid": "{5BC89CBA-4323-4F4B-92E4-EAE16ABC05EA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Select Nodes in Different Levels of the Tree
+
+WinTree™ can allow your end users to select a range of nodes in the tree; but not only a range at one level of the tree, but across collections of nodes, adding child nodes to the selection. You can allow your end user to select multiple nodes easy enough by setting the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~selectiontype.html[SelectionType]"]  property to Extended. However, if you want your end user to be able to select nodes from a nodes children, and then perhaps the children of those nodes as well, you will need to set the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~selectionbehavior.html[SelectionBehavior]"]  property to ExtendedAcrossCollections. Another useful property in this scenario is the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~includecollapseddescendantsonrangeselection.html[IncludeCollapsedDescendantsOnRangeSelection]"]  property. This property allows your end user to select a range of nodes with child nodes, and automatically include those child nodes in the selection. Therefore, you can essentially place all nodes and their child nodes in the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~selectednodes.html[SelectedNodes]"]  collection just by selecting a range of nodes at one level of the tree.
+
+.Note
+[NOTE]
+====
+When selecting a range of nodes with IncludeCollapsedDescendantsOnRangeSelection set to True, the last node in the range will not include its descendants in the selection.
+====
+
+The following code demonstrates how you can allow your end users to select multiple nodes from different levels of WinTree, while including all child nodes.
+
+*In Visual Basic:*
+
+----
+' Allow the end user to select multiple nodes.
+Me.UltraTree1.Override.SelectionType =
+    Infragistics.Win.UltraWinTree.SelectType.Extended
+' Allow the end user to select nodes in different
+' levels of the tree.
+Me.UltraTree1.SelectionBehavior =
+    Infragistics.Win.UltraWinTree.SelectionBehavior.ExtendedAcrossCollections
+' When the end user selects nodes, the child nodes
+' will be selected as well.
+Me.UltraTree1.IncludeCollapsedDescendantsOnRangeSelection = 
+    Infragistics.Win.DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+// Allow the end user to select multiple nodes.
+this.ultraTree1.Override.SelectionType = 
+    Infragistics.Win.UltraWinTree.SelectType.Extended;
+// Allow the end user to select nodes in different
+// levels of the tree.
+this.ultraTree1.SelectionBehavior =
+    Infragistics.Win.UltraWinTree.SelectionBehavior.ExtendedAcrossCollections;
+// When the end user selects nodes, the child nodes
+// will be selected as well.
+this.ultraTree1.IncludeCollapsedDescendantsOnRangeSelection =
+    Infragistics.Win.DefaultableBoolean.True;
+----

@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-retrieving-the-value-from-a-protected-cell",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{EE742C14-158C-4542-A889-B55D1D90DB66}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Retrieving the Value from a Protected Cell
+
+Using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~elementfrompoint.html[ElementFromPoint]"]  method of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement.html[UIElement]"]  object you can get a cell's value. The following illustrates how to return the value of a cell in response to a double-click, even if the cell is protected.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_DoubleClickCell(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.DoubleClickCellEventArgs) _
+  Handles UltraGrid1.DoubleClickCell
+	' Get the cursor position
+	Dim point As Point = System.Windows.Forms.Cursor.Position
+	' Convert to the grid's client coordinates
+	point = Me.UltraGrid1.PointToClient(point)
+	' Get the UIElement at those coords, if there is one
+	Dim oUI As UIElement = Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint(point)
+	Dim oCellUI As CellUIElement
+	If oUI Is Nothing Then
+		Return
+	End If
+	' Now we have the lowest level element at the given coordinates. 
+	' To get the CellUIElement, walk up
+	' the parent chain until we hit a CellUIElement, or die trying
+	While Not oUI Is Nothing
+		If oUI.GetType() Is GetType(CellUIElement) Then
+			' Get the CellUIElement as the proper type
+			oCellUI = oUI
+			' Display the cell's value
+			MessageBox.Show("Cell.Value = " + oCellUI.Cell.Value.ToString())
+		End If
+		oUI = oUI.Parent
+	End While
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_DoubleClickCell(object sender, 
+  Infragistics.Win.UltraWinGrid.DoubleClickCellEventArgs e)
+{
+	// Get the cursor position
+	Point point = System.Windows.Forms.Cursor.Position;
+	// Convert to the grid's client coordinates
+	point = this.ultraGrid1.PointToClient(point);
+	// Get the UIElement at those coords, if there is one
+	UIElement oUI = this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(point);
+	if (oUI == null)
+		return;
+	// Now we have the lowest level element at the given coordinates. 
+	// To get the CellUIElement, walk up
+	// the parent chain until we hit a CellUIElement, or die trying
+	while (oUI != null)
+	{
+		if (oUI.GetType() == typeof(CellUIElement))
+		{
+			// Get the CellUIElement as the proper type
+			CellUIElement oCellUI = (CellUIElement)oUI;
+			// Display the cell's value
+			MessageBox.Show("Cell.Value = " + oCellUI.Cell.Value.ToString());
+		}
+		oUI = oUI.Parent;
+	}
+}
+----

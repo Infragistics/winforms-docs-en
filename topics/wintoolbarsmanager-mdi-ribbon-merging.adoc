@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-mdi-ribbon-merging",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{48A618EC-5F45-4984-AFCC-0CFF628FA597}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= MDI Ribbon Merging
+
+WinToolbarsManager™ includes the ability to merge the contents of its tools and toolbars with that of another WinToolbarsManager instance. Merging is done automatically in an MDI type application where the WinToolbarsManager of the MdiChild will automatically be merged into the WinToolbarsManager of the MdiParent. It can also be merged programmatically by setting the MdiMergable property of both WinToolbarsManager instances to False and then setting the MdiParentManager of the "child" WinToolbarsManager to the WinToolbarsManager into which its toolbars and tools should be merged (or by setting the ActiveMdiChildManager of the "parent" WinToolbarsManager to the WinToolbarsManager whose tools and toolbars should be merged in.)
+
+With 2007 Volume 1, we allow the contents of the Ribbon to be merged. This includes merging of the Application Menu, Quick Access Toolbar and the Mini Toolbar (also new in 2007 Volume 1).
+
+== Merging with Office2007UICompatibility Set to True
+
+To keep your application Office 2007-compliant, when Office2007UICompatibility is True, WinToolbarsManager will perform Ribbon merging in the following way:
+
+=== Merging Ribbon Tabs
+
+WinToolbarsManager will create new tabs on the MDI parent for each tab on the MDI child. The contents on this new tab will be taken directly from the MDI child's tab. The new tab on the parent will have its UnderlyingTab set to the tab on the child. Tabs without a ContextualTabGroup on the child will not have one on the parent. Tabs with a ContextualTabGroup on the child will be merged into a matching tab group on the parent (or one will be created on the parent).
+
+== Merging with Office2007UICompatibility Set to False
+
+When the Office2007UICompatibility property is set to False, WinToolbarsManager will perform Ribbon merging in the following way:
+
+=== Merging Ribbon Tabs
+
+WinToolbarsManager will merge the Ribbon tabs of the MDI children by iterating through each one and attempting to locate a Ribbon tab in the MDI parent that has the same value for its Key and ContextualTabGroupKey properties. If a tab is not found, a new RibbonTab is created with the key of the MDI child. WinToolbarsManager gives the new Ribbon tab the MDI child as its UnderlyingTab. In this way, the tab can utilize the elements of the child Ribbon tab (e.g. appearances and caption). The tab is inserted into the Tabs collection of the Ribbon based on a new property – MergeOrder. The new tab creates groups based on the groups of the MDI child tab and the new groups would similarly maintain a reference to the underlying group of the MDI child so it could maintain the appearance established for the MDI child. If a tab is found, no new tab would need to be created, and WinToolbarsManager would then merge in the Groups collection of the MDI child tab. Tabs with a ContextualTabGroup on the child will be merged into a matching tab group on the parent (or one will be created on the parent).
+
+=== Merging Ribbon Groups
+
+WinToolbarsManager will attempt to locate a Ribbon group in the MDI parent's Ribbon tab that has a matching key by iterating through the Groups collection of the MDI child tab. If one is not found, a new Ribbon group will be created and given a reference to the Ribbon group of the MDI child; the position where it is inserted is based on the new MergeOrder property. If one is found, the Tools collection is merged into the Tools collection of the MDI parent tab's Ribbon group Tools collection.
+
+In addition, the dialog box launcher of the child group is merged into the parent group. If the child does not contain a dialog box launcher, the parent's launcher key is used. Otherwise, the child's dialog box launcher key is always given precedence. Once the key is determined, the tool is resolved as normal. For example, if the resolved key was ButtonTool1 and both the child and parent contained a ButtonTool1 with a merge type of Replace, clicking the dialog box launcher would fire the ToolClick event on the child WinToolbarsManager.
+
+== Common Merging Behavior
+
+The following items are merged in the same way, regardless of the Office2007UICompatibility property setting:
+
+=== Merging the ContextualTabGroups
+
+If a ContextualTabGroup exists on the MDI child with the same Key as one on the MDI parent, a new one is not created on the parent. Instead, the tabs of the group on the child will be merged into the Tabs collection on the parent's group. If the group's key on the child does not match any on the parent, a new group is created on the parent, and its UnderlyingContextualTabGroup property is set to the child's group.
+
+=== Merging the QuickAccessToolbar
+
+The QuickAccessToolbar (QAT) of the MDI child toolbar is merged into the parent QAT. To allow for this, the QAT will now be allowed to have duplicate keys, but only MdiMergePlaceholderTool instances will be allowed to duplicate other tools.
+
+=== Merging the ApplicationMenu
+
+The ApplicationMenu and the FooterToolbar of the ApplicationMenu are merged just as menus and toolbars would be respectively.
+
+=== Merging the MiniToolbar
+
+The MiniToolbar of the MDI child is merged with that of the MdiParent's MiniToolbar, using the same merging implementation as occurs with toolbars.
+
+=== Merging the Tools
+
+For the Tools collections of the MiniToobar, ApplicationMenu areas and footer toolbar, the tools collection can be merged as toolbars and menus were merged previously. The QAT and RibbonGroup Tools collection requires separate merging implementations. If the SharedProps.MergeType of a tool is set to Replace, WinToolbarsManager currently retrieves the root tool and uses that as the UnderlyingTool of all replaced tool instances including any tools that might be on a RibbonGroup. Root tools do not have InstanceProps (except for PopupMenuTool instance) and the InstanceProps is what we use to obtain the PreferredSizeOnRibbon, MinimumSizeOnRibbon, and ButtonGroup. To address this, the InstanceProps of the replaced tool is used to determine this information. All other settings will be taken from the root tool of the MDI child.

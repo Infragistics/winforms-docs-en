@@ -1,0 +1,32 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-card-view",
+    "controlName": ["WinGrid"],
+    "tags": ["Data Presentation","Grids","Layouts"],
+    "guid": "{71B4C3E5-A79B-4893-B981-C41832E67C4A}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Card View
+
+You can choose Card View as an alternative to the traditional display of rows and columns for any band of WinGrid™. Card view presents an interface similar to the Contacts view of Microsoft® Outlook®, where each data record is represented as an "index card" and multiple cards are displayed on screen. The WinGrid version of card view provides you with a range of options for configuring the look of the cards and maximizing screen real estate.
+
+There are some limitations to using card view. One is that a band displaying its records in card view mode is automatically the final band in a hierarchy. There is no way to display child records for the cards. Another limitation is that it is possible to set up card view in such a way that you cannot add data to empty fields, although this is not the default setting. Printing is also a limitation of Card View. Whenever you attempt to print a WinGrid that is currently in Card View, the Grid will actually remove the Card View setting whenever generating the Print Layout and what you will actually get is the Grid with Card View turned off and with all visible columns arranged as normal.
+
+Card view replaces the band in the grid, with the space occupied by the band being replaced by the card view area which contains the cards. The card view area has a fixed vertical height (which can be changed by you or the user) and scrolls horizontally to display the cards that make up the band.
+
+Click the links below to learn more about WinGrid's Card View:
+
+* link:wingrid-about-card-view.html[About Card View]
+* link:wingrid-enabling-card-view.html[Enable Card View]
+* link:wingrid-setting-a-caption-in-card-view.html[Set a Caption in Card View]
+* link:wingrid-changing-card-view-style.html[Change Card View's Style]
+* link:wingrid-limiting-the-amount-of-displayed-cards.html[Limit the Amount of Displayed Cards]
+* link:wingrid-allowing-to-resize-card-labels.html[Allow the End User to Resize Labels]
+* link:wingrid-automatically-fit-cards-in-the-available-space.html[Automatically Fit Cards in the Available Space]
+* link:wingrid-printing-wingrid-in-card-view.html[Printing WinGrid in Card View]

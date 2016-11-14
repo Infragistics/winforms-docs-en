@@ -1,0 +1,40 @@
+﻿////
+|metadata|
+{
+    "name": "winschedule-scroll-the-current-day-into-view",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{219CD32E-BA1D-46B9-91B7-616B11BB626E}","buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Scroll the Current Day into View
+
+This topic applies to the following WinSchedule™ controls:
+
+* WinMonthViewSingle™
+* WinWeekView™
+
+The following code demonstrates how to scroll a day into view for the WinMonthViewSingle and WinWeekView elements utilizing the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultramonthviewsingle~scrolldayintoview.html[ScrollDayIntoView]"]  method.
+
+
+*In Visual Basic:*
+[source, vb]
+Private Sub Scroll_the_Current_Day_into_View_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UltraMonthViewSingle1.ScrollDayIntoView(DateTime.Today)
+        Me.UltraWeekView1.ScrollDayIntoView(DateTime.Today)
+End Sub    
+
+
+
+*In C#:*
+[source, csharp]
+private void Scroll_the_Current_Day_into_View_Load(object sender, EventArgs e)
+{
+        this.ultraMonthViewSingle1.ScrollDayIntoView(DateTime.Today);
+        this.ultraWeekView1.ScrollDayIntoView(DateTime.Today);
+}    
+

@@ -1,0 +1,94 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincomboeditor-ignoring-diacritics-on-autocomplete",
+    "controlName": [],
+    "tags": [],
+    "guid": "4389c76e-bf77-4e85-8737-0e4dc7132b7d",  
+    "buildFlags": [],
+    "createdOn": "2014-03-13T20:26:17.2995231Z"
+}
+|metadata|
+////
+
+= Ignoring Diacritics on Autocomplete
+
+Ignoring Diacritics on Auto-Complete
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview on Auto-Complete operation with an option to ignore diacritics in  _WinCombo_™ and  _WinComboEditor_™ controls.
+
+=== Overview
+
+This feature performs a search for a literal string ignoring any diacritics or accent marks on the words, for example, “Résumé” contains diacritical marks on the letter ‘e’. When the user searches for the word “Resume”, the word “Résumé” will also appear in the result.
+
+Added to  _WinCombo_   and  _WinComboEditor_   controls _,_   the link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~autocompleteignorediacritics.html[AutoCompleteIgnoreDiacritics] property allows developers to configure the practical use of diacritics in a string search.
+
+=== Example
+
+The following screenshots demonstrate searching the literal word “open.” While the lists contain the same words with diacritical marks, the editor control is set to notice (True) / ignore (False) them and returns the search results to the user.
+
+==== WinCombo
+
+[options="header", cols="a,a"]
+|====
+|`AutoCompleteIgnoreDiacritics=True`|`AutoCompleteIgnoreDiacritics=False`
+
+|image::images/Ignoring_Diacritics_on_Auto-Complete_1.png[]
+|image::images/Ignoring_Diacritics_on_Auto-Complete_2.png[]
+
+|====
+
+==== WinComboEditor
+
+[options="header", cols="a,a"]
+|====
+|`AutoCompleteIgnoreDiacritics=True`|`AutoCompleteIgnoreDiacritics=False`
+
+|image::images/Ignoring_Diacritics_on_Auto-Complete_3.png[]
+|image::images/Ignoring_Diacritics_on_Auto-Complete_4.png[]
+
+|====
+
+=== Code
+
+The following code example applies to both  _WinCombo_   and  _WinComboEditor_   controls.
+
+*In C#:*
+
+[source,csharp]
+----
+ComboEditor1.AutoCompleteIgnoreDiacritics = true; // false
+ComboEditor1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+ComboEditor1.AutoCompleteIgnoreDiacritics = True
+' false
+ComboEditor1.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
+----
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wincombo-using-wincombo.html[Using WinCombo]
+|This section is your gateway to important Task-Based information that will help you to effectively use the various features and functionalities provided by the _WinCombo_ control.
+
+| link:wincomboeditor-using-wincomboeditor.html[Using WinComboEditor]
+|In this section, you'll find short, Task-Based topics that explain how to use features of the _WinComboEditor_ control.
+
+|====

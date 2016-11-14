@@ -1,0 +1,73 @@
+﻿////
+|metadata|
+{
+    "name": "windockmanager-design-time-functionality",
+    "controlName": ["WinDockManager"],
+    "tags": ["Design Environment","Layouts"],
+    "guid": "{7A20768F-D394-45A2-9569-BD8A71868BF8}",
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinDockManager Design-Time Functionality
+
+WinDockManager™ provides a large amount of support and integration with Visual Studio .NET to make it easier to create and manage your docked controls. The following is a breakdown of the support available.
+
+== Context Menu
+
+When a WinDockManager component is created, it adds an additional entry to the right-click context menu provided by Visual Studio. When one or more non-docked controls are selected, a 'Dock Controls' option is available on the context menu for the controls. When you choose this menu item, a dialog appears so you can specify which type of DockAreaPane to create.
+
+If you select one or more docked controls (controls that are already contained by DockableControlPanes) the 'Dock Controls' option appears checked. If you then select the option, a prompt appears to ask whether the selected controls should be undocked. If confirmed, the controls are re-parented to the host control that contains the dock manager. When a mix of docked and undocked controls are selected simultaneously, the 'Dock Controls' menu option is unavailable.
+
+image::Images\WinDockManager_Design_Time_Functionality_01.PNG[shows forms context menu at design time with added option for docking with ultradockmanager]
+
+*Note:* If a control has its Dock property set to Fill and the Control is not docked, the 'Dock Controls' menu option is not available. This is to prevent accidental docking of controls that are meant to provide a inner client area for the form, such as the Panel that is automatically created when creating a new UltraToolbarsManager.
+
+== New DockArea Dialog
+
+When one or more undocked controls are selected and the 'Dock Controls' context menu option described above is selected, a dialog is presented to determine the style and location of the new DockAreaPane. The selected controls are listed at the top and may be reordered using the arrows to the right of the list. This will affect the order of the items in the Panes collection of the new DockAreaPane and will therefore affect the order in which the panes are displayed. The DockArea location determines where the new DockArea will be created. The Child Pane Style allows you to determine the type of group to create. This can be changed at any point later by changing the DockArea's ChildPaneStyle property. When 'OK' is selected, a new DockAreaPane is created and the controls are re-parented into new DockableControlPane instances.
+
+image::Images\WinDockManager_Design_Time_Functionality_02.PNG[ultradockmanager's new dockarea dialog]
+
+== Control Pane Property Tab
+
+* When one or more docked controls are selected, an additional property tab option is made available in the Visual Studio .NET Property Grid. The icon displayed in the property grid is the same icon used for the toolbox bitmap for the UltraDockManager element. When this property tab is selected, the properties for the DockableControlPane(s) associated with the selected control(s) is displayed. This provides a simple mechanism for changing property for the docked controls including the pane caption, tab caption and Appearance properties.
+
+image::Images\WinDockManager_Design_Time_Functionality_03.PNG[ultradockmanager with with properties window showing for control docked using ultradockmanager]
+
+== Dragging
+
+Docked controls can be dragged and floated at design-time just as they can at run-time. To drag a pane, press the left mouse button down on the caption, tab or sliding group button for the pane that you want to reposition. As the mouse is moved around the screen, a drop outline will be displayed to indicate where the pane will be positioned. If you want to cancel the drag operation during the drag, you may press the `ESC` key. If you want to force the pane to remain in a floating state, hold the `CTRL` key during the drag operation. When the mouse button is released, a new `DockAreaPane` is created to contain the dragged pane.
+
+.Note
+[NOTE]
+When dragging the caption of a tab item, all the visible, pinned panes will be repositioned.
+
+== Toggling
+
+As in Visual Studio .NET, double clicking on a pane caption or tab item will 'toggle' the state of the pane between its floating and docked positions. The action is recursive and will reposition any child panes to their respective previous positions. For example, if the caption of a TabGroup style DockAreaPane that contains 2 DockableControlPanes is double-clicked and neither control pane has ever been floated, a new floating DockAreaPane will be created to contain the 2 control panes. If one of those control panes is then dragged to a separate floating window, and therefore a separate DockArea pane, and both captions are double clicked, the panes will still appear together in their original docked TabGroup style DockAreaPane. If you were to double click the caption this time, the control panes would appear in their respective floating DockAreaPanes.
+
+== Custom Properties - Panes Property Page
+
+The right click context menu displayed when the UltraDockManager is selected contains additional functionality to make the design-time use easier. One of these options is the "Custom Property Pages..." which displays a modal dialog containing 2 pages. The first, 'Object Properties', provides an alternative mechanism for accessing all the browsable properties of the element. The second is the 'Panes' property page. This page provides a tree style view of the panes hierarchy. The left side of the page has 2 trees. One contains the hierarchy of the docked DockAreaPane instances and the other contains the hierarchy of the floating DockAreaPane instances. When a pane is selected, the properties associated with the pane are displayed in the property grid on the right.
+
+image::Images\WinDockManager_Design_Time_Functionality_04.PNG[UltraDockmanager's custom properties pages dialog]
+
+.Note
+[NOTE]
+====
+The alternate state, the floating state of a currently docked control pane or the docked state of a currently floating control pane, of the control panes are displayed dithered.
+====
+
+== UltraDockManager Element Context Menu
+
+The right click context menu displayed when the UltraDockManager is selected contains additional functionality to make the design-time use easier. The following is a summary of those additional options:
+
+* About -- Displays the about dialog for the element. The dialog includes license and version information for the element.
+* Custom Property Pages... -- Displays a modal dialog containing 2 pages. The first, 'Object Properties', provides an alternative mechanism for accessing all the browsable properties of the element. The second is the 'Panes' property page, which provides a tree style view of the panes hierarchy.
+* Load/Save Layout... -- Displays a dialog to load or save an UltraDockManager layout containing the properties and positions of the panes to/from binary or SOAP formatted files.
+* Show Hidden Panes -- Resets the Closed property of all the panes to false.
+* Quick Help... -- Displays a dialog containing basic instructions and notes about the design-time functionality available.
+* Hide Floating Windows -- Prevents all floating windows from being displayed at design-time.

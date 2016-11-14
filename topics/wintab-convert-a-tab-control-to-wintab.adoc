@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-convert-a-tab-control-to-wintab",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Tips and Tricks"],
+    "guid": "{4EE477C0-F06A-42F0-94C9-E54A6669AA16}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Convert a Tab Control to WinTab
+
+To convert an existing Tab Control to a WinTab™, do the following:
+
+[start=1]
+. Open the form with the existing TabControl.
+[start=2]
+. Add an UltraTabControl to the form.
+[start=3]
+. Right-click on the UltraTabControl and select the 'Convert TabControl...' verb. The following dialog will appear:
+
+image::Images\WinTabs_Convert_a_Tab_Control_to_WinTab_01.png[screen shot of tab control converter to ultratabcontrol dialog]
+
+[start=4]
+. Select the TabControl to convert and the conversion options and press the 'OK' button.
+
+.Note
+[NOTE]
+====
+Existing code relating to the TabControl is not converted.
+====

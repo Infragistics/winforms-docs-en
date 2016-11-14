@@ -1,0 +1,71 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-the-style-of-buttons",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{95047546-F7ED-4177-A04C-92DA54D681CD}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting the Style of Buttons
+
+It is easy to specify the visual appearance of buttons in the WinGrid™ by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~buttonstyle.html[ButtonStyle]"]  property. The buttons affected by this property are those found in cells (both Button-style buttons and EditorButton-style buttons) and the buttons in the AddNew box. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~buttonstyle.html[ButtonStyle]"]  property is available on the Override objects exposed by the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscollection~band.html[Band]"]  objects. The ButtonStyle property is of type  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementbuttonstyle.html[UIElementButtonStyle]"] .
+
+== To specify a value for the ButtonStyle property on the DisplayLayout's Override:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+----
+
+[start=2]
+. Right-click on the WinGrid at design-time and select "UltraWinGrid Designer".
+[start=3]
+. In the designer select the option called "Control Settings". Scroll down and expand the DisplayLayout property. Scroll down to the Override property and expand it, then inside the Override property scroll down to the ButtonStyle property.
+
+You can also set this property on a Band's Override by using the following code:
+
+*In Visual Basic:*
+
+----
+Private Sub CustomersUltraGrid_InitializeLayout(ByVal sender As System.Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles CustomersUltraGrid.InitializeLayout
+	Me.CustomersUltraGrid.DisplayLayout.Bands(0).Columns(0).Style = _
+	  UltraWinGrid.ColumnStyle.Button
+	Me.CustomersUltraGrid.DisplayLayout.Bands(0).Override.ButtonStyle = _
+	  UIElementButtonStyle.Button3D
+End Sub
+----
+
+*In C#:*
+
+----
+private void customersUltraGrid_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.customersUltraGrid.DisplayLayout.Bands[0].Columns[0].Style = 
+	  Infragistics.Win.UltraWinGrid.ColumnStyle.Button;
+	this.customersUltraGrid.DisplayLayout.Bands[0].Override.ButtonStyle = 
+	  UIElementButtonStyle.Button3D;
+}
+----
+
+The screen shot below shows the WinGrid using the 'Office2003ToolbarButton' style:
+
+image::Images/WinGrid_Set_the_Style_of_Buttons_01.png[set the style of buttons in ultragrid]

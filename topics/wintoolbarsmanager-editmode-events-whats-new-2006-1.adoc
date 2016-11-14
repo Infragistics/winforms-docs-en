@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-editmode-events-whats-new-2006-1",
+    "controlName": [],
+    "tags": [],
+    "guid": "{61089ED9-F9A6-46AD-B3D6-2F55795C9AD8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= EditMode Events
+
+Five new events related to editor tools (e.g. TextBoxTool, ComboBoxTool, FontNameTool and MaskedEditTool) have been added to the WinToolbarsManager™ and ToolBase classes.
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforetoolentereditmode_ev.html[BeforeToolEnterEditMode]"]  -- This cancelable event is invoked before a tool enters edit mode.
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforetoolexiteditmode_ev.html[BeforeToolExitEditMode]"]  -- This cancelable event is invoked before a tool leaves edit mode.
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~aftertoolentereditmode_ev.html[AfterToolEnterEditMode]"]  -- This event is invoked after a tool has entered edit mode.
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~aftertoolexiteditmode_ev.html[AfterToolExitEditMode]"]  -- This event is invoked after a tool has left edit mode.
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolediterror_ev.html[ToolEditError]"]  -- This event is invoked after the BeforeToolExitEditMode if the value entered by the user is invalid.

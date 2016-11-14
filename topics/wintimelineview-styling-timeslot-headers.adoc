@@ -1,0 +1,124 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-styling-timeslot-headers",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{68FD61A1-91D5-4814-ABA3-3656E92FC1C7}",  
+    "buildFlags": [],
+    "createdOn": "2009-04-06T15:35:02Z"
+}
+|metadata|
+////
+
+= Styling Timeslot Headers
+
+This topic shows how you can style the column headers in WinTimelineView™. The column headers represent the time and (or) date intervals. You can modify the orientation of the header text, change the column header appearance, and alter the appearance of the Navigation buttons in the column headers. These can be modified through the WinTimelineView control’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.datetimeinterval~headertextorientation.html[HeaderTextOrientation]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~columnheaderappearance.html[ColumnHeaderAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.datetimeinterval~datenavigationbuttonappearance.html[DateNavigationButtonAppearance]"]  properties.
+
+This topic assumes that you have an ultraTimelineView control associated with owners and timeslots, dropped onto the form. For information on creating a TimeLineView control with owners and timeslots, please see the link:wintimelineview-assign-multiple-owners-for-wintimelineview.html[Assign Multiple Owners for WinTimelineView] and link:wintimelineview-set-time-and-date-intervals-for-wintimelineview.html[Set Time and Date Intervals for WinTimelineView] topics.
+
+*In Visual Basic:*
+
+----
+#Region "Timeslots - Set Date and Time Intervals"
+' Set a primary TimeSolt 
+Dim timeInterval As New TimeInterval(2, TimeIntervalUnits.Hours)
+' Set an additional TimeSlot 
+Dim dayInterval As New DateInterval(1, DateIntervalUnits.Days)
+' Set another additional TimeSlot 
+Dim monthInterval As New DateInterval(1, DateIntervalUnits.Months)
+Me.ultraTimelineView1.PrimaryInterval = timeInterval 
+Me.ultraTimelineView1.AdditionalIntervals.Add(dayInterval) 
+Me.ultraTimelineView1.AdditionalIntervals.Add(monthInterval) 
+#End Region
+#Region "Timeslot Header Text Orientation"
+' Set the Header text orientation for additional interval 
+dayInterval.HeaderTextOrientation = TextOrientationInfo.HorizontalNegative45Degrees 
+' Set the Header text orientation for additional interval 
+monthInterval.HeaderTextOrientation = TextOrientationInfo.Horizontal45Degrees 
+' Set the Header text orientation for primary time interval 
+timeInterval.HeaderTextOrientation = TextOrientationInfo.Horizontal90Degrees 
+#End Region
+----
+
+*In C#:*
+
+----
+#region Timeslots - Set Date and Time Intervals
+// Set a primary TimeSolt
+ TimeInterval timeInterval = new TimeInterval(2, TimeIntervalUnits.Hours);
+// Set an additional TimeSlot
+ DateInterval dayInterval = new DateInterval(1, DateIntervalUnits.Days);
+ // Set another additional TimeSlot
+ DateInterval monthInterval = new DateInterval(1, DateIntervalUnits.Months);
+ this.ultraTimelineView1.PrimaryInterval = timeInterval;
+ this.ultraTimelineView1.AdditionalIntervals.Add(dayInterval);
+ this.ultraTimelineView1.AdditionalIntervals.Add(monthInterval);
+#endregion
+#region Timeslot Header Text Orientation
+// Set the Header text orientation for additional interval
+ dayInterval.HeaderTextOrientation = TextOrientationInfo. HorizontalNegative45Degrees;
+ // Set the Header text orientation for additional interval
+ monthInterval.HeaderTextOrientation = TextOrientationInfo.Horizontal45Degrees;
+// Set the Header text orientation for primary time interval
+timeInterval.HeaderTextOrientation = TextOrientationInfo.Horizontal90Degrees;
+#endregion
+----
+
+*In Visual Basic:*
+
+----
+#Region "Column Header fore and back color Appearances"
+Me.ultraTimelineView1.ColumnHeaderAppearance.ForeColor = Color.Maroon 
+Me.ultraTimelineView1.ColumnHeaderAppearance.BackColor = Color.LightYellow 
+#End Region
+----
+
+*In C#:*
+
+----
+#region Column Header fore and back color Appearances
+----
+
+----
+this.ultraTimelineView1.ColumnHeaderAppearance.ForeColor = Color. Maroon;
+this.ultraTimelineView1.ColumnHeaderAppearance.BackColor = Color.LightYellow;
+#endregion
+----
+
+*In Visual Basic:*
+
+----
+#Region "Timeslot Navigation Button Appearances"
+' Display Navigation button on either sides for every interval 
+dayInterval.DateNavigationButtonVisibility = TimelineViewDateNavigationButtonVisibility.ShowOnAllHeaders 
+monthInterval.DateNavigationButtonVisibility = TimelineViewDateNavigationButtonVisibility.ShowOnAllHeaders 
+' Clicking the navigation button scrolls by each interval 
+dayInterval.DateNavigationButtonAction = TimelineViewDateNavigationButtonAction.ScrollByInterval 
+' Clicking the navigation button scrolls by each page 
+monthInterval.DateNavigationButtonAction = TimelineViewDateNavigationButtonAction.ScrollByPage 
+' Set the color for Navigation button 
+dayInterval.DateNavigationButtonAppearance.ForeColor = Color.Red 
+monthInterval.DateNavigationButtonAppearance.ForeColor = Color.Red 
+#End Region
+----
+
+*In C#:*
+
+----
+#region Timeslot Navigation Button Appearances
+// Display Navigation button on either sides for every interval
+dayInterval.DateNavigationButtonVisibility = TimelineViewDateNavigationButtonVisibility.ShowOnAllHeaders;
+monthInterval.DateNavigationButtonVisibility = TimelineViewDateNavigationButtonVisibility.ShowOnAllHeaders;
+// Clicking the navigation button scrolls by each interval
+dayInterval.DateNavigationButtonAction = TimelineViewDateNavigationButtonAction.ScrollByInterval;
+// Clicking the navigation button scrolls by each page
+monthInterval.DateNavigationButtonAction = TimelineViewDateNavigationButtonAction.ScrollByPage;
+// Set the color for Navigation button
+dayInterval.DateNavigationButtonAppearance.ForeColor = Color. Red;
+monthInterval.DateNavigationButtonAppearance.ForeColor = Color. Red;
+#endregion
+----
+
+image::Images\WinTimeLineView_Styling_Timeslot_Headers_03.png[]

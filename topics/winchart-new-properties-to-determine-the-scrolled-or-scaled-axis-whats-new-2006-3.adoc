@@ -1,0 +1,28 @@
+﻿////
+
+|metadata|
+{
+    "name": "winchart-new-properties-to-determine-the-scrolled-or-scaled-axis-whats-new-2006-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{7B86B195-29FC-4489-893F-689A52E7C3D1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= New Properties to Determine the Scrolled or Scaled Axis
+
+In the 2006 Volume 3 release, we've extended the capabilities of WinChart™ scaling and scrolling events. Now when the end user zooms in or out of your chart, or scrolls up and down the chart, you can determine which axis (X or Y) is being scrolled.
+
+The following two properties have been added to the  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.shared.events.chartscrollscaleeventargs.html[ChartScrollScaleEventArgs]"]  class:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.shared.events.chartscrollscaleeventargs~axis.html[Axis]"] 
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.shared.events.chartscrollscaleeventargs~axisnumber.html[AxisNumber]"] 
+
+== Related Topics
+
+link:chart-determine-which-axis-is-being-scrolled-or-scaled.html[Determine Which Axis is Being Scrolled or Scaled]
+
+link:chart-scrolling-and-scaling-charts.html[Scrolling and Scaling Charts]

@@ -1,0 +1,202 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedlinklabel-formatting-text-and-hyperlinks",
+    "controlName": ["WinFormattedLinkLabel"],
+    "tags": ["How Do I","Navigation"],
+    "guid": "{5931F8D4-0556-4295-9EBF-657CC06467CE}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Formatting Text and Hyperlinks
+
+link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor] can display formatted text and hyperlinks in any Infragistics Windows Forms control that supports embeddable editors. This includes the WinFormattedLinkLabel™, WinFormattedTextEditor™, as well the WinTooltipManager™, and the tooltips available for WinToolbarsManager™ tools can display formatted text and hyperlinks.
+
+The following is an example of FormattedLinkEditor displaying multiple links as well as non-link text.
+
+*Click* <a title="example link" href="">abc</a> *or* <a title="example link" href="">xyz</a>.
+
+In this example, the "Click", "or" and "." are non-link texts. The "abc" and "xyz" are link texts. These two links can point to different URLs. Also, different portions of text can have different formatting (e.g. font, bold, italics, and color). The formatting for the WinFormattedLinkLabel is done by setting the  link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor~value.html[Value]  property. The WinToolbarsManager tools tooltip can by formatted by setting the  link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~tooltiptextformatted.html[ToolTipTextFormatted] property off each tool's  link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps] object, and setting the  link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~tooltipdisplaystyle.html[ToolTipDisplayStyle] to Formatted of the WinToolbarsManager. For the WinTooltipManager you have to set the  link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptextstyle.html[ToolTipTextStyle] to Formatted, and then you can specify formatting by setting the  link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptitle.html[ToolTipText] property.
+
+Formatting tags with their attributes specify how the text associated with the tag is to be formatted. The associated XML schema uses the same tags as the following HTML tags: <i>, <b>, <u>, <font>, <a>, <br> and <p>. This will make it easier for end users who are already familiar with HTML.
+
+.Note
+[NOTE]
+====
+Only a very limited subset of HTML functionality is supported; therefore, it is not an HTML renderer.
+====
+
+The following table lists the supported tags and attributes, along with descriptions.
+
+[options="header", cols="a,a"]
+|====
+|Tag|Description
+
+|<b>text</b>
+|Bolds the enclosed text.
+
+|<strong>text</strong>
+|Bolds the enclosed text (same as the <b> tag), however this tag is also pervasive in HTML.
+
+|<i>text</i>
+|Italicizes the enclosed text.
+
+|<em>text</em>
+|Italicizes the enclosed text (same as the <i> tag), however this tag is also pervasive in HTML.
+
+|<u>underline</u>
+|Underlines the enclosed text.
+
+|<font face="xxx">text</font>
+|Renders the enclosed text with "xxx" font.
+
+|<font color="red">text</font> 
+
+<font color="#FF0000">text</font> 
+
+<font color="255,000,000">text</font>
+|Renders the enclosed text with the specified color (e.g. red, as shown in the example in the left column). You can use the .NET Color Name, hexadecimal value, or RGB values.
+
+|<font size="1">text</font> 
+
+<font size="+1">text</font> 
+
+<font size="1pt">text</font> 
+
+<font size="+1pt">text</font>
+|Renders the enclosed text at the specified size. There are different ways of specifying the size of the font. You can specify the size in the scale from 1 to 7 or in points (post-fixed by point) which has the range of 1 to 72. You can also specify size relative to the base font's size by prepending the size with "+" or "-" sign. The "-" sign specifies that the font should be smaller than the base font and '+' specifies that the font should be bigger than the base font. Relative font sizes are valid for both point sizes and 1-7 scale sizes. However, when specifying a relative size, the range changes from -3 to +3 for the scale-based font sizes and -72 to +72 for the point-based font sizes. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+Since the relative font sizes are relative to the base font, not all values in the range will result in a different size of the actual font that will be used. For example, if the base font is 10 pt and you specify relative size of -15 pt, the resulting size is -5 pt. However, since this is an invalid size, the closest size will be used. In other words, it will be displayed as 1pt size font. 
+
+====
+
+|<p>text</p>
+|Starts a new paragraph. Paragraph tags leave a single empty line if there is preceding content. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+Nested <p> tags are not allowed. This will result in undefined rendering behavior. 
+
+====
+
+|<p align="left|center|right|justify">text</p>
+|Aligns the enclosed text to the left, center, or right, or justifies the text (only one may be used at a time).
+
+|<p wraptext="true|>text</p>
+|Wraps the text to the next line when it reaches the end of the first line if set to True. Causes the text to continue without wrapping to the next line (horizontal scrollbars will be used if necessary) if set to False.
+
+|<hr/> 
+
+<hr size="10px"/> 
+
+<hr align="center"/> 
+
+<hr NoShade="true" size="1px"/>
+|Displays a horizontal rule. You can change the alignment with the ALIGN attribute to left, right, and center. You can alter the width of the line by using the WIDTH attribute and setting the attribute to either a percentage (50%) or a fixed amount (1px). Change the height of the horizontal rule by setting the SIZE attribute to a fixed amount (1px). Remove the 3D shade by setting the NoShade attribute to False.
+
+|<img src="smiley.png"/> 
+
+<img src="smiley.png" align="left"/> 
+
+<img src="smiley.png" width="32px" height="32px"/> 
+
+<img src="smiley.png" border="solid"/> 
+
+<img src="smiley.png" HSpace="10px" VSpace="10px"/>
+|Displays an inline image. You can display an image using either the SRC attribute and pointing to a file or url, or the DATA attribute using encoded image data. Setting the ALIGN attribute to left or right will float the image. Not setting the ALIGN attribute will cause the image to display inline with text. Use the WIDTH and HEIGHT attributes to specify the width and height of the image. These two attributes can be specified either by percentages or fixed values. You can specify how the border will look with the BORDER attribute. Valid values for the BORDER attribute are the same values in the link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementborderstyle.html[UIElementBorderStyle] enumeration. Use the HSPACE and VSPACE attributes to add more space to the left, right, top and bottom of the image. You can also use the SHADOW attribute to draw a shadow on the image.
+
+|====
+
+The following table lists several examples of how values will render:
+
+[options="header", cols="a,a"]
+|====
+|FormattedLinkEditor Example|Displayed Text
+
+|Link to <a href="http://www.infragistics.com"> Infragistics</a>.
+|Link to <a title="infragistics example tag" href="">Infragistics.</a>
+
+|Two Links: <a href="http://www.yahoo.com">Yahoo</a> and <a href="http://www.google.com">Google</a>.
+|Two Links: <a title="yahoo example tag" href="">Yahoo</a> and <a title="google example tag" href="">Google</a>.
+
+|<i>Italics</i> 
+
+<b>Bold</b> 
+
+<u>Underline</u> 
+
+<b><i><u>Italics, Bold & Underline</u></i></b>
+| _Italics_ *Bold* Underline *_Italics, Bold & Underline_* 
+
+|<font color="red">Red Text</font> <font color="green">Green Text</font> <font color="#0000ff">Blue Text</font>
+|Red Text Green Text Blue Text
+
+|<p align="left">Left Aligned Text</p> <p align="center">Center Aligned Text</p> <p align="right">Right Aligned Text</p>
+|Left Aligned Text 
+
+Center Aligned Text 
+
+Right Aligned Text
+
+|<p>This is paragraph 1. Text in a paragraph is wrapped. 
+
+</p> 
+
+<p>When a new paragraph is started, the text in that paragraph starts on a new line. 
+
+</p>
+|This is paragraph 1. Text in a paragraph is wrapped. 
+
+When a new paragraph is started, the text in that paragraph starts on a new line after leaving an empty line before it.
+
+|<hr/> 
+
+<hr size="10px"/> 
+
+<hr align="center"/> 
+
+<hr NoShade="true" size="1px"/>
+|''' 
+
+''' 
+
+''' 
+
+'''
+
+|<img src="smiley.png"/> 
+
+<img src="smiley.png" align="left"/> 
+
+<img src="smiley.png" width="32px" height="32px"/> 
+
+<img src="smiley.png" border="solid"/> 
+
+<img src="smiley.png" HSpace="10px" VSpace="10px"/>
+|The image is 
+
+image:images/smiley.png[example of image inline with text] inline with the text. 
+
+image:images/smiley.png[example of image floated to the right] The image is floated all the way to the right. 
+
+image:images/smiley.png[example of image enlarged] The image size is doubled from 32x32 to 64x64. 
+
+image:images/smiley.png[example of image with border] The image is given a solid border of 1px. 
+
+image:images/smiley.png[example of image with margin] The image has extra horizontal and vertical space outside the border.
+
+|====

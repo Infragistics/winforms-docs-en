@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-lexical-errors",
+    "controlName": [],
+    "tags": [],
+    "guid": "166f6165-6054-466e-8d87-12f9b8033439",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.060851Z"
+}
+|metadata|
+////
+
+= Lexical Errors
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the lexical errors found by the Syntax Parsing Engine.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-lexical-analysis.html[Lexical Analysis]
+|The topics in this group explain the lexical analysis performed by the Syntax Parsing Engine.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref349568126, Lexical Errors >>
+* <<_Ref349568130, Overview >>
+* <<_Ref349568133, Example >>
+* <<_Ref349568137, Related Content >>
+
+[[_Ref349568126]]
+== Lexical Errors
+
+[[_Ref349568130]]
+
+=== Overview
+
+Lexical errors are detected relatively easily and the lexical analyzer recovers from them easily as well. There is really only one type of lexical error: none of the terminal symbols in the current lexer state can represent the text at the current location.
+
+[[_Ref349568133]]
+
+=== Example
+
+Consider a grammar with a default lexer state defined as having the following terminal symbols:
+
+* NewLineSymbol – matches one new line, which is either “\r”, “\n”, or “\r\n”
+* WhitespaceSymbol – matches one or more space or tab characters.
+* Identifier – matches an underscore or letter followed by zero or more underscores, letters, or digits.
+
+Document content to be parsed: “x += y;”
+
+While the lexer is analyzing this document content it will first create tokens <Identifier, “x”> and <WhitespaceToken, “ ”>. Then it will come to the “+” character and no terminal symbol will be able to recognize it. The lexer will continue reading unrecognized characters until it comes to a piece of text which can be matched by any terminal symbol. In this case, that is the space after the “=”. The lexer will then gather up all contiguous unrecognized characters and make them a match of the special symbol exposed by link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol]. So the full token stream for this document content will be the following:
+
+<Identifier, “x”> <WhitespaceToken, “ ”> <*UnrecognizedToken*, “+=”> <WhitespaceToken, “ ”> <Identifier, “y”> <*UnrecognizedToken* , “;”> <EndOfStreamToken>
+
+[[_Ref349568137]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-errors.html[Syntax Errors]
+|This topic explains the syntax errors found by the Syntax Parsing Engine.
+
+| link:ig-spe-error-handling-strategies.html[Error Handling Strategies]
+|The topics in this group explain the strategies used during the syntax analyzing of the document to identify syntax errors.
+
+| link:ig-spe-semantic-errors.html[Sementic Errors]
+|This topic explains semantic errors, which are not handled by the Syntax Parsing Engine.
+
+|====

@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-separators-between-tools",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{DBA51454-8DB9-4D75-A5F6-8123D388B8F0}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Separators Between Tools
+
+Separators are unique tools that are used to visually indicate a group of Tools, related in functionality. To add a separator at design-time, right click on the WinToolbarsManager™ and choose "Customize..." Assuming that you have already created a toolbar and added tools to it, right-click on a tool that you would like to put a separator before and select "Begin a Group" from the context menu. This will place the separator before that tool. You must right-click the tool on the toolbar itself, not where it appears in the tool list of the Customize dialog.
+
+.Note
+[NOTE]
+====
+You can't have a separator at the beginning or at the end of any toolbars or menu.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub Add_Separators_Between_Tools_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' This puts a separator in front of the second and fifth tool
+	Me.UltraToolbarsManager1.Toolbars(0).Tools(1).InstanceProps.IsFirstInGroup = True
+	Me.UltraToolbarsManager1.Toolbars(0).Tools(4).InstanceProps.IsFirstInGroup = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void Add_Separators_Between_Tools_Load(object sender, EventArgs e)
+{
+	// This puts a separator in front of the second and fifth tool
+	this.ultraToolbarsManager1.Toolbars[0].Tools[1].InstanceProps.IsFirstInGroup = true;
+	this.ultraToolbarsManager1.Toolbars[0].Tools[4].InstanceProps.IsFirstInGroup = true;
+}
+----
+
+image::images/WinToolbarsManager_Add_Separators_Between_Tools_01.png[ultratoolbarsmanager with separators between tools on toolbar]

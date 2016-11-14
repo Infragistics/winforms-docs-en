@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-hide-tooltips-in-a-specific-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{4252A2BE-E54A-4D6C-9052-194FC79CCF88}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Hide ToolTips in a Specific Toolbar
+
+By default, WinToolbarsManager™ is set to display ToolTips on a toolbar. You can turn ToolTips off by setting the ShowToolTips property of  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings.html[ToolbarSettings]"]  to False. However, what if you would like to turn ToolTips off for one particular toolbar but leave ToolTips on for other toolbars? Since there is a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.settingsbase~showtooltips.html[ShowToolTips]"]  property in the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.settingsbase.html[SettingsBase]"]  class as well as ToolbarSettings, this is possible. In the Properties window, expand Toolbars, UltraToolbar1 (or whatever you named the toolbar), and then Settings. Under Settings is the ShowToolTips property. Selecting False will turn ToolTips off for that specific toolbar. If you would like to achieve the same affect at run time, follow the code below.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Me.UltraToolbarsManager1.Toolbars("UltraToolbar1").Settings.ShowToolTips = _
+  DefaultableBoolean.False
+Me.UltraToolbarsManager1.Toolbars("UltraToolbar2").Settings.ShowToolTips = _
+  DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+this.ultraToolbarsManager1.Toolbars["UltraToolbar1"].Settings.ShowToolTips = 
+  DefaultableBoolean.False;
+this.ultraToolbarsManager1.Toolbars["UltraToolbar2"].Settings.ShowToolTips = 
+  DefaultableBoolean.True;
+----

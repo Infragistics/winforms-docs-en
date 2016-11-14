@@ -1,0 +1,107 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-column-styles-added-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{312922EF-02DD-49B0-A746-E1C3FF0825C5}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Column Styles Added
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~style.html[Style]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  is for convenience. It lets you set the edit style of a column to one of the commonly used edit styles. This list does not include all the styles that are available. If a style is not listed in this enumeration, you can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~editor.html[Editor]"]  property along with other properties that the UltraGridColumn object exposes, like  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~minvalue.html[MinValue]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~minvalueexclusive.html[MinValueExclusive]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~maxvalueexclusive.html[MaxValueExclusive]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~maskinput.html[MaskInput]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formatinfo.html[FormatInfo]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~format.html[Format]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~maxlength.html[MaxLength]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~regexpattern.html[RegexPattern]"]  etc... to accomplish the desired column style. Some styles set some of these properties to accomplish the desired behavior. For example the CurrencyPositive style sets the UltraGridColumn.Editor to Infragistics.Win.EditorWithMask instance and the MinValueExclusive to 0. Also you can set these properties to further refine the behavior of a column style. This is because these properties take precedence over the Style property. View the complete list of members for the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnstyle.html[ColumnStyle]"]  enumeration.
+
+[options="header", cols="a,a"]
+|====
+|New Members|Description
+
+|Date
+|Style that allows entering dates. A drop down button is displayed that shows a drop down calendar. You can control the order of day, moth and year portions by setting the UltraGridColumn.MaskInput property. Minimum and maximum allowed values can be controlled using the UltraGridColumn.MinValue and UltraGridColumn.MaxValue properties. Note: This style uses the masking functionality.
+
+|DateWithoutDropDown
+|Same as Date style except the drop down button is not displayed.
+
+|DateWithSpin
+|Same as Date style except the drop down button is not displayed and in its place spin buttons are displayed that can be used to increment or decrement each component of the date.
+
+|DateTime
+|Style that allows entering both date and time. Time uses short time pattern for the time portion. Also a drop down button is displayed that shows a drop down calendar. You can further control the format of the date and time by setting the UltraGridColumn.MaskInput property. Minimum and maximum allowed values can be controlled using the UltraGridColumn.MinValue and UltraGridColumn.MaxValue properties. Note: This style uses the masking functionality.
+
+|DateTimeWithoutDropDown
+|Same as DateTime style except the drop down button is not displayed.
+
+|DateTimeWithSpin
+|Same as DateTime style except the drop down button is not displayed and in its place spin buttons are displayed that can be used to increment or decrement each component of the date time.
+
+|Color
+|Style that allows entering Colors.
+
+|Currency
+|Style that allows entering currency values. Note: This style uses the masking functionality. The CurrentCulture is used to determine the number of digits and decimal places. You can control the number of digits, decimal places etc... by setting the UltraGridColumn.MaskInput property. Infragistics.Win.EditorWithMask is used.
+
+|CurrencyNonNegative
+|Same as Currency except negative values aren't allowed.
+
+|CurrencyPositive
+|Same as Currency except zero and negative values aren't allowed.
+
+|Double
+|Style that allows entering double values. Note: This style uses the masking functionality. The NumberFormatInfo of the CurrentCulture is used to determine the number of digits and decimal places. You can control the number of digits, decimal places etc... by setting the UltraGridColumn.MaskInput property. Minimum and maximum allowed values can be controlled using the UltraGridColumn.MinValue and UltraGridColumn.MaxValue properties. Infragistics.Win.EditorWithMask is used.
+
+|DoubleWithSpin
+|Same as Double except this style shows spin buttons.
+
+|DoubleNonNegative
+|Same as Double except the user is not allowed to enter negative numbers. Note: This style uses the masking functionality.
+
+|DoubleNonNegativeWithSpin
+|Same as DoubleNonNegative except this style shows spin buttons.
+
+|DoublePositive
+|Same as Double except the user is not allowed to enter zero or negative numbers. Note: This style uses the masking functionality.
+
+|DoublePositiveWithSpin
+|Same as DoublePositive except this style shows spin buttons.
+
+|Font
+|Style that lets the user select a font. Infragistics.Win.FontNameEditor is used.
+
+|Image
+|Style that uses the Infragistics.Win.EmbeddableImageRenderer to display images.
+
+|ImageWithShadow
+|Same as Image style except the images are displayed shadowed.
+
+|Integer
+|Style that allows entering integer (whole numbers) values. You can control the number of digits by setting the UltraGridColumn.MaskInput property. Infragistics.Win.EditorWithMask is used.
+
+|IntegerWithSpin
+|Same as Integer except this style shows spin buttons.
+
+|IntegerPositive
+|Same as Integer except the user is not allowed to enter zero or negative numbers.
+
+|IntegerPositiveWithSpin
+|Same as IntegerPositive except this style shows spin buttons.
+
+|IntegerNonNegative
+|Same as Integer except the user is not allowed to enter negative numbers.
+
+|IntegerNonNegativeWithSpin
+|Same as IntegerNonNegative except this style shows spin buttons.
+
+|Time
+|Style that allows entering time. This uses the short time pattern of the current culture. You can control various aspects of the time format by setting the UltraGridColumn.MaskInput property. Minimum and maximum allowed values can be controlled using the UltraGridColumn.MinValue and UltraGridColumn.MaxValue properties. Note: This style uses the masking functionality.
+
+|TimeWithSpin
+|Same as Time style except spin buttons are displayed that can be used to increment or decrement each component of the time.
+
+|TimeZone
+|Style that lets the user select time zone. Infragistics.Win.TimeZoneEditor is used.
+
+|====

@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-suppress-events-from-being-raised",
+    "controlName": ["WinSchedule"],
+    "tags": ["Events"],
+    "guid": "{91B51336-772A-414F-AB1A-51C7D883DEE0}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Suppress Events from Being Raised
+
+The WinCalendarInfo's™  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~eventmanager.html[EventManager]"]  can be used to suppress events from being raised/fired. The following example code demonstrates how to suppress the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendarinfoeventids.html[BeforeAppointmentAdded]"]  event.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub Suppress_Events_from_Being_Raised_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraCalendarInfo1.EventManager.SetEnabled( _
+	  CalendarInfoEventIds.BeforeAppointmentAdded, False)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void Suppress_Events_from_Being_Raised_Load(
+  object sender, EventArgs e)
+{
+	this.ultraCalendarInfo1.EventManager.SetEnabled(
+	  CalendarInfoEventIds.BeforeAppointmentAdded, false);
+}
+----

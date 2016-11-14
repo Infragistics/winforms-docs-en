@@ -1,0 +1,34 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-scrolling-one-row-at-a-time",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{5C58AC57-FEB7-475C-8460-03EBD06BCEC3}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Scrolling One Row at a Time
+
+You can scroll WinGrid™’s data one row at a time using the
+link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~performaction(ultragridaction).html[PerformAction]
+method. In order to scroll up or down in WinGrid one row at a time, pass the `AboveRow` or `BelowRow` values of the
+link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridaction.html[UltraGridAction]
+enumeration to the `PerformAction` method.
+
+.Note
+[NOTE]
+AboveRow and BelowRow will only Activate rows in the same band. If you need to scroll between bands, you can use the PrevRow and NextRow values off the same enumeration.
+
+Place the following example code within an appropriate event handler, such as a button’s Click event to scroll upwards.
+
+*In Visual Basic:*
+[source, vb]
+Me.UltraGrid1.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.AboveRow)
+
+*In C#:*
+[source, csharp]
+this.ultraGrid1.PerformAction(Infragistics.Win.UltraWinGrid.UltraGridAction.AboveRow);

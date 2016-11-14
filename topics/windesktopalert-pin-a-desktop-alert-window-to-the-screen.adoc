@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-pin-a-desktop-alert-window-to-the-screen",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{B9D0365F-B92F-4CAE-8339-EA688768FACC}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Pin a Desktop Alert Window to the Screen
+
+What if your end user doesn't want the desktop alert window to automatically close? The simple solution is the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~pinned.html[Pinned] property which, when set to True, will keep the alert window open until manually closed by the end user. You can use this method to require your end user to manually close the alert window, or you can give them the option of manually closing it by showing the Pin button. The Pin button is hidden by default, so you need to set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~pinbuttonvisible.html[PinButtonVisible] property to True in order to see it. Once the Pin button is visible, the end user can control whether or not the alert window is pinned. These two properties come in very handy if there is important information in the alert window or if the end user needs to click a link in the alert window but isn't ready yet.
+
+Use the following code to pin the desktop alert window to the screen and also allow the end user the choice of pinning or unpinning the alert window.
+
+*In Visual Basic:*
+
+----
+' Create a new desktop alert window with some sample text.
+Dim windowInfo As UltraDesktopAlertShowWindowInfo = _
+  New UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.")
+' Pin the window to the screen so it does not auto close.
+windowInfo.Pinned = True
+' Show the Pin button so the end user can unpin the
+' desktop alert window themselves.
+windowInfo.PinButtonVisible = True
+' Display the desktop alert window using the information above.
+Me.UltraDesktopAlert1.Show(windowInfo)
+----
+
+*In C#:*
+
+----
+// Create a new desktop alert window with some sample text.
+UltraDesktopAlertShowWindowInfo windowInfo =
+  new UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.");
+// Pin the window to the screen so it does not auto close.
+windowInfo.Pinned = true;
+// Show the Pin button so the end user can unpin the
+// desktop alert window themselves.
+windowInfo.PinButtonVisible = true;
+// Display the desktop alert window using the information above.
+this.ultraDesktopAlert1.Show(windowInfo);
+----

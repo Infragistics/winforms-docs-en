@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-upgrading-a-project-manually",
+    "controlName": [],
+    "tags": ["Getting Started","How Do I"],
+    "guid": "{65FA2105-DB14-41E8-9AA2-E1866251318D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Upgrading a Project Manually
+
+Follow these steps to upgrade the Infragistics tools in a Windows Forms project manually:
+
+[start=1]
+. Open the project in Visual Studio.
+[start=2]
+. Right-click on the project's References folder and select Add Reference to open the Add Reference dialog box.
+[start=3]
+. Locate the new assembly version in the Add Reference dialog for each Infragistics assembly listed in your References folder. As you find each assembly, click Select to add the assembly to the Selected Components list.
+[start=4]
+. Once you have located all of the new assemblies, click OK to exit the dialog box.
+[start=5]
+. Remove all references to old assembly versions from the project's References folder.
+[start=6]
+. Rebuild the project.
+
+*Related Topics:*
+
+* link:win-upgrading-a-project-to-infragistics-windows-forms-11-1-(and-above)-using-version-utility.html[Using the Version Utility]
+* link:win-using-command-line.html[Using Command-Line]

@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-scrolling-a-parent-row-to-the-top-of-the-grid",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{73F08FDF-C210-4BA5-9DD1-14CA36AE0498}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Scrolling a Parent Row to the Top of the Grid
+
+WinGrid™ allows you to easily scroll parent rows to the top of the grid bringing attention to the parent row while a user edits or reads the child row. First you must check if WinGrid’s active row has a parent row. Then you can set WinGrid’s first row to the parent row of the active row.
+
+Placing the following example code within WinGrid’s AfterRowActivate event handler will immediately scroll the active row’s parent row to the top of WinGrid.
+
+*In Visual Basic:*
+
+[source,vb]
+----
+If Me.UltraGrid1.ActiveRow.ParentRow Is Nothing Then
+     Return
+End If
+Me.UltraGrid1.DisplayLayout.RowScrollRegions(0).FirstRow = Me.UltraGrid1.ActiveRow.ParentRow
+----
+
+*In C#:*
+
+[source,csharp]
+----
+if (this.ultraGrid1.ActiveRow.ParentRow == null) return;
+this.ultraGrid1.DisplayLayout.RowScrollRegions[0].FirstRow = this.ultraGrid1.ActiveRow.ParentRow;
+----

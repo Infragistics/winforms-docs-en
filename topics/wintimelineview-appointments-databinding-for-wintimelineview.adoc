@@ -1,0 +1,179 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-appointments-databinding-for-wintimelineview",
+    "controlName": ["WinTimelineView"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{160E3B3A-40F3-40BA-973E-3E16326B411E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Appointments DataBinding for WinTimelineView
+
+*Before You Begin*
+
+The WinTimelineView™ control displays appointments along the horizontal timeline. It includes dragging and resizing support for Appointments and data binding support for Appointments and Owners through the AppoinmentsDataBinding and OwnersDataBinding objects. For information on these objects, please see the Data Binding Support for Appointments and Owners topic.
+
+*What You Will Accomplish*
+
+In this topic you will learn to display Appointments for different Owners in WinTimelineView™.
+
+*Follow These Steps*
+
+[start=1]
+. Drag and drop an UltraTimeLineView control, UltraCalendarInfo and UltraCalendarLook components onto you form.
+
+.Note
+[NOTE]
+====
+This topic assumes that you have already set up the UltraTimeLineView control to display Timeslots. For information on how to create Timeslots please see the link:wintimelineview-set-time-and-date-intervals-for-wintimelineview.html[Set Time and Date Intervals for WinTimelineView] topic.
+====
+
+[start=2]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinSchedule
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinSchedule;
+----
+
+[start=3]
+. Write the following code in the form load event.
+
+*In Visual Basic:*
+
+----
+' Get the Sample Data required for Appointments and Owners data binding 
+Dim ds As DataSet = Me.GetSampleData()
+' Hide the Unassigned Owner 
+Me.ultraCalendarInfo1.Owners.UnassignedOwner.Visible = False 
+' Bind ultraCalendarInfo to Appointments Data Table 
+Me.ultraCalendarInfo1.DataBindingsForAppointments.DataSource = ds.Tables("Appointments") 
+' Bind ultraCalendarInfo to Owners Data Table 
+Me.ultraCalendarInfo1.DataBindingsForOwners.DataSource = ds.Tables("Owners") 
+' Set Appointments data binding properties to UltraCalendarInfo 
+Me.ultraCalendarInfo1.DataBindingsForAppointments.StartDateTimeMember = "StartTime" 
+Me.ultraCalendarInfo1.DataBindingsForAppointments.EndDateTimeMember = "EndTime" 
+Me.ultraCalendarInfo1.DataBindingsForAppointments.SubjectMember = "Subject" 
+Me.ultraCalendarInfo1.DataBindingsForAppointments.OwnerKeyMember = "OwnerKey" 
+' Set Owners data binding properties to UltraCalendarInfo 
+Me.ultraCalendarInfo1.DataBindingsForOwners.KeyMember = "OwnerKey" 
+Me.ultraCalendarInfo1.DataBindingsForOwners.NameMember = "Name" 
+' Assign UltraCalendarInfo to TimeLineView control 
+Me.ultraTimelineView1.CalendarInfo = Me.ultraCalendarInfo1 
+' Set UltraCalendarLook ViewStyle 
+Me.ultraCalendarLook1.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007 
+' Assign UltraCalendarLook to TimeLineView control 
+Me.ultraTimelineView1.CalendarLook = Me.ultraCalendarLook1
+----
+
+*In C#:*
+
+----
+// Get the Sample Data required for Appointments and Owners data binding
+DataSet ds = this.GetSampleData();
+// Hide the Unassigned Owner
+this.ultraCalendarInfo1.Owners.UnassignedOwner.Visible = false;
+// Bind ultraCalendarInfo to Appointments Data Table
+this.ultraCalendarInfo1.DataBindingsForAppointments.DataSource=ds.Tables["Appointments"];
+// Bind ultraCalendarInfo to Owners Data Table
+this.ultraCalendarInfo1.DataBindingsForOwners.DataSource = ds.Tables["Owners"];
+// Set Appointments data binding properties to UltraCalendarInfo
+this.ultraCalendarInfo1.DataBindingsForAppointments.StartDateTimeMember = "StartTime";
+this.ultraCalendarInfo1.DataBindingsForAppointments.EndDateTimeMember = "EndTime";
+this.ultraCalendarInfo1.DataBindingsForAppointments.SubjectMember = "Subject";
+this.ultraCalendarInfo1.DataBindingsForAppointments.OwnerKeyMember = "OwnerKey";
+// Set Owners data binding properties to UltraCalendarInfo
+this.ultraCalendarInfo1.DataBindingsForOwners.KeyMember = "OwnerKey";
+this.ultraCalendarInfo1.DataBindingsForOwners.NameMember = "Name";
+// Assign CalendarInfo component to TimelineView control
+this.ultraTimelineView1.CalendarInfo = this.ultraCalendarInfo1;
+// Set UltraCalendarLook ViewStyle
+this.ultraCalendarLook1.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007;
+// Assign CalendarLook component to TimeLineView control
+this.ultraTimelineView1.CalendarLook = this.ultraCalendarLook1;
+----
+
+[start=4]
+. Write the following method which creates the Appointments and Owners DataTable objects along with some sample data.
+
+*In Visual Basic:*
+
+----
+Private Function GetSampleData() As DataSet
+Dim theDataSet As New DataSet()
+' Create Appointments DataTable
+Dim theAppointments As DataTable = theDataSet.Tables.Add("Appointments")
+theAppointments.Columns.Add("AppointmentID", GetType(Integer))
+theAppointments.Columns.Add("StartTime", GetType(DateTime))
+theAppointments.Columns.Add("EndTime", GetType(DateTime))
+theAppointments.Columns.Add("Subject", GetType(String))
+theAppointments.Columns.Add("OwnerKey", GetType(String))
+' Add Appointments Sample Data
+theAppointments.Rows.Add(New Object() {"1", "7/28/2009 9:00:00 AM", "7/28/2009 10:00:00 AM", "Sprint Review", "Charlie"})
+theAppointments.Rows.Add(New Object() {"1", "7/28/2009 8:00:00 AM", "7/28/2009 08:30:00 AM", "Scrum Meet", "Jamie"})
+theAppointments.Rows.Add(New Object() {"1", "7/28/2009 9:00:00 AM", "7/28/2009 09:30:00 AM", "Status Meeting", "Lukas"})
+theAppointments.Rows.Add(New Object() {"1", "7/28/2009 8:45:00 AM", "7/28/2009 09:00:00 AM", "Feature Review", "Lopez"})
+' Create Owners DataTable
+Dim theOwners As DataTable = theDataSet.Tables.Add("Owners")
+theOwners.Columns.Add("OwnerID", GetType(Integer))
+theOwners.Columns.Add("Name", GetType(String))
+theOwners.Columns.Add("OwnerKey", GetType(String))
+' Add Owners Sample Data
+theOwners.Rows.Add(New Object() {"1", "Maria Charlie", "Charlie"})
+theOwners.Rows.Add(New Object() {"2", "John Jamie", "Jamie"})
+theOwners.Rows.Add(New Object() {"3", "Matthew Lukas", "Lukas"})
+theOwners.Rows.Add(New Object() {"4", "Leah Lopez", "Lopez"})
+Return theDataSet
+End Function
+----
+
+*In C#:*
+
+----
+private DataSet GetSampleData()
+{
+DataSet theDataSet = new DataSet();
+// Create Appointments DataTable
+DataTable theAppointments = theDataSet.Tables.Add("Appointments");
+theAppointments.Columns.Add("AppointmentID", typeof(int));
+theAppointments.Columns.Add("StartTime", typeof(DateTime));
+theAppointments.Columns.Add("EndTime", typeof(DateTime));
+theAppointments.Columns.Add("Subject", typeof(string));
+theAppointments.Columns.Add("OwnerKey", typeof(string));
+// Add Appointments Sample Data
+theAppointments.Rows.Add(new object[] { "1", "7/28/2009 9:00:00 AM", "7/28/2009 10:00:00 AM", "Sprint Review", "Charlie" });
+theAppointments.Rows.Add(new object[] { "1", "7/28/2009 8:00:00 AM", "7/28/2009 08:30:00 AM", "Scrum Meet", "Jamie" });
+theAppointments.Rows.Add(new object[] { "1", "7/28/2009 9:00:00 AM", "7/28/2009 09:30:00 AM", "Status Meeting", "Lukas" });
+theAppointments.Rows.Add(new object[] { "1", "7/28/2009 8:45:00 AM", "7/28/2009 09:00:00 AM", "Feature Review", "Lopez" });
+// Create Owners DataTable
+DataTable theOwners = theDataSet.Tables.Add("Owners");
+theOwners.Columns.Add("OwnerID", typeof(int));
+theOwners.Columns.Add("Name", typeof(string));
+theOwners.Columns.Add("OwnerKey", typeof(string));
+// Add Owners Sample Data
+theOwners.Rows.Add(new object[] { "1", "Maria Charlie", "Charlie" });
+theOwners.Rows.Add(new object[] { "2", "John Jamie", "Jamie" });
+theOwners.Rows.Add(new object[] { "3", "Matthew Lukas", "Lukas" });
+theOwners.Rows.Add(new object[] { "4", "Leah Lopez", "Lopez" });
+return theDataSet;
+}
+----
+
+[start=5]
+. Save and run the application.
+
+image::Images\WinTimeLineView_Appointments_DataBinding_for_WinTimeLineView.png[]

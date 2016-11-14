@@ -1,0 +1,98 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-embeddable-editor-events",
+    "controlName": ["WinTree"],
+    "tags": ["Events"],
+    "guid": "{9174598E-E08C-4C2A-B650-DF2D72CBBBCE}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Embeddable Editor Events
+
+WinTree™ does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorOwnerBase]"]  class. For more information please see the link:wintree-embeddable-editors-overview.html[Embeddable Editors Overview] topic.
+
+Consider a WinComboEditor control loaded with a list of items, and assigned to the EditorComponent property of a WinTree. When a control is assigned to the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property, the embedded WinComboEditor control provides an editor to the host, in this case, WinTree. Similarly for this example the WinComboEditor control provides an EditorWithCombo embeddable editor to the WinTree cell from which the dropdown appears.
+
+Hence when an item is selected from the dropdown in a cell, the events of the EditorWithCombo embeddable editor can be handled.
+
+.Note
+[NOTE]
+====
+The WinComboEditor control is not involved in the interaction, therefore its events do not fire.
+====
+
+The following code shows you how to handle the EditorWithCombo specific events (in this example  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selectionchanged_ev.html[SelectionChanged]"]  event), when an item is selected from the WinComboEditor control embedded within WinTree.
+
+*In Visual Basic:*
+
+----
+' Declare an EditorWithCombo variable 
+Private editor As EditorWithCombo = Nothing
+' Handles the UltraTree control's AfterActivate event, to fire the SelectionChanged event of the EditorWithCombo associated with the ActiveNode.  
+Private Sub ultraTree1_AfterActivate(ByVal sender As Object, ByVal e As NodeEventArgs) Handles ultraTree1. AfterActivate
+    Dim node As UltraTreeNode = e.TreeNode
+    If node Is Nothing Then
+        Exit Sub
+    End If
+Dim editor_Combo As EditorWithCombo = TryCast(node.EditorResolved, EditorWithCombo)
+' If the editor hasn't changed since the last time we did this, return since we are already listening to the right editor's event 
+    If Me.editor = editor_Combo Then
+        Exit Sub
+    End If
+' If we have a non-null editor reference, unhook its SelectionChanged event 
+' (This loop is executed if the previous selection was a different editor) 
+    If Me.editor IsNot Nothing Then
+RemoveHandler Me.editor.SelectionChanged, AddressOf Me.editor_SelectionChanged
+        	Me.editor = Nothing
+    End If
+    ' Set our reference 
+    Me.editor = editor_Combo
+    ' Wire the event on the new editor 
+AddHandler Me.editor.SelectionChanged, AddressOf Me.editor_SelectionChanged
+End Sub
+' Handles the EditorWithCombo's SelectionChanged event. 
+Private Sub editor_SelectionChanged(ByVal sender As Object, ByVal e As EventArgs) Handles editor.SelectionChanged
+    Dim editor As EditorWithCombo = TryCast(sender, EditorWithCombo)
+    Dim val As Object = editor.Value
+End Sub
+----
+
+*In C#:*
+
+----
+   // Declare an EditorWithCombo variable     
+     private EditorWithCombo editor = null;
+//Handles the UltraTree control's AfterActivate event, for the purpose of     firing the SelectionChanged event of the EditorWithCombo associated with the ActiveNode.  
+void ultraTree1_AfterActivate(object sender, NodeEventArgs e)
+        {
+            UltraTreeNode node = e.TreeNode;
+            if (node == null)
+                return;
+EditorWithCombo editor_Combo = node.EditorResolved as  EditorWithCombo;
+// If the editor hasn't changed since the last time we did this, return since we are already listening to the right editor's event
+            if (this.editor == editor_Combo)
+                return;
+//  If we have a non-null editor reference, unhook its SelectionChanged event
+//  (This loop is executed if the previous selection was a different editor)
+            if (this.editor != null)
+            {
+this.editor.SelectionChanged -= new EventHandler(this.editor_SelectionChanged);
+               	this.editor = null;
+            }
+            //  Set our reference
+            this.editor = editor_Combo;
+           //  Wire the event on the new editor
+this.editor.SelectionChanged += new EventHandler(this.editor_SelectionChanged);
+        }
+        //  Handles the EditorWithCombo's SelectionChanged event.
+        private void editor_SelectionChanged(object sender, EventArgs e)
+        {
+            EditorWithCombo editor = sender as EditorWithCombo;
+            object val = editor.Value;
+        }
+----

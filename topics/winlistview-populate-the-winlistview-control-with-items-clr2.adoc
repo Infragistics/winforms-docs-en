@@ -1,0 +1,220 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-populate-the-winlistview-control-with-items-clr2",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{8CB538F5-A8EF-4B34-8EF3-50ACFCF1BF96}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "2006-02-08T16:42:15Z"
+}
+|metadata|
+////
+
+= Populate the WinListView Control with Items
+
+The WinListView™ control exposes a collection property,  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~items.html[Items]"] , which contains the items that the control displays. This collection property is similar to most collection properties, and exposes methods such as  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection~add.html[Add]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection~remove.html[Remove]"] , and  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection~clear.html[Clear]"] , which allow the developer to manipulate its contents.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitemscollection.html[Items]"]  collection contains objects of type  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem.html[UltraListViewItem]"] ; each UltraListViewItem itself contains a collection of sub-items, exposed via the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem~subitems.html[SubItems]"]  collection property. The members of the Items collection are applicable to all views; that is, the members of the Items collection (provided that they have not been intentionally hidden) are displayed for all settings of the controls  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property. While the members of the SubItems collection are used in the ToolTips displayed for each view, they are not otherwise displayed in the user interface for certain views. The only views in which sub-items are displayed are the Details and Tiles views.
+
+The following code sample demonstrates how to populate the controls Items collection, as well as each items SubItems collection, with data obtained from the Customers table in the popular Northwind database. It also demonstrates how sub-item columns can be conditionally hidden in one or both views, and how the ToolTips can be set to include or exclude certain sub-item columns.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinListView
+Imports Infragistics.Win
+...
+Private Sub Populate_the_WinListView_Control_with_Items_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' TODO: This line of code loads data into the 'NWindDataSet.Customers' table. 
+	' You can move, or remove it, as needed.
+	Me.CustomersTableAdapter.Fill(Me.NWindDataSet.Customers)
+	' Set the control's View property to 'Tiles'
+	Me.UltraListView1.View = UltraListViewStyle.Tiles
+	' Set some properties so that SubItems (and their respective
+	' columns) are visible by default in the views that support
+	' columns, and also, make the column names and sub-item
+	' values not appear in tooltips by default.
+	Me.UltraListView1.ViewSettingsDetails.SubItemColumnsVisibleByDefault = True
+	Me.UltraListView1.ViewSettingsTiles.SubItemsVisibleByDefault = True
+	Me.UltraListView1.ItemSettings.SubItemsVisibleInToolTipByDefault = False
+	' Add the names of the columns that will be hidden
+	' to an ArrayList
+	Dim hiddenColumns As ArrayList = New ArrayList(4)
+	hiddenColumns.Add("ContactName")
+	hiddenColumns.Add("ContactTitle")
+	hiddenColumns.Add("Phone")
+	hiddenColumns.Add("Fax")
+	' Iterate the table's Columns collection and add a
+	' member to the WinListView control's SubItemColumns
+	' collection for each field in the table.
+	Dim dataColumn As DataColumn
+	For Each dataColumn In Me.NWindDataSet.Tables("Customers").Columns
+		' Do not add a SubItemColumn for the 'CustomerID' field
+		' we will assign that value to the item's Tag
+		If (dataColumn.ColumnName = "CustomerID") Then
+		ElseIf (dataColumn.ColumnName = "CompanyName") Then
+			' Do not add a SubItemColumn for the 'CustomerName' field
+			' we will represent that field with the control's MainColumn
+			Dim mainColumn As UltraListViewMainColumn = Me.UltraListView1.MainColumn
+			mainColumn.Text = "Company Name"
+			mainColumn.DataType = dataColumn.DataType
+		Else
+			' For all other fields, add a member to the
+			' SubItemColumns collection
+			Dim subItemColumn As UltraListViewSubItemColumn
+			subItemColumn = Me.UltraListView1.SubItemColumns.Add(dataColumn.ColumnName)
+			subItemColumn.DataType = dataColumn.DataType
+		End If
+	Next
+	' set the appropriate properties for the hidden columns so that
+	' they do not appear in the Details or Tiles view, and since it
+	' is not being displayed, make it appear in the tooltips.
+	Dim i As Integer
+	For i = 0 To hiddenColumns.Count - 1
+		Dim hiddenColumn As String = hiddenColumns(i)
+		Dim subItemColumn As UltraListViewSubItemColumn = Me.UltraListView1.SubItemColumns(hiddenColumn)
+		subItemColumn.VisibleInDetailsView = DefaultableBoolean.False
+		subItemColumn.VisibleInTilesView = DefaultableBoolean.False
+		subItemColumn.VisibleInToolTip = DefaultableBoolean.True
+		subItemColumn.VisiblePositionInToolTip = i
+	Next
+	' Iterate the table's Rows collection and add an item
+	' to the WinListView control's Items collection for each
+	' row in the table
+	For i = 0 To Me.NWindDataSet.Tables("Customers").Rows.Count - 1
+		Dim row As DataRow = Me.NWindDataSet.Tables("Customers").Rows(i)
+		' Break out the field values for this row
+		Dim customerID As String = row("CustomerID")
+		Dim companyName As String = row("CompanyName")
+		Dim contactName As Object = row("ContactName")
+		Dim contactTitle As Object = row("ContactTitle")
+		Dim address As Object = row("Address")
+		Dim city As Object = row("City")
+		Dim region As Object = row("Region")
+		Dim postalCode As Object = row("PostalCode")
+		Dim country As Object = row("Country")
+		Dim phone As Object = row("Phone")
+		Dim fax As Object = row("Fax")
+		' Add an item to the WinListView control's Items collection, using the
+		' value of the CustomerID field as the item's Key, and the value of the
+		' CompanyName field as the item's Value.
+		Dim item As UltraListViewItem = Me.UltraListView1.Items.Add(customerID, companyName)
+		' Assign the field values to the Value property of the
+		' corresponding UltraListViewSubItem
+		item.SubItems("ContactName").Value = contactName
+		item.SubItems("ContactTitle").Value = contactTitle
+		item.SubItems("Address").Value = address
+		item.SubItems("City").Value = city
+		item.SubItems("Region").Value = region
+		item.SubItems("PostalCode").Value = postalCode
+		item.SubItems("Country").Value = country
+		item.SubItems("Phone").Value = phone
+		item.SubItems("Fax").Value = fax
+	Next
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinListView;
+using Infragistics.Win;
+...
+private void Populate_the_WinListView_Control_with_Items_Load(object sender, EventArgs e)
+{
+	// TODO: This line of code loads data into the 'nWindDataSet.Customers' table. You can move, or remove it, as needed.
+	this.customersTableAdapter.Fill(this.nWindDataSet.Customers);
+	// Set the control's View property to 'Details'
+	this.ultraListView1.View = UltraListViewStyle.Tiles;
+	// Set some properties so that SubItems (and their respective
+	// columns) are visible by default in the views that support
+	// columns, and also, make the column names and sub-item
+	// values not appear in tooltips by default.
+	this.ultraListView1.ViewSettingsDetails.SubItemColumnsVisibleByDefault = true;
+	this.ultraListView1.ViewSettingsTiles.SubItemsVisibleByDefault = true;
+	this.ultraListView1.ItemSettings.SubItemsVisibleInToolTipByDefault = false;
+	// Add the names of the columns that will be hidden
+	// to an ArrayList
+	ArrayList hiddenColumns = new ArrayList(4);
+	hiddenColumns.Add("ContactName");
+	hiddenColumns.Add("ContactTitle");
+	hiddenColumns.Add("Phone");
+	hiddenColumns.Add("Fax");
+	// Iterate the table's Columns collection and add a
+	// member to the WinListView control's SubItemColumns
+	// collection for each field in the table.
+	foreach (DataColumn dataColumn in this.nWindDataSet.Tables["Customers"].Columns)
+	{
+		// Do not add a SubItemColumn for the 'CustomerID' field;
+		// we will assign that value to the item's Tag
+		if (dataColumn.ColumnName == "CustomerID")
+			continue;
+		else
+			// Do not add a SubItemColumn for the 'CompanyName' field
+			// we will represent that field with the control's MainColumn
+			if (dataColumn.ColumnName == "CompanyName")
+			{
+				UltraListViewMainColumn mainColumn = this.ultraListView1.MainColumn;
+				mainColumn.Text = "Company Name";
+				mainColumn.DataType = dataColumn.DataType;
+			}
+			else
+			{
+				// For all other fields, add a member to the
+				// SubItemColumns collection
+				UltraListViewSubItemColumn subItemColumn = null;
+				subItemColumn = this.ultraListView1.SubItemColumns.Add(dataColumn.ColumnName);
+				subItemColumn.DataType = dataColumn.DataType;
+			}
+	}
+	// set the appropriate properties for the hidden columns so that
+	// they do not appear in the Details or Tiles view, and since it
+	// is not being displayed, make it appear in the tooltips.
+	for (int i = 0; i < hiddenColumns.Count; i++)
+	{
+		string hiddenColumn = hiddenColumns[i] as string;
+		UltraListViewSubItemColumn subItemColumn = this.ultraListView1.SubItemColumns[hiddenColumn];
+		subItemColumn.VisibleInDetailsView = DefaultableBoolean.False;
+		subItemColumn.VisibleInTilesView = DefaultableBoolean.False;
+		subItemColumn.VisibleInToolTip = DefaultableBoolean.True;
+		subItemColumn.VisiblePositionInToolTip = i;
+	}
+	// Iterate the table's Rows collection and add an item
+	// to the WinListView control's Items collection for each
+	// row in the table
+	for (int i = 0; i < this.nWindDataSet.Tables["Customers"].Rows.Count; i++)
+	{
+		DataRow row = this.nWindDataSet.Tables["Customers"].Rows[i];
+		// Break out the field values for this row
+		string customerID = row["CustomerID"] as string;
+		string companyName = row["CompanyName"] as string;
+		object contactName = row["ContactName"];
+		object contactTitle = row["ContactTitle"];
+		object address = row["Address"];
+		object city = row["City"];
+		object region = row["Region"];
+		object postalCode = row["PostalCode"];
+		object country = row["Country"];
+		object phone = row["Phone"];
+		object fax = row["Fax"];
+		// Add an item to the WinListView control's Items collection, using the
+		// value of the CustomerID field as the item's Key, and the value of the
+		// CompanyName field as the item's Value.
+		UltraListViewItem item = this.ultraListView1.Items.Add(customerID, companyName);
+		// Assign the field values to the Value property of the
+		// corresponding UltraListViewSubItem
+		item.SubItems["ContactName"].Value = contactName;
+		item.SubItems["ContactTitle"].Value = contactTitle;
+		item.SubItems["Address"].Value = address;
+		item.SubItems["City"].Value = city;
+		item.SubItems["Region"].Value = region;
+		item.SubItems["PostalCode"].Value = postalCode;
+		item.SubItems["Country"].Value = country;
+		item.SubItems["Phone"].Value = phone;
+		item.SubItems["Fax"].Value = fax;
+	}
+}
+----

@@ -1,0 +1,165 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridexcelexporter-export-grid-data-to-excel",
+    "controlName": ["WinGridExcelExporter"],
+    "tags": ["Exporting"],
+    "guid": "{4584FD12-8313-49AF-9973-C52B0BE3086C}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Export Grid Data to Excel
+
+The WinGrid™ control can export data in Microsoft Excel spreadsheet format. Use the WinGridExcelExporter™ to accomplish this. Exporting to Excel format is a process similar to printing grid data, in that you have control over how Layouts and Appearances are applied to the data before export, and which data is included or excluded.
+
+Exporting to Excel supports saving the Grid data to either legacy (.xls) or the newer .xlsx format. See link:wingridexcelexporter-exporting-to-xlsx-format-(using-clr-3-5).html[Exporting to xlsx format (Using CLR 3.5)] topic for details on how to Export to the newer .xlsx format.
+
+== To export grid data to Microsoft Excel format:
+
+[start=1]
+. Add an UltraWinGrid to a form in your application, or open an existing application and display a form that contains the UltraWinGrid. For information on how to data bind the WinGrid, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
+[start=2]
+. Locate the UltraGridExcelExporter component in the Visual Studio Toolbox and double-click it to add it to the form. It is a non-visual element and will appear in the form's component tray.
+[start=3]
+. Add a control to your form (such as a command button) or a menu item to initiate the export function.
+[start=4]
+. In the Click event of the export initiating control, enter the following code:
+
+*In Visual Basic:*
+
+----
+Private Sub btnExport_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnExport.Click
+	Me.UltraGridExcelExporter1.Export(Me.UltraGrid1, "C:\GridData.xls")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnExport_Click(object sender, EventArgs e)
+{
+	this.ultraGridExcelExporter1.Export(this.ultraGrid1, "C:\\GridData.xls");
+}
+----
+
+This code begins the export process by invoking the Export method of the UltraGridExcelExporter element. When you invoke the method, you pass it the UltraWinGrid that will be exporting the data, and the name of the file into which the data will be exported.
+
+If all you want to do is dump all of the grid data into an Excel file, retaining any current formatting, this is all you have to do, and you can stop here.
+[start=5]
+. If you wish to fine-tune the exported data, you can do so by using the events fired by the ExcelExporter element. The first event that occurs is the  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~beginexport_ev.html[BeginExport]"]  event, which will you can use to set up the conditions that will apply to all the exported data.
+
+The following code gives an example of how to use the BeginExport event. This code will first create a worksheet with a specific name in the Excel workbook to hold the exported data. Then the newly added worksheet is made current so that it will receive the exported data. Finally, the new worksheet is made active so that it will be the first one the user sees when opening the XLS file.
+
+*In Visual Basic:*
+
+----
+ Private Sub UltraGridExcelExporter1_BeginExport(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.ExcelExport.BeginExportEventArgs) _
+  Handles UltraGridExcelExporter1.BeginExport
+	e.CurrentWorksheet = _
+	e.Workbook.Worksheets.Add("Exported Grid Data")
+	e.Workbook.WindowOptions.SelectedWorksheet = e.CurrentWorksheet
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGridExcelExporter1_BeginExport(object sender, 
+  Infragistics.Win.UltraWinGrid.ExcelExport.BeginExportEventArgs e)
+{
+	e.CurrentWorksheet = 
+	  e.Workbook.Worksheets.Add("Exported Grid Data");
+	e.Workbook.WindowOptions.SelectedWorksheet = e.CurrentWorksheet;
+}
+----
+
+[start=6]
+. As the export proceeds, you can use other events to control the data that is being written out. The following code goes in the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexported_ev.html[CellExported] event. It examines each cell exported to see if it is a string data type. Strings that begin with the words "Accounting Manager" are not to be exported from the application, so the code substitutes a abbreviation that will appear in the Excel file:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGridExcelExporter1_CellExporting(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.ExcelExport.CellExportingEventArgs) _
+  Handles UltraGridExcelExporter1.CellExporting
+	Dim sCellType As String
+	Dim sCellContents As String
+	sCellType = e.Value.GetType().FullName
+	If sCellType = "System.String" Then
+		sCellContents = e.Value
+		If sCellContents.StartsWith("Accounting Manager") = True Then
+			e.Workbook.WindowOptions.SelectedWorksheet.Rows(e.CurrentRowIndex).Cells(e.CurrentColumnIndex).Value = "AM"
+		End If
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGridExcelExporter1_CellExporting(object sender, 
+  Infragistics.Win.UltraWinGrid.ExcelExport.CellExportingEventArgs e)
+{
+	string sCellType = e.Value.GetType().FullName;
+	if (sCellType == "System.String") 
+	{
+		string sCellContents = e.Value.ToString();
+		if (sCellContents.StartsWith("Accounting Manager")) 
+		{
+			e.Workbook.WindowOptions.SelectedWorksheet.Rows[e.CurrentRowIndex].Cells[e.CurrentColumnIndex].Value = "AM";
+		}
+	}
+}
+----
+
+[start=7]
+. Working with the CellExporting event (or any of the other ...Exporting events) gives you access to the grid data before it is written into the Excel file, so you can perform pre-processing. You can also perform post-processing on the data after it has been written into the file by using the CellExported event. For example, the following code will add a double-lined bottom border to every other row in the Excel worksheet by applying that border style to every cell that occupies an even row:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGridExcelExporter1_CellExported(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.ExcelExport.CellExportedEventArgs) _
+  Handles UltraGridExcelExporter1.CellExported
+	If e.CurrentRowIndex Mod 2 = 0 Then
+		Dim cfCellFmt As Infragistics.Documents.Excel.IWorksheetCellFormat
+		Dim iRdex As Integer
+		Dim iCdex As Integer
+		iRdex = e.CurrentRowIndex
+		iCdex = e.CurrentColumnIndex
+		' Obtain reference to CellFormat object for current cell
+		cfCellFmt = _
+		e.CurrentWorksheet.Rows(iRdex).Cells(iCdex).CellFormat
+		' Set format object property for bottom border
+		cfCellFmt.BottomBorderStyle = _
+		Infragistics.Documents.Excel.CellBorderLineStyle.Double
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGridExcelExporter1_CellExported(object sender, 
+  Infragistics.Win.UltraWinGrid.ExcelExport.CellExportedEventArgs e)
+{
+	if(e.CurrentColumnIndex%2==0)
+	{
+		Infragistics.Documents.Excel.IWorksheetCellFormat cfCellFmt;
+		int iRdex = e.CurrentRowIndex;
+		int iCdex = e.CurrentColumnIndex;
+		// Obtain reference to CellFormat object for current cell
+		cfCellFmt = 
+		e.CurrentWorksheet.Rows[iRdex].Cells[iCdex].CellFormat;
+		// Set format object property for bottom border
+		cfCellFmt.BottomBorderStyle = 
+		Infragistics.Documents.Excel.CellBorderLineStyle.Double;
+	}
+}
+----

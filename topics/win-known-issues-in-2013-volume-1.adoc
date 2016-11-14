@@ -1,0 +1,227 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-known-issues-in-2013-volume-1",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "b4715e01-ca8d-4ce3-ac08-1669ac48d47c",  
+    "buildFlags": [],
+    "createdOn": "2013-03-01T19:06:40.2523103Z"
+}
+|metadata|
+////
+
+= Known Issues in 2013 Volume 1
+
+== Known Issues and Limitations of  _Coded UI Test_   (CUIT _)_   Framework
+
+=== Control Container Issues
+
+==== Issue:
+
+Due to assumptions made in the  *Coded UI Test*  framework for User Interface Automation (UIA), Infragistics UIA-enabled controls that are also control containers may fail to replay on Infragistics controls contained within these containers.
+
+Affected containers:
+
+* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor_members.html[ControlContainerEditor] (any Infragistics control that allows specifying an embeddable editor)
+* link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.controlcontainertool_members.html[ControlContainerTool] and link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool_members.html[PopupControlContainerTool] ( link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager])
+* Control Container Group ( link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar_members.html[UltraExplorerBar]).
+
+==== Workaround:
+
+Modify the script to ensure the proper hierarchy for the contained control.
+
+=== Toolbar Dragging
+
+==== Issue:
+
+Due to underlying UIA hierarchy changing during a drag operation, repositioning toolbars from one dock area to another is not supported. During the recording of a drag operation, the  *Coded UI Test*  builder records the drop point based on the structure at the time of the drop. However, during playback, the drop point calculation occurs prior to the drag operation resulting in the UIA structure being out of alignment with the expected hierarchy.
+
+==== Workaround:
+
+No workaround is available at this time. Currently in research.
+
+=== Quick Access Toolbar QuickCustomizeButton Replay
+
+==== Issue:
+
+During the same recording session, moving the Quick Access Toolbar below a collapsed ribbon may cause some actions performed on the link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] to fail to replay. This is due to the CUIT framework attempting to use the same `UITestControl` for different automation elements without remapping the native elements.
+
+==== Workaround:
+
+Modify scripts so that the UltraUiaButton for the link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] includes the `AlwaysSearch` field option from the link:http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.testtools.uitest.extension.searchconfiguration.aspx[SearchConfiguration] class of `Microsoft.VisualStudio.TestTools.UITest.Extension`.
+
+*In C#:*
+
+[source,csharp]
+----
+this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Me.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch)
+----
+
+=== UltraTrackBar
+
+==== Issue:
+
+Records click instead of drag in link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] when the mouse up is not on the thumb.
+
+==== Workaround:
+
+Be sure to `MouseUp` on the Thumb after dragging the Thumb or do a `SetValue` on the link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] directly from the script.
+
+=== UltraGrid
+
+==== Issue:
+
+Clicking on a dropdown or editor button in a grid cell does not play back properly.
+
+==== Detail:
+
+By default, buttons in cells do not display until the mouse moves over the cell. You can change this behavior using the `CellDisplayStyle` property of the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn]. However, when the buttons are not displayed,  *Coded UI Test*  will be unable to find them during playback because  *Coded UI Test*  does not record every mouse movement.
+
+==== Workaround:
+
+When recording, always click on the cell itself so that the mouse is within the cell’s bound before clicking on the button.
+
+=== UltraGrid Column Dragging
+
+==== Issue:
+
+Due to the opaque windows used as drag indicators during a drag operation, the  *Coded UI Test*  Framework is unable to determine properly the correct drop location.
+
+==== Workaround:
+
+To work around this issue, you must modify the script to change the destination UITestControl to be another header instead of the desktop.
+
+A generated code similar to:
+
+*In C#:*
+
+[source,csharp]
+----
+// Move 'Title' HeaderItem from (56, 11) to 'Desktop' client (38, 14)
+uIDesktopClient.EnsureClickable(new Point(38, 14));
+Mouse.StartDragging(uITitleHeaderItem, new Point(56, 11));
+Mouse.StopDragging(uIDesktopClient, new Point(38, 14));
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Move 'Title' HeaderItem from (56, 11) to 'Desktop' client (38, 14)
+uIDesktopClient.EnsureClickable(New Point(38, 14))
+Mouse.StartDragging(uITitleHeaderItem, New Point(56, 11))
+Mouse.StopDragging(uIDesktopClient, New Point(38, 14))
+----
+
+Should be changed to:
+
+*In C#:*
+
+[source,csharp]
+----
+// Move 'Title' HeaderItem from (56, 11) to 'LastName' HeaderItem (14, 16)
+uILastNameHeaderItem.EnsureClickable(new Point(14, 16));
+Mouse.StartDragging(uITitleHeaderItem, new Point(56, 11));
+Mouse.StopDragging(uILastNameHeaderItem, new Point(14, 16));
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Move 'Title' HeaderItem from (56, 11) to 'LastName' HeaderItem (14, 16)
+uILastNameHeaderItem.EnsureClickable(New Point(14, 16))
+Mouse.StartDragging(uITitleHeaderItem, New Point(56, 11))
+Mouse.StopDragging(uILastNameHeaderItem, New Point(14, 16))
+----
+
+Observe in the code above, that the drop point is relative to the drop header location.
+
+Similar issues exist with dragging columns to and from the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~groupbybox.html[GroupByBox], which are similarly handled.
+
+=== Cached DropDown Windows
+
+==== Issue:
+
+When recording a script against two or more different DropDowns (`ValueList`), playback may fail because it is unable to locate the appropriate `ValueListItem` property. This is due to the playback process caching and reusing the same dropdown window instead of locating the new instance of it.
+
+==== Workaround:
+
+Modify the script so the `WinWindow` for the DropDown window (often named `UIValueListDropDownWindow`) includes the `AlwaysSearch` option of the SearchConfiguration.
+
+*In C#:*
+
+[source,csharp]
+----
+this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Me.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch)
+----
+
+=== Duplicate Control Names
+
+==== Issue:
+
+When multiple controls with the same control name exist within the same form (such as when using multiple instances of the same user control), the `UITestControl` may match the wrong instance of the control during playback.
+
+==== Workaround:
+
+Modify the script so that the `WinWindow` parenting the control contains the correct instance number.
+
+*In C#:*
+
+[source,csharp]
+----
+this.SearchProperties[UITestControl.PropertyNames.Instance] = instance_number;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Me.SearchProperties(UITestControl.PropertyNames.Instance) = instance_number
+----
+
+=== Out-of-view ValueListItems displayed in the UltraGrid (Mdi Applications)
+
+==== Issue:
+
+If a grid on a Multi-document Interface (MDI) child form displays a dropdown `ValueList` (such as a  _FilterRow_   or  _column_   using an  _EditorWithCombo_  ), playback will fail to locate and select any of the value list items that are scrolled out of view on the `ValueList`.
+
+==== Workaround:
+
+Work around this by modifying the script to call link:http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k(Microsoft.VisualStudio.TestTools.UITesting.UITestControl.EnsureClickable)&rd=true[EnsureClickable] method on the control type ListItem (UltraUiaListItem) of `UITestControl` prior to the `Mouse.Click` event.
+
+=== Disabled Controls
+
+==== Issue:
+
+When adding asserts (Verification for changes) to controls that are disabled the `UITestControl` for the control wrapper selects (`WinWindow`) instead of the lowest provider at the mouse position. This is most likely due to the transition between Microsoft Active Accessibility: Architecture (MSAA) and UIA, and the framework looking for interactive UI object.
+
+==== Workaround:
+
+Access the child providers in the Assertion Window via the Navigation Arrows.
+
+=== Scrollbar Actions
+
+==== Issue:
+
+In general, the CUIT framework does not record actions performed on scrollbars. However due to their identification methods, it does not recognize our scrollbars as scrollbars they should ignore and records the user interactions with them.
+
+==== Workaround:
+
+The user can delete the recorded scrollbar actions allowing the link:http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.testtools.uitest.extension.uitechnologymanager.aspx[TechnologyManager] to use the proper UIA scrolling patterns.

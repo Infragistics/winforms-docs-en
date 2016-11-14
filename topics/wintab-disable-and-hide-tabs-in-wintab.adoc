@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-disable-and-hide-tabs-in-wintab",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{CA52BE5D-FE67-4E68-9179-99E99FE12B23}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Disable and Hide Tabs in WinTab
+
+This topic will show you how you can disable or hide a Tab in WinTab™. To disable a Tab set its  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~enabled.html[Enabled]"]  property to false and similarly to hide a particular Tab set its  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab~visible.html[Visible]"]  property to false.
+
+*In Visual Basic:*
+
+----
+' Disable a Tab
+   Me.ultraTabControl2.Tabs[1].Enabled = false
+' Hide a Tab
+   Me.ultraTabControl2.Tabs[2].Visible = false
+----
+
+*In C#:*
+
+----
+// Disable a Tab
+   this.ultraTabControl2.Tabs[1].Enabled = false;
+// Hide a Tab
+   this.ultraTabControl2.Tabs[2].Visible = false;
+----

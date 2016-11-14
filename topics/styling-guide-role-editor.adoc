@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-role-editor",
+    "controlName": [],
+    "tags": ["Styling","Theming"],
+    "guid": "{B01BBDA8-EF2A-4B60-8085-985D3D3B7303}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Role Editor
+
+Once you have found the specific UI Role that you would like to style, the UI Role Editor comes into play. Selecting any UI Role, either by using keyboard shortcuts in the Canvas area or by clicking one in the Style Explorer tree, will display the UI Role Editor at the bottom of the AppStylist for Windows Forms user interface. Use the tabs to navigate through the different states of the UI Role. A state is a specific mode that a UI Role can be in. A UI Role can also be in more than one state at a time during run time. For example, a cell can be Selected, HotTracked, and Active all at the same time. There are three groups of states that a UI Role can be in:
+
+* Common – Common states belong to most UI Roles. A UI Role can be in one or more of these states at a time. Some of these states don't apply to all UI Roles, so you may not see all of them all the time.
+* Other – Other states are states that may apply only to the current UI Role.
+* Grid – Grid states apply only to WinGrid and other components that use the grid.
+
+Each of the states included under these three tabs can be styled using the panes in the selected tab. With these panes, you can style the Background, Border, Font, Image, and Other properties of any UI Role. You can also apply Resources to your UI Role. For more information on Resources, see link:styling-guide-using-resources-with-stylesets.html[Using Resources with StyleSets].
+
+.Note
+[NOTE]
+====
+If you are modifying Resources through the Resources tab in the Style Explorer, the UI Role Editor is replaced by the Resource Editor. The only difference is that the Resource Editor lacks the tabbed interface at the top of the editor (because you are editing resources, not states) and the Resource pane is hidden.
+====
+
+These sections will provide you with detailed descriptions of each property in the UI Role Editor and how they interact with each other.
+
+* link:styling-guide-background-pane.html[Background]
+* link:styling-guide-border-pane.html[Border]
+* link:styling-guide-font-pane.html[Font]
+* link:styling-guide-image-pane.html[Image]
+* link:styling-guide-other-pane.html[Other]
+* link:styling-guide-resources-pane.html[Resources]

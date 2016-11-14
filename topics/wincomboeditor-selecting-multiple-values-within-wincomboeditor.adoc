@@ -1,0 +1,63 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincomboeditor-selecting-multiple-values-within-wincomboeditor",
+    "controlName": ["WinComboEditor"],
+    "tags": ["How Do I","Selection"],
+    "guid": "{2E223688-F6EB-42DA-BDD8-48F8F9716845}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Selecting Multiple Values within WinComboEditor
+
+The WinComboEditor™ has been modified to support the display of a checkbox next to each item in the dropdown list. Checking of multiple items will be supported, thus providing the ability to “select” more than one item at a time.
+
+.Note
+[NOTE]
+====
+When checkboxes are visible, ‘Suggest Mode’ functionality is disabled. When EditorValueSource is set to ‘CheckedItems’, character input is disabled; the edit portion is read only.
+====
+
+This topic assumes that you have a Visual Studio generated DataSet pointing to the Employees Table of the Northwind database
+
+*In Visual Basic:*
+
+----
+Me.ultraComboEditor1.DataSource = Me.northwindDataSet.Employees 
+Me.ultraComboEditor1.DisplayMember ="FirstName" 
+ultraComboEditor1.ValueMember ="EmployeeID" 
+'Get checkboxes next to each item in the list 
+ultraComboEditor1.CheckedListSettings.CheckBoxStyle = Infragistics.Win.CheckStyle.CheckBox 
+'Aligns the checkbox with respect to the content in the list 
+ultraComboEditor1.CheckedListSettings.CheckBoxAlignment = ContentAlignment.MiddleRight 
+'The checked items are assigned to the editors value property. 
+'Setting EditorValueSource to checked Items returns a Generic object List(List<object>) consisting of the DataValue of each checked Item. 
+ultraComboEditor1.CheckedListSettings.EditorValueSource = Infragistics.Win.EditorWithComboValueSource.CheckedItems 
+ultraComboEditor1.CheckedListSettings.ListSeparator = ", " 
+ultraComboEditor1.CheckedListSettings.ItemCheckArea = Infragistics.Win.ItemCheckArea.CheckBox
+----
+
+*In C#:*
+
+----
+this.ultraComboEditor1.DataSource = this.northwindDataSet.Employees;
+this.ultraComboEditor1.DisplayMember ="FirstName";
+ultraComboEditor1.ValueMember ="EmployeeID";
+//Get checkboxes next to each item in the list
+ultraComboEditor1.CheckedListSettings.CheckBoxStyle = Infragistics.Win.CheckStyle.CheckBox;
+//Aligns the checkbox with respect to the content in the list
+ultraComboEditor1.CheckedListSettings.CheckBoxAlignment = ContentAlignment.MiddleRight;
+//The checked items are assigned to the editors value property. 
+//Setting EditorValueSource to checked Items returns a Generic object List(List<object>) consisting of the DataValue of each checked Item.
+ultraComboEditor1.CheckedListSettings.EditorValueSource = Infragistics.Win.EditorWithComboValueSource.CheckedItems;
+ultraComboEditor1.CheckedListSettings.ListSeparator = ", ";
+ultraComboEditor1.CheckedListSettings.ItemCheckArea = Infragistics.Win.ItemCheckArea.CheckBox;
+----
+
+Following is an image of WinComboEditor showing checkboxes to the right of the content, and the edit portion displays the list of checked values separated by a comma.
+
+image::Images\WinComboEditor_Selecting_Multiple_values_Within_WinComboEditor.png[]

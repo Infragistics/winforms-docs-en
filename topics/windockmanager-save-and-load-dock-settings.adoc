@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-save-and-load-dock-settings",
+    "controlName": ["WinDockManager"],
+    "tags": ["Persistence"],
+    "guid": "{E0C3B54B-D429-4A80-9CCE-50A2A52B93B0}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Save and Load Dock Settings
+
+WinDockManager™ can save and reload the location and docked status of the various windows in your application. This can be used to maintain a user's personalized settings.
+
+To load dock settings at run-time use the following code.
+
+*In Visual Basic:*
+
+----
+Private Sub btnLoad_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnLoad.Click
+        Me.UltraDockManager1.LoadFromXML("ultradocksettings.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnLoad_Click(object sender, EventArgs e)
+{
+        this.ultraDockManager1.LoadFromXML("ultradocksettings.xml");
+}
+----
+
+To save dock settings at run-time use the following code.
+
+*In Visual Basic:*
+
+----
+Private Sub btnSave_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnSave.Click
+        Me.UltraDockManager1.SaveAsXML("ultradocksettings.xml")
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnSave_Click(object sender, EventArgs e)
+{
+        this.ultraDockManager1.SaveAsXML("ultradocksettings.xml");
+}
+----
+
+*Important Notes:*
+
+* In order for the UltraDockManager to properly find the docked controls when deserializing, the docked controls need to have their *Name* property set.
+* When the panels are being created dynamically, you will need to set a unique name on the Panel for the UltraDockManager to retain its position.

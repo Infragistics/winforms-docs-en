@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "wineditors-modifying-the-settings-of-wingrids-editor",
+    "controlName": ["WinEditors"],
+    "tags": ["Extending","How Do I"],
+    "guid": "{C3BDACD7-F98E-474D-A347-CD35B42A8E7A}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Modifying the Settings of WinGrid's Editor
+
+This topic applies to all WinEditor™ controls
+
+The WinGrid™ uses embeddable editors that are dedicated versions of the stand-alone elements found in the WinEditor controls. You can access the underlying editor through the WinGrid's Column object, and use it to modify any of the properties available in the underlying editor.
+
+At runtime, in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event, you can get a reference to the editor used by a column and use that reference to change properties. Changes in these properties will be reflected in that editor element when it is displayed by the column.

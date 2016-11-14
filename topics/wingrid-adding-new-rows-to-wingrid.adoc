@@ -1,0 +1,154 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-adding-new-rows-to-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","How Do I"],
+    "guid": "{A1B69FFC-C331-47FE-BF20-F8E1084BA2C6}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding New Rows to WinGrid
+
+== Background
+
+Adding new rows to the WinGrid™ can be accomplished in many different ways. The developer can turn on the built-in "Add New" box and the user can click the appropriate button. The developer can implement some other mechanism such as a button and invoke the .AddNew method of the band. The developer can add a new row to the underlying data.
+
+== Questions
+
+* How do I turn on the "Add New" buttons?
+* Can I add rows with code?
+* How do I set default cell values for a new row?
+* What happens when I add a new row to the underlying DataTable?
+
+== Solutions
+
+Turn on the "Add New" buttons by setting the .Layout.AddNewBox.Hidden property to False.
+
+To add a new row with code, invoke the .AddNew method of the band into which the new row is to be added.
+
+Initialize the cell values of a new row in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~afterrowinsert_ev.html[AfterRowInsert]"]  event.
+
+When a new row is added to the underlying DataTable, in most cases it will display in the grid as if it was added with the .AddNew method of the grid. However, there are some instances when the grid can not detect the add and thus the new row does not display. The best way to add new rows to the grid after it is bound is to use the AddNew method.
+
+== Sample Project
+
+This sample project demonstrates the various techniques for adding new rows to the UltraWinGrid:
+
+image::Images\WinGrid_Adding_New_Rows_to_WinGrid_01.png[adding new rows to ultragrid]
+
+The UltraWinGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event instructs the grid to display the AddNewBox:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Turn on the Add New Box
+	e.Layout.AddNewBox.Hidden = False
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Turn on the Add New Box
+	e.Layout.AddNewBox.Hidden = false;
+}
+----
+
+* UltraGrid1.AfterRowInsert - The code in the AfterRowInsert event sets the primary key values of the new rows and defaults the "OrderDate" column of band 1:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_AfterRowInsert(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.RowEventArgs) _
+  Handles UltraGrid1.AfterRowInsert
+	' Set primary key cell values for Band 1 
+	Select Case e.Row.Band.Index
+		Case 1
+			e.Row.Cells("OrderID").Value = e.Row.Index + 1
+			e.Row.Cells("OrderDate").Value = Now
+	End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_AfterRowInsert(object sender, 
+  Infragistics.Win.UltraWinGrid.RowEventArgs e)
+{
+	// Set primary key cell values for Band 1
+	switch(e.Row.Band.Index)
+	{
+		case 1:
+			e.Row.Cells["OrderID"].Value = e.Row.Index +1;
+			e.Row.Cells["OrderDate"].Value = DateTime.Now;
+			break;
+	}
+}
+----
+
+Button Events
+
+The Button Events Region contains the following event handlers:
+
+* btnAddNewRowBand0.Click - The code in the AddNewRowBand0 Click event adds a new row to Band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub btnAddNewRowBand0_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnAddNewRowBand0.Click
+	' Add new row to band 0
+	Me.UltraGrid1.DisplayLayout.Bands(0).AddNew()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnAddNewRowBand0_Click(object sender, EventArgs e)
+{
+	// Add new row to band 0
+	this.ultraGrid1.DisplayLayout.Bands[0].AddNew();
+}
+----
+
+* btnAddNewRowBand1.Click - The code in the AddNewRowBand1 Click event adds a new row to Band 1:
+
+*In Visual Basic:*
+
+----
+Private Sub btnAddNewRowBand1_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnAddNewRowBand1.Click
+	' Add new row to band 1
+	Me.UltraGrid1.DisplayLayout.Bands(1).AddNew()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnAddNewRowBand1_Click(object sender, EventArgs e)
+{
+	// Add new row to band 1
+	this.ultraGrid1.DisplayLayout.Bands[1].AddNew();
+}
+----
+
+== Review
+
+This sample project demonstrates the various methods of adding new rows to UltraWinGrid.

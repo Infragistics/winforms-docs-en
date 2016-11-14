@@ -1,0 +1,411 @@
+﻿////
+|metadata|
+{
+    "name": "winspreadsheet-resource-strings",
+    "controlName": [],
+    "tags": [],
+    "guid": "cd4f2dc9-be14-4a35-a886-aa5c82034574",
+    "buildFlags": [],
+    "createdOn": "2016-03-13T01:12:52.1454159Z"
+}
+|metadata|
+////
+
+= WinSpreadsheet Resource Strings Reference
+
+This topic provides a list of the `WinSpreadsheet` assembly resource strings used to customize the internally-defined text elements of the `WinSpreadsheet` control. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings used by this assembly, along with the string's customizable default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource string name|Default value
+
+|CopyError_InvalidSelection_Message
+|The operation cannot be performed on the current selection. If there are multiple selections ensure they form a rectangular region and do not overlap.
+
+|CustomValidationInformationMessage
+|{0}
+
+|CustomValidationStopMessage
+|{0}
+
+|CustomValidationWarningMessage
+|"{0} Continue?"
+
+|DefaultHyperlinkToolTip
+|{0} - Click once to follow. Click and hold to select this cell.
+
+|DefaultValidationInformationMessage
+|"The value you entered is not valid. A user has restricted values that can be entered into this cell."
+
+|DefaultValidationStopMessage
+|"The value you entered is not valid. A user has restricted values that can be entered into this cell."
+
+|DefaultValidationWarningMessage
+|"The value you entered is not valid. A user has restricted values that can be entered into this cell. Continue?"
+
+|DeleteWorksheets_Message
+|Deleting a worksheet cannot be undone and you may be removing some data. If you don't need it then click Ok.
+
+|Error_ChangePartOfDataTableError_Message
+|Cannot change part of a data table.
+
+|Error_DeletingLockedColumnCells_Message
+|You are trying to delete a column that contains a locked cell. Locked cells cannot be deleted while the worksheet is protected.
+
+|Error_DeletingLockedRowCells_Message
+|You are trying to delete a row that contains a locked cell. Locked cells cannot be deleted while the worksheet is protected.
+
+|Error_IntersectsMergedCells_Message
+|The operation cannot be performed because the selection intersects with a merged cell.
+
+|Error_InvalidArrayFormulaLockedState_Message
+|Cannot enter an array formula into a range of cells which are not all locked or unlocked.
+
+|Error_InvalidHyperlinkAddress_Message
+|Cannot open the specified file.
+
+|Error_InvalidHyperlinkReference_Message
+|Reference is not valid.
+
+|Error_InvalidProtectedWorksheetChange_Message
+|The cell you're trying to change is on a protected sheet.
+
+|Error_NoSingleAllowedEditRange_Message
+|Some of the cells you are trying to change are password protected but no single password will allow access to all of the cells.
+
+|InvalidCommand_MixedSelection_Message
+|That command cannot be used with selections that contain a mix of entire rows/columns with other cells. Try selecting only entire rows, only entire columns or just groups of cells.
+
+|InvalidCommand_MultipleSelection_Message
+|"That command cannot be used with multiple selections. Select a single range and invoke the command again."
+
+|InvalidCommand_OverlappingSelection_Message
+|Cannot use that command on overlapping selections.
+
+|InvalidCommand_TableChangeWithMultipleSheetSelection_Message
+|Cannot make changes to a table when multiple sheets are selected.
+
+|InvalidDateTimeToolTip
+|Dates and times that are negative or too large display as $$#####$$.
+
+|InvalidNameBoxValue_Message
+|You must enter a valid reference you want to go to or type a valid name for the selection.
+
+|MenuItem_AutoFit_Columns
+|AutoFit Column Width
+
+|MenuItem_AutoFit_Rows
+|AutoFit Row Height
+
+|MenuItem_ClearContents
+|Clear Contents
+
+|MenuItem_Copy
+|Copy
+
+|MenuItem_Cut
+|Cut
+
+|MenuItem_Delete
+|Delete
+
+|MenuItem_DeleteCells
+|Delete
+
+|MenuItem_DeleteCells_Column
+|Entire column
+
+|MenuItem_DeleteCells_Row
+|Entire row
+
+|MenuItem_DeleteCells_ShiftLeft
+|Shift cells left
+
+|MenuItem_DeleteCells_ShiftUp
+|Shift cells up
+
+|MenuItem_DeleteWorksheets
+|Delete
+
+|MenuItem_Hide
+|Hide
+
+|MenuItem_Insert
+|Insert
+
+|MenuItem_InsertCells
+|Insert
+
+|MenuItem_InsertCells_Column
+|Entire column
+
+|MenuItem_InsertCells_Row
+|Entire row
+
+|MenuItem_InsertCells_ShiftDown
+|Shift cells down
+
+|MenuItem_InsertCells_ShiftRight
+|Shift cells right
+
+|MenuItem_InsertWorksheets
+|Insert
+
+|MenuItem_OpenHyperlink
+|Open Hyperlink
+
+|MenuItem_Paste
+|Paste
+
+|MenuItem_RemoveHyperlink
+|Remove Hyperlink
+
+|MenuItem_RemoveHyperlinks
+|Remove Hyperlinks
+
+|MenuItem_RenameWorksheet
+|Rename
+
+|MenuItem_SelectAllWorksheets
+|Select All Sheets
+
+|MenuItem_Unhide
+|Unhide
+
+|MenuItem_UnselectWorksheets
+|Ungroup Sheets
+
+|NewSheetName
+|Sheet{0}
+
+|PasteError_CellRangeSize_Message
+|"The paste operation cannot be performed because the copy area and paste area are not the same size. Try one of the following: $$*$$ Click one cell, then paste $$* $$ Select a rectangle that's the same size, then paste."
+
+|PasteError_General_Message
+|"An error occurred during the paste operation: {0}"
+
+|PasteError_IntersectsMergedCells_Message
+|The paste operation cannot be performed because the paste area intersects with a merged cell.
+
+|PasteError_InvalidSelectedSheetCount_Message
+|The paste operation cannot be performed because the number of worksheets in the copy and paste areas are not the same size.
+
+|PasteError_InvalidSourceRanges_Message
+|The paste operation cannot be performed on the copy areas provided.
+
+|PasteError_MultipleSourceAndTargetRanges_Message
+|The paste operation cannot be performed because there are multiple selections in the source and target worksheets.
+
+|SheetNameError_Message_Invalid
+|"You entered an invalid name '{0}' for the sheet. Make sure that: $$*$$ The name is not blank. $$*$$ There are no more than 31 characters in the name. $$*$$ The name does not start or end with a single quote ('). $$*$$ The name does not contain any of the following characters: : \ / ? $$* $$ [ ]"
+
+|SheetNameError_Message_NameIsUsed
+|A worksheet with the name '{0}' already exists in the workbook.
+
+|ToolTip_FormulaBarCancelButton
+|Cancel
+
+|ToolTip_FormulaBarEnterButton
+|Enter
+
+|ToolTip_FormulaBarNameBox
+|Name Box
+
+|ToolTip_FormulaBarTextEditor
+|Formula Bar
+
+|UltraSpreadsheet_ContextMenuItem_AutoFitColumnWidth
+|&AutoFit Column Width
+
+|UltraSpreadsheet_ContextMenuItem_AutoFitRowHeight
+|&AutoFit Row Height
+
+|UltraSpreadsheet_ContextMenuItem_ClearContents
+|Clear Co&ntents
+
+|UltraSpreadsheet_ContextMenuItem_Copy
+|&Copy
+
+|UltraSpreadsheet_ContextMenuItem_Cut
+|Cu&t
+
+|UltraSpreadsheet_ContextMenuItem_Delete
+|&Delete
+
+|UltraSpreadsheet_ContextMenuItem_EntireColumn
+|Entire &column
+
+|UltraSpreadsheet_ContextMenuItem_EntireRow
+|Entire &row
+
+|UltraSpreadsheet_ContextMenuItem_Hide
+|&Hide
+
+|UltraSpreadsheet_ContextMenuItem_Insert
+|&Insert
+
+|UltraSpreadsheet_ContextMenuItem_OpenHyperlink
+|&Open Hyperlink
+
+|UltraSpreadsheet_ContextMenuItem_Paste
+|&Paste
+
+|UltraSpreadsheet_ContextMenuItem_RemoveHyperlinks
+|&Remove Hyperlinks
+
+|UltraSpreadsheet_ContextMenuItem_Rename
+|&Rename
+
+|UltraSpreadsheet_ContextMenuItem_SelectAllSheets
+|&Select All Sheets
+
+|UltraSpreadsheet_ContextMenuItem_ShiftCellsDown
+|Shift cells &down
+
+|UltraSpreadsheet_ContextMenuItem_ShiftCellsLeft
+|Shift cells &left
+
+|UltraSpreadsheet_ContextMenuItem_ShiftCellsRight
+|Shift cells r&ight
+
+|UltraSpreadsheet_ContextMenuItem_ShiftCellsUp
+|Shift cells &up
+
+|UltraSpreadsheet_ContextMenuItem_UngroupSheets
+|&Ungroup Sheets
+
+|UltraSpreadsheet_ContextMenuItem_Unhide
+|&Unhide
+
+|Undo_Bold
+|Bold
+
+|Undo_Borders
+|Borders
+
+|Undo_BottomAlignment
+|Bottom Alignment
+
+|Undo_CenterAlignment
+|Center Alignment
+
+|Undo_ClearCellContents
+|Clear {0}
+
+|Undo_ClearCellFormats
+|Clear
+
+|Undo_ClearHyperlinks
+|Clear Hyperlinks
+
+|Undo_ClearTables
+|Clear Tables
+
+|Undo_CreateNamedReference
+|Define Name
+
+|Undo_CreateTable
+|Create Table
+
+|Undo_Cut
+|Cut
+
+|Undo_Delete
+|Delete
+
+|Undo_EditCell
+|Typing '{1}' in {0}
+
+|Undo_Filter
+|Filter
+
+|Undo_Font
+|Font
+
+|Undo_FontSize
+|Font Size
+
+|Undo_FormatCells
+|Format Cells
+
+|Undo_Group
+|Group
+
+|Undo_Hyperlink
+|Hyperlink
+
+|Undo_InsertCells
+|Insert Cells
+
+|Undo_InsertColumns
+|Insert Columns
+
+|Undo_InsertRows
+|Insert Rows
+
+|Undo_Italic
+|Italic
+
+|Undo_JustifyAlignment
+|Justify Alignment
+
+|Undo_LeftAlignment
+|Left Alignment
+
+|Undo_MergeCells
+|Merge Cells
+
+|Undo_MiddleAlignment
+|Center Vertically Alignment
+
+|Undo_Paste
+|Paste
+
+|Undo_RemoveHyperlinks
+|Remove Hyperlinks
+
+|Undo_RemoveTable
+|Remove Table
+
+|Undo_ResetOptions
+|Reset Options
+
+|Undo_ResizeColumn
+|Column Width
+
+|Undo_ResizeRow
+|Row Height
+
+|Undo_RightAlignment
+|Right Alignment
+
+|Undo_Sort
+|Sort
+
+|Undo_Strikethrough
+|Strikethrough
+
+|Undo_Style
+|Style
+
+|Undo_TabColor
+|Tab Color
+
+|Undo_TopAlignment
+|Top Alignment
+
+|Undo_Underline
+|Underline
+
+|Undo_View
+|View Change
+
+|Undo_WrapText
+|Wrap Text
+
+|Undo_Zoom
+|Zoom
+
+|====

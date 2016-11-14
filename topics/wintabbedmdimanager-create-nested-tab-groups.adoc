@@ -1,0 +1,89 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintabbedmdimanager-create-nested-tab-groups",
+    "controlName": ["WinTabbedMdiManager"],
+    "tags": [],
+    "guid": "{984464DE-A668-4689-ABFA-69FD0427DEE2}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create Nested Tab Groups
+
+With the release of Infragistics Windows Forms 2005 Volume 2, the WinTabbedMdiManager™ component includes the ability to create nested tab groups. A nested tab group is an  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.mditabgroup.html[MdiTabGroup]"]  that contains other MdiTabGroups instead of MdiTabs. The ability to nest tab groups allows for more customizable arrangements since you are no longer limited to having all the tab groups arranged in either a vertical or horizontal orientation.
+
+image::Images\WinTabbedMdiManager_Create_Nested_Tab_Groups_04.png[example of ultratabbedmdimanager with nested tab groups]
+
+[start=1]
+. Create a new Windows Application.
+[start=2]
+. On the main form, set the property IsMdiContainer to true.
+[start=3]
+. On the main form, also set the property Size to a larger value (e.g. 500,400).
+[start=4]
+. With the project's form open in design view, add an UltraTabbedMdiManager to your form.
+[start=5]
+. On the UltraTabbedMdiManager, set the AllowNestedTabGroups to true.
+[start=6]
+. Now add another Windows Form to the project, taking its default name, ChildForm.
+[start=7]
+. In either the form load event or button click event of the main form, you should add the following code. This creates 5 instances of ChildForm and makes Form1 its parent.
+
+*In Visual Basic:*
+
+----
+Private Sub Create_Nested_Tab_Groups_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim i As Integer
+	For i = 0 To 5
+		Dim myForm As New ChildForm()
+		myForm.MdiParent = Me
+		myForm.Text = "Child Form" & i.ToString()
+		myForm.Show()
+	Next i
+End Sub
+----
+
+*In C#:*
+
+----
+private void Create_Nested_Tab_Groups_Load(
+  object sender, EventArgs e)
+{
+	for(int i=0; i$$<=$$5; i++)
+	{
+		ChildForm myform = new ChildForm();
+		myform.MdiParent = this;
+		myform.Text = "Child Form" + i.ToString();
+		myform.Show();
+	}
+}
+----
+
+[start=8]
+. If you build and run the project, it will look similar to the screen shot below. So far, all the MdiTabs that have been created are positioned into a single MdiTabGroup.
+
+image::Images\WinTabbedMdiManager_Create_Nested_Tab_Groups_01.PNG[example of ultratabbedmdimanager after using code listed above]
+
+[start=9]
+. With the form running, if you right click on the last form's tab ("Child Form5") a context menu will appear. If you select New Vertical Tab Group, the tab will be moved to a new MdiTabGroup and the form will now look like the following.
+
+image::Images\WinTabbedMdiManager_Create_Nested_Tab_Groups_02.png[example of ultratabbedmdimanager with one nested tab group]
+
+[start=10]
+. If you right click on the last tab in the first tab group ("Child Form 4"), you may notice that the context menu still gives you the option of creating either a horizontal or vertical tab group. If you were to choose to create a vertical tab group at this point, the new tabgroup will be a sibling to this tab group since it is already displayed in vertical arrangement. Instead, choose New Horizontal Tab Group. This will cause the creation of 2 new tab groups. One tab group will contain the tab "Child Form4"; the other will be a nesting (i.e. a container) tab group that will contain the repositioned tab's tabgroup and the tab group that previously contained "Child Form4". At this point, these groups will be arranged with a horizontal splitter between the two groups as seen below.
+
+image::Images\WinTabbedMdiManager_Create_Nested_Tab_Groups_03.png[example of ultratabbedmdimanager with multiple nested tab groups]
+
+[start=11]
+. To reproduce the remainder of the layout displayed in the sample image displayed at the top of this page, you would right click on "Child Form3" and select New Vertical Tab Group, then right click on "Child Form2" and select New Horizontal Tab Group. Lastly, you would click and drag the tab "Child Form1" and drop it near the inside bottom edge of the tab group containing "Child Form5".
+
+.Note
+[NOTE]
+====
+You can save this layout so that you can use it again when the form loads. For more information on saving the tabbed mdi layout, refer to the link:wintabbedmdimanager-save-and-restore-tabbed-mdi-layout.html[Save and Restore a Tabbed Mdi's Layout] help topic.
+====

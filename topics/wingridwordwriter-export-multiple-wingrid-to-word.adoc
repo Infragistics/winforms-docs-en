@@ -1,0 +1,116 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridwordwriter-export-multiple-wingrid-to-word",
+    "controlName": ["WinGridWordWriter"],
+    "tags": ["Exporting","Getting Started","How Do I"],
+    "guid": "ba76b7e8-542c-4d36-85db-4a150f33a415",  
+    "buildFlags": [],
+    "createdOn": "2011-03-15T17:04:18.4022883Z"
+}
+|metadata|
+////
+
+= Exporting Multiple WinGrids to Word
+
+The WinGridWordWriter™ component enables you to export multiple WinGrid™ controls to a new Word document using the link:infragistics4.win.ultrawingrid.wordwriter.v{ProductVersion}~infragistics.win.ultrawingrid.wordwriter.ultragridwordwriter~export.html[Export] method, based on the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object within the Infragisitcs.Documents.IO assembly. The Export method accepts the WinGrid control that you wish to export and the WordDocumentWriter object as parameters.
+
+The following code illustrates the export of two UltraGrid controls along with supporting paragraphs and titles to a new Word document.
+
+.Note
+[NOTE]
+====
+A reference to the Infragistics3.Documents.IO, Infragistics3.Win.UltraWinGrid.WordWriter and Infragistics4.Win.UltraWinGrid assemblies are required.
+====
+
+To begin, drag and drop from the toolbox two UltraGrid controls and an UltraGridWordWriter component onto the form. Bind the UltraGrid controls to the Products and Categories tables of the Northwind database respectively in the Form Load event handler.
+
+.Note
+[NOTE]
+====
+For information on how to data bind the WinGrid control, see the link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source] topic.
+====
+
+*In C#:*
+
+----
+// Create a new instance of the WordDocumentWriter class
+// using the static 'Create' method.
+// After writing content, this instance must be closed.
+WordDocumentWriter wordDocWriter = WordDocumentWriter.Create(@"C:\Samples_Projects\GridDataInWord.docx");
+// Start a Word Document.
+// This must be balanced with a corresponding call to EndDocument.
+wordDocWriter.StartDocument();
+// Begin a paragraph. This must be
+// balanced with a corresponding call to EndParagraph.
+wordDocWriter.StartParagraph();
+// Create a new instance of the Font class
+Infragistics.Documents.Word.Font font = wordDocWriter.CreateFont();
+font.Bold = true;
+font.Underline = Underline.Thick;
+font.ForeColor = Color.Red;
+// Add text with predefined font to a paragraph
+wordDocWriter.AddTextRun("Products", font);
+wordDocWriter.AddNewLine();
+// End paragraph
+wordDocWriter.EndParagraph();
+// Call the Export method on WinGridWordWriter and
+// pass the Grid control and WordDocumentWriter object as parameters.
+this.ultraGridWordWriter1.Export(ultraGrid1, wordDocWriter);
+wordDocWriter.AddEmptyParagraph();
+wordDocWriter.StartParagraph();
+// Add text with predefined font to a paragraph
+wordDocWriter.AddTextRun("Categories", font);
+wordDocWriter.AddNewLine();
+wordDocWriter.EndParagraph();
+//Export the second Grid to Word
+this.ultraGridWordWriter1.Export(ultraGrid2, wordDocWriter);
+// End the Document
+wordDocWriter.EndDocument();
+// Close the writer and finalize content
+wordDocWriter.Close();
+----
+
+*In Visual Basic:*
+
+----
+' Create a new instance of the WordDocumentWriter class
+' using the static 'Create' method.
+' After writing content, this instance must be closed.
+Dim wordDocWriter As WordDocumentWriter = WordDocumentWriter.Create("C:\Samples_Projects\GridDataInWord.docx")
+' Start a Word Document.
+' This must be balanced with a corresponding call to EndDocument.
+wordDocWriter.StartDocument()
+' Begin a paragraph. This must be
+' balanced with a corresponding call to EndParagraph.
+wordDocWriter.StartParagraph()
+Dim font As Infragistics.Documents.Word.Font = wordDocWriter.CreateFont()
+font.Bold = True
+font.Underline = Underline.Thick
+font.ForeColor = Color.Red
+' Add text with predefined font to a paragraph
+wordDocWriter.AddTextRun("Products", font)
+wordDocWriter.AddNewLine()
+' End paragraph
+wordDocWriter.EndParagraph()
+' Call the Export method on WinGridWordWriter and
+' pass the Grid control and WordDocumentWriter object as parameters.
+Me.ultraGridWordWriter1.Export(ultraGrid1, wordDocWriter)
+wordDocWriter.AddEmptyParagraph()
+wordDocWriter.StartParagraph()
+' Add text with predefined font to a paragraph
+wordDocWriter.AddTextRun("Categories", font)
+wordDocWriter.AddNewLine()
+wordDocWriter.EndParagraph()
+'Export the second Grid to Word
+Me.ultraGridWordWriter1.Export(ultraGrid2, wordDocWriter)
+wordDocWriter.EndDocument()
+' Closes the writer and finalize content
+wordDocWriter.Close()
+----
+
+== Related Topics
+
+* link:wingridwordwriter-about-wingridwordwriter.html[About WinGridWordWriter]
+* link:wingridwordwriter-export-wingrid-with-paragraphs-to-word.html[Exporting WinGrid with Paragraphs to Word]

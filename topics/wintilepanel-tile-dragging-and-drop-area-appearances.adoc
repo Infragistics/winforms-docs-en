@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-tile-dragging-and-drop-area-appearances",
+    "controlName": ["WinTilePanel"],
+    "tags": ["Events","How Do I","Styling"],
+    "guid": "{400D679C-0231-4D97-AF8E-9583D97A3921}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Tile Dragging and Drop Area Appearances
+
+WinTilePanel™ allows end users to change the order of the tiles. This can be performed by simply dragging the tiles. When a tile is dragged and hovered over a target tile position, both the tiles simply swap their positions, where only the origin and target tiles are involved in the swap action. You can also prevent tiles from being dragged or change its positions. For more information on this please see the link:wintilepanel-prevent-tile-dragging.html[Prevent Tile Dragging] topic.
+
+The following tile level and panel level events can be handled for any actions required during or after the dragging of tiles:
+
+=== UltraTile level Events:
+
+* Dragging - Occurs when an UltraTile is about to be dragged
+* Dragged -Occurs when an UltraTile has been dragged
+* DragOverPosition – Occurs when an UltraTile has been dragged over a new tile position
+
+=== UltraTilePanel level Events:
+
+* TileDragging - Occurs when an UltraTile is about to be dragged
+* TileDragged -Occurs when an UltraTile has been dragged
+* TileDragOverPosition – Occurs when an UltraTile has been dragged over a new tile position
+
+The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~dropareaappearance.html[DropAreaAppearance]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~dropareaborderstyle.html[DropAreaBorderStyle]"]  properties enable you to style the new tile position when a tile is being dragged. These appearance settings provide a visual cue for where the tiles are going to be dropped. For information on adding tiles to the WinTilePanel please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
+
+*In Visual Basic:*
+
+----
+Me.ultraTilePanel1.DropAreaAppearance.BackColor = Color.Gray 
+Me.ultraTilePanel1.DropAreaBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded4Thick
+----
+
+*In C#:*
+
+----
+this.ultraTilePanel1.DropAreaAppearance.BackColor = Color.Gray;
+this.ultraTilePanel1.DropAreaBorderStyle = Infragistics.Win.UIElementBorderStyle.Rounded4Thick;
+----
+
+image::Images\WinTilePanel_Tile_Dragging_and_Drop_Area_Appearances_01.png[]

@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-styling-row-selector-images-for-different-states-of-a-row",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{007D26B9-5C0B-4F14-B71E-18CF6D8E5F73}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T11:53:46Z"
+}
+|metadata|
+////
+
+= Styling Row Selector Images for Different States of a Row
+
+The WinGrid™ control displays default images in the Row Selectors to indicate certain states of a row like active row, row with pending changes, state for adding new row, active row with pending changes and active add new row state. You can replace these default images or even set them to null by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"]  Object’  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~rowselectorimages.html[RowSelectorImages]"]  property. An image property (along with a default image) exists for each row state.
+
+.Note
+[NOTE]
+====
+*Note:* The image properties can be set to null only at run time due to the limitations of the .NET Image Editor.
+====
+
+*In Visual Basic:*
+
+----
+' Sets custom image to row selector when a row is in Active state 
+Me.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveRowImage = Image.FromFile("C:\Images\Tickmark.gif")
+----
+
+*In C#:*
+
+----
+// Sets custom image to row selector when a row is in Active state
+this.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveRowImage = Image.FromFile(@"C:\Images\Tickmark.gif");
+----
+
+image::Images\WinGrid_Styling_Row_Selector_Images_for_Different_States_of_a_Row_01.png[]
+
+*In Visual Basic:*
+
+----
+' Remove the default active row selector image 
+Me.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveRowImage = Nothing
+----
+
+*In C#:*
+
+----
+// Remove the default active row selector image
+ this.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveRowImage = null;
+----
+
+*In Visual Basic:*
+
+----
+' Sets Custom image to Row selector when a new row is added and in Active state 
+Me.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveAndAddNewRowImage = Image.FromFile("C:\Images\flower.jpg")
+----
+
+*In C#:*
+
+----
+// Sets Custom image to Row selector when a new row is added and in Active state
+this.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveAndAddNewRowImage = Image.FromFile(@"C:\Images\flower.jpg");
+----
+
+image::Images\WinGrid_Styling_Row_Selector_Images_for_Different_States_of_a_Row_02.png[]
+
+*In Visual Basic:*
+
+----
+' Sets Custom image to Row selector when an Active row is being edited
+Me.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveAndDataChangedImage = Image.FromFile(@"C:\Images\pencil.jpg")
+----
+
+*In C#:*
+
+----
+// Sets Custom image to Row selector when an Active row is being edited
+this.ultraGrid1.DisplayLayout.RowSelectorImages.ActiveAndDataChangedImage = Image.FromFile(@"C:\Images\pencil.jpg");
+----
+
+image::Images\WinGrid_Styling_Row_Selector_Images_for_Different_States_of_a_Row_03.png[]

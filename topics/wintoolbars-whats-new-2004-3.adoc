@@ -1,0 +1,34 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbars-whats-new-2004-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{0DF564E8-5BEB-4803-B4D4-75D9D5C911FD}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinToolbars 2004.3
+
+The major new features for this version of WinToolbarsManager™ are the new elements:
+
+* A RuntimeCustomizationOptions property has been added to the WinToolbarsManager as well as a new enumeration with the same name. This property is used to determine what customization options are available for the end-user.
+* The context menu displayed when you right-click on a tool in the runtime customize dialog now includes several new options for manipulating the image associated with that tool instance. This functionality is similar to that of MS Office in that the image can be copied to the clipboard, replaced with an image in the clipboard, edited, or restored to the original image.
+* The category property of SharedProps will now display a drop-down containing a list of the categories currently used by the other tools.
+* The VisualStudio2005 "ToolbarStyle" is now applied to the ComboTool and TextTool.
+* The appearance of the PopupColorPickerTool is now synchronized with the new VisualStudio2005-Style value.
+* Two new properties were added to the PopupColorPickerTool – ShowAutomaticColor and ShowTransparentColor. These are used to show/hide the Automatic Color button and Transparent Color button in the drop-down area. The Automatic Color button existed previously and the associated property defaults to True. There had been no button representing the transparent color (i.e., System.Drawing.Color.Transparent) so to maintain backward compatibility, this property defaults to False.
+* There is a new option (i.e., verb) named "Import Tools and Toolbars..." on the right-click designer menu. This option displays a wizard dialog that can be used to import tools and toolbars from a specified layout file.
+* There is now a new value in the ToolbarStyle enumeration of VisualStudio2005 that is used for the Style property of the WinToolbarsManager.
+* There is a new tab in the Customize Dialog that can be used to modify popup menu tools. This is primarily intended for customers who use the WinToolbarsManager for displaying a context menu and not creating toolbars. The designer allows any created PopupMenuTool to be selected, at which point its current tools will be displayed in the list on the left. The list on the right contains all the tools that may be placed in the menu. Tools from the right list may be dragged to the list on the left.
+* The Microsoft Office "quick customize" functionality has been implemented in the WinToolbars runtime. This functionality allows the user to hold down the Alt key while pressing the left mouse button on a tool to initiate a drag or copy of that tool without entering the customize dialog.
+* The design-time Customize Dialog now includes some of the functionality added to the in-place customizer with the exception of the "New Toolbar..." button since that functionality is already available via the Toolbars tab. This additional functionality includes a place Holder tool on each toolbar/menu that can be used to add tools without having to drag them from the Tools tab. There is also an option of the right click menu for a tool that allows the insertion of a new/existing tool before the selected tool.
+* The right-click design menu (displayed when in customize mode and right-clicking on a tool instance on a toolbar/popupmenu) now includes a new command – "Convert Tool Type...". This command is used to convert all the instances of the selected tool from the current type to one of the other supported tool types – e.g., a ButtonTool can be converted to a StateButtonTool.
+* ListTool (and therefore MdiWindowListTool) now support the use of the Width, MaxWidth and MinWidth properties of the SharedProps/InstanceProps. These properties can be used to control the width of the list tool within the menu that contains them.
+* ControlContainerTool and TextBoxTool (and its derived classes – i.e., ComboBoxTool and FontListTool) support displaying their caption when placed on a toolbar. To ensure backward compatibility, the Caption will not be displayed unless the DisplayStyle is set to TextOnlyAlways or ImageAndText. Note that these tools will maintain the previous behavior of not displaying an image, and the caption will always be aligned to the left of the control/edit area.
+* All PopupToolBase tools now support displaying a checked state when segmented. This was accomplished by adding a Checked property to the PopupToolBase class. This state is only used when the DropDownArrowStyle is set to SegmentedStateButton, which is a new enumeration value.
+* "In-Place" editing has been added to the WinToolbarsManager to allow tools/toolbars to be created, dragged, etc., without entering the Customize Dialog.

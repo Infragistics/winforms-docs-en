@@ -1,0 +1,593 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-page-break-when-printing",
+    "controlName": [],
+    "tags": [],
+    "guid": "a3b74206-d03c-4ce4-9d2f-0ddc4dddd9d3",
+    "buildFlags": [],
+    "createdOn": "2013-09-15T16:15:16.837973Z"
+}
+|metadata|
+////
+
+= Page Break When Printing
+
+[[_Ref364357058]]
+== Topic Overview
+
+=== Purpose
+
+This topic provides a conceptual overview of the  _WinGrid_™ printing feature that inserts a page break prior to each row meeting your specification criteria.
+
+[[_Ref364352141]]
+
+=== Prerequisites
+
+To complete the procedure, you need to understand the following topics if you are not familiar with using the  _WinGrid_   with document printing concepts.
+
+* link:wingrid-using-wingrid.html[Using WinGrid]
+* link:wingridprintdocument.html[WinGridPrintDocument]
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref364356844,Overview>>
+** <<_Ref364356862,WinGrid page break overview>>
+** <<_Ref365532021,Page break on specified rows>>
+** <<_Ref365532361,Page break on grouped rows>>
+
+* <<_Ref364356900,Code Examples>>
+** <<_Ref364356902,Code Example: Create a New Project>>
+** <<_Ref364357104,Code Example: Initializing the Grid>>
+** <<_Ref364356926,Code Example: Setup a Page Break>>
+** <<_Ref364356936,Code Example: Print Preview>>
+** <<_Ref364356947,Sample Data>>
+
+* <<_Ref364356955,Related Content>>
+
+[[_Ref364356844]]
+== Overview
+
+[[_Ref364356862]]
+
+=== WinGrid page break overview
+
+The  _WinGrid_   control’s printing functionality now supports a page break option enabling page breaks on specified rows or grouped rows in print preview and print.
+
+This enhancement does not modify the existing behavior if there are no rows set to start a new page.
+
+.Note
+[NOTE]
+====
+This feature has no effect when the grid is in CardView. The printing behavior and records in card view of the WinGrid print normally.
+====
+
+[[_Ref365532021]]
+
+=== Page break on specified rows
+
+This requires using an link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid_members.html[UltraGrid] print preview or print configured project. If this is not the case refer to the <<_Ref364352141,Prerequisites>> section before you continue.
+
+Specify the row as the start of a new page by configuring the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow_members.html[UltraGridRow] object’s link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] property superseding the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] settings.
+
+For example, setting the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] to Horizontal with the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] set on a child row, that child row begins with the new page. If that child row is the first visible child, then the parent row will also be on the new page. The complete code for this scenario appears at the end of this topic.
+
+[[_Ref364356874]]
+
+=== Page break on grouped rows
+
+Page break on grouped rows would be more useful or perhaps more common in an application where groups of rows can be printed on separate pages. This would require handling the  _InitializeGroupByRow_   event and initiate the page break on grouped rows.
+
+*In Visual Basic:*
+[source,vb]
+Private Sub UltraGrid1InitializeGroupByRow(sender As Object, e As InitializeGroupByRowEventArgs)
+      ' If the grouped row has no parent then this is the first level of grouping.
+      ' Now we want to start a new page with this group.
+      If e.Row.ParentRow Is Nothing Then
+            e.Row.StartsNewPrintedPage = True
+            e.Row.ExpandAll()
+      End If
+End Sub
+
+*In C#:*
+[source,csharp]
+private void UltraGrid1InitializeGroupByRow(object sender, InitializeGroupByRowEventArgs e)
+{
+    // If the grouped row has no parent then this is the first level of grouping.
+    // Now we want to start a new page with this group.
+    if (e.Row.ParentRow == null)
+    {
+        e.Row.StartsNewPrintedPage = true;
+        e.Row.ExpandAll();
+    }
+}
+
+
+[[_Ref364356900]]
+== Code Examples
+
+=== Code examples summary
+
+The following table lists the code examples included in this topic.
+
+[options="header", cols="a,a"]
+|====
+|Example|Description
+
+|<<_Ref364356902,Creating a New project>>
+|Creating a new Windows Forms project.
+
+|<<_Ref364357104,Initializing the Grid>>
+|Initializing the grid with some property settings and binding the grid to a data.
+
+|<<_Ref364356926,Setting up a Page Break>>
+|Handling the grid’s _InitalizeRow_ event to configure the page break.
+
+|<<_Ref364356936,Print Preview>>
+|Opening up the print preview dialog to view the page before printing.
+
+|<<_Ref364356947,Sample Data>>
+|
+
+|====
+
+[[_Ref364356902]]
+== Code Example: Creating a New Project
+
+=== Description
+
+Create a new project and add the following controls and components in your form:
+
+* _UltraWinGrid_
+
+* _UltraPrintPreviewDialog_
+
+* _UltraGridPrintDocument_
+
+* _UltraButton_   (or Microsoft Button)
+
+=== Code
+
+Add the following namespace in your form:
+
+*In C#:*
+
+[source,csharp]
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+[[_Ref364356914]]
+[[_Ref364357104]]
+== Code Example: Initializing the Grid
+
+=== Description
+
+The following is the code for implementing <<_Ref365532021,Page break on specified rows>> demonstrating the Initial  _WinGrid_   property settings in the form’s load event.
+
+=== Code
+
+*In Visual Basic:*
+[source, vb]
+Private Sub Form1Load(sender As Object, e As EventArgs)
+      ultraGrid1.DataSource = New MovieDataModel().MovieCategories
+      ultraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.Horizontal
+      ' Set the UltraGridPrintDocument's Grid property to the Grid to print
+      ultraGridPrintDocument1.Grid = ultraGrid1
+      ' Set the UltraPrintPreviewDialog's Document property to the UltraGridPrintDocument
+      ultraPrintPreviewDialog1.Document = ultraGridPrintDocument1
+      ' Expand all rows for printing
+      ultraGrid1.Rows.ExpandAll(True)
+End Sub
+
+*In C#:*
+[source,csharp]
+private void Form1Load(object sender, EventArgs e)
+{
+    ultraGrid1.DataSource = new MovieDataModel().MovieCategories;
+    ultraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.Horizontal;
+    // Set the UltraGridPrintDocument's Grid property to the Grid to print
+    ultraGridPrintDocument1.Grid = ultraGrid1;
+    // Set the UltraPrintPreviewDialog's Document property to the UltraGridPrintDocument
+    ultraPrintPreviewDialog1.Document = ultraGridPrintDocument1;
+    // Expand all rows for printing
+    ultraGrid1.Rows.ExpandAll(true);
+}
+
+[[_Ref364356926]]
+== Code Example: Setting up a Page Break
+
+=== Description
+
+The following code demonstrates how to insert a page break for each occurrence where the child row is a “PG” rated movie; configured in the grid’s  _InitializeRow_   event.
+
+.Note
+[NOTE]
+====
+Since all rows raise the  _InitializeRow_   event use `IsPrintLayout` to determine if the row is a print row thereby avoiding unnecessary property settings.
+====
+
+=== Code
+
+*In Visual Basic:*
+[source, vb]
+Private Sub UltraGrid1InitializeRow(sender As Object, e As InitializeRowEventArgs)
+      Dim column As UltraGridColumn = ultraGrid1.DisplayLayout.Bands(1).Columns(2)
+      Dim cellText As String = e.Row.GetCellText(column)
+      ' The InitializeRow event is raised for on-screen rows as well, therefore 
+      ' we need to make sure the row is a print row with the following condition.
+      If e.Row.Band.Layout.IsPrintLayout Then
+            If cellText = "PG" Then
+                  e.Row.StartsNewPrintedPage = True
+            End If
+      End If
+End Sub
+
+*In C#:*
+[source,csharp]
+private void UltraGrid1InitializeRow(object sender, InitializeRowEventArgs e)
+{
+    UltraGridColumn column = ultraGrid1.DisplayLayout.Bands[1].Columns[2];
+    string cellText = e.Row.GetCellText(column);
+    // The InitializeRow event is raised for on-screen rows as well, therefore 
+    // we need to make sure the row is a print row with the following condition.
+    if (e.Row.Band.Layout.IsPrintLayout)
+    {
+        if (cellText == "PG")
+            e.Row.StartsNewPrintedPage = true;
+    }
+}
+
+
+[[_Ref364356936]]
+== Code Example: Print Preview
+
+=== Description
+
+The following code demonstrates how to display the print preview dialog window to inspect the pages prior to printing.
+
+=== Code
+*In Visual Basic*
+[source, vb]
+Private Sub BtnPrintPreviewClick(sender As Object, e As EventArgs)
+      ultraPrintPreviewDialog1.ShowDialog(Me)
+End Sub
+
+*In C#:*
+[source,csharp]
+private void BtnPrintPreviewClick(object sender, EventArgs e)
+{
+    ultraPrintPreviewDialog1.ShowDialog(this);
+}
+
+[[_Ref364356947]]
+== Sample Data
+
+=== Sample data
+
+Use the following sample data to demonstrate page break on specified rows.
+
+*In C#:*
+[source,csharp]
+public MovieDataModel()
+        {
+            _movieCategories = new List<MovieCategories>();
+            // Drama
+            var category1 = new MovieCategories("Drama");
+            category1.AddTitles("Movie Title...", "Description", "PG");
+            category1.AddTitles("Movie Title...", "Description", "R");
+            category1.AddTitles("Movie Title...", "Description", "PG-13");
+            category1.AddTitles("Movie Title...", "Description", "PG");
+            category1.AddTitles("Movie Title...", "Description", "R");
+            category1.AddTitles("Movie Title...", "Description", "R");
+            category1.AddTitles("Movie Title...", "Description", "PG-13");
+            category1.AddTitles("Movie Title...", "Description", "PG-13");
+            category1.AddTitles("Movie Title...", "Description", "NR");
+            category1.AddTitles("Movie Title...", "Description", "NR");
+            // Add to the Categories collection
+            _movieCategories.Add(category1);
+            // Action
+            var category2 = new MovieCategories("Action");
+            category2.AddTitles("Movie Title...", "Description", "R");
+            category2.AddTitles("Movie Title...", "Description", "PG-13");
+            category2.AddTitles("Movie Title...", "Description", "PG-13");
+            category2.AddTitles("Movie Title...", "Description", "R");
+            category2.AddTitles("Movie Title...", "Description", "PG");
+            category2.AddTitles("Movie Title...", "Description", "PG-13");
+            category2.AddTitles("Movie Title...", "Description", "PG-13");
+            category2.AddTitles("Movie Title...", "Description", "NR");
+            category2.AddTitles("Movie Title...", "Description", "R");
+            category2.AddTitles("Movie Title...", "Description", "NR");
+            // Add to the Categories collection
+            _movieCategories.Add(category2);
+            // Commedy
+            var category3 = new MovieCategories("Commedy");
+            category3.AddTitles("Movie Title...", "Description", "PG-13");
+            category3.AddTitles("Movie Title...", "Description", "R");
+            category3.AddTitles("Movie Title...", "Description", "R");
+            category3.AddTitles("Movie Title...", "Description", "R");
+            category3.AddTitles("Movie Title...", "Description", "PG-13");
+            category3.AddTitles("Movie Title...", "Description", "PG-13");
+            category3.AddTitles("Movie Title...", "Description", "PG-13");
+            category3.AddTitles("Movie Title...", "Description", "PG");
+            category3.AddTitles("Movie Title...", "Description", "R");
+            category3.AddTitles("Movie Title...", "Description", "NR");
+            // Add to the Categories collection
+            _movieCategories.Add(category3);
+            // Documentary
+            var category4 = new MovieCategories("Documentary");
+            category4.AddTitles("Movie Title...", "Description", "PG");
+            category4.AddTitles("Movie Title...", "Description", "R");
+            category4.AddTitles("Movie Title...", "Description", "PG");
+            category4.AddTitles("Movie Title...", "Description", "PG");
+            category4.AddTitles("Movie Title...", "Description", "PG-13");
+            category4.AddTitles("Movie Title...", "Description", "PG-13");
+            category4.AddTitles("Movie Title...", "Description", "PG-13");
+            category4.AddTitles("Movie Title...", "Description", "PG");
+            category4.AddTitles("Movie Title...", "Description", "R");
+            category4.AddTitles("Movie Title...", "Description", "NR");
+            // Add to the Categories collection
+            _movieCategories.Add(category4);
+        }
+        private List<MovieCategories> _movieCategories;
+        public List<MovieCategories> MovieCategories
+        {
+            get { return _movieCategories; }
+            set
+            {
+                if (_movieCategories != null && _movieCategories == value) return;
+                _movieCategories = value;
+            }
+        }
+    }
+    // Class MovieCategories
+    public class MovieCategories
+    {
+        // Constructor
+        public MovieCategories(string movieCategory)
+        {
+            _movieCategory = movieCategory;
+        }
+        public void AddTitles(string title, string description, string rating)
+        {
+            _movieList.Add(new MovieList(title, description, rating));
+        }
+        private string _movieCategory;
+        public string MovieCategory
+        {
+            get { return _movieCategory; }
+            set
+            {
+                if (_movieCategory != null && _movieCategory == value) return;
+                _movieCategory = value;
+            }
+        }
+        private List<MovieList> _movieList =
+            new List<MovieList>();
+        public List<MovieList> MovieList
+        {
+            get { return _movieList; }
+            set
+            {
+                if (_movieList != null && _movieList == value) return;
+                _movieList = value;
+            }
+        }
+    }
+    // Class MovieList
+    public class MovieList
+    {
+        private string _movieTitle;
+        public string MovieTitle
+        {
+            get { return _movieTitle; }
+            set
+            {
+                if (_movieTitle != null && _movieTitle == value) return;
+                _movieTitle = value;
+            }
+        }
+        private string _movieDescription;
+        public string MovieDescription
+        {
+            get { return _movieDescription; }
+            set
+            {
+                if (_movieDescription != null && _movieDescription == value) return;
+                _movieDescription = value;
+            }
+        }
+        private string _movieRating;
+        public string MovieRating
+        {
+            get { return _movieRating; }
+            set
+            {
+                if (_movieRating != null && _movieRating == value) return;
+                _movieRating = value;
+            }
+        }
+        public MovieList(string movieTitle, string movieDescription, string movieRating)
+        {
+            _movieTitle = movieTitle;
+            _movieDescription = movieDescription;
+            _movieRating = movieRating;
+        }
+    }
+
+*In Visual Basic:*
+[source,vb]
+Public Class MovieDataModel
+      Public Sub New()
+            _movieCategories = New List(Of MovieCategories)()
+            ' Drama
+            Dim category1 = New MovieCategories("Drama")
+            category1.AddTitles("Movie Title...", "Description", "PG")
+            category1.AddTitles("Movie Title...", "Description", "R")
+            category1.AddTitles("Movie Title...", "Description", "PG-13")
+            category1.AddTitles("Movie Title...", "Description", "PG")
+            category1.AddTitles("Movie Title...", "Description", "R")
+            category1.AddTitles("Movie Title...", "Description", "R")
+            category1.AddTitles("Movie Title...", "Description", "PG-13")
+            category1.AddTitles("Movie Title...", "Description", "PG-13")
+            category1.AddTitles("Movie Title...", "Description", "NR")
+            category1.AddTitles("Movie Title...", "Description", "NR")
+            ' Add to the Categories collection
+            _movieCategories.Add(category1)
+            ' Action
+            Dim category2 = New MovieCategories("Action")
+            category2.AddTitles("Movie Title...", "Description", "R")
+            category2.AddTitles("Movie Title...", "Description", "PG-13")
+            category2.AddTitles("Movie Title...", "Description", "PG-13")
+            category2.AddTitles("Movie Title...", "Description", "R")
+            category2.AddTitles("Movie Title...", "Description", "PG")
+            category2.AddTitles("Movie Title...", "Description", "PG-13")
+            category2.AddTitles("Movie Title...", "Description", "PG-13")
+            category2.AddTitles("Movie Title...", "Description", "NR")
+            category2.AddTitles("Movie Title...", "Description", "R")
+            category2.AddTitles("Movie Title...", "Description", "NR")
+            ' Add to the Categories collection
+            _movieCategories.Add(category2)
+            ' Commedy
+            Dim category3 = New MovieCategories("Commedy")
+            category3.AddTitles("Movie Title...", "Description", "PG-13")
+            category3.AddTitles("Movie Title...", "Description", "R")
+            category3.AddTitles("Movie Title...", "Description", "R")
+            category3.AddTitles("Movie Title...", "Description", "R")
+            category3.AddTitles("Movie Title...", "Description", "PG-13")
+            category3.AddTitles("Movie Title...", "Description", "PG-13")
+            category3.AddTitles("Movie Title...", "Description", "PG-13")
+            category3.AddTitles("Movie Title...", "Description", "PG")
+            category3.AddTitles("Movie Title...", "Description", "R")
+            category3.AddTitles("Movie Title...", "Description", "NR")
+            ' Add to the Categories collection
+            _movieCategories.Add(category3)
+            ' Documentary
+            Dim category4 = New MovieCategories("Documentary")
+            category4.AddTitles("Movie Title...", "Description", "PG")
+            category4.AddTitles("Movie Title...", "Description", "R")
+            category4.AddTitles("Movie Title...", "Description", "PG")
+            category4.AddTitles("Movie Title...", "Description", "PG")
+            category4.AddTitles("Movie Title...", "Description", "PG-13")
+            category4.AddTitles("Movie Title...", "Description", "PG-13")
+            category4.AddTitles("Movie Title...", "Description", "PG-13")
+            category4.AddTitles("Movie Title...", "Description", "PG")
+            category4.AddTitles("Movie Title...", "Description", "R")
+            category4.AddTitles("Movie Title...", "Description", "NR")
+            ' Add to the Categories collection
+            _movieCategories.Add(category4)
+      End Sub
+      Private _movieCategories As List(Of MovieCategories)
+      Public Property MovieCategories() As List(Of MovieCategories)
+            Get
+                  Return _movieCategories
+            End Get
+            Set
+                  If _movieCategories IsNot Nothing AndAlso _movieCategories = value Then
+                        Return
+                  End If
+                  _movieCategories = value
+            End Set
+      End Property
+End Class
+Public Class MovieCategories
+      ' Constructor
+      Public Sub New(movieCategory As String)
+            _movieCategory = movieCategory
+      End Sub
+      Public Sub AddTitles(title As String, description As String, rating As String)
+            _movieList.Add(New MovieList(title, description, rating))
+      End Sub
+      Private _movieCategory As String
+      Public Property MovieCategory() As String
+            Get
+                  Return _movieCategory
+            End Get
+            Set
+                  If _movieCategory IsNot Nothing AndAlso _movieCategory = value Then
+                        Return
+                  End If
+                  _movieCategory = value
+            End Set
+      End Property
+      Private _movieList As New List(Of MovieList)()
+      Public Property MovieList() As List(Of MovieList)
+            Get
+                  Return _movieList
+            End Get
+            Set
+                  If _movieList IsNot Nothing AndAlso _movieList = value Then
+                        Return
+                  End If
+                  _movieList = value
+            End Set
+      End Property
+End Class
+Public Class MovieList
+      Private _movieTitle As String
+      Public Property MovieTitle() As String
+            Get
+                  Return _movieTitle
+            End Get
+            Set
+                  If _movieTitle IsNot Nothing AndAlso _movieTitle = value Then
+                        Return
+                  End If
+                  _movieTitle = value
+            End Set
+      End Property
+      Private _movieDescription As String
+      Public Property MovieDescription() As String
+            Get
+                  Return _movieDescription
+            End Get
+            Set
+                  If _movieDescription IsNot Nothing AndAlso _movieDescription = value Then
+                        Return
+                  End If
+                  _movieDescription = value
+            End Set
+      End Property
+      Private _movieRating As String
+      Public Property MovieRating() As String
+            Get
+                  Return _movieRating
+            End Get
+            Set
+                  If _movieRating IsNot Nothing AndAlso _movieRating = value Then
+                        Return
+                  End If
+                  _movieRating = value
+            End Set
+      End Property
+      Public Sub New(movieTitle As String, movieDescription As String, movieRating As String)
+            _movieTitle = movieTitle
+            _movieDescription = movieDescription
+            _movieRating = movieRating
+      End Sub
+End Class
+
+[[_Ref364356955]]
+== Related Content
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wingrid-printing.html[Printing]
+|This section contains multiple topics explaining about _WinGrid_ printing functionality.
+
+|====

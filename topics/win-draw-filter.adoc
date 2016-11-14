@@ -1,0 +1,125 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-draw-filter",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Application Scenarios","Grids","Tips and Tricks"],
+    "guid": "{E2EDC41F-5EF8-4961-8173-BD4470204B8C}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Draw Filter
+
+An element's appearance can be easily controlled by setting various properties on Appearance objects exposed by PLF-based controls. However, occasionally a requirement comes along that isn't supported by the control. This is where a draw filter is invaluable.
+
+All controls that are based on the PLF expose a very flexible, fine-grained drawing extensibility mechanism. To customize the drawing of one or more UIElements of a control, you need to implement the IUIElementDrawFilter interface on an object and set the DrawFilter property of the control to that object at runtime.
+
+The IUIElementDrawFilter interface has the following two methods:
+
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter~getphasestofilter.html[GetPhasesToFilter]"]  -- this method is passed a UIElementDrawParams structure and returns a bit flag enumeration called DrawPhase. The passed in structure exposes a property that returns the element to be rendered as well as properties and methods to support rendering operations like Graphics, BackBrush, DrawBorders etc. The returned DrawPhase bit flag specify which phase(s) of the drawing operation to filter for this element (the DrawElement method described below will be called for each bit returned). The DrawPhase enumeration allows you to filter the drawing before or after each drawing operation of an element (e.g. theme, backcolor, image background, borders, foreground, image and/or child elements).
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~drawelement.html[DrawElement]"]  -- this method is passed the same UIElementDrawParams structure and a bit flag indicating which single draw phase is being performed. The method returns a boolean. If False is returned then the default drawing for that phase will be performed. If True is returned for a 'Before' phase then the default drawing for that phase will be skipped. Note: returning True for the BeforeDrawElement phase will cause all the other phases to be skipped (even if bits for those phases were returned by the call to GetPhasesToFilter). Also, if themes are active, returning True for the BeforeDrawTheme phase will skip all phases up to but not including the BeforeDrawChildElements phase. The BeforeDrawFocus phase is only called if the control has focus (or the forceDrawAsFocused parameter was set to True on the call to the Draw method) and the element's virtual DrawsFocusRect property returns True.
+
+The following sample code illustrates how to modify the drawing of a row's cell area borders in the UltraGrid:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+' Implement the IUIElementDrawFilter interface on a class
+' (in this case the form)
+Public Class Form1
+	Inherits System.Windows.Forms.Form
+	Implements Infragistics.Win.IUIElementDrawFilter
+	Private borderPen As System.Drawing.Pen
+	Private Sub Form1_Load(ByVal sender As System.Object, _
+	  ByVal e As System.EventArgs) Handles MyBase.Load
+		' create a pen to use in the filter
+		Me.borderPen = New Pen(Color.DarkGoldenrod)
+		' Set the grid's DrawFilter property to the object that
+		' implements the IUIElementDrawFilter interface.
+		Me.UltraGrid1.DrawFilter = Me
+	End Sub
+	Public Function GetPhasesToFilter( _
+	  ByRef drawParams As Infragistics.Win.UIElementDrawParams) _
+	  As Infragistics.Win.DrawPhase _
+	  Implements Infragistics.Win.IUIElementDrawFilter.GetPhasesToFilter
+		' If the element being drawn is a RowCellAreaUIElement 
+		' we're interested in drawing its borders only.
+		If (TypeOf (drawParams.Element) Is RowCellAreaUIElement) Then
+			Return Infragistics.Win.DrawPhase.BeforeDrawBorders
+		Else
+			Return Infragistics.Win.DrawPhase.None
+		End If
+	End Function
+	Public Function DrawElement(ByVal drawPhase As Infragistics.Win.DrawPhase, _
+	  ByRef drawParams As Infragistics.Win.UIElementDrawParams) _
+	  As Boolean Implements Infragistics.Win.IUIElementDrawFilter.DrawElement
+		' This will only be called for 
+		' the BeforeDrawBorders phase of a 
+		' RowCellAreaUIElement based on the flags returned 
+		' from GetPhasesToFilter. 
+		Dim elementRect As Rectangle
+		' get the element's rect
+		elementRect = drawParams.Element.Rect
+		' Draw a border along the top edge of the element.
+		drawParams.Graphics.DrawLine(Me.borderPen, elementRect.Location, _
+		  New Point(elementRect.Right, elementRect.Top))
+		' Return true to prevent the element from drawing its borders normally.
+		Return True
+	End Function
+End Class
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+// Implement the IUIElementDrawFilter interface on a class
+// (in this case the form)
+public class Form1 : System.Windows.Forms.Form, 
+  Infragistics.Win.IUIElementDrawFilter
+{
+	Pen borderPen = new Pen(Color.DarkGoldenrod);
+	private void Form1_Load(object sender, System.EventArgs e)
+	{
+		// Set the grid's DrawFilter property to the object that
+		// implements the IUIElementDrawFilter interface.
+		this.ultraGrid1.DrawFilter = this;
+	}
+	public Infragistics.Win.DrawPhase GetPhasesToFilter(
+	  ref Infragistics.Win.UIElementDrawParams drawParams)
+	{
+		// If the element being drawn is a RowCellAreaUIElement 
+		// we're interested in drawing its borders only.
+		if (drawParams.Element is RowCellAreaUIElement)
+			return Infragistics.Win.DrawPhase.BeforeDrawBorders;
+		else
+			return Infragistics.Win.DrawPhase.None;
+	}
+	public bool DrawElement(Infragistics.Win.DrawPhase drawPhase, 
+	  ref Infragistics.Win.UIElementDrawParams drawParams)
+	{
+		// This will only be called for the BeforeDrawBorders phase of a 
+		// RowCellAreaUIElement based on the flags returned from 
+		// GetPhasesToFilter. 
+		// Draw a border along the top edge of the element.
+		Rectangle elementRect = drawParams.Element.Rect;
+		drawParams.Graphics.DrawLine( this.borderPen, 
+		  elementRect.Location, 
+		  new Point(elementRect.Right, elementRect.Top));
+		// Return true to prevent the element from drawing 
+		// its borders normally.
+		return true;
+	}
+}
+----
+
+Click the link below to learn how to use Draw Filter :
+
+* link:embedding-winchart-inside-wingrid-cells-using-a-drawfilter.html[Embedding WinChart inside WinGrid Cells using a Draw Filter]

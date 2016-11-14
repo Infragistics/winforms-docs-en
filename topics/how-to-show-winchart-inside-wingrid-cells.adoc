@@ -1,0 +1,40 @@
+﻿////
+
+|metadata|
+{
+    "name": "how-to-show-winchart-inside-wingrid-cells",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting","Grids","Performance"],
+    "guid": "{7D644E2C-7DDD-44D2-AC5A-CCBFAE288F2E}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:48:19Z"
+}
+|metadata|
+////
+
+= How to show WinChart inside WinGrid cells
+
+Showing WinChart™ within the Cells of WinGrid™ cannot be accomplished through intrinsic functionality, however by understanding some fundamentals as well as what is exposed to us through the Presentation Layer Framework™, this functionality can be achieved elegantly.
+
+WinGrid, along with many other Infragistics Windows Forms controls are built upon what has been named the Presentation Layer Framework (PLF). PLF Controls are composed of many link:win-uielements.html[UIElements], which are discrete graphical units that represent individual sections of the control. An  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter]"]  implementation allows us to tap into the internals of PLF Controls and leverage the multitude of information that is available during the control’s rendering process.
+
+Since we cannot truly embed WinChart within WinGrid cells, we need to think creatively in order to make this happen. The approach that this series of topics describes uses the strategy of positioning and sizing WinChart over specific cells in a particular WinGrid column.
+
+It would be challenging to position and size WinChart over WinGrid cells. Some questions that may arise during the design of this application are:
+
+* How do we get the cell coordinates so that we may correctly position the Chart?
+* How do we determine the height and width of cells so that the Chart can be correctly sized?
+* What happens if someone scrolls through the Grid data?
+* What if other elements overlap and clip the Cells?
+
+A Draw Filter provides this as well as much more information so that achieving this functionality is realistic. For this example a Draw filter is used to observe when the “Chart Column” cells resize, get clipped and are scrolled. During these events, we simply position and size the Chart so that it always sits in front of the Cells.
+
+=== Performance
+
+Another question one may ask: If 1 million rows are present in the Grid, will 1 million separate Chart instances cause performance to degrade? The answer is YES. For this particular reason, only 1 Chart will exist for this Grid with the purpose of rendering itself in ALL of the Cells of a particular Column. In order to achieve this, a strategy of keeping one real Chart positioned over the Active Cell and replacing all other cells with an Image is employed. In other words, the last Active WinGrid Cell will actually have the real interactive WinChart control positioned over it. All other cells will contain an Image that represents a snapshot of the Chart and its state before the Cell became inactive. Swapping the real Chart with the Image will require us to persist the state of the Chart so that when the real Chart is loaded, we can restore its data and any property settings that we persisted.
+
+=== Data
+
+Data will be provided to the Chart by an Event that we expose through the Draw Filter. Whenever the Chart is being loaded for the first time for each Grid Cell, the event is fired thus exposing our custom event arguments so that an End Developer can handle the event and then determine which row the Chart is attached to and then use that information to fetch some related data and then populate the Chart.
+
+The next topic in this series will help you understand the design and implementation of the Draw Filter used in this application: link:the-winchart-inside-wingrid-drawfilter-implementation.html[The WinChart inside WinGrid Draw Filter Implementation]

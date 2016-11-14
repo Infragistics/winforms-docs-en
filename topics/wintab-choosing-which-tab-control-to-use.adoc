@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-choosing-which-tab-control-to-use",
+    "controlName": ["WinTab"],
+    "tags": ["Getting Started","Patterns and Practices"],
+    "guid": "{C5E5B826-2DE0-47A6-A4AE-2B9446F506DE}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Choosing Which Tab Control to Use
+
+== Background
+
+Infragistics Windows Forms provides two tab elements to choose from: the WinTab™ and the WinTabStrip™. Both elements share features, and both can be used to provided a tab-based interface to your application. Which element you will use depends on the context in which the tabs will be displayed.
+
+== Questions
+
+* Should I use the WinTab or WinTabStrip element in my program?
+
+== Solution
+
+If you want to group elements according to functionality, as in a program options dialog, use the WinTab element. If you want to be able to display a common set of data-bound controls and use the tabs to select which data record will populate the controls, use the TabStrip. You may also want to use the WinTabStrip when a lightweight element is more suitable for your application. WinTabStrip also gives you a greater degree of control, since you supply the code to manage the controls that make up the interface in response to the user clicking on the tabs.
+
+The WinTabStrip element offers data binding, and was designed to act as the front end of a data-driven application in which the tabbed interface is the primary navigation metaphor. This interface reproduces the manilla file-folder system of information management, where each tab represents a folder of similar or identical information. In this system, the controls that appear on the tab are shared across all instances of the tab. The elements of the interface do not change as different tabs are selected; only the information that the interface is displaying changes.
+
+In contrast, the WinTab element is designed to present a different interface (in this case, a different set of WinForms controls) whenever a new tab is selected. If need a way to logically group a series of controls and present them to the user in a minimal amount of screen space, use the WinTab element.
+
+Another factor that may affect your decision is how much control you want over the implementation of the tab interface. The WinTab element provides you with a complete implementation, but the completeness of the solution may be limiting in some situations, or it may be overkill for your particular application. The WinTab element has a certain amount of overhead due to the containers that it must create for each tab. On the other hand, the WinTabStrip is a much more lightweight element. You may feel that the extra effort required by the WinTabStrip to respond to the tab changes and re-configure your interface manually is a good trade off for the amount of control you gain.

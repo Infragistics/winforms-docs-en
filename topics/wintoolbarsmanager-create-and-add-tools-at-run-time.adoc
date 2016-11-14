@@ -1,0 +1,143 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-create-and-add-tools-at-run-time",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Layouts"],
+    "guid": "{5FBFE2E8-1D40-4CB0-BEDD-99D55C003E39}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Create and Add Tools at Run Time
+
+Tools can be created, configured and added to toolbars and menus either at design time or at run time. Once an instance of a new tool is created, it needs to be added to the Tools collection of the WinToolbarsManager™ component. To add the tools to a toolbar, the Index or Key of the toolbar needs to be specified and then you can use the AddTool method on the Tools collection of the specific toolbar.
+
+When adding tools to a menu, the tools should be added to the pop-up menu tool, and then the pop-up menu tool should be added to the main menubar. Properties of individual tools such as the caption or the image should be set so that the tool appears correctly in the menu or toolbar.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Private Sub CreateandAddToolsatRunTime_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Creates the tools 
+	Dim button1 As New ButtonTool("button1")
+	Dim textbox1 As New TextBoxTool("textbox1")
+	Dim color1 As New PopupColorPickerTool("color1")
+	Dim label1 As New LabelTool("label1")
+	' Adds them to the tools collection 
+	Me.UltraToolbarsManager1.Tools.Add(button1)
+	Me.UltraToolbarsManager1.Tools.Add(textbox1)
+	Me.UltraToolbarsManager1.Tools.Add(color1)
+	Me.UltraToolbarsManager1.Tools.Add(label1)
+	Dim objToolbar As New UltraToolbar("toolbar1")
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("toolbar1")
+	' Adds an image to the button
+	button1.SharedProps.AppearancesSmall.Appearance.Image = _
+	  Me.imageList1.Images(0)
+	' Adds a caption to the label
+	label1.SharedProps.Caption = "Label"
+	' Adds the tools to the specified toolbar 
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").Tools.AddTool("button1")
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").Tools.AddTool("textbox1")
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").Tools.AddTool("color1")
+	Me.UltraToolbarsManager1.Toolbars("toolbar1").Tools.AddTool("label1")
+	'** Creates tools and adds them to a menubar ** 
+	' Creates the tools 
+	Dim menu1 As New PopupMenuTool("menu1")
+	Dim submenu1 As New PopupMenuTool("submenu1")
+	Dim button2 As New ButtonTool("button2")
+	Dim button3 As New ButtonTool("button3")
+	Dim button4 As New ButtonTool("button4")
+	Dim objMenuBar As New UltraToolbar("menubar")
+	Me.UltraToolbarsManager1.Toolbars.AddToolbar("menubar")
+	' Adds them to the tools collection 
+	Me.UltraToolbarsManager1.Tools.Add(menu1)
+	Me.UltraToolbarsManager1.Tools.Add(submenu1)
+	Me.UltraToolbarsManager1.Tools.Add(button2)
+	Me.UltraToolbarsManager1.Tools.Add(button3)
+	Me.UltraToolbarsManager1.Tools.Add(button4)
+	' Sets the caption for each tool that will be displayed in the menu 
+	menu1.SharedProps.Caption = "Menu1"
+	submenu1.SharedProps.Caption = "Submenu1"
+	button2.SharedProps.Caption = "button2"
+	button3.SharedProps.Caption = "button3"
+	button4.SharedProps.Caption = "button4"
+	' Adds the tools to the menu 
+	menu1.Tools.AddTool("submenu1")
+	menu1.Tools.AddTool("button2")
+	menu1.Tools.AddTool("button3")
+	' Adds a tool the menu tool that will be a submenu 
+	submenu1.Tools.AddTool("button4")
+	' Adds the menu tool to the menubar 
+	Me.UltraToolbarsManager1.Toolbars("menubar").Tools.AddTool("menu1")
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+private void CreateandAddToolsatRunTime_Load(object sender, EventArgs e)
+{	
+	// Creates the tools 
+	ButtonTool button1 = new ButtonTool("button1");
+	TextBoxTool textbox1 = new TextBoxTool("textbox1");
+	PopupColorPickerTool color1 = new PopupColorPickerTool("color1");
+	LabelTool label1 = new LabelTool("label1");
+	// Adds them to the tools collection 
+	this.ultraToolbarsManager1.Tools.Add(button1);
+	this.ultraToolbarsManager1.Tools.Add(textbox1);
+	this.ultraToolbarsManager1.Tools.Add(color1);
+	this.ultraToolbarsManager1.Tools.Add(label1);
+	UltraToolbar objToolbar = new UltraToolbar("toolbar1");
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("toolbar1");
+	// Adds an image to the button
+	button1.SharedProps.AppearancesSmall.Appearance.Image = 
+	  this.imageList1.Images[0];
+	// Adds a caption to the label
+	label1.SharedProps.Caption = "Label";
+	// Adds the tools to the specified toolbar 
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].Tools.AddTool("button1");
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].Tools.AddTool("textbox1");
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].Tools.AddTool("color1");
+	this.ultraToolbarsManager1.Toolbars["toolbar1"].Tools.AddTool("label1");
+	/* Creates tools and adds them to a menubar * /
+	// Creates the tools 
+	PopupMenuTool menu1 = new PopupMenuTool("menu1");
+	PopupMenuTool submenu1 = new PopupMenuTool("submenu1");
+	ButtonTool button2 = new ButtonTool("button2");
+	ButtonTool button3 = new ButtonTool("button3");
+	ButtonTool button4 = new ButtonTool("button4");
+	UltraToolbar objMenuBar = new UltraToolbar("menubar");
+	this.ultraToolbarsManager1.Toolbars.AddToolbar("menubar");
+	// Adds them to the tools collection 
+	this.ultraToolbarsManager1.Tools.Add(menu1);
+	this.ultraToolbarsManager1.Tools.Add(submenu1);
+	this.ultraToolbarsManager1.Tools.Add(button2);
+	this.ultraToolbarsManager1.Tools.Add(button3);
+	this.ultraToolbarsManager1.Tools.Add(button4);
+	// Sets the caption for each tool that will be displayed in the menu 
+	menu1.SharedProps.Caption = "Menu1";
+	submenu1.SharedProps.Caption = "Submenu1";
+	button2.SharedProps.Caption = "button2";
+	button3.SharedProps.Caption = "button3";
+	button4.SharedProps.Caption = "button4";
+	// Adds the tools to the menu 
+	menu1.Tools.AddTool("submenu1");
+	menu1.Tools.AddTool("button2");
+	menu1.Tools.AddTool("button3");
+	// Adds a tool the menu tool that will be a submenu 
+	submenu1.Tools.AddTool("button4");
+	// this.Adds the menu tool to the menubar 
+	this.ultraToolbarsManager1.Toolbars["menubar"].Tools.AddTool("menu1");
+}
+----
+
+image::images\WinToolbarsManager_Create_and_Add_Tools_at_Run_Time_01.png[results of code listed above.]

@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-choosing-a-data-source-for-your-application",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Sample Data Source"],
+    "guid": "{C6325086-CB41-4698-A7BB-E1F9A81B873D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Choosing a Data Source for Your Application
+
+Whenever deciding which implementation to use, it is important to understand the implications of each solution. For example, you can easily create an entire data model by using Visual Studio and dragging and dropping various Database entities onto a form and that will generate DataSets with DataTables and their relations as well. This will provide you with all of the IList, IBindingList, IEditableObject interfaces that will allow you to bind to WinGrid™. When interacting with the WinGrid, actions that cause edits, deletes and even updates to the WinGrid will directly change your data model. All that is needed then is to simply resolve the changes back to the database by using the appropriate Data Adapters for each DataTable.
+
+== Create Custom Business Objects
+
+Another approach may be to create your own custom business objects so that each may represent a real entity as defined in your requirements. You can choose to simply create a Class for each business entity identified in your analysis and then whenever you need to work with multiple instances, you can simply create a standard array with your business objects. Depending on the design of your objects, this can be a light weight approach, however, you will not have the features and functionality that are provided by the IBindingList interface. For example, since you have a standard array, you cannot add or delete items from the list. If you bind the WinGrid to such an array, you will not be permitted to delete rows through the WinGrid’s interface because if you do, the grid will raise an exception telling you that the underlying list does not support adding or deleting. This makes sense because whenever you use the WinGrid to delete or add rows, it actually calls the underlying IBindingList Add or Delete methods to actively insert or delete objects from the list. In this case, you would have to handle the appropriate events in the WinGrid so that you can identify the rows that are being added or deleted and then you need to perform the deletes and adds directly to the list. This would require that you create a new Array that contains the Add or has a specific member deleted and then you would need to bind the grid to the new Array. As you can see, this requires more work and the code is more tedious to maintain.
+
+== Creating Collection Classes
+
+Alternatively you can elaborate on your custom business objects by also creating collection classes for them. If you have a Customer object, you can also create a CustomerCollection object as well. The Collection object would then make an implementation of IList and IBindingList so that all of the events will be properly fired by the collection and whenever any interaction is performed through the WinGrid, the collection will be updated accordingly. For Visual Studio 2002 and 2003, this requires some work and testing to ensure that all of the events are fired properly but the features and functionality are worth it. If you are using the .NET Framework 2.0 creating such an implementation is very easy if you inherit from a generic BindingList of type Customer. If you take this approach, all of the underlying plumbing related to data binding will be included for you and all you need to do is create your classes to represent your requirements and not worry about the data binding and list notification logic.
+
+== Nested Collections
+
+Another thing to keep in mind is nested collections. If you use ADO.NET DataSets and DataTables and even WinDataSource, you can easily represent a hierarchical data model through the use of DataRelation objects. If you have several tables, you can create a relation from one table to another. The end result will be such that each record in the parent table can contain child records that are returned from a specific relation. In other words, one customer record can have many child records of orders. This can also be achieved through your own custom objects by having public properties on each of your custom objects that happen to be of type Collection. Using the custom object route to create your data model, you would create several collection objects that are designed to accept specific types (Ex: CustomerCollection, OrderCollection, OrderDetailCollection) and then you create public collection properties where it makes sense. The Customer class would contain a public property of type OrderCollection and the Order class would contain a public property of type OrderDetailCollection. Correctly creating your classes in this manner will allow the grid to bind to your data model and visualize your data in a nested hierarchical fashion. The nice thing about WinGrid is that it will show all hierarchies simultaneously. The in-box DataGrid will only show one individual collection at any given time.
+
+Understanding the advantages and disadvantages of either strategy, it is up to you to decide the best route to take when creating your data model based on time constraints, architectural standards and proficiency in the technology. Either way you choose, the WinGrid will work with any of these strategies.

@@ -1,0 +1,106 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincombo-selecting-multiple-values-within-wincombo",
+    "controlName": ["WinCombo"],
+    "tags": ["Selection"],
+    "guid": "{D74E4F70-840A-4CF2-930C-C18585A17FAA}",  
+    "buildFlags": [],
+    "createdOn": "2009-07-12T16:39:36Z"
+}
+|metadata|
+////
+
+= Selecting Multiple Values within WinCombo
+
+The WinCombo™ control supports multiple item selection through a checkbox located in a column within the drop down list. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.propertyids.html[CheckStateMember] property enables you to specify the column name for which the checkbox will be displayed; this property is also what actually causes WinCombo to go into multi-select mode. The column object’s data type should be Boolean. Alternatively the column’s data type could also be one that can be parsed to and from the Boolean data type. For example, a column of type String can be used along with setting the column object’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.propertyids.html[style] property to CheckBox; in this configuration, the cell values for that column should either be "True" or " so that they can be parsed to Boolean. Finally, it is suggested that you simply add your own unbound column to WinCombo and configure the column to be used for the selection (shown in the code below). As an alternative to adding your own unbound column, you can also use an existing field from your underlying data model for the selection.
+
+.Note
+[NOTE]
+====
+When checkboxes are visible, ‘Suggest Mode’ functionality is disabled. When the link:infragistics4.win.v{ProductVersion}~infragistics.win.editorcheckedlistsettings~editorvaluesource.html[EditorValueSource] property is set to ‘CheckedItems’, character input is disabled; the edit portion is read only.
+====
+
+This topic assumes that you have an UltraCombo control dropped onto your form, which is bound to the Employees data table of the Northwind database. For more information, please see the Binding WinCombo to a Data Table topic.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid 
+...
+'Add an additional unbound column to WinCombo. 
+'This will be used for the Selection of each Item 
+Dim c As UltraGridColumn = Me.ultraCombo1.DisplayLayout.Bands(0).Columns.Add()
+c.Key = "Selected" 
+c.Header.Caption = String.Empty 
+'This allows end users to select / unselect ALL items 
+c.Header.CheckBoxVisibility = HeaderCheckBoxVisibility.Always 
+c.DataType = GetType(Boolean) 
+'Move the checkbox column to the first position. 
+c.Header.VisiblePosition = 0 
+Me.ultraCombo1.CheckedListSettings.CheckStateMember = "Selected" 
+Me.ultraCombo1.CheckedListSettings.EditorValueSource = Infragistics.Win.EditorWithComboValueSource.CheckedItems 
+' Set up the control to use a custom list delimiter 
+Me.ultraCombo1.CheckedListSettings.ListSeparator = " / "
+' Set ItemCheckArea to Item, so that clicking directly on an item also checks the item
+Me.ultraCombo1.CheckedListSettings.ItemCheckArea = Infragistics.Win.ItemCheckArea.Item
+Me.ultraCombo1.DisplayMember = "FirstName"
+Me.ultraCombo1.ValueMember = "EmployeeID"
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+...
+//Add an additional unbound column to WinCombo.
+//This will be used for the Selection of each Item
+UltraGridColumn c = this.ultraCombo1.DisplayLayout.Bands[0].Columns.Add();
+c.Key = "Selected";
+c.Header.Caption = string.Empty;
+//This allows end users to select / unselect ALL items
+c.Header.CheckBoxVisibility = HeaderCheckBoxVisibility.Always;
+c.DataType = typeof(bool);
+//Move the checkbox column to the first position.
+c.Header.VisiblePosition = 0;
+this.ultraCombo1.CheckedListSettings.CheckStateMember = "Selected";
+this.ultraCombo1.CheckedListSettings.EditorValueSource = Infragistics.Win.EditorWithComboValueSource.CheckedItems;
+// Set up the control to use a custom list delimiter
+this.ultraCombo1.CheckedListSettings.ListSeparator = " / ";
+// Set ItemCheckArea to Item, so that clicking directly on an item also checks the item
+this.ultraCombo1.CheckedListSettings.ItemCheckArea = Infragistics.Win.ItemCheckArea.Item;
+this.ultraCombo1.DisplayMember = "FirstName";
+this.ultraCombo1.ValueMember = "EmployeeID";
+----
+
+You can access the checked rows through the control’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultracombo~checkedrows.html[CheckedRows] property. The following code shows how to iterate through the checked rows after a selection has been confirmed. Drop an UltraButton onto your form and write the following code within the Button’s Click Event.
+
+*In Visual Basic:*
+
+----
+'Access the checked items
+Dim s As String = String.Empty
+For Each r As UltraGridRow In Me.ultraCombo1.CheckedRows 
+    s += r.Cells("FirstName").Value.ToString() + Environment.NewLine 
+Next 
+MessageBox.Show(s)
+----
+
+*In C#:*
+
+----
+//Access the checked items
+string s = string.Empty;
+foreach (UltraGridRow r in this.ultraCombo1.CheckedRows)
+{
+  s += r.Cells["FirstName"].Value.ToString() + Environment.NewLine;
+}
+MessageBox.Show(s);
+----
+
+The following screenshot shows WinCombo along with several checked items.
+
+image::images/WinCombo_Selecting_Multiple_Values_within_WinCombo_01.png[]

@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-resize-the-desktop-alert-window",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{FB5CD2D9-0398-4487-9F51-4D2DC4E8669E}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Resize the Desktop Alert Window
+
+Depending on the amount of information that you need to communicate to your end users, you may need to resize the desktop alert window. By default, the alert window will resize horizontally based on the amount of text it contains. You may wish to expand the alert window horizontally as well. You can manually change the size of the alert window by setting the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~fixedsize.html[FixedSize] property off the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert.html[UltraDesktopAlert] class. The FixedSize property is of type System.Drawing.Size, so you can pass two "int" type arguments as the width and height of the alert window.
+
+Use the following code to change the size of the desktop alert window. The code first modifies the size of the alert window by setting the width to half the width of the primary screen's work area, and its height to half the height of the primary screen's work area. This means, with all other default settings, the alert window should occupy the entire lower-right quadrant of the primary screen's work area.
+
+*In Visual Basic:*
+
+----
+' FixedSize is of type Size and can therefore accept two
+' ints for the width and height. Using the Screen class,
+' you can get the working area (the screen area without
+' the taskbar) and set the desktop alert window to be
+' half of that. This way, you can show more information.
+Me.UltraDesktopAlert1.FixedSize = _
+  New Size(Screen.PrimaryScreen.WorkingArea.Width / 2, _
+  Screen.PrimaryScreen.WorkingArea.Height / 2)
+' Display the desktop alert window with some sample text.
+Me.UltraDesktopAlert1.Show("Test Alert", "This is only a test")
+----
+
+*In C#:*
+
+----
+// FixedSize is of type Size and can therefore accept two
+// ints for the width and height. Using the Screen class,
+// you can get the working area (the screen area without
+// the taskbar) and set the desktop alert window to be
+// half of that. This way, you can show more information.
+this.ultraDesktopAlert1.FixedSize =
+  new Size(Screen.PrimaryScreen.WorkingArea.Width / 2,
+  Screen.PrimaryScreen.WorkingArea.Height / 2);
+// Display the desktop alert window with some sample text.
+this.ultraDesktopAlert1.Show("Test Alert", "This is only a test");
+----

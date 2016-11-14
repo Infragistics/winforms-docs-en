@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarcombo-change-the-increments-of-spin-button-elements",
+    "controlName": ["WinCalendarCombo"],
+    "tags": ["How Do I"],
+    "guid": "{1BAA552F-D431-413F-B1A3-D64B34BD09A1}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Increments of Spin Button Elements
+
+You can control the type and size of the increments in the spin button element on the WinCalendarCombo™. The following code demonstrates spinning in four-week increments using the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarcombo~spinbuttonincrement.html[SpinButtonIncrement]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarcombo~spinbuttonincrementvalue.html[SpinButtonIncrementValue]"]  properties.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+...
+Private Sub Change_the_Increments_of_Spin_Button_Elements_Load(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Change the value in week increments
+	Me.UltraCalendarCombo1.SpinButtonIncrement = SpinIncrementUnit.Weeks
+	' Change the value so it increments 4 weeks every click
+	Me.UltraCalendarCombo1.SpinButtonIncrementValue = 4
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+...
+private void Change_the_Increments_of_Spin_Button_Elements_Load(object sender, EventArgs e)
+{
+	// Change the value in week increments
+	this.ultraCalendarCombo1.SpinButtonIncrement = SpinIncrementUnit.Weeks;
+	// Change the value so it increments 4 weeks every click
+	this.ultraCalendarCombo1.SpinButtonIncrementValue = 4;
+}
+----

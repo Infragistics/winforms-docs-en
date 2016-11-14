@@ -1,0 +1,50 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-whats-new-wingrid",
+    "controlName": [],
+    "tags": [],
+    "guid": "{77B48C23-DE63-44D6-A6FF-2CAFA3B622F8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= WinGrid
+
+=== Setting Sibling Child Band Order
+
+With this release, it is now possible to set the order for which bands display in WinGrid™. Previously, the WinGrid displayed sibling child bands in the order in which they were provided by the BindingManager and there was no way to change this order. Now, with the new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~visibleposition.html[VisiblePostion]"]  property of the UltraGridBand, the sibling bands can be sorted based on the VisiblePosition from lowest to highest.
+
+=== Row Layout Grouping
+
+We have now added the functionality of grouping columns in RowLayout mode and to also allow nested groups within other groups. This means a column or group may be a child of another group. With this new feature, it is possible to move groups as a unit, or limit column movement within a group, all in Row Layout mode.
+
+=== Enhanced Filtering UI
+
+This feature introduces new mechanisms for filtering in WinGrid that is consistent with the filtering paradigm used in Excel®. Enhanced Filtering is a style that represents a change from the existing header filtering and it provides an advanced group of filtering functionalities. These are data type specific , such as string operations (begins-with, contains, etc), date operations (between dates, before today’s date, etc), or providing the ability to filter by selecting multiple values that appear in a column.
+
+A new component, the UltraGridFilterUIProvider, has been added to the Infragistics4.Win.SupportDialog assembly that provides an advanced filtering UI to better mimic the functionality provided by Excel®.
+
+=== Right Fixed Headers
+
+The WinGrid allows columns to be pinned, or fixed, to the left side of its columns collection. With this release, the columns will also have the ability to be pinned on the right side. There will still be one pin button in each column, but depending on the property settings of the column, pressing the pin button will pin it to the left or right.
+
+=== CheckBox in Column Header
+
+This new feature provides the ability to add a checkbox to a WinGrid Column header which can be automatically synchronized with the values for all cells within the column. This functionality can be utilized on the column, band, or grid level via properties added to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  object.
+
+=== Printing Total Number of Pages
+
+With this new feature, the WinGrid control allows an additional replacement string (“<$$##$$>”) to print the total number of physical pages that will be printed(e.g.”Page<#> of <$$##$$>”). Previously, it was possible to print only the current physical page number (e.g. “Page<#>.”).
+
+== Related Topics
+
+* link:wingrid-setting-the-order-for-sibling-child-bands.html[Setting the Order for Sibling Child Bands]
+* link:wingrid-grouping-columns-in-row-layout-mode-using-the-designer.html[Grouping Columns in Row Layout Mode using Designer]
+* link:wingridfilteruiprovider-enabling-enhanced-filtering-on-wingrid.html[Enabling Enhanced Filtering on WinGrid]
+* link:wingrid-right-fixed-headers.html[Right Fixed Headers]
+* link:wingrid-displaying-checkbox-in-column-header.html[Displaying Checkbox in Column Header]
+* link:win-whats-new-printing-total-number-of-pages.html[Printing Total Number of Pages]

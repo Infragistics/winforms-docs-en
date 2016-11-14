@@ -1,0 +1,114 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-addrow-feature",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{A9768F8C-7BDA-4099-B735-9B52BDD00661}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Using AddRow Feature
+
+The AddRow feature allows the user to conveniently add rows. This feature displays an AddRow template at the top or bottom of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Rows]"]  collection. To add a row, the user simply clicks in the AddRow template and starts to type.
+
+== To use the AddRow feature:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. The Add Row can be turned on by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object to one of following settings: TemplateOnTop, TemplateOnTopWithTabRepeat or TemplateOnBottom.
+
+*In Visual Basic:*
+
+----
+' Displays the add-row on top of each rows collection.
+Me.UltraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.TemplateOnTop
+----
+
+*In C#:*
+
+----
+// Displays the add-row on top of each rows collection.
+this.ultraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.TemplateOnTop;
+----
+
+[start=3]
+. By default, template Add Rows are colored with a shade of the row colors. Template Add Row appearance can be controlled by using  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowappearance.html[TemplateAddRowAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowcellappearance.html[TemplateAddRowCellAppearance]"]  properties.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.TemplateAddRowCellAppearance.BackColor = _
+  Color.Yellow
+Me.UltraGrid1.DisplayLayout.Override.TemplateAddRowCellAppearance.ForeColor = _
+  Color.LightYellow
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.TemplateAddRowCellAppearance.BackColor = Color.Yellow;
+this.ultraGrid1.DisplayLayout.Override.TemplateAddRowCellAppearance.ForeColor = Color.LightYellow;
+----
+
+[start=4]
+. Once the user starts typing into a template Add Row, it becomes simply an "Add Row". Add Row appearance can also be controlled.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.AddRowCellAppearance.BackColor = _
+  Color.LightYellow
+Me.UltraGrid1.DisplayLayout.Override.AddRowCellAppearance.ForeColor = _
+  Color.Black
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.AddRowCellAppearance.BackColor = Color.LightYellow;
+this.ultraGrid1.DisplayLayout.Override.AddRowCellAppearance.ForeColor = Color.Black;
+----
+
+The following snapshot displays a template Add Row.
+
+image::Images\WinGrid_Use_the_AddRow_Feature_01.png[use the addrow feature in ultragrid]
+
+Once the user starts typing into the Template Add Row, it becomes an "Add Row". A new Template Add Row is created and displayed so the user can continue adding more rows.
+
+image::Images\WinGrid_Use_the_AddRow_Feature_02.png[use the addrow feature in ultragrid]
+
+[start=5]
+. Default values for the new rows can be set as well.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Country").DefaultCellValue = "US"
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["Country"].DefaultCellValue = "US";
+----

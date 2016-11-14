@@ -1,0 +1,123 @@
+﻿////
+|metadata|
+{
+    "name": "winlivetileview-resource-strings",
+    "controlName": [],
+    "tags": [],
+    "guid": "f6da23b2-310c-47a9-b724-5235a667a7fe",
+    "buildFlags": [],
+    "createdOn": "2013-09-25T19:21:42.4114186Z"
+}
+|metadata|
+////
+
+= WinLiveTileView Resource Strings Reference
+
+This topic provides a list of the `WinLiveTileView` assembly resource strings used to customize the internally-defined text elements of the `WinLiveTileView`  control. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings used by this assembly, along with the string's customizable default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource string name|Default value
+
+|DuplicateKeyException
+|An item with the key '{0}' already exists.
+
+|EmptyKeyException
+|A non-empty key must be specified.
+
+|TileGroupsCollection_Exception_DifferentCollection
+|The specified group cannot be added to this collection because it already belongs to a different collection.
+
+|KeyedCollectionBase_Exception_ItemNotFound
+|This collection does not contain an item with the specified key '{0}'.
+
+|TileGroupsCollection_Exception_ItemAlreadyExists
+|The specified group already belongs to this collection.
+
+|TilesCollection_Exception_DifferentCollection
+|The specified tile cannot be added to this collection because it already belongs to a different collection.
+
+|TilesCollection_Exception_ItemNotFound
+|The specified tile does not exist in this collection.
+
+|TilesCollection_Exception_ItemAlreadyExists
+|The specified tile already belongs to this collection.
+
+|FontSet_InvalidSize
+|The value specified for the {0} font size, {1}, is invalid.
+Verify that the size of the Small font is less than that of the Scale100Percent font,
+the size of the Scale100Percent font is less than that of the Heading font,
+and the size of the Heading font is less than that of the Block font.
+
+|MultiResolutionTileSizeSet_InvalidSize
+|The value {0} is invalid. A tile size cannot be set to a negative value.
+
+|Exception_CannotSetImageSize
+|The size of the image is determined by the template and cannot be changed
+
+|Exception_InvalidCultureName
+|The value '{0}' is not a valid culture name.
+
+|Exception_InvalidTimeSpan
+|The specified TimeSpan_cannot be negative.
+
+|CountEquals
+|Count = {0}
+
+|Exception_CannotSetActiveTile
+|The ActiveTile_property cannot be set when the control is in collapsed mode. Set the Expanded property to true to exit collapsed mode.
+
+|Exception_CannotSetActiveGroup
+|The ActiveGroup_property can only be set when the control is in collapsed mode. Set the Expanded property to false to enter collapsed mode.
+
+|Exception_CannotSendBadgeNotification
+|Badge notifications cannot be sent to a tile that is not associated with a control.
+
+|Exception_StaticTile_CurrentSize
+|The value '{0}' is not valid for a_StaticTile_; only 'Small' and 'Medium' sizes are supported.
+
+|UltraLiveTileView_Description
+|Infragistics Windows Forms control which emulates the look and feel of Windows8 live tiles.
+
+|UltraLiveTileView_Exception_InvalidPropertyValue
+|The value '{0}' is not valid.
+
+|ApplicationBarButtonsCollection_Exception_CannotAddDefaultButton
+|The '{0}' button cannot be added to this collection.
+
+|DefaultApplicationBarButton_Customize_Text
+|Customize
+
+|DefaultApplicationBarButton_Resize_Text
+|Resize
+
+|DefaultApplicationBarButton_ClearSelection_Text
+|Clear selection
+
+|DefaultApplicationBarButton_TurnLiveTileOn_Text
+|Turn live tile on
+
+|DefaultApplicationBarButton_TurnLiveTileOff_Text
+|Turn live tile off
+
+|TileSize_Small
+|Small
+
+|TileSize_Medium
+|Medium
+
+|TileSize_Wide
+|Wide
+
+|TileSize_Large
+|Large
+
+|UnnamedGroupCustomizeModeText
+|Name group
+
+|TileGroup_Exception_CannotEditCollapsedGroup
+|Editing is not supported when the control is in the collapsed state. Set the Expanded property to true to support editing.
+
+|====

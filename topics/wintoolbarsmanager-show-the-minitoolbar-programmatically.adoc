@@ -1,0 +1,49 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-show-the-minitoolbar-programmatically",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{C8AE2B45-FBC2-4229-A1DA-9F1143C1F520}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Show the MiniToolbar Programmatically
+
+{Warning}
+
+The MiniToolbar isn't called 'mini' for its size, but for its portability. You can place any tool in the MiniToolbar and achieve the same effect as a standard toolbar. Just think of the MiniToolbar as floating toolbar that you can have pop up anytime or anywhere. link:wintoolbarsmanager-creating-a-minitoolbar.html[Creating a MiniToolbar] is just as easy as setting up any other standard toolbar, but showing it programmatically is easier yet. The MiniToolbar comes complete with a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.minitoolbar~show.html[Show]"]  method, allowing you to display it in your application whenever and wherever you need to.
+
+Use the code below to display the MiniToolbar when WinGrid™ is right-clicked. This could be useful for changing the formatting and appearance in individual cells.
+
+*In Visual Basic:*
+
+----
+Private Sub CustomersUltraGrid_MouseUp(ByVal sender As System.Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles CustomersUltraGrid.MouseUp
+   ' If the right mouse button was clicked in the grid.
+   If e.Button = System.Windows.Forms.MouseButtons.Right Then
+      ' Show the MiniToolbar.
+      Me.ultraToolbarsManager1.MiniToolbar.Show()
+   End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_MouseUp(object sender, MouseEventArgs e)
+{
+	// If the right mouse button was clicked in the grid.
+	if(e.Button == System.Windows.Forms.MouseButtons.Right)
+	{
+		// Show the MiniToolbar.
+		this.ultraToolbarsManager1.MiniToolbar.Show();
+	}
+}
+----

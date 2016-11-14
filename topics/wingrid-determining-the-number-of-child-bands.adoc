@@ -1,0 +1,117 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-the-number-of-child-bands",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{26618F5B-5068-4B03-962E-C8E2C5EC05DF}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining the Number of Child Bands
+
+Sometimes when you write code to traverse the WinGrid™, it is necessary to know the number of child bands of a particular band. The WinGrid control provides this information through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~childbands.html[ChildBands]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[Band]"]  object.
+
+== To determine the number of child bands:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. Declare a function called GetNumberOfChildBands. This function will accept a Band object and return the number of child bands.
+
+*In Visual Basic:*
+
+----
+Private Function GetNumberOfChildBands(ByVal aBand As _
+  Infragistics.Win.UltraWinGrid.UltraGridBand) As Integer
+----
+
+*In C#:*
+
+----
+private int GetNumberofChildBands(Infragistics.Win.UltraWinGrid.UltraGridBand aBand)
+{
+----
+
+[start=3]
+. A band object is actually a special type of column. You can take advantage of this by looping through the columns in the band. Set up a For...Each Loop to go through the columns in the Band that was passed into the Function.
+
+*In Visual Basic:*
+
+----
+Dim aCol As UltraGridColumn
+For Each aCol In aBand.Columns
+----
+
+*In C#:*
+
+----
+int GetNumberofChildBands = 0;
+foreach(UltraGridColumn aCol in aBand.Columns)
+{
+----
+
+[start=4]
+. You can now check each column one at a time and determine if it is a Band.
+
+*In Visual Basic:*
+
+----
+If aCol.IsChaptered Then
+----
+
+*In C#:*
+
+----
+if(aCol.IsChaptered)
+----
+
+[start=5]
+. If the column is a band, add one to the return value of the function.
+
+*In Visual Basic:*
+
+----
+	GetNumberOfChildBands = GetNumberOfChildBands + 1
+End If
+----
+
+*In C#:*
+
+----
+	GetNumberofChildBands = GetNumberofChildBands + 1;
+}	
+----
+
+[start=6]
+. Then just close the loop.
+
+*In Visual Basic:*
+
+----
+Next aCol
+----
+
+*In C#:*
+
+----
+	return GetNumberofChildBands;
+}
+----

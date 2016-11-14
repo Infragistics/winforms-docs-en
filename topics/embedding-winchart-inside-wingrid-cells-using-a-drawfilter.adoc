@@ -1,0 +1,34 @@
+﻿////
+
+|metadata|
+{
+    "name": "embedding-winchart-inside-wingrid-cells-using-a-drawfilter",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting","Grids"],
+    "guid": "{E97E14DF-00F8-4D92-97FB-CC91BC4931B3}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:46:16Z"
+}
+|metadata|
+////
+
+= Embedding WinChart inside WinGrid Cells using a Draw Filter
+
+Sometimes displaying tabular Grid data can be greatly enhanced by also providing a Chart to show an entity’s trends. Achieving this kind of functionality with WinGrid™ and WinChart™ requires custom coding that requires a good understanding of the IUIElementDrawFilter interface as well as some creativity. The following series of topics describe the design and philosophy behind an example that does indeed achieve this functionality.
+
+image::Images\WinChart_Inside_WinGrid_DrawFilter_01.PNG[]
+
+In order to understand the various aspects of achieving this functionality, the following topics have been designed to explain each part of the working sample.
+
+[start=1]
+. link:how-to-show-winchart-inside-wingrid-cells.html[How to show WinChart inside WinGrid cells] – This topic describes any limitations of the involved controls and then proceeds to explain why a Draw Filter will be used to achieve this functionality.
+[start=2]
+. link:the-winchart-inside-wingrid-drawfilter-implementation.html[The WinChart inside WinGrid Draw Filter Implementation] – This topic explains the design of the Draw Filter that is used to show the Chart inside the WinGrid Cells.
+[start=3]
+. link:the-chartinfoeventargs-class.html[The ChartInfoEventArgs Class] – This topic explains the class that is used to expose Chart and Grid related information to end developers using the final product.
+[start=4]
+. link:the-chartlayout-class.html[The ChartLayout Class] – This topic explains the Class that is used to store the State of WinChart at any given moment in time.
+[start=5]
+. link:helper-functions.html[Helper Functions] – This topic describes the supporting methods that are used to store and load Chart State.
+[start=6]
+. link:using-the-winchart-inside-wingrid-drawfilter.html[Using the WinChart inside WinGrid Draw Filter] – This topic describes how the complete implementation is used by an end developer within a Windows Form.

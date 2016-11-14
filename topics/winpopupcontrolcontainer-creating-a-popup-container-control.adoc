@@ -1,0 +1,68 @@
+﻿////
+
+|metadata|
+{
+    "name": "winpopupcontrolcontainer-creating-a-popup-container-control",
+    "controlName": ["WinPopupControlContainer"],
+    "tags": ["How Do I"],
+    "guid": "{37457135-7DCC-43B6-BF90-BB3423408BF1}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Pop-up Container Control
+
+The WinPopupControlContainer™ gives you an effective way to conserve screen real estate while providing functionality to your users. You can use this component to represent a portion of your application's interface in a single control, such as a command button. When the user clicks the button, a container opens presenting the controls that make up the interface. Common uses for pop-up container controls might include a custom list view, a table-based interface or a selection of graphical options.
+
+WinPopupControlContainer displays no user interface at design-time. You assign the control you want to appear as the pop-up control, using the PopupControl property.
+
+.Note
+[NOTE]
+====
+This control can be a form or a container control such as a Panel that contains other controls.
+====
+
+At run time, you invoke the Show method of the element to display its contents at the current mouse position or at a specified point.
+
+[start=1]
+. Double-click the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapopupcontrolcontainer.html[UltraPopupControlContainer]"]  component in the Visual Studio toolbox. The component will be added to the component tray area of the current form.
+[start=2]
+. Add the control that you want to appear as a pop-up, or verify that it already exists on the form. This can be a container control, such as a Panel, that contains other controls. It can even be the form itself.
+[start=3]
+. Select the UltraPopupControlContainer component and in the properties grid locate the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrapopupcontrolcontainer~popupcontrol.html[PopupControl]"]  property. Select from the drop-down list the control that will serve as the pop-up container.
+[start=4]
+. Add the control to the form that will be used to display the pop-up container. Typically, this will be a button control.
+
+.Note
+[NOTE]
+====
+That if you have selected the form itself as the pop-up container, you must place the UI for displaying the pop-up on a different form, and alter your code as needed to account for cross-form references.
+====
+
+[start=5]
+. Add the following code to the Click event of the button (or other control) that will display the pop-up:
+
+*In Visual Basic:*
+
+----
+Private Sub btnShowTree_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnShowTree.Click
+	Me.UltraPopupControlContainer1.Show()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnShowTree_Click(object sender, EventArgs e)
+{
+	this.ultraPopupControlContainer1.Show();
+}
+----
+
+[start=6]
+. Build and run the project. You will see that the control you have specified as the pop-up is hidden when the form is displayed. Clicking the button displays the pop-up control at the current position of the mouse. If you used a container control for the pop-up, you can click on any of the controls it contains, or anywhere inside the container, and the pop-up remains on screen. Click outside of the pop-up control, and it is dismissed.
+
+image::images\WinPopupControlContainer_Creating_a_Popup_Container_Control_01.png[Shows a wintree inside of the winpopupcontrolcontainer which appears when you click on the button]

@@ -1,0 +1,31 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-navigation-toolbar-limit-the-size-of-the-navigation-history",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Navigation"],
+    "guid": "{80C52026-DE9D-4F89-91C5-D94987308DF9}",  
+    "buildFlags": [],
+    "createdOn": "2007-12-09T12:12:17Z"
+}
+|metadata|
+////
+
+= Limit the Size of the Navigation History
+
+When building a navigation history, consider limiting the size of the history to a manageable number, such as 10 or 20 items. The reason being, the list will keep growing every time you call the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~navigateto.html[NavigateTo]"]  method. If your application is an internet browser, and the end user is surfing 50 sites in one browsing session, that will make for a very large drop-down list on the recent history drop-down button. You can limit the amount of history items that show on this list by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~maximumnavigationitems.html[MaximumNavigationItems]"]  property. By setting this property, the navigation history will only maintain the amount of history items you specify. If you set the MaximumNavigationItems property to 10, for example, and the end user navigates to item 11, the first item in the list will be removed to make room for the newest item.
+
+The following code limits the size of the navigation history to 10  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationhistoryitem.html[NavigationHistoryItems]"] . Place this code in your form's Load event, or you can set the property in the properties window.
+
+*In Visual Basic:*
+
+----
+Me.UltraToolbarsManager1.NavigationToolbar.MaximumNavigationItems = 10
+----
+
+*In C#:*
+
+----
+this.ultraToolbarsManager1.NavigationToolbar.MaximumNavigationItems = 10;
+----

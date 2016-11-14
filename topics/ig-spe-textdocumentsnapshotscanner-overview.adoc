@@ -1,0 +1,193 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-textdocumentsnapshotscanner-overview",
+    "controlName": [],
+    "tags": [],
+    "guid": "82cb105a-cc18-4259-afbf-2f5d8696f17f",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.1148564Z"
+}
+|metadata|
+////
+
+= TextDocumentSnapshotScanner Overview
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the `TextDocumentSnapshotScanner` object’s properties and methods.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref335166805,Introduction>>
+
+** <<_Ref335166821,TextDocumentSnapshotScanner summary>>
+
+* <<_Ref335166842,TextDocumentSnapshotScanner Properties>>
+
+** <<_Ref335166850,Property List>>
+
+* <<_Ref335166856,TextDocumentSnapshotScanner Methods>>
+
+** <<_Ref335166864,Method List>>
+
+* <<_Ref335166870,Related Content>>
+
+** <<_Ref335166875,Topics>>
+
+[[_Append_Text_to]]
+[[_Ref335166805]]
+[[_Ref327861013]]
+[[_Ref324841253]]
+== Introduction
+
+[[_Ref335166821]]
+
+=== TextDocumentSnapshotScanner summary
+
+Created via the snapshot’s `CreateScanner` method the `TextDocumentSnapshotScanner` class targets a specific instance of a `TextDocumentSnaphot` and is useful for efficiently scanning through the snapshot’s lines, tokens and words.
+
+.Note:
+[NOTE]
+====
+even though the snapshot that it targets is thread safe, the scanner is not. Therefore, create the scanner on the same thread using it (namely, each thread accessing a scanner should create its own). Trying to access the properties and methods of a scanner created on another thread will raise an InvalidOperationException.
+====
+
+.Note
+[NOTE]
+====
+Also note that the `TextDocumentSnapshotScanner` class implements IDisposable and should be used inside of a ‘using’ block or explicitly disposed.
+====
+
+[[_Ref335166842]]
+== TextDocumentSnapshotScanner Properties
+
+[[_Description]]
+
+=== Property List
+
+[options="header", cols="a,a"]
+|====
+|Property|Description
+
+|CurrentOffset
+|This represents the current position of the scanner. When first creating the scanner, the initial property is set to zero. It can be explicitly set, or manipulated by calling any of the ‘SeekTo’ methods in the Methods List table below.
+
+|CurrentCharacter
+|Returns the character at the `CurrentOffset`
+
+|CurrentLine
+|Returns the line that contains the `CurrentOffset`.
+
+|CurrentToken
+|Returns the token that contains the `CurrentOffset`. 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+Setting the `CurrentOffset` to the snapshot’s Length causes the special EOS (end of stream) token to return. 
+
+====
+
+|CurrentWord
+|Returns the word that contains the `CurrentOffset``,` or null if the `CurrentOffset` is not within a word
+
+|Snapshot
+|Returns the associated `TextDocumentSnapshot`. (read-only)
+
+|====
+
+[[_Code]]
+[[_Delete_Text_from]]
+[[_Ref335166856]]
+== TextDocumentSnapshotScanner Methods
+
+[[_Description_1]]
+
+=== Method List
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+|PeekNextToken
+|This method returns the next token without changing the `CurrentOffset`. Use this method’s optional filter (Func<Token, bool>) parameter to skip over tokens that are unimportant (for example,. whitespace, comments or new lines).
+
+|PeekPreviousToken
+|This method returns the previous token without changing the `CurrentOffset`. Use this method’s optional filter (Func<Token, bool>) to skip over tokens that are not important (for example, whitespace, comments or new lines).
+
+|PeekNextWord
+|This method returns the next word without changing the `CurrentOffset`.
+
+|PeekPreviousWord
+|This method returns the previous word without changing the `CurrentOffset`.
+
+|SeekToEnd
+|This method moves the `CurrentOffset` to the end of the document.
+
+|SeekToLine
+|This method moves the `CurrentOffset` to a specific line in the document.
+
+|SeekToStart
+|This method moves the `CurrentOffset` to the start of the document.
+
+|SeekToToken
+|This method moves the `CurrentOffset` to a specific token in the document.
+
+|SeekToWord
+|This method moves the `CurrentOffset` to a specific word in the document.
+
+|LineFromOffset
+|This method retrieves a `SnapshotLineInfo` object for the line of text containing the character at the specified offset.
+
+|TokenFromOffset
+|This method retrieves the `Token` object containing the character at the specified offset.
+
+|WordFromOffset
+|This method retrieves the `Word` object containing the character at the specified offset.
+
+|====
+
+[[_Code_1]]
+[[_Insert_Text_into]]
+[[_Description_2]]
+[[_Code_2]]
+[[_Replace_All_Occurrences]]
+[[_Description_3]]
+[[_Code_3]]
+[[_Replace_a_Single]]
+[[_Description_4]]
+[[_Code_4]]
+[[_Replace_Text_at]]
+[[_Description_5]]
+[[_Code_5]]
+
+[[_Related_Content]]
+[[_Ref335166870]]
+== Related Content
+
+[[_Topics]]
+
+=== Topics
+
+The following topic provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-textdocument-overview.html[TextDocument Overview]
+|This topic describes the Infragistics Syntax Parsing Engine’s main class, `TextDocument`, and contains links to topics outlining its most important methods, events and properties.
+
+| link:ig-spe-textdocumentsnapshot-overview.html[TextDocumentSnapshot Overview]
+|This topic provides an overview of the `TextDocumentSnapshot` object’s properties and methods.
+
+|====

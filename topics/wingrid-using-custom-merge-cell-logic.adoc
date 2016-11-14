@@ -1,0 +1,88 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-custom-merge-cell-logic",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{B50A4AFC-6D24-47F5-BC04-152466661805}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Using Custom Merge Cell Logic
+
+You can have your own custom logic for merging cells by implementing  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.imergedcellevaluator.html[IMergedCellEvaluator]"]  interface and assigning an instance of it to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellevaluator.html[MergedCellEvaluator]"] property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object. The following code implements IMergedCellEvaluator on CustomMergedCellEvaluator class and sets it on the ShippedDate column in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event handler of an WinGrid™.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Class CustomMergedCellEvaluator 
+	Implements Infragistics.Win.UltraWinGrid.IMergedCellEvaluator
+	Function ShouldCellsBeMerged(ByVal row1 As UltraGridRow, _
+	ByVal row2 As UltraGridRow, _
+	  ByVal column As UltraGridColumn) As Boolean _
+	  Implements IMergedCellEvaluator.ShouldCellsBeMerged
+		Dim date1 As DateTime = DirectCast(row1.GetCellValue(column), DateTime)
+		Dim date2 As DateTime = DirectCast(row2.GetCellValue(column), DateTime)
+		' Merge cells according to the date portions of the underlying DateTime cell
+		' values, ignoring any time portion. For example, "1/1/2004 10:30 AM" will be
+		' merged with "1/1/2004 1:15 AM" since the dates are the same.
+		Return date1.Date = date2.Date
+	End Function
+End Class
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles ultraGrid1.InitializeLayout
+	' Set the MergedCellStyle property to enable the merged cell functionality.
+	' MergedCellStyle also specifies which columns will merge their cells.
+	e.Layout.Override.MergedCellStyle = MergedCellStyle.Always
+	' MergedCellEvaluator property can be used to specify custom logic for
+	' merging cells.
+	e.Layout.Bands(0).Columns("ShippedDate").MergedCellEvaluator = _
+	  New CustomMergedCellEvaluator()
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+public class CustomMergedCellEvaluator: 
+	Infragistics.Win.UltraWinGrid.IMergedCellEvaluator
+{
+	public CustomMergedCellEvaluator()
+	{
+	}
+	public bool ShouldCellsBeMerged(UltraGridRow row1, 
+	  UltraGridRow row2, UltraGridColumn column)
+	{
+		// Test to make sure the Type is not DBNull since we allow the ShippedDate to be null
+		if (row1.GetCellValue(column).GetType().ToString() != "System.DBNull" && row2.GetCellValue(column).GetType().ToString() != "System.DBNull")
+		{
+			DateTime date1 = (DateTime)row1.GetCellValue(column);
+			DateTime date2 = (DateTime)row2.GetCellValue(column);
+			// Merge cells according to the date portions of the underlying DateTime cell
+			// values, ignoring any time portion. For example, "1/1/2004 10:30 AM" will be
+			//  merged with "1/1/2004 1:15 AM" since the dates are the same.
+			return date1.Date == date2.Date;
+		}
+		else
+			return false;
+	}
+}
+private void ultraGrid1_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set the MergedCellStyle property to enable the merged cell functionality.
+	// MergedCellStyle also specifies which columns will merge their cells.
+	e.Layout.Override.MergedCellStyle = MergedCellStyle.Always;
+	// MergedCellEvaluator property can be used to specify custom logic for
+	// merging cells.
+	e.Layout.Bands[0].Columns["ShippedDate"].MergedCellEvaluator = new CustomMergedCellEvaluator();
+}
+----

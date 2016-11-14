@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-behavior-of-the-tab-key",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Navigation"],
+    "guid": "{7B572F29-0914-411A-AE6A-2DE8C07A43F2}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Behavior of the TAB Key
+
+The default behavior for the WinGrid™ is for the TAB key to move focus from one cell to the next. You can cause a TAB keystroke to move to the next control instead of the next cell by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~tabnavigation.html[TabNavigation]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[DisplayLayout]"]  object.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub Change_the_Behavior_of_the_TAB_Key_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraGrid1.DisplayLayout.TabNavigation = TabNavigation.NextControl
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void Change_the_Behavior_of_the_TAB_Key_Load(object sender, System.EventArgs e)
+{
+	this.ultraGrid1.DisplayLayout.TabNavigation = TabNavigation.NextControl;
+}
+----

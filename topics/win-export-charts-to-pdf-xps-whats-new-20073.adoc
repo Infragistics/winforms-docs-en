@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-export-charts-to-pdf-xps-whats-new-20073",
+    "controlName": [],
+    "tags": [],
+    "guid": "{C79090F7-751D-4AE6-8BE7-226741D4E27A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Export Charts to PDF/XPS
+
+WinChart™ can now be exported to Adobe Portable Document Format (PDF) and XML Paper Specification (XPS) file formats using the Infragistics Document Export Engine. All you have to do is create a Report using the DOM of the Infragistics.Documents.Reports class library, then call the new RenderPdfFriendlyGraphics method which renders the scene graph of your chart to this Graphics context object.
+
+An overload of the RenderPdfFriendlyGraphics method is also available which accepts a System.Drawing.Graphics.object as well as a pixel width and height. If your chart's dimensions are too large to fit into a PDF document's canvas, then the rendered image will be scaled down based on the specified size to chart size ratio.
+
+You have to create the Report manually because the chart does not automatically include the Infragistics.Documents.Reports assembly, which is required for exporting to PDF/XPS files. You only need to include a reference to the Infragistics4.Documents.Reports.v{ProductVersion}.dll in your application when you actually need to use this feature.
+
+Transparency and gradient paths are currently not supported in charts exported to PDF or XPS. Linear and radial gradients will be used where appropriate.
+
+== Related Topic
+
+link:chart-exporting-to-pdf.html[Exporting Charts to PDF/XPS]

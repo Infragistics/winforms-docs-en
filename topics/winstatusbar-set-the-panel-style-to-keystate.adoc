@@ -1,0 +1,71 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-keystate",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I"],
+    "guid": "{20E85A1E-9E2F-4160-975A-9F96E17F6719}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to KeyState
+
+Key state refers to whether or not a special keyboard key is locked. The keys for which this property can be set are Num Lock, Caps Lock, Scroll Lock, Insert, and Kana (for use with Japanese characters). The KeyState style Panel indicates the current key lock state of the machine running the application.
+
+== Setting up KeyState Style Panel at Design-Time
+
+[start=1]
+. Add a UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property of the panel to "KeyState".
+[start=5]
+. Open the KeyStateInfo property and select the key whose state you'd like to track.
+[start=6]
+. Choose the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.keystateinfo~displaystyle.html[DisplayStyle]"]  you prefer. If you choose on and off, and would like to change the on and off text, do so in the space provided.
+[start=7]
+. Click OK and run your project.
+
+== Setting up KeyState Style Panel at Run-Time
+
+To add a panel and set its type to "KeyState" at run-time, and set the properties mentioned above, use the following code.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Panel_Style_to_KeyState_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraStatusBar1.Panels.Add("KeyState", PanelStyle.KeyState)
+	Me.UltraStatusBar1.Panels("KeyState").KeyStateInfo.Key = _
+	  KeyState.CapsLock
+	Me.UltraStatusBar1.Panels("KeyState").KeyStateInfo.DisplayStyle = _
+	  KeyStateDisplayStyle.ChangeText
+	Me.UltraStatusBar1.Panels("KeyState").KeyStateInfo.OffText = "NOCAPSLOCK"
+	Me.UltraStatusBar1.Panels("KeyState").KeyStateInfo.OnText = "CAPSLOCK"
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Panel_Style_to_KeyState_Load(object sender, EventArgs e)
+{
+	this.ultraStatusBar1.Panels.Add("KeyState", PanelStyle.KeyState);
+	this.ultraStatusBar1.Panels["KeyState"].KeyStateInfo.Key = KeyState.CapsLock;
+	this.ultraStatusBar1.Panels["KeyState"].KeyStateInfo.DisplayStyle = 
+	  KeyStateDisplayStyle.ChangeText;
+	this.ultraStatusBar1.Panels["KeyState"].KeyStateInfo.OffText = "NOCAPSLOCK";
+	this.ultraStatusBar1.Panels["KeyState"].KeyStateInfo.OnText = "CAPSLOCK";
+}
+----

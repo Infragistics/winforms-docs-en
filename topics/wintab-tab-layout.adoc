@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-tab-layout",
+    "controlName": ["WinTab"],
+    "tags": ["Layouts"],
+    "guid": "{651EA797-6732-4F62-9E48-0FFB389FD09C}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Tab Layout
+
+This topic shows how you can display Tabs in a single row or in multiple rows using the WinTab™ control’s  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~tablayoutstyle.html[TabLayoutStyle]"]  property. Also if you display Tabs in multiple rows, you can specify the number of Tabs to be displayed in each row by using the WinTab control’s  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~tabsperrow.html[TabsPerRow]"]  property.
+
+This topic assumes you have a WinTab control dropped onto the Form with four Tabs in it.
+
+*In Visual Basic:*
+
+----
+' Set the Tabs to be displayed in multiple rows 
+Me.ultraTabControl1.TabLayoutStyle = TabLayoutStyle.MultiRowTabsPerRow 
+' Set the number of Tabs in each row to be two 
+Me.ultraTabControl1.TabsPerRow = 2
+----
+
+*In C#:*
+
+----
+// Set the Tabs to be displayed in multiple rows
+this.ultraTabControl1.TabLayoutStyle = TabLayoutStyle.MultiRowTabsPerRow;
+// Set the number of Tabs in each row to be two
+this.ultraTabControl1.TabsPerRow = 2;
+----
+
+The following screenshot shows a WinTab control with four Tabs, and the Tabs are layed out in multiple rows with two Tabs in each row.
+
+image::Images\WinTab_Tab_Layout.png[]

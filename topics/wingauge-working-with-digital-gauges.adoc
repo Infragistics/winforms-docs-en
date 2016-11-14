@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-working-with-digital-gauges",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{E0A5E42B-E52B-45D2-BB8A-D6D23527F8E9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with Digital Gauges
+
+In order to work effectively with Digital gauges, there are a couple of properties (i.e.,  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.segmenteddigitalgauge~mode.html[Mode]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.segmenteddigitalgauge~unlitbrushelement.html[UnlitBrushElement]"]  pick:[win-forms=")"]  that you need to understand.
+
+image::Images/Gauge_Working_with_Digital_Gauges_01.png[Shows the key parts to the digital gauge.]
+
+In the above screen shot the UnlitBrush property is set to a partially-transparent black SolidFillBrushElements. The Mode property is set to FourteenSegment.
+
+===== Segments for Displaying Numbers and Letters
+
+The Digital gauge can be represented as a seven or 14-segment display.
+
+A seven-segment display is comprised of seven segments. The seven segments are arranged as a rectangle of two vertical segments on each side with one horizontal segment on the top, center, and bottom. This display is usually used to display numbers only. For example, a basic calculator uses a seven-segment display.
+
+The following image shows the segments in a seven-segment display.
+
+image::Images/Gauge_Working_with_Digital_Gauges_02.png[Shows what a digit looks like in seven segment display.]
+
+A 14-segment display is made up of 14 segments. It is an extension of the seven-segment display, having an additional four diagonal segments, two vertical segments through the center, and with a center horizontal segment spilt in half. A 14-segment display can represent letters, as well as numbers. For example, a car stereo uses a 14-segment display.
+
+The following image shows the segments in a 14-segment display
+
+image::Images/Gauge_Working_with_Digital_Gauges_03.png[Shows what a digit looks like in a fourteen segment display.]
+
+The Mode property of the Digital gauge specifies the number of segments to be used. If you want the gauge to display letters as well as numbers, you must set the mode to "FourteenSegment". If you want your Digital gauge to display numbers only, then you would set the mode to "SevenSegment".
+
+===== Color of Unlit Segments
+
+The UnlitBrushElement property sets the brush type and brush color of the segments that are not used to display the values. By setting this property, you give your gauge the appearance of a digital LED screen.

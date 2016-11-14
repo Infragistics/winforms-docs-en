@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "introduction-tips-for-installing-infragistics-windows-forms",
+    "controlName": [],
+    "tags": ["Getting Started","Tips and Tricks"],
+    "guid": "{AD766458-E5D5-48CB-88EB-DC1C426C18F1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Tips for Installing Infragistics Windows Forms
+
+Sometimes, software installations don't go exactly as planned. We realize that everyone has a different machine setup and we've put together a list of troubleshooting tips that can help ensure that Infragistics Professional installs as smoothly as possible.
+
+* You must be logged in as an Administrator to install Infragistics Professional. This login must also be able to update the system registry.
+* Make sure there is enough space for installation, including your temporary files. By default, Windows stores temporary files in the directory C:\WINDOWS\Temp.
+* Microsoft® Visual Studio® must be installed and kept closed while installing Infragistics Professional and/or any of the Infragistics utilities (e.g. Toolbox utility)..
+* The install should be run from a local hard drive. You might encounter issues if it is run from a network drive.
+* If you have already installed the trial version of Infragistics Professional, there is no need to uninstall/reinstall the software. You can simply run the installer file (e.g., Infragistics_NET_20082_CLR2x.exe) from the appropriate directory (e.g., {InstallPath}) and insert your CD-Key when prompted by the installation wizard.
+* If you receive an error stating that your license key is invalid during the installation, first confirm that you entered the key correctly. If you did, cancel the installation (do not "install as trial"), reboot your computer, and run the installer file again, as this clears the incorrect value from the internal cache.
+* The file name (including all path information) cannot exceed more than 256 characters -- this is a limitation of Windows®. Our installer works around this internally by using the "8.3" notation, where for example "C:\Program Files\" is referred to as "C:\PROGRA~1\". If you provide a destination folder name that is too long when installing Infragistics Professional, you may receive a "file is missing or corrupt" error.
+* If you install any combination of the Infragistics Professional installs and remove one of them at a later time, this might result in known issues. To resolve these issues, reinstall the appropriate Infragistics Professional product.
+* If you have AppStylist® for Windows Forms installed, and you modify one of the installed Infragistics Style Library ($$* $$.isl) files, and want to save the changes for later, ensure that you save your changes as a different file. This will ensure that your customized .isl files are not overwritten by a Infragistics Professional hotfix, or removed during a Infragistics Professional uninstall.

@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-overview-of-styles-presets-and-themes",
+    "controlName": [],
+    "tags": ["Styling"],
+    "guid": "{1F89243B-D5DD-41CA-8BDB-E8BFB78285B7}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-06T00:00:00Z"
+}
+|metadata|
+////
+
+= Overview of Styles, Presets, and Themes
+
+The Infragistics Windows Forms controls and components offer several powerful, yet flexible means of changing their appearance.
+
+== Application Styling
+
+Application Styling is a ground-breaking concept in Windows Forms development that allows developers and graphic designers to collaborate more efficiently. The developer creates the application while at the same time, graphic designers create styles that can be used in that application. When finished, the graphic designer hands off the style library to the developer who then loads it into the application with only one line of code. Developing world-class applications with a stylish look and feel to go along with it has never been easier. Whether you're a one-person shop or an enterprise-level business, everyone can reap the benefits of Infragistics' link:styling-guide-application-styling-framework-asf.html[Application Styling Framework™] (ASF) – and the key to these benefits is in Infragistics' very own AppStylist®.
+
+AppStylist is a stand-alone application that runs outside of the Microsoft® Visual Studio® IDE. AppStylist lets you style every minute detail of your application with the help of our unique link:win-appearance-objects.html[Appearance] object and link:win-presentation-layer-framework-plf.html[Presentation Layer Framework™]. You can even style in-box controls with the help of the InboxControlStyler™ component. Use the simple point-and-click interface and watch the styles change on the canvas. The user interface is divided into three intuitive sections:
+
+* link:styling-guide-canvas.html[Canvas] – This section shows an example of your current style while dynamically updating whenever you change the style's settings.
+* link:styling-guide-style-explorer.html[Style Explorer] – This section lets you select styles that you want to modify as well as change those styles based on the role they will play in either a user interface or as an individual component.
+* link:styling-guide-properties-panel.html[Properties Panel] – This section is where you will spend most of your time changing the look and feel of different states.
+
+If you're a developer developing against the Application Styling API, you can get help on link:styling-guide-setting-up-your-application-for-styling.html[Setting Up Your Application for Styling]. On the other hand, if you're a graphic designer, you can get help on link:styling-guide-styling-your-application.html[Styling Your Application].
+
+== Applying Presets to WinGrid Controls
+
+You can apply various presets to the WinGrid™ control (and controls that utilize the WinGrid control) in order to give the control a particular look and feel. You can also create and save custom presets for later use with the WinGrid control. Applying presets is the easiest way to visually change the WinGrid control. To learn more about creating and using presets, see link:styling-guide-working-with-presets.html[Understanding Presets].
+
+== Selecting Themes
+
+Many Infragistics Windows Forms controls/components include built-in themes that let you quickly replicate common Microsoft® user interface look-and-feels such as Windows® XP, Windows 2000, Office 2003 Visual Studio® .NET, or even Office 2007. Generally, these properties are exposed as a single property of the control/component. To learn more about these themes, refer to topics in the link:win-controls.html[Controls] section.
+
+== Windows Themes Support
+
+All Infragistics Windows Forms controls support being drawn using Windows Themes as their style when the operating system on which the application is executing supports themes. Each control/component contains a single property,  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~useosthemes.html[UseOsThemes]"] , which indicates whether the control should be drawn according to the system's applied theme or not (this property is of type DefaultableBoolean).
+
+There are two issues that you need to be aware of when designing an application that should support themes. First, enabling themes support for controls/components means that some style property values will be overridden by the theme when the control is drawn in your application. For example, changing the WinButton™ control's  pick:[win-forms="link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultrabuttonbase~buttonstyle.html[ButtonStyle]"]  property will have no effect when the control's UseOsThemes property is set to either Default or True. This is due to the fact that the Windows theme defines the style for a button.
+
+The second issue deals with setting a visual style (as described in the previous section) on your control/component. Some styles available may cause both Windows themes as well as some control properties to be overridden by the style. For example, by default, the WinExplorerBar™ control uses the Windows themes settings when it renders. However, setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar.html[UltraExplorerBar]"]  to  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbarstyle.html[ExplorerBar]"] , and the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~viewstyle.html[ViewStyle]"]  property to  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbarviewstyle.html[Office2003]"]  causes the WinExplorerBar control to ignore the Windows theme and to be drawn according to the Office 2003 visual style.
+
+== Appearance Objects
+
+Infragistics Windows Forms controls/components are often made up of a combination of unique controls and elements. Because of this, you have the power to change the appearance of each individual element. Generally the appearance information for each individual part of a control is accessed through a control property. These properties expose objects that inherit from the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Infragistics.Win.Appearance]"]  object. The Appearance object contains formatting settings that can be applied to all objects of the control. Typical style attributes include foreground color, background color, font settings and border styles. Control-specific derivations of the Appearance class allow you to visually change specific areas of a control.
+
+For example, if you wanted to change the background colors of the selected tab in a WinTab™ control, you could modify the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance~backcolor.html[BackColor]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~selectedtabappearance.html[SelectedTabAppearance]"]  object, which the  pick:[win-forms="link:{ApiPlatform}win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratab.html[UltraTab]"]  exposes.
+
+[source]
+----
+this.ultraTabControl1.SelectedTabAppearance.BackColor = Color.LightGray;
+----
+
+== Presentation Layer Framework (PLF)
+
+The PLF is the platform on which all Infragistics Windows Forms controls/components are built. This powerful architecture give you infinite control over almost every UI aspect of the elements. To learn more about the PLF and how you can use it to style your Windows Forms controls, see the link:win-plf-overview.html[PLF Overview].

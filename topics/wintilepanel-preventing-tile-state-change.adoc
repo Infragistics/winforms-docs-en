@@ -1,0 +1,69 @@
+﻿////
+|metadata|
+{
+    "name": "wintilepanel-preventing-tile-state-change",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I"],
+    "guid": "{1F133474-0017-426F-83D8-567AC5466E9B}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Preventing Tile State Change
+
+It is possible to prevent end users from changing the state of the tiles. By default, all tiles in an UltraTilePanel control are displayed in normal state. These normal state tiles can be prevented from being maximized. Likewise, a tile that is maximized through code can also be prevented from being brought back to the normal state. The following methods can be adopted in order to prevent state change.
+
+== Hiding the StateChangeButton
+
+The StateChangeButton enables tiles to be switched between the normal and large states. Hence hiding the StateChangeButton by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~showstatechangebutton.html[ShowStateChangeButton]"]  boolean property to False prevents end users from switching states. This can be done for a specific tile or on all tiles by setting the UltraTilePanel control’s TileSettings.ShowStateChangeButton property to False.
+
+*In Visual Basic:*
+
+----
+' Hide the StateChangeButton for a specific tile 
+tile3.Settings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.[False] 
+' Hide the StateChangeButton for all tiles on the UltraTilePanel 
+Me.ultraTilePanel1.TileSettings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.[False]
+----
+
+*In C#:*
+
+----
+// Hide the StateChangeButton for a specific tile
+ tile3.Settings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.False;
+// Hide the StateChangeButton for all tiles on the UltraTilePanel
+this.ultraTilePanel1.TileSettings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.False;
+----
+
+== Cancelling State Change events
+
+All the tiles in an UltraTilePanel fire  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~statechanging_ev.html[StateChanging]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~statechanged_ev.html[StateChanged]"]  events. These events are cancellable and hence you can set the cancel property to True on the event arguments to prevent the state change operation from occurring. Similarly the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilestatechanging_ev.html[TileStateChanging]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilestatechanged_ev.html[TileStateChanged]"]  events can also be handled on the UltraTilePanel level.
+
+.Note
+[NOTE]
+====
+The TilePanel object level events fire after the Tile object level events, provided the tile events are not cancelled.
+====
+
+*In Visual Basic:*
+
+----
+AddHandler tile1.StateChanging, AddressOf tile1_StateChanging
+Private Sub tile1_StateChanging(ByVal sender As Object, ByVal e As TileStateChangingEventArgs) Handles tile1.StateChanging
+    e.ShouldAnimate = False
+    MessageBox.Show(e.NewState.ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+tile1.StateChanging += new TileStateChangingEventHandler(tile1_StateChanging);
+void tile1_StateChanging(object sender, TileStateChangingEventArgs e)
+   {
+         e.ShouldAnimate = false;
+         MessageBox.Show(e.NewState.ToString());
+   }
+----

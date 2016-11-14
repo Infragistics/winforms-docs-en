@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-initializerow-event",
+    "controlName": ["WinGrid"],
+    "tags": ["Events","Grids"],
+    "guid": "{63DA5C78-D802-4ABE-968D-7339DCF488BA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= InitializeRow Event
+
+The InitializeRow event is raised once per row that has been created in the WinGrid. For example, if your underlying data source has 45 rows, then the InitializeRow event will be raised 45 times. Each time it is raised, you will have an opportunity to access the current row that is being passed through the event arguments.
+
+Accessing the current row via the argument e.Row is useful for row by row customization. Some examples include populating the contents of unbound cells, setting the text of columns that were added as Buttons, and changing the colors of cells based on the values of other sibling cells.
+
+The InitializeRow event is also raised once per cell who's value has been changed in the WinGrid. For example, if two values have been changed in one row of the ulderlying data source, then the event will be raised twice. The argument e.ReInitialize will be True in this case. The same is true for the modification of unbound column values.
+
+One important thing to note about this event is in the case of a hierarchical data model. If working with a hierarchical data model, take care to include logic that ensures the correct access of rows belonging to a specific band. In other words, if you are working with a WinGrid that has been bound to a data model that has 2 entities, Customers and Orders, with Customers occupying the parent WinGrid Band and Orders occupying the Child Band, you need to make sure that the rows that are being accessed in the InitializeRow event are indeed the ones that belong to the Band that needs to be customized. If you add an extra unbound column to the parent Band Customers and set the Column Style to Button, you would like to set the Value of each of these Button Cells to "Edit". Care must be taken to access the correct Band, otherwise an exception will be thrown because the Child Band will not have this Button column. The following code shows the correct way to access this:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow( _
+   ByVal sender As System.Object, _
+   ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+   Handles UltraGrid1.InitializeRow
+   Select Case e.Row.Band.Key
+      Case "Customers"
+         e.Row.Cells("BUTTON_COLUMN").Value = "Edit"
+      End Select
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(
+   object sender, 
+   InitializeRowEventArgs e)
+{
+   switch (e.Row.Band.Key)
+   {
+      case "Customers":
+         e.Row.Cells["BUTTON_COLUMN"].Value = "Edit";
+         break;
+   }
+};
+----
+
+The following code will indeed work if you are using a flat data model, however it is a good practice to always include logic to specify rows within a specific band. You never know when the application may be changed and additional bands may be added. Code will break if this condition is not added. The following code will fail in the case of a hierarchical data model because since the code is executing for every single row, whenever a row that belongs to the Child Band Orders is presented, it will throw an exception because the “BUTTON_COLUMN” does not exist in that Band.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow( _
+   ByVal sender As System.Object, _
+   ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+   Handles UltraGrid1.InitializeRow
+   e.Row.Cells("BUTTON_COLUMN").Value = "Edit"
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(
+   object sender, 
+   InitializeRowEventArgs e)
+{
+   e.Row.Cells["BUTTON_COLUMN"].Value = "Edit";
+}
+----
+
+This code is incorrect because when working with a hierarchical data model, each and every Row, regardless of which Band it belongs to, will be available in this event. If the logic is not included in this event, you will be accessing Rows in other Bands, thus causing Logic errors and / or exceptions.

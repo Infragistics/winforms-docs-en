@@ -1,0 +1,37 @@
+﻿////
+
+|metadata|
+{
+    "name": "windropdown-resize-drop-down-in-windropdown",
+    "controlName": ["WinDropDown"],
+    "tags": ["How Do I"],
+    "guid": "ab537e9a-8b7e-45ff-ad4d-900437ba0fc0",  
+    "buildFlags": [],
+    "createdOn": "2010-06-03T21:51:36.5500761Z"
+}
+|metadata|
+////
+
+= Resize Drop-Down in WinDropDown
+
+The drop down of WinDropDown™ control can be resized using a handle, which can be positioned at the bottom of the drop down either vertically or diagonally. This handle enables you to resize the drop-down and view any text or item in the drop down that has been truncated due to the size of the control. By default the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~dropdownresizehandlestyle.html[DropDownResizeHandleStyle] property is set to ‘None’. When set to a particular style and resized at run time, the resized height and width of the drop down will be stored for that run of the application. You can also style the handle using the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~dropdownresizehandleappearance.html[DropDownResizeHandleAppearance] property.
+
+The following code assumes that you have an UltraGrid and UltraDropDown controls dropped onto your form. The UltraGrid control is bound to the Customers table and UltraDropDown is bound to the Orders data table. The UltraDropDown control is assigned to the ValueList property of an UltraGridColumn.
+
+*In Visual Basic:*
+
+----
+' Set the Drop Down Resize handle style for UltraDropDown
+Me. ultraDropDown1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize 
+' Set the back color for the handle 
+Me. ultraDropDown1.DropDownResizeHandleAppearance.BackColor = Color.Blue
+----
+
+*In C#:*
+
+----
+// Set the Drop Down Resize handle style for UltraDropDown
+this. ultraDropDown1.DropDownResizeHandleStyle = Infragistics.Win.DropDownResizeHandleStyle.DiagonalResize;
+// Set the back color for the handle
+this. ultraDropDown1.DropDownResizeHandleAppearance.BackColor = Color.Blue;
+----

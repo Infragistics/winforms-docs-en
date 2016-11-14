@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-hatch-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{6E33EEF2-7BDF-4949-A61F-CB30F7A0C4E1}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Hatch Brush Element at Run Time
+
+Applying the Hatch brush element to a visual in your gauge gives that element a two-color patterned appearance.
+
+*To apply the Hatch brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create instances of the classes:
+
+*In Visual Basic:*
+
+----
+Dim myHatchBrushElement As New HatchBrushElement()
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+----
+
+*In C#:*
+
+----
+HatchBrushElement myHatchBrushElement = new HatchBrushElement();
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+----
+
+[start=4]
+. Set the following properties:
+
+** back color -- DimGray
+** fore color -- Silver
+** hatch style -- BackwardDiagonal.
+
+*In Visual Basic:*
+
+----
+myHatchBrushElement.BackColor = System.Drawing.Color.DimGray
+myHatchBrushElement.ForeColor = System.Drawing.Color.Silver
+myHatchBrushElement.HatchStyle = _
+  System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal
+myHatchBrushElement.RelativeBounds = _
+  New System.Drawing.Rectangle(3, 3, 94, 94)
+myHatchBrushElement.RelativeBoundsMeasure = _
+  Infragistics.UltraGauge.Resources.Measure.Percent
+myRadialGauge.Dial.BrushElement = myHatchBrushElement
+----
+
+*In C#:*
+
+----
+myHatchBrushElement.BackColor = System.Drawing.Color.DimGray;
+myHatchBrushElement.ForeColor = System.Drawing.Color.Silver;
+myHatchBrushElement.HatchStyle = 
+  System.Drawing.Drawing2D.HatchStyle.BackwardDiagonal;
+myHatchBrushElement.RelativeBounds = 
+  new System.Drawing.Rectangle(3, 3, 94, 94);
+myHatchBrushElement.RelativeBoundsMeasure = 
+  Infragistics.UltraGauge.Resources.Measure.Percent;
+myRadialGauge.Dial.BrushElement = myHatchBrushElement;
+----
+
+== Related Topics
+
+link:wingauge-hatch-brush-element.html[Hatch Brush Element]
+
+link:wingauge-apply-the-hatch-brush-element-at-design-time.html[Apply the Hatch Brush Element at Design Time]
+
+link:wingauge-apply-the-hatch-brush-element-using-the-gauge-designer.html[Apply the Hatch Brush Element Using the Gauge Designer]

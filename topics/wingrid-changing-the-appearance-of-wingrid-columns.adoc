@@ -1,0 +1,299 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-the-appearance-of-wingrid-columns",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","Styling"],
+    "guid": "{15374E5D-4730-4221-907E-BA5A81F1DE81}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing the Appearance of WinGrid Columns
+
+== Background
+
+When columns need to be embellished with color, images and other unique properties, WinGrid™ allows the developer to set Appearance properties for both the Column Headers and the cells of the column.
+
+== Questions
+
+* How do I set the background color for each column?
+* How do I change the default colors for inactive columns?
+* How do I place a background image in a column?
+
+== Solutions
+
+Column Appearance consists of two parts:
+
+* Column Header Appearance
+
+** Use the .Header.Appearance object of the Column to manipulate the appearance of the Column Header.
+
+* Cell Appearance
+
+** Use the .CellAppearance object of the Column to manipulate the appearance of the cells in the column.
+** There is also an Appearance object associated with each cell in the column, allowing customization of each cell.
+** Much of what is seen as a "Column" is actually the Cells of the Column. Thus much of what appears to be column appearance is actual cell appearance properties of the column object.
+
+== Sample Project
+
+This sample project demonstrates some of the possibilities with Column Appearance.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Changing_the_Appearance_of_WinGrid_Columns_01.png[changing the appearance of ultragrid columns]
+
+The WinGrid InitializeLayout event contains the following example code snippets:
+
+* UltraGrid1.InitializeLayout - The code of the InitializeLayout event sets the column appearance. To be able to modify the appearance of the column headers the .UseOsThemes property of the grid must be turned off or the .Header.Appearance.ThemedElementAlpha = Alpha.Transparent property must be set. Turn off UseOsThemes:
+
+*In Visual Basic:*
+
+----
+' Turn off UseOsThemes to allow display of raw column header
+Me.UltraGrid1.UseOsThemes = DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+// Turn off UseOsThemes to allow display of raw column header
+this.ultraGrid1.UseOsThemes = DefaultableBoolean.False;
+----
+
+Set the column header lines to 2 so we can display two lines in the column headers. Place a vbcrlf between header lines in the .Caption property:
+
+*In Visual Basic:*
+
+----
+' Set column header lines to 2
+e.Layout.Bands(0).ColHeaderLines = 2
+----
+
+*In C#:*
+
+----
+// Set column header lines to 2
+e.Layout.Bands[0].ColHeaderLines = 2;
+----
+
+Override the cell back color and cell button back color for all cells in the band:
+
+*In Visual Basic:*
+
+----
+' Override appearance of all cells in band 0
+e.Layout.Bands(0).Override.CellAppearance.BackColor = Color.LightPink
+e.Layout.Bands(0).Override.CellButtonAppearance.BackColor = Color.LightPink
+----
+
+*In C#:*
+
+----
+// Override appearance of all cells in band 0
+e.Layout.Bands[0].Override.CellAppearance.BackColor = Color.LightPink;
+e.Layout.Bands[0].Override.CellButtonAppearance.BackColor = Color.LightPink;
+----
+
+Set the header caption for band 0, column 0 to "Default":
+
+*In Visual Basic:*
+
+----
+' Set caption for band 0, column 0
+e.Layout.Bands(0).Columns(0).Header.Caption = "Default"
+----
+
+*In C#:*
+
+----
+// Set caption for band 0, column 0
+e.Layout.Bands[0].Columns[0].Header.Caption = "Default";
+----
+
+Set the BackColor and ForeColor properties of the cells in Band 0, Column 1:
+
+*In Visual Basic:*
+
+----
+' Set properties for band 0, column 1
+e.Layout.Bands(0).Columns(1).Header.Caption = "BackColor" + vbCrLf + "ForeColor"
+e.Layout.Bands(0).Columns(1).CellAppearance.BackColor = Color.LightYellow
+e.Layout.Bands(0).Columns(1).CellAppearance.ForeColor = Color.Blue
+e.Layout.Bands(0).Columns(1).CellButtonAppearance.BackColor = Color.LightYellow
+----
+
+*In C#:*
+
+----
+// Set properties for band 0, column 1
+e.Layout.Bands[0].Columns[1].Header.Caption = "BackColor" + "\n" + "ForeColor";
+e.Layout.Bands[0].Columns[1].CellAppearance.BackColor = Color.LightYellow;
+e.Layout.Bands[0].Columns[1].CellAppearance.ForeColor = Color.Blue;
+e.Layout.Bands[0].Columns[1].CellButtonAppearance.BackColor = Color.LightYellow;
+----
+
+Set the font to bold for all cells in band 0, column 2:
+
+*In Visual Basic:*
+
+----
+' Set properties for band 0, column 2
+e.Layout.Bands(0).Columns(2).Header.Caption = "FontData" + vbCrLf + "Bold"
+e.Layout.Bands(0).Columns(2).CellAppearance.FontData.Bold = DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+// Set properties for band 0, column 2
+e.Layout.Bands[0].Columns[2].Header.Caption = "FontData" + "\n" + "Bold";
+e.Layout.Bands[0].Columns[2].CellAppearance.FontData.Bold = DefaultableBoolean.True;
+----
+
+Set column header lines to 2 for column headers in band 1:
+
+*In Visual Basic:*
+
+----
+' Set column header lines to 2
+e.Layout.Bands(1).ColHeaderLines = 2
+----
+
+*In C#:*
+
+----
+// Set column header lines to 2
+e.Layout.Bands[1].ColHeaderLines = 2;
+----
+
+Load an image into the .Image property of the column header for band 1, column 0 (Notice the image scales to fit the height of the column header.):
+
+*In Visual Basic:*
+
+----
+' Set properties for band 1, column 0
+e.Layout.Bands(1).Columns(0).Header.Caption = "Image"
+Dim anImage1 As Image = Image.FromFile("Program Dependent Files\Coffee Bean.bmp")
+e.Layout.Bands(1).Columns(0).Header.Appearance.Image = anImage1
+----
+
+*In C#:*
+
+----
+// Set properties for band 1, column 0
+e.Layout.Bands[1].Columns[0].Header.Caption = "Image";
+Image anImage1 = Image.FromFile(@"Program Dependent Files\Coffee Bean.bmp");
+e.Layout.Bands[1].Columns[0].Header.Appearance.Image = anImage1;
+----
+
+Load an image into the .ImageBackground property of the column header for band 1, column 1 (Notice the image fills the background of the column header):
+
+*In Visual Basic:*
+
+----
+' Set properties for band 1, column 1
+e.Layout.Bands(1).Columns(1).Header.Caption = "Background" + vbCrLf + "Image"
+Dim anImage2 As Image = Image.FromFile("Program Dependent Files\Coffee Bean.bmp")
+e.Layout.Bands(1).Columns(1).Header.Appearance.ImageBackground = anImage2
+e.Layout.Bands(1).Columns(1).Header.Appearance.ForeColor = Color.White
+----
+
+*In C#:*
+
+----
+// Set properties for band 1, column 1
+e.Layout.Bands[1].Columns[1].Header.Caption = "Background" + "\n" + "Image";
+Image anImage2 = Image.FromFile(@"Program Dependent Files\Coffee Bean.bmp");
+e.Layout.Bands[1].Columns[1].Header.Appearance.ImageBackground = anImage2;
+e.Layout.Bands[1].Columns[1].Header.Appearance.ForeColor = Color.White;
+----
+
+This code disables activation on the column and sets the background color for the column when disabled:
+
+*In Visual Basic:*
+
+----
+' Set properties for band 1, column 2
+e.Layout.Bands(1).Columns(2).Header.Caption = "Disabled"
+e.Layout.Bands(1).Columns(2).CellActivation = Activation.Disabled
+e.Layout.Bands(1).Columns(2).CellAppearance.BackColorDisabled = Color.LightGoldenrodYellow
+----
+
+*In C#:*
+
+----
+// Set properties for band 1, column 2
+e.Layout.Bands[1].Columns[2].Header.Caption = "Disabled";
+e.Layout.Bands[1].Columns[2].CellActivation = Activation.Disabled;
+e.Layout.Bands[1].Columns[2].CellAppearance.BackColorDisabled = Color.LightGoldenrodYellow;
+----
+
+This code fills the column header with a gradient from red to blue, bolds the text and sets the text color to white:
+
+*In Visual Basic:*
+
+----
+' Set properties for band 1, column 3
+e.Layout.Bands(1).Columns(3).Header.Caption = "Gradient"
+e.Layout.Bands(1).Columns(3).Header.Appearance.ForeColor = Color.White
+e.Layout.Bands(1).Columns(3).Header.Appearance.FontData.Bold = DefaultableBoolean.True
+e.Layout.Bands(1).Columns(3).Header.Appearance.BackColor = Color.Red
+e.Layout.Bands(1).Columns(3).Header.Appearance.BackColor2 = Color.Blue
+e.Layout.Bands(1).Columns(3).Header.Appearance.BackGradientStyle = GradientStyle.Vertical
+----
+
+*In C#:*
+
+----
+// Set properties for band 1, column 3
+e.Layout.Bands[1].Columns[3].Header.Caption = "Gradient";
+e.Layout.Bands[1].Columns[3].Header.Appearance.ForeColor = Color.White;
+e.Layout.Bands[1].Columns[3].Header.Appearance.FontData.Bold = DefaultableBoolean.True;
+e.Layout.Bands[1].Columns[3].Header.Appearance.BackColor = Color.Red;
+e.Layout.Bands[1].Columns[3].Header.Appearance.BackColor2 = Color.Blue;
+e.Layout.Bands[1].Columns[3].Header.Appearance.BackGradientStyle = GradientStyle.Vertical;
+----
+
+* UltraGrid1.InitializeRow - The code of the InitializeRow event causes the rows to expand:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	e.Row.ExpandAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	e.Row.ExpandAll();
+}
+----
+
+== Review
+
+This sample project illustrates some of the options for setting column appearance. The column appearance consists of both the Column.Header Appearance objects and the CellAppearance object of the Column. Much of what is thought of as Column Appearance is actually the appearance of the cells in the columns.

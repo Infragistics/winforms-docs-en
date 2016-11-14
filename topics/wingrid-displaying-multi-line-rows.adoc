@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-multi-line-rows",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{015FF967-6154-4ADD-B98E-B9B719C2B812}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Multi-Line Rows
+
+== Background
+
+When column text is longer than the space available, the text is truncated by default. With two lines of code, WinGrid™ can be configured to display extended text in multi-line rows.
+
+== Questions
+
+* How do I tell the grid to display cell text on multiple lines?
+
+== Sample Project
+
+This sample project tells the grid to fit the columns within the available display area and use multiple line rows to display all of the text information.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images/WinGrid_Displaying_Multi_Line_Rows_01.png[displaying multi line rows in ultragrid]
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout event tells the grid to fit the columns in the available display area, sets the row sizing to AutoFree, and sets the CellMultiLine to True:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns
+	e.Layout.Override.RowSizing = RowSizing.AutoFree
+	e.Layout.Override.CellMultiLine = DefaultableBoolean.True
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	e.Layout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+	e.Layout.Override.RowSizing = RowSizing.AutoFree;
+	e.Layout.Override.CellMultiLine = DefaultableBoolean.True;
+}
+----
+
+== Review
+
+This sample program shows how to tell the WinGrid to display column text on multiple rows.

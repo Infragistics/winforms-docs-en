@@ -1,0 +1,1126 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-resource-strings",
+    "controlName": [],
+    "tags": ["Grids","Localization","Resource Strings"],
+    "guid": "{F6A4CCD0-2F17-4EE8-BB78-B79CC2BB7227}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= WinGrid Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|AccessibleActionPush
+|Push
+
+|AccessibleName_AddNewBoxArea
+|AddNew Area
+
+|AccessibleName_AddRow
+|Add Row
+
+|AccessibleName_Caption
+|Caption
+
+|AccessibleName_ChildBands
+|Child Rows
+
+|AccessibleName_ColumnHeaders
+|Column Headers
+
+|AccessibleName_DataArea
+|Data Area
+
+|AccessibleName_FilterRow
+|Filter Row
+
+|AccessibleName_GroupByBox
+|GroupBy Box
+
+|AccessibleName_Row
+|{0} row {1}
+
+|AccessibleName_RowColRegion
+|Scrolling Region
+
+|AccessibleName_TemplateAddRow
+|Template Add Row
+
+|AddNewBoxDefaultPrompt
+|Add ...
+
+|AllRowsFilteredOut
+|0 Items.
+
+|CheckedListSettings_E_CheckStateMemberCannotEqualValueMember
+|The CheckStateMember property cannot be set to '{0}' because the ValueMember property currently resolves to that value. The CheckStateMember property cannot reference the same column that defines the control's value.
+
+|ColumnChooserAllBandsItem
+|All
+
+|ColumnChooserButtonToolTip
+|Click here to show Field Chooser.
+
+|ColumnChooserDialogCaption
+|Field Chooser
+
+|ColumnsUITypeEditorList_None_Entry
+|None
+
+|DataError_CellValueRetrieval
+|Unable to retrieve cell value. PropertyDescriptor.GetValue call failed. This may happen for variety of reasons. One possible cause may be that the UltraGridRow's list object may be out of sync with the underlying data list. This can occur if the underlying data list fails to raise proper events notifying the bound controls (UltraGrid) of change in the data list. If you are using a custom IList data source, try implementing IBindingList interface on the data list and raising ListChanged event appropriately. If the data list already implements IBindingList then it may be failing to raise proper notifications. You can also try calling RowsCollection.Refresh on the grid's rows collection to synchronize the grid's list objects with the data lists. Note that the UltraGrid will continue operating normally.
+
+|DataError_CurrencyManagerRetrievalFailure
+|Unable to get the CurrencyManager from the BindingContext. The BindingContext threw an exception from its indexer. This may happen for variety of reasons. One such reason is when creating the currency manager for a child band, the currency manager may fail to get instantiated because it is not be able to retrieve an instance of IList from the parent list object. This can occur when the parent list has 0 items and thus no parent list object to retrieve the child list from. In such a case the child currency manager attempts to add a temporary item to the parent list so it can retrieve a child list instance from the parent list object. If this fails, because for example the list is read-only or does not support adding, then the currency manager will fail to be instantiated, resulting in an exception being thrown by the BindingContext indexer. The UltraGrid will proceed with further retrieval of the data structure however it will not be able to display this particular child band level and its descendants since UltraGrid can not retrieve the proper data structure for this band at this time. However note that the UltraGrid will make further attempts at retrieval under appropriate conditions, like for example when the parent currency manager raises PositionChanged notifications, which may be in response to adding of an item in the parent list object or change in the current item of an ancestor currency manager. Possible workarounds may be to implement IBindingList on the data source if it already doesn't implement this interface. UltraGrid makes use of this interface for retrieving the data structure if it fails to obtain the CurrencyManager from the BindingContext. If this failure is due to a parent list being read-only and having 0 items, you can temporarily enable adding while the data source binding is taking place.
+
+|DataError_RowListObjectRetrieval
+|Unable to retrieve list object for the row. This typically occurs when the UltraGrid's row collection gets out of sync with the underlying data list. This can be the result of the underlying data list failing to raise proper notifications to notify the bound controls (UltraGrid) of change in the data list, particularly of adding/removing rows. UltraGrid will resynchronize the row collection with the data list, adding/removing grid rows as necessary and continue to operate normally. However this resynchronization process can be inefficient if there are lot of rows. If you are using a custom IList as the data source and you are experiencing performance issues in association with this error message, you may want to make sure that the data list raises proper notifications for changes in the data list. To raise notifications, you will have to implement IBindingList interface on the data list and raise IBindingList's ListChanged notification.
+
+|DataErrorCalculatedValueDoesntMatchDataType
+|The formula results could not be converted to the column's data type.
+
+|DataErrorCellUpdateDateNotInMinMaxRange
+|Illegal Data Value: Specified date value does not fall within MinDate and MaxDate constraints
+
+|DataErrorCellUpdateEmptyValueNotAllowed
+|Empty cell value not allowed in column {0}.
+
+|DataErrorCellUpdateInvalidDataValue
+|Illegal data value
+
+|DataErrorCellUpdateInvalidDateFormat
+|Illegal Date Format
+
+|DataErrorCellUpdateUnableToConvert
+|Unable to convert from '{0}' to '{1}'
+
+|DataErrorCellUpdateUnableToUpdateValue
+|Unable to update the data value: {0}
+
+|DataErrorDeleteRowUnableToDelete
+|Unable to delete the row: {0}
+
+|DataErrorMessageTitle
+|Data Error
+
+|DataErrorRowAddMessage
+|Unable to add a row: {0}
+
+|DataErrorRowUpdateUnableToUpdateRow
+|Unable to update the row: {0}
+
+|DefaultAction_Cell
+|Activate
+
+|DefaultAction_Cell_Editable
+|Edit
+
+|DefaultAction_Collapse
+|Collapse
+
+|DefaultAction_Expand
+|Expand
+
+|DefaultAction_Row
+|Activate
+
+|DefaultAction_RowColRegion
+|Activate
+
+|DefaultAction_SortColumn
+|Sort
+
+|DeleteMultipleRowsPrompt
+|You have selected {0} rows for deletion. Choose Yes to delete the rows or No to exit.
+
+|DeleteRowsMessageTitle
+|Delete Rows
+
+|DeleteSingleRowMessageTitle
+|Delete Row
+
+|DeleteSingleRowPrompt
+|You have selected 1 row for deletion. Choose Yes to delete the row or No to exit.
+
+|ErrMSgEditorValNotValid
+|Value in the editor is not valid.
+
+|Error_Cell_ReadOnly
+|'{0}' cell is read-only.
+
+|FilterClearButtonToolTip_FilterCell
+|Click here to clear filter criteria for {0}.
+
+|FilterClearButtonToolTip_RowSelector
+|Click here to clear all filter criteria.
+
+|FilterDialogAllComboItem
+|All
+
+|FilterDialogAnyComboItem
+|Any
+
+|FilterDialogApplyLabelText
+|Filter based on {0} of the following conditions:
+
+|FilterDialogCancelButtonText
+|&Cancel
+
+|FilterDialogConditionAddButtonText
+|&Add
+
+|FilterDialogConditionDeleteButtonText
+|&Delete
+
+|FilterDialogDeleteButton_AccessibleDescription
+|Delete the selected condition.
+
+|FilterDialogOkButtonNoFiltersText
+|N&o filters
+
+|FilterDialogOkButtonText
+|&OK
+
+|FilterDialogTitle
+|Custom Filter
+
+|FixedHeaders_FixHeaderSwapItem
+|[Fix Header]
+
+|FixedHeaders_UnfixAllHeadersSwapItem
+|[Unfix All Headers]
+
+|FixedHeaders_UnfixHeaderSwapItem
+|[Unfix Header]
+
+|GroupByBoxDefaultPrompt
+|Drag a column header here to group by that column.
+
+|GroupByBoxDefaultPromptMultiBandCardView
+|Drag a column header or card label here to group by that column.
+
+|GroupByBoxDefaultPromptSingleBandCardView
+|Drag a card label here to group by that column.
+
+|GroupByButtonToolTip
+|Click to toggle sort direction
+
+|HeadersAreTooTallToPrint_Text
+|Printing failed. The Header area is taller than the page leaving no room to print any row data. Reduce the height of the headers and try again.
+
+|Invalid_DataSource_RowEditTemplate
+|The DataSource of the grid cannot be assigned a RowEditTemplate which is assigned to a band of the grid.
+
+|LDR_Column_AllowRowFiltering
+|Indicates whether row filtering is allowed on the column. Setting this to a non-default value will override settings on band's and layout's override objects.
+
+|LDR_Column_AllowRowSummaries
+|Indicates whether summaries are allowed on this column. Setting this to a non-default value will override any settings on band's and layout's override objects.
+
+|LDR_Column_P_UseEditorMaskSettings
+|Specifies whether to use the editor's mask related settings instead of column's mask related settings.
+
+|LDR_ColumnEditorDialog_Add
+|&Add
+
+|LDR_ColumnEditorDialog_Cancel
+|Cancel
+
+|LDR_ColumnEditorDialog_Members
+|&Members
+
+|LDR_ColumnEditorDialog_OK
+|OK
+
+|LDR_ColumnEditorDialog_Properties
+|&Properties
+
+|LDR_ColumnEditorDialog_Remove
+|&Remove
+
+|LDR_ColumnEditorDialog_Reset
+|Reset
+
+|LDR_ColumnEditorDialog_ShowDescription
+|Show Description
+
+|LDR_ColumnEditorDialog_ShowToolBar
+|Show ToolBar
+
+|LDR_ColumnEditorDialog_Title
+|Columns Collection Editor
+
+|LDR_EmptyRowSettings_P_CellAppearance
+|Appearance applied to cells of empty rows.
+
+|LDR_EmptyRowSettings_P_EmptyAreaAppearance
+|Appearance applied to cells of empty rows.
+
+|LDR_EmptyRowSettings_P_RowAppearance
+|Appearance applied to empty rows.
+
+|LDR_EmptyRowSettings_P_RowSelectorAppearance
+|Appearance applied to row selectors of empty rows.
+
+|LDR_EmptyRowSettings_P_RowSelectors
+|Specifies whether the row selectors of empty rows are displayed.
+
+|LDR_EmptyRowSettings_P_ShowEmptyRows
+|Specifies whether to fill the empty area after the last row with empty rows.
+
+|LDR_EmptyRowSettings_P_Style
+|Specifies how the empty rows are displayed.
+
+|LDR_FilterDropDownButtonImage
+|Filter drop-down button image shown on the column headers with row filtering enabled.
+
+|LDR_FilterDropDownButtonImageActive
+|Filter drop-down button image shown on the column headers with row filtering enabled and has active row filters.
+
+|LDR_FixedHeaderOffImage
+|The image that's used to draw the fixed header indicator when the header is not fixed.
+
+|LDR_FixedHeaderOnImage
+|The image that's used to draw the fixed header indicator when the header is fixed.
+
+|LDR_FixedRowOffImage
+|The image that's used to draw the fixed row indicator when the row is not fixed.
+
+|LDR_FixedRowOnImage
+|The image that's used to draw the fixed row indicator when the row is fixed.
+
+|LDR_Groups_AddViaCustomProps
+|(add via 'UltraGrid Designer')
+
+|LDR_Layout_mask
+|[caption] : [value] ([count] [count,items,item,items])
+
+|LDR_Override_P_AllowRowLayoutCellSizing
+|Whether the user is allowed to resize the cells in row-layout mode.
+
+|LDR_Override_P_AllowRowLayoutLabelSizing
+|Whether the user is allowed to resize the labels in row-layout mode.
+
+|LDR_Override_P_BorderStyleRowSelector
+|Border style of row selectors.
+
+|LDR_Override_P_RowSelectorWidth
+|Width of the row selectors.
+
+|LDR_RowLayout_P_ColumnInfos
+|Contains row-layout info objects for all the columns.
+
+|LDR_RowLayout_P_RowLayoutLabelPosition
+|Specifies where the column labels are displayed.
+
+|LDR_RowLayoutColumnInfo_P_AllowCellSizing
+|Whether the user is allowed to resize the cell.
+
+|LDR_RowLayoutColumnInfo_P_AllowLabelSizing
+|Whether the user is allowed to resize the label.
+
+|LDR_RowLayoutColumnInfo_P_CellInsets
+|Specifies the insets around the cell.
+
+|LDR_RowLayoutColumnInfo_P_Column
+|Returns the associated column.
+
+|LDR_RowLayoutColumnInfo_P_Context
+|Returns the associated column or group.
+
+|LDR_RowLayoutColumnInfo_P_Group
+|Returns the associated group or null if this RowLayoutColumnInfo is associated with a column.
+
+|LDR_RowLayoutColumnInfo_P_LabelInsets
+|Specifies the insets around the label.
+
+|LDR_RowLayoutColumnInfo_P_LabelPosition
+|Specifies where the label is displayed.
+
+|LDR_RowLayoutColumnInfo_P_MinimumCellSize
+|Minimum size of the cell.
+
+|LDR_RowLayoutColumnInfo_P_MinimumLabelSize
+|Minimum size of the label.
+
+|LDR_RowLayoutColumnInfo_P_OriginX
+|Horizontal coordinate in the row layout.
+
+|LDR_RowLayoutColumnInfo_P_OriginY
+|Vertical coordinate in the row layout.
+
+|LDR_RowLayoutColumnInfo_P_ParentGroup
+|Returns the parent group which contains this group. This is only application when UltraGridBand.RowLayoutStyle is set to GroupLayout.
+
+|LDR_RowLayoutColumnInfo_P_PreferredCellSize
+|Preferred size of the cell.
+
+|LDR_RowLayoutColumnInfo_P_PreferredLabelSize
+|Preferred size of the label.
+
+|LDR_RowLayoutColumnInfo_P_RowLayoutColumnInfoContext
+|Returns an enum indicating whether this RowLayoutColumnInfo is associated with a Group or a Column.
+
+|LDR_RowLayoutColumnInfo_P_SpanX
+|Horizontal span of the cell.
+
+|LDR_RowLayoutColumnInfo_P_SpanY
+|Vertical span of the cell.
+
+|LDR_RowLayoutColumnInfo_P_WeightX
+|Horizontal weight of the cell.
+
+|LDR_RowLayoutColumnInfo_P_WeightY
+|Vertical weight of the cell.
+
+|LDR_SelectSummaries
+|Select Summaries
+
+|LDR_SelectSummaries_AccessibleDescription
+|Select which summary information to display for the column.
+
+|LDR_SortIndicatorAscendingImage
+|Gets/sets the image used to draw the ascending sort indicator of a grid column
+
+|LDR_SortIndicatorDescendingImage
+|Gets/sets the image used to draw the descending sort indicator of a grid column
+
+|LDR_SummaryButtonImage
+|Summary button image shown on the column headers with summaries enabled.
+
+|LDR_SummaryFooterCaption
+|Gets or sets summary footer caption substitution string.
+
+|LDR_SummaryFooterCaptionVisible
+|Set this property to False to hide the summary footer captions.
+
+|LDR_SummarySettings_P_ShowCalculatingText
+|Specifies whether a "#Calculating" message is shown in summaries that are calculating with an UltraCalcManager Component.
+
+|LDR_UltraGrid_E_AfterBandHiddenChanged
+|Occurs after the user hides a band via the column chooser dialog.
+
+|LDR_UltraGrid_E_AfterCardCompressedStateChanged
+|Occurs after a Card Row is Expanded or Compressed.
+
+|LDR_UltraGrid_E_AfterCardsScroll
+|Occurs when user scrolls card area.
+
+|LDR_UltraGrid_E_AfterPerformAction
+|Event fired after a key action is performed.
+
+|LDR_UltraGrid_E_AfterRowFilterChanged
+|fired after the user has modified row filters for a column.
+
+|LDR_UltraGrid_E_AfterRowFilterDropDownPopulate
+|Fired after the filter drop down is populated by the UltraGrid.
+
+|LDR_UltraGrid_E_AfterRowLayoutItemResized
+|Gets fired after the user resizes a header or a cell in the Row-Layout mode.
+
+|LDR_UltraGrid_E_AfterSummaryDialog
+|Occurs after summary rows dialog is closed.
+
+|LDR_UltraGrid_E_BeforeBandHiddenChanged
+|Occurs when the user hides a band via the column chooser dialog.
+
+|LDR_UltraGrid_E_BeforeCardCompressedStateChanged
+|Occurs before a Card Row is Expanded or Compressed.
+
+|LDR_UltraGrid_E_BeforeDisplayDataErrorTooltip
+|Fired before the data error tooltip is displayed.
+
+|LDR_UltraGrid_E_BeforeMultiCellOperation
+|Occurs before the user performs a multi-cell operation.
+
+|LDR_UltraGrid_E_BeforePerformAction
+|Event fired before a key action is about to be performed.
+
+|LDR_UltraGrid_E_BeforeRowFilterChanged
+|Fired when the user modifies row filters for a column.
+
+|LDR_UltraGrid_E_BeforeRowFilterDropDownPopulate
+|Fired before the filter drop down is populated by the UltraGrid.
+
+|LDR_UltraGrid_E_BeforeRowLayoutItemResized
+|Gets fired when the user resizes a header or a cell in the Row-Layout mode.
+
+|LDR_UltraGrid_E_InitializeTemplateAddRow
+|Occurs when a template add-row is initialized.
+
+|LDR_UltraGrid_P_ExitEditModeOnLeave
+|Indicates whether grid will exit edit mode when left.
+
+|LDR_UltraGridBand_P_RowLayoutLabelPosition
+|Specifies where the column labels are displayed.
+
+|LDR_UltraGridBand_P_RowLayouts
+|Collection of row-layouts.
+
+|LDR_UltraGridBand_P_RowLayoutStyle
+|Enables row-layout functionality in the band.
+
+|LDR_UltraGridBand_P_UseRowLayout
+|Enables row-layout functionality.
+
+|LDR_UltraGridColumn_P_ColumnChooserCaption
+|Caption displayed in the column chooser.
+
+|LDR_UltraGridColumn_P_ExcludeFromColumnChooser
+|Specifies whether to exclude the column from the column chooser.
+
+|LDR_UltraGridColumn_P_IgnoreMultiCellOperation
+|Specifies whether to ignore multi-cell operations on cells of this column.
+
+|LDR_UltraGridColumn_P_ShowCalculatingText
+|Specifies whether a "#Calculating" message is shown in cells that are calculating with an UltraCalcManager Component.
+
+|LDR_UltraGridColumn_P_ShowInkButton
+|Specifies whether ink editor buttons get shown in cells.
+
+|LDR_UltraGridColumn_P_SpellChecker
+|Gets/sets the component that will perform spell checking for cells of this column.
+
+|LDR_UltraGridColumn_P_TabIndex
+|Specifies the order in which cells are tabbed.
+
+|LDR_UltraGridLayout_P_CellHottrackInvalidationStyle
+|Specifies whether to invalidate the cell when the mouse enters or leaves it.
+
+|LDR_UltraGridLayout_P_ClipboardCellDelimiter
+|Specifies the cell value delimiter when copying to the clipboard.
+
+|LDR_UltraGridLayout_P_ClipboardCellSeparator
+|Specifies the cell value separator when copying to the clipboard.
+
+|LDR_UltraGridLayout_P_ClipboardRowSeparator
+|Specifies the logical row separator when copying to the clipboard.
+
+|LDR_UltraGridLayout_P_ColumnChooserEnabled
+|Provides a hint to the UltraGrid that the column chooser user interface is enabled.
+
+|LDR_UltraGridLayout_P_EmptyRowSettings
+|Contains properties for the Empty Rows functionality.
+
+|LDR_UltraGridLayout_P_LoadStyle
+|Indicates whether to pre-load rows or load rows as they are needed.
+
+|LDR_UltraGridLayout_P_NewBandLoadStyle
+|Specifies how to load new bands in data source.
+
+|LDR_UltraGridLayout_P_NewColumnLoadStyle
+|Specifies how to load new columns in data source.
+
+|LDR_UltraGridLayout_P_ScrollBounds
+|Specifies whether to stop scrolling further down once the last row becomes visible.
+
+|LDR_UltraGridLayout_P_SplitterBarHorizontalAppearance
+|Determines the appearance of horizontal splitter bar and the split box.
+
+|LDR_UltraGridLayout_P_SplitterBarVerticalAppearance
+|Determines the appearance of vertical splitter bar and the split box.
+
+|LDR_UltraGridLayout_P_SplitterIntersectionAppearance
+|Appearance for the square area at the lower right corner where a vertical and horizontal scrollbar meet.
+
+|LDR_UltraGridOverride_P_ActiveRowCellAppearance
+|Determines the appearance of active row cells.
+
+|LDR_UltraGridOverride_P_AddRowAppearance
+|Determines the appearance of add-rows.
+
+|LDR_UltraGridOverride_P_AddRowCellAppearance
+|Determines the appearance of cells of add-rows.
+
+|LDR_UltraGridOverride_P_AllowMultiCellOperations
+|Specifies if and which of the multi-cell operations the user is allowed to perform.
+
+|LDR_UltraGridOverride_P_BorderStyleTemplateAddRow
+|Returns or sets a value that determines the border style of template add-rows.
+
+|LDR_UltraGridOverride_P_CellDisplayStyle
+|Specifies how the cells get rendered. You can use this property to speed up rendering of cells by setting it to FormattedText or PlainText. Default is resolved to FullEditorDisplay.
+
+|LDR_UltraGridOverride_P_ColumnAutoSizeMode
+|Specifies column autosizing mode. If AllowColSizing is set to None, then this is ignored.
+
+|LDR_UltraGridOverride_P_ColumnSizingArea
+|Returns or sets a value that determines which part of the grid's interface may be used to resize columns.
+
+|LDR_UltraGridOverride_P_DataErrorCellAppearance
+|Determines the appearance of cells with data error (as indicated by IDataErrorInfo).
+
+|LDR_UltraGridOverride_P_DataErrorRowAppearance
+|Determines the appearance of rows with data error (as indicated by IDataErrorInfo).
+
+|LDR_UltraGridOverride_P_DataErrorRowSelectorAppearance
+|Determines the appearance of row selectors of rows with data error (as indicated by IDataErrorInfo).
+
+|LDR_UltraGridOverride_P_FilterCellAppearance
+|Determines the appearance of cells in filter row.
+
+|LDR_UltraGridOverride_P_FilterCellAppearanceActive
+|Determines the appearance of cells in filter row that have active filters.
+
+|LDR_UltraGridOverride_P_FilterClearButtonAppearance
+|Determines the appearance of clear filter buttons in filter row.
+
+|LDR_UltraGridOverride_P_FilteredInCellAppearance
+|Determines the appearance of cells of filtered in rows.
+
+|LDR_UltraGridOverride_P_FilteredInRowAppearance
+|Determines the appearance of filtered in rows.
+
+|LDR_UltraGridOverride_P_FilteredOutCellAppearance
+|Determines the appearance of cells of filtered out rows.
+
+|LDR_UltraGridOverride_P_FilteredOutRowAppearance
+|Determines the appearance of filtered out rows.
+
+|LDR_UltraGridOverride_P_FilterOperatorAppearance
+|Determines the appearance of operator indicators in filter row.
+
+|LDR_UltraGridOverride_P_FilterRowAppearance
+|Determines the appearance of filter rows.
+
+|LDR_UltraGridOverride_P_FilterRowAppearanceActive
+|Determines the appearance of filter rows that have active filters.
+
+|LDR_UltraGridOverride_P_FilterRowPromptAppearance
+|Determines the appearance of the prompt in filter row.
+
+|LDR_UltraGridOverride_P_FilterRowSelectorAppearance
+|Determines the appearance of the row selectors of filter rows.
+
+|LDR_UltraGridOverride_P_FixedCellAppearance
+|Determines the appearance of cells associated with headers that are fixed.
+
+|LDR_UltraGridOverride_P_FixedCellSeparatorColor
+|The color of the separator line that separates the fixed header cells and non-fixed header cells.
+
+|LDR_UltraGridOverride_P_FixedHeaderAppearance
+|Determines the appearance of headers that are fixed.
+
+|LDR_UltraGridOverride_P_FixedHeaderIndicator
+|Specifies whether the user is allowed to fix or unfix headers.
+
+|LDR_UltraGridOverride_P_FixedRowAppearance
+|Determines the appearance of fixed rows.
+
+|LDR_UltraGridOverride_P_FixedRowCellAppearance
+|Determines the appearance of cells of fixed rows.
+
+|LDR_UltraGridOverride_P_FixedRowSelectorAppearance
+|Determines the appearance of row selectors of fixed rows.
+
+|LDR_UltraGridOverride_P_FormulaErrorAppearance
+|Determines the appearance of cells with formula errors.
+
+|LDR_UltraGridOverride_P_GroupBySummaryValueAppearance
+|Determines the appearance of summaries in group-by rows.
+
+|LDR_UltraGridOverride_P_HeaderPlacement
+|Specifies if and how headers are displayed.
+
+|LDR_UltraGridOverride_P_HotTrackCellAppearance
+|Appearance applied to the cell that's currently being hot-tracked.
+
+|LDR_UltraGridOverride_P_HotTrackHeaderAppearance
+|Appearance applied to the header that's currently being hot-tracked.
+
+|LDR_UltraGridOverride_P_HotTrackRowAppearance
+|Appearance applied to the row that's currently being hot-tracked.
+
+|LDR_UltraGridOverride_P_HotTrackRowCellAppearance
+|Appearance applied to the cells of the row that's currently being hot-tracked.
+
+|LDR_UltraGridOverride_P_HotTrackRowSelectorAppearance
+|Appearance applied to the row selector of the row that's currently being hot-tracked.
+
+|LDR_UltraGridOverride_P_InvalidValueBehavior
+|Specifies the behavior when the user attempts to leave a cell after entering an invalid value.
+
+|LDR_UltraGridOverride_P_MergedCellAppearance
+|Determines the appearance of merged cells.
+
+|LDR_UltraGridOverride_P_MergedCellContentArea
+|Specifies whether to position the contents of a merged cell in the visible area of the merged cell or the virtual area of the merged cell.
+
+|LDR_UltraGridOverride_P_MergedCellEvaluationType
+|Specifies whether to merge cells based on their values or display text.
+
+|LDR_UltraGridOverride_P_MergedCellStyle
+|Specifies how cell merging is performed.
+
+|LDR_UltraGridOverride_P_MinRowHeight
+|Specifies the minimum row height.
+
+|LDR_UltraGridOverride_P_MultiCellSelectionMode
+|Specifies how multiple cells are range selected using mouse and keyboard.
+
+|LDR_UltraGridOverride_P_ReadOnlyCellAppearance
+|Appearance applied to the read-only cells.
+
+|LDR_UltraGridOverride_P_RowFilterAction
+|Specifies the action to take on filtered out rows.
+
+|LDR_UltraGridOverride_P_RowLayoutCellNavigationVertical
+|Specifies how cells are navigated when using up and down arrow keys.
+
+|LDR_UltraGridOverride_P_ShowCalculatingText
+|Specifies whether a "#Calculating" message is shown in cells or summaries that are calculating with an UltraCalcManager Component.
+
+|LDR_UltraGridOverride_P_ShowInkButton
+|Specifies whether ink editor buttons get shown in cells.
+
+|LDR_UltraGridOverride_P_SpecialRowSeparatorAppearance
+|Determines the appearance of special row separator elements.
+
+|LDR_UltraGridOverride_P_SupportDataErrorInfo
+|Whether to make use of IDataErrorInfo to display data error icons.
+
+|LDR_UltraGridOverride_P_TemplateAddRowAppearance
+|Determines the appearance of template add-rows.
+
+|LDR_UltraGridOverride_P_TemplateAddRowCellAppearance
+|Determines the appearance of cells of template add-rows.
+
+|LDR_UltraGridOverride_P_TemplateAddRowPromptAppearance
+|Determines the appearance of prompts in template add-rows.
+
+|LDR_UltraGridOverride_P_TemplateAddRowSpacingAfter
+|The amount of spacing (in pixels) rendered before a template add-row.
+
+|LDR_UltraGridOverride_P_TemplateAddRowSpacingBefore
+|The amount of spacing (in pixels) rendered after a template add-row.
+
+|LDR_UseFixedHeaders
+|Enables the fixed headers functionality.
+
+|MultiCell_Copy_Error_MsgBox_Message
+|Error performing Copy operation. {0} {1}
+
+|MultiCell_Copy_Error_MsgBox_Title
+|Copy Error
+
+|MultiCell_Cut_Error_MsgBox_Message
+|Error performing Cut operation. {0} {1}
+
+|MultiCell_Cut_Error_MsgBox_Title
+|Cut Error
+
+|MultiCell_Delete_Error_MsgBox_Message
+|Error performing Delete operation. {0} {1}
+
+|MultiCell_Delete_Error_MsgBox_Title
+|Delete Error
+
+|MultiCell_Paste_Error_MsgBox_Message
+|Error performing Paste operation. {0} {1}
+
+|MultiCell_Paste_Error_MsgBox_Title
+|Paste Error
+
+|MultiCell_Paste_Error_TooManyColumns
+|Contents being pasted have more columns than what's available starting from the anchor cell. Paste contents have {0} columns where as the available columns starting from the anchor cell are {1}.
+
+|MultiCell_Paste_Error_TooManyRows
+|Contents being pasted have more rows than what's available starting from the anchor cell. Paste contents have {0} rows where as the available rows starting from the anchor cell are {1}.
+
+|MultiCell_Redo_Error_MsgBox_Message
+|Error performing redo operation. {0} {1}
+
+|MultiCell_Redo_Error_MsgBox_Title
+|Redo Error
+
+|MultiCell_Undo_Error_MsgBox_Message
+|Error performing Undo operation. {0} {1}
+
+|MultiCell_Undo_Error_MsgBox_Title
+|Undo Error
+
+|MultiCellOperation_Error_ConversionError
+|Unable to convert the value '{0}' to the column's data type: {1}
+
+|MultiCellOperation_Error_CrossParentSelection
+|The operation can not be performed on cross-parent selection.
+
+|MultiCellOperation_Error_MsgBox_ContinueQuestion
+|Continue with the remaining cells?
+
+|MultiCellOperation_Error_MsgBox_FurtherInformation
+|Further information: {0}
+
+|MultiCellOperation_Error_NoCellsSelected
+|No cells are selected.
+
+|MultiCellOperation_Error_NonRectangularSelection
+|Invalid selection. The selection must be rectangular.
+
+|Outlook_GroupByMode_Description_BeyondNextMonth
+|Beyond Next Month
+
+|Outlook_GroupByMode_Description_DayOfWeekFormatString
+|{0:dddd}
+
+|Outlook_GroupByMode_Description_EarlierThisMonth
+|Earlier this Month
+
+|Outlook_GroupByMode_Description_LastMonth
+|Last Month
+
+|Outlook_GroupByMode_Description_LastWeek
+|Last Week
+
+|Outlook_GroupByMode_Description_LaterThisMonth
+|Later this Month
+
+|Outlook_GroupByMode_Description_NextMonth
+|Next Month
+
+|Outlook_GroupByMode_Description_NextWeek
+|Next Week
+
+|Outlook_GroupByMode_Description_None
+|None
+
+|Outlook_GroupByMode_Description_Older
+|Older
+
+|Outlook_GroupByMode_Description_ThreeWeeksAgo
+|Three Weeks Ago
+
+|Outlook_GroupByMode_Description_ThreeWeeksAway
+|Three Weeks Away
+
+|Outlook_GroupByMode_Description_Today
+|Today
+
+|Outlook_GroupByMode_Description_TwoWeeksAgo
+|Two Weeks Ago
+
+|Outlook_GroupByMode_Description_TwoWeeksAway
+|Two Weeks Away
+
+|Outlook_GroupByMode_Description_Yesterday
+|Yesterday
+
+|PrintingError_Dialog_Title
+|Printing failed.
+
+|PropertyPageCaptionGroupsAndColumns
+|Groups And Columns
+
+|RowFilterDialogBlanksItem
+|(Blanks)
+
+|RowFilterDialogDBNullItem
+|(DBNull)
+
+|RowFilterDialogEmptyTextItem
+|(Empty Text)
+
+|RowFilterDropDown_Operator_Contains
+|Contains
+
+|RowFilterDropDown_Operator_DoesNotContain
+|Does not contain
+
+|RowFilterDropDown_Operator_DoesNotEndWith
+|Does not end with
+
+|RowFilterDropDown_Operator_DoesNotMatch
+|Does not match
+
+|RowFilterDropDown_Operator_DoesNotStartWith
+|Does not start with
+
+|RowFilterDropDown_Operator_EndsWith
+|Ends with
+
+|RowFilterDropDown_Operator_Equals
+|*
+
+|RowFilterDropDown_Operator_GreaterThan
+|>
+
+|RowFilterDropDown_Operator_GreaterThanOrEqualTo
+|>=
+
+|RowFilterDropDown_Operator_LessThan
+|<
+
+|RowFilterDropDown_Operator_LessThanOrEqualTo
+|$$<=$$
+
+|RowFilterDropDown_Operator_Like
+|Like
+
+|RowFilterDropDown_Operator_Match
+|Match
+
+|RowFilterDropDown_Operator_NotEquals
+|!=
+
+|RowFilterDropDown_Operator_NotLike
+|Not Like
+
+|RowFilterDropDown_Operator_StartsWith
+|Starts with
+
+|RowFilterDropDownAllItem
+|(All)
+
+|RowFilterDropDownBlanksItem
+|(Blanks)
+
+|RowFilterDropDownCustomItem
+|(Custom)
+
+|RowFilterDropDownEquals
+|Equals
+
+|RowFilterDropDownErrorsItem
+|(Errors)
+
+|RowFilterDropDownGreaterThan
+|Greater than
+
+|RowFilterDropDownGreaterThanOrEqualTo
+|Greater than or equal to
+
+|RowFilterDropDownLessThan
+|Less than
+
+|RowFilterDropDownLessThanOrEqualTo
+|Less than or equal to
+
+|RowFilterDropDownLike
+|Like
+
+|RowFilterDropDownMatch
+|Matches Regular Expression
+
+|RowFilterDropDownNonBlanksItem
+|(NonBlanks)
+
+|RowFilterDropDownNonErrorsItem
+|(NonErrors)
+
+|RowFilterDropDownNotEquals
+|Does not equal
+
+|RowFilterLogicalOperator_And
+|AND
+
+|RowFilterLogicalOperator_Or
+|OR
+
+|RowFilterPatternCaption
+|Invalid search pattern
+
+|RowFilterPatternError
+|Error parsing pattern {0}. Please enter a valid search pattern.
+
+|RowFilterPatternException
+|Invalid search pattern {0}.
+
+|RowFilterRegexError
+|Error parsing regular expression {0}. Please enter a valid regular expression.
+
+|RowFilterRegexErrorCaption
+|Invalid regular expression
+
+|RowFilterRegexException
+|Invalid regular expression {0}.
+
+|SpecialFilterOperand_April
+|&April
+
+|SpecialFilterOperand_August
+|Augus&t
+
+|SpecialFilterOperand_December
+|&December
+
+|SpecialFilterOperand_February
+|&February
+
+|SpecialFilterOperand_January
+|&January
+
+|SpecialFilterOperand_July
+|Ju&ly
+
+|SpecialFilterOperand_June
+|J&une
+
+|SpecialFilterOperand_LastMonth
+|Last Mo&nth
+
+|SpecialFilterOperand_LastQuarter
+|Last Qua&rter
+
+|SpecialFilterOperand_LastWeek
+|&Last Week
+
+|SpecialFilterOperand_LastYear
+|Last &Year
+
+|SpecialFilterOperand_March
+|&March
+
+|SpecialFilterOperand_May
+|Ma&y
+
+|SpecialFilterOperand_NextMonth
+|Next &Month
+
+|SpecialFilterOperand_NextQuarter
+|Next &Quarter
+
+|SpecialFilterOperand_NextWeek
+|Next Wee&k
+
+|SpecialFilterOperand_NextYear
+|Ne&xt Year
+
+|SpecialFilterOperand_November
+|&November
+
+|SpecialFilterOperand_October
+|&October
+
+|SpecialFilterOperand_Quarter1
+|Quarter &1
+
+|SpecialFilterOperand_Quarter2
+|Quarter &2
+
+|SpecialFilterOperand_Quarter3
+|Quarter &3
+
+|SpecialFilterOperand_Quarter4
+|Quarter &4
+
+|SpecialFilterOperand_September
+|&September
+
+|SpecialFilterOperand_ThisMonth
+|Thi&s Month
+
+|SpecialFilterOperand_ThisQuarter
+|This Q&uarter
+
+|SpecialFilterOperand_ThisWeek
+|T&his Week
+
+|SpecialFilterOperand_ThisYear
+|Th&is Year
+
+|SpecialFilterOperand_Today
+|T&oday
+
+|SpecialFilterOperand_Tomorrow
+|&Tomorrow
+
+|SpecialFilterOperand_YearToDate
+|Year To Date
+
+|SpecialFilterOperand_Yesterday
+|Yester&day
+
+|SummaryDialog_Button_Cancel
+|&Cancel
+
+|SummaryDialog_Button_OK
+|&OK
+
+|SummaryDialogAverage
+|Average
+
+|SummaryDialogAverage_AccessibleDescription
+|Display the average of the values in the column.
+
+|SummaryDialogCount
+|Count
+
+|SummaryDialogCount_AccessibleDescription
+|Display the number of value in the column.
+
+|SummaryDialogMaximum
+|Maximum
+
+|SummaryDialogMaximum_AccessibleDescription
+|Display the maximum value in the column.
+
+|SummaryDialogMinimum
+|Minimum
+
+|SummaryDialogMinimum_AccessibleDescription
+|Display the minimum value in the column.
+
+|SummaryDialogNone
+|None
+
+|SummaryDialogNone_AccessibleDescription
+|Display no summary information for the column.
+
+|SummaryDialogSum
+|Sum
+
+|SummaryDialogSum_AccessibleDescription
+|Display the sum of the values in the column.
+
+|SummaryFooterCaption_ChildBandNonGroupByRows
+|Summaries for [BANDHEADER]: [SCROLLTIPFIELD]
+
+|SummaryFooterCaption_GroupByChildRows
+|Summaries for [GROUPBYROWVALUE]
+
+|SummaryFooterCaption_RootRows
+|Grand Summaries
+
+|SummaryTypeAverage
+|Average
+
+|SummaryTypeCount
+|Count
+
+|SummaryTypeCustom
+|Custom
+
+|SummaryTypeMaximum
+|Maximum
+
+|SummaryTypeMinimum
+|Minimum
+
+|SummaryTypeSum
+|Sum
+
+|SummaryValueInvalidDisplayFormat
+|Invalid DisplayFormat: {0}. More info: {1}
+
+|UltraCombo_E_ValueMemberAndCheckStateMemberAreSame
+|The ValueMember property and CheckStateMember property both reference column '{0}'. The CheckStateMember property cannot reference the same column that defines the control's value.
+
+|UltraCombo_E_ValueMemberCannotEqualCheckStateMember
+|The ValueMember property cannot be set to '{0}' because the CheckStateMember is currently set to that value. The CheckStateMember property cannot reference the same column that defines the control's value.
+
+|UltraCombo_P_AutoCompleteMode
+|Gets/sets the mode for automatic completion of text typed in the edit portion.
+
+|====

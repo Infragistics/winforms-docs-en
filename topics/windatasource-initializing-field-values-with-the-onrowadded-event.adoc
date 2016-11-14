@@ -1,0 +1,85 @@
+﻿////
+
+|metadata|
+{
+    "name": "windatasource-initializing-field-values-with-the-onrowadded-event",
+    "controlName": ["WinDataSource"],
+    "tags": ["Application Scenarios","Getting Started"],
+    "guid": "{CF526657-0BC2-41F4-AF26-A3FE6DDA8EA0}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Initializing Field Values with the OnRowAdded Event
+
+This help topic is a continuation of a five-part tutorial that picks up from link:windatasource-inserting-and-updating-data-in-your-business-class.html[Inserting and Updating Data in Your Business Class].
+
+The OnRowAdded event is also important for us to initialize some field values. In this particular implementation, we need to assign a negative decrementing integer value to the primary key. The more rows we add, the temporary auto number will keep on decrementing. Whenever we save the record to the database, we immediately retrieve the real, server generated auto number and then assign it back to the primary key column. Here is the code to do so:
+
+*In Visual Basic:*
+
+----
+' When the Row is added, we can assign our next local autonumber
+Protected Overrides Sub OnRowAdded(ByVal e As Infragistics.Win.UltraWinDataSource.RowAddedEventArgs)
+  MyBase.OnRowAdded(e)
+	e.Row.Band.Columns("CategoryID").ReadOnly = DefaultableBoolean.False
+	e.Row.Item("CategoryID") = Me.NextAutoNumber
+	e.Row.Band.Columns("CategoryID").ReadOnly = DefaultableBoolean.True
+End Sub
+----
+
+*In C#:*
+
+----
+// When the Row is added, we can assign our next local autonumber
+protected override void OnRowAdded(RowAddedEventArgs e)
+{
+	base.OnRowAdded (e);
+	e.Row.Band.Columns["CategoryID"].ReadOnly = Infragistics.Win.DefaultableBoolean.False;
+	e.Row["CategoryID"] = this.NextAutoNumber;
+	e.Row.Band.Columns["CategoryID"].ReadOnly = Infragistics.Win.DefaultableBoolean.True;
+}
+----
+
+The final event that must be handled is the OnRowDeleting event. In this event we will get the value of the primary key and then execute a command against the Database to remove this record. Here is the code:
+
+*In Visual Basic:*
+
+----
+' Here we delete the record from the database. 
+Protected Overrides Sub OnRowDeleting(ByVal e As Infragistics.Win.UltraWinDataSource.RowDeletingEventArgs)
+  MyBase.OnRowDeleting(e)
+	Dim cn As New SqlConnection(_cn)
+	Dim cm As SqlCommand = cn.CreateCommand()
+	cm.CommandText = "DELETE FROM Categories WHERE CategoryID=@CategoryID"
+	cm.CommandType = CommandType.Text
+	cm.Parameters.AddWithValue("@CategoryID", e.Row.Item("CategoryID"))
+	cn.Open()
+	cm.ExecuteNonQuery()
+	cn.Dispose()
+End Sub
+----
+
+*In C#:*
+
+----
+// Here we delete the record from the database.
+protected override void OnRowDeleting(RowDeletingEventArgs e)
+{
+	base.OnRowDeleting (e);
+	SqlConnection cn = new SqlConnection(_cn);
+	SqlCommand cm = cn.CreateCommand();
+	cm.CommandText = "DELETE FROM Categories WHERE CategoryID=@CategoryID";
+	cm.CommandType = CommandType.Text;
+	cm.Parameters.AddWithValue("@CategoryID", e.Row["CategoryID"]);
+	cn.Open();
+	cm.ExecuteNonQuery();
+	cn.Dispose();
+}
+----
+
+== Related Topics
+
+link:windatasource-using-your-business-class-in-an-application.html[Using Your Business Class in an Application]

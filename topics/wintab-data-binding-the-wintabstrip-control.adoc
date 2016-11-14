@@ -1,0 +1,106 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-data-binding-the-wintabstrip-control",
+    "controlName": ["WinTab"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{5F9DBCFF-A918-4EC1-B0AD-851F9C22AA1E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Data Binding the WinTabStrip Control
+
+== Background
+
+The WinTabStrip™ control provides a tab-style front end for application data. You can use this element to set up a series of shared controls that will change their contents in response to the selection of a tab. The tabs themselves can be created and labeled based on a value in the data source.
+
+== Questions
+
+* How can I base the text of the tabs on data from a data source?
+* How do I create a set of common controls to display data source data on the tabs?
+
+== Solution
+
+Use the WinTabStrip element and set the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabstripcontrol~tabkeymember.html[TabKeyMember]"] property to one of the fields in your data source. Any controls bound to the same data source will automatically be updated whenever the tab selection changes.
+
+== Sample Project
+
+This project uses the Northwind's database Customers table. A TableAdapter was setup to fetch the data, and help generate a dataset.
+
+Once the dataset is established, binding the tab and its controls to the data is straightforward. A few properties set in the Load event of the form take care of everything.
+
+[start=1]
+. Open a new Windows Application and add an UltraTabStrip control to the form.
+[start=2]
+. Add three text boxes to the shared controls page of the TabStrip element. Then rename the text boxes as follows:
+
+TextBox1.Name = "txtCustomerID"
+
+TextBox2.Name = "txtCompanyName"
+
+TextBox3.Name = "txtCity"
+[start=3]
+. Enter the following code in the Load event of the form:
+
+*In Visual Basic:*
+
+----
+Private Sub Data_Binding_the_WinTabStrip_Control_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.CustomersTableAdapter.Fill(Me.NWindDataSet.Customers)
+	' Set the TabKeyMember and ToolTipTextMember of the tab strip
+	Me.UltraTabStripControl1.TabKeyMember = _
+	  "CustomerID"
+	Me.UltraTabStripControl1.ToolTipTextMember = _
+	  "CustomerName"
+	' Bind the tab strip to the data source
+	' Note: This clears the Tabs collection and re-populates it
+	' with a tab for every row in the data source.
+	Me.UltraTabStripControl1.SetDataBinding(Me.NWindDataSet.Customers, "")
+	' Set the data bindings for the textboxes
+	Me.txtCustomerID.DataBindings.Add("Text", Me.NWindDataSet.Customers, "CustomerID")
+	Me.txtCompanyName.DataBindings.Add("Text", Me.NWindDataSet.Customers, "CompanyName")
+	Me.txtCity.DataBindings.Add("Text", Me.NWindDataSet.Customers, "City")
+End Sub
+----
+
+*In C#:*
+
+----
+private void Data_Binding_the_WinTabStrip_Control_Load(object sender, 
+  EventArgs e)
+{
+	this.customersTableAdapter.Fill(this.nWindDataSet1.Customers);
+	// Set the TabKeyMember and ToolTipTextMember of the tab strip
+	this.ultraTabStripControl1.TabKeyMember = 
+	  "CustomerID";
+	this.ultraTabStripControl1.ToolTipTextMember = 
+	  "CustomerName";
+	// Bind the tab strip to the data source
+	// Note: This clears the Tabs collection and re-populates it
+	// with a tab for every row in the data source.
+	this.ultraTabStripControl1.SetDataBinding( this.nWindDataSet1.Customers, "" );
+	// Set the data bindings for the textboxes
+	this.txtCustomerID.DataBindings.Add("Text", this.nWindDataSet1.Customers, "CustomerID");
+	this.txtCompanyName.DataBindings.Add("Text", this.nWindDataSet1.Customers, "CompanyName");
+	this.txtCity.DataBindings.Add("Text", this.nWindDataSet1.Customers, "City");
+}
+----
+
+[start=4]
+. Run the project. You will see the element appear with the three textboxes. The text of the tabs will be set to the customer's IDs from the data source, and if you hover the mouse over a tab, its tooltip will display the Company's name. Click on a tab, and the customer's ID, name and city will be displayed in the textboxes. You will also see the tab navigation interface appear, giving you a way to scroll through the large number of tabs in the element.
+
+image::images\WinTab_Data_Binding_the_WinTabStrip_Control_01.png[ultratabstrip control after following code listed above]
+
+== Code Discussion
+
+The TabKeyMember property is the most important one here, specifying which field form the data source will be used to fill in the tabs' text. The rest of the code is just standard data binding techniques.
+
+== Review
+
+This exercise shows how to use the WinTabStrip as a the front-end interface for database data. You saw how to bind the element to a data source, and how the element presents the basic data navigation interface. Additionally, you saw what was  _not_  required, namely any code to manage navigation or updating the data-bound controls inside the tab.

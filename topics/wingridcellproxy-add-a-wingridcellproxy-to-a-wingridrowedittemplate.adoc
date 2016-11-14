@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridcellproxy-add-a-wingridcellproxy-to-a-wingridrowedittemplate",
+    "controlName": [],
+    "tags": ["Extending","Grids","How Do I"],
+    "guid": "{2993458F-DE55-43F4-B87E-92D1D98191DA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add a WinGridCellProxy to a WinGridRowEditTemplate
+
+The WinGridCellProxy™ control is exactly what its name suggests – a proxy of a WinGrid™ cell. However, just because it is a proxy, doesn't mean that it is a copy of a specific cell. The proxy can contain the same data as other cells in WinGrid because it uses the same editor as those cells in WinGrid. In order to have a proxy cell show the same data as a WinGrid cell, you need to provide a data source and data member.
+
+With WinGridCellProxy, providing a data source is very simple. The WinGridCellProxy control can only be used inside a WinGridRowEditTemplate™. Therefore, once you add the proxy to the template's Controls collection, you are essentially setting its data source. Each WinGridRowEditTemplate is associated with a single  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[Band]"]  in WinGrid, setting a Band's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~rowedittemplate.html[RowEditTemplate]"]  property to an instance of an  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate.html[UltraGridRowEditTemplate]"]  object will set the template's data source to that band.
+
+Providing a data member for WinGridCellProxy involves setting the ColumnKey property to a Column's key from the associated band. Once set to a specific column, WinGridCellProxy will perform whichever role the underlying editor of that column performs, whether it be WinMaskedEdit, WinCombo, WinOptionSet, etc.
+
+The following example code demonstrates how to create an instance of WinGridCellProxy, add it to WinGridRowEditTemplate's Controls collection, and set the data member through the ColumnKey property.
+
+.Note
+[NOTE]
+====
+This topic assumes that you have a WinGridRowEditTemplate control on your form already associated with a band in WinGrid. For more information, see link:wingridrowedittemplate-creating-a-wingridrowedittemplate-programmatically.html[Creating a WinGridRowEditTemplate Programmatically].
+====
+
+*In Visual Basic:*
+
+----
+'Instantiate an UltraGridCellProxy object.
+Dim ultraGridCellProxy1 As Infragistics.Win.UltraWinGrid.UltraGridCellProxy = _
+  New Infragistics.Win.UltraWinGrid.UltraGridCellProxy()
+'Add the proxy to the template's Controls collection.
+Me.UltraGridRowEditTemplate1.Controls.Add(ultraGridCellProxy1)
+'Provide a data member to the proxy by setting the ColumnKey
+'Property to a Column's Key in your data source.
+ultraGridCellProxy1.ColumnKey = "CompanyName"
+----
+
+*In C#:*
+
+----
+//Instantiate an UltraGridCellProxy object.
+Infragistics.Win.UltraWinGrid.UltraGridCellProxy ultraGridCellProxy1 = 
+  new Infragistics.Win.UltraWinGrid.UltraGridCellProxy();
+//Add the proxy to the template's Controls collection.
+this.ultraGridRowEditTemplate1.Controls.Add(ultraGridCellProxy1);
+//Provide a data member to the proxy by setting the ColumnKey
+//Property to a Column's Key in your data source.
+ultraGridCellProxy1.ColumnKey = "CompanyName";
+----

@@ -1,0 +1,434 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-known-issues-in-2012-volume-2",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{85723EC6-6E49-41F8-BDF6-E83F099C1110}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Known Issues in 2012 Volume 2
+
+== UltraTrackBar
+
+*Issue:*
+
+* Clicking on a dropdown or editor button in a grid cell will not play back properly.
+
+*Workaround:*
+
+* Be sure to MouseUp on the Thumb after dragging the Thumb or do a SetValue on the UltraTrackBar from the script directly.
+
+== UltraGrid
+
+*Issue:*
+
+* Records click instead of drag in UltraTrackBar when the mouse up is not on the thumb.
+
+*Detail:*
+
+* By default, buttons in cells do not display until the mouse is moved over the cell. This behavior may be changed using the CellDisplayStyle property of the UltraGridColumn. But when the buttons are not displayed, CodedUITest will be unable to find them during playback because CodedUITests does not record every movement of the mouse.
+
+*Workaround:*
+
+* When recording, always click on the cell itself so that the mouse is within the cell’s bound before clicking on the button.
+
+== UltraGrid Column Dragging
+
+*Issue:*
+
+* Due to the opaque windows used as drag indicators during a drag operation, the Coded UI Test Framework is unable to properly determine the correct drop location.
+
+*Workaround:*
+
+* To work around this issue, the script must be modified to change the destination UITestControl to be another header instead of the desktop.
+
+=== Code
+
+So generated code similar to:
+
+*In C#:*
+
+[source,csharp]
+----
+// Move 'Title' HeaderItem from (56, 11) to 'Desktop' client (38, 14)uIDesktopClient.EnsureClickable(new Point(38, 14));Mouse.StartDragging(uITitleHeaderItem, new Point(56, 11));Mouse.StopDragging(uIDesktopClient, new Point(38, 14));
+----
+
+Should be changed to:
+
+*In C#:*
+
+[source,csharp]
+----
+// Move 'Title' HeaderItem from (56, 11) to 'LastName' HeaderItem (14, 16)uILastNameHeaderItem.EnsureClickable(new Point(14, 16));Mouse.StartDragging(uITitleHeaderItem, new Point(56, 11));Mouse.StopDragging(uILastNameHeaderItem, new Point(14, 16));
+----
+
+== Cached DropDown Windows
+
+*Issue:*
+
+* When a script is recorded against two or more different DropDowns (ValueList), playback may fail due to not being able to locate the appropriate ValueListItem. This is due to the playback process caching and reusing the same dropdown window instead of locating the new instance of it.
+
+*Workaround:*
+
+* Modify the script so that the WinWindow for the DropDownWindow (often named UIValueListDropDownWindow) includes the AlwaysSearch SearchConfiguration:
+
+*In C#:*
+
+[source,csharp]
+----
+this.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch);
+----
+
+== Duplicate Control Names
+
+*Issue:*
+
+* When multiple controls with the same ControlName exist within the same form (such as when using multiple instances of the same user control), the UITestControl may match the wrong instance of the control during playback.
+
+*Workaround:*
+
+* Modify the script so that the WinWindow parenting the control contains the correct instance number.
+
+*In C#:*
+
+[source,csharp]
+----
+this.SearchProperties[UITestControl.PropertyNames.Instance] = instance_number;
+----
+
+== Out-of-view ValueListItems displayed in the UltraGrid (Mdi Applications)
+
+*Issue:*
+
+* If a grid on an MdiChild form, displays a dropdown ValueList (such as the FilterRow or a column using an EditorWithCombo), playback will fail to locate and select any of the ValueListItems that are scrolled out of view on the ValueList.
+
+*Workaround:*
+
+* This can be worked around by modifying the script to call EnsureClickable() on the ListItem UITestControl prior to the Mouse.Click().
+
+== Disabled Controls
+
+*Issue:*
+
+* When adding asserts to controls that are disabled, the UITestControl for the control wrapper (WinWindow) is selected instead of the lowest provider at the mouse position. This is most likely due to the transition between MSAA and UIA, and the framework looking for interactive UI object.
+
+*Workaround:*
+
+* The child providers can be accessed in the Assertion Window via the Navigation Arrows.
+
+== Scrollbar Actions
+
+*Issue:*
+
+* In general, the CUIT framework does not record actions performed on scrollbars. However due to their identification methods, it does not recognize our scrollbars as scrollbars they should ignore. Therefore, any interaction with the scrollbar is recorded.
+
+*Workaround:*
+
+* The user can delete the recorded scrollbar actions which will allow the TechnologyManager to utilize the proper UIA scrolling patterns.
+
+== Visual Studio 2005 (Infragistics 2012.1 and earlier)
+
+*Issue:*
+
+* When the WinGrid™ and WinTree™ are bound to a hierarchical data source with several bands, data-related operations, (e.g. navigating the rows, and adding/removing/modifying rows) can be very slow.
+
+*Workaround:*
+
+* This performance issue can be solved by wrapping the data source and the data member inside a BindingSource object and assigning that BindingSource object to the UltraGrid. The BindingSource is a .NET framework class that is new to Visual Studio 2005 (.NET Framework 2.0).
+
+=== Code
+
+The example code below shows you how to do this for the WinGrid, but will work for WinTree by just changing the last line to specify the WinTree instead of the WinGrid.
+
+*In C#:*
+
+[source,csharp]
+----
+Object dataSource;
+String dataMember;
+BindingSource bindingSource = new BindingSource( dataSource, dataMember );
+this.ultraGrid1.DataSource = bindingSource;
+----
+
+== Visual Studio 2008 (Infragistics 2012.1 and earlier)
+
+=== WinGauge
+
+The following table shows known issues with Infragistics Windows Forms controls and components inside Visual Studio 2008.
+
+[options="header", cols="a,a"]
+|====
+| *Summary* | *Workaround* 
+
+|In certain cases under Visual Studio 2008, it has been determined that repeatedly invoking the Gauge designer in multiple successive iterations may cause unpredictable behavior. We recommend that you save your work frequently.
+|None
+
+|====
+
+== Version Utility
+
+The Add-in interface of the Version Utility is available in Visual Studio 2008, 2010, and 2012 only.
+
+== Side-by-Side Microsoft Visual Studio Documentation
+
+If you are using the Visual Studio 2010 Help Installer, it is not possible to have multiple versions of the same product documentation installed together, side-by-side on the same computer. For example, it is not possible to have the product documentation for Infragistics Windows Forms 2010.1 installed along with the product documentation for Infragistics Windows Forms 2010.2 on the same computer. To install the newer version of the product documentation, you must first uninstall the old documentation and then install the new documentation.
+
+== WinControlContainerEditor
+
+The Rendering control assigned to the WinControlContainerEditor component must support the DrawToBitmap method.
+
+== DocumentEngine
+
+=== Encryption Support Is Not Present
+
+Note:{label} To the best of our knowledge, Microsoft® doesn't forbid third-party companies from developing a product for the XPS document generation. However, according to the XML Paper Specification Patent License, we need to provide the following notice for your information:
+
+This product may incorporate intellectual property owned by Microsoft Corporation. The terms and conditions upon which Microsoft is licensing such intellectual property can be found at link:http://www.microsoft.com/whdc/XPS/XpsLicense.mspx[http://www.microsoft.com/whdc/XPS/XpsLicense.mspx].
+
+Due to pending government approval regarding export limitations, encryption-related functionality has been disabled for the 2007 Volume 2 release. We expect to enable this functionality in a future release.
+
+The following is a list of properties that are affected by this limitation:
+
+* Infragistics.Documents.Reports.PDF.IPermissions.Add
+* Infragistics.Documents.Reports.PDF.IPermissions.Copy
+* Infragistics.Documents.Reports.PDF.IPermissions.Modify
+* Infragistics.Documents.Reports.PDF.IPermissions.Print
+* Infragistics.Documents.Reports.Report.Preferences.PDF.IPassword.Owner
+* Infragistics.Documents.Reports.Report.Preferences.PDF.IPassword.User
+
+== Excel Engine
+
+*AutomaticExceptForDataTables*  *:*
+
+* When the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.workbook~calculationmode.html[Workbook.CalculationMode] is AutomaticExceptForDataTables, the formulas would be solved as if the mode were Automatic. In functionality, the two modes are identical at run-time. However, the option saved to the Workbook file and seen in Excel when the file is open will still accurately reflect the selected calculation mode.
+
+*External References:*
+
+* When references from external Workbooks are used in formulas, the formula will result in a #REF! error. The values of external references cannot currently be obtained for the purpose of solving a formula. However, the formula will still save to a Workbook correctly and the formula will be automatically solved correctly when the file is opened in Excel.
+
+*Function Library:*
+
+* Not all Excel functions can be solved by the Excel assembly. If a formula is applied to a cell with a function that cannot be solved by the Excel assembly, the cell will result in a #NAME? error, which will be represented by the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.errorvalue~wrongfunctionname.html[ErrorValue.WrongFunctionName] singleton value. However, if the Workbook is exported to a Workbook file and the file is opened in Microsoft Excel, the formula will be re-evaluated and will show the correct value.
+
+*UnknownShape*   *Base Type:*
+
+* The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.unknownshape.html[UnknownShape] class now derives from link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext.html[WorksheetShapeWithText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshape.html[WorksheetShape]. This is not a breaking change because WorksheetShapeWithText also derives from WorksheetShape.
+
+== AppStylist® for Windows Forms
+
+=== Trial Issue on Vista Operating_System
+
+If you have installed a trial version of the Infragistics product, you may receive a licensing error when you run the AppStylist for Windows Forms application on Windows® Vista™ with User Account Control (UAC) enabled. To work around this problem, you can do either of the following:
+
+* run AppStylist as an administrator (i.e., with elevated privileges)
+* run Microsoft Visual Studio® and place an instance of one of the Infragistics controls on the form designer to initiate the trial period
+
+== WinAnimation
+
+=== WinAnimation in Windows Vista
+
+The WinAnimation control is not supported in Vista.Instead the in-box, Picture Box control can be used while working on Windows Vista.
+
+== WinEditors™
+
+=== Windows Message Support
+
+Some of the Native Windows Messages are not supported by certain WinEditor™ controls. The WinEditor controls fall into a few basic categories: TextEditorControlBase, UltraWinEditorMaskedControlBase and UltraFormattedTextEditor. For the list of controls that fall under these categories please see the link:wineditors-editor-controls-classification.html[Editor Controls Classification] topic.
+
+Limitations for some of the messages are listed below:
+
+[options="header", cols="a,a"]
+|====
+|Fields|Description
+
+|WM_CLEAR
+|1.Since the _UltraTimeSpanEditor_ _™_ control does not support setting the Text property in code, it does not support this message when not in Edit mode. 
+
+2.The WM_CLEAR message requires selection. Since the UltraWinEditorMaskedControlBase group of controls does not support setting the selected text when they are not in Edit mode, they do not support this message in non-Edit mode.
+
+|EM_REPLACESEL
+|1.The TextEditorControlBase controls do not support the wParam (fCanUndo) when not in Edit mode. Hence passing true for this flag will not work. 
+
+2.Since the UltraTimeSpanEditor™ control does not support setting the Text property in code, it does not support this message when not in Edit mode. 
+
+3.The UltraWinEditorMaskedControlBase group of controls does not support this message when not in Edit mode. 
+
+4.The wParam (fCanUndo) is not supported by these controls. 
+
+5.Since the UltraFormattedTextEditor control does not support selecting of Text through code, it does not support this message.
+
+|EM_LINEFROMCHAR
+|This message relies on the current position of the caret. The TextEditorControlBase controls cannot distinguish between when the caret is at the end of one line or the beginning of the next line when not in Edit mode.
+
+|EM_LINEINDEX
+|This message relies on the current position of the caret. The TextEditorControlBase controls cannot distinguish between when the caret is at the end of one line or the beginning of the next line when not in Edit mode.
+
+|EM_GETCHARFORMAT
+|Some CHARFORMAT and CHARFORMAT2 fields are not supported by _UltraFormattedTextEditor_ _™_ control. The CHARFORMAT and CHARFORMAT2 effects such as: 
+
+CFE_PROTECTED 
+
+CFE_ALLCAPS 
+
+CFE_EMBOSS 
+
+CFE_HIDDEN 
+
+CFE_IMPRINT 
+
+CFE_LINK 
+
+CFE_OUTLINE 
+
+CFE_REVISED 
+
+CFE_SHADOW 
+
+CFE_SMALLCAPS 
+
+CFE_SUBSCRIPT 
+
+CFE_SUPERSCRIPT of the dwEffects field are not supported by UltraFormattedTextEditor. 
+
+The CHARFORMAT2 fields’ Spacing, lcid and wKerning are not supported by _UltraFormattedTextEditor_ .
+
+|====
+
+== WinGrid
+
+=== Reserve the Sort Indicator when rotating Column Headers
+
+When rotating text in column headers in  _WinGrid_   _™_   vertically, the total space consumed by the header can be decreased using the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~performautoresize.html[PerformAutoResize] method of the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn] class. But, you may experience that on resizing column header, the sort indicator disappears. In order to accommodate for this issue, set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~reservesortindicatorspacewhenautosizing.html[ultraGrid.DisplayLayout.Override.ReserveSortIndicatorSpaceWhenAutoSizing] property to either `Default`, WhenColumnIsSortable or WhenVisible setting.
+
+=== Requirements for Creating Child Bands
+
+_WinGrid_   _™_   cannot generate child bands for a list unless it contains at least one row, implements the ITypedList interface, or implements the IBindingList interface and returns true from its AllowNew property.
+
+== WinGridWordWriter™
+
+=== Export of Band 0 Only
+
+The export of  _WinGrid_   _™_   data to Microsoft® Word® is limited to the root band of WinGrid and no child band data is exported.
+
+=== Gradients and Hatches Displayed as BackColor in Word
+
+Since Microsoft Word does not have any support for drawing gradient backgrounds, any object in the on-screen WinGrid that is drawn with a gradient uses only the BackColor in Word. BackColor2 and BackGradientStyle are ignored. The same is true for Hatch brushes.
+
+=== Export Limitations in CardView or Horizontal View
+
+None of the current exporters support exporting the WinGrid control in CardView or Horizontal view. Only the default Vertical (or OutlookGroupBy) ViewStyles is supported.
+
+=== No Importing
+
+It is not possible to open an existing Word document and modify it. However, you can create a new Word document and export WinGrid control(s) into it, as well as insert additional content into the document either before or after the grid(s).
+
+=== BorderStyle Export Limitations
+
+Microsoft Word’s implementation of border styles is different than the one of the on-screen WinGrid. Word tables only support setting the border style on the cell or the table, not the row. Microsoft Word does not support most of the styles Infragistics BorderStyle supports. The Header, Cell, and Summary border styles are resolved as the following table lists the mapping of Infragistics UIElementBorderStyle to Microsoft Word BorderStyle.
+
+[options="header", cols="a,a"]
+|====
+| *Infragistics*   *UIElementBorderStyle* | *Microsoft Word*   *BorderStyle* 
+
+|Solid
+|Single
+
+|Dotted
+|Dotted
+
+|Dashed
+|Dashed
+
+|None
+|None
+
+|Inset 
+
+InsetSoft
+|Single 
+
+Inset is supported by Infragistics Word library. But it also requires setting the CellSpacing on the table and since it is not known ahead-of-time what the border styles are for all headers, cells, and summaries are, Inset is not supported in the WinGridWordWriter
+
+|Etched 
+
+Raised 
+
+RaisedSoft 
+
+Rounded1 
+
+Rounded1Etched 
+
+Rounded3 
+
+Rounded4 
+
+Rounded4Thick 
+
+TwoColor 
+
+WindowsVista
+|Microsoft Word has no equivalent for these, so all these settings default to Single.
+
+|====
+
+=== Export Limitations for Cell Formats
+
+Most cells in WinGrid export as plain text. For a cell with a ValueList, the text displayed on-screen is exported, and not the DataValue. If a numeric value is formatted using WinGrid column’s Format property, the formatted text is exported as it appears on the screen.
+
+Also, certain cells in WinGrid are handled differently depending on the editor being used by that cell. This is essentially the same thing that is done for PDF export.
+
+The following table lists the Editor-based export limitations.
+
+[options="header", cols="a,a"]
+|====
+| *Editor* | *Exported Results* 
+
+|UltraCheckEditor
+|An image of a plain, flat checkbox is exported to the cell.
+
+|EmbeddableImageRenderer
+|The image is exported to the cell.
+
+|UltraFormattedTextEditor
+|Formatted text is exported. Internally, the UltraFormattedTextWordWriter component is used.
+
+|UltraControlContainerEditor
+|An image of the RenderingControl used by the editor (if it has one) is exported; otherwise, only the text is exported as if the cell is using an EditorWithText. 
+
+.Note: 
+
+[NOTE] 
+
+==== 
+
+There is no way to determine the appropriate size of the image, because the size of the cell in the Word document is not known in advance. For this reason the size of the on-screen WinGrid cell is used as a guide. 
+
+====
+
+|====
+
+== WinToolbarsManager
+
+=== Tool Text Displays as Translucent in Vista When Glass is Enabled
+
+When a link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.textboxtool_members.html[TextBoxTool], link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.comboboxtool_members.html[ComboBoxTool], or link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.fontlistmruitemscollection~fontlisttool.html[FontListTool] is placed on the Quick Access Toolbar (QAT) or caption area of the Ribbon in Microsoft® Windows® Vista™ while Glass is enabled, the text and cursor will display as translucent. This problem is a result of how the Desktop Window Manager (DWM) in Vista determines what should be rendered as Glass. The DWM uses the color black to render Glass in Vista; therefore, any control placed on an extended glass region (such as the QAT or caption area) will experience this limitation.
+
+=== Ribbon StyleSet
+
+In order to overcome an issue where UI Roles collide between the standard toolbar and the Ribbon user interface, each ISL file now has a style set that is specifically designed to work with the Ribbon and its elements. The name of the style set is RibbonStyleSet and can be found in each of the provided ISL files. . Therefore, in order to apply any of the available styles successfully to the Ribbon, you are required to set the UltraToolBarsManager object’s link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~stylesetname.html[StyleSetName] property to RibbonStyleSet.
+
+Example:
+
+*In C#:*
+
+[source,csharp]
+----
+Infragistics.Win.AppStyling.StyleManager.Load("Nautilus.isl"); this.ultraToolbarsManager1.StyleSetName = "RibbonStyleSet";
+----

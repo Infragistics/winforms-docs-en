@@ -1,0 +1,56 @@
+﻿= About WinOfficeNavBar 
+
+The link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.ultraofficenavbar.html[WinOfficeNavBar]™ provides a simplistic way to navigate between views, while offering a means to quickly access a minimalistic subset of a view within a popup window.
+
+== Main Features
+
+[cols="a,a"]
+|===
+|*Feature*
+|*Description*
+
+|Peek Window
+|The peek window is a popup window which provides a minimalistic subset of an item when the item is hovered over. See link:winofficenavbar-peek-window.html[Peek Window] for more information.
+
+|Item Display
+|By default, items will be displayed using their text. However, this can be changed on a control-level and per-item level by setting the
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.itemsettings~displaystyle.html[DisplayStyle]
+property on the 
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.itemsettings.html[ItemSettings]
+object.
+
+|Item Styling
+|Appearance can be customized on a per item basis and/or across the entire control.
+
+|Appearance Resolution
+|Resolved styling for an Item or Peek window can be determined using
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.navbaritem~resolveappearance.html[ResolveAppearance()] method. 
+
+|Orientation of the Control
+|By default, WinOfficeNavBar orientation is based on the DockStyle of the control. If the WinOfficeNavBar is docked to the left or right, the navigation bar will be rendered vertically. Otherwise, it is rendered horizontally. The navigation bar orientation can be changed using the
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.ultraofficenavbar~orientation.html[Orientation]
+property.
+
+|Item Alignment
+|link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.ultraofficenavbar~itemalignment.html[ItemAlignment]
+specifies how the items' relative positioning should be based on the control orientation.
+
+|User Customization Options
+|The Navigation Bar has the ability to let the end user change how items are displayed. This customization includes re-ordering the items (via a listbox and drag/drop), changing the maximum number of visible items, and the preferred
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.itemsettings~displaystyle.html[DisplayStyle]
+(Image, Text, ImageAndText). These customization options are exposed via the Navigation Options dialog accessible through the Overflow menu.
+
+The developer will have the ability to enable/disable these customization options via the CustomizationSettings property.
+
+|Showing/Hiding Overflow Items
+|By default, the Overflow item is only visible if there are items that cannot fit the Navigation Bar or if end user customizations are enabled. The developer can choose to force the Overflow item to be shown or hidden using the
+link:{ApiPlatform}win.ultrawinofficenavbar{ApiVersion}~infragistics.win.ultrawinofficenavbar.ultraofficenavbar~overflowvisibility.html[OverflowVisibility]
+property.
+
+
+|===
+
+== Related Content
+* link:winofficenavbar-peek-window.html[Peek Window]
+
+

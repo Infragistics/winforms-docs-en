@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-add-images-to-wintree-with-columns",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{5990FA28-1D1A-48CB-9D71-7308808E9BCF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Images to WinTree with Columns
+
+This topic will show you how to add images to a WinTree™ with  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~columnsets.html[ColumnSet(s)]"] ColumnSet(s) and has columns displayed. Images can be added using the Cell object’s  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecell~appearance.html[Appearance]"]  property. This is applicable for the WinTree control in any  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"] .
+
+Another approach to showing images is to add an unbound column to the ColumnSet for the sole purpose to display the Images.
+
+This topic assumes there is an ImageList control dropped onto the form that has few sample images in it. Assign the ImageList control to the WinTree, through the ImageList property.
+
+*In Visual Basic:*
+
+----
+'Assign the ImageList control to WinTree
+ Me.ultraTree1.ImageList = this.imageList1
+'Adding Image to a cell in WinTree by setting the index of the image in 'ImageList control.
+Me.ultraTree1.Nodes(0).Cells(0).Appearance.Image = 1
+----
+
+*In C#:*
+
+----
+//Assign the ImageList control to WinTree
+ this.ultraTree1.ImageList = this.imageList1;
+//Adding Image to a cell in WinTree by setting the index of the image in //ImageList control.
+this.ultraTree1.Nodes[0].Cells[0].Appearance.Image = 1;
+----
+
+WinTree displaying an image in a cell, and ViewStyle is set to OutlookExpress
+
+image::Images\WinTree_Add_Images_to_WinTree_with_Columns_01.png[]
+
+WinTree displaying an image in a cell, and ViewStyle is set to FreeForm
+
+image::Images\WinTree_Add_Images_to_WinTree_with_Columns_02.png[]

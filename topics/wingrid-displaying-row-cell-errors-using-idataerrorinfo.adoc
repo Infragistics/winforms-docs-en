@@ -1,0 +1,144 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-row-cell-errors-using-idataerrorinfo",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{45A2A015-EF69-423E-9C90-B954EBFC0A22}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Row/Cell Errors Using IDataErrorInfo
+
+== To display row/cell errors using the IDataErrorInfo interface:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. IDataErrorInfo is a .NET interface for providing row and cell errors to databound controls. This interface is typically implemented on row objects. IDataErrorInfo provides error messages for the individual cells of a row and the row itself. IDataErrorInfo is implemented by DataRowView .NET class which means that DataSet and DataTable are among the data sources that support IDataErrorInfo. To enable support for displaying IDataErrorInfo errors in WinGrid™, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~supportdataerrorinfo.html[SupportDataErrorInfo]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.SupportDataErrorInfo = SupportDataErrorInfo.RowsAndCells
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.SupportDataErrorInfo = 
+  SupportDataErrorInfo.RowsAndCells;
+----
+
+[start=3]
+. You can also explicitly enable or disable showing IDataErrorInfo errors on a particular column by setting that column's SupportDataErrorInfo property.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0).SupportDataErrorInfo = DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].SupportDataErrorInfo = 
+  DefaultableBoolean.False;
+----
+
+[start=4]
+. You can change the default error icon that the UltraGrid uses by setting the Image on DataErrorCellAppearance and DataErrorRowSelectorAppearance of the Override object. You can also apply appearance to the cells, rows and the row selectors that contain data errors by using DataErrorCellAppearance, DataErrorRowAppearance and DataErrorRowSelectorAppearance of the Override object.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Override.DataErrorCellAppearance.BackColor = Color.Red
+Me.UltraGrid1.DisplayLayout.Override.DataErrorRowSelectorAppearance.BackColor = Color.Red
+Me.UltraGrid1.DisplayLayout.Override.DataErrorRowAppearance.BackColor = Color.LightYellow
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Override.DataErrorCellAppearance.BackColor = Color.Red;
+this.ultraGrid1.DisplayLayout.Override.DataErrorRowSelectorAppearance.BackColor = Color.Red;
+this.ultraGrid1.DisplayLayout.Override.DataErrorRowAppearance.BackColor = Color.LightYellow;
+----
+
+[start=5]
+. The data errors are directly set on the data source row objects. For DataSet and DataTable data sources these row objects are DataRow instances. You can get the DataRow object from an UltraGridRow by using the ListObject property of the UltraGridRow. The following code uses the InitializeRow event of the UltraGrid to set data errors.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, 
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) 
+  Handles UltraGrid1.InitializeRow
+	Dim rowError As String = ""
+	Dim cellError As String = ""
+	Dim value As Object = e.Row.Cells("Fax").Value
+	' Set the data error if Fax column value is empty.
+	If DBNull.Value Is value Then
+		rowError = "Row contains errors."
+		cellError = "Fax can not be empty."
+	End If
+	Dim drv As DataRowView = DirectCast(e.Row.ListObject, DataRowView)
+	drv.Row.RowError = rowError
+	drv.Row.SetColumnError("Fax", cellError)
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	string rowError = "";
+	string cellError = "";
+	Object value = e.Row.Cells["Fax"].Value;
+	// Set the data error if Fax column value is empty
+	if(DBNull.Value == value)
+	{
+		rowError = "Row contains errors.";
+		cellError = "Fax can not be empty";
+	}
+	DataRowView drv = (DataRowView)e.Row.ListObject;
+	drv.Row.RowError = rowError;
+	drv.Row.SetColumnError("Fax", cellError);
+}
+----
+
+[start=6]
+. The following is a snapshot of the WinGrid displaying IDataErrorInfo data errors in cells and row selectors.
+
+image::Images\WinGrid_Display_Row_Cell_Errors_Using_IDataErrorInfo_01.png[display row and cell errors using Idataerrorinfo]
+
+.Note
+[NOTE]
+====
+When IDataErrorInfo support has been enabled to display row errors, the UltraGrid by default makes the row selectors wider to accommodate the row error icons as well as other various icons that the UltraGrid normally displays, like the active row icon or the add-row icon or the row modified icon. You can change the row selector width by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorwidth.html[RowSelectorWidth]"]  property of the Override object.
+====
+
+== Related Topics
+
+* link:wingrid-filtering-rows-with-errors.html[Filtering Rows with Errors]

@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "winspellchecker-showing-winspellchecker-status-on-a-status-bar",
+    "controlName": ["WinSpellChecker"],
+    "tags": ["How Do I","Validation"],
+    "guid": "{EA097CC8-D2CF-4EF9-939A-4A314D444DF3}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Showing WinSpellChecker Status on a Status Bar
+
+== Before You Begin
+
+One of the most exciting features of WinSpellChecker™ is its ability to perform exactly as Microsoft® Word's spell checker. One of the ways in which WinSpellChecker can mimic Microsoft Word's spell checker is by showing its spell checking status on a status bar at the bottom of a document. The task of showing WinSpellChecker's status is very simple: it will involve two events, one line of code each. You will be using the KeyDown event of the RichTextBox control as well as the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~spellchecked_ev.html[SpellChecked]"]  event of the WinSpellChecker component.
+
+== What You Will Accomplish
+
+This walkthrough will guide you through the process of creating a status bar that will notify the end user as to whether WinSpellChecker is currently spell checking the document or if it has finished spell checking the document.
+
+== Follow These Steps
+
+[start=1]
+. *Set up your form.*
+
+You will need to place a RichTextBox control, StatusBar control, and WinSpellChecker component on your form. Double-click RichTextBox and UltraStatusBar in the toolbox. Set richTextBox1's Dock property to Fill. Double-click the UltraSpellChecker component from the Infragistics {ProductVersion} Win tab in the toolbox. Once WinSpellChecker is placed in the component tray, you can go back to richTextBox1 and set its  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings~enabled.html[Enabled]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings.html[SpellCheckerSettings]"]  object to True.
+[start=2]
+. *Create the events to show WinSpellChecker's status on the status bar.*
+
+Create a KeyDown event for richTextBox1. Inside the event, paste the following code:
+
+*In Visual Basic:*
+
+----
+Me.UltraStatusBar1.Text = "Checking Spelling"
+----
+
+*In C#:*
+
+----
+this.ultraStatusBar1.Text = "Checking Spelling";
+----
+
+Create a SpellChecked event for ultraSpellChecker1. Inside the event, paste the following code:
+
+*In Visual Basic:*
+
+----
+Me.UltraStatusBar1.Text = "Spelling Checked"
+----
+
+*In C#:*
+
+----
+this.ultraStatusBar1.Text = "Spelling Checked";
+----
+
+[start=3]
+. *Run the application.*
+
+When you type into the rich text box, the status bar's text changes to Checking Spelling. When WinSpellChecker is finished spell checking the document, the text changes to Spelling Checked. Of course, this functionality is not exactly how Microsoft Word shows its spelling status, but all you really have to do is use an image instead of text and you have the same effect. Other possible scenarios could include a status panel displaying the last misspelled word, how many misspelled words in the document, or what user dictionary is currently being used.

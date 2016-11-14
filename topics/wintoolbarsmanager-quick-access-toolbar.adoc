@@ -1,0 +1,31 @@
+﻿////
+|metadata|
+{
+    "name": "wintoolbarsmanager-quick-access-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{00187A7D-8B35-4D51-9500-50BD72F79FD6}","buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Quick Access Toolbar
+
+{Warning}
+
+The Quick Access Toolbar (QAT) is a toolbar that is always visible so the end user can quickly click more frequently used tools. By clicking the drop-down arrow on the right side of the QAT, the end user has the option to display the QAT below the Ribbon as well. You can also set this feature yourself by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.quickaccesstoolbar~location.html[Location]"]  property to AboveRibbon (default) or BelowRibbon.
+
+[cols="a,a"]
+|====
+
+|image::images/WinToolbarsManager_Quick_Access_Toolbar_01.png[example of ultratoolbarsmanager quick access toolbar above ribbon] 
+
+|image::images/WinToolbarsManager_Quick_Access_Toolbar_02.png[example of ultratoolbarsmanager quick access toolbar below ribbon] 
+
+|The QAT Above the Ribbon
+|The QAT Below the Ribbon
+
+|====
+
+You can add tools to the QAT at design time by clicking the QAT and then clicking Insert New Tool or Insert Existing Tool. Read link:wintoolbarsmanager-add-a-tool-to-the-quick-access-toolbar.html[Add a Tool to the Quick Access Toolbar] to find out how to do this at run time.

@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-add-nodes-to-wintree-at-design-time",
+    "controlName": ["WinTree"],
+    "tags": ["How Do I"],
+    "guid": "{61F5AB48-D1A8-4AC1-A562-C163ED72FB44}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Nodes to WinTree at Design Time
+
+This topic is designed to get you up and running with an WinTree™ control on a WinForm with nodes created at Design-time.
+
+[start=1]
+. Create a new Visual Basic or C# Windows Application.
+[start=2]
+. The windows application project will appear, with a single Windows form visible. Select the UltraTree control in your toolbox and draw the control on the form.
+[start=3]
+. You should note at this point that references to Infragistics.Shared, Infragistics.Win, and Infragistics.Win.UltraWinTree have been added to the Solution Explorer window under the "References" section.
+[start=4]
+. Select the UltraTree on the form. In the property grid, click on the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~nodes.html[Nodes]"]  property.
+
+Click the ellipsis button that appears.
+
+The UltraWinTree Node Editor dialog appears.
+[start=5]
+. Click the Add Root button.
+[start=6]
+. Click into the Selected Node Label text box.
+[start=7]
+. Enter text for the new root node.
+[start=8]
+. In the Node property grid, you can set many properties of the node, including the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~key.html[Key]"] .
+[start=9]
+. Click Add Root to add another root node.
+[start=10]
+. You can add as many nodes as you want and set properties for each node.
+[start=11]
+. If you make an error and want to remove a node, click on the node and click Delete
+[start=12]
+. Click OK to save the changes and exit the Node editor.

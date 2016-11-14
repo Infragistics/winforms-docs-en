@@ -1,0 +1,60 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-panes-overview",
+    "controlName": ["WinDockManager"],
+    "tags": ["Layouts"],
+    "guid": "{1FE6F304-7B70-4811-9378-FECDABB25C40}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Panes Overview
+
+== Summary View Of Pane Types (and Relationships)
+
+Panes are containers that are the basic building blocks for the WinDockManager™ component. A Pane is a specific type of window that can contain other windows, including other panes. Much of the functionality of the WinDockManager derives from the various ways in which panes may be nested inside of one another. The base class for panes in the WinDockManager is the DockablePaneBase. This class provides the base functionality and interface implemented by all pane types.
+
+There are three types of panes you must understand to gain a good working knowledge of the WinDockmanager. These three types are described in detail below. The summary view is that the outermost level of panes consists of the DockArea Panes. These panes represent the area where any Control panes or Group panes may be docked or floated. Control panes are the innermost level of the hierarchy - they contain only controls, never other panes. The two levels are joined by the DockableGroup panes, which can contain either Control Panes or other DockableGroup panes.
+
+Once a DockArea Pane is created, it does not change its position (except in the case of a floating DockArea pane, which may be moved around on screen but will always remain floating.) One DockArea pane cannot contain another; they are always at the highest level of the pane hierarchy.
+
+The lifetime of a DockArea pane is determined by the other panes that are associated with it. An association between a DockArea pane and a Group or Control Pane may exist even if the Group Or Control pane is not displayed in the DockArea pane. For example, suppose you drag a Control pane to the left edge of a container and dock it. If one does not already exist, a DockArea pane is created on the left side to hold the Control pane. Then you double-click the caption of the Control pane, and it becomes a floating window. (Actually, what happens is a floating DockArea pane is created and the Control pane docks there, but you may ignore this occurrence for the purposes of this explanation.) The left-edge DockArea pane is still associated with the Control pane, because the Control pane needs to "remember" where to return to if it's floating window's caption is double-clicked. As long as the Control pane floats, the DockArea Pane continues to exist. Now suppose you close the floating window. Even though the Control pane is no longer visible, the DockArea pane still exists and is associated with the Control pane, because closing a Control pane merely hides it from view. If you were to unhide the Control pane and then double-click it's caption, it would still rely on its association with the DockArea pane to remember where to go.
+
+The pinned and grouped state of panes are also determining factors in whether an association with a given DockArea pane exists. A Control pane may be added to a Group pane that is docked along the right edge of the container, but its association with the original left-edge DockArea pane is not necessarily severed. The Group pane it has joined has an association with the right-edge DockArea pane, but the Control pane itself is still associated with the left-edge DockArea pane. If you drag the Control pane to the bottom dock area and dock it there, and it is the  _only_  pane to exist in that doc area (i.e. it has not joined a group) then the relationship with the left-edge DockArea pane is severed. The left-edge DockArea pane will then be released, provided there are no other Group or Control panes that still have an association with it.
+
+DockableGroupPanes are created and destroyed as needed in a similar fashion. The interactions between the different types of panes can become quite complex. It is sometimes difficult to tell by looking what all the relationships of the various panes are, particularly when groups of panes are involved. Added to this is the fact that groups can appear in different ways, such as tab groups and sliding groups, and that groups and control panes can share the same dock area and can be pinned or unpinned. The important thing to remember is that the structure of the panes is driven by the requirement that any given pane must be able to switch among various states without losing its ability to return to its previous state. If pane is undocked, the element must know how to re-dock it. If a pane is ungrouped, the element must know how to re-group it. Following this simple principle will make it much easier to understand the relationships between the different types of panes and their various states.
+
+[[control]]
+== Control Pane
+
+*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablecontrolpane.html[DockableControlPane]"]
+
+*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
+
+*Description:* The control pane is a specialized pane for containing a Control. Control panes are the only type of pane that may be unpinned. Unpinning may occur programmatically when the Unpin method of a control pane or its ancestor group is invoked. It may also be invoked via the user interface by either depressing the Unpin button or by selecting the AutoHideoption from the context menu displayed when right clicking on a pane caption or tab item. When a control pane is unpinned, a tab is displayed in the unpinned tab area based on the location of the dock area that contains the control pane.
+
+image::Images/WinDockManager_Panes_Overview_01.PNG[shows an example of ultradockmanager control pane]
+
+image::Images/WinDockManager_Panes_Overview_02.PNG[another example of ultradockmanager's control pane]
+
+== Group Pane
+
+*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
+
+*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
+
+*Description:* The group pane is the basic pane for grouping together other panes. They may contain control panes or other group panes. Since group panes may contain control panes (DockableControlPane) and group panes (DockableGroupPane), the return type of the group's Panes collection is of type DockablePaneBase. Because of this, it may be necessary to cast the value to the derived type to access some of the type specific properties (e.g. the Control property of a DockableControlPane).
+
+*Note:* Once a group pane is created, it is never repositioned. When a child control pane is repositioned, a new group pane is created to contain the control pane. The new group is initialized using the properties of the containing group. This step is required because the group may still be referenced by other panes, including closed panes, floating panes that reference the docked pane, and unpinned panes.
+
+== DockArea Pane
+
+*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockareapane.html[DockAreaPane]"]
+
+*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
+
+*Description:* Dock areas are specialized types of group panes that cannot be contained by other group panes. They are the root ancestor pane for containing and displaying all other panes. A dock area can be created docked to the left, right, top, or bottom of the container or may be created in a floating window. As with group panes, once a group pane is created, it cannot be moved.

@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-disabling-groups-and-items-in-winexplorerbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{BA784827-A035-47D0-BB8F-607E7D252B95}",  
+    "buildFlags": [],
+    "createdOn": "2009-02-02T11:39:58Z"
+}
+|metadata|
+////
+
+= Disabling groups and items in WinExplorerBar
+
+This topic shows you how to disable groups and items in UltraWinExplorerBar™.
+
+*In Visual Basic:*
+
+----
+' Disable a group 
+ultraExplorerBar1.Groups(0).Enabled = False
+' Disable an item 
+ultraExplorerBar1.Groups(1).Items(0).Settings.Enabled = Infragistics.Win.DefaultableBoolean.[False]
+----
+
+*In C#:*
+
+----
+// Disable a group
+ultraExplorerBar1.Groups[0].Enabled = false;
+ // Disable an item
+ultraExplorerBar1.Groups[1].Items[0].Settings.Enabled = Infragistics.Win.DefaultableBoolean.False;
+----

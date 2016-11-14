@@ -1,0 +1,53 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-change-the-order-of-groups-in-winexplorerbar",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["Grouping"],
+    "guid": "{B70BB669-C087-4C43-AF05-A461E56E2B8C}",  
+    "buildFlags": [],
+    "createdOn": "2009-07-07T16:48:30Z"
+}
+|metadata|
+////
+
+= Change the Order of Groups in WinExplorerBar
+
+Groups in WinExplorerBar™ can be moved around and their order can be changed manually. The order of Groups can also be changed programmatically using the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection~reposition.html[Reposition]"]  method of the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection.html[UltraExplorerBarGroupsCollection]"]  object.
+
+*In Visual Basic:*
+
+----
+Me.ultraExplorerBar1.Style = UltraExplorerBarStyle.OutlookNavigationPane 
+Dim aGroup As New UltraExplorerBarGroup()
+aGroup = Me.ultraExplorerBar1.Groups.Add() 
+aGroup.Text = "Employees Info" 
+aGroup.Key = "g_EmployeesInfo" 
+Dim bGroup As UltraExplorerBarGroup = Me.ultraExplorerBar1.Groups.Add("g_DepartmentInfo")
+bGroup.Text = "Department Info" 
+bGroup.Key = "g_DepartmentInfo" 
+Dim cGroup As UltraExplorerBarGroup = Me.ultraExplorerBar1.Groups.Add("g_Benefits")
+cGroup.Text = "Benefits Info" 
+cGroup.Key = "g_BenefitsInfo" 
+' Move cGroup from last position to the first position 
+Me.ultraExplorerBar1.Groups.Reposition(cGroup, 0)
+----
+
+*In C#:*
+
+----
+this.ultraExplorerBar1.Style = UltraExplorerBarStyle.OutlookNavigationPane;
+UltraExplorerBarGroup aGroup = new UltraExplorerBarGroup();
+aGroup = this.ultraExplorerBar1.Groups.Add();
+aGroup.Text = "Employees Info";
+aGroup.Key = "g_EmployeesInfo";
+UltraExplorerBarGroup bGroup = this.ultraExplorerBar1.Groups.Add("g_DepartmentInfo");
+bGroup.Text = "Department Info";
+bGroup.Key = "g_DepartmentInfo";
+UltraExplorerBarGroup cGroup = this.ultraExplorerBar1.Groups.Add("g_Benefits");
+cGroup.Text = "Benefits Info";
+cGroup.Key = "g_BenefitsInfo";
+// Move cGroup from last position to the first position
+this.ultraExplorerBar1.Groups.Reposition(cGroup, 0);
+----

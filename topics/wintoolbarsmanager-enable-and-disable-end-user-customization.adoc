@@ -1,0 +1,130 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-enable-and-disable-end-user-customization",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{4848E6C1-11B8-47E8-94C5-141BC990AF57}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Enable and Disable End-User Customization
+
+By default, all the customization features of the WinToolbarsManager™ are enabled. The end-user of the application has free reign to add, delete and reposition tools or create and remove toolbars. They can also re-arrange any existing toolbars in whatever way they want.
+
+Sometimes you may want to prevent the user from adding or removing tools from the toolbars. You may also want to prevent them from docking the toolbars or hiding them.
+
+The following is a list of properties of the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings.html[ToolbarSettings]"]  object that control what a user can and can't do to the toolbar at run-time. These properties are all set to True by default.
+
+.Note
+[NOTE]
+====
+Some additional options for restricting runtime customization may be achieved using the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~runtimecustomizationoptions.html[RuntimeCustomizationOptions]"]  property of the UltraToolbarsManager.
+====
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowcustomize.html[AllowCustomize]"]  - This setting determines whether the end user can manipulate the tools on the toolbar via the runtime customizer. This setting has no effect on the user's ability to dock, float or re-arrange toolbars.
+
+.Note
+[NOTE]
+====
+This property will not prevent the end-user from being able to get to the runtime customize dialog. To do that, the RuntimeCustomizationOptions property of the UltraToolbarsManager should be changed to exclude the AllowCustomizeDialog option.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Me.UltraToolbarsManager1.ToolbarSettings.AllowCustomize = _
+  DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+this.ultraToolbarsManager1.ToolbarSettings.AllowCustomize = 
+  DefaultableBoolean.False;
+----
+
+pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowdockbottom.html[AllowDockBottom]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowdocktop.html[AllowDockTop]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowdockright.html[AllowDockRight]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowdockleft.html[AllowDockLeft]"]  - These settings specify the areas where toolbars may be docked. To confine toolbars to a specific area, simply set the corresponding "AllowDock" properties to True and the other ones to False. For example, If you wanted to have toolbars that could only be docked at the top or bottom of the form (horizontal orientation only) you would set AllowDockLeft and AllowDockRight to False.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Me.UltraToolbarsManager1.ToolbarSettings.AllowDockBottom = _
+  DefaultableBoolean.False
+Me.UltraToolbarsManager1.ToolbarSettings.AllowDockLeft = _
+  DefaultableBoolean.False
+Me.UltraToolbarsManager1.ToolbarSettings.AllowDockRight = _
+  DefaultableBoolean.False
+Me.UltraToolbarsManager1.ToolbarSettings.AllowDockTop = _
+  DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+this.ultraToolbarsManager1.ToolbarSettings.AllowDockBottom = 
+  DefaultableBoolean.False;
+this.ultraToolbarsManager1.ToolbarSettings.AllowDockLeft = 
+  DefaultableBoolean.False;
+this.ultraToolbarsManager1.ToolbarSettings.AllowDockRight = 
+  DefaultableBoolean.False;
+this.ultraToolbarsManager1.ToolbarSettings.AllowDockTop = 
+  DefaultableBoolean.False;
+----
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowfloating.html[AllowFloating]"]  - This setting determines whether the toolbars can be un-docked to float in their own window.
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Me.UltraToolbarsManager1.ToolbarSettings.AllowFloating = _
+  DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+this.ultraToolbarsManager1.ToolbarSettings.AllowFloating = 
+  DefaultableBoolean.False;
+----
+
+.Note
+[NOTE]
+====
+that this setting in combination with the above settings ("AllowDock") gives you the ability to prevent the user from moving the toolbars at all. Setting AllowFloat and all of the "AllowDock" properties to False will prevent the user from being able to move the toolbar.
+====
+
+*  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~allowhiding.html[AllowHiding]"]  - This setting determines whether the toolbar may be hidden (closed.) When set to False, the user will have no way to remove a toolbar from the application.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win;
+...
+Me.UltraToolbarsManager1.ToolbarSettings.AllowHiding = _ 
+  DefaultableBoolean.False
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+this.ultraToolbarsManager1.ToolbarSettings.AllowHiding = 
+  DefaultableBoolean.False;
+----

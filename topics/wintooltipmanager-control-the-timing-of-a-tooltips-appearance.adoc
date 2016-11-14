@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintooltipmanager-control-the-timing-of-a-tooltips-appearance",
+    "controlName": ["WinToolTipManager"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{B5DBB1F7-4DC5-47C0-9C97-2ECAF91C250C}",  
+    "buildFlags": [],
+    "createdOn": "2005-08-09T00:00:00Z"
+}
+|metadata|
+////
+
+= Control the Timing of a Tooltip's Appearance
+
+When you set up WinToolTipManager™ to automatically display tooltips for controls, you can control the delay before the tooltip appears and also, the amount of time before it automatically disappears.
+
+== InitialDelay
+
+To determine how long the mouse must hover over a control before the tooltip displays, set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager~initialdelay.html[InitialDelay]"]  property of the WinToolTipManager control. This property specifies the number of milliseconds of delay before the tooltip is displayed.
+
+== AutoPopDelay
+
+When a tooltip is displayed, it will automatically disappear (pop) when the mouse leaves the bounds of the control or when a mouse button is clicked. If the mouse stays within the bounds of the control and no mouse button is clicked, then the tooltip will disappear when the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager~autopopdelay.html[AutoPopDelay]"]  has expired. AutoPopDelay is a property on the UltraWinToolTipManager component that determines the number of milliseconds that the tooltip will display before automatically popping. If you do not want the tooltip to automatically pop, set the AutoPopDelay property to zero.

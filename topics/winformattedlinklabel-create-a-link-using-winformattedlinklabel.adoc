@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedlinklabel-create-a-link-using-winformattedlinklabel",
+    "controlName": ["WinFormattedLinkLabel"],
+    "tags": ["How Do I","Navigation"],
+    "guid": "{8D821E1F-49CB-4CBA-9553-2287C413AF8A}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a Link Using WinFormattedLinkLabel
+
+The WinFormattedLinkLabel™ control can create a clickable link in any Infragistics Windows Forms control that uses embeddable editors. You can also use this control individually to create a simple link on a form. To create a link on a form with the WinFormattedLinkLabel control, drag the control from your toolbox onto the form (you can also double-click the control and it will be placed in the default position on the form). Once the control is on the form, make sure the control is selected and go to the Properties window. Set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor~value.html[Value]"]  property to "<a href=""www.infragistics.com"">Infragistics</a>". If you prefer to set the Value property in code, refer to the code below.
+
+.Note
+[NOTE]
+====
+In the code below, the backslashes (an extra pair of quotes in Visual Basic) are necessary to avoid build errors. If you do not place a backslash/quote before the quotes surrounding the URL, the compiler will expect a semi-colon after "<a href=". These backslashes/quotes are not needed when setting the Value property via the Properties window.
+====
+
+WinFormattedLinkLabel can recognize several HTML tags such as <strong>, <em>, <u>, and <font>. For a full list of supported HTML tags, see link:winformattedlinklabel-formatting-text-and-hyperlinks.html[Formatting Text and Hyperlinks].
+
+*In Visual Basic:*
+
+----
+Me.UltraFormattedLinkLabel1.Value = _
+  "<a href=""www.infragistics.com"">Infragistics</a>"
+----
+
+*In C#:*
+
+----
+this.ultraFormattedLinkLabel1.Value = 
+  "<a href=\"www.infragistics.com\">Infragistics</a>";
+----

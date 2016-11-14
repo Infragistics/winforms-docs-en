@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "methods-reference-for-performing-undo-redo-operations",
+    "controlName": [],
+    "tags": ["API","Commands","Editing"],
+    "guid": "ce8f72fc-985e-4bb8-a464-e16dd103a74d",  
+    "buildFlags": [],
+    "createdOn": "2012-09-06T12:08:35.3580125Z"
+}
+|metadata|
+////
+
+= Methods Reference for Performing Undo Redo Operations
+
+== Topic Overview
+
+=== Purpose
+
+This topic lists the available methods for performing undo and redo operations.
+
+=== Required background
+
+The following table lists the topics required as a prerequisite to understanding this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:undomanager-properties-and-methods-reference.html[UndoManager Properties and Methods Reference]
+|This topic lists some of the important properties and methods of the UndoManager class.
+
+| link:undohistoryitem-properties-and-methods-reference.html[UndoHistoryItem Properties and Methods Reference]
+|This topic lists the properties and methods of the UndoHistoryItem class.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref320840613, Methods Reference for Performing Undo/Redo Operations >>
+** <<_Ref320841776,Introduction>>
+** <<_Ref320841782,Methods reference summary>>
+
+* <<_Ref320840625, Related Content >>
+
+[[_Ref320840613]]
+== Methods Reference for Performing Undo/Redo Operations
+
+[[_Ref320841776]]
+
+=== Introduction
+
+The Infragistics Undo/Redo Framework™ provides methods to perform undo and redo of the operations in the respective history.
+
+[[_Ref320841782]]
+
+=== Methods reference summary
+
+The following table summarizes the purpose and functionality of the methods that perform undo and redo operations.
+
+[options="header", cols="a,a"]
+|====
+|Method|Description
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~redo.html[Redo]
+|This is an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] method that executes one or more redo operations from the current history.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~undo.html[Undo]
+|This is an UndoManager method that executes one or more undo operations from the current history.
+
+| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undohistoryitem~execute.html[Execute]
+|This is a link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undohistoryitem_members.html[UndoHistoryItem] method that executes all the items in the associated history up to and including this instance. 
+
+The type of operation that will be execute depends on the value of the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undohistoryitem~itemtype.html[ItemType] property.
+
+|====
+
+[[_Ref320840625]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:methods-reference-for-adding-undounits-to-the-undo-history.html[Methods Reference for Adding UndoUnits to the Undo History]
+|This topic lists the available methods for adding an UndoUnit derived class object to the undo history.
+
+| link:methods-reference-for-removing-undounits-from-the-history.html[Methods Reference for Removing UndoUnits from the History]
+|This topic lists the available methods for removing the UndoUnit instances from the undo/redo history.
+
+| link:methods-reference-for-registering-unregistering-objects.html[Methods Reference for Registering and Unregistering Objects]
+|This topic lists the methods that register/unregister a specific object to an UndoManager instance.
+
+| link:methods-and-properties-reference-for-performing-transactions.html[Methods and Properties Reference for Performing Transactions]
+|This topic lists the available methods and properties for performing undo/redo transactions.
+
+| link:methods-and-properties-reference-for-merging-undoredo-operations.html[Methods and Properties Reference for Merging Undo Redo Operations]
+|This topic lists the available methods and properties related to the merging of undo/redo operations.
+
+| link:methods-reference-for-suspending-and-resuming-saving-history.html[Methods Reference for Suspending and Resuming Saving History]
+|This topic lists the available methods for suspending and resuming the saving of the undo/redo operations in history.
+
+| link:methods-and-properties-reference-for-creating-custom-undounit.html[Methods and Properties Reference for Creating Custom UndoUnit]
+|This topic lists the available methods and properties related to creating of a custom UndoUnit in the Infragistics Undo/Redo Framework™.
+
+|====

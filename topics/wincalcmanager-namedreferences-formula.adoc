@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-namedreferences-formula",
+    "controlName": ["WinCalcManager"],
+    "tags": [],
+    "guid": "{F15CE551-FC38-49F9-8D8F-4E889C82A50F}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= NamedReferences Formula
+
+A  pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference.html[NamedReference]"]  is essentially a formula that is independent of a control. NamedReferences have many uses, such as defining constants or formulas that are used in other calculations but do not need to be visible to the end-user.
+
+The most important properties of the NamedReferences are:
+
+[options="header", cols="a,a"]
+|====
+|Property Name|Description
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~category.html[Category]"] 
+|Used by the FormulaBuilder to organize NamedReferences.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~key.html[Key]"] 
+|A unique key for this NamedReference. Key is used to reference the NamedReference in a formula.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~formula.html[Formula]"] 
+|The formula for this NamedReference. Note that Formula can be a literal, so that NamedReferences can be used as constants.
+
+| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~formularesult.html[FormulaResult]"] (run-time only)
+|FormulaResult returns the calculated result of the formula.
+
+|====
+
+To add a NamedReference, simply go to the NamedReferences property of the WinCalcManager™ component and click the ellipsis to open the collection editor. Use the Add button to add new NamedReferences to the collection.
+
+To create a constant, simply assign a literal value to the Formula. For example, define a NamedReference with a Key of "Pi" and set the Formula to "3.1415".
+
+image::Images\WinCalcManager_Named_References_Overview_01.png[wincalcmanager's namedreference collection editor]
+
+To use a NamedReference in a Formula, simply enclose the Key of the NamedReference in square brackets and add a double slash, as in: "[//Pi] $$*$$ [//Radius]^2".

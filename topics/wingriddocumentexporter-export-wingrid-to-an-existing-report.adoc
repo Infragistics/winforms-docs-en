@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingriddocumentexporter-export-wingrid-to-an-existing-report",
+    "controlName": ["WinGridDocumentExporter"],
+    "tags": ["Exporting"],
+    "guid": "{5851B033-7595-4323-9A01-E9A42CEDABAB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Export WinGrid to an Existing Report
+
+Using the WinGridDocumentExporter™ component, you can export your WinGrid™ to a PDF or XML Paper Specification (XPS) document. This document, known as a Report while still in memory, can consist of several  pick:[win-forms="link:infragistics4.documents.reports.v{ProductVersion}~infragistics.documents.reports.report.section.isection.html[Sections]"] , all created at run time by the Infragistics Document Engine™. You can insert your WinGrid into a section of a Report as support material for the Report as a whole by calling the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~export.html[Export]"]  method off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter.html[UltraGridDocumentExporter]"]  object. The Export method contains five overloads; this topic discusses the third.
+
+The third overload of the Export method accepts two parameters:
+
+* the WinGrid to export (Infragistics.Win.UltraWinGrid.UltraGrid)
+* the section of the Report to which WinGrid will be exported (Infragistics.Documents.Reports.Report.Section.ISection)
+
+In order to insert your WinGrid into a report, you need to create the report, add a section to it, and publish the report. Once you've created the section, you can export WinGrid to it. This topic assumes that you have a data bound WinGrid and a WinGridDocumentExporter component on the form. For more information on binding WinGrid to a data source, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
+
+The following code instantiates a Report object, creates a section in the report, exports WinGrid to that section, and finally publishes the report as a PDF document in your C:\Report folder.
+
+*In Visual Basic:*
+
+----
+' Create a report
+Dim report As New Infragistics.Documents.Reports.Report.Report()
+' Add a section to the report
+Dim section As ISection = report.AddSection()
+' Export WinGrid to the section
+Me.UltraGridDocumentExporter1.Export(Me.ultraGrid1, section)
+' Create a PDF file from the report and
+' name it "WinGrid_Report.pdf" 
+report.Publish("C:\Report\WinGrid_Report.pdf", _
+	Infragistics.Documents.Reports.Report.FileFormat.PDF)
+----
+
+*In C#:*
+
+----
+// Create a report
+Infragistics.Documents.Reports.Report.Report report =
+new Infragistics.Documents.Reports.Report.Report();
+// Add a section to the report
+ISection section = report.AddSection();
+// Export WinGrid to the section
+this.ultraGridDocumentExporter1.Export(this.ultraGrid1, section);
+// Create a PDF file from the report and
+// name it "WinGrid_Report.pdf" 
+report.Publish("C:\\Report\\WinGrid_Report.pdf",
+	Infragistics.Documents.Reports.Report.FileFormat.PDF);
+----

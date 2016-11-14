@@ -1,0 +1,27 @@
+﻿////
+
+|metadata|
+{
+    "name": "winvalidator-about-winvalidator",
+    "controlName": ["WinValidator"],
+    "tags": [],
+    "guid": "{59F1E0F7-0024-4472-B4F1-DEE3E917EB4D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinValidator
+
+WinValidator™ can validate any windows forms control through a control's Validating event; or, if you're using an Infragistics embeddable editor, you can change the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validationtrigger.html[ValidationTrigger]"]  to validate during the OnPropertyValueChanged event. You can use WinValidator on different controls through the extender properties it exposes. Through these properties, you can easily add new conditions to validate.
+
+WinValidator offers three types of built-in conditions:
+
+*  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.operatorcondition.html[Operator]"]  – The operator condition allows you to perform several standard comparing operations between the value in the control, and the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.operatorcondition~comparevalue.html[CompareValue]"]  of the OperatorCondition. See  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.conditionoperator.html[ConditionOperator]"]  for a full list of conditions.
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.rangecondition.html[Range]"]  – The range condition allows you to determine if a specific value is between the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.rangecondition~minimumvalue.html[MinimumValue]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.rangecondition~maximumvalue.html[MaximumValue]"] .
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.containedinlistcondition.html[List]"]  – The ContainedInListCondition object allows you to determine if a specific value is contained in a supplied  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"] . You can either supply a new ValueList at design time, or you can use a ValueList created at run time. The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.listitemmatchmode.html[ListItemMatchMode]"]  allows you to match either the ValueListItem's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  or  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~datavalue.html[DataValue]"] .
+
+By default, WinValidator will display an image next to the control when it fails validation. You can change the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.notificationsettings~action.html[Action]"]  that WinValidator performs when a control fails validation to a message box, balloon tip, or dialog box. These methods of information delivery are all customizable through the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.notificationsettings.html[NotificationSettings]"]  object. Through this object, you can set the caption, text, and image to something that suits your entire application, or you can override each notification by setting these properties through the extender properties on the individual controls themselves.
+
+image::images/WinValidator_About_WinValidator_01.png[example of ultravalidator]

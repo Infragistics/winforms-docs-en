@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-appearance-and-override-hierarchies",
+    "controlName": ["WinGrid"],
+    "tags": ["Data Presentation","Grids"],
+    "guid": "{35DEF50D-3B46-4136-A5BB-44FA9985DABF}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Appearance and Override Hierarchies
+
+== Appearance Objects and Formatting
+
+The WinGrid™ consists of many parts, each of which may be uniquely formatted in a variety of ways. However, most of the formatting applied to the grid will be the same for a given type of object. (For example, you probably will not want to apply different fonts to every row in the grid, or a different color scheme to every column.) The WinGrid (along with other Infragistics WinForms elements) uses an object-based approach to deal with these types of formatting issues through the use of Appearance objects.
+
+An  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  is an object that has a variety of formatting-related properties, such as alignment, font, color, picture and alpha-blending information. If an object can be formatted, instead of directly supporting properties such as Font, BackColor, ForeColor, Picture and PictureAlignment, the object has a single Appearance property that provides access to these types of properties. The Appearance property can either point to an Appearance sub-object that controls the formatting of the object it is attached to (and can have its properties set individually) or it can serve as a reference to a named Appearance object that will supply the property settings for the object being formatted.
+
+The element has an Appearances collection that is used to hold named Appearance objects that you create. You can create an Appearance object that has the settings you want to apply to multiple objects, then simply assign that object to the Appearance property of the object(s) you want to format. This object-based approach to formatting has several advantages. Primarily, it reduces the amount of code you have to write and makes it easy to apply uniform settings wherever you want. In addition, because all the settings are encapsulated in an object, you gain the ability to dynamically change settings for multiple objects simultaneously by changing the single Appearance object that controls their formatting.
+
+.Note
+[NOTE]
+====
+that the properties of an Appearance object can also operate in a hierarchical fashion. Certain properties can be set to a "Use Default" value, which indicates to the element that the property should take its setting from the object's parent. This functionality is enabled by default, so that unless you specify otherwise, child objects resemble their parents, and formatting set at higher levels of the grid hierarchy is inherited by objects lower in the hierarchy. For example, by default, a cell inherits its background color from its row, which inherits its background color from its band.
+====
+
+If you are trying to format an object and cannot locate an essential property, check to see if that object has an Appearance property. If it does, you can probably find the property you are looking for by examining the Appearance sub-object of the object you want to format.
+
+== Persisting Element Layout and Appearance
+
+Many of the features of the WinGrid are dedicated to making it easy to customize the layout of the grid, both for developers and end users. You or your users can alter the arrangement of columns, group or ungroup them, change their widths or the height of rows, add or remove column scrolling regions, and so on. Once these types of changes are made, you will ideally want your application to remember them so that the user can return to their customized layout the next time they run the application.
+
+The WinGrid has an overarching structure that makes persisting and restoring the state of your element easy. A top-level property of the element is the DisplayLayout property, which provides access to an  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[UltraGridLayout]"]  object. This object serves as a container for all of the properties and objects of the element that you might want to persist. Items such as the arrangement and layout of bands, the widths and order of columns, Appearance-related settings such as color, font and style - these and many other settings of the grid are all contained within the UltraGridLayout object. When you want to persist the appearance of your element, you invoke methods of this object to save or retrieve the layout information to or from a storage stream.
+
+Because so many of the WinGrid's settings can be persisted, much of the functionality of the element is accessed through the UltraGridLayout object.
+
+== Override Objects and Default Property Settings
+
+Bands share many of the same properties as are found on the grid itself. However, because each band is independent, it can have its own property settings that are distinct from those of the grid, or from other bands. Also, since a data hierarchy may be several levels or more deep, you may want some bands to derive their properties from the band directly before them, or from higher levels of the hierarchy. Because these objects have overlapping behaviors and formatting options, there has to be a structure for determining the formatting of any given object. This structure is provided by the override hierarchy.
+
+Whenever the WinGrid must determine how an object appears and behaves, it checks that object's override hierarchy. If a property that is part of the override hierarchy has been explicitly set for that object (that is, if it is no longer set to the default value) then the specified setting is used. However, if a property has not been set, the object will use the setting of the same property from the object above it in the override hierarchy. If that object is also using the default setting, the next object up the chain is checked for the specified value. This may continue for several iterations, until an object is encountered that has an explicit (non-default) setting for the property, or until the top level of the chain (the element itself) is reached.
+
+Properties that are part of the override hierarchy do not appear as direct properties of the grid or the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  object. Instead, they are grouped together as properties of a sub-object: the UltraGridOverride object. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  is similar to the Appearance in that its property settings apply to the object that is its parent. In general, any property that can be set for both the UltraGridBand object and the grid itself belongs to the override hierarchy. For example, the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~maxselectedcells.html[MaxSelectedCells]"]  property, which can determine the maximum number of cells that may be selected in a particular band or in the entire grid, is a property of the Override object.
+
+There are several side-effects of this system that will affect the way you write code for the element. One is that, for all properties of the UltraGridOverride object, the default (initial) setting is "Use Default." In this case, the word "Default" does not refer to the  _initial_  setting of the object's property, but the setting  _inherited from_  the object one level up in the override hierarchy.
+
+.Note
+[NOTE]
+====
+that the default (initial) setting of many override properties is "Use Default" (property not explicitly set at this level). If a property is set to "Use Default" at the topmost (grid) level, the UltraWinGrid's internal presets are used as the default values. Therefore, without any explicit action by you, all bands will use the grid-level settings for their Override properties, and the grid will use its own internal default settings. Another aspect of the override system is that properties you might expect to have Boolean values are actually set using enumerated integers, since any true/false property in the override hierarchy requires three possible settings: True, False, and "Use Default".
+====
+
+For example, suppose you have a grid that is displaying a three-level set of hierarchical data. There are bands for Customers, Orders and Order Details. At the grid level you have set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~selecttyperow.html[SelectTypeRow]"]  property so that only single rows may be selected:
+
+UltraGrid1.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+
+But you want the user to be able to select multiple orders or multiple items from an order, so for the Orders band, you have set SelectTypeRow to allow multiple row selection:
+
+UltraGrid1.DisplayLayout.Bands["Orders"].Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Extended;
+
+SelectTypeRow is a property of the UltraGridOverride object, so the selection type for each band is determined by the settings in the override hierarchy. Because you have not changed the value for the Order Details band, it is set to its initial value - "SelectType.Default" - which corresponds the "Use Default" option. When the grid creates the Order Detail band, this property will indicate that the setting of SelectTypeRow must come from higher in the override hierarchy, so the grid will look at the parent of the Order Details band, which is the Orders band. Since you have specifically set the value of the property for the Orders band, the element will use that same value for the Order Details band.
+
+When creating the Orders band, the SelectTypeRow property has been set to a specific value, which the element will use for that band. Creating the Customer band reveals that "Use Default" is the value of SelectTypeRow, so the element "walks" up the object hierarchy again, this time to the grid level, to obtain the setting. Since you have explicitly set the grid to use "SelectType.Single" that is the value that will be in effect for the Customers band. If you had not set this property for the grid, it would also be set to the "Use Default" option. At the top level of the hierarchy, a setting of "Use Default" causes the element to use its own internal presets as the default values.

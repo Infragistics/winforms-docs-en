@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-set-appearances-for-alternate-months",
+    "controlName": ["WinSchedule"],
+    "tags": ["Styling"],
+    "guid": "{158643BE-CBFE-4452-88B0-735438B8E160}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Appearances for Alternate Months
+
+This topic applies to the following WinSchedule™ controls:
+
+* WinMonthViewMulti™
+* WinCalendarCombo™
+
+The WinMonthViewMulti and WinCalendarCombo elements can utilize a different appearance for alternate months. The following code demonstrates how to set an appearance property in the WinCalendarLook and have the elements use that appearance when alternate months are displayed.
+
+In Visual Basic:
+
+[source,vb]
+----
+Private Sub Set_Appearances_for_Alternate_Months_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) _
+  Handles MyBase.Load
+        Me.UltraMonthViewMulti1.CalendarLook = Me.UltraCalendarLook1
+        Me.UltraCalendarCombo1.CalendarLook = Me.UltraCalendarLook1
+
+        Me.UltraMonthViewMulti1.UseAlternateMonthAppearances = True
+        Me.UltraCalendarCombo1.UseAlternateMonthAppearances = True
+        Me.UltraCalendarLook1.AlternateMonthAppearance.BackColor = Color.Yellow
+End Sub    
+----
+
+In C#:
+
+[source,csharp]
+----
+private void Set_Appearances_for_Alternate_Months_Load( 
+  object sender, EventArgs e)
+{
+        this.ultraMonthViewMulti1.CalendarLook = this.ultraCalendarLook1;
+        this.ultraCalendarCombo1.CalendarLook = this.ultraCalendarLook1;
+
+        this.ultraMonthViewMulti1.UseAlternateMonthAppearances = true;
+        this.ultraCalendarCombo1.UseAlternateMonthAppearances = true;
+        this.ultraCalendarLook1.AlternateMonthAppearance.BackColor = Color.Yellow;
+}    
+----

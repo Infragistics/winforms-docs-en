@@ -1,0 +1,96 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-formula-and-reference-guide",
+    "controlName": ["WinCalcManager"],
+    "tags": ["How Do I"],
+    "guid": "bf67178a-c817-46da-8d26-d6436775c3a2",  
+    "buildFlags": [],
+    "createdOn": "2010-07-26T14:13:23.9932447Z"
+}
+|metadata|
+////
+
+= WinCalcManager Formula and Reference Guide
+
+This topic will help you learn about how to create formulas and reference various source items when using WinCalcManager™.
+
+The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn] and link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings] object’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula] property is used to assign a string that contains WinCalcManager specific formula syntax. Here are some examples of using the Formula property in WinGrid:
+
+=== Column Formula (Row-by-row formula)
+
+When used within a formula assigned to WinGrid columns, a column reference (i.e. [Price], [Quantity] etc.,) represents an individual cell value. This design allows a formula to evaluate for each individual WinGrid row; each cell in the column that has a formula will therefore contain the results of the formula evaluation.
+
+The following example code sets a formula for the Total column that multiplies the Price cell with the Quantity cell. With a formula applied to the Total column, a column name in square brackets represents a cell in the same row.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Bands(0).Columns("Total").Formula = "[Price] * [Quantity]"
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["Total"].Formula = "[Price] * [Quantity]";
+----
+
+=== Summary formula
+
+In a summary based formula, a column reference (i.e. [Total]) represents the value of each cell in that column. Like most aggregate type functions, this design allows a formula to include all of the cell values in the column to evaluate the result.
+
+The following example code adds a summary with a formula that calculates the sum of the Total column. When applying formulas for the Summary, a column name in square brackets represents an entire column in the same band.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Bands(0).Summaries.Add("GrandTotal", "sum( [Total] )")
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].Summaries.Add("GrandTotal", "sum( [Total] )");
+----
+
+== Formula Syntax:
+
+[start=1]
+. To refer columns, enclose the column key in square brackets. For example: [Total], [Quantity].
+[start=2]
+. To use an aggregate based summary formula, use the formula name followed by open and close parenthesis, including any formula arguments. For example: [GrandTotal ()].
+[start=3]
+. To refer to all the cells of a particular column from a formula that is assigned to another column, use the following indicator after the column name (Excluding quotes) “($$*$$)”. E.g. [Price ($$*$$)]. [Price] alone will refer to the Price cell in the same row. However [Price ($$*$$)] will refer to all the Price cells. Think of this as referring to an element of an array in Visual Basic using the following syntax: Price (0); however, using the asterisk $$* $$ instead of a number is interpreted by the Calc Engine as a reference to ALL of the cells of the column. This syntax is used in row-based formulas, as by default, specifying the column name alone will result in evaluating the cell value for the current row only.
+[start=4]
+. You can specify formulas for both bound and unbound columns in WinGrid. Typically, you create a new, unbound column and then assign a formula to that column. Alternatively, you can also assign formulas to a column that is actually part of the underlying data source. The results for formulas assigned to a bound column actually get written back to the underlying data source.
+[start=5]
+. You can refer to columns and summaries from the same band as well as from other bands in WinGrid. You can also refer to other controls (e.g. TextBox) on the form when specifying formulas. The reference namespace forms a hierarchy. Controls that are on the Form will be at the root level. Columns and summaries in UltraWinGrid will be descendants of the Grid. References that can participate in the calculation network can be navigated similar to a file-system path. They can be relative or absolute. An absolute reference is something that starts with “//”. A relative reference does not start with “//”.
+
+Examples of references:
+
+* [//ultraGrid1/Customers/CustomerID] – refers to the CustomerID column of the Customers band.
+* [//ultraGrid1/Customers/Customers_to_Orders/OrderID] – refers to the OrderID column of the Customers_to_Orders band.
+* Customers_to_Orders is a child band of the Customers band and hence Customers is specified before Customers_to_Orders
+* Note for developers using a DataSet as the WinGrid’s data source: Customers_to_Orders is not the name of the child DataTable but rather the name of the relation associated with the child band. Since a DataSet with multiple related DataTables eventually are used as multiple nested ILists, the parent entity will contain an IList property that represents the child entity. When using DataSets in this configuration, this IList property is usually named after the DataRelation that defines this hierarchy. If in doubt, you can always use the child band’s Key property to learn which identifier you must use within your formula.
+
+When you are not sure where an actual column sits within the element hierarchy, you can use the column object’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formulaabsolutename.html[FormulaAbsoluteName] property. This property returns the absolute name of a column.
+* [//textBox1] – refers to the textBox1 control on the form.
+* [//PI] –refers to a named reference. Named references can typically be used to represent values or formulas that can be used in multiple other formulas where you don’t want to repeat the same value or expression multiple times in different formulas. UltraCalcManager exposes a collection of named references via the NamedReferences property. For example, you can have a PI named reference with “3.14” as the formula and this named reference can be referred in various other formulas using [//PI]. If the value of this named reference needs to be changed, then changing the value of PI in one location changes the value in multiple formulas wherever it was referred to.
+* A reference can contain “..” (Two dots) just like a file-system path to go up a level. For example, if you have a formula on a child band’s column and you want to refer to a column in the parent band then you can use the following syntax: [../../Column1].
+* References can contain relative indexes: e.g. [CustomerID (-1)], refers to the CustomerID cell of the previous row.
+* You can refer to a specific cell in a formula using either of the following two ways:
+
+.. Using an integer index like in [//ultraGrid1/Customer (2)/Total] - refers to the Total cell in the 3rd row (row with index of 2) of the current row collection.
+
+... Using column-value pairs that specify the criteria to find the row. E.g.: [//ultraGrid1/Customers(CustomerID=ABCD, OrderID=111)/Total].
+
+* Grouping: If rows are grouped by columns, then the group-by level information must be included in the references. For example if the rows are grouped by the State and City columns, then the reference to a cell using integer indexes would look like [//ultraGrid1/Customers/State(2)/City(3)/Customers(2)/Total]. This refers to the Total cell of the third row in the fourth City group in the third State group. Again the indexes are 0 based. The column-value pairs can also be used in grouped rows scenario: [//ultraGrid1/Customers/State(NY)/City(Albany)/Customers(CustomerID=ABCD)/Total] -refers to the Total cell of the row whose CustomerID cell value is ABCD and the row belongs to the Albany City group that belongs to the NY State group. There are three things to keep in mind when it comes to the syntax in grouped rows. First the Customers band name is repeated. The reason for this is to resolve the ambiguity between sibling bands. The first occurrence of the band name never contains any index or column-value pair information. The second thing to keep in mind is that we use the group-by column names to represent the group-by levels. In the given example, State and City are the group-by columns. The third thing to keep in mind is that the components associated with the group-by levels in the absolute name specify the criteria by using the group value. For example in the given absolute name, State(NY) refers to the State group-by row associated with the NY value. Group-by level components do not support the column value pairs; they do support the integer indexes as indicated previously.
+* The integer indexes in references are by default the visible row indexes. There is a FormulaRowIndexSource property off of the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride] object that controls whether these indexes are row indexes, visible row indexes or list indexes.
+* There is support for range references. Range reference will allow for referencing a range of cells in a formula. A range reference is two references separated by either “..” (Two dots) or “:” (semicolon). For example, [Price (0)]: [Price (5)] specifies range of cells starting from 0th Price cell to the 5th Price cell inclusive. There are two special cases of range references:
+
+.. [Price (0)]: [Price] specifies range of cells starting from 0th Price cell to current Price cell (current meaning the Price cell from the row of the cell for which the formula is being evaluated for). Notice that the end reference doesn’t have any index. This means the current cell.
+.. [Price (0)]: [Price ($$*$$)] specifies range of cells starting from 0th Price cell to the last Price cell in the row collection.
+.. [Price]: [Price ($$*$$)] specifies all the cells starting from current Price cell to the last Price cell.
+
+* If a reference name in the formula contains a special character (\ / [] () “, =) it must be escaped using the \ (backslash) escape character.

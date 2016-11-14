@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-plf-overview",
+    "controlName": [],
+    "tags": ["Application Blocks","Styling","Templating"],
+    "guid": "{E67349B9-CD10-4716-8450-1E86DBBEDC70}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-06T00:00:00Z"
+}
+|metadata|
+////
+
+= PLF Overview
+
+Consistency for the developer, and for the end user, is the key to increasing productivity. The Infragistics Presentation Layer Framework (PLF) provides this unparalleled consistency as a common substrate upon which all Infragistics elements are built. For the developer this means that out of the box, you get XP Themes and Office look and feel with a single property. This means that our grid controls let you edit any data type using editor controls which are all built on top of the same architecture. This means that you can build your own custom controls on our award-winning framework, and leverage our infrastructure so that your controls support XP Themes and Office styles, and you can leverage our logic for hit-testing, painting, transparency, gradients, eventing, and more. The figure below shows how the the Infragistics Windows Forms controls utilize the common components of the PLF.
+
+image::images\Win_ArchitectureOverview_01.png[Presentation Layer Framework]
+
+== PLF Components
+
+Infragistics Windows Forms controls and components use the following PLF components:
+
+* link:win-uielements.html[UIElements] - represent discreet parts of a control. Each element may contain one or more child elements. This abstraction is at the core of the PLF. Many of the other concepts and abstractions integrate with it.
+* link:win-appearance-objects.html[Appearance objects] - expose properties that affect the appearance of elements.
+* link:win-keyboard-handling.html[KeyActionMappings] - provide table driven keyboard logic that can easily be customized by the application developer.
+* link:win-mouse-handling.html[New mouse events] - MouseEnterElement and MouseLeaveElement events provide fine-grained mouse notifications to the application developer.
+* link:win-event-managers.html[Event managers] - many of the Infragistics components expose an event manager to temporarily disable the raising of their events.
+* link:win-selection-strategies.html[Selection strategies] - have been abstracted into a set of interfaces and selection logic has been implemented in a set of selection strategy classes supplied by the PLF. These strategies can be used by any PLF-based control.
+* link:win-property-change-notifications.html[Property change notifications] (with complete context information) - percolate changes up the object hierarchy without loss of detail.
+* link:win-filters.html[Filters] - a set of powerful filters provide an incredibly flexible extensibility mechanism that is unmatched by any other controls on the market.
+* link:win-embeddable-editors.html[Embeddable editors] - version 2 of the PLF introduced the concept of embeddable editors. This abstraction allows the tight integration of an editor into elements of another control. For example, this is used to render and edit cell data in UltraGrid.
+* link:win-customizing-assembly-resource-strings.html[Resource customization] - allows the application developer to easily replace any string resource that one of our Win form components may display to the end-user.
+
+== Advantages of the PLF
+
+The PLF architecture provides several advantages, including:
+
+* Stability and robustness - since a large percentage of the UI logic is shared in well tested and maintained common code.
+* Consistency - both visually and programmatically, the investment made in learning how to use one of our components can be leveraged across our entire line of components as well as user developed controls.
+* Extensibility - .NET allows developers to derive their own classes from any public component class that isn't sealed and can override methods to supply their own behavior. However, this isn't always practical. For example, if you needed to override the drawing of a single cell in a grid you could override the grid's 'OnPaint' method but to accomplish what should be a relatively simple UI enhancement could prove overly complex. Therefore, the PLF exposes easy-to-use fine-grained visual and behavioral extensibility mechanisms.
+* Shared set of common assemblies - a fair amount of behavior is common between controls and this is abstracted out into a set of common assemblies that can be shared by all of the controls. This not only promotes consistency and robustness but it also reduces the size of each component.

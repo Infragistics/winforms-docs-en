@@ -1,0 +1,28 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-appearance-objects",
+    "controlName": [],
+    "tags": ["API","How Do I","Styling","Templating"],
+    "guid": "{62637E5A-E2C5-4895-8180-70D5A4027822}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Appearance Objects
+
+Appearance objects expose color properties like BackColor, ForeColor and BorderColor.
+
+In addition, there are image-related properties, text trimming and alignment properties as well as properties to support gradients, hatch brushes and alpha blending.
+
+These objects can be exposed as properties off any object (e.g. a grid row or cell) to provide fine-grained control of that object's appearance.
+
+When an element (i.e. a row in a grid) is about to be rendered the appropriate appearance settings and defaults are resolved. For example, a row Appearance's BackColor property may be set to red and the BorderColor left empty. When that row is rendered it will have a red background but its border color will pick up the default border color for rows set at some higher level (e.g. the grid's Appearance or the system default).
+
+The following topics apply to appearances for all controls:
+
+* link:win-change-an-images-stretch-margins-at-run-time.html[Change an Image's Stretch Margins at Run Time]
+* link:win-render-gdi-text-in-individual-controls.html[Render GDI+ Text in Individual Controls]

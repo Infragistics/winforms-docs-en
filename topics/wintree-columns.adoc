@@ -1,0 +1,46 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-columns",
+    "controlName": ["WinTree"],
+    "tags": ["Styling"],
+    "guid": "{AAB23521-A7BA-4109-B8AF-0254E284F31A}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Columns
+
+WinTree™ can display data with columns. With this feature, cells and columns are displayed in a fashion similar to the WinGrid™ control. Also the WinTree control can have different column sets on each parent node allowing it to show heterogeneous data. The ViewStyle property determines how the columns will be displayed; this includes three types of column styles to choose from: Outlook® Express, Grid, and Freeform style.
+
+*Outlook Express Style*
+
+In OutlookExpress style, all nodes end up under a single set of column headers at the top of the control and all rows are of the same type within a single band and across all bands. If any row of data does not use the same set of columns, then those columns will display as cells in the column with a VisiblePosition matching their own. Columns without a matching visible column will not be displayed. This style is typically used where you have homogenous data with a recursive relationship.
+
+A great use of this style would be when one column contains a hierarchy and all the nodes in the hierarchy no matter where in the hierarchy, share the same set of column headers. An ideal example for this scenario is a Newsgroup User Interface.
+
+image::Images\WinTree_Adding_Columns_Using_Outlook_Express_Style_01.png[]
+
+Another great use of this style is when you want to present a recursive or self-related entity relationship. For example, consider a Data table that has a foreign key relating to the primary key of the same table. This table can be represented in a WinTree as an indefinite hierarchy of recursive relationships which cannot be represented in a WinGrid. An example of this would be an Employee entity or table whose schema contains a column named Reports To, where this foreign key column is related to the primary key of this same entity or table. All entities in this table have the same schema, however there is a hierarchical, recursive relationship that can be displayed perfectly in WinTree using Outlook Express Style.
+
+*Grid Style*
+
+In Grid style, WinTree displays column headers at the top of each node collection. This style can be used when each node collection has its own unique data schema. Non-recursive hierarchical data can also be presented in this mode. In this example, the Tree can represent different entities such as customers, Orders, Order Details, Categories and Products in different nodes with each node having its own schema, unlike WinGrid which demands one specific schema for each level of indentation.
+
+image::Images\WinTree_Adding_Columns_Using_Grid_Style_01.png[]
+
+*Freeform Style*
+
+The Freeform style is appropriate when each and every node that exists in the same collection has a totally different schema. In such case, each and every node will have its own column headers positioned directly over the cell data.
+
+image::Images\WinTree_Adding_Columns_Using_Freeform_Style_01.png[]
+
+*Related Topics*
+
+* link:wintree-adding-columns-using-outlook-express-style.html[Adding Columns Using Outlook Express Style]
+* link:wintree-adding-columns-using-freeform-style.html[Adding Columns Using Freeform Style]
+* link:wintree-displaying-wintree-with-columns-in-grid-style.html[Displaying WinTree with Columns in Grid Style]
+* link:wintree-manually-creating-columnsets-using-the-designer.html[Manually Creating ColumnSets using the Designer]

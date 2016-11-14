@@ -1,0 +1,267 @@
+﻿////
+
+|metadata|
+{
+    "name": "plf-animated-gif-support",
+    "controlName": [],
+    "tags": [],
+    "guid": "108b8326-af97-46be-86b4-8693606672c4",  
+    "buildFlags": [],
+    "createdOn": "2015-03-04T19:31:25.1066207Z"
+}
+|metadata|
+////
+
+= Animated GIF Support
+
+== Animated GIF Support and the AnimatedImageManager
+
+=== Purpose
+
+This topic provides information on the Animated GIF Support in Infragistics Windows Forms controls.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:win-plf-overview.html[PLF Overview]
+|Consistency for the developer, and for the end user, is the key to increasing productivity. The Infragistics Presentation Layer Framework (PLF) provides this unparalleled consistency as a common substrate upon which all Infragistics elements are built.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<AnimatedGIFSupport,Animated GIF Support>>
+
+** <<Overview,Overview>>
+
+* <<UsingtheAnimatedImageManager,Using the AnimatedImageManager>>
+
+** <<AnimatedImageManagerOverview,Overview>>
+** <<SuspendingtheAnimation,Suspending the Animation>>
+** <<ResumingtheAnimation,Resuming the Animation>>
+** <<ReactingtoFrameChanges,Reacting to Frame Changes>>
+** <<DisablingAnimationSupport,Disabling Animation Support>>
+
+* <<RecommendationsandConsiderations,Recommendations and Considerations>>
+* <<RelatedContent,Related Content>>
+
+[[AnimatedGIFSupport]]
+== Animated GIF Support
+
+[[Overview]]
+
+=== Overview
+
+In addition to the pre-existing static image support, our Presentation Layer Framework (PLF) now has the ability to display animated images throughout our components. A new AnimatedImageManager class has been added to the framework to automatically handle the rendering of images containing time-based frames.
+
+[[UsingtheAnimatedImageManager]]
+== Using the AnimatedImageManager
+
+[[AnimatedImageManagerOverview]]
+
+The AnimatedImageManager is a static manager responsible for managing animated images within our Presentation Layer Framework. The primary function of the manager is to keep track of all animated images within our components while exposing the ability to suspend and resume animation on specific Image instances.
+
+[[SuspendingtheAnimation]]
+
+=== Suspending the Animation
+
+The SuspendAnimation() method should be used whenever animation should be halted on all registered images or a specified instance of an image. Once suspended, an image will be rendered using only its current frame.
+
+[options="header", cols="a,a"]
+|====
+|Method Name|Description
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~suspendanimation().html[SuspendAnimation()]
+|Suspends animation on all images currently registered with the AnimatedImageManager
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~suspendanimation(image).html[SuspendAnimation(Image)]
+|Suspends the animation on a specified image instance.
+
+|====
+
+The following code snippets demonstrates how to suspend the animation on single Image instance.
+
+*In C#:* 
+
+[source]
+---- 
+AnimatedImageManager.SuspendAnimation(this.imageInstance);
+---- 
+
+*In Visual Basic:* 
+
+[source]
+---- 
+AnimatedImageManager.SuspendAnimation(Me.imageInstance)
+---- 
+
+[[ResumingtheAnimation]]
+
+=== Resuming the Animation
+
+After having animation previously suspended, the ResumeAnimation() method can be used to restart animation on all suspended images (or a specified instance of an image) starting at the current frame.
+
+[options="header", cols="a,a"]
+|====
+|Method Name|Description
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~resumeanimation().html[ResumeAnimation()]
+|Resumes the animation for all suspended images.
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~resumeanimation(image).html[ResumeAnimation(Image)]
+|Resumes the animation on a specified image instance.
+
+|====
+
+The following code snippets demonstrates how to resume the animation on single Image instance.
+
+*In C#:* 
+
+[source]
+---- 
+AnimatedImageManager.ResumeAnimation(this.imageInstance);
+---- 
+
+*In Visual Basic:* 
+
+[source]
+---- 
+AnimatedImageManager.ResumeAnimation(Me.imageInstance)
+---- 
+
+[[ReactingtoFrameChanges]]
+
+=== Reacting to Frame Changes
+
+Whenever the current frame of an animated image changes, the AnimatedImageManager fires an ImageFrameChanged event to notify all listeners of the frame change. The ImageFrameChangedEventArgs for this event exposes the Image, the index of the current frame, and the total number of time-based frames in the image. It also exposes a SuspendAnimation property which allows the animation on the image to be suspended from within the event handler.
+
+[options="header", cols="a,a,a"]
+|====
+|EventArgs Property Name|Property Type|Description
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~image.html[Image]
+|`Image`
+| 
+
+Gets the Image for which the current frame has changed.
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~framecount.html[FrameContent]
+|`Integer`
+| 
+
+Gets the total number of time-based frames in the Image
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~currentframe.html[CurrentFrame]
+|`Integer`
+| 
+
+Gets or sets the index of the current frame of the Image.
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~islastframe.html[IsLastFrame]
+|`Boolean`
+| 
+
+Indicates if the current frame is the last frame in the animation.
+
+| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~suspendanimation.html[SuspendAnimation]
+|`Boolean`
+| 
+
+Specifies if the animation should be suspended.
+
+|====
+
+*In C#:* 
+
+---- 
+// Subscribe to the ImageFrameChanged event (currently in the Form's Load event handler) 
+AnimatedImageManager.ImageFrameChanged += AnimatedImageManager_ImageFrameChanged; 
+// ImageFrameChanged event handler 
+void AnimatedImageManager_ImageFrameChanged(object sender, AnimatedImageManager.ImageFrameChangedEventArgs e) 
+{ 
+ // if this is the last frame of the image, and it is the UltraButton's Image, 
+ // suspend the animation (or unassign the Image from the Appearance). 
+ if (e.IsLastFrame && 
+ e.Image == this.ultraButton1.Appearance.Image) 
+ { 
+ e.SuspendAnimation = true; 
+ } 
+}
+---- 
+
+*In Visual Basic:* 
+
+---- 
+' Subscribe to the ImageFrameChanged event (currently in the Form's Load event handler) 
+AddHandler AnimatedImageManager.ImageFrameChanged, AddressOf AnimatedImageManager_ImageFrameChanged 
+'Image FrameChanged event handler 
+Private Sub AnimatedImageManager_ImageFrameChanged(sender As Object, e As AnimatedImageManager.ImageFrameChangedEventArgs) 
+' if this is the last frame of the image, and it is the UltraButton's Image, 
+' suspend the animation (or unassign the Image from the Appearance). 
+ If e.IsLastFrame AndAlso e.Image Is Me.UltraButton1.Appearance.Image Then 
+ e.SuspendAnimation = True 
+ End If 
+End Sub
+---- 
+
+[[DisablingAnimationSupport]]
+
+=== Disabling Animation Support
+
+In some scenarios, such as when image animation has been implemented externally to our framework, it may be necessary to turn off image animation within the PLF. This can be done via the AnimatedImageManager’s Enabled property.
+
+[options="header", cols="a,a,a"]
+|====
+|EventArgs Property Name|Property Type|Description
+
+|Enabled
+|`Boolean`
+| 
+
+Indicates if the AnimatedImageManager should be used to render images using animation.
+
+|====
+
+*In C#:* 
+
+[source]
+---- 
+AnimatedImageManager.Enabled = false;
+---- 
+
+*In Visual Basic:* 
+
+[source]
+---- 
+AnimatedImageManager.Enabled = false
+---- 
+
+[[RecommendationsandConsiderations]]
+
+=== Recommendations and Considerations
+
+* Due to the design of Window Forms, whenever the frame of an image changes, it is necessary to invalidate the portion of the control where the image is rendered. As such, using very large or a large number of animated images simultaneously will most likely result in an increase in CPU utilization.
+* The AnimatedImageManager keeps track of when an Image has had its animation suspended (without regards to whether or not the image is being utilized by one of our controls). This allows for the suspension of animation prior to the initial rendering of an image. However, if a currently suspended image is no longer being used by a control, it is recommended to resume the animation on the image, so the AnimatedImageManager will no longer need to keep track of the image, and will release the image from memory.
+
+[[RelatedContent]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:win-plf-overview.html[PLF Overview]
+|Consistency for the developer, and for the end user, is the key to increasing productivity. The Infragistics Presentation Layer Framework (PLF) provides this unparalleled consistency as a common substrate upon which all Infragistics elements are built.
+
+|====

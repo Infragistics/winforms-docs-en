@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-styling-the-close-button",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{FFF0A1CF-55E7-4EAD-BEBF-09890DC31193}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Styling the Close Button
+
+The Close button can be styled using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~closebuttonappearance.html[CloseButtonAppearance]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~closebuttonhottrackappearance.html[CloseButtonHotTrackAppearance]"]  properties available on both the pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~settings.html[Tile.Settings]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilesettings.html[UltraTilePanel.UltraTileSettings]"]  objects.
+
+*In Visual Basic:*
+
+----
+  ' Display Close button for a specific tile
+    tile3.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.[True]
+    tile4.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.[True]
+  'Set the fore color for a Close Button on a specific tile
+    tile3.Settings.CloseButtonAppearance.ForeColor = Color.Red
+  ' Set the Hot track Appearance for Close buttons on all tiles
+    Me.ultraTilePanel1.TileSettings.CloseButtonHotTrackAppearance.BackColor =   Color. GreenYellow
+----
+
+*In C#:*
+
+----
+// Display Close button for a specific tile
+   tile3.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.True;
+   tile4.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.True;
+//Set the fore color for a Close Button  on a specific tile
+   tile3.Settings.CloseButtonAppearance.ForeColor = Color.Red;
+// Set the Hot track Appearance for Close buttons on all tiles
+  this.ultraTilePanel1.TileSettings.CloseButtonHotTrackAppearance.BackColor = Color. GreenYellow;
+----
+
+image::Images\WinTilePanel_Styling_the_Close_Button.png[]

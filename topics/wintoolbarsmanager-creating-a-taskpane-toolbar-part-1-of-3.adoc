@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-creating-a-taskpane-toolbar-part-1-of-3",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{D305E498-8A10-4793-A564-160F7EFAB627}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a TaskPane Toolbar (Part 1 of 3)
+
+This topic is designed to show you how to create the UltraTaskPaneToolbar using the built in designers of the WinToolbarsManager™.
+
+Starting in Infragistics Windows Forms 2005 Volume 1 a new toolbar type, based off of the Microsoft Office task pane style, was introduced called the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbar]"] . The task pane is implemented as a derived UltraToolbar, and therefore behaves much like a standard toolbar, which may be dragged and displayed within a floating window. The content area of the UltraTaskPaneToolbar is occupied by the Control associated with the selected  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.taskpanetool.html[TaskPaneTool]"] .
+
+[start=1]
+. Create a new Visual Studio C# or VB.NET Windows Application.
+[start=2]
+. With the form open in design view, navigate in the toolbox to the UltraToolbarsManager component. Left click and drag an UltraToolbarsManager onto the form, or double click on the component in the toolbox to add it to your project. A dialog will come up asking if you would like to add a panel control container to the form, select No.
+
+image::Images/WinToolbars_Creating_Task_Pane_Toolbar_Designers_01.png[ultratoolbarsmanager initialization dialog that appears when you place the ultratoolbarsmanager on a form]
+
+[start=3]
+. With the UltraToolbarsManager1 selected in the components tray, left or right click on the form designer button that says New Toolbar. You will be presented with the new toolbar dialog.
+
+image::Images/WinToolbars_Creating_Task_Pane_Toolbar_Designers_02.png[ultratoolbarsmanager new toolbar dialog]
+
+.. From the New Toolbar dialog in the first textbox, below where it says Toolbar name, type in myTaskPane. This will be the name and the key assigned to identify this TaskPaneToolbar in the toolbars collection of the UltraToolbarsManager.
+.. Then select from the Toolbar Type drop down TaskPane Toolbar.
+.. Then in the final drop down, for the Location of the toolbar, select Docked Right and click OK. This will add the UltraTaskPaneToolbar to the right side of the form.
+.. Your form in the designer should look something like the screenshot below.
+
+image::Images/WinToolbars_Creating_Task_Pane_Toolbar_Designers_03.png[ultratoolbarsmanager design time showing the taskpane toolbar on the right side of the form]
+
+[start=4]
+. This is the basics of creating the UltraTaskPaneToolbar. You can right click on the UltraToolbarsManager1 component and mouse down to Customize, and in the Customize dialog Toolbars tab you can see the UltraTaskPaneToolbar we just created and change any of its properties like you would a normal toolbar you created with the designer.
+
+.Note
+[NOTE]
+====
+You can also create an UltraTaskPaneToolbar under the link:wintoolbarsmanager-design-time-customize-dialog-box.html[Customize dialog box]. To do this, with the Customize dialog open and the Toolbars Tab selected, click the New button on the right and you will be presented with the New Toolbar dialog like before. From the New Toolbar dialog in the first textbox, below where it says Toolbar name, type in myTaskPane. This will be the Name and the Key assigned to identify this TaskPaneToolbar in the toolbars collection of the UltraToolbarsManager. Then select from the Toolbar Type drop down, TaskPane Toolbar. In the final drop down, for the Location of the toolbar, select Docked Right and click OK. This will add the UltraTaskPaneToolbar to the list of toolbars, you can see in the left hand pane, and will add the toolbar to the form as well.
+====

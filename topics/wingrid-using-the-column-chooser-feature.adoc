@@ -1,0 +1,167 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-the-column-chooser-feature",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{58D71CB8-E925-4828-A82F-607FDA4BA21E}",  
+    "buildFlags": [],
+    "createdOn": "2005-12-09T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the Column Chooser Feature
+
+The Column Chooser functionality lets you display a dialog similar to Microsoft Outlook's Field Chooser where the user can choose columns to display in the WinGrid™. This document shows you how to enable this functionality.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. WinGrid exposes a built in UI element that lets the user display the column chooser from within the WinGrid. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorheaderstyle.html[RowSelectorHeaderStyle]"]  property on the Override to ColumnChooserButton. This will display a button in the area above the row selectors as show in the below snapshot.
+
+.Note
+[NOTE]
+====
+Row selectors must be enabled otherwise the column chooser button will not be displayed. The following code enables the row selectors and the column chooser button.
+====
+
+*In Visual Basic:*
+
+----
+' Set the RowSelectorHeaderStyle to ColumnChooserButton.
+Me.UltraGrid1.DisplayLayout.Override.RowSelectorHeaderStyle = _
+  RowSelectorHeaderStyle.ColumnChooserButton
+' Enable the RowSelectors. This is necessary because the column chooser
+' button is displayed over the row selectors in the column headers area.
+Me.UltraGrid1.DisplayLayout.Override.RowSelectors = DefaultableBoolean.True
+----
+
+*In C#:*
+
+----
+// Set the RowSelectorHeaderStyle to ColumnChooserButton.
+this.ultraGrid1.DisplayLayout.Override.RowSelectorHeaderStyle = 
+  RowSelectorHeaderStyle.ColumnChooserButton;
+// Enable the RowSelectors. This is necessary because the column chooser
+// button is displayed over the row selectors in the column headers area.
+this.ultraGrid1.DisplayLayout.Override.RowSelectors = DefaultableBoolean.True;
+----
+
+[start=3]
+. In the below snapshot, the column chooser button is located left of the column headers and above the row selectors.
+
+image::Images/WinGrid_Using_the_Column_Chooser_Feature_01.png[ultragrid's column chooser feature]
+
+[start=4]
+. You can change the appearance of the button, including the image that's displayed in the button using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorheaderappearance.html[RowSelectorHeaderAppearance]"]  property of the Override.
+
+*In Visual Basic:*
+
+----
+' Note that if you intend to change the BackColor of the button then you must set 
+' the ThemedElementAlpha to Transparent otherwise BackColor setting won't be honored.
+' This is because the buttons are normally drawn using themes.
+Me.UltraGrid1.DisplayLayout.Override.RowSelectorHeaderAppearance.ThemedElementAlpha = _
+  Alpha.Transparent
+Me.UltraGrid1.DisplayLayout.Override.RowSelectorHeaderAppearance.BackColor = Color.Blue
+----
+
+*In C#:*
+
+----
+// Note that if you intend to change the BackColor of the button then you must set 
+// the ThemedElementAlpha to Transparent otherwise BackColor setting won't be honored.
+// This is because the buttons are normally drawn using themes.
+this.ultraGrid1.DisplayLayout.Override.RowSelectorHeaderAppearance.ThemedElementAlpha = 
+  Alpha.Transparent;
+this.ultraGrid1.DisplayLayout.Override.RowSelectorHeaderAppearance.BackColor = Color.Blue;
+----
+
+[start=5]
+. You can also expose your own user interface for displaying the column chooser. For example you may want to display something else in the place of the row selector header area or you may want to not display the row selectors. The WinGrid exposes two objects that let you do this:  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnchooserdialog.html[ColumnChooserDialog]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumnchooser.html[UltraGridColumnChooser]"] . UltraGridColumnChooser derives from .NET Control class. It displays the list of columns and implements drag-n-drop functionality for letting the user drag and drop columns to and from a WinGrid. ColumnChooserDialog derives from .NET Form class. It simply embeds UltragridColumnChooser inside of it. Typically you simply create an instance of ColumnChooserDialog and display it. However you can also create your own custom dialog and embedd a UltragridColumnChooser inside of it. You would take this approach for example when you want to expose some other user interface on the column chooser dialog, like a button that lets the user create a column.
+
+The following code shows you how to display column chooser dialog.
+
+*In Visual Basic:*
+
+----
+' Create an instance of the ColumnChooserDialog.
+Dim dlg As ColumnChooserDialog = New ColumnChooserDialog()
+' Set the Owner of the dialog to the form the WinGrid is on.
+dlg.Owner = Me
+' ColumnChooserControl property returns the embedded UltraGridColumnChooser 
+' control.
+Dim cc As UltraGridColumnChooser = dlg.ColumnChooserControl
+' Associate a WinGrid to the column chooser. This tells the column chooser
+' to display columns from this grid.
+cc.SourceGrid = Me.UltraGrid1
+' Associate a band to the column chooser. This is useful if the WinGrid has 
+' multiple bands and you want to display columns of a specific band rather
+' than columns of all bands.
+cc.CurrentBand = Me.UltraGrid1.DisplayLayout.Bands(0)
+' Style and MultipleBandSupport properties control important aspects of how 
+' the column chooser operates.
+cc.Style = ColumnChooserStyle.AllColumnsWithCheckBoxes
+cc.MultipleBandSupport = MultipleBandSupport.SingleBandOnly
+' Set location, size etc...
+dlg.Size = New Size(150, 300)
+' Now that we've set up the column chooser dialog, display it.
+dlg.Show()
+----
+
+*In C#:*
+
+----
+// Create an instance of the ColumnChooserDialog.
+ColumnChooserDialog dlg = new ColumnChooserDialog( );
+// Set the Owner of the dialog to the form the WinGrid is on.
+dlg.Owner = this;
+// ColumnChooserControl property returns the embedded UltraGridColumnChooser 
+// control.
+UltraGridColumnChooser cc = dlg.ColumnChooserControl;
+// Associate a WinGrid to the column chooser. This tells the column chooser
+// to display columns from this grid.
+cc.SourceGrid = this.ultraGrid1;
+// Associate a band to the column chooser. This is useful if the WinGrid has 
+// multiple bands and you want to display columns of a specific band rather
+// than columns of all bands.
+cc.CurrentBand = this.ultraGrid1.DisplayLayout.Bands[0];
+// Style and MultipleBandSupport properties control important aspects of how 
+//the column chooser operates.
+cc.Style = ColumnChooserStyle.AllColumnsAndChildBandsWithCheckBoxes;
+cc.MultipleBandSupport = MultipleBandSupport.SingleBandOnly;
+// Set location, size etc...
+dlg.Size = new Size( 150, 300 );
+// Now that we've set up the column chooser dialog, display it.
+dlg.Show( );
+----
+
+[start=6]
+. The following snapshot shows a column chooser dialog.
+
+image::Images/WinGrid_Using_the_Column_Chooser_Feature_02.png[using ultragrid's column chooser feature]
+
+[start=7]
+. The following properties are related to the column chooser functionality.
+
+**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~excludefromcolumnchooser.html[ExcludeFromColumnChooser]"]  - This property is exposed on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  objects. It lets you exclude certain columns and bands from appearing in the column chooser. This also means that the user can not hide or unhide these columns and bands.
+**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~columnchoosercaption.html[ColumnChooserCaption]"]  - This property controls the caption of a column when it's displayed in the column chooser.
+**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~columnchooserenabled.html[ColumnChooserEnabled]"]  - WinGrid lets the user hide a column by dragging the column and dropping it outside of the WinGrid. It however allows this only if it knows that the application exposes some way for letting the user unhide the column. If you are exposing such a user interface and want to allow the user to hide a column by dragging it outside of the WinGrid then set the ColumnChooserEnabled to true. Note that if the WinGrid's built-in column chooser button user interface is enabled in the it's not necessary to set this property since the WinGrid already knows that the user has a way of unhding the column via the column chooser.
+**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~tooltiptext.html[ToolTipText]"]  - This property lets you specify a tool tip for the columns and bands. The tool tip is displayed when the user hovers the mouse over the header. The tooltip is displayed both in the WinGrid and the column chooser. This lets you provide more information about a column to the user.

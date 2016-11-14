@@ -1,0 +1,125 @@
+﻿////
+
+|metadata|
+{
+    "name": "the-chartlayout-class",
+    "controlName": [],
+    "tags": ["Application Scenarios","Charting"],
+    "guid": "{9E2C3874-FE3E-42FC-BBA5-9170078384B3}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-10T13:57:10Z"
+}
+|metadata|
+////
+
+= The ChartLayout Class
+
+The ChartLayout class can be thought of as a class that persists the state of the Chart. In this application, we are only using one Chart control in such a way that it appears that many charts are being used. This is made possible by placing the Chart control within the WinGrid cell that is active and then setting Chart properties from values stored in the WinGrid cell associated ChartLayout.
+
+The ChartLayout class can be further expanded and elaborated to contain more property settings that represent your requirements for a Chart in your application, however, in this example, the ChartLayout persists:
+
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.win.ultrawinchart.ultrachart~charttype.html[ChartType]"]  (e.g., PieChart, BarChart, ColumnChart)
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.win.ultrawinchart.ultrachart~datasource.html[DataSource]"]  (e.g., DataTable, Collection, IEnumerable List)
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.win.ultrawinchart.ultrachart~image.html[Image]"]  – This is an Image representation or snapshot of the Chart in its last active state.
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.ultrachart.resources.appearance.colorappearance.html[ColorAppearance]"]  - This represents the color scheme used to generate the Chart data elements.
+*  pick:[win-forms="link:infragistics4.win.ultrawinchart.v{ProductVersion}~infragistics.win.ultrawinchart.ultrachart~titletop.html[TitleTop]"]  – This contains the Chart’s title or descriptive caption (e.g., Orders For Customer XYZ)
+
+*In Visual Basic:*
+
+----
+Public Class ChartLayout
+	Public X As Single
+	Public Y As Single
+	Public Z As Single
+	Public Scale As Single
+	Private _ChartType As ChartType
+	Public Property ChartType() As ChartType
+		Get
+			Return _ChartType
+		End Get
+		Set(ByVal value As ChartType)
+			_ChartType = value
+		End Set
+	End Property
+	Private _DataSource As Object
+	Public Property DataSource() As Object
+		Get
+			Return _DataSource
+		End Get
+		Set(ByVal value As Object)
+			_DataSource = value
+		End Set
+	End Property
+	Private _Image As Image
+	Public Property Image() As Image
+		Get
+			Return _Image
+		End Get
+		Set(ByVal value As Image)
+			_Image = value
+		End Set
+	End Property
+	Private _ColorAppearance As ColorAppearance
+	Public Property ColorModel() As ColorAppearance
+		Get
+			Return _ColorAppearance
+		End Get
+		Set(ByVal value As ColorAppearance)
+			_ColorAppearance = value
+		End Set
+	End Property
+	Private _TitleTop As String
+	Public Property TitleTop() As String
+		Get
+			Return _TitleTop
+		End Get
+		Set(ByVal value As String)
+			_TitleTop = value
+		End Set
+	End Property
+End Class
+----
+
+*In C#:*
+
+----
+public class ChartLayout
+{
+	public float X;
+	public float Y;
+	public float Z;
+	public float Scale;
+	ChartType _ChartType;
+	public ChartType ChartType
+	{
+		get { return _ChartType; }
+		set { _ChartType = value; }
+	}
+	object _DataSource;
+	public object DataSource
+	{
+		get { return _DataSource; }
+		set { _DataSource = value; }
+	}
+	Image _Image;
+      public Image Image
+	{
+		get { return _Image; }
+		set { _Image = value; }
+	}
+	ColorAppearance _ColorAppearance;
+	public ColorAppearance ColorModel
+	{
+		get { return _ColorAppearance; }
+		set { _ColorAppearance = value; }
+	}
+	string _TitleTop;
+	public string TitleTop
+	{
+		get { return _TitleTop; }
+		set { _TitleTop = value; }
+	}
+}
+----
+
+The next topic explains the Class that provides support for persisting and saving the Chart State to the ChartLayout objects: link:helper-functions.html[Helper Functions]

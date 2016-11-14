@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-deploying-wingauge",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{7759E9D9-7B2D-4D90-BF3A-A3637378DA0B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Deploying WinGauge
+
+When deploying a .NET application, you must distribute certain files in addition to your executable. If your application contains one or more Infragistics elements, you will have to distribute or deploy one or more Infragistics assembly files as part of your application. This topic outlines the files that you must re-distribute.
+
+.Note
+[NOTE]
+====
+Any files not specifically covered by this topic should be considered non-redistributable. Files that are included with your Infragistics product but not listed here are not licensed for distribution, and should not be copied to, moved to or shared with any machine other than the one on which the licensed Infragistics product is installed.
+====
+
+In order to deploy your application, you will have to re-distribute the following files.
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Win.UltraWinGauge.v{ProductVersion}.dll
+|$$.NET$$ Assembly containing all the WinGauge™ control.
+
+|====
+
+In addition to the above assembly files, the deployment of any Infragistics WinForms product also requires the re-distribution of the following files:
+
+[options="header", cols="a,a"]
+|====
+|File Name|Description
+
+|{ApiPlatform}Shared.v{ProductVersion}.dll
+|Infragistics Shared support assembly for .NET
+
+|====

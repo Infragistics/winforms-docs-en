@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-allow-cell-editing-in-wintree",
+    "controlName": ["WinTab"],
+    "tags": ["Editing","How Do I"],
+    "guid": "{27F91F35-AC31-4747-88D3-7EE8476A85B7}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Allow Cell Editing in WinTree
+
+This topic shows you how to enable cell editing when WinTree™ has ColumnSets associated with it.
+
+It is possible by setting the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~allowcelledit.html[AllowCellEdit]"]  property to true which is exposed at various levels of WinTree: UltraTree.ColumnSettings, UltraTreeColumnSet, and UltraTreeNodeColumn. In addition to this, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  object’s  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~cellclickaction.html[CellClickAction]"]  property should also be set to true.
+
+.Note
+[NOTE]
+====
+The CellClickAction property is only applicable to nodes that display columns; nodes that do not display columns behave as if the property is set to SelectNodeOnly.
+====
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTree
+...
+Me.ultraTree1.ColumnSettings.AllowCellEdit = AllowCellEdit.Full
+Me.ultraTree1.Override.CellClickAction = CellClickAction.EditCell
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTree;
+...
+this.ultraTree1.ColumnSettings.AllowCellEdit = AllowCellEdit.Full;
+this.ultraTree1.Override.CellClickAction = CellClickAction.EditCell;
+----

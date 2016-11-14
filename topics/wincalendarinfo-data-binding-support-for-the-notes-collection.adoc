@@ -1,0 +1,19 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-data-binding-support-for-the-notes-collection",
+    "controlName": ["WinCalendarInfo"],
+    "tags": ["Data Binding"],
+    "guid": "{C2F43B7A-25D0-4311-B38D-63E9C90ECAC2}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Data Binding Support for the Notes Collection
+
+The NAS2004 Volume 3 release of WinSchedule™ includes support for data binding the WinCalendarInfo™ component's Notes collection:
+
+This Notes collection can be populated from the contents of any IList implementor, for example, a DataTable. To identify the names of the members that contain the property values for each Note object, the NotesDataBinding.DateMember and the NotesDataBinding.DescriptionMember properties must be set. The contents of the fields that correspond to these members supply the values for the Note object's "Note.Date" and "Note.Description" properties, respectively. Each item in the list (for example, the individual rows in a DataTable) represent a member of the Notes collection. As property values of the Note object change, the new value is written to the corresponding member of the data source.

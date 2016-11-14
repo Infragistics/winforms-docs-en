@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-maskededit-about-the-maskededit-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{BC60A02B-1FAE-4E7C-A21F-490B3A66D60D}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the MaskedEdit Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.maskededittool.html[MaskedEditTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.editortoolbase.html[EditorToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.texteditortoolbase.html[TextEditorToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.maskededittoolbase.html[MaskedEditToolBase]"] 
+
+|Description:
+|The MaskedEdit tool allows you to restrict the end user's input. This tool works just like our WinMaskedEdit control.
+
+|Sample:
+|image::images/WinToolbarsManager_About_Tools_20.png[example of ultratoolbarsmanager maskededit tool] 
+
+|====

@@ -1,0 +1,38 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-about-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Getting Started","Grids"],
+    "guid": "{160F97A2-2C7A-40E0-A25E-ED57417718BF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About WinGrid
+
+WinGrid™ is a hierarchical data bound grid control. It has full support for displaying hierarchical data provided by any data source that implements IList, IBindingList or ITypedList.
+
+.Note
+[NOTE]
+====
+WinGrid must be bound to data. In other words if you do not bind WinGrid to a DataSource, it cannot be used. If you wish to use WinGrid in an "unbound" fashion, you must create a data model that represents the information you wish to display and then bind it to WinGrid.
+====
+
+There are several extensibility features built right in to WinGrid that make working in the WinGrid control a productive and convenient task. Export your data directly to Microsoft® Excel® with the WinGridExcelExporter™ control. Use the grid-like WinDropDown™ control to assist end-users with data entry. Easily print out your entire WinGrid with the WinGridPrintDocument™ control.
+
+The grid supports editing and a host of other features such as:
+
+* Sorting – user can sort data in any column simply by clicking the column header. Sort a single column or multiple columns.
+* Filtering – Allow the end user to filter the data any way they want.
+* Outlook GroupBy – Groups rows with similar values together, just like Microsoft® Outlook.
+* User-resizable columns and rows – Users can click and drag the edges of rows or columns. Double-clicking will autosize rows or columns.
+* Fixed headers – Add fixed columns to your grid so they will always display regardless of scroll position, just like Microsoft® Excel®.
+* Row layouts – Arrange the cells and headers in a row using GridBagLayouts.
+* Card View – Display rows as cards.
+* And of course, all of the standard Infragistics Presentation Layer Framework feature like Appearances, DrawFilters, and CreationFilters.
+
+image::images/WinGrid_About_WinGrid_01.png[example of wingrid]

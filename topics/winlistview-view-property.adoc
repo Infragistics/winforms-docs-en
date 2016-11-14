@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-view-property",
+    "controlName": ["WinListView"],
+    "tags": ["Tips and Tricks"],
+    "guid": "{57E7B4E5-C705-4E7B-9A77-6E27D4362444}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= View Property
+
+As with the intrinsic ListView control, WinListView™ exposes a  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property, which provides a way for the developer to present items differently to the end user depending on the requirements of the application.
+
+Alternatively, as is the case with Windows® Explorer, the end user can easily be given control over these views, allowing them to change between iconic and list-type views as they see fit. Unlike the ListView control, however, the choices for the View property settings are based on the more contemporary Windows Explorer (i.e., the Thumbnails and Tiles views are not supported by the intrinsic ListView control). Through simple combinations of property settings, the look and feel of any of the views supported by the ListView control can be emulated, as well as the ones supported by Windows Explorer. Furthermore, the look and feel of the ListBox and CheckedListBox controls can be easily emulated as well.
+
+The following table lists the enums for the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewstyle.html[View]"]  enumeration, along with a brief description of each setting:
+
+[options="header", cols="a,a"]
+|====
+|View|Description
+
+|Icons
+|Items are displayed as icons (with a default size of 32 x 32), with the item's value displayed under the icon.
+
+|Tiles
+|Items are displayed as icons (with a default size of 48 x 48), with the item's value displayed to the right of the icon, with the values of the sub-items underneath the item's value.
+
+|Thumbnails
+|Items are displayed similarly to how they are displayed with the "Icons" setting, but with a large "border" surrounding the icon. Icons are displayed by default at a size of 48 x 48; end developers can use a link:win-draw-filter.html[draw filter] and/or link:win-creation-filter.html[creation filter] to easily perform custom drawing in this area for certain items, as seen in Windows Explorer.
+
+|List
+|Item values are displayed along with an icon (with a default size of 16 x 16). This view supports two different "sub-views". When multiple columns are displayed, the control takes on the appearance of the same view in Windows Explorer; when only one column is displayed, the control emulates the look and feel of an intrinsic ListBox control. In both cases, two-state or three-state checkboxes can be displayed by setting one property.
+
+|Details
+|Items are displayed in columns, with an icon (at a default size of 16 x 16). Sub-items are displayed in the second and subsequent columns. As with the "List" view, two-state or three-state checkboxes can be displayed by setting one property.
+
+|====

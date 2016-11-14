@@ -1,0 +1,78 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-using-command-line",
+    "controlName": [],
+    "tags": ["Getting Started","How Do I"],
+    "guid": "a5c98ac6-e421-457d-a2bd-b53773e2acbe",  
+    "buildFlags": [],
+    "createdOn": "2010-06-08T13:20:47.8777926Z"
+}
+|metadata|
+////
+
+= Using Command-Line
+
+The Infragistics Project Version Utility application can also be run from the command prompt. The command line interface allows you to pass in the information at the command-prompt, or create batch files that upgrade solutions.
+
+*Syntax*
+
+Infragistics.VersionUtility.CommandLine.exe /?
+
+The table below specifies the command-line arguments:
+
+[options="header", cols="a,a"]
+|====
+|Command Line Parameters|Description
+
+|/?
+|Displays available command-line parameters
+
+|/source
+|Provide solution file, project file or directory (to search for) to upgrade.
+
+|/productversion
+|The version/volume to upgrade the solution too. You don’t need to specify this switch if you just want to upgrade your source to the latest volume found on the machine.
+
+|/clr
+|To be specified if you want to upgrade from one CLR version to another. If your upgrade is not changing CLRs, then you don’t need to specify this switch.
+
+|/assemblypath
+|Specify path to assemblies you want to use. You can use this option multiple times to specify multiple assembly locations.
+
+|/nobackup
+|When this switch is specified, a backup of files will not occur. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+By default the utility will always backup files. 
+
+====
+
+|/noupdatehint
+|Hint paths are not updated when this switch is specified.
+
+|/verbose
+|Allows you to specify verbose logging for the console window. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+Log file is always verbose. 
+
+====
+
+|====
+
+*Related Topics:*
+
+* link:win-upgrading-a-project-to-infragistics-windows-forms-11-1-(and-above)-using-version-utility.html[Using the Version Utility]
+* link:win-upgrading-a-project-manually.html[Upgrading a Project Manually]

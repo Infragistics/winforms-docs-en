@@ -1,0 +1,109 @@
+﻿////
+|metadata|
+{
+    "name": "winribboncustomizationprovider-adding-custom-tab-to-ribbon-customization-dialog",
+    "controlName": ["WinRibbonCustomizationProvider"],
+    "tags": ["Editing","Extending","Getting Started","How Do I"],
+    "guid": "f7c09ffc-4a38-47fa-9211-317bed1217b7",
+    "buildFlags": [],
+    "createdOn": "2011-04-26T21:43:44.2504987Z"
+}
+|metadata|
+////
+
+= Adding Custom Tab to Ribbon Customization Dialog
+
+By default, the Ribbon Customization dialog displays two tabs – Customize Ribbon and Quick Access Toolbar (QAT). (For details, refer to the Using the Ribbon Customization Dialog topic) You can, however, add custom tabs in addition to these default tabs. This topic shows through code how a custom tab can be implemented
+
+== Overview
+
+* <<Intro,Introduction>>
+* <<BeforeCustDialogDisplay,BeforeCustomizationDialogDisplayed Event>>
+* <<CreateCustTab,Creating a Custom Tab>>
+* <<RelatedTopics,Related Topics>>
+
+[[Intro]]
+== Introduction
+
+The WinRibbonCustomizationProvider™ component exposes two events, namely link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.ribboncustomizationprovider.ultraribboncustomizationprovider~beforecustomizationdialogdisplayed_ev.html[BeforeCustomizationDialogDisplayed] and link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.ribboncustomizationprovider.ultraribboncustomizationprovider~aftercustomizationdialogclosed_ev.html[AfterCustomizationDialogClosed], with custom event arguments that expose the ribbon customization dialog in order to modify the dialog. The UltraTabControl is exposed on the dialog, which provides the ability to add custom tabs.
+
+The code below illustrates adding a custom tab to the dialog. It is assumed that the form contains an UltraToolbarsManager set up with the ribbon and tools and an UltraRibbonCustomizationProvider component. The UltraRibbonCustomizationProvider component must be hooked up to the UltraToolbarsManager component in order to customize the Ribbon at run-time. For more information please see the link:winribboncustomizationprovider-using-the-ribbon-customization-dialog.html[Using the Ribbon Customization Dialog] topic, Implementation section.
+
+.Note
+[NOTE]
+====
+For the code to work properly, references to the following assemblies are required:
+====
+
+* Infragistics4.Win.UltraWinToolbarsManager
+* Infragistics4.Win.UltraWinTabControl
+* Infragistics4.Win.UltraWinSchedule.
+
+[[BeforeCustDialogDisplay]]
+== BeforeCustomizationDialogDisplayed Event
+
+*In Visual Basic:*
+[source, vb]
+Imports Infragistics.Win.UltraWinToolbars
+' Add handler for the BeforeCustomizationDialogDisplayed Event.
+Me.ultraRibbonCustomizationProvider1.BeforeCustomizationDialogDisplayed += New Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.BeforeCustomizationDialogDisplayedEventHandler (ultraRibbonCustomizationProvider1_BeforeCustomizationDialogDisplayed)
+Private Sub ultraRibbonCustomizationProvider1_BeforeCustomizationDialogDisplayed(sender As Object, e As Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.BeforeCustomizationDialogDisplayedEventArgs)
+    CreateCustomTabs(e.Dialog.TabControl)
+End Sub
+
+*In C#:*
+[source, csharp]
+using Infragistics.Win.UltraWinToolbars;
+// Add handler for the BeforeCustomizationDialogDisplayed Event.
+this.ultraRibbonCustomizationProvider1.BeforeCustomizationDialogDisplayed +=new
+    Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.BeforeCustomizationDialogDisplayedEventHandler
+    (ultraRibbonCustomizationProvider1_BeforeCustomizationDialogDisplayed);
+private void ultraRibbonCustomizationProvider1_BeforeCustomizationDialogDisplayed(object sender,
+    Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.BeforeCustomizationDialogDisplayedEventArgs e)
+{
+      CreateCustomTabs(e.Dialog.TabControl);
+}
+
+[[CreateCustTab]]
+== Creating a Custom Tab
+
+*In Visual Basic:*
+[source, vb]
+Imports Infragistics.Win.UltraWinToolbars
+Imports Infragistics.Win.UltraWinTabControl
+Imports Infragistics.Win.UltraWinSchedule
+Private Sub CreateCustomTabs(tabControl1 As UltraTabControl)
+    ' Add a custom tab to the tab control in the dialog
+    Dim custTab As UltraTab = tabControl1.Tabs.Add("customTab1", "Custom Tab 1")
+    tabControl1.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.Office2007
+    Dim ultraMonthView1 As New UltraMonthViewSingle()
+    ultraMonthView1.Size = New Size(500, 300)
+    ultraMonthView1.Location = New Point(90, 150)
+    ultraMonthView1.Dock = DockStyle.Fill
+    ' Add MonthViewSingle control to the custom tab.
+    custTab.TabPage.Controls.Add(ultraMonthView1)
+End Sub
+
+*In C#:*
+[source, csharp]
+using Infragistics.Win.UltraWinToolbars;
+using Infragistics.Win.UltraWinTabControl;
+using Infragistics.Win.UltraWinSchedule;
+private void CreateCustomTabs(UltraTabControl tabControl1)
+        {
+            // Add a custom tab to the tab control in the dialog
+            UltraTab custTab = tabControl1.Tabs.Add("customTab1", "Custom Tab 1");
+            tabControl1.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.Office2007;
+                UltraMonthViewSingle ultraMonthView1 = new UltraMonthViewSingle();
+                ultraMonthView1.Size = new Size(500, 300);
+                ultraMonthView1.Location = new Point(90,150);
+                ultraMonthView1.Dock = DockStyle.Fill;            
+               // Add MonthViewSingle control to the custom tab.
+                custTab.TabPage.Controls.Add(ultraMonthView1);
+        }
+
+[[RelatedTopics]]
+== Related Topics
+
+* link:winribboncustomizationprovider-about-winribboncustomizationprovider.html[About WinRibbonCustomizationProvider]
+* link:winribboncustomizationprovider-using-the-ribbon-customization-dialog.html[Using the Ribbon Customization Dialog]

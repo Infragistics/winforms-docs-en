@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-you-can-now-set-the-ime-mode-on-a-wingrid-column",
+    "controlName": [],
+    "tags": [],
+    "guid": "{EE48DECC-8724-42F2-91F4-42817442EDA0}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= You Can Now Set the IME Mode on a WinGrid Column
+
+WinGrid™ includes an Input Method Editor (IME) to allow your end users to input complex characters and symbols, such as Japanese Kanji characters, using their standard keyboard. Although extremely useful, this feature applied to the entire WinGrid, forcing you to programmatically change IME settings based on the cell of the current column in edit mode.
+
+This release, we're adding an  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~imemode.html[ImeMode]"]  property to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object. Exposing this property off the column will allow you to specify different IME settings based on columns, rather than the entire WinGrid.
+
+== Related Topics
+
+link:wingrid-enabling-ime-mode-on-a-single-column.html[Enable IME Mode on a Single Column]

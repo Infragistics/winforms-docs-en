@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-specify-a-different-appearance-for-a-tool-on-the-toolbar-and-menu",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Styling"],
+    "guid": "{6FD0BF3B-584E-44C4-9BBD-F41A852DED8A}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Specify a Different Appearance for a Tool on the Toolbar and Menu
+
+You can have the same tool displayed on a toolbar and on a menu at the same time, and give each instance of the tool a different appearance. You do this through the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~appearanceontoolbar.html[AppearanceOnToolBar]"] , and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~appearanceonmenu.html[AppearanceOnMenu]"]  properties. The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~hottrackappearanceontoolbar.html[HotTrackAppearanceOnToolBar]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~hottrackappearanceonmenu.html[HotTrackAppearanceOnMenu]"] ,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~pressedappearanceontoolbar.html[PressedAppearanceOnToolBar]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances~pressedappearanceonmenu.html[PressedAppearanceOnmenu]"]  properties also affect the difference between the toolbar and menu appearance of a tool instance.
+
+These properties are contained in the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolappearances.html[ToolAppearance]"]  objects returned by the AppearancesLarge and AppearancesSmall properties. These properties can be found in both the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.instanceprops.html[InstanceProps]"]  objects of the tool. The ToolAppearance returned by AppearancesSmall contains the appearance settings for use for the tool when small images are being rendered; AppearancesLarge is used when you choose the options Large Icons on Menu or Large Icon on ToolBar.
+
+== At Design Time
+
+[start=1]
+. In the Customize editor select a Button tool that you have created.
+[start=2]
+. In the SharedProps object for the Button tool, select AppearanceOnMenu and AppearanceOnToolBar and set some properties in each one. (If you want, you can also set properties for the HotTrackAppearanceOnMenu, HotTrackAppearanceOnToolBar, PressedAppearanceOnMenu and PressedAppearanceOnToolBar.)
+[start=3]
+. Add the button tool to a toolbar and also add it to a PopUp menu tool's drop down.
+[start=4]
+. Run the project and you will see the visual difference between the two instances of the tools.
+
+== At Run Time
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+Imports Infragistics.Win
+...
+Private Sub _
+  Specify_a_Different_Appearance_for_a_Tool_on_the_Toolbar_and_Menu_Load(_
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraToolbarsManager1.Tools("NewFile").SharedProps. _
+	  DisplayStyle = ToolDisplayStyle.TextOnlyAlways
+	Me.UltraToolbarsManager1.Tools("NewFile").SharedProps.AppearancesSmall. _
+	  AppearanceOnMenu.FontData.Bold = DefaultableBoolean.True
+	Me.UltraToolbarsManager1.Tools("NewFile").SharedProps.AppearancesSmall. _
+	  AppearanceOnToolbar.FontData.Bold = DefaultableBoolean.False
+	Me.UltraToolbarsManager1.Tools("NewFile").SharedProps.AppearancesSmall. _
+	  HotTrackAppearanceOnMenu.ForeColor = Color.AntiqueWhite
+	Me.UltraToolbarsManager1.Tools("NewFile").SharedProps.AppearancesSmall. _
+	  HotTrackAppearanceOnToolbar.ForeColor = Color.FromArgb(100, 200, 175)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+using Infragistics.Win;
+...
+private void 
+  Specify_a_Different_Appearance_for_a_Tool_on_the_Toolbar_and_Menu_Load(
+  object sender, EventArgs e)
+{
+	this.ultraToolbarsManager1.Tools["NewFile"].SharedProps.
+	  DisplayStyle = ToolDisplayStyle.TextOnlyAlways;
+	this.ultraToolbarsManager1.Tools["NewFile"].SharedProps.
+	  AppearancesSmall.AppearanceOnMenu.FontData.Bold = DefaultableBoolean.True;
+	this.ultraToolbarsManager1.Tools["NewFile"].SharedProps.
+	  AppearancesSmall.AppearanceOnToolbar.FontData.Bold = DefaultableBoolean.False;
+	this.ultraToolbarsManager1.Tools["NewFile"].SharedProps.
+	  AppearancesSmall.HotTrackAppearanceOnMenu.ForeColor = Color.AntiqueWhite;
+	this.ultraToolbarsManager1.Tools["NewFile"].SharedProps.
+	  AppearancesSmall.HotTrackAppearanceOnToolbar.ForeColor = 
+	  Color.FromArgb(100, 200, 175);
+}
+----

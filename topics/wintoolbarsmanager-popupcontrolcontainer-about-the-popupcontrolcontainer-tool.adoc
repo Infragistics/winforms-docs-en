@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-popupcontrolcontainer-about-the-popupcontrolcontainer-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{7E6234D6-7F2E-4BE9-9DDC-1B0D1827CF68}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the PopupControlContainer Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool.html[PopupControlContainerTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase.html[PopupToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase.html[TearawayToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertoolbase.html[PopupControlContainerToolBase]"] 
+
+|Description:
+|The PopupControlContainer Tool lets you embed any .NET control in a popup window. As with all TearawayToolBase derived tools, it has a property called 'AllowTearaway' that allows the 'popped-up' control to be 'torn away' and floated in its own window.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_11.png[example of ultratoolbarsmanager popupcontrolcontainer tool] 
+
+|====

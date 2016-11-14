@@ -1,0 +1,55 @@
+﻿////
+
+|metadata|
+{
+    "name": "windesktopalert-display-a-desktop-alert-window-anywhere-on-the-screen",
+    "controlName": ["WinDesktopAlert"],
+    "tags": ["Application Scenarios","How Do I"],
+    "guid": "{63112CA9-CB17-42B8-8698-5373A3017ADD}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Display a Desktop Alert Window Anywhere on the Screen
+
+You can position the desktop alert window in several standard locations using the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenposition.html[ScreenPosition] property. One of the "positions" that you can set is link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.screenposition.html[Manual]. This isn't necessarily a position, but it allows you to set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenlocation.html[ScreenLocation] property, leading to a completely custom screen location.
+
+The ScreenLocation property is of type System.Drawing.Point; you simply need to provide an x- and y-coordinate for the point. The point will determine the location of the desktop alert window by positioning its upper-left corner at the specified coordinates. Using the ScreenPosition and ScreenLocation properties in conjunction will give you the ability to place the alert window anywhere on the screen.
+
+Use the following code to place the desktop alert window 200 pixels from the left of the screen and 200 pixels down from the top.
+
+*In Visual Basic:*
+
+----
+' Create a new desktop alert window with some sample text.
+Dim windowInfo1 As UltraDesktopAlertShowWindowInfo = _
+  New UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.")
+' Turn off screen positioning so you can set the
+' position manually. 
+windowInfo1.ScreenPosition = ScreenPosition.Manual
+' Set the location of the desktop alert window to a 
+' location 200 pixels down and 200 pixels to the right
+' of the upper-left corner of the screen.
+windowInfo1.ScreenLocation = New Point(200, 200)
+' Display the desktop alert window using the information above.
+Me.UltraDesktopAlert1.Show(windowInfo1)
+----
+
+*In C#:*
+
+----
+// Create a new desktop alert window with some sample text.
+UltraDesktopAlertShowWindowInfo windowInfo1 = 
+  new UltraDesktopAlertShowWindowInfo("Test Alert", "This is only a test.");
+// Turn off screen positioning so you can set the 
+// position manually.
+windowInfo1.ScreenPosition = ScreenPosition.Manual;
+// Set the location of the desktop alert window to a
+// location 200 pixels down and 200 pixels to the right
+// of the upper-left corner of the screen.
+windowInfo1.ScreenLocation = new Point(200, 200);
+// Display the desktop alert window using the information above.
+this.ultraDesktopAlert1.Show(windowInfo1);
+----

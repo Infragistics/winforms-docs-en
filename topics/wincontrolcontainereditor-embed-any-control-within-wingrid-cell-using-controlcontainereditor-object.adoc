@@ -1,0 +1,180 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-controlcontainereditor-object",
+    "controlName": ["WinControlContainerEditor"],
+    "tags": ["How Do I"],
+    "guid": "{B39384FF-D1FA-412E-BC55-4AF9413D3821}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Embed Any Control within WinGrid Cell using ControlContainerEditor Object
+
+*Before You Begin*
+
+WinControlContainerEditor™ enables you to embed any control within any Infragistics Windows Forms controls that support embeddable editors. You can embed two controls, one used for rendering and the other used for editing by using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrol.html[RenderingControl]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrol.html[EditingControl]"]  property settings. The rendering control renders the underlying value or text of the object it is attached to (e.g., WinGrid™ cells, WinTree™ nodes, etc). The editing control provides editing ability for the object it is attached to.
+
+.Note
+[NOTE]
+====
+The Rendering control will be drawn to a Bitmap. Hence any control used as the Rendering control must support the DrawToBitmap method.
+====
+
+*What you will Accomplish*
+
+This topic shows you how a standard Microsoft® .NET NumericUpDown and WinGauge™ controls are embedded within a WinGrid cell as the Editing and Rendering controls by using the ControlContainerEditor Object. Both the rendering and editing controls must have a single property (e.g. Text or Value property) that can be used for the value of the UltraGridCell object. For more information and requisites about using ControlContainerEditor, please see the link:wincontrolcontainereditor-overview-of-controlcontainereditor-object.html[Overview of ControlContainerEditor Object] topic. Since the WinGauge control does not have a Value or Text property, you will have to create a class that inherits from the ControlContainerEditor class and override the RendererValue property so that you can pass whatever value to and from the WinGauge control.
+
+*Follow These Steps*
+
+[start=1]
+. Drag and drop an UltraGrid, UltraGauge, and.NET NumericUpDown controls from Visual Studio® Toolbox onto your form.
+[start=2]
+. Bind the UltraGrid control to the Products DataTable of Northwind database.
+[start=3]
+. Create a class named Editor that inherits from the ControlContainerEditor class. The ControlContainerEditor class can be found in the Infragistics.Win.UltraWinEditors namespace.
+[start=4]
+. Place the following using/imports directives in your Form object’s code-behind and within the Editor class code file so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports System.Windows.Forms
+Imports Infragistics.Win.UltraWinEditors
+Imports Infragistics.UltraGauge.Resources
+Imports Infragistics.Win.UltraWinGauge
+----
+
+*In C#:*
+
+----
+using System.Windows.Forms;
+using Infragistics.Win.UltraWinEditors;
+using Infragistics.UltraGauge.Resources;
+using Infragistics.Win.UltraWinGauge;
+----
+
+[start=5]
+. Add the following members to the Editor class.
+
+*In Visual Basic:*
+
+----
+#Region "Private Members"
+Private gauge As UltraGauge
+Private numericUpDown As NumericUpDown
+Private marker As LinearGaugeBarMarker
+#End Region
+----
+
+*In C#:*
+
+----
+#region Private Members
+private UltraGauge gauge;
+private NumericUpDown numericUpDown;
+LinearGaugeBarMarker marker;
+#endregion
+----
+
+[start=6]
+. Delete the default constructor from the Editor class and write the following code.
+
+*In Visual Basic:*
+
+----
+#Region "Constructor"
+Public Sub New(ByVal gauge As UltraGauge, ByVal numericUpDown As NumericUpDown)
+    Me.gauge = gauge
+    Me.numericUpDown = numericUpDown
+    ' Set the Gauge control as the Rendering control        
+    Me.RenderingControl = gauge
+    '  Set the NumericUpDown control as the Editing control
+    Me.EditingControl = numericUpDown
+    ' Get a reference to the gauge control's marker so we can easily set the value for it. 
+    Dim linearGauge As LinearGauge = DirectCast(gauge.Gauges(0), LinearGauge)
+    Dim scale As LinearGaugeScale = DirectCast(linearGauge.Scales(0), LinearGaugeScale)
+    Me.marker = DirectCast(scale.Markers(0), LinearGaugeBarMarker)
+End Sub
+#End Region
+----
+
+*In C#:*
+
+----
+        #region Constructor
+        public Editor(UltraGauge gauge, NumericUpDown numericUpDown)
+        {
+            this.gauge = gauge;
+            this.numericUpDown = numericUpDown;
+            // Set the Gauge control as the Rendering control
+            this.RenderingControl = gauge;
+            // Set the NumericUpDown control as the Editing control
+            this.EditingControl = numericUpDown;
+           // Get a reference to the gauge control's marker so we can easily set the value for it.
+            LinearGauge linearGauge = (LinearGauge)gauge.Gauges[0];
+            LinearGaugeScale scale = (LinearGaugeScale)linearGauge.Scales[0];
+            this.marker = (LinearGaugeBarMarker)scale.Markers[0];
+        }
+        #endregion
+----
+
+[start=7]
+. Override the ControlContainerEditor class RendererValue property to get and set the LinearGaugeBarMarker object’s value.
+
+*In Visual Basic:*
+
+----
+#Region "override RendererValue"
+Protected Overloads Overrides Property RendererValue() As Object
+    Get
+        Return Me.marker.Value
+    End Get
+    Set(ByVal value As Object)
+        Me.marker.Value = value
+    End Set
+End Property
+#End Region
+----
+
+*In C#:*
+
+----
+#region override RendererValue
+        protected override object RendererValue
+        {
+            get
+            {
+                return this.marker.Value;
+            }
+            set
+            {
+                this.marker.Value = value;
+            }
+        }
+        #endregion
+----
+
+[start=8]
+. The following code assigns the Editor class that specifies the Rendering and Editing controls, to the UnitsInStock column of UltraGrid. Write the code in UltraGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[IntializeLayout]"]  event.
+
+*In Visual Basic:*
+
+----
+Dim editor As New Editor(Me.ultraGauge1, Me.numericUpDown1)
+e.Layout.Bands(0).Columns("UnitsInStock").Editor = editor
+----
+
+*In C#:*
+
+----
+Editor editor = new Editor(this.ultraGauge1, this.numericUpDown1);
+e.Layout.Bands[0].Columns["UnitsInStock"].Editor = editor;
+----
+
+*The following screenshot shows a WinGrid with WinGauge embedded as the Rendering control and a NumericUpDown control embedded as the Editing control.*
+
+image::Images/WinControlContainerEditor_Embed_Any_Control_Within_WinGrid_cell_using_ControlContainerEditor_Object_01.png[]

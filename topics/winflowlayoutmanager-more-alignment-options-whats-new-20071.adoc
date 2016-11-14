@@ -1,0 +1,25 @@
+﻿////
+
+|metadata|
+{
+    "name": "winflowlayoutmanager-more-alignment-options-whats-new-20071",
+    "controlName": [],
+    "tags": [],
+    "guid": "{DE36B3CA-8E60-40F8-B73B-A5E12323F134}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= More Alignment Options
+
+The WinFlowLayoutManager™ control can neatly arrange several child controls on a form in a horizontal or vertical pattern. Previously, WinFlowLayoutManager supported the alignment of its child controls with respect to the form, not each other. The Alignment property, now deprecated, was used to align the controls managed by WinFlowLayoutManager with respect to the  pick:[win-forms="link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultraflowlayoutmanager~orientation.html[Orientation]"]  property. If Orientation was set to Horizontal, the layout would be aligned horizontally with respect to the form (or parent container).
+
+We've now added two additional properties:  pick:[win-forms="link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultraflowlayoutmanager~horizontalalignment.html[HorizontalAlignment]"]  and  pick:[win-forms="link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultraflowlayoutmanager~verticalalignment.html[VerticalAlignment]"] . These properties are much easier to work with as they will always align in the direction that their name states. Depending on the Orientation, HorizontalAlignment may align all the controls horizontally with respect to the ContainerControl, or it may align all the controls with respect to each other. For example, setting the Orientation to Horizontal will lay the child controls from left to right. Setting the HorizontalAlignment to Center will center all the controls in the ControlContainer. Setting the VerticalAlignment to Near (Top) will align the tops of the child controls.
+
+These two new properties were necessary as child controls would always be centered with respect to each other. This could have led to a sloppy implementation in some cases that wouldn't "flow" as the name of the control implies.
+
+== Related Topics
+
+link:winflowlayoutmanager-aligning-controls-with-winflowlayoutmanager.html[Aligning Controls with WinFlowLayoutManager]

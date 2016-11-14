@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-assign-multiple-owners-for-wintimelineview",
+    "controlName": ["WinTimelineView"],
+    "tags": [],
+    "guid": "{ADDB9317-05EB-4FE6-8620-B40412B577DD}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Assign Multiple Owners for WinTimelineView
+
+Multiple Owners can be specified for the WinTimelineView™ control and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointments]"]  can be assigned for each Owner. Owners are displayed as rows in WinTimelineView. The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owners]"]  object usually represents a person, department, or other entity by which you might want to group appointments by. The Owners are added to the WinCalendarInfo™ component’s Owners collection.
+
+This topic shows you how Owners can be associated with the WinTimelineView control. It is assumed that you have an ultraTimelineView control, and the UltraCalendarInfo and UltraCalendarLook components dropped onto your form.
+
+*In Visual Basic:*
+
+----
+Me.ultraCalendarInfo1.Owners.Add("Charlie") 
+Me.ultraCalendarInfo1.Owners.Add("Jamie") 
+Me.ultraCalendarInfo1.Owners.Add("Leah") 
+' Hide the UnassignedOwner available by default 
+Me.ultraCalendarInfo1.Owners.UnassignedOwner.Visible = False 
+Me.ultraCalendarLook1.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007 
+Me.ultraTimelineView1.CalendarInfo = Me.ultraCalendarInfo1 
+Me.ultraTimelineView1.CalendarLook = Me.ultraCalendarLook1
+----
+
+*In C#:*
+
+----
+this.ultraCalendarInfo1.Owners.Add("Charlie");
+this.ultraCalendarInfo1.Owners.Add("Jamie");
+this.ultraCalendarInfo1.Owners.Add("Leah");
+// Hide the UnassignedOwner available by default
+this.ultraCalendarInfo1.Owners.UnassignedOwner.Visible = false;
+this.ultraCalendarLook1.ViewStyle = Infragistics.Win.UltraWinSchedule.ViewStyle.Office2007;
+this.ultraTimelineView1.CalendarInfo = this.ultraCalendarInfo1;
+this.ultraTimelineView1.CalendarLook = this.ultraCalendarLook1;
+----
+
+image::Images\WinTimeLineView_Assign_Multiple_Owners_for_WinTimeLineView.png[]

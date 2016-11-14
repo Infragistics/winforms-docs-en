@@ -1,0 +1,56 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-grouping-criteria",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids","How Do I"],
+    "guid": "{EE806A02-705D-4E4F-9D36-29171DBF6BC9}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Configuring the Grouping Criterion (WinGrid, GroupBy)
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~groupbymode.html[GroupByMode]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  allows you to specify how the WinGrid™ creates GroupBy rows based on a particular aspect of the data found in a column. For example, you can group all of the names in a column based on the first letter of the name by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~groupbymode.html[GroupByMode]"]  property to 'FirstCharacter'. If necessary, you can create the groups with case-insensitivity by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~sortcomparisontype.html[SortComparisonType]"]  property on the Column or  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  to 'CaseInsensitive'.
+
+== To access the GroupByMode property:
+
+[start=1]
+. Right-click on the WinGrid and select UltraWinGrid Designer.
+[start=2]
+. In the UltraWinGrid Designer, expand the Band and Column Settings node, then expand a Band and select Columns.
+[start=3]
+. Once a column is selected, in the right hand pane scroll down until you see the GroupByMode property.
+
+This property can be set to any of the following values:
+
+** *Default* - The default mode.
+** *Date* - The groups are based on the date portion of DateTime values found in the column's cells. The column's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~datatype.html[DataType]"]  must be System.DateTime for this mode to work properly.
+** *FirstCharacter* - The groups are based on the first character of the cell text. This option is intended to be used when the column's data type is String.
+** *First2Characters* - The groups are based on the first two characters of the cell text. This option is intended to be used when the column's data type is String.
+** *First3Characters* - The groups are based on the first three characters of the cell text. This option is intended to be used when the column's data type is String.
+** *First4Characters* - The groups are based on the first four characters of the cell text. This option is intended to be used when the column's data type is String.
+** *Hour* - The groups are based on the date and hour portions of DateTime values found in the column's cells. The column's DataType must be System.DateTime for this mode to work properly.
+** *Minute* - The groups are based on the date, hour, and minute portions of DateTime values found in the column's cells. The column's DataType must be System.DateTime for this mode to work properly.
+** *Month* - The groups are based on the year and month portions of DateTime values found in the column's cells. The column's DataType must be System.DateTime for this mode to work properly.
+** *OutlookDate* - The groups are created in the same way that Outlook 2003 creates groups for dates. The column's DataType must be System.DateTime for this mode to work properly.
+** *Quarter* - The groups are based on the quarter and year that the cell values are in. The column's DataType must be System.DateTime for this mode to work properly.
+** *Second* - The groups are based on the date, hour, minute, and second portions of DateTime values found in the column's cells. The column's DataType must be System.DateTime for this mode to work properly.
+** *Text* - The groups are based on the text of the cells, not their values.
+** *Value* - The groups are based on the value of the cells, not their text. Note, the description of each groupby row will use the text of the cell by default.
+** *Year* - The groups are based on the year portion of DateTime values found in the column's cells. The column's DataType must be System.DateTime for this mode to work properly.
+
+The following examples all start with the Grid looking like the screenshot below, before being grouped.
+
+image::Images/WinGrid_GroupBy_Break_Behavior_01.png[group rows based on column data in ultragrid]
+
+As our first example we will group by the "First Name" column using the 'First2Characters' GroupByMode.
+
+image::Images/WinGrid_GroupBy_Break_Behavior_02.png[group rows based on column data in ultragrid]
+
+Here we will group by the "Date Signed Up" column using the 'OutlookDate' GroupByMode.
+
+image::Images/WinGrid_GroupBy_Break_Behavior_03.png[group rows based on column data in ultragrid]

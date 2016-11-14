@@ -1,0 +1,58 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-selection-strategies",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Selection","Tips and Tricks"],
+    "guid": "{15464BA3-EEB3-49A2-88D7-2C47353964E8}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Selection Strategies
+
+Keyboard and mouse selection logic can tend to be complex and error prone, especially selection logic that supports contiguous and/or non-contiguous ranges. Rather than leave each control to implement its own logic the PLF has abstracted selection into a set of interfaces and base class implementations so that this logic can be easily leveraged across all PLF based components. This promotes consistency and robustness. It also speeds development.
+
+In addition, controls that support selection expose a SelectionFilter property to allow custom strategies to be supplied by the application developer. Note: this is not required or even that common. Normally each control exposes enumeration properties that will provide an appropriate strategy. For example, the grid's Override object exposes SelectTypeRow, SelectTypeCell, SelectTypeCol and SelectTypeGroupByRow properties which determine which selection strategy (i.e. none, single, multi etc.) will be used for each selectable object type.
+
+The following interfaces are defined by the PLF to support selection. Note: unless you plan on writing a custom selection strategy or control based on the PLF you will not need to use or implement any of these interfaces:
+
+*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.iselectableitem.html[Infragistics.Shared.ISelectableItem]"]  -- implemented by objects that are selectable (e.g. rows, cells, column headers, tree nodes etc.). This is a simple interface with 4 read-only properties, 'IsSelected', 'IsSelectable', 'IsDraggable' and 'IsTabStop'.
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iselectionmanager.html[Infragistics.Win.ISelectionManager]"]  -- normally implemented by the control. This interface has methods for selecting/de-selecting a single item or a range of items as well as methods to support drag selecting and scrolling while dragging.
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iselectionstrategy.html[Infragistics.Win.ISelectionStrategy]"]  -- implemented by SelectionStrategyBase. This interface has methods for processing keyboard and mouse messages as well as read-only properties to let the manager know if the strategy supports single or multiple selection.
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iselectionstrategyfilter.html[Infragistics.Win.ISelectionStrategyFilter]"]  -- implemented by an application developer to provide a custom selection strategy. It is a simple interface with one method ('GetSelectionStrategy') that is passed an ISelectableItem and returns the appropriate ISelectionStrategy for that object type.
+
+== Mouse Selection Example
+
+[start=1]
+. The user presses the left mouse button down.
+[start=2]
+. Logic in the PLF determines what UIElement the mouse is over and calls its OnMouseDown method. If that method returns true then the remaining steps are bypassed.
+[start=3]
+. If the 'SelectableItem' property of the UIElement returns an ISelectableItem (e.g. the click was over a column header or row selector) then the 'GetSelectionStrategy' method of the ISelectionManager interface (implemented by the control) is called with the selectable item. This method first checks to see if the user has specified an ISelectionStrategyFilter. If the user has done so, it calls the 'GetSelectionStrategy' method on the filter and returns that strategy (if not Null). Otherwise, it returns an appropriate selection strategy based on some property setting (e.g. SelectTypeRow, SelectTypeCell, SelectTypeCol etc.) and the type of the selectable item passed in.
+[start=4]
+. When a selection strategy is returned the mouse is captured for it. In other words all subsequent mouse move and mouse up messages are routed to the selection strategy through its OnMouseMessage method which gets passed the mouse message info as well as the selectable item the mouse is currently over (which may be null).
+[start=5]
+. The selection strategy then calls a set of methods on the ISelectionManager interface to perform various operations like selecting/de-selecting an item or a range of items, setting a pivot item for range selection, starting a drag select operation and/or scrolling the control during a drag selection.
+
+== Keyboard Selection Example
+
+[start=1]
+. The user presses a key.
+[start=2]
+. The logic in the PLF searches through the KeyActionMappings table looking for any mappings that may apply, considering the current state of the control and whether the shift, ctrl or alt keys are pressed (see section on 'Keyboard Handling')
+[start=3]
+. The control's PerformAction method is called for each mapping that applies.
+[start=4]
+. Some actions (like NextRow, NextCell, PreviousRow etc.) may affect selection (e.g. if the shift key is down). For these actions, the PerformAction method first determines what selectable item (i.e. row, cell or tree node) to navigate to and gets its selection strategy (see item 3 in the section on mouse selection above).
+[start=5]
+. It then calls the strategy's ProcessKeyBoardItem method. This then calls methods on the ISelectionManager interface to perform the necessary operations.
+
+== Advantages
+
+* By abstracting the selection logic into a set of interfaces, common selection strategies can be implemented in the PLF's shared assemblies and leveraged across all controls that are based on the PLF. This adds to stability and robustness as well as reducing code size.
+* Its seamless integration with the UIElement architecture streamlines PLF based control development.
+* The selection strategy filter exposes a powerful (although rarely needed) extensibility mechanism to the developer.

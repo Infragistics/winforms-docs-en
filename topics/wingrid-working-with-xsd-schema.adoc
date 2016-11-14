@@ -1,0 +1,24 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-working-with-xsd-schema",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{0E0DD8DD-C056-4A9D-8C57-493D0678A763}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Working with XSD Schema
+
+XML Schema Definition (XSD) is an increasingly popular means of describing the structure and constraints of an application's data model. XSD schema are defined via an XML-based language, which enables the schema to achieve a high degree of platform independence and human readability. The WinGrid™ control has in-depth support for enforcing the constraints imposed by XSD schema. The primary benefit of this functionality is that the bulk of the data validation burden can be lifted from the shoulders of the developer and handled by the WinGrid control. This is especially important in situations where the XSD schema change throughout the life of an application. Since the WinGrid control reads in the schema at run time, if the schema change between executions of the application, there is no need to modify and recompile the application to handle new validation requirements. In this sense, the XSD file can be seen as a configuration file for the WinGrid control.
+
+This section contains a multi-part tutorial that explains how to use the XSD support provided by the WinGrid control.
+
+* link:wingrid-setting-up-a-project-for-xsd-support-part-1-of-4.html[Setting Up a Project for XSD Support (Part 1 of 4)] -- In this tutorial, we will create and setup the project which hosts the WinGrid control
+* link:wingrid-generating-the-xsd-schema-part-2-of-4.html[Generating the XSD Schema (Part 2 of 4)] -- In this tutorial, we will create the XSD schema which describe our data model and the constraints to be enforced by the WinGrid control.
+* link:wingrid-defining-dataset-schema-and-generating-test-data-part-3-of-4.html[Defining DataSet Schema and Generating Test Data (Part 3 of 4)] -- This tutorial shows you how to create a data source which adheres to the structure defined by the XSD schema, and how to bind the WinGrid control to that data.
+* link:wingrid-enforcing-constraints-defined-in-an-xsd-schema-part-4-of-4.html[Enforcing Constraints Defined in an XSD Schema (Part 4 of 4)] -- In this tutorial, we will examine how to make the WinGrid control enforce the constraints defined in the XSD file, and observe the way in which the constraints are enforced at run time by the grid.

@@ -1,0 +1,113 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-apply-tab-styles",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{109320BB-2177-48AB-9ED1-472ED9781F3F}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply Tab Styles
+
+The WinTab™ and WinTabStrip™ control provides a series of different styles that you can apply to the tabs. Styles determine such attributes as tab shape, color and visibility of borders, how tabs change appearance when selection changes, and so on.
+
+There are 13 different tab styles available, as indicated in the following screen shots:
+
+[cols="a,a"]
+|====
+|image::Images\WinTab_Apply_Tab_Styles_01.png[ultratabcontrol in property page style with no theming]
+|image::Images\WinTab_Apply_Tab_Styles_02.png[ultratabcontrol in property page style with theming]
+
+|Property Page
+|Property Page (themed)
+
+|image::Images\WinTab_Apply_Tab_Styles_03.png[ultratabcontrol in property page selected style no theming]
+|image::Images\WinTab_Apply_Tab_Styles_04.png[ultratabcontrol in property page selected style with theming]
+
+|Property Page Selected
+|Property Page Selected (themed)
+
+|image::Images\WinTab_Apply_Tab_Styles_05.png[ultratabcontrol in property page flat style no theming]
+|image::Images\WinTab_Apply_Tab_Styles_06.png[ultratabcontrol in property page flat style with theming]
+
+|Property Page Flat
+|Property Page 2003
+
+|image::Images\WinTab_Apply_Tab_Styles_07.png[ultratabcontrol in state buttons style]
+|image::Images\WinTab_Apply_Tab_Styles_08.png[ultratabcontrol in visual studio style]
+
+|State Buttons
+|Visual Studio
+
+|image::Images\WinTab_Apply_Tab_Styles_09.png[ultratabcontrol flat style]
+|image::Images\WinTab_Apply_Tab_Styles_10.png[ultratabcontrol excel style]
+
+|Flat
+|Excel
+
+|image::Images\WinTab_Apply_Tab_Styles_11.png[ultratabcontrol note page style]
+|image::Images\WinTab_Apply_Tab_Styles_12.png[ultratabcontrol note page flat style]
+
+|Note Page
+|Note Page Flat
+
+|image::Images\WinTab_Apply_Tab_Styles_13.png[ultratabcontrol wizard (no UI) style]
+|image::Images\WinTab_Apply_Tab_Styles_14.png[ultratabcontrol visual studio 2005 style]
+
+|Wizard (no UI)
+|Visual Studio 2005
+
+|image::Images\WinTab_Apply_Tab_Styles_15.png[ultratabcontrol office 2007 ribbon]
+
+|Office 2007 Ribbon
+
+|====
+
+Which style you choose will depend on the overall look of your application. Once you have selected a style, you can apply it either at design-time or run-time.
+
+== To apply a Style at Design-Time
+
+[start=1]
+. With an UltraWinTab control in place on your form, click on the control to select it. Then display the Visual Studio Property window for the control.
+
+.Note
+[NOTE]
+====
+A large part of the element's active area is taken up by the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabsharedcontrolspage.html[UltraTabSharedControlsPage]"]  sub-control, which appears as its own control in the Visual Studio property sheet. Make sure that you have in fact selected the Tab element itself. You can do this by clicking in the tab header area of the element. The property sheet should say "UltraTabControl1" or whatever the name of the element is on your form. If you see "UltraTabSharedControlsPage1" (or something similar) in the property sheet drop-down, the Tab element is not selected.
+====
+
+[start=2]
+. Select the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase~style.html[Style]"]  property from the Property window. The drop-down for this property lists all the available styles. Choose the style you wish to apply.
+
+== To apply a style at run-time
+
+Use the following code, substituting the actual name of the style you want to apply:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinTabControl
+...
+Private Sub Apply_Tab_Styles_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraTabControl1.Style = UltraTabControlStyle.VisualStudio2005
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinTabControl;
+...
+private void Apply_Tab_Styles_Load(object sender, System.EventArgs e)
+{
+	this.ultraTabControl1.Style = UltraTabControlStyle.VisualStudio2005;
+}
+----
+
+image::images\WinTab_Apply_Tab_Styles_16.png[example of ultratabcontrol with visual Studio 2005 style applied]

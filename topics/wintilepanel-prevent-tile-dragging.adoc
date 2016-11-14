@@ -1,0 +1,57 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-prevent-tile-dragging",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I"],
+    "guid": "{133BEE42-FFE2-445A-AA79-40F5BA5D9175}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Prevent Tile Dragging
+
+This topic shows you how dragging of tiles can be prevented. To prevent your end users from dragging tiles, one of the following options can be adopted.
+
+* Hide the tile’s header by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~headerposition.html[UltraTile.Settings.HeaderPosition]"]  orUltraTilePanel.TileSettings.HeaderPosition to the hidden enumeration value.
+* If you prefer to show the header but deny dragging, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~allowmoving.html[AllowMoving]"]  property on the UltraTile can be set to false.
+* The UltraTile  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~dragging_ev.html[Dragging]"]  event can be handled so that you can cancel a drag operation. Set the property on the event argument to True in order to effectively cancel the Dragging event.
+
+*In Visual Basic:*
+
+----
+' Hides the header for all tiles in UltraTilePanel 
+'this.ultraTilePanel1.TileSettings.HeaderPosition = TileHeaderPosition.Hidden
+' Hides header for a specific tile 
+tile1.Settings.HeaderPosition = TileHeaderPosition.Hidden 
+' Deny moving of tile 
+tile2.AllowMoving = False
+' Cancel the tile dragging event 
+AddHandler tile2.Dragging, AddressOf tile2_Dragging
+Private Sub tile2_Dragging(ByVal sender As Object, ByVal e As TileDraggingEventArgs) Handles tile2.Dragging
+    e.Cancel = True
+End Sub
+----
+
+*In C#:*
+
+----
+// Hides the header for all tiles in UltraTilePanel
+//this.ultraTilePanel1.TileSettings.HeaderPosition = TileHeaderPosition.Hidden;
+// Hides header for a specific tile
+tile1.Settings.HeaderPosition = TileHeaderPosition.Hidden;
+// Deny moving of tile
+ tile2.AllowMoving = false;
+// Cancel the tile dragging event
+tile2.Dragging += new TileDraggingEventHandler(tile2_Dragging);
+----
+
+----
+void tile2_Dragging(object sender, TileDraggingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+----

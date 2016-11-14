@@ -1,0 +1,78 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-apply-the-solid-brush-element-at-run-time",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{C531D99F-64BE-4A7B-B8DE-6CE45CECB926}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Solid Brush Element at Run Time
+
+If you want a property of your gauge to be one solid color, apply the Solid brush element to the property.
+
+*To apply the Solid brush element to a property of your gauge using code:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create the class instances.
+
+*In Visual Basic:*
+
+----
+Dim myRadialGauge As RadialGauge = Me.UltraGauge1.Gauges(0)
+Dim solidFillBrushElement1 As New SolidFillBrushElement()
+----
+
+*In C#:*
+
+----
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as  RadialGauge;
+SolidFillBrushElement solidFillBrushElement1 = new SolidFillBrushElement();
+----
+
+[start=4]
+. Set the color to Black.
+
+*In Visual Basic:*
+
+----
+solidFillBrushElement1.Color = System.Drawing.Color.Black
+myRadialGauge.Dial.BrushElement = solidFillBrushElement1
+----
+
+*In C#:*
+
+----
+solidFillBrushElement1.Color = System.Drawing.Color.Black;
+myRadialGauge.Dial.BrushElement = solidFillBrushElement1;
+----
+
+== Related Topics
+
+link:wingauge-solid-brush-element.html[Solid Brush Element]
+
+link:wingauge-apply-the-solid-fill-brush-element-at-design-time.html[Apply the Solid Brush Element at Design Time]
+
+link:wingauge-apply-the-solid-brush-element-using-the-gauge-designer.html[Apply the Solid Brush Element Using the Gauge Designer]

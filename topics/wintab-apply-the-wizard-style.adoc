@@ -1,0 +1,95 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-apply-the-wizard-style",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{317B78B0-BC84-45DA-9F32-9CAF0538A547}",  
+    "buildFlags": [],
+    "createdOn": "2005-01-11T00:00:00Z"
+}
+|metadata|
+////
+
+= Apply the Wizard Style
+
+The Wizard tab style is unique because it does not apply a particular style of UI to the control. Instead, the entire area of the element is taken up by the tab pages, and you must supply the ability to navigate between tabs through the controls you place on the tab pages. Typically you would use this to construct a wizard-style interface, such as the one common in product install programs, where Next, Back and Finish buttons appear as part of the on-screen interface.
+
+You must also supply the code for the controls that will allow users to navigate through the interface. The following is an example of how you might code a simple wizard-style interface:
+
+*In Visual Basic:*
+
+----
+Private Sub btnFirst_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnFirst.Click
+	' Selects the first tab
+	Me.UltraTabControl1.SelectedTab = Me.UltraTabControl1.Tabs(0)
+End Sub
+Private Sub btnLast_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnLast.Click
+	' Selects the last tab
+	Me.UltraTabControl1.SelectedTab = _
+	  Me.UltraTabControl1.Tabs(UltraTabControl1.Tabs.Count - 1)
+End Sub
+Private Sub btnPrevious_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnPrevious.Click
+	' Selects the previous tab
+	' If the first tab is not selected
+	If Me.UltraTabControl1.SelectedTab.Index > 0 Then
+		' Find the index of the previous tab and select it
+		Me.UltraTabControl1.SelectedTab = _
+		  Me.UltraTabControl1.Tabs(Me.UltraTabControl1.SelectedTab.Index - 1)
+	End If
+End Sub
+Private Sub btnNext_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnNext.Click
+	' Select the next tab
+	' If the last tab is not selected
+	If Me.UltraTabControl1.SelectedTab.Index < (Me.UltraTabControl1.Tabs.Count - 1) Then
+		' Find the index of the next tab and select it
+		Me.UltraTabControl1.SelectedTab = _
+		  Me.UltraTabControl1.Tabs(Me.UltraTabControl1.SelectedTab.Index + 1)
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnFirst_Click(object sender, EventArgs e)
+{
+	// Selects the first tab
+	this.ultraTabControl1.SelectedTab = this.ultraTabControl1.Tabs[0];
+}
+private void btnLast_Click(object sender, EventArgs e)
+{
+	// Selects the last tab
+	this.ultraTabControl1.SelectedTab = 
+	  this.ultraTabControl1.Tabs[this.ultraTabControl1.Tabs.Count - 1];
+}
+private void btnPrevious_Click(object sender, EventArgs e)
+{
+	// Selects the previous tab
+	// If the first tab is not selected
+	if (this.ultraTabControl1.SelectedTab.Index > 0) 
+	{
+		// Find the index of the previous tab and select it
+		this.ultraTabControl1.SelectedTab = 
+		  this.ultraTabControl1.Tabs[this.ultraTabControl1.SelectedTab.Index - 1];
+	}
+}
+private void btnNext_Click(object sender, EventArgs e)
+{
+	// Select the next tab
+	// If the last tab is not selected
+	if (this.ultraTabControl1.SelectedTab.Index < (this.ultraTabControl1.Tabs.Count - 1)) 
+	{
+		// Find the index of the next tab and select it
+		this.ultraTabControl1.SelectedTab =
+		  this.ultraTabControl1.Tabs[ultraTabControl1.SelectedTab.Index + 1];
+	}
+}
+----
+
+image::images\WinTab_Apply_the_Wizard_Style_01.png[form showing off the ultratabcontrol's wizard style]

@@ -1,0 +1,72 @@
+﻿////
+
+|metadata|
+{
+    "name": "winstatusbar-set-the-panel-style-to-marquee",
+    "controlName": ["WinStatusBar"],
+    "tags": ["How Do I","Styling"],
+    "guid": "{FD512178-A026-4338-8F42-17FEAEECE64F}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Panel Style to Marquee
+
+The Marquee style Panel gives you the ability to scroll text through a status bar in a variety of ways: scrolling, sliding, flashing, typing, and bouncing.
+
+== Setting up Marquee Style Panel at Design-Time
+
+[start=1]
+. Add a UltraStatusBar to your Windows Form.
+[start=2]
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+[start=3]
+. Click the "Add" button. This will add a new panel.
+[start=4]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property of the panel to "Marquee". Open the MarqueeInfo property. Select the marquee style you'd like, and set  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.marqueeinfo~isactive.html[IsActive]"]  to True.
+[start=5]
+. Click OK and run your project. You will see the marquee panel visible with the default moving text.
+
+== Setting up Marquee Style Panel at Run-Time
+
+To add a panel and set its type to "Marquee" at run-time, use the following code.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinStatusBar
+...
+Private Sub Set_the_Panel_Style_to_Marquee_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Me.UltraStatusBar1.Panels.Add("Marquee", PanelStyle.Marquee)
+	Me.UltraStatusBar1.Panels("Marquee").Text = "Infragistics rocks!"
+	Me.UltraStatusBar1.Panels("Marquee").MarqueeInfo.MarqueeStyle = _
+	  MarqueeStyle.Scrolling
+	Me.UltraStatusBar1.Panels("Marquee").MarqueeInfo.IsActive = True
+	Me.UltraStatusBar1.Panels("Marquee").MarqueeInfo.Start()
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinStatusBar;
+...
+private void Set_the_Panel_Style_to_Marquee_Load(object sender, EventArgs e)
+{
+	this.ultraStatusBar1.Panels.Add("Marquee", PanelStyle.Marquee);
+	this.ultraStatusBar1.Panels["Marquee"].Text = "Infragistics rocks!";
+	this.ultraStatusBar1.Panels["Marquee"].MarqueeInfo.MarqueeStyle = 
+	  MarqueeStyle.Scrolling;
+	this.ultraStatusBar1.Panels["Marquee"].MarqueeInfo.IsActive = true;
+	this.ultraStatusBar1.Panels["Marquee"].MarqueeInfo.Start();
+}
+----
+
+.Note
+[NOTE]
+====
+If you add this panel in code you must call the *Start* method when you want it to begin scrolling. Call the *Stop* method to stop the scrolling.
+====

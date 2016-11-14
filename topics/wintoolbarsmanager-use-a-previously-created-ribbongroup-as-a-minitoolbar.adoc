@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-use-a-previously-created-ribbongroup-as-a-minitoolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{B5548002-4DB5-49E7-98AD-7F1C65F346F9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Use a Previously Created RibbonGroup as a MiniToolbar
+
+{Warning}
+
+Because standard toolbars, RibbonGroups, and the MiniToolbar all share the same object model, creating a MiniToolbar with the same content of a RibbonGroup is quite simple. When creating your RibbonGroup, just make sure that you add the tools by using the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection~addtoolrange.html[AddToolRange]"]  method rather than the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection~addtool.html[AddTool]"]  method. When using the AddToolRange method, you create an array of strings which will carry each of the keys of the tools being added to the RibbonGroup. Therefore, you can use that array again for the MiniToolbar.
+
+Let's assume that you have five button tools. Each tool has been added to the WinToolbarsManager™  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools]"]  collection. You then create a string array with each string representing one tool's key. You can then use the RibbonGroup's AddToolRange method to add all five tools at the same time. This would be done using the following code.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinToolbars
+...
+Dim toolKeys As String() = {"Bold", "Italic", "Underline"}
+Dim group As New RibbonGroup("Group1", "Group1")
+Me.UltraToolbarsManager1.Ribbon.Tabs(0).Groups.Add(group)
+group.Tools.AddToolRange(toolKeys)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinToolbars;
+...
+string[] toolKeys = { "Bold", "Italic", "Underline" };
+RibbonGroup group = new RibbonGroup("Group1", "Group1");
+this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups.Add(group);
+group.Tools.AddToolRange(toolKeys);
+----
+
+Creating a MiniToolbar that has the same exact tools as the RibbonGroup is only a matter of using the MiniToolbar's AddToolRange method as well.
+
+*In Visual Basic:*
+
+----
+Me.UltraToolbarsManager1.MiniToolbar.Tools.AddToolRange(toolKeys)
+----
+
+*In C#:*
+
+----
+this.ultraToolbarsManager1.MiniToolbar.Tools.AddToolRange(toolKeys);
+----
+
+One scenario where this could be very useful is in an application implementing the WinFormattedTextEditor™ control. You may have a Font group on the Ribbon that modifies the font at the current mouse position. It may be easier (and quicker) for the end user if all they had to do was right-click a word and the Font group would appear at the mouse. Going the next step, if the end user were to click on an image, an Image group could also be dynamically loaded into the MiniToolbar using the same AddToolRange method.

@@ -1,0 +1,56 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingridfilteruiprovider-applying-enhanced-filter-condition-to-wingrid-at-run-time",
+    "controlName": [],
+    "tags": ["Filtering","How Do I","Tips and Tricks"],
+    "guid": "{D44FFB4F-5F4E-48BA-8CD2-F1B542D98CC9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Applying Enhanced Filter Condition to WinGrid at Run Time
+
+Sometimes, there may be a need to apply a filter condition at run time on any specific  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"] , so that you can control the Filtered rows that are displayed to the end-user.
+
+The following code assumes WinGrid™ is bound to the Northwind Orders table. The following code filters all rows where the RequiredDate column values fall within the month of January.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.Bands(0).ColumnFilters("RequiredDate").FilterConditions.Add
+                (Infragistics.Win.UltraWinGrid.FilterComparisionOperator.Equals, Infragistics.Win.UltraWinGrid.SpecialFilterOperands.January)
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[“RequiredDate”].FilterConditions.Add
+                (Infragistics.Win.UltraWinGrid.FilterComparisionOperator.Equals, Infragistics.Win.UltraWinGrid.SpecialFilterOperands.January);
+----
+
+=== Modifying DateTime Tree Appearance
+
+The Appearance of the Tree in DateTime Object can be modified using the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filteruiprovidertreesettings~datehierarchylevel.html[DateHierarchyLevel]"]  property. This property allows you to define the granularity of how specific you want to break down Dates for filtering (e.g., Year$$->$$ Month $$->$$Day$$->$$Hour$$->$$Minute$$->$$Second).
+
+*In Visual Basic:*
+
+----
+'Displays the DateTime object's tree level down to the Second. 
+Me.ultraGridFilterUIProvider1.TreeSettings.DateHierarchyLevel = DateHierarchyLevel.Second
+----
+
+*In C#:*
+
+----
+//Displays the DateTime object's tree level down to the Second. 
+ this.ultraGridFilterUIProvider1.TreeSettings.DateHierarchyLevel = DateHierarchyLevel.Second;
+----
+
+== Related Topics
+
+* link:wingridfilteruiprovider-enabling-enhanced-filtering-on-wingrid.html[Enabling Enhanced Filtering on WinGrid]
+* link:wingridfilteruiprovider-adding-a-custom-filter-to-enhanced-filtering-ui-on-a-wingrid.html[Adding a Custom Filter to Enhanced Filtering UI]

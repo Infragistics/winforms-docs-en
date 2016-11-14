@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-creating-a-formula-condition",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids"],
+    "guid": "{03BE7FE2-EBE5-4528-A1A1-62AD31EF8720}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Creating a Formula Condition
+
+Conditional Formatting allows you to compare the cells of an entire column in WinGrid™ to one or more values and change the appearance if certain conditions are met. For instance, you can check to see if the cells are less than a specific number, or you can check to see if a certain string of text is contained within the cell. There are several operators that are built into the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"]  object. However, you can build your own  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formulacondition.html[FormulaCondition]"]  with the help of the WinCalcManager™ component.
+
+Building a formula condition is very similar to building a OperatorCondition. There are two constructors for the FormulaCondition object. One constructor takes an IFormulaProvider object, which will be the WinGrid column you are performing calculations on. Another constructor takes an IFormulaProvider and a formula string, which is the WinCalcManager formula you want to test the cell values against.
+
+.Note
+[NOTE]
+====
+You must place a WinCalcManager component on the form in order for a FormulaCondition to function. Once WinCalcManager is on the form, all columns in WinGrid are aware of the component. This is why you can pass the column as the IFormulaProvider and not the WinCalcManager component itself.
+====
+
+The following code instantiates a FormulaCondition object and sets the first column in the first band of WinGrid as the object to calculate the formula against. The formula itself is then set by using the Formula property.
+
+*In Visual Basic:*
+
+----
+Dim formula1 as FormulaCondition =_
+  New FormulaCondition(Me.UltraGrid1.DisplayLayout.Bands(0).Columns(0))
+formula1.Formula = "[ConditionValue] < 4"
+----
+
+*In C#:*
+
+----
+FormulaCondition formula1 =
+  new FormulaCondition(this.ultraGrid1.DisplayLayout.Bands[0].Columns[0]);
+formula1.Formula = "[ConditionValue] < 4";
+----

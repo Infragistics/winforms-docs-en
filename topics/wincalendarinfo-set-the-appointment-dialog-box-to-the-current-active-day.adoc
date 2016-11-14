@@ -1,0 +1,45 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalendarinfo-set-the-appointment-dialog-box-to-the-current-active-day",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{16B2903C-772D-4FB6-AD77-7EBAE4C6AC5E}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Set the Appointment Dialog Box to the Current Active Day
+
+You can force the appointment dialog to always open to the active day, by using the WinCalendarInfo's™  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~activeday.html[ActiveDay]"]  property.
+
+.Note
+[NOTE]
+====
+This code will not work if placed in the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~beforedisplayappointmentdialog_ev.html[BeforeDisplayAppointmentDialog]"]  event, as the call to  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~displayappointmentdialog.html[DisplayAppointmentDialog]"]  would make a call to the BeforeDisplayAppointmentDialog causing a loop. This code is for use with your own custom appointment dialog or if you are making the appointment dialog show on a button click.
+====
+
+*In Visual Basic:*
+
+----
+Private Sub btnShowAppointmentDialog_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnShowAppointmentDialog.Click
+	Me.UltraCalendarInfo1.DisplayAppointmentDialog( _
+	  Me.UltraCalendarInfo1.ActiveDay.Date, _
+	  Me.UltraCalendarInfo1.ActiveDay.Date, False)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnShowAppointmentDialog_Click(object sender, EventArgs e)
+{
+	this.ultraCalendarInfo1.DisplayAppointmentDialog(
+	  this.ultraCalendarInfo1.ActiveDay.Date, 
+	  this.ultraCalendarInfo1.ActiveDay.Date, false); 
+}
+----

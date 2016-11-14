@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-multiple-controls-can-now-use-separate-style-libraries-whats-new-20071",
+    "controlName": [],
+    "tags": [],
+    "guid": "{A7674AAC-FC1C-4D69-98DF-4D3C7295941A}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-12T15:07:13Z"
+}
+|metadata|
+////
+
+= Multiple Controls Can Now Use Separate Style Libraries
+
+At run time, Application Styling only supported one Style Library being loaded into memory at once. These severely limited an applications styling capability as specific controls had to use StyleSets from the same Style Library.
+
+This release, we've added the StyleLibraryName property to our stylable controls and components and a matching overload to the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appstyling.stylemanager~load(string,boolean,string).html[StyleManager.Load]"]  method. When loading a Style Library via the StyleManager, a new overload is available to help identify it. You then set the StyleLibraryName property on any control or component to match it with the specific Style Library that you loaded. This allows different controls to use their control-specific StyleSets from different Libraries, making for a much more customizable styling experience.
+
+== Related Topics
+
+link:styling-guide-loading-multiple-style-libraries.html[Loading Multiple Style Libraries]

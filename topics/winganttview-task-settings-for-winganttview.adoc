@@ -1,0 +1,56 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-task-settings-for-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": ["How Do I"],
+    "guid": "{C0FAD3E4-44A1-4D32-BDB4-F2CC456ADA4B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Task Settings for WinGanttView
+
+This topic demonstrates settings that can be applied to tasks added to the WinGanttView™ control, using the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~tasksettings.html[TaskSettings] object. These settings enable you to control end users interaction with a specific task or all tasks within the grid and chart sections of the control. You can restrict end users from editing certain task information. Task settings applied to a specific task have precedence over settings applied directly on the control.
+
+The following example code assumes that you have an UltraGanttView control dropped onto the form that displays tasks and task details. For information on adding tasks to WinGanttView, please see the link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView] topic.
+
+*In Visual Basic:*
+
+----
+' Disable editing of Duration, Deadline and deletion for all Tasks
+Me.ultraGanttView1.TaskSettings.AllowDelete = Infragistics.Win.DefaultableBoolean.[False]
+Me.ultraGanttView1.TaskSettings.AllowEditDuration = Infragistics.Win.DefaultableBoolean.[False]
+Me.ultraGanttView1.TaskSettings.AllowEditDeadline = Infragistics.Win.DefaultableBoolean.[False]
+' Allow specifc user interactions  for specific Tasks
+Me.ultraGanttView1.CalendarInfo.Tasks(0).Tasks(0).TaskSettings.AllowEditStartDateTime = Infragistics.Win.DefaultableBoolean.[False]
+Me.ultraGanttView1.CalendarInfo.Tasks(1).Tasks(0).TaskSettings.AllowEditPercentComplete = Infragistics.Win.DefaultableBoolean.[False]
+Me.ultraGanttView1.CalendarInfo.Tasks(0).Tasks(1).TaskSettings.AllowDelete = Infragistics.Win.DefaultableBoolean.[True]
+----
+
+*In C#:*
+
+----
+// Disable editing of Duration, Deadline and deletion for all Tasks
+this.ultraGanttView1.TaskSettings.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+this.ultraGanttView1.TaskSettings.AllowEditDuration = Infragistics.Win.DefaultableBoolean.False;
+this.ultraGanttView1.TaskSettings.AllowEditDeadline = Infragistics.Win.DefaultableBoolean.False;
+// Allow specifc user interactions  for specific Tasks
+this.ultraGanttView1.CalendarInfo.Tasks[0].Tasks[0].TaskSettings.AllowEditStartDateTime = Infragistics.Win.DefaultableBoolean.False;
+this.ultraGanttView1.CalendarInfo.Tasks[1].Tasks[0].TaskSettings.AllowEditPercentComplete = Infragistics.Win.DefaultableBoolean. False;
+this.ultraGanttView1.CalendarInfo.Tasks[0].Tasks[1].TaskSettings.AllowDelete = Infragistics.Win.DefaultableBoolean.True;
+----
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-databinding-support-for-winganttview.html[DataBinding Support for WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

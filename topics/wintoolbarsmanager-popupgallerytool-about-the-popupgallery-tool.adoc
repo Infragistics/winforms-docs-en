@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-popupgallerytool-about-the-popupgallery-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{F9556F4D-B93C-4D41-8EA8-89827DFB20CC}",  
+    "buildFlags": [],
+    "createdOn": "2006-10-10T17:31:03Z"
+}
+|metadata|
+////
+
+= About the PopupGallery Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool.html[PopupGalleryTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popuptoolbase.html[PopupToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.tearawaytoolbase.html[TearawayToolBase]"] › pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] 
+
+|Description:
+|The PopupGalleryTool is a gallery of items that includes both a preview and a drop-down. The preview sits conveniently on the Ribbon showing the end user, at-a-glance, what options they have to chose from. If the option they want is not in the preview, they simply need to click the drop-down arrow to show a larger selection of items. The drop-down is resizable to allow for maximum viewing efficiency.
+
+|Sample:
+|PopupGalleryTool's preview on a Ribbon: 
+
+image::Images\WinToolbarsManager_PopupGalleryTool_About_the_PopupGallery_Tool_01.png[example of ultratoolbarsmanager ribbon's popupgallery tool] 
+
+PopupGalleryTool's drop-down including groups and filtering: 
+
+image::Images\WinToolbarsManager_PopupGalleryTool_About_the_PopupGallery_Tool_02.png[example of ultratoolbarsmanager ribbon's popupgallery tool with filtering] 
+
+|====

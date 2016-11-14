@@ -1,0 +1,137 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-setting-date-specific-non-contiguous-working-hours-for-different-owners",
+    "controlName": ["WinSchedule"],
+    "tags": [],
+    "guid": "{19BBA08C-A010-47AD-A279-8E99CC9F1D9E}",  
+    "buildFlags": [],
+    "createdOn": "2009-02-02T10:11:52Z"
+}
+|metadata|
+////
+
+= Setting Date specific non-contiguous working hours for different Owners
+
+The WinSchedule DateSettings feature provides a way to define the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslotsettings~workinghours.html[working/non-working hours]"]  for a particular date. Also multiple non-contiguous time ranges can be assigned as working or non-working hours for each owner. In addition, the appearance for each individual  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslot.html[TimeSlot]"]  on a particular date and/or Owner can be set. All these are possible via the Owner object’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~datesettings.html[DateSettings]"]  property.
+
+The Owner object’s  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner~recurringdatesettings.html[RecurringDateSettings]"]  property allows the working hours and/or time slot appearance to be customized for a recurring pattern of dates.
+
+.Note
+[NOTE]
+====
+The DayOfWeekSettings class which exposes workday related properties for an Owner also exposes WorkingHours and TimeRangeAppearance collections. Thus the same functionality explained above for a given date is also applicable to a given day of the week.
+====
+
+The following code shows you how to set non-contiguous working hours and a Timeslot appearance for multiple owners. These settings are applied to a particular date. For this topic, it is assumed that the Windows Form contains an ultraDayView™ and ultraCalendarInfo™ controls.
+
+*In Visual Basic:*
+
+----
+'Assign ultracalendarInfo instance to ultraDayView 
+Me.ultraDayView1.CalendarInfo = ultraCalendarInfo1 
+'Groups Owners within the Date 
+Me.ultraDayView1.GroupingStyle = DayViewGroupingStyle.OwnerWithinDate 
+Me.ultraCalendarInfo1.Owners.Add("FirstOwner", "Lopez") 
+Me.ultraCalendarInfo1.Owners.Add("SecondOwner", "Welby")
+'Date setting for Lopez 
+Dim lopez As Owner = Me.ultraCalendarInfo1.Owners("FirstOwner")
+lopez.DateSettings.Add(DateTime.Today) 
+Dim lopezWorkingHr1 As New TimeRange(New TimeSpan(10, 0, 0), New TimeSpan(11, 0, 0))
+lopez.DateSettings(DateTime.Today).WorkingHours.Add(lopezWorkingHr1) 
+Dim lopezWorkingHr2 As New TimeRange(New TimeSpan(13, 0, 0), New TimeSpan(14, 0, 0))
+lopez.DateSettings(DateTime.Today).WorkingHours.Add(lopezWorkingHr2) 
+'Set Appearance object for Lopez's working hours 
+Dim lopezAppearance As New Infragistics.Win.Appearance("dateAppearance")
+lopezAppearance.BackColor = Color.Pink 
+lopez.DateSettings(DateTime.Today).TimeRangeAppearances.Add(lopezWorkingHr1, lopezAppearance) 
+lopez.DateSettings(DateTime.Today).TimeRangeAppearances.Add(lopezWorkingHr2, lopezAppearance)
+'Date setting for welby 
+Dim welby As Owner = Me.ultraCalendarInfo1.Owners("SecondOwner")
+welby.DateSettings.Add(DateTime.Today) 
+Dim welbyWorkingHr1 As New TimeRange(New TimeSpan(9, 0, 0), New TimeSpan(10, 0, 0))
+welby.DateSettings(DateTime.Today).WorkingHours.Add(welbyWorkingHr1) 
+Dim welbyWorkingHr2 As New TimeRange(New TimeSpan(12, 0, 0), New TimeSpan(13, 0, 0))
+welby.DateSettings(DateTime.Today).WorkingHours.Add(welbyWorkingHr2) 
+'Set Appearance object for Welby's working hours 
+Dim welbyAppearance As New Infragistics.Win.Appearance("dateAppearance")
+welbyAppearance.BackColor = Color. LightSkyBlue
+welby.DateSettings(DateTime.Today).TimeRangeAppearances.Add(welbyWorkingHr1, welbyAppearance) 
+welby.DateSettings(DateTime.Today).TimeRangeAppearances.Add(welbyWorkingHr2, welbyAppearance)
+----
+
+*In C#:*
+
+----
+//Assign ultracalendarInfo instance to ultraDayView
+ this.ultraDayView1.CalendarInfo = ultraCalendarInfo1;
+//Groups Owners within the Date 
+this.ultraDayView1.GroupingStyle = DayViewGroupingStyle.OwnerWithinDate;
+this.ultraCalendarInfo1.Owners.Add("FirstOwner", "Lopez");
+this.ultraCalendarInfo1.Owners.Add("SecondOwner", "Welby");
+//Date setting for Lopez
+Owner lopez = this.ultraCalendarInfo1.Owners["FirstOwner"];
+lopez.DateSettings.Add(DateTime.Today);
+TimeRange lopezWorkingHr1 = new TimeRange(new TimeSpan(10, 0, 0), new TimeSpan(11, 0, 0));
+lopez.DateSettings[DateTime.Today].WorkingHours.Add(lopezWorkingHr1);
+TimeRange lopezWorkingHr2 = new TimeRange(new TimeSpan(13, 0, 0), new TimeSpan(14, 0, 0));
+lopez.DateSettings[DateTime.Today].WorkingHours.Add(lopezWorkingHr2);
+//Set Appearance object for Lopez's working hours
+Infragistics.Win.Appearance lopezAppearance = new Infragistics.Win.Appearance("dateAppearance");
+lopezAppearance.BackColor = Color.Pink;
+lopez.DateSettings[DateTime.Today].TimeRangeAppearances.Add(lopezWorkingHr1, lopezAppearance);
+lopez.DateSettings[DateTime.Today].TimeRangeAppearances.Add(lopezWorkingHr2, lopezAppearance);
+//Date setting for welby       
+Owner welby = this.ultraCalendarInfo1.Owners["SecondOwner"];
+welby.DateSettings.Add(DateTime.Today);
+TimeRange welbyWorkingHr1 = new TimeRange(new TimeSpan(9, 0, 0),new TimeSpan(10, 0, 0));
+welby.DateSettings[DateTime.Today].WorkingHours.Add(welbyWorkingHr1);
+TimeRange welbyWorkingHr2 = new TimeRange(new TimeSpan(12, 0, 0), new TimeSpan(13, 0, 0));
+welby.DateSettings[DateTime.Today].WorkingHours.Add(welbyWorkingHr2);
+//Set Appearance object for Welby's working hours
+Infragistics.Win.Appearance welbyAppearance = new Infragistics.Win.Appearance("dateAppearance");
+welbyAppearance.BackColor = Color. LightSkyBlue;
+welby.DateSettings[DateTime.Today].TimeRangeAppearances.Add(welbyWorkingHr1, welbyAppearance);
+welby.DateSettings[DateTime.Today].TimeRangeAppearances.Add(welbyWorkingHr2, welbyAppearance);
+----
+
+The following screenshot shows two different non-contiguous working hour timeslots for Lopez and Welby.
+
+image::Images/WinSchedule_Setting_Date_specific_non-contiguous_working_hours_for_different_Owners_01.png[]
+
+The following code shows you how to set working hour timeslots of an owner assigned in an recurrence pattern, e.g. recurring on the 25th of every month starting from the current date.
+
+*In Visual Basic:*
+
+----
+'Recurrence starting from today 
+Dim recurrence As New DateRecurrence(DateTime.Today)
+'Recurring monthly 
+recurrence.PatternFrequency = RecurrencePatternFrequency.Monthly 
+'Recurring on the 25th of every month 
+recurrence.PatternDayOfMonth = 25 
+'Add the recurrence settings to owner Lopez 
+lopez.RecurringDateSettings.Add(recurrence) 
+lopez.RecurringDateSettings(0).WorkingHours.Add(lopezWorkingHr1) 
+lopez.RecurringDateSettings(0).WorkingHours.Add(lopezWorkingHr2) 
+lopez.RecurringDateSettings(0).TimeRangeAppearances.Add(lopezWorkingHr1, lopezAppearance) 
+lopez.RecurringDateSettings(0).TimeRangeAppearances.Add(lopezWorkingHr2, lopezAppearance)
+----
+
+*In C#:*
+
+----
+//Recurrence starting from today
+ DateRecurrence recurrence = new DateRecurrence(DateTime.Today);
+//Recurring monthly
+ recurrence.PatternFrequency = RecurrencePatternFrequency.Monthly;
+//Recurring on the 25th of every month
+recurrence.PatternDayOfMonth = 25;
+ //Add the recurrence settings to owner Lopez
+ lopez.RecurringDateSettings.Add(recurrence);
+ lopez.RecurringDateSettings[0].WorkingHours.Add(lopezWorkingHr1);
+ lopez.RecurringDateSettings[0].WorkingHours.Add(lopezWorkingHr2);
+ lopez.RecurringDateSettings[0].TimeRangeAppearances.Add(lopezWorkingHr1, lopezAppearance);
+ lopez.RecurringDateSettings[0].TimeRangeAppearances.Add(lopezWorkingHr2, lopezAppearance);
+----

@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "winactivityindicator-marquee-animation-style-settings",
+    "controlName": ["WinActivityIndicator"],
+    "tags": ["How Do I","Performance","Styling"],
+    "guid": "{A9B6272A-35DC-4832-B639-CD6209B2E644}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Marquee Animation Style Settings
+
+The WinActivityIndicator™ control offers the Marquee style of animation to indicate to end users that there is a process occurring behind the scenes. With Marquee style, you can choose if animation should restart from the beginning every time it reaches the end of the animation, or if it should bounce back in the opposite direction. There is a property called link:infragistics4.win.v{ProductVersion}~infragistics.win.ultraactivityindicator.marqueeanimationstyle.html[MarqueeAnimationStyle] that can be set either to Continuous or to BounceBack. By default it is set to Continuous. The width of the Marquee marker can be changed using the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultraactivityindicator.ultraactivityindicator~marqueemarkerwidth.html[MarqueeMarkerWidth] property.
+
+Also there is a link:infragistics4.win.v{ProductVersion}~infragistics.win.ultraactivityindicator.ultraactivityindicator~marqueefillappearance.html[MarqueeFillAppearance] property that can be used to set Appearance objects for the Marquee style.
+
+This topic assumes that the control's animation is enabled using the link:infragistics4.win.v{ProductVersion}~infragistics.win.ultraactivityindicator.ultraactivityindicator~animationenabled.html[AnimationEnabled] property.
+
+*In Visual Basic:*
+
+----
+Me.ultraActivityIndicator1.MarqueeAnimationStyle = Infragistics.Win.UltraActivityIndicator.MarqueeAnimationStyle.BounceBack 
+Me.ultraActivityIndicator1.MarqueeFillAppearance.BackColor = Color.Red
+' Set width of Marquee 
+Me.ultraActivityIndicator1.MarqueeMarkerWidth = 60
+----
+
+*In C#:*
+
+----
+this.ultraActivityIndicator1.MarqueeAnimationStyle = Infragistics.Win.UltraActivityIndicator.MarqueeAnimationStyle.BounceBack;
+this.ultraActivityIndicator1.MarqueeFillAppearance.BackColor = Color.Red;
+// Set width of Marquee
+this.ultraActivityIndicator1.MarqueeMarkerWidth = 60;
+----
+
+== Related Topics
+
+* link:winactivityindicator-winactivityindicator-animation.html[WinActivityIndicator Animation]
+* link:winactivityindicator-styling-winactivityindicator.html[Styling WinActivityIndicator]

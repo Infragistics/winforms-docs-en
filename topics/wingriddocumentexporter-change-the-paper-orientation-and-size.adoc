@@ -1,0 +1,39 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingriddocumentexporter-change-the-paper-orientation-and-size",
+    "controlName": ["WinGridDocumentExporter"],
+    "tags": [],
+    "guid": "{4DB5AE4A-ED5C-4BB4-B177-0556E03782B7}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Change the Paper Orientation and Size
+
+WinGridDocumentExporter™ allows you to change the paper orientation from portrait (default) to landscape with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~targetpaperorientation.html[TargetPaperOrientation]"]  property. This property is useful if your WinGrid™ would fit better in a landscape orientation or if your report is already in landscape orientation.
+
+Another useful property that you can use in tandem with the TargetPaperOrientation property is the  pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~targetpapersize.html[TargetPaperSize]"]  property. The TargetPaperSize property controls the aspect ratio and minimum size of the paper, not the size of the paper directly. WinGridDocumentExporter will automatically size the paper based on the width of the grid. You can set the TargetPageSize property to a predefined page size (e.g. Letter, Legal) with the  pick:[win-forms="link:infragistics4.documents.reports.v{ProductVersion}~infragistics.documents.reports.report.pagesizes.html[PageSizes]"]  class.
+
+Use the following code to set the page orientation to landscape and page size to Legal:
+
+*In Visual Basic:*
+
+----
+Me.UltraGridDocumentExporter1.TargetPaperOrientation = _
+	Infragistics.Documents.Reports.Report.PageOrientation.Landscape
+Me.UltraGridDocumentExporter1.TargetPaperSize = _
+	New Infragistics.Documents.Reports.Report.PageSizes.Legal
+----
+
+*In C#:*
+
+----
+this.ultraGridDocumentExporter1.TargetPaperOrientation =
+	Infragistics.Documents.Reports.Report.PageOrientation.Landscape;
+this.ultraGridDocumentExporter1.TargetPaperSize =
+	new Infragistics.Documents.Reports.Report.PageSizes.Legal;
+----

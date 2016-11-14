@@ -1,0 +1,29 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-scale-extent-pane",
+    "controlName": ["WinGauge"],
+    "tags": [],
+    "guid": "{32C78AD7-12D5-41AF-9710-34AD24C97AB9}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Extent Pane
+
+The Extent pane determines the thickness and position of the scale. In a Radial gauge this position is measured from the center, and in a Linear gauge this position is measured from the bottom of the gauge.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~innerextentstart.html[Inner Start]"]  -- Set this value to an integer from 0 to 100. This value determines the position of the start point of the inner rim of the scale.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~innerextentend.html[Inner End]"]  -- Set this value to an integer from 0 to 100. This value determines the position of the end point of the inner rim of the scale.
+
+pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~outerextent.html[Outer]"]  -- Set this value to an integer from 0 to 100. This value determines the distance from the measuring point to every point on the outer rim of the scale.
+
+image::images/Range_Scale_Extent_Pane_01.png[wingauge's range scale extent pane.]
+
+== Related Topic
+
+link:wingauge-scale-layout-tab.html[Scale Layout Tab]

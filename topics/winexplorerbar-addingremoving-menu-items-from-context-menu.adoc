@@ -1,0 +1,83 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-addingremoving-menu-items-from-context-menu",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{76E66F8F-D0E6-4CEC-9099-EADC51266834}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding/Removing menu items from context menu
+
+A default context menu appears when you right click on Groups and items added to WinExplorerBar™. In some situations you may want to add custom menu items in addition to the default context menu or even have a context menu with just the custom menu.
+
+The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~contextmenuinitializing_ev.html[ContextMenuIntializing]"]  or  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcontextmenuinitializing_ev.html[NavigationContextMenuIntializing]"]  events can be handled for this purpose.
+
+.Note
+[NOTE]
+====
+When the WinExplorerBar control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property is set to OutlookNavigationPane, you must handle the NavigationContextMenuIntializing event. For all other values, the contextMenuIntializing event must be handled.
+====
+
+The following code example shows you how to add/ remove the context menu by handling the ContextMenuIntializing event.
+
+*In Visual Basic:*
+
+----
+Dim customMenu As New IGMenuItem (“Custom Menu”) 
+'Remove the default context menu
+ 'e.ContextMenu.Dispose () 
+If e.ClickArea = ClickArea.GroupHeader Then
+          'Reset the ContextMenu so that any changes we made to it during prior firings of the event will be undone and the 'default' version of it will be displayed. 
+           e.ResetMenu () 
+           e.ContextMenu.MenuItems.Add (customMenu)
+ End If
+----
+
+*In C#:*
+
+----
+IGMenuItem customMenu= new IGMenuItem (“Custom Menu”);
+// Remove the default context menu 
+//e.ContextMenu.Dispose ();
+if (e.ClickArea == ClickArea.GroupHeader)
+  {
+ //Reset the ContextMenu so that any changes we made to it during prior firings of the ContextMenuIntializing event will be undone and the 'default' version of it will be displayed.
+      	  e.ResetMenu ();
+      	  e.ContextMenu.MenuItems.Add (customMenu);
+   }
+----
+
+The following code example shows you how to add/remove the context menu by handling the NavigationContextMenuIntializing event.
+
+*In Visual Basic:*
+
+----
+Dim outlooknavigationCustomMenu As IGMenuItem = New IGMenuItem (Outlook Navigation Custom Menu”) 
+'Remove the default context menu 
+'e.ContextMenu.Dispose () 
+If e.ClickArea = NavigationPaneClickArea.GroupHeader Then
+   'Reset the NavigationContextMenu so that any changes we made to it during prior firings of the NavigationContextMenuInitializing event will be undone and the 'default' version of it will be displayed. 
+    e.ResetMenu ()
+    e.NavigationContextMenu.MenuItems.Add (outlooknavigationCustomMenu)
+ End If
+----
+
+*In C#:*
+
+----
+IGMenuItem outlooknavigationCustomMenu= new IGMenuItem (“Outlook Navigation Custom Menu”);
+// Remove the default context menu
+ //e.ContextMenu.Dispose ();
+if (e.ClickArea == NavigationPaneClickArea.GroupHeader)
+{ 
+     // Reset the NavigationContextMenu so that any changes we made to it during prior firings of the NavigationContextMenuInitializing event will //be undone and the 'default' version of it will be displayed.
+     e.ResetMenu ();
+     e.NavigationContextMenu.MenuItems.Add (outlooknavigationCustomMenu);
+}
+----

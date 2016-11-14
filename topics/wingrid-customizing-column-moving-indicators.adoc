@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-customizing-column-moving-indicators",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{2E2CB330-6550-4118-9CD2-7A42A1EEE9E6}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T16:57:35Z"
+}
+|metadata|
+////
+
+= Customizing Column Moving Indicators
+
+When a column header in WinGrid™ is dragged, arrows appear to indicate where the columns would be placed if the mouse is released in its current location. These default column moving indicators can be customized by either changing the color of the indicators or even changing the arrow images used for the indicators. It is also possible to change the direction in which the arrows are pointing. All these customizations are possible through the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~dragdropindicatorsettings.html[DragDropIndicatorSettings]"]  property.
+
+Similarly, you can change the color of the rectangle that appears when a column header of WinGrid in RowLayout mode, is dragged to an empty space.
+
+The above mentioned customizations can be enabled through the WinGrid control’s property window or through code.
+
+*In Visual Basic:*
+
+----
+' Change the color of arrow images
+Me.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.Color = Color.Green
+----
+
+*In C#:*
+
+----
+// Change the color of arrow images
+this.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.Color = Color.Green;
+----
+
+image::Images\WinGrid_Customize_Column_Moving_Indicators_01.png[]
+
+*WinGrid in RowLayout mode -The color of the rectangle is also set when the Color property is set to green.*
+
+image::Images\WinGrid_Customize_Column_Moving_Indicators_02.png[]
+
+*WinGrid in RowLayout mode – Assigning custom images for different direction of arrows*
+
+*In Visual Basic:*
+
+----
+' Set Top arrow image. Bottom arrow image is resolved automatically by rotating the Top arrow image by 180 deg. 
+  Me.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.ImageTop = Image.FromFile("C:\Images\arrow-blue.gif") 
+' Set Left arrow image. Right arrow image is resolved automatically by rotating the Left arrow image by 180 deg. 
+  Me.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.ImageLeft = Image.FromFile("C:\Images\arrow-Pink.gif")
+----
+
+*In C#:*
+
+----
+// Set Top arrow image. Bottom arrow image is resolved automatically by rotating the Top arrow image by 180 deg.
+   this.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.ImageTop = Image.FromFile(@"C:\Images\arrow-blue.gif");
+// Set Left arrow image. Right arrow image is resolved automatically by rotating the Left arrow image by 180 deg.
+   this.ultraGrid1.DisplayLayout.Override.DragDropIndicatorSettings.ImageLeft =Image.FromFile(@"C:\Images\arrow-Pink.gif");
+----
+
+*The arrow images are positioned either top to bottom or left to right depending upon where you drag the column headers.*
+
+image::Images\WinGrid_Customize_Column_Moving_Indicators_03.png[]
+
+image::Images\WinGrid_Customize_Column_Moving_Indicators_04.png[]

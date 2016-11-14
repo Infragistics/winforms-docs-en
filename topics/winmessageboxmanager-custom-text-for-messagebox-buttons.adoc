@@ -1,0 +1,51 @@
+﻿////
+
+|metadata|
+{
+    "name": "winmessageboxmanager-custom-text-for-messagebox-buttons",
+    "controlName": ["WinMessageBoxManager"],
+    "tags": ["How Do I"],
+    "guid": "056c0ea2-2f30-4367-9cb3-8725e572fb34",  
+    "buildFlags": [],
+    "createdOn": "2010-07-22T14:52:04.2092747Z"
+}
+|metadata|
+////
+
+= Custom Text for MessageBox Buttons
+
+The WinMessageBoxManager™ component displays message boxes with buttons whose text can be customized. By default the MessageBox buttons use the strings defined by the operating system. However the text used for these buttons can be customized using the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer.html[ResourceCustomizer]"]  object. For the list of MessageBoxManager resource strings that can be customized, please see the link:win-resource-strings.html[Win Resource Strings] topic.
+
+The following code example illustrates how to customize the string resources of the MessageBox buttons.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Shared
+Dim rc As ResourceCustomizer
+' Get the resource customizer object for the 'Infragistics.Win' assembly. 
+' and customize the string resources. 
+rc = Infragistics.Win.Resources.Customizer 
+' Customize the text for the Ok MessageBox Button. 
+rc.SetCustomizedString("MessageBoxButtonOK", "Yes") 
+' Customize the text for the Abort MessageBox Button 
+rc.SetCustomizedString("MessageBoxButtonAbort", "Stop") 
+' Customize the text for the Retry MessageBox Button 
+rc.SetCustomizedString("MessageBoxButtonRetry", "Try Again")
+----
+
+*In C#:*
+
+----
+using Infragistics.Shared;
+ResourceCustomizer rc;
+// Get the resource customizer object for the 'Infragistics.Win' assembly.
+// and customize the string resources.
+rc = Infragistics.Win.Resources.Customizer;
+// Customize the text for the Ok MessageBox Button.
+rc.SetCustomizedString("MessageBoxButtonOK", "Yes");
+// Customize the text for the Abort MessageBox Button
+rc.SetCustomizedString("MessageBoxButtonAbort", "Stop");
+// Customize the text for the Retry MessageBox Button
+rc.SetCustomizedString("MessageBoxButtonRetry", "Try Again");
+----

@@ -1,0 +1,175 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-determining-which-band-the-user-clicked",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{74414BF2-D31C-48B5-93E2-52066ED7B140}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Determining Which Band the User Clicked
+
+== Background
+
+When working with the WinGrid™ control, there are times when the developer will need to be able to determine the Band from a mouse X and Y position. This is accomplished by retrieving a reference to the UIElement object from the mouse position, then from this UIElement object an object pointer to one or more of the objects associated with a Band (Row or Column) can be retrieved and the .Band.Index property of this UIElement points to the band.
+
+== Questions
+
+* How do I determine which Band my user clicked on?
+
+== Solution
+
+Use the UIElementFromPoint method of the UltraWinGrid to retrieve an object reference to the UIElement under the mouse point. Then use this UIElement to retrieve an object reference to an object associated with a band. This final object reference will then point to the band.
+
+== Sample Project
+
+This sample project allows the user to move the mouse over various elements of the grid to see if there is a band association. The Row and Column objects are queried for a band association.
+
+Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+image::Images\WinGrid_Determining_Which_Band_the_User_Clicked_01.png[determining which band the user clicked on in ultragrid]
+
+The UltraGrid Events Region contains the following event handlers:
+
+* UltraGrid1.InitializeLayout - The code in the InitializeLayout Event turns on the band headers for both bands:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles UltraGrid1.InitializeLayout
+	' Turn on band headers
+	e.Layout.Bands(0).HeaderVisible = True
+	e.Layout.Bands(1).HeaderVisible = True
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Turn on Band Headers
+	e.Layout.Bands[0].HeaderVisible = true;
+	e.Layout.Bands[1].HeaderVisible = true;
+}
+----
+
+* UltraGrid1.InitializeRow - The code in the InitializeRow Event expands the rows of band 0:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_InitializeRow(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeRowEventArgs) _
+  Handles UltraGrid1.InitializeRow
+	' Expand rows in band 0
+	If e.Row.Band.Index = 0 Then
+		e.Row.ExpandAll()
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_InitializeRow(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeRowEventArgs e)
+{
+	// Expand rows in band 0
+	if(e.Row.Band.Index == 0)
+		e.Row.ExpandAll();
+}
+----
+
+* UltraGrid1.MouseMove - The code in the MouseMoveevent retrieves an object reference to the UIElement under the current mouse position, looks for a row object and if found gets a reference to the band, looks for a column object and if found gets a reference to the band, and finally displays the band index or a message in the TextBox:
+
+*In Visual Basic:*
+
+----
+Private Sub UltraGrid1_MouseMove(ByVal sender As Object, _
+  ByVal e As System.Windows.Forms.MouseEventArgs) _
+  Handles UltraGrid1.MouseMove
+  	' Declare and retrieve a reference to the UIElement
+	Dim aUIElement As UIElement
+	aUIElement = Me.UltraGrid1.DisplayLayout.UIElement.ElementFromPoint(New Point(e.X, e.Y))
+	If aUIElement Is Nothing Then Exit Sub
+	Dim aBand As UltraGridBand = Nothing
+	' Look for a row
+	Dim aRow As UltraGridRow
+	aRow = aUIElement.GetContext(GetType(UltraGridRow))
+	If Not aRow Is Nothing Then
+		aBand = Me.UltraGrid1.DisplayLayout.Bands(aRow.Band.Index)
+	End If
+	If aBand Is Nothing Then
+		' Look for a column
+		Dim aColumn As UltraGridColumn
+		aColumn = aUIElement.GetContext(GetType(UltraGridColumn))
+        If Not aColumn Is Nothing Then
+			aBand = Me.UltraGrid1.DisplayLayout.Bands(aColumn.Band.Index)
+		End If
+	End If
+	' If a band was found display the band index
+	If Not aBand Is Nothing Then
+		Me.UltraTextEditor1.Text = "Band(" & aBand.Index.ToString & ")"
+	Else
+		Me.UltraTextEditor1.Text = "$$*$$ no band associated with this location $$* $$"
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraGrid1_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+{
+	// Declare and retrieve a reference to the UIElement
+	UIElement aUIElement = 
+		this.ultraGrid1.DisplayLayout.UIElement.ElementFromPoint(new Point(e.X, e.Y));
+	if(aUIElement == null)
+		return;
+	UltraGridBand aBand = null;
+	// Look for a row
+	UltraGridRow aRow = (UltraGridRow)aUIElement.GetContext(typeof(UltraGridRow));
+	if(aRow != null)
+		aBand = this.ultraGrid1.DisplayLayout.Bands[aRow.Band.Index];
+	if(aBand == null)
+	{
+		// Look for a column	
+		UltraGridColumn aColumn = 
+		  (UltraGridColumn)aUIElement.GetContext(typeof(UltraGridColumn));
+		if(aColumn != null)
+			aBand = this.ultraGrid1.DisplayLayout.Bands[aColumn.Band.Index];
+	}
+	// If a band was found display the band index
+	if(aBand != null)
+		this.ultraTextEditor1.Text = "Band(" + aBand.Index.ToString() + ")";
+	else
+		this.ultraTextEditor1.Text = "$$*$$ no band associcated with this location";
+}
+----
+
+== Review
+
+The sample project illustrates a method of retrieving an object reference of the Band associated with the current position of the mouse.

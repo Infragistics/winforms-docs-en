@@ -1,0 +1,238 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-in-2012-volume-2",
+    "controlName": [],
+    "tags": [],
+    "guid": "7b07551a-58f6-48fa-813d-e4e4defb0d3a",  
+    "buildFlags": [],
+    "createdOn": "2012-08-30T12:08:20.3352574Z"
+}
+|metadata|
+////
+
+= What's New in 2012 Volume 2
+
+== Topic Overview
+
+=== Purpose
+
+This topic provides an overview of the new functionalities and components introduced with the Infragistics Windows Forms 2012 Volume 2 release.
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref335169509,CLR 4 – Only Support>>
+* <<_Ref335126284,Coded UI Test Extension>>
+* <<_Ref335129146,Infragistics Syntax Parsing Engine>>
+* <<_Ref335127697,Infragistics Undo/Redo Framework>>
+* <<_Ref335821915,Metro Style>>
+* <<_Ref335127690,Scrollbar Resizing>>
+* <<_Ref335163221,Visual Studio 2012 Support>>
+
+[[_Ref335169509]]
+[[_Ref335126284]]
+== CLR 4 – Only Support
+
+With the 2012 Volume 2 release, all Infragistics Windows Forms controls and components are  _only_   compiled against the Common Language Runtime (CLR) 4. Controls and components are no longer supported in earlier versions of the CLR (for example, 2, 3).
+
+== Coded UI Test Extension
+
+=== Coded UI Test Extension summary chart
+
+The following table summarizes the new Infragistics Coded UI Test Extension features included with the 2012 Volume 2 release.
+
+[options="header", cols="a,a"]
+|====
+|Feature|Description
+
+|Ability to Record and Replay with Infragistics Controls in Coded UI Test
+|With the release of Infragistics 2012.2, many of the Infragistics Windows Forms controls now participate with the Microsoft® Coded UI Test framework to allow recording and replaying automated tests.
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:coded-ui-test-extension.html[Coded UI Test Extension]
+|This section directs you to topics introduces and explains how to use Coded UI Test Extension.
+
+|====
+
+[[_Ref335129146]]
+== Infragistics Syntax Parsing Engine
+
+=== Infragistics Syntax Parsing Engine summary chart
+
+The following table summarizes the new Infragistics Syntax Parsing Engine features included with the 2012 Volume 2 release.
+
+[options="header", cols="a,a"]
+|====
+|Feature|Description
+
+|Parsing
+|The parsing feature exposes a syntax tree to allow for analysis of the text in a document according to a specified language.
+
+|Error Reporting
+|This gives the user visual cues that the text does not conform to the syntax rules of the language.
+
+|Custom language support
+|Supports Custom languages, defined in an Extended Backus-Naur Form (EBNF).
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-infragistics-syntax-parsing-engine.html[Infragistics Syntax Parsing Engine]
+|This topic contains links to conceptual information about, and code snippets to demonstrate how to use the Infragistics Syntax Parsing Engine.
+
+|====
+
+=== Samples
+
+The following samples provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Sample|Purpose
+
+|Custom Language Syntax Parsing
+|This sample demonstrates parsing and highlighting text in a RichTextBox and a TreeControl according to the rules of a custom-defined language (XML).
+
+|XamSyntaxEditor Studio in Windows Forms
+|This sample uses a _XamSyntaxEditor_ (WPF) control in a Windows Form. The _XamSytaxEditor_ uses the Infragistics Syntax Parsing Engine to perform its parsing, error reporting and custom language functions.
+
+|====
+
+[[_Ref335127697]]
+== Infragistics Undo/Redo Framework
+
+=== Infragistics Undo/Redo Framework summary chart
+
+The following table summarizes the new Infragistics Undo/Redo Framework features included with the 2012 Volume 2 release.
+
+[options="header", cols="a,a"]
+|====
+|Feature|Description
+
+|Support for undo/redo functionality available in most applications.
+|The Infragistics Undo/Redo Framework maintains operations history, executes Undo/Redo operations, and may group several operations into one single history item. Provides commands for invoking an undo/redo operation from within your UI. 
+
+By default, the Infragistics Undo/Redo Framework is not available; however, it is quickly and easily implemented.
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:undo-redo-framework-methods-and-properties-reference-by-class.html[Undo/Redo Framework Methods and Properties Reference by Class]
+|This section contains reference information about the key classes, methods and properties in the Infragistics Undo/Redo Framework™.
+
+| link:undo-redo-framework-methods-and-properties-reference-by-task.html[Undo/Redo Framework Methods and Properties Reference by Task]
+|This section contains reference information about the key methods and properties in the Infragistics Undo/Redo Framework™ that you may find useful for implementing specific Undo/Redo functionality.
+
+|====
+
+[[_Ref335127690]]
+[[_Ref335821915]]
+== Metro Style
+
+A new Metro style has been added to the Infragistics Windows Forms suite of application style libraries. Use this style library to give your Windows Forms application a modern, “Metro” look and feel.
+
+== Related Content
+
+=== Samples
+
+The following sample provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Sample|Purpose
+
+|FaceOut Showcase Sample
+|This sample presents a compelling dashboard view of customer sales data with a sleek Metro look.
+
+|====
+
+== Scrollbar Resizing
+
+=== Scrollbar Resizing summary chart
+
+The following table summarizes the new Infragistics Scrollbar Resizing features included with the 2012 Volume 2 release.
+
+[options="header", cols="a,a"]
+|====
+|Feature|Description
+
+|Ability to resize scrollbars and scrollbar buttons on Infragistics controls.
+|With the release of Infragistics 2012.2, you can resize the scrollbars and scrollbar buttons on Infragistics Windows Forms controls. This can be accomplished either individually or collectively, thus making it much easier to scroll controls on touch screen devices.
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:styling-guide-scrollbar-resizing.html[Scrollbar Resizing]
+|This topic describes the Scrollbar Resizing feature, lists the applicable Infragistics controls, and provides code examples demonstrating the new feature’s properties.
+
+|====
+
+=== Samples
+
+The following sample provides additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Sample|Purpose
+
+|Scrollbar Resizing
+|Resize the height and width of scrollbars and scrollbar arrows so they are easier to use on a touch screen and for aesthetic appeal.
+
+|====
+
+[[_Ref335163221]]
+== Visual Studio 2012 Support
+
+=== Visual Studio 2012 Support summary chart
+
+The following table summarizes the Visual Studio 2012 support features included with the 2012 Volume 2 release.
+
+[options="header", cols="a,a"]
+|====
+|Feature|Description
+
+|Complete compatibility with Visual Studio 2012.
+|The entire suite of Infragistics Windows Forms tools are compatible with Visual Studio 2012.
+
+|====

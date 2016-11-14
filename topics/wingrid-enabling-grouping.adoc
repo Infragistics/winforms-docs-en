@@ -1,0 +1,47 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-enabling-grouping",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Grouping","How Do I"],
+    "guid": "{CF8B7CE0-DACA-453E-A046-2276E53F39E0}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Enabling Grouping (WinGrid, GroupBy)
+
+The following code demonstrates how to programmatically enable Outlook GroupBy mode and then group records of a band by a column. In this example, root band's records will appear grouped according to the value of the "Country" field.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub Enable_GroupBy_Mode_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.UltraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy
+        Me.UltraGrid1.DisplayLayout.Bands(0).SortedColumns.Add("Country", False, True)
+        Me.UltraGrid1.DisplayLayout.Bands(0).SortedColumns.Add("City", False, True)
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void Enable_GroupBy_Mode_Load(object sender, EventArgs e)
+{
+        this.ultraGrid1.DisplayLayout.ViewStyleBand = ViewStyleBand.OutlookGroupBy;
+        this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Add("Country", false, true);
+        this.ultraGrid1.DisplayLayout.Bands[0].SortedColumns.Add("City", false, true);
+}
+----
+
+The following snapshot displays WinGrid™ with GroupBy view. Data is grouped by Country and then City in the root band.
+
+image::Images/WinGrid_Enable_GroupBy_Mode_01.png[enable groupby mode in ultragrid]

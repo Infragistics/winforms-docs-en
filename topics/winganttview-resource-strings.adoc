@@ -1,0 +1,390 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-resource-strings",
+    "controlName": [],
+    "tags": ["Appointments","Resource Strings","Scheduling"],
+    "guid": "9c0adeeb-b10f-456f-898c-f84c949e8eb6",  
+    "buildFlags": [],
+    "createdOn": "2010-06-04T18:05:01.611279Z"
+}
+|metadata|
+////
+
+= WinGanttView Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|DateTimeColumn_NullText
+|NA
+
+|GanttViewContextMenuItem_AddSubTask_Text
+|&Add sub-task for '{0}'
+
+|GanttViewContextMenuItem_CollapseTask_Text
+|&Hide sub-items
+
+|GanttViewContextMenuItem_DisableTask_Text
+|&Inactivate Task
+
+|GanttViewContextMenuItem_EnableTask_Text
+|&Activate Task
+
+|GanttViewContextMenuItem_ExpandTask_Text
+|&Show sub-items
+
+|GanttViewContextMenuItem_IndentTask_Text
+|&Indent Task
+
+|GanttViewContextMenuItem_InsertTask_Text
+|&Insert Task
+
+|GanttViewContextMenuItem_OutdentTask_Text
+|&Outdent Task
+
+|GanttViewContextMenuItem_RemoveTask_Text
+|&Delete Task
+
+|GanttViewContextMenuItem_ShowDialog_Text
+|Task &Information
+
+|Grid_Error_MessageBoxText_Generic
+|The value '{0}' is invalid for '{1}'.
+
+|Grid_Error_MessageBoxTitle_Generic
+|Error
+
+|Grid_Error_MessageBoxTitle_TaskException
+|Task Error
+
+|NewSubTask_Text
+|New sub-task
+
+|NewTask_Text
+|New Task
+
+|ResourceParseError_MessageBoxText
+|One or more of the specified resources do not exist.{1}Would you like to add the following resource(s): '{0}'?
+
+|SummaryTaskException_CannotSetPercentComplete
+|The percentage of completion cannot be set on a summary task. The percentage of completion for a summary task is determined by its sub-tasks.
+
+|Task_Name_Unnamed
+|unnamed
+
+|TaskDialog_AdvancedTab
+|Advanced
+
+|TaskDialog_BtnCancel
+|Cancel
+
+|TaskDialog_BtnOK
+|OK
+
+|TaskDialog_CalendarInfoNullError
+|CalendarInfo should never return null.
+
+|TaskDialog_ErrorTitle
+|Error
+
+|TaskDialog_GeneralTab
+|General
+
+|TaskDialog_InvalidOwnerError
+|Invalid Owner found. Please use a valid value.
+
+|TaskDialog_InvalidResourceNameError
+|Please enter a valid resource name
+
+|TaskDialog_InvalidRowNumberError
+|Please enter a valid row number.
+
+|TaskDialog_InvalidTabKeyError
+|Unknown tab key in FromTabDialogPage
+
+|TaskDialog_InvalidTaskContraint
+|Please enter a valid Task Constraint Value
+
+|TaskDialog_InvalidTaskDependencyTypeError
+|Please enter a valid task dependency type.
+
+|TaskDialog_InvalidTaskNameError
+|Please enter a valid task name.
+
+|TaskDialog_InvalidTaskNameOrRowNumber
+|An invalid Row Number and Task Name pair was found. Please use valid Task Name and Row Number.
+
+|TaskDialog_lblConstraintDate
+|Constraint date:
+
+|TaskDialog_lblConstraintTask
+|Constrain Task
+
+|TaskDialog_lblConstraintType
+|Constraint type:
+
+|TaskDialog_lblDates
+|Dates
+
+|TaskDialog_lblDeadline
+|Deadline:
+
+|TaskDialog_lblDuration
+|Duration:
+
+|TaskDialog_lblEndDate
+|Finish:
+
+|TaskDialog_lblMilestone
+|Mark task as milestone
+
+|TasKDialog_lblName
+|Name:
+
+|TaskDialog_lblNotes
+|Notes:
+
+|TaskDialog_lblPrecentageComplete
+|Percent Complete:
+
+|TaskDialog_lblPredecessors
+|Predecessors:
+
+|TaskDialog_lblResources
+|Resources:
+
+|TaskDialog_lblStartDate
+|Start:
+
+|TaskDialog_NotesTab
+|Notes
+
+|TaskDialog_NullOwnerError
+|The owner should not be null.
+
+|TaskDialog_NumericEditorDurationMaskDays
+|d
+
+|TaskDialog_PredecessorsTab
+|Predecessors
+
+|TaskDialog_ProjectNullError
+|Project should never return null.
+
+|TaskDialog_ResourceNameCaption
+|Resource Name
+
+|TaskDialog_ResourcesTab
+|Resources
+
+|TaskDialog_RowNumberCaption
+|Row Number
+
+|TaskDialog_ShowNotSupported
+|The TaskDialog does not support non-modal display. Use the ShowDialog method to launch the dialog.
+
+|TaskDialog_TaskDependencyTypeCaption
+|Task Dependency Type
+
+|TaskDialog_TaskNameCaption
+|Task Name
+
+|TaskDialog_Title
+|Task Information
+
+|TaskDialog_UpdateFailedTitle
+|Update Failed
+
+|TaskProxy_PropertyDisplayName_Task.Constraint
+|Constraint Type
+
+|TaskProxy_PropertyDisplayName_Task.ConstraintDateTime
+|Constraint Date
+
+|TaskProxy_PropertyDisplayName_Task.Deadline
+|Deadline
+
+|TaskProxy_PropertyDisplayName_Task.Dependencies
+|Predecessors
+
+|TaskProxy_PropertyDisplayName_Task.Duration
+|Duration
+
+|TaskProxy_PropertyDisplayName_Task.EndDateTime
+|Finish
+
+|TaskProxy_PropertyDisplayName_Task.Milestone
+|Milestone
+
+|TaskProxy_PropertyDisplayName_Task.Name
+|Task Name
+
+|TaskProxy_PropertyDisplayName_Task.Notes
+|Notes
+
+|TaskProxy_PropertyDisplayName_Task.PercentComplete
+|% Complete
+
+|TaskProxy_PropertyDisplayName_Task.Resources
+|Resource Names
+
+|TaskProxy_PropertyDisplayName_Task.RowNumber
+|ID
+
+|TaskProxy_PropertyDisplayName_Task.StartDateTime
+|Start
+
+|ToolTipSettings_DefaultTitle
+|Task
+
+|ToolTipSettings_DefaultTitle_Deadline
+|Deadline
+
+|ToolTipSettings_DefaultTitle_Milestone
+|Milestone
+
+|ToolTipSettings_DefaultTitle_PercentComplete
+|Progress
+
+|ToolTipSettings_DefaultTitle_Summary
+|Summary
+
+|ToolTipSettings_Prefix_CompleteThrough
+|Complete Through
+
+|ToolTipSettings_Prefix_Deadline
+|Deadline
+
+|ToolTipSettings_Prefix_Duration
+|Duration
+
+|ToolTipSettings_Prefix_Finish
+|Finish
+
+|ToolTipSettings_Prefix_Name
+|Task
+
+|ToolTipSettings_Prefix_PercentComplete
+|% Complete
+
+|ToolTipSettings_Prefix_Start
+|Start
+
+|ToolTipSettingsTaskDependency_Prefix_Dependent
+|To
+
+|ToolTipSettingsTaskDependency_Prefix_Predecessor
+|From
+
+|ToolTipSettingsTaskDependency_Prefix_TaskDependencyType
+|Task Link
+
+|UltraGanttView_ActiveTaskChanged
+|Fired after the ActiveTask changes.
+
+|UltraGanttView_ActiveTaskChanging
+|Fired before the ActiveTask changes.
+
+|UltraGanttView_CellActivated
+|Fired after a cell is activated in the grid portion of the control.
+
+|UltraGanttView_CellActivating
+|Fired before a cell is activated in the grid portion of the control.
+
+|UltraGanttView_CellDeactivating
+|Fired before a cell in the grid portion of the contrl is deactivated.
+
+|UltraGanttView_Description
+|Windows Forms control which presents a WinSchedule Project, along with its Tasks, using a grid on one side and a timeline on the other.
+
+|UltraGanttView_DisplayTaskDialog_Exception_CalendarInfoNotAssociated
+|The TaskDialog cannot be displayed because the task and this control are not associated with the same UltraCalendarInfo.
+
+|UltraGanttView_Exception_ActiveTaskNotAssociated
+|'{0}' belongs to a different project than the one currently being displayed by the control, and cannot be designated as the ActiveTask.
+
+|UltraGanttView_Exception_CannotAssignUnassociatedProject
+|The project cannot be assigned to the UltraGanttView because it is not associated with the same UltraCalendarInfo instance.
+
+|UltraGanttView_TaskAdded
+|Fired after the user adds a Task.
+
+|UltraGanttView_TaskAdding
+|Fired before the user adds a Task.
+
+|UltraGanttView_TaskDeleted
+|Fired after the user deletes a Task.
+
+|UltraGanttView_TaskDeleting
+|Fired before the user deletes a Task.
+
+|UltraGanttView_TaskDialogDisplaying
+|Fired before the TaskDialog is displayed.
+
+|UltraGanttViewPrintDocument_Legend_Key_Deadline
+|Deadline
+
+|UltraGanttViewPrintDocument_Legend_Key_Milestone
+|Milestone
+
+|UltraGanttViewPrintDocument_Legend_Key_Progress
+|Progress
+
+|UltraGanttViewPrintDocument_Legend_Key_Summary
+|Summary
+
+|UltraGanttViewPrintDocument_Legend_Key_Task
+|Task
+
+|UltraGantViewPrintDocument_Error_ColumnIsTooWide
+|Unable to print because column '{0}' is too wide to fit on the available space of a single horizontal page. 
+
+Try printing again after making the following changes: 
+
+- Reduce the width of the column. 
+
+- Turn off AutoSizing of columns. 
+
+- Reduce the number of repeating columns printed on each page. 
+
+- Reduce the width of the repeating column(s).
+
+|UltraGantViewPrintDocument_Error_NothingToPrint
+|There are no tasks to print in the specified range.
+
+|UltraGantViewPrintDocument_Error_RepeatingColumnsAreTooWide
+|Unable to print because the repeating columns ({0}) are too wide to fit on a single horizontal page. 
+
+Try printing again after making the following changes: 
+
+- Reduce the number of repeating columns printed on each page. 
+
+- Reduce the width of the repeating column(s).
+
+|UltraGantViewPrintDocument_Error_TaskRowIsTooTall
+|Unable to print because a single task row (Task name: '{0}') is too tall to fit on a single vertical page. 
+
+Try printing again after making the following changes: 
+
+- Reduce the height of the row. 
+
+- Turn off AutoSizing of rows.
+
+|UltraGantViewPrintDocument_Error_TimelineColumnsAreTooWide
+|Unable to print because the timline columns are too wide to fit on a single horizontal page. 
+
+Try printing again after making the following changes: 
+
+- Reduce the width of the columns in the timeline.
+
+|UltraGantViewPrintDocument_Error_Title
+|Print error
+
+|====

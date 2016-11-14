@@ -1,0 +1,111 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-setting-wincalcmanager-formulas-at-run-time",
+    "controlName": ["WinCalcManager"],
+    "tags": ["Calculations","How Do I"],
+    "guid": "{13C4B6E6-1198-4961-8C7D-4A63B98B5BEB}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting WinCalcManager's Formulas at Run Time
+
+You can interact with the WinCalcManager™ at run time by getting or setting any of the properties associated with the elements in a calculation network on a form. This walkthrough is designed to show you how to set up a summation of the values of two text boxes and put the resulting value in a third text box.
+
+[start=1]
+. Begin with a Windows Forms project.
+[start=2]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinCalcManager
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinCalcManager;
+----
+
+[start=3]
+. On the form place an UltraCalcManager, three TextBoxes, and a server Button arrange them how you please.
+
+image::images\WinCalcManager_Settings_a_CalcManagers_Formulas_at_RunTime_02.png[shows form layout at design time]
+
+[start=4]
+. Create the Click event for the button you have placed on the form. Place the following code into newly created Click event.
+
+*In Visual Basic:*
+
+----
+Private Sub btnCalculate_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnCalculate.Click
+	' Gets the CalcSettings for the extended element specified.
+	Dim cs1 As CalcSettings = Me.UltraCalcManager1.GetCalcSettings(Me.txtNumber1)
+	' Gets/sets which property of the control is used as either the source or target 
+	' of any calculations involving the control.
+	cs1.PropertyName = "Text"
+	' This sets the CalcSettings extender property for the specified element.
+	Me.UltraCalcManager1.SetCalcSettings(Me.txtNumber1, cs1)
+	' Gets the CalcSettings for the extended element specified.
+	Dim cs2 As CalcSettings = Me.UltraCalcManager1.GetCalcSettings(Me.txtNumber2)
+	' Gets/sets which property of the control is used as either the source or target 
+	' of any calculations involving the control.
+	cs2.PropertyName = "Text"
+	' This sets the CalcSettings extender property for the specified element. 
+	Me.UltraCalcManager1.SetCalcSettings(Me.txtNumber2, cs2)
+	' Gets the CalcSettings for the extended element specified.
+	Dim cs3 As CalcSettings = Me.UltraCalcManager1.GetCalcSettings(Me.txtSum)
+	' Gets/sets which property of the control is used as either the source or target 
+	' of any calculations involving the control.
+	cs3.PropertyName = "Text"
+	' The Formula which will be used to set the value of this object. 
+	cs3.Formula = "[//txtNumber1] + [//txtNumber2]"
+	' This sets the CalcSettings extender property for the specified element. 
+	Me.UltraCalcManager1.SetCalcSettings(Me.txtSum, cs3)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnCalculate_Click(object sender, EventArgs e)
+{
+	// Gets the CalcSettings for the extended element specified.
+	CalcSettings cs1 = 
+	  this.ultraCalcManager1.GetCalcSettings(this.txtNumber1);
+	// Gets/sets which property of the control is used as either the source or target 
+	// of any calculations involving the control.
+	cs1.PropertyName = "Text";
+	// This sets the CalcSettings extender property for the specified element. 
+	this.ultraCalcManager1.SetCalcSettings(this.txtNumber1, cs1);
+	// Gets the CalcSettings for the extended element specified.
+	CalcSettings cs2 = 
+	  this.ultraCalcManager1.GetCalcSettings(this.txtNumber2);
+	// Gets/sets which property of the control is used as either the source or target 
+	// of any calculations involving the control.
+	cs2.PropertyName = "Text";
+	// This sets the CalcSettings extender property for the specified element. 
+	this.ultraCalcManager1.SetCalcSettings(this.txtNumber2, cs2);
+	// Gets the CalcSettings for the extended element specified.
+	CalcSettings cs3 = this.ultraCalcManager1.GetCalcSettings(this.txtSum);
+	// Gets/sets which property of the control is used as either the source or target 
+	// of any calculations involving the control.
+	cs3.PropertyName = "Text";
+	// The Formula which will be used to set the value of this object. 
+	cs3.Formula = "[//txtNumber1] + [//txtNumber2]";
+	// This sets the CalcSettings extender property for the specified element. 
+	this.ultraCalcManager1.SetCalcSettings(this.txtSum, cs3);
+}
+----
+
+[start=5]
+. If you build project and run it, type in values into the first and second textbox, and press the Calculate button, the resulting calculation will display in the third textbox.
+
+image::images\WinCalcManager_Settings_a_CalcManagers_Formulas_at_RunTime_01.png[shows form at run time, after calculating a value at run time]

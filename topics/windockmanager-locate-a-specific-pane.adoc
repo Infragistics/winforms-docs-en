@@ -1,0 +1,42 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-locate-a-specific-pane",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{22B69C69-6DFD-4AFC-9967-6D9E30FC53EB}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Locate a Specific Pane
+
+Before you can effect changes on a pane, such as pinning, unpinning, maximizing, minimizing, you must first locate the pane to change. The WinDockManager™ has several methods available for obtaining the location, by key, x and y coordinates, and control.
+
+The most common way of locating a pane is by specifying a control. The following code snippet uses the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~panefromcontrol.html[PaneFromControl]"]  method to find a control's DockLocation.
+
+*In Visual Basic:*
+
+----
+Private Sub btnFindPane_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnFindPane.Click
+	MessageBox.Show(Me.UltraDockManager1.PaneFromControl( _
+	  Me.UltraWeekView1).DockAreaPane. _
+	  DockedLocation.ToString())
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnFindPane_Click(object sender, System.EventArgs e)
+{
+	MessageBox.Show(this.ultraDockManager1.PaneFromControl(
+	  this.ultraWeekView1).DockAreaPane.DockedLocation.ToString());
+}
+----
+
+You could also use  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~panefromkey.html[PaneFromKey]"]  or  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~panefromposition.html[PaneFromPosition]"]  methods as well to locate a specific pane.

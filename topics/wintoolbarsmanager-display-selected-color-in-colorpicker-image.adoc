@@ -1,0 +1,21 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-display-selected-color-in-colorpicker-image",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{411799FD-4CD0-40FC-A3C3-852A53DBD9EA}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Display Selected Color in ColorPicker Image
+
+The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcolorpickertool.html[PopUpColorPicker]"]  tool is a popup list of colors from which the user can select from. When no image is set for any of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  objects the tool will display a box with the selected color in it. You can specify an image and have a color change in the image to whatever color the user selects from the list of colors. This is similar to he way the Font Color tool in Word works.
+
+To have a custom image that changes a color in the image each time the user selects a different color, first go to the Customize editor and create a PopUpColorPicker tool. Under  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  for that tool, choose AppearancesSmall/Appearance and set an image that you want to display for the tool when it is on the toolbar. In the image, determine which color will be the one that changes. For example, if the tool displays an image of an ink bottle, you might want the inside of the bottle (the "ink) to assume the chosen color.
+
+In the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcolorpickertool~replaceablecolor.html[ReplaceableColor]"]  property specify that color that you want to change. Now, when the user selects a different color using the tool, the color you specified will change in the image of the tool to the color that the user selected.

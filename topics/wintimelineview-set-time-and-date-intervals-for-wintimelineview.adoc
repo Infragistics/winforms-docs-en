@@ -1,0 +1,69 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-set-time-and-date-intervals-for-wintimelineview",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I","Scheduling"],
+    "guid": "{797AF682-4932-4F6B-ACF2-80E50D06C7AA}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Time and Date Intervals for WinTimelineView
+
+The WinTimelineView™ control displays  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeslot.html[TimeSlots]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointments]"]  as columns along a horizontal timeline presented from left to right. End-users can resize the columns, thereby increasing or decreasing the number of visible TimeSlots.
+
+The WinTimelineView control enables you to span Time and (or) Date as TimeSlots. For this purpose, the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeinterval.html[TimeInterval]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dateinterval.html[DateInterval]"]  objects can be used to define any regularly repeating interval. The  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.datetimeinterval~interval.html[Interval]"]  property of type integer can be used to define the number of periods in a cycle, and the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timeinterval~intervalunits.html[IntervalUnits]"]  property can be used to define the unit of time, with its value being expressed in Minutes or Hours (for the TimeInterval class), or days, weeks, months or years (for the DateInterval class).
+
+The duration of each division of time presented in a column can be defined through the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~primaryinterval.html[PrimaryInterval]"]  property. Any number of additional date or time intervals can be displayed above the primary interval by adding members to the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~additionalintervals.html[AdditionalIntervals]"]  collection. When one or more members exist in the AdditionalIntervals collection, multiple date/time intervals are displayed from top to bottom in order of descending duration, e.g., the time intervals with longer durations appear above those whose duration is shorter. Once your TimeInterval and (or) DateInterval objects are configured, they can then be assigned to the PrimaryInterval or AdditionalIntervals properties.
+
+For example a TimeInterval of two hours can be set as the PrimaryInterval and a DateInterval of one month can be set as the AdditionalInterval. It is necessary that you have one PrimaryInterval to represent the Timeslots. AdditionalIntervals are optional depending upon the scenario, and any number of AdditionalIntervals can be assigned to the WinTimelineView control.
+
+This topic assumes you have an ultraTimeLineView control with 3 Owners dropped onto your form. For information on assigning Owners to WinTimelineView, see the link:wintimelineview-assign-multiple-owners-for-wintimelineview.html[Assign Multiple Owners for WinTimelineView] topic.
+
+*In Visual Basic:*
+
+----
+' Define TimeInterval object and pass Interval and IntervalUnits as  parameters 
+Dim timeInterval As New TimeInterval(15, TimeIntervalUnits.Minutes)
+' Define DateInterval object and pass Interval and IntervalUnits as  parameters - 1st additional interval 
+Dim dayInterval As New DateInterval(1, DateIntervalUnits.Days)
+' Define DateInterval object and pass Interval and IntervalUnits as  parameters - 2nd additional interval 
+Dim monthInterval As New DateInterval(1, DateIntervalUnits.Months)
+' Set TimeInterval instance as the primary interval
+Me.ultraTimelineView1.PrimaryInterval = timeInterval 
+timeInterval.LabelText = "EST"
+' Set DateInterval instance(1st additional interval) as the additional interval
+Me.ultraTimelineView1.AdditionalIntervals.Add(dayInterval) 
+dayInterval.LabelText = "Date"
+' Set DateInterval instance(2nd additional interval) also  as the additional interval
+Me.ultraTimelineView1.AdditionalIntervals.Add(monthInterval) 
+monthInterval.LabelText = "Month"
+Me.ultraTimelineView1.ColumnWidth = 120
+----
+
+*In C#:*
+
+----
+// Define TimeInterval object and pass Interval and IntervalUnits as  parameters
+TimeInterval timeInterval = new TimeInterval(15, TimeIntervalUnits.Minutes);
+// Define DateInterval object and pass Interval and IntervalUnits as  parameters - 1st additional interval
+DateInterval dayInterval = new DateInterval(1, DateIntervalUnits.Days);
+// Define DateInterval object and pass Interval and IntervalUnits as  parameters - 2nd additional interval
+DateInterval monthInterval = new DateInterval(1, DateIntervalUnits.Months);
+// Set TimeInterval instance as the primary interval
+this.ultraTimelineView1.PrimaryInterval = timeInterval;
+timeInterval.LabelText = "EST";
+// Set DateInterval instance(1st additional interval) as the additional interval
+this.ultraTimelineView1.AdditionalIntervals.Add(dayInterval);
+dayInterval.LabelText = "Date";
+// Set DateInterval instance(2nd additional interval) also as the additional interval
+this.ultraTimelineView1.AdditionalIntervals.Add(monthInterval);
+monthInterval.LabelText = "Month";
+this.ultraTimelineView1.ColumnWidth = 120;
+----
+
+image::Images\WinTimeLineView_Set_Time_and_Date_Intervals_for_WinTimeLineView.png[]

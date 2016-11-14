@@ -1,0 +1,35 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-retrieving-value-from-a-specific-cell",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{F3EE9E58-EBEB-4CAD-836F-DE7AD9A0A43D}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Retrieving Value from a Specific Cell
+
+The following code demonstrates how to retrieve a value from a specific cell in a specific row.
+
+*In Visual Basic:*
+
+----
+Private Sub btnRetrieveValue_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnRetrieveValue.Click
+	MessageBox.Show(Me.UltraGrid1.Rows(2).Cells(2).Value)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnRetrieveValue_Click(object sender, EventArgs e)
+{
+	MessageBox.Show(this.ultraGrid1.Rows[2].Cells[2].Value.ToString());
+}
+----

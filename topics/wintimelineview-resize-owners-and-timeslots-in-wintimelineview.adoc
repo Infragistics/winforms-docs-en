@@ -1,0 +1,41 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintimelineview-resize-owners-and-timeslots-in-wintimelineview",
+    "controlName": ["WinTimelineView"],
+    "tags": ["How Do I"],
+    "guid": "{CAD84AE6-660B-4FB7-A68B-E599C9458579}",  
+    "buildFlags": [],
+    "createdOn": "2009-08-06T17:12:13Z"
+}
+|metadata|
+////
+
+= Resize Owners and Timeslots in WinTimelineView
+
+The WinTimelineView™ control displays owners and timeslots and provides a fully featured time management control. You can allow or deny your end-users the ability to customize the user interface, thereby changing the owners or timeslots in view. It can be done through the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~columnwidth.html[ColumnWidth]"] ,  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~columnsizing.html[ColumnSizing]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultratimelineview~ownersizing.html[OwnerSizing]"]  properties of the WinTimelineView$ control.
+
+This topic shows how you can allow your end-users to modify the owners and timeslots in view by dragging the column or row headers.
+
+*In Visual Basic:*
+
+----
+' Sets the width of the column to increase or decrease the timeslots in view 
+Me.ultraTimelineView1.ColumnWidth = 120 
+' Allow end-users to resize the timeslots in view by dragging the timeslots Header 
+Me.ultraTimelineView1.ColumnSizing = TimelineViewColumnSizing.Header 
+' Enable end-users to drag Rows thereby changing the Owners in view by dragging the owner Row 
+Me.ultraTimelineView1.OwnerSizing = TimelineViewOwnerSizing.Row
+----
+
+*In C#:*
+
+----
+// Sets the width of the column to increase or decrease the timeslots in view
+ this.ultraTimelineView1.ColumnWidth = 120;
+// Allow end-users to resize the timeslots in view by dragging the timeslots Header
+this.ultraTimelineView1.ColumnSizing = TimelineViewColumnSizing.Header;
+// Enable end-users to drag Rows thereby changing the Owners in view by dragging the owner Row
+this.ultraTimelineView1.OwnerSizing = TimelineViewOwnerSizing.Row;
+----

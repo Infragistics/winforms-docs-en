@@ -1,0 +1,61 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-indenting-grouped-records",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{72F83EC6-725A-4B16-88E7-E342F5DD038B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Configuring the Indenting Grouped Rows (WinGrid, GroupBy)
+
+You can specify the indentation of a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[Band's]"]  GroupBy rows by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~indentationgroupbyrow.html[IndentationGroupByRow]"]  property. The value of this property is the number of pixels by which the GroupBy rows of a Band will be offset from the left edge of that Band.
+
+== To access the IndentationGroupByRow property:
+
+[start=1]
+. Right-click on the WinGrid™ at design-time and select "UltraWinGrid Designer" from the context menu.
+[start=2]
+. In the UltraWinGrid Designer expand the Band and Column Settings node, then select a Band.
+[start=3]
+. Once a Band is selected, in the right hand pane the properties for the Band are displayed. Scroll down to the property called IndentationGroupByRow.
+
+Below is a WinGrid which is using the default indentation for it's GroupBy rows:
+
+image::Images/WinGrid_GroupBy_Row_Indentation_01.png[indent groupby rows in ultragrid]
+
+If the IndentationGroupByRow is set to 21 then the GroupBy rows will have a larger indentation than they would by default.
+
+In that case, the WinGrid looks like this:
+
+image::Images/WinGrid_GroupBy_Row_Indentation_02.png[indent groupby rows in ultragrid]
+
+If the IndentationGroupByRow property is set to 0 (zero), then all of the GroupBy rows will be flush against the left edge of the Band that they are in. In that situation it is necessary to somehow visually represent the nested relationships of the GroupBy rows. You can achieve this by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~indentationgroupbyrowexpansionindicator.html[IndentationGroupByRowExpansionIndicator]"]  property to a value which will "accumulate" for each nested GroupBy row. Please note that this expansion indicator indentation accumulation only occurs when the GroupBy row indentation is set to 0. In the screenshot below, the Band has its If the IndentationGroupByRow property is set to 0 and its IndentationGroupByRowExpansionIndicator property set to 16.
+
+image::Images/WinGrid_GroupBy_Row_Indentation_03.png[indent groupby rows in ultragrid]
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~indentationgroupbyrowexpansionindicator.html[IndentationGroupByRowExpansionIndicator]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  class allows you to specify the indentation of expansion indicators in GroupBy rows. This property represents a pixel offset for the expansion indicators of a Band's GroupBy rows.
+
+== To access the IndentationGroupByRowExpansionIndicator property:
+
+[start=1]
+. Right-click on the WinGrid™ at design time, and select "UltraWinGrid Designer" from the context-sensitive menu
+[start=2]
+. In the WinGrid designer, expand the Band and Column Settings node, then select a Band.
+[start=3]
+. Once a Band is selected, in the right hand pane the properties for the Band are displayed. Scroll down to the property called IndentationGroupByRowExpansionIndicator. Setting this property will indent the Band's GroupBy rows
+
+The following image is an example of the initial appearance of the WinGrid:
+
+image::Images/WinGrid_GroupBy_Row_Expansion_Indicators_Indentation_01.png[indent groupby row expansion indicators in ultragrid]
+
+If you set the IndentationGroupByRowExpansionIndicator to 16, the WinGrid would appear similar to the image below:
+
+image::Images/WinGrid_GroupBy_Row_Expansion_Indicators_Indentation_02.png[indent groupby row expansion indicators in ultragrid]
+
+*Note:* When you have the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowexpansionstyle.html[GroupByRowExpansionStyle]"]  property set to 'DoubleClick' or 'Disabled', setting this property does not affect the GroupBy row because the GroupBy rows will not have expansion indicators.

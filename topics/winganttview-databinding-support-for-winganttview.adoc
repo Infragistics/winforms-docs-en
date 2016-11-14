@@ -1,0 +1,338 @@
+﻿////
+
+|metadata|
+{
+    "name": "winganttview-databinding-support-for-winganttview",
+    "controlName": ["WinGanttView"],
+    "tags": ["Data Binding","How Do I"],
+    "guid": "{D09B3B90-EE6F-47AD-B13A-78F74A13E271}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= DataBinding Support for WinGanttView
+
+The WinGanttView™ control provides support for data binding through the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.projectsdatabinding.html[ProjectsDataBinding] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.tasksdatabinding.html[TasksDataBinding] objects. Two new properties were added to the WinCalendarInfo™ component to support data binding, link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~databindingsforprojects.html[DataBindingsForProjects] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~databindingsfortasks.html[DataBindingsForTasks], which are of type ProjectsDataBinding and TasksDataBinding respectively.
+
+The following example code shows how to bind WinGanttView to the Projects and Tasks collection of the WinCalendarInfo component. Two data tables with proper schema is created for this purpose and appropriate members are set.
+
+=== Project Table
+
+[cols="a,a,a,a"]
+|====
+|*ProjectID*
+|*ProjectKey*
+|*ProjectName*
+|*ProjectStartTime*
+
+|Guid.NewGuid()
+|projectKey
+|QuarterlyProject
+|DateTime.Today
+
+|====
+
+=== Task Table
+
+[cols="a,a,a,a,a,a,a,a,a"]
+|====
+|*TaskID*
+|*ProjectKey*
+|*TaskName*
+|*TaskStartTime*
+|*TaskDuration*
+|*ParentTaskID*
+|*TaskConstraint*
+|*TaskPercentComplete*
+|*AllProperties*
+
+|planningTaskid
+|projectKey
+|Planning
+|DateTime.Now
+|TimeSpan.FromDays(5)
+|null
+|StartNoEarlierThan
+|null
+|null
+
+|Guid.NewGuid()
+|projectKey
+|Prepare Budget
+|DateTime.Now
+|TimeSpan.FromDays(2)
+|planningTaskid
+|StartNoEarlierThan
+|null
+|null
+
+|Guid.NewGuid()
+|projectKey
+|Allocate Teams
+|DateTime.Now.AddDays(2)
+|TimeSpan.FromDays(3)
+|planningTaskid
+|StartNoEarlierThan
+|null
+|null
+
+|implementationTaskid
+|projectKey
+|Implementation
+|DateTime.Now.AddDays(6)
+|TimeSpan.FromDays(16)
+|null
+|StartNoEarlierThan
+|null
+|null
+
+|installationTaskid2
+|projectKey
+|Installations
+|DateTime.Now.AddDays(6)
+|TimeSpan.FromDays(2)
+|implementationTaskid
+|StartNoEarlierThan
+|60
+|null
+
+|Guid.NewGuid()
+|projectKey
+|Execution
+|DateTime.Now.AddDays(8)
+|TimeSpan.FromDays(13)
+|implementationTaskid
+|StartNoEarlierThan
+|null
+|null
+
+|testingTaskid
+|projectKey
+|Testing
+|DateTime.Now.AddDays(23)
+|TimeSpan.FromDays(20)
+|null
+|StartNoEarlierThan
+|null
+|null
+
+|Guid.NewGuid()
+|projectKey
+|TestPhase1
+|DateTime.Now.AddDays(23)
+|TimeSpan.FromDays(10)
+|testingTaskid
+|StartNoEarlierThan
+|20
+|null
+
+|Guid.NewGuid()
+|projectKey
+|TestPhase2
+|DateTime.Now.AddDays(36)
+|TimeSpan.FromDays(9)
+|testingTaskid
+|StartNoEarlierThan
+|null
+|null
+
+|====
+
+It is assumed that UltraGanttView control and UltraCalendarInfo components are dropped onto the form. Write the following code within the Form load event.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGanttView
+Imports Infragistics.Win.UltraWinSchedule
+' Call the method that creates a DataSet 
+Dim ds As DataSet = Me.GetSampleData()
+' Set the BindingContextControl property to reference this form 
+Me.ultraCalendarInfo1.DataBindingsForTasks.BindingContextControl = Me 
+Me.ultraCalendarInfo1.DataBindingsForProjects.BindingContextControl = Me 
+' Set the DataBinding members for Projects 
+Me.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(ds, "Projects") 
+Me.ultraCalendarInfo1.DataBindingsForProjects.IdMember = "ProjectID" 
+Me.ultraCalendarInfo1.DataBindingsForProjects.KeyMember = "ProjectKey" 
+Me.ultraCalendarInfo1.DataBindingsForProjects.NameMember = "ProjectName" 
+Me.ultraCalendarInfo1.DataBindingsForProjects.StartDateMember = "ProjectStartTime" 
+' Set the DataBinding members for Tasks
+Me.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(ds, "Tasks") 
+' Basic Task properties 
+Me.ultraCalendarInfo1.DataBindingsForTasks.NameMember = "TaskName" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = "TaskDuration" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = "TaskStartTime" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.IdMember = "TaskID" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.ProjectKeyMember = "ProjectKey" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.ParentTaskIdMember = "ParentTaskID" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = "Constraint" 
+Me.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = "TaskPercentComplete" 
+'All other properties
+Me.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = "AllProperties"
+' Since we are showing a task that belongs to an explicitly defined 
+' project (i.e., not the UnassignedProject), assign that project to 
+' the control's Project property so the control knows to display that project. 
+Me.ultraGanttView1.CalendarInfo = Me.ultraCalendarInfo1 
+Me.ultraGanttView1.Project = Me.ultraGanttView1.CalendarInfo.Projects(1)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGanttView;
+using Infragistics.Win.UltraWinSchedule;
+//  Call the method that creates a DataSet
+DataSet ds = this.GetSampleData();
+//  Set the BindingContextControl property to reference this form
+this.ultraCalendarInfo1.DataBindingsForTasks.BindingContextControl = this;
+this.ultraCalendarInfo1.DataBindingsForProjects.BindingContextControl = this;
+//  Set the DataBinding members for Projects 
+this.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(ds, "Projects");
+this.ultraCalendarInfo1.DataBindingsForProjects.IdMember = "ProjectID";
+this.ultraCalendarInfo1.DataBindingsForProjects.KeyMember = "ProjectKey";
+this.ultraCalendarInfo1.DataBindingsForProjects.NameMember = "ProjectName";
+this.ultraCalendarInfo1.DataBindingsForProjects.StartDateMember = "ProjectStartTime";
+//  Set the DataBinding members for Tasks
+this.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(ds, "Tasks");
+// Basic Task properties 
+this.ultraCalendarInfo1.DataBindingsForTasks.NameMember = "TaskName";
+this.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = "TaskDuration";
+this.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = "TaskStartTime";
+this.ultraCalendarInfo1.DataBindingsForTasks.IdMember = "TaskID";
+this.ultraCalendarInfo1.DataBindingsForTasks.ProjectKeyMember = "ProjectKey";
+this.ultraCalendarInfo1.DataBindingsForTasks.ParentTaskIdMember = "ParentTaskID";
+this.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = "Constraint";
+this.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = "TaskPercentComplete";
+// All other properties
+this.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = "AllProperties";
+//  Since we are showing a task that belongs to an explicitly defined
+//  project (i.e., not the UnassignedProject), assign that project to
+//  the control's Project property so the control knows to display that project.
+this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
+this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
+----
+
+The following method creates the data table with specific schema that defines projects and tasks members.
+
+*In Visual Basic:*
+
+----
+Private Function GetSampleData() As DataSet
+    Dim theDataSet As New DataSet()
+    Dim projectKey As String = "projectKey"
+    Dim theProjects As DataTable = theDataSet.Tables.Add("Projects")
+    theProjects.Columns.Add("ProjectID")
+    theProjects.Columns.Add("ProjectKey")
+    theProjects.Columns.Add("ProjectName")
+    theProjects.Columns.Add("ProjectStartTime", GetType(DateTime))
+    ' Assign values for each Project member 
+    theProjects.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "QuarterlyProject", DateTime.Today})
+    Dim theTasks As DataTable = theDataSet.Tables.Add("Tasks")
+    theTasks.Columns.Add("TaskID")
+    theTasks.Columns.Add("ProjectKey")
+    theTasks.Columns.Add("TaskName")
+    theTasks.Columns.Add("TaskStartTime", GetType(DateTime))
+    theTasks.Columns.Add("TaskDuration", GetType(TimeSpan))
+    theTasks.Columns.Add("ParentTaskID")
+    theTasks.Columns.Add("Constraint", typeof(object))
+    theTasks.Columns.Add("TaskPercentComplete")
+    'The Task properties are all covered by individual members. But we could save space in the database
+    'By storing data as binary using AllProperties and not binding the other fields.
+    theTasks.Columns.Add("AllProperties", typeof(Byte[]))
+    ' Parent Task1
+    Dim planningTaskid As Guid = Guid.NewGuid()
+    ' Assign values for each Task member 
+    theTasks.Rows.Add(New [Object]() {planningTaskid, projectKey, "Planning", DateTime.Now, TimeSpan.FromDays(5), Nothing, TaskConstraint.StartNoEarlierThan, Nothing})
+    ' Child Task1 of Parent Task1
+    theTasks.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "Prepare Budget", DateTime.Now, TimeSpan.FromDays(2), planningTaskid,TaskConstraint.StartNoEarlierThan,100})
+    ' Child Task2 of Parent Task1
+    theTasks.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "Allocate Teams", DateTime.Now.AddDays(2), TimeSpan.FromDays(3), planningTaskid, TaskConstraint.StartNoEarlierThan, Nothing})
+    ' Parent Task2
+    Dim implementationTaskid As Guid = Guid.NewGuid()
+    theTasks.Rows.Add(New [Object]() {implementationTaskid, projectKey, "Implementation", DateTime.Now.AddDays(6), TimeSpan.FromDays(16), Nothing, TaskConstraint.StartNoEarlierThan, Nothing})
+    Dim installationTaskid2 As Guid = Guid.NewGuid()
+    ' Child Task1 of Parent Task2
+    theTasks.Rows.Add(New [Object]() {installationTaskid2, projectKey, "Installations", DateTime.Now.AddDays(6), TimeSpan.FromDays(2), implementationTaskid, TaskConstraint.StartNoEarlierThan, 60})
+    ' Child Task2 of Parent Task2
+    theTasks.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "Execution", DateTime.Now.AddDays(8), TimeSpan.FromDays(13), implementationTaskid, TaskConstraint.StartNoEarlierThan, Nothing})
+    ' Parent Task3
+    Dim testingTaskid As Guid = Guid.NewGuid()
+    theTasks.Rows.Add(New [Object]() {testingTaskid, projectKey, "Testing", DateTime.Now.AddDays(23), TimeSpan.FromDays(20), Nothing, TaskConstraint.StartNoEarlierThan, Nothing})
+   ' Child Task1 of Parent Task3
+    theTasks.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "TestPhase1", DateTime.Now.AddDays(23), TimeSpan.FromDays(10), testingTaskid, TaskConstraint.StartNoEarlierThan,
+    20})
+   ' Child Task2 of Parent Task3
+    theTasks.Rows.Add(New [Object]() {Guid.NewGuid(), projectKey, "TestPhase2", DateTime.Now.AddDays(36), TimeSpan.FromDays(9), testingTaskid, TaskConstraint.StartNoEarlierThan,
+    Nothing})
+    Return theDataSet
+End Function
+----
+
+*In C#:*
+
+----
+private DataSet GetSampleData()
+{
+DataSet theDataSet = new DataSet();
+string projectKey = "projectKey";
+DataTable theProjects = theDataSet.Tables.Add("Projects");
+theProjects.Columns.Add("ProjectID");
+theProjects.Columns.Add("ProjectKey");
+theProjects.Columns.Add("ProjectName");
+theProjects.Columns.Add("ProjectStartTime", typeof(DateTime));
+// Assign values for each Project member
+theProjects.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "QuarterlyProject", DateTime.Today });
+DataTable theTasks = theDataSet.Tables.Add("Tasks");
+theTasks.Columns.Add("TaskID");
+theTasks.Columns.Add("ProjectKey");
+theTasks.Columns.Add("TaskName");
+theTasks.Columns.Add("TaskStartTime", typeof(DateTime));
+theTasks.Columns.Add("TaskDuration", typeof(TimeSpan));
+theTasks.Columns.Add("ParentTaskID");
+theTasks.Columns.Add("Constraint", typeof(object));
+theTasks.Columns.Add("TaskPercentComplete");
+//The Task properties are all covered by individual members. But we could save space in the database 
+//By storing data as binary using AllProperties and not binding the other fields.
+theTasks.Columns.Add("AllProperties", typeof(Byte[]));
+Guid planningTaskid = Guid.NewGuid();
+// Assign values for each Task member
+// Parent Task1
+theTasks.Rows.Add(new Object[] { planningTaskid, projectKey, "Planning", DateTime.Now, TimeSpan.FromDays(5), null, TaskConstraint.StartNoEarlierThan, null });
+// Child Task1 of Parent Task1
+theTasks.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "Prepare Budget", DateTime.Now, TimeSpan.FromDays(2), planningTaskid,TaskConstraint.StartNoEarlierThan, 100 });
+// Child Task2 of Parent Task1
+theTasks.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "Allocate Teams", DateTime.Now.AddDays(2), TimeSpan.FromDays(3), planningTaskid, TaskConstraint.StartNoEarlierThan, null });
+// Parent Task2
+Guid implementationTaskid = Guid.NewGuid();
+theTasks.Rows.Add(new Object[] { implementationTaskid, projectKey, "Implementation", DateTime.Now.AddDays(6), TimeSpan.FromDays(16), null, TaskConstraint.StartNoEarlierThan,
+null });
+// Child Task1 of Parent Task2
+Guid installationTaskid2 = Guid.NewGuid();
+theTasks.Rows.Add(new Object[] { installationTaskid2, projectKey, "Installations", DateTime.Now.AddDays(6), TimeSpan.FromDays(2), implementationTaskid, TaskConstraint.StartNoEarlierThan, 60 });
+// Child Task2 of Parent Task2
+theTasks.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "Execution", DateTime.Now.AddDays(8), TimeSpan.FromDays(13), implementationTaskid, TaskConstraint.StartNoEarlierThan, null });
+Guid testingTaskid = Guid.NewGuid();
+// Parent Task3
+theTasks.Rows.Add(new Object[] { testingTaskid, projectKey, "Testing", DateTime.Now.AddDays(23), TimeSpan.FromDays(20), null, TaskConstraint.StartNoEarlierThan, null });
+// Child Task1 of Parent Task3
+theTasks.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "TestPhase1", DateTime.Now.AddDays(23), TimeSpan.FromDays(10), testingTaskid,TaskConstraint.StartNoEarlierThan, 20 });
+// Child Task2 of Parent Task3
+theTasks.Rows.Add(new Object[] { Guid.NewGuid(), projectKey, "TestPhase2", DateTime.Now.AddDays(36), TimeSpan.FromDays(9), testingTaskid, TaskConstraint.StartNoEarlierThan, null });
+return theDataSet;
+}
+----
+
+image::Images/WinGanttView_DataBinding_Support_for_WinGanttView_01.png[]
+
+== Related Topics
+
+* link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView]
+* link:winganttview-task-information-dialog.html[Task Information Dialog]
+* link:winganttview-customize-chart-section-of-winganttview.html[Customize Chart Section of WinGanttView]
+* link:winganttview-task-settings-for-winganttview.html[Task Settings for WinGanttView]
+* link:winganttview-customize-grid-section-of-winganttview.html[Customize Grid Section of WinGanttView]
+* link:winganttview-winganttview-sorting.html[WinGanttView Sorting]
+* link:winganttview-tooltip-settings-for-tasks.html[Tooltip Settings for Tasks]
+* link:winganttview-set-timeline-intervals-in-chart-area-of-winganttview.html[Set Timeline Intervals in Chart Area of WinGanttView]

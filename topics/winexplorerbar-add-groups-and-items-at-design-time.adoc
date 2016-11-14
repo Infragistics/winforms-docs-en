@@ -1,0 +1,58 @@
+﻿////
+
+|metadata|
+{
+    "name": "winexplorerbar-add-groups-and-items-at-design-time",
+    "controlName": ["WinExplorerBar"],
+    "tags": ["How Do I"],
+    "guid": "{42BB50A4-9FC6-4284-BC9A-952A57A92ED4}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add Groups and Items at Design Time
+
+WinExplorerBar™ provides an integrated design-time interface for adding groups and items to the element. You can do this (as well as set up many other aspects of the element) using the UltraExplorerBar Designer.
+
+To use the UltraExplorerBar Designer to add groups and items, take the following steps:
+
+[start=1]
+. Add the UltraWinExplorerBar element to a form in your WinForms project, or open an existing project that contains the UltraWinExplorerBar.
+[start=2]
+. Select the UltraWinExplorerBar element on the form.
+[start=3]
+. Bring up the context menu for the element and select the "UltraExplorerBar Designer..." option.
+
+image::images\WinExplorerBar_Adding_Groups_and_Items_at_Design_Time_01.png[context menu that appears over ultraexplorerbar]
+
+OR
+
+Click the "UltraExplorerBar Designer..." link in the bottom of the element's property window.
+
+The UltraExplorerBar Designer dialog will appear.
+
+image::images\WinExplorerBar_Adding_Groups_and_Items_at_Design_Time_02.png[ultraexplorerbar designer control styles tab selected]
+
+[start=4]
+. Click the "Groups and Items" tab. The Groups and Items interface will appear. The root node of the element is shown in a tree view on the left. The property sheet on the right displays properties that apply to this top-level node (i.e. the element itself.) Interface buttons at the top of the tab provide the ability to add Groups and Items.
+
+image::images\WinExplorerBar_Adding_Groups_and_Items_at_Design_Time_03.png[ultraexplorerbar designer groups and items tab selected]
+
+[start=5]
+. Click the "Add Group" button. A new group will appear in the tree view and become highlighted. The property sheet will change to reflect the available properties for the newly added group.
+[start=6]
+. Apply any Group-related property changes that you think are appropriate. At the least, you will probably want to change the Text property to something descriptive of the Group's function, and assign a value to the Key property so that you can more easily access this Group within the element's Groups collection.
+
+image::images\WinExplorerBar_Adding_Groups_and_Items_at_Design_Time_04.png[ultraexplorerbar designer groups and items tab properties window for group]
+
+[start=7]
+. With the newly created Group highlighted in the tree view, click the "Add Item" button. A new Item will be added to the Group.
+[start=8]
+. Select the new Item if it is not already highlighted. Apply any Item-related property changes that you think are appropriate. At the least, you will probably want to change the Text property to something descriptive of the Item's function, and assign a value to the Key property so that you can more easily access this Item within the Group's Items collection.
+
+image::images\WinExplorerBar_Adding_Groups_and_Items_at_Design_Time_05.png[ultraexplorerbar designer groups and items tab properties window for item]
+
+[start=9]
+. Repeat these two steps until all Groups and Items have been added. When you are finished, click the "Close" button to dismiss the dialog.

@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "winlistview-resize-a-column-in-details-view",
+    "controlName": ["WinListView"],
+    "tags": ["How Do I"],
+    "guid": "{934EAFFB-A60D-4671-8481-02E1049166BB}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Resize a Column in Details View
+
+== Before You Begin
+
+By setting the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewdetailssettings~autofitcolumns.html[AutoFitColumns]"]  property to ResizeAllColumns, you can fit every column, both main and sub item, in the space allotted to WinListView. However, what if you have a large number of columns to fit and you can barely read the contents of each column. What if your application was also constrained by not being able to use horizontal scrollbars. You can avoid these problems by performing an automatic resize on each  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[SubItemColumn]"]  as your end user hovers over them with the mouse. This way, the information that your end user needs will always be available to them.
+
+== What You Will Accomplish
+
+You will learn how to automatically resize a SubItemColumn so that all of its contents is visible whenever your end user hovers over it with the mouse cursor.
+
+*Note* : This topic assumes that your WinListView is populated with data (both Items and SubItems). See link:winlistview-populate-the-winlistview-control-with-items-clr2.html[Populate the WinListView Control with Items] for more information.
+
+== Follow these Steps
+
+[start=1]
+. *Resize all columns to fit in the available space.*
+
+With WinListView selected in design view, go to the properties window and locate the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewdetailssettings.html[ViewSettingsDetails]"]  object. Expand that object and locate the AutoFitColumns property; set it to ResizeAllColumns. Setting AutoFitColumns to ResizeAllColumns will cause all columns, main and sub items, to resize until they all fit in the allotted space.
+[start=2]
+. *Resize a single column in the MouseMove event* .
+
+Create a MouseMove event for the WinListView control. In the MouseMove event, you will find which SubItem the mouse is over by calling the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~subitemfrompoint.html[SubItemFromPoint]"]  method; just pass in the x- and y-coordinates of the event args. Next, check to make sure the SubItem isn't null. If the SubItem isn't null, perform a resize of the SubItem's column by calling PerformAutoResize off the SubItemColumn in the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection that matches the Column of the SubItem. Each SubItem has a Column property to make it easy to find its associated SubItemColumn.
+
+*In Visual Basic:*
+
+----
+Private Sub UltraListView1_MouseMove(ByVal sender As System.Object, _
+    ByVal e As System.Windows.Forms.MouseEventArgs) _
+    Handles UltraListView1.MouseMove
+    ' Create a reference to the sub item under the mouse cursor.
+    Dim subItem As UltraListViewSubItem = _
+        Me.UltraListView1.SubItemFromPoint(New Point(e.X, e.Y))
+    ' make sure the mouse was over a valid sub item.
+    If subItem IsNot Nothing Then
+        ' Resize the sub item's column so that all items (visible
+        ' and not visible) and the header fit in the column.
+        Me.UltraListView1.SubItemColumns(subItem.Column.Index). _
+            PerformAutoResize(Infragistics.Win.UltraWinListView.ColumnAutoSizeMode.AllItemsAndHeader)
+    End If
+End Sub
+----
+
+*In C#:*
+
+----
+private void ultraListView1_MouseMove(object sender, MouseEventArgs e)
+{
+	// Create a reference to the sub item under the mouse cursor.
+	UltraListViewSubItem subItem = 
+		this.ultraListView1.SubItemFromPoint(new Point(e.X, e.Y));
+	// make sure the mouse was over a valid sub item.
+	if (subItem != null)
+	{
+		// Resize the sub item's column so that all items (visible
+		// and not visible) and the header fit in the column.
+		this.ultraListView1.SubItemColumns[subItem.Column.Index].
+			PerformAutoResize(Infragistics.Win.UltraWinListView.ColumnAutoSizeMode.AllItemsAndHeader);
+	}
+}
+----
+
+[start=3]
+. *Run the application* .
+
+If your WinListView control is filled with data, shrink the window so that some columns can't display all their contents. Hover over one of the SubItemColumns; you will see it resize as you mouse over it. Notice that the columns automatically go back to their default sizes when you mouse out of the column. This is because AutoFitColumns is automatically resizing the columns continuously. However, when you call PerformAutoResize, That one column's sizing takes precedence over the other columns.

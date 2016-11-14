@@ -1,0 +1,157 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-create-a-dial",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{41FD1256-F2BC-42C8-BA2F-2F1325651870}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Create a Dial
+
+The Dial property determines the shape of a Radial gauge. By default, the dial sweeps 360 degrees, so it appears as a circle.
+
+This topic guides you through the first step in creating a new Radial gauge. After completing the steps outlined in this topic, you will have created a new Radial gauge with the Dial property set to a solid black background.
+
+The next step after creating a Dial is to link:wingauge-add-a-scale-to-a-gauge.html[Add a Scale to a Gauge].
+
+You can configure the Dial property of your gauge:
+
+* <<gaugeDesigner,using the Gauge Designer>>
+* <<designTime,at design time>>
+* <<runTime,at run time>>
+
+When you save and run your application after completing the following steps, your gauge should look similar to the gauge below.
+
+image::images/Gauge_Add_Dial_01.png[Wingauge's radial gauge with a dial added.]
+
+[[gaugeDesigner]]
+*To configure the Dial property of your Radial gauge using the Gauge Designer:*
+
+[start=1]
+. In the Gauge Explorer, expand the *Gauges* property.
+[start=2]
+. Click Add Gauge... and select New Radial Gauge.
+[start=3]
+. Expand Radial Gauge and select Dial.
+[start=4]
+. In the link:wingauge-appearance-tab.html[Appearance tab] of the link:wingauge-properties-panel.html[Properties panel], select Solid from the Type drop-down list.
+[start=5]
+. Click the Details drop-down arrow.
+[start=6]
+. The color picker appears. On the left-hand side, click Web, then select the Black color.
+
+[[designTime]]
+*To configure the Dial property of your Radial gauge at design time:*
+
+[start=1]
+. In Design view, click the UltraGauge control on your form.
+[start=2]
+. In the Properties window, click the Gauges property. Then, click the ellipsis button (…) to open the Gauges collection editor.
+[start=3]
+. In the Gauges collection editor, click Add, and select Add Radial Gauge.
+[start=4]
+. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~dial.html[Dial]"]  property.
+[start=5]
+. Create a new BrushElement object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~brushelement.html[BrushElement]"]  property. Then from the drop-down list, select Solid Fill.
+[start=6]
+. Expand the BrushElement property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.solidfillbrushelement~color.html[Color]"]  property to Black.
+
+[[runTime]]
+*To configure the Dial property of your Radial gauge at run time:*
+
+[start=1]
+. Before you start writing any code, you should place using/Imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.UltraGauge.Resources
+----
+
+*In C#:*
+
+----
+using Infragistics.UltraGauge.Resources;
+----
+
+[start=2]
+. Create the load event.
+[start=3]
+. Create a Gauge collection, a Radial gauge and the brush element:
+
+*In Visual Basic:*
+
+----
+Dim ultraGauge1 As New Infragistics.Win.UltraWinGauge.UltraGauge()
+Dim myRadialGauge As New RadialGauge()
+Dim mySolidFillBrushElement As New SolidFillBrushElement()
+----
+
+*In C#:*
+
+----
+Infragistics.Win.UltraWinGauge.UltraGauge ultraGauge1 = 
+  new Infragistics.Win.UltraWinGauge.UltraGauge();
+RadialGauge myRadialGauge = new RadialGauge();
+SolidFillBrushElement mySolidFillBrushElement = new SolidFillBrushElement();
+----
+
+[start=4]
+. Set the following color properties:
+
+** Type -- Solid
+** Color -- Black
+
+*In Visual Basic:*
+
+----
+mySolidFillBrushElement.Color = System.Drawing.Color.Black
+myRadialGauge.Dial.BrushElement = mySolidFillBrushElement
+----
+
+*In C#:*
+
+----
+mySolidFillBrushElement.Color = System.Drawing.Color.Black;
+myRadialGauge.Dial.BrushElement = mySolidFillBrushElement;
+----
+
+[start=5]
+. Add your Radial gauge to the gauges collection. Set the following properties:
+
+** Location -- (30, 4)
+** Name -- ultraGauge1
+** Size -- (250, 250)
+** TabIndex -- 0
+
+*In Visual Basic:*
+
+----
+ultraGauge1.Gauges.Add(myRadialGauge)
+ultraGauge1.Location = New System.Drawing.Point(30, 4)
+ultraGauge1.Name ="ultraGauge1"
+ultraGauge1.Size = New System.Drawing.Size(250, 250)
+ultraGauge1.TabIndex = 0
+Me.Controls.Add(ultraGauge1)
+----
+
+*In C#:*
+
+----
+ultraGauge1.Gauges.Add(myRadialGauge);
+ultraGauge1.Location = new System.Drawing.Point(30, 4);
+ultraGauge1.Name = "ultraGauge1";
+ultraGauge1.Size = new System.Drawing.Size(250, 250);
+ultraGauge1.TabIndex = 0;
+this.Controls.Add(ultraGauge1);
+----
+
+== Related Topic
+
+link:wingauge-add-a-scale-to-a-gauge.html[Add a Scale to a Gauge]

@@ -1,0 +1,23 @@
+﻿////
+
+|metadata|
+{
+    "name": "whats-new-version-free-assembly-names",
+    "controlName": [],
+    "tags": [],
+    "guid": "c98d023f-d114-4861-b455-7c53a5ae27e6",  
+    "buildFlags": [],
+    "createdOn": "2010-06-02T15:41:46.2523415Z"
+}
+|metadata|
+////
+
+= Version-Free Assembly Names
+
+Starting with this release of 2010 Volume 2, we offer you version-free assemblies that are available in a zipped format along with the product install. The version-free assemblies will not have the trailing version number and the CLR identity in their names. For example, Infragistics4.Shared.v10.2.dll will read as Infragistics.Shared.dll. For assemblies with both CLR2 and CLR 3 versions (like Infragistics4.Documents.Excel.v10.2 and Infragistics3.Documents.Excel.v10.2), the version-free assemblies will match the latest CLR version. So the version-free Excel assembly will be Infragistics.Documents.Excel.dll and is the one built for the CLR3 version. With the version-free assemblies, you can easily upgrade from one version to another using assembly binding redirection, without the need to re-build your applications.
+
+== *Related Topics*
+
+link:introduction-about-version-free-assemblies.html[About Version-Free Assemblies]
+
+link:introduction-using-version-free-assemblies.html[Using Version-Free Assemblies]

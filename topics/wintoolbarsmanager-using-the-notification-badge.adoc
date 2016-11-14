@@ -1,0 +1,182 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-using-the-notification-badge",
+    "controlName": [],
+    "tags": [],
+    "guid": "b1779bf6-b98c-4e11-a13c-6b41b370d35a",  
+    "buildFlags": [],
+    "createdOn": "2015-09-02T18:21:24.7248341Z"
+}
+|metadata|
+////
+
+= WinToolbarsManager Using the Notification Badge
+
+== Topic Overview
+
+=== Purpose
+
+This topic demonstrates the usage of the NotificationBadge properties of the link:wintoolbarsmanager.html[UltraToolbarsManager].
+
+=== Required Background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| _link:wintoolbarsmanager-getting-started-with-wintoolbarsmanager.html[Getting Started with WinToolbarsManager]_ 
+|Find information on how to get up and running quickly with the WinToolbarsManager™ component.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<_Ref428971851,NotificationBadge properties overview>>
+
+** <<_Ref421266503,Overview>>
+** <<_Ref428968981,Appearance Properties>>
+** <<_Ref428967246,Style Properties>>
+** <<_Ref428967258,Visibility Properties>>
+** <<_Ref428967275,NotificationBadgeText property>>
+
+* <<_Ref423531385,Related Content>>
+
+[[_Configuring_a_Custom]]
+[[_Ref428971851]]
+[[_Ref386478097]]
+== NotificationBadge properties overview
+
+[[_Ref421266503]]
+
+=== Overview
+
+The Notification Badges allow you to notify your users about every important event that requires their attention. Almost all of the settings related to notification badges are exposed in the NotificationBadgeSettings property, which can be found on various levels throughout the UltraToolbarsManager – you can find them on the ToolbarsManager itself, the toolbars, the ribbon, the ribbon tabs and groups, etc. The settings are resolved by using first the more specific instance and then the more general once. For example, if we show a notification badge on a tool on the ribbon, the notification settings on the Tool’s ShareProps will take precedence over the notification settings on the ribbon tab, which in turn will take precedence over the notification settings on the ToolbarsManager itself. The only property related to the NotificationBadges that isn’t part of the NotificationBadgeSettings class is the NotificationBadgeText, which can be found on the Tool’s InstanceProps and SharedProps
+
+The size of the NotificationBadges is determined by the size of its contents and it is limited by the size of the DisplayArea. If you have a badge with text, the size of the notification will be the size needed to display the text with the specified font, as long as this size isn’t bigger than its display area. If you show an image, the NotificationBadge will use the image size (again if it isn’t bigger than its display area).
+
+[[_Ref428968981]]
+
+=== Appearance Properties
+
+The NotificationBadgeSettings property exposes three Appearance properties – Appearance, AppearanceLarge, AppearanceSmall. The Appearance property is used for notifications displayed on all tools, while the AppearanceSmall and AppearanceLarge target the small and large tools respectively.
+
+By default the notification badges will use a red background, red borders and a white foreground with a bold font.
+
+*In C#:*
+
+[source,csharp]
+----
+// Make the font size of the Notifications on large tools 8pt
+this.ultraToolbarsManager1.NotificationBadgeSettings.AppearanceLarge.FontData.SizeInPoints = 8;
+// Use smaller size for the Notifications on small tools
+this.ultraToolbarsManager1.NotificationBadgeSettings.AppearanceSmall.FontData.SizeInPoints = 5.5f;
+// Use Calibri font for all tools
+this.ultraToolbarsManager1.NotificationBadgeSettings.Appearance.FontData.Name = "Calibri";
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Make the font size of the Notifications on large tools 8pt
+Me.ultraToolbarsManager1.NotificationBadgeSettings.AppearanceLarge.FontData.SizeInPoints = 8
+' Use smaller size for the Notifications on small tools
+Me.ultraToolbarsManager1.NotificationBadgeSettings.AppearanceSmall.FontData.SizeInPoints = 5.5F
+' Use Calibri font for all tools 
+Me.ultraToolbarsManager1.NotificationBadgeSettings.Appearance.FontData.Name = "Calibri"
+----
+
+[[_Ref428967246]]
+
+=== Style Properties
+
+The style properties for the NotificationBadgeSettings are the BorderStyle and DisplayShadow properties. The BorderStyle determines the border style used by the notification, while the DisplayShadow property determines if the notification will have a shadow.
+
+The default BorderStyle is Rounded3 and the Notifications won’t show shadows by default. The shadow color is Gray by default and can be controlled by the BorderColor3DBase property of the notification appearances.
+
+*In C#:*
+
+[source,csharp]
+----
+// Display shadows around the NotificationBadges
+this.ultraToolbarsManager1.NotificationBadgeSettings.DisplayShadow = DefaultableBoolean.True;
+// Set the NotificationBadges BorderStyle to Rounded1
+this.ultraToolbarsManager1.NotificationBadgeSettings.BorderStyle = UIElementBorderStyle.Rounded1;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Display shadows around the NotificationBadges
+Me.ultraToolbarsManager1.NotificationBadgeSettings.DisplayShadow = DefaultableBoolean.[True]
+'Set the NotificationBadges BorderStyle to Rounded1
+Me.ultraToolbarsManager1.NotificationBadgeSettings.BorderStyle = UIElementBorderStyle.Rounded1
+----
+
+[[_Ref428967258]]
+
+=== Visibility Property
+
+The Visibility property determines under which circumstances the Toolbars Manager will show the NotificationBadges. By default it is set to NonNullOrEmpty which means that the NotificationBadge will show only if there is content for it – if there is text or an image assigned to the NotificationBadge. You can make the NotificationBadges always appear, even if they have no content, by setting the Visibility to Always or hide them by setting it to Never. Setting the Visibility to never can be useful to prevent the NotificationBadges from appearing in places where you don’t want them.
+
+*In C#:*
+
+[source,csharp]
+----
+// Prevent the NotificationBadges from appearing in the QAT
+this.ultraToolbarsManager1.Ribbon.QuickAccessToolbar.NotificationBadgeSettings.Visibility = NotificationBadgeVisibility.Never;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Prevent the NotificationBadges from appearing in the QAT
+Me.ultraToolbarsManager1.Ribbon.QuickAccessToolbar.NotificationBadgeSettings.Visibility = NotificationBadgeVisibility.Never
+----
+
+[[_Ref428967275]]
+
+=== NotificationBadgeText property
+
+This property is not part of the NotificationBadgeSettings class, but a separate one, which is part of the Tool’s InstanceProps and SharedProps. It determines the text that is displayed by the NotificationBadge.
+
+*In C#:*
+
+[source,csharp]
+----
+// Set the notification text displayed by the tools
+this.ultraToolbarsManager1.Tools[“ViewNewEmailButton”].SharedProps.NotificationBadgeText = “7”;
+this.ultraToolbarsManager1.Tools[“NewEvents”].SharedProps.NotificationBadgeText = “New!”;
+----
+
+*In Visual Basic:*
+
+[source,vb]
+----
+' Setthe notification text displayed by the tools 
+Me.ultraToolbarsManager1.Tools(“ViewNewEmailButton”).SharedProps.NotificationBadgeText = “7”
+Me.ultraToolbarsManager1.Tools(“NewEvents”).SharedProps.NotificationBadgeText = “New!”
+----
+
+[[_Ref423531385]]
+
+=== Related Content
+
+The following topics provide additional information related to this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:wintoolbarsmanager-using-the-ribbon.html[Using the Ribbon]
+|Contains tutorials that demonstrate how to use the UltraToolbarsManager Ribbon.
+
+|====

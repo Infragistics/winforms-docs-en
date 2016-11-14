@@ -1,0 +1,65 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingriddocumentexporter-export-wingrid-asynchronously",
+    "controlName": ["WinGridDocumentExporter"],
+    "tags": ["Exporting","Grids"],
+    "guid": "d2ab03b8-1440-43e5-89aa-0dd05f7419e0",  
+    "buildFlags": [],
+    "createdOn": "2011-08-05T19:10:48.8723104Z"
+}
+|metadata|
+////
+
+= Export WinGrid Asynchronously
+
+The WinGridDocumentExporter™ component enables you to asynchronously export your entire WinGrid™ directly into a PDF or XML Paper Specification (XPS) document (depending on the link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.gridexportfileformat.html[GridExportFileFormat] enumeration used). You do this by calling the link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~exportasync.html[ExportAsync] method of the link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter.html[UltraGridDocumentExporter] object.
+
+== Introduction
+
+Asynchronous exporting, as opposed to synchronous, allows users to interact with the user interface of the application while the export process is executing. You must ensure that neither the WinGrid, nor its data source is accessed by your application in any way while the asynchronous export is in progress. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~isexportasyncinprogress.html[IsExportAsyncInProgress] property of the WinGrid can be used to determine whether or not the asynchronous export is still in progress to avoid any access conflicts.
+
+== Requirements
+
+* A Microsoft Visual Studio solution using .NET Framework 3.0 or higher
+* A Windows Forms Application Solution using the WinGrid and bound to data
+* A WinGridDocumentExporter control on the form
+
+== Overview
+
+[start=1]
+. <<Anchor4154,Exporting the WinGrid asynchronously>>
+[start=2]
+. <<Anchor828,(Optional) Verifying the result>>
+
+== Steps
+
+[[Anchor4154]]
+[start=1]
+. Export the WinGrid Asynchronously
+
+*In C#:*
+
+----
+this.ultraGridDocumentExporter1.ExportAsync(this.ultraGrid1,    "C:\\Reports\\WinGrid_Report.pdf", Infragistics.Win.UltraWinGrid.DocumentExport.GridExportFileFormat.PDF);
+----
+
+*In Visual Basic:*
+
+----
+Me.UltraGridDocumentExporter1.ExportAsync(Me.UltraGrid1, _   "C:\Reports\WinGrid_Report.pdf", Infragistics.Win.UltraWinGrid.DocumentExport.GridExportFileFormat.PDF)
+----
+
+[[Anchor828]]
+[start=2]
+. (Optional) Verify the resultsTo verify the result, run your application and perform the export (Figure 1).
+
+image::images/WinGridDocumentExporter_Export_WinGrid_Asynchronously_01.png[]
+
+Figure 1: WinGrid asynchronously exporting to a PDF document
+
+== Related Topics
+
+* link:wingriddocumentexporter-export-wingrid-to-a-new-pdf-document.html[Export WinGrid to a New PDF Document]
+* link:wingriddocumentexporter-export-wingrid-to-an-existing-report.html[Export WinGrid to an Existing Report]

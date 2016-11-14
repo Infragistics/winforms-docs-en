@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "winschedule-use-performaction-to-navigate-to-the-next-day",
+    "controlName": ["WinSchedule"],
+    "tags": ["Navigation"],
+    "guid": "{60B11E5A-60F9-47E6-81F4-646E11CA4BBA}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Use PerformAction to Navigate to the Next Day
+
+This topic's content applies to the following WinSchedule™ controls:
+
+* WinWeekView™
+* WinMonthViewSingle™
+
+The following example uses the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraweekview~performaction.html[PerformAction]"]  method to navigate to the next day without selecting it. This is accomplished by setting the last parameter, 'control', to True, which simulates pressing the CTRL key while performing the action. User interactivity can be programmatically simulated.
+
+*In Visual Basic:*
+
+----
+Private Sub btnPerformAction_Click(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles btnPerformAction.Click
+	Me.UltraWeekView1.PerformAction( _
+	  Infragistics.Win.UltraWinSchedule.WeekView.UltraWeekViewAction.NextDay, _
+	  False, True)
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnPerformAction_Click(object sender, EventArgs e)
+{
+	this.ultraWeekView1.PerformAction(
+          Infragistics.Win.UltraWinSchedule.WeekView.UltraWeekViewAction.NextDay, 
+          false, true);
+}
+----

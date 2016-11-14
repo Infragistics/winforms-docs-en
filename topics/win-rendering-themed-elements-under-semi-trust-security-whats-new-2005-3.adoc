@@ -1,0 +1,17 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-rendering-themed-elements-under-semi-trust-security-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{F3C9AECB-F2E1-472C-B4CB-CB8E199C7521}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Rendering Themed Elements Under Semi-Trust Security
+
+Certain Windows Forms controls are able to use XP themes. Previously, when our controls were being used over an intranet (or in any other situation where our code is not given full permissions/unmanaged code rights), they could not take advantage of these themes. Now, by adjusting .NET security options, our controls can support XP themes in a semi-trusted security environment.

@@ -1,0 +1,95 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-setting-focus-on-a-cell-for-editing",
+    "controlName": ["WinGrid"],
+    "tags": ["Editing","Grids","How Do I"],
+    "guid": "{D43B99F4-8027-4853-BA7C-7F326EEFC76D}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Setting Focus on a Cell for Editing
+
+Sometimes you may want to force focus into a cell and put that cell into edit mode to indicate to a user that a value needs to be changed. This can be accomplished by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~activecell.html[ActiveCell]"]  property of the grid, and then calling  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~performaction.html[PerformAction]"]  to put the cell into Edit mode.
+
+== To force focus on a cell and place the cell in Edit mode:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. You need a reference to the cell you want to set focus to. In this case, assume the cell is in the active row and is in a column called "CompanyName" You get a reference to the cell by using the Cells collection of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~activerow.html[ActiveRow]"]  object.
+
+*In Visual Basic:*
+
+----
+Dim aCell As UltraGridCell
+aCell = Me.UltraGrid1.ActiveRow.Cells("CompanyName")
+----
+
+*In C#:*
+
+----
+UltraGridCell aCell = this.ultraGrid1.ActiveRow.Cells["CompanyName"];
+----
+
+[start=3]
+. Now that you have a reference to the cell, you can make it active by setting the ActiveCell of the grid.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.ActiveCell = aCell
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.ActiveCell = aCell;
+----
+
+[start=4]
+. At this point, you may need to set focus to the grid. This is only necessary if the grid does not already have focus.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.Focus()
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.Focus();
+----
+
+[start=5]
+. You can force the cell into edit mode by calling the PerformAction method.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.PerformAction(UltraGridAction.EnterEditMode, False, False)
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.PerformAction(UltraGridAction.EnterEditMode, false, false);
+----

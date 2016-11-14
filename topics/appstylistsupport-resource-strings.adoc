@@ -1,0 +1,1119 @@
+﻿////
+|metadata|
+{
+    "name": "appstylistsupport-resource-strings",
+    "controlName": [],
+    "tags": ["Resource Strings","Styling","Theming"],
+    "guid": "{6B527C80-AD09-4D6D-824F-458DEFB509E0}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= AppStylistSupport Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|AppearanceEditor_FontName_Default
+|(Default)
+
+|AppearanceEditor_FontSize_Default
+|(Default)
+
+|ChangeComponentDefaultStyleSet_Dialog_Text
+|The default StyleSet for the component '{0}' is currently set to styleset '{1}'. Do you want to change it?
+
+|ChangeComponentDefaultStyleSet_Dialog_Title
+|Change the default?
+
+|ColorCategory_Name_Default
+|{Default}
+
+|ColorCategory_Name_None
+|{None}
+
+|ColorCategoryManager_Button_Add
+|Add New
+
+|ColorCategoryManager_Button_Cancel
+|Cancel
+
+|ColorCategoryManager_Button_OK
+|OK
+
+|ColorCategoryManager_Button_Remove
+|Remove
+
+|ColorCategoryManager_ColorCategoriesGroupBoxText
+|Color Category Definitions
+
+|ColorCategoryManager_ColumnHeader_Appearance
+|Appearance
+
+|ColorCategoryManager_ColumnHeader_ColorCategory
+|ColorCategory
+
+|ColorCategoryManager_ColumnHeader_Name
+|Name
+
+|ColorCategoryManager_ColumnHeader_Preview
+|Preview
+
+|ColorCategoryManager_ColumnHeader_State
+|State / Property
+
+|ColorCategoryManager_ColumnHeader_StyleSet
+|StyleSet
+
+|ColorCategoryManager_ColumnHeader_Type
+|Type
+
+|ColorCategoryManager_Dialog_Title
+|Style Library Generator ColorCategory Manager
+
+|ColorCategoryManager_Label_AssignColorCategory
+|Assign ColorCategory:
+
+|ColorCategoryManager_Label_Info
+|ColorCategories are used when creating Style Libraries for use as Template Libraries. First, define ColorCategories by expanding Color Category Definitions. Then, assign Roles and Resources to ColorCategories by selecting items in the grid and then choosing a target ColorCategory in the combobox.
+
+|ComponentRoleEditor_CommonProperties
+|Common Properties
+
+|ComponentRoleEditor_ObjectSpecificProperties
+|Object-Specific Properties
+
+|Conflict_Dialog_Cancel_Button
+|Cancel
+
+|Conflict_Dialog_NamingConflict_Label
+|Naming Conflict
+
+|Conflict_Dialog_Rename_Button
+|Rename
+
+|Conflict_Dialog_RenameAll_Button
+|Rename All
+
+|Conflict_Dialog_Replace_Button
+|Replace
+
+|Conflict_Dialog_ReplaceAll_Button
+|Replace All
+
+|Conflict_Dialog_Skip_Button
+|Skip
+
+|CopyResourceConfirmation_Button_Cancel
+|Cancel
+
+|CopyResourceConfirmation_Button_OK
+|Replace
+
+|CopyResourceConfirmation_Dialog_Title
+|Replace Resource?
+
+|CopyResourceConfirmation_ImportResource_Preview_Label
+|new resource settings
+
+|CopyResourceConfirmation_OriginalResource_Preview_Label
+|original resource settings
+
+|CopyResourceConfirmation_Prompt_Label
+|Do you want to replace resource '{0}' with resource '{1}'?
+
+|CreateResourceFromStateDialog_Button_Cancel
+|Cancel
+
+|CreateResourceFromStateDialog_Button_OK
+|OK
+
+|CreateResourceFromStateDialog_CheckBox_Promote_Label
+|Clear the appearance properties of the State and apply the resource.
+
+|CreateResourceFromStateDialog_Dialog_Title
+|Create a Resource from a State
+
+|CreateResourceFromStateDialog_ResourceName_Label
+|Enter a name for the new resource
+
+|Default_StyleSet_Name
+|Default
+
+|DeleteColorCategory_Dialog_Text
+|You have chosen to delete ColorCategory: '{0}'. Are you sure?
+
+|DeleteColorCategory_Dialog_Title
+|Delete ColorCategory?
+
+|DeleteResource_Dialog_Text
+|You have chosen to delete resource: '{0}'. Are you sure?
+
+|DeleteResource_Dialog_Title
+|Delete Resource?
+
+|DeleteStyleSet_Dialog_Text
+|You have chosen to delete styleset: '{0}'. Are you sure?
+
+|DeleteStyleSet_Dialog_Title
+|Delete StyleSet?
+
+|ExportImages_Complete_Dialog_Text
+|{0} file(s) were exported to '{1}'
+
+|ExportImages_Complete_Dialog_Title
+|Export complete
+
+|ExportImages_FolderBrowser_Description
+|Choose a folder to export images. All images in the currently loaded style library will be exported to this folder as PNG files.
+
+|FontSizeInvalid_Dialog_Text
+|Invalid Font Size
+
+|HueSatSelector_Hue
+|Hue
+
+|HueSatSelector_InitializeFromColor
+|Initialize From Color:
+
+|HueSatSelector_OkButton
+|OK
+
+|HueSatSelector_RangePreview
+|Range Preview
+
+|HueSatSelector_Saturation
+|Saturation
+
+|ImageBackgroundStretchMarginsEditorDialog_Button_Cancel
+|Cancel
+
+|ImageBackgroundStretchMarginsEditorDialog_Button_OK
+|OK
+
+|ImageBackgroundStretchMarginsEditorDialog_Dialog_Title
+|Stretch Margins Editor
+
+|ImageBackgroundStretchMarginsEditorDialog_Tab_EditMargins
+|Edit Margins
+
+|ImageBackgroundStretchMarginsEditorDialog_Tab_Preview
+|Preview
+
+|ImageExportConflict_Dialog_ImportResource_Preview_Label
+|export image
+
+|ImageExportConflict_Dialog_Info_Label
+|A file with the name '{0}' already exists. What would you like to do?
+
+|ImageExportConflict_Dialog_OriginalResource_Preview_Label
+|original image
+
+|ImageExportConflict_Dialog_Rename_Label
+|Rename the file '{0}'
+
+|ImageExportConflict_Dialog_Replace_Label
+|Replace the file(s).
+
+|ImageExportConflict_Dialog_Title
+|Image Export Filename Conflict
+
+|ImageExportError_Dialog_Text
+|An error occurred while trying to save the file: '{0}'\n\n{1}\n{2}
+
+|ImageExportError_Dialog_Title
+|Error.
+
+|ImportResources_Error_Dialog_Text
+|An error occurred while trying to load the specified file. Would you like to try to load it, anyway? If you choose to load this invalid file, some resource information may be missing or corrupt.
+
+|ImportResources_Error_Dialog_Title
+|Invalid XML
+
+|ImportResources_Failure_Dialog_Text
+|An error occurred while trying to load the specified file. It is not a valid Style Library.
+
+|ImportResources_Failure_Dialog_Title
+|Invalid XML
+
+|Invalid_ColorCategory_Name_Dialog_Title
+|Invalid Name
+
+|Invalid_Resource_Name_Dialog_Title
+|Invalid Name
+
+|Invalid_StyleSet_Name_Dialog_Title
+|Invalid Name
+
+|InvalidRoleForCurrentStyleSet_Dialog_Text
+|You have selected the '{0}' UIRole. This role is not valid for the currently selected StyleSet, because the StyleSet is the default for some components and this UI Role does not belong to any of those components. To select this UI Role, you will need to select a styleset which supports it.
+
+|InvalidRoleForCurrentStyleSet_Dialog_Title
+|Cannot Select Role
+
+|IslGenerator_FolderBrowser_Description
+|Choose the folder where your Template Style Library files are stored.
+
+|IslGenerator_FolderBrowser_SecurityException
+|You do not have sufficient security permissions to display the FolderBrowser dialog.
+
+|IslGeneratorDialog_Button_Cancel
+|Cancel
+
+|IslGeneratorDialog_Button_OK
+|OK
+
+|IslGeneratorDialog_Title
+|New Style Library From Template
+
+|IslGeneratorInfo_Label_ChangeTemplateFolder
+|Change Template Folder
+
+|IslGeneratorInfo_Label_ColorPaletteHelper
+|Color Palette Helper
+
+|IslGeneratorInfo_Label_DragDropColors
+|Drag and Drop colors to apply.
+
+|IslGeneratorInfo_Label_SelectedTemplate
+|Selected Template:
+
+|IslGeneratorInfo_Label_SelectPalette
+|Select Palette:
+
+|IslGeneratorInfo_Label_SelectTemplate
+|Select Template
+
+|IslGeneratorInfo_Label_SelectTemplateInfo
+|Choose a Template Style Library to get started.
+
+|IslGeneratorInfo_Label_SetColors
+|Set Colors
+
+|IslGeneratorInfo_Label_SetColorsInfo
+|Change colors by clicking each swatch below. Expand the Color Palette Helper to see collections of predefined colors.
+
+|IslGeneratorInfo_Label_TemplateFolder
+|Template Folder:
+
+|IslGeneratorPreview_ExplorerBar_Group
+|New Group
+
+|IslGeneratorPreview_ExplorerBar_Item
+|New Item
+
+|IslGeneratorPreview_Grid_GroupByRowDescriptionMask
+|[caption] : [value] ([count] [count,items,item,items])
+
+|IslGeneratorPreview_InboxControls_Button
+|button1
+
+|IslGeneratorPreview_InboxControls_CheckBox
+|checkbox1
+
+|IslGeneratorPreview_InboxControls_ComboBox
+|comboBox1
+
+|IslGeneratorPreview_InboxControls_GroupBox
+|groupBox1
+
+|IslGeneratorPreview_InboxControls_Label
+|label1
+
+|IslGeneratorPreview_InboxControls_ListBox_Item0
+|Apple
+
+|IslGeneratorPreview_InboxControls_ListBox_Item1
+|Banana
+
+|IslGeneratorPreview_InboxControls_ListBox_Item2
+|Cherry
+
+|IslGeneratorPreview_InboxControls_ListBox_Item3
+|Strawberry
+
+|IslGeneratorPreview_InboxControls_ListBox_Item4
+|Watermelon
+
+|IslGeneratorPreview_InboxControls_RadioButton
+|radioButton1
+
+|IslGeneratorPreview_InboxControls_TextBox
+|textBox1
+
+|IslGeneratorPreview_Label
+|preview
+
+|IslGeneratorPreview_TabCaption_ExplorerBar
+|ExplorerBar
+
+|IslGeneratorPreview_TabCaption_Grid
+|Grid
+
+|IslGeneratorPreview_TabCaption_InboxControls
+|Inbox Controls
+
+|IslGeneratorPreview_Toolbar_MainMenu
+|Main Menu
+
+|IslGeneratorPreview_Toolbar_UltraToolbar1
+|UltraToolbar1
+
+|IslGeneratorPreview_ToolbarButton_Copy
+|Copy
+
+|IslGeneratorPreview_ToolbarButton_Cut
+|Cut
+
+|IslGeneratorPreview_ToolbarButton_Edit
+|&Edit
+
+|IslGeneratorPreview_ToolbarButton_Exit
+|E&xit
+
+|IslGeneratorPreview_ToolbarButton_File
+|&File
+
+|IslGeneratorPreview_ToolbarButton_Open
+|&Open
+
+|IslGeneratorPreview_ToolbarButton_Paste
+|Paste
+
+|IslGeneratorPreview_ToolbarButton_Save
+|&Save
+
+|LibraryMetaDataDialog_Author
+|Author:
+
+|LibraryMetaDataDialog_Button_Cancel
+|Cancel
+
+|LibraryMetaDataDialog_Button_OK
+|OK
+
+|LibraryMetaDataDialog_Copyright
+|Copyright:
+
+|LibraryMetaDataDialog_Description
+|Description:
+
+|LibraryMetaDataDialog_Filename
+|Filename:
+
+|LibraryMetaDataDialog_LastModifiedDate
+|Last Modified:
+
+|LibraryMetaDataDialog_PermittedUsage
+|Permitted Usage:
+
+|LibraryMetaDataDialog_Title
+|Application Style Library Properties
+
+|LibraryMetaDataDialog_Version
+|Version:
+
+|New_ColorCategory_Default_Name
+|New ColorCategory {0}
+
+|New_StyleSet_Default_Name
+|New StyleSet {0}
+
+|NewResourceNameTemplate
+|New Resource {0}
+
+|NewStyleLibraryWizard_Button_Back
+|< Back
+
+|NewStyleLibraryWizard_Button_Cancel
+|Cancel
+
+|NewStyleLibraryWizard_Button_Finish
+|Finish
+
+|NewStyleLibraryWizard_Button_Next
+|Next >
+
+|NewStyleLibraryWizard_Caption_Copy
+|Select a Style Library to Copy
+
+|NewStyleLibraryWizard_Caption_Start
+|Select Starting Point
+
+|NewStyleLibraryWizard_Caption_Template
+|Select and Customize a Template
+
+|NewStyleLibraryWizard_Dialog_Title
+|New Style Library Wizard
+
+|NewStyleLibraryWizard_Label_CopyFolder
+|Select a folder that contains Infragistics Style Libraries ($$*$$.isl files)
+
+|NewStyleLibraryWizard_Label_CopyStyleLibrary
+|Select a Style Library to copy
+
+|NewStyleLibraryWizard_No_Isl_Files_Message
+|There are no Infragistics Style Library ($$*$$.isl) files in the currently selected folder.
+
+|NewStyleLibraryWizard_StartOption_Blank
+|Blank Library
+
+|NewStyleLibraryWizard_StartOption_Blank_Description
+|Create a completely new, blank style library.
+
+|NewStyleLibraryWizard_StartOption_ExistingLibrary
+|Start from Existing Library
+
+|NewStyleLibraryWizard_StartOption_ExistingLibrary_Description
+|Open an existing style library ($$*$$.isl file) and create a copy. The existing isl file will not be modified.
+
+|NewStyleLibraryWizard_StartOption_Template
+|Start from Template
+
+|NewStyleLibraryWizard_StartOption_Template_Description
+|Create a new Style Library quickly by selecting a template and customizing the templates primary colors.
+
+|NewStyleLibraryWizardPreview_Label
+|preview
+
+|OpenFile_Dialog_Filter
+|Infragistics Style Library files ($$*$$.isl)\|$$*$$.isl\|All files ($$*$$.$$*$$)\|$$*$$.$$* $$
+
+|OpenFile_Dialog_Title
+|Open Style Library
+
+|OpenStyleLibrary_Error_Dialog_Text
+|An error occurred while trying to load the specified file. Would you like to try to load it, anyway? If you choose to load this invalid file, some StyleSet information may be missing or corrupt.
+
+|OpenStyleLibrary_Error_Dialog_Title
+|Invalid XML
+
+|OpenStyleLibrary_Failure_Dialog_Text
+|An error occurred while trying to load the specified file. It is not a valid Style Library.
+
+|OpenStyleLibrary_Failure_Dialog_Title
+|Invalid XML
+
+|Override_ReadOnly_File_Text
+|The file '{0}' is read-only. Would you like to overwrite it, anyway?
+
+|Override_ReadOnly_File_Title
+|Cannot write to file.
+
+|PromptToSaveStyleLibrary_Dialog_Text
+|The current Style Library has unsaved changes. Would you like to save the changes, now?
+
+|PromptToSaveStyleLibrary_Dialog_Title
+|Infragistics AppStylist for Windows Forms
+
+|PropertyEditor_BackgroundChunk_Alpha_Label
+|Alpha:
+
+|PropertyEditor_BackgroundChunk_BackgroundImage_Label
+|Background Image
+
+|PropertyEditor_BackgroundChunk_Disabled_Label
+|Disabled:
+
+|PropertyEditor_BackgroundChunk_DisabledImage_Label
+|Disabled Image
+
+|PropertyEditor_BackgroundChunk_Image_Label
+|Image
+
+|PropertyEditor_BackgroundChunk_ImageAlpha_Label
+|Image Alpha:
+
+|PropertyEditor_BackgroundChunk_LayoutMode_Label
+|Layout Mode:
+
+|PropertyEditor_BackgroundChunk_Margins_Label
+|Margins:
+
+|PropertyEditor_BackgroundChunk_OpenFileDialog_Filter
+|All image files ($$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico;$$*$$.emf;$$*$$.wmf)\|$$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico;$$*$$.emf;$$*$$.wmf\|Bitmap files ($$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico)\|$$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico\|Metafiles ($$*$$.emf;$$*$$.wmf)\|$$*$$.emf;$$* $$.wmf
+
+|PropertyEditor_BackgroundChunk_OpenFileDialog_Title
+|Open
+
+|PropertyEditor_BackgroundChunk_Origin_Label
+|Origin:
+
+|PropertyEditor_BackgroundChunk_Title
+|Background
+
+|PropertyEditor_BorderChunk_Alpha_Label
+|Alpha:
+
+|PropertyEditor_BorderChunk_Border_Label
+|Border
+
+|PropertyEditor_BorderChunk_Border2_Label
+|Border
+
+|PropertyEditor_BorderChunk_Border3D_Label
+|Border 3D
+
+|PropertyEditor_BorderChunk_Title
+|Border
+
+|PropertyEditor_FontChunk_Alpha_Label
+|Alpha:
+
+|PropertyEditor_FontChunk_Disabled_Label
+|Disabled:
+
+|PropertyEditor_FontChunk_TextTrimming_Label
+|Text Trimming
+
+|PropertyEditor_FontChunk_Title
+|Font
+
+|PropertyEditor_ImageChunk_Alignment_Label
+|Alignment
+
+|PropertyEditor_ImageChunk_Alpha_Label
+|Alpha:
+
+|PropertyEditor_ImageChunk_Image_Label
+|Image
+
+|PropertyEditor_ImageChunk_OpenFileDialog_Filter
+|All image files ($$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico;$$*$$.emf;$$*$$.wmf)\|$$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico;$$*$$.emf;$$*$$.wmf\|Bitmap files ($$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico)\|$$*$$.bmp;$$*$$.gif;$$*$$.jpg;$$*$$.jpeg;$$*$$.png;$$*$$.ico\|Metafiles ($$*$$.emf;$$*$$.wmf)\|$$*$$.emf;$$* $$.wmf
+
+|PropertyEditor_ImageChunk_OpenFileDialog_Title
+|Open
+
+|PropertyEditor_ImageChunk_Title
+|Image
+
+|PropertyEditor_OtherChunk_AlphaLevel_Label
+|Alpha Level
+
+|PropertyEditor_OtherChunk_Cursor_Label
+|Cursor
+
+|PropertyEditor_OtherChunk_ThemedElementAlpha_Label
+|Themed Element Alpha
+
+|PropertyEditor_OtherChunk_Title
+|Other
+
+|PropertyEditor_OtherChunk_Value_Label
+|Value
+
+|PropertyEditor_PreviewChunk_3DPreview_Label
+|3D Preview
+
+|PropertyEditor_PreviewChunk_Disabled_Label
+|Disabled
+
+|PropertyEditor_PreviewChunk_Disabled3d
+|Disabled
+
+|PropertyEditor_PreviewChunk_Disabled3D_Label
+|Disabled
+
+|PropertyEditor_PreviewChunk_DisabledSolid
+|Disabled
+
+|PropertyEditor_PreviewChunk_Enabled_Label
+|Enabled
+
+|PropertyEditor_PreviewChunk_Enabled3d
+|Enabled
+
+|PropertyEditor_PreviewChunk_Enabled3D_Label
+|Enabled
+
+|PropertyEditor_PreviewChunk_EnabledSolid
+|Enabled
+
+|PropertyEditor_PreviewChunk_Preview_Label
+|Preview
+
+|PropertyEditor_PreviewChunk_Title
+|Preview
+
+|PropertyEditor_ResourceChunk_Button_AddResource
+|Add Resource
+
+|PropertyEditor_ResourceChunk_Button_ConvertToResource
+|Convert to Resource
+
+|PropertyEditor_ResourceChunk_Button_MoveResourcesDown
+|Move Selected Resource(s) Down
+
+|PropertyEditor_ResourceChunk_Button_MoveResourcesUp
+|Move Selected Resource(s) Up
+
+|PropertyEditor_ResourceChunk_Button_RemoveResources
+|Remove Resource(s)
+
+|PropertyEditor_ResourceChunk_ContextMenuItem_EditResource
+|Edit Resource
+
+|PropertyEditor_ResourcesChunk_NoResources
+|(No Resources)
+
+|PropertyEditor_ResourcesChunk_Title
+|Resources
+
+|Reset_Role_NonState_Properties_Dialog_Text
+|"You are about to reset non-state properties of of the role '{0}'. Are you sure?"
+
+|Reset_Role_NonState_Properties_Dialog_Title
+|"Reset Role Properties?"
+
+|Reset_State_Dialog_Text
+|"You are about to reset the state '{0}' of the role '{1}'. Are you sure?"
+
+|Reset_State_Dialog_Title
+|"Reset State?"
+
+|Reset_UIRole_Dialog_Text
+|You are about to reset all states and properties of the role '{0}'. Are you sure?
+
+|Reset_UIRole_Dialog_Title
+|Reset UI Role?
+
+|Reset_UIRole_WithDescendants_Dialog_Title
+|You are about to reset all states and properties of the role '{0}' and all of it's descendants. Are you sure?
+
+|Resource_Preview_Text
+|Preview
+
+|ResourceChooser_Button_Cancel
+|Cancel
+
+|ResourceChooser_Button_OK
+|OK
+
+|ResourceChooser_Dialog_Text
+|Select the items you wish to import from the list of available resources below.
+
+|ResourceChooser_Dialog_Title_MultiSelect
+|Select Resources
+
+|ResourceChooser_Dialog_Title_SingleSelect
+|Select a Resource
+
+|ResourceChooser_SelectAll_Button
+|Select All
+
+|ResourceChooser_UnselectAll_Button
+|Deselect All
+
+|ResourceConflict_Dialog_ImportResource_Preview_Label
+|import resource
+
+|ResourceConflict_Dialog_Info_Label
+|A resource with the name '{0}' already exists in this Style Library. What would you like to do?
+
+|ResourceConflict_Dialog_OriginalResource_Preview_Label
+|original resource
+
+|ResourceConflict_Dialog_Rename_Label
+|Rename the import resource '{0}'
+
+|ResourceConflict_Dialog_Replace_Label
+|Replace the existing resource(s).
+
+|ResourceConflict_Dialog_Title
+|Resource Name Conflict
+
+|ResourceConflictAction_Rename
+|Rename the imported resource '{0}'.
+
+|ResourceConflictAction_Replace
+|Replace the existing resource.
+
+|ResourceConflictAction_Skip
+|Skip (do not import) this resource and continue.
+
+|ResourceConflictAction_Stop
+|Skip (do not import) this resource and cancel any further imports.
+
+|ResourceTree_Button_AddNewResource
+|&Add new
+
+|ResourceTree_Button_CopyFromAnExternalResource
+|Copy From an External Resource...
+
+|ResourceTree_Button_CreateCopy
+|Create Copy
+
+|ResourceTree_Button_ExportResources
+|Export
+
+|ResourceTree_Button_ExportResourcesTip
+|Export Resources
+
+|ResourceTree_Button_ImportResources
+|Import
+
+|ResourceTree_Button_ImportResourcesTip
+|Import Resources
+
+|ResourceTree_Button_RemoveResource
+|&Remove
+
+|ResourceTree_Button_RenameResource
+|Re&name
+
+|ResourceTree_Menu_CopyFrom
+|Copy From
+
+|ResourceTree_Menu_CopyFromAnInternalResource
+|Copy From an Internal Resource
+
+|ResourceTree_UsedByList_Title
+|Used By:
+
+|RoleEditor_Button_ResetCurrentState
+|Reset Current State
+
+|RoleEditor_Button_ResetProperties
+|Reset Properties
+
+|RoleEditor_Button_ResetRole
+|Reset Role
+
+|RoleEditor_Button_ResetStates
+|Reset States
+
+|RoleEditor_CommonComponentProperties
+|Common Component Properties
+
+|RoleEditor_ComponentSpecificProperties
+|{0}-specific Properties
+
+|RoleEditor_Font_Bold
+|True
+
+|RoleEditor_Font_Name
+|Trebuchet MS
+
+|RoleEditor_Font_Size
+|12
+
+|RoleEditor_Tab_Properties
+|Properties
+
+|RoleExplorer_Filter_ShowAll
+|(Show All)
+
+|RoleExplorer_Node_ComponentRoles
+|Component Role Settings
+
+|RoleExplorer_Node_ComponentRoles_All
+|All Components
+
+|RoleExplorer_Node_ComponentRoles_Inbox
+|Inbox Components
+
+|RoleExplorer_Node_ComponentRoles_Infragistics
+|Infragistics Components
+
+|RoleExplorer_Node_SharedObjects
+|Shared Object Role Settings
+
+|RoleExplorer_Node_UIRoles
+|UI Roles
+
+|RoleExplorer_Tab_Resources
+|Resources
+
+|RoleExplorer_Tab_Roles
+|Roles
+
+|RoleState_Active
+|Active
+
+|RoleState_ActivePreviewPage
+|ActivePreviewPage
+
+|RoleState_AddRow
+|AddRow
+
+|RoleState_AlternateItem
+|AlternateItem
+
+|RoleState_CardView
+|CardView
+
+|RoleState_Checked
+|Checked
+
+|RoleState_Collapsed
+|Collapsed
+
+|RoleState_DataError
+|DataError
+
+|RoleState_EditMode
+|EditMode
+
+|RoleState_EmptyRow
+|EmptyRow
+
+|RoleState_Expanded
+|Expanded
+
+|RoleState_FilteredIn
+|FilteredIn
+
+|RoleState_FilteredOut
+|FilteredOut
+
+|RoleState_FilterRow
+|FilterRow
+
+|RoleState_FixedColumn
+|FixedColumn
+
+|RoleState_FixedRow
+|FixedRow
+
+|RoleState_Floating
+|Floating
+
+|RoleState_Focused
+|Focused
+
+|RoleState_FormulaError
+|FormulaError
+
+|RoleState_GroupByColumn
+|GroupByColumn
+
+|RoleState_GroupByRow
+|GroupByRow
+
+|RoleState_HasActiveFilters
+|HasActiveFilters
+
+|RoleState_HasActivity
+|HasActivity
+
+|RoleState_Horizontal
+|Horizontal
+
+|RoleState_HotTracked
+|HotTracked
+
+|RoleState_HotTrackSelected
+|HotTrackSelected
+
+|RoleState_Indeterminate
+|Indeterminate
+
+|RoleState_MergedCell
+|MergedCell
+
+|RoleState_Normal
+|Normal
+
+|RoleState_Pressed
+|Pressed
+
+|RoleState_ReadOnly
+|ReadOnly
+
+|RoleState_RecentlyUsed
+|RecentlyUsed
+
+|RoleState_RowHotTracked
+|RowHotTracked
+
+|RoleState_Selected
+|Selected
+
+|RoleState_TemplateAddRow
+|TemplateAddRow
+
+|RoleState_Unchecked
+|Unchecked
+
+|RoleState_Vertical
+|Vertical
+
+|RoleState_VisitedLink
+|VisitedLink
+
+|RoleStateCategory_Common
+|Common States
+
+|RoleStateCategory_Editor
+|Editor States
+
+|RoleStateCategory_Grid
+|Grid States
+
+|RoleStateCategory_Other
+|Other States
+
+|RoleTree_ContextMenuItem_ResetRole
+|Reset Role
+
+|RoleTree_ContextMenuItem_ResetRoleAndDescendants
+|Reset Role and Descendants
+
+|RoleTree_FilterByControl_Label
+|Filter by Control:
+
+|RoleTree_UsedByList_Title
+|Used By:
+
+|SaveFile_Dialog_Filter
+|Infragistics Style Library files ($$*$$.isl)\|$$*$$.isl\|All files ($$*$$.$$*$$)\|$$*$$.$$* $$
+
+|SaveFile_Dialog_Title
+|Save Style Library
+
+|SelectFilteredRole_Dialog_Text
+|You have selected the '{0}' UIRole. This role is currently filtered out. In order to select this role, the filter must be cleared. Do you want to clear the filter and select this role?
+
+|SelectFilteredRole_Dialog_Title
+|Select Role?
+
+|StyleLibraryPropertiesEditor_ApplyColorBlend_Label
+|Apply Color Blend
+
+|StyleLibraryPropertiesEditor_ColorScheme_Label
+|Color Scheme:
+
+|StyleLibraryPropertiesEditor_Office2007Settings_Label
+|Office 2007 Settings
+
+|StyleLibraryPropertiesEditor_Office2010Settings_Label
+|Office 2010 Settings
+
+|StyleLibraryPropertiesEditor_UseApplicationSetting
+|(Use Application Setting)
+
+|StyleSetDropDown_Font_Bold
+|True
+
+|StyleSetDropDown_Font_Name
+|Trebuchet MS
+
+|StyleSetDropDown_Font_Size
+|12
+
+|StyleSetList_DefaultStyleSet_Text
+|(Default)
+
+|StyleSetListDropDown_ActiveStyleSet_Label
+|Active StyleSet:
+
+|StyleSetListDropDown_BasedOn_Label
+|Based On:
+
+|StyleSetListDropDown_Button_Add
+|Add
+
+|StyleSetListDropDown_Button_Manage
+|Manage StyleSets
+
+|StyleSetListDropDown_Button_Remove
+|Remove
+
+|StyleSetListDropDown_DefaultForControls_Label
+|Default for Controls:
+
+|StyleSetManager_BasedOn_Label
+|Based On:
+
+|StyleSetManager_Button_Add
+|Add New
+
+|StyleSetManager_Button_Cancel
+|Cancel
+
+|StyleSetManager_Button_MakeDefault
+|Make Default
+
+|StyleSetManager_Button_OK
+|OK
+
+|StyleSetManager_Button_Remove
+|Remove
+
+|StyleSetManager_ControlDefaultInfo_Label
+|When a style exists for a control, the Application default style is not applied to that control. Only one style may be specified as the default for any particular control.
+
+|StyleSetManager_ControlDefaults_Label
+|Control Defaults
+
+|StyleSetManager_Dialog_Title
+|StyleSet Manager
+
+|StyleSetManager_ExistingStyleSets_Label
+|Existing StyleSets
+
+|StyleSetManager_SelectedStyleSet_Label
+|Selected StyleSet
+
+|StyleSetManager_StyleSetManager_Label
+|StyleSet Manager
+
+|StyleSetManager_StyleSetName_Label
+|StyleSet Name:
+
+|TabbedColorSelector_Button_Capture_Tooltip
+|Click and drag to capture a color from anywhere on the screen.
+
+|TabbedColorSelector_Button_CustomColorChooser_Tooltip
+|Color Dialog
+
+|TabbedColorSelector_Button_Default_Text
+|default
+
+|TabbedColorSelector_Button_Transparent_Tooltip
+|Transparent
+
+|TabbedColorSelector_Tab_Custom
+|Custom
+
+|TabbedColorSelector_Tab_EmptyColor
+|(Empty)
+
+|TabbedColorSelector_Tab_Office2003
+|Office 2003
+
+|TabbedColorSelector_Tab_OfficeXP
+|Office XP
+
+|TabbedColorSelector_Tab_System
+|System
+
+|TabbedColorSelector_Tab_VisualStudio2005
+|VS 2005
+
+|TabbedColorSelector_Tab_Web
+|Web
+
+|ToolbarButton_StyleSet_Add
+|Add New
+
+|ToolbarButton_StyleSet_Manage
+|Manage StyleSets
+
+|ToolbarButton_StyleSet_Remove
+|Remove
+
+|UIRolePropertiesEditor_Label_BorderStyle
+|Border Style:
+
+|UIRolePropertiesEditor_Label_ButtonStyle
+|Button Style:
+
+|====

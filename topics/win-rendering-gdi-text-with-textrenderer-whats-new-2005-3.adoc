@@ -1,0 +1,19 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-rendering-gdi-text-with-textrenderer-whats-new-2005-3",
+    "controlName": [],
+    "tags": [],
+    "guid": "{AA09451C-A289-440E-88FC-08032791C83B}",  
+    "buildFlags": ["win-forms"],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Rendering GDI Text with TextRenderer
+
+In .NET Framework 2.0, Microsoft implemented a new TextRenderer class to render GDI text. Microsoft's in-box controls use this class to render text on their own controls. Infragistics controls and components running on .NET Framework 2.0 still use GDI+ by default to render text. We have found that our controls (especially the WinGrid) render text much quicker using GDI+.
+
+You can still render GDI text using the TextRenderer class. Setting the UseGDIPlusTextRendering property of the Infragistics.Win.DrawUtility class to False will disable GDI+ rendering. However, if text needs to be rotated vertically or printed, it still must be rendered with GDI+.

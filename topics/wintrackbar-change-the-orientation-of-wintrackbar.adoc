@@ -1,0 +1,44 @@
+﻿////
+|metadata|
+{
+    "name": "wintrackbar-change-the-orientation-of-wintrackbar",
+    "controlName": ["WinTrackBar"],
+    "tags": ["How Do I","Navigation"],
+    "guid": "{7BF3F46F-97FC-49AE-A70B-4580C9182734}",
+    "buildFlags": [],
+    "createdOn": "2008-10-01T16:00:54Z"
+}
+|metadata|
+////
+
+= Change the Orientation of WinTrackBar
+
+Many of Infragistics' Windows Forms controls, as well as several of Microsoft's in-box controls, are able to be situated on the form both horizontally and vertically; WinTrackBar is included in this group of controls able to be oriented both horizontally and vertically. You can perform this action easily by setting the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar~orientation.html[Orientation]"]  property. By default, WinTrackBar sits on the form horizontally. If you set the Orientation property to Orientation.Vertical, WinTrackBar will display vertically.
+
+[cols="a,a"]
+|====
+
+|image::images/WinTrackBar_Change_the_Orientation_of_WinTrackBar_01.png[changing the orientation of ultratrackbar to horizontal] 
+
+|image::images/WinTrackBar_Change_the_Orientation_of_WinTrackBar_02.png[changing the orientation of ultratrackbar to vertical] 
+
+|Orientation.Horizontal (default)
+|Orientation.Vertical
+
+|====
+
+Use the following code sample to change the orientation of WinTrackBar.
+
+*In Visual Basic:*
+
+----
+' Set WinTrackBar's Orientation to Vertical.
+Me.UltraTrackBar1.Orientation = Orientation.Vertical
+----
+
+*In C#:*
+
+----
+// Set WinTrackBar's Orientation to Vertical.
+this.ultraTrackBar1.Orientation = Orientation.Vertical;
+----

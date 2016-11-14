@@ -1,0 +1,446 @@
+﻿////
+
+|metadata|
+{
+    "name": "word-using-bullet-lists-and-automatic-numbering",
+    "controlName": [],
+    "tags": [],
+    "guid": "5df8d550-a895-4325-b567-61d783997365",  
+    "buildFlags": [],
+    "createdOn": "2015-02-26T18:43:24.2524919Z"
+}
+|metadata|
+////
+
+= Using Bullet Lists and Automatic Numbering
+
+== Using Bullet Lists and Automatic Numbering
+
+=== Purpose
+
+This topic provides a conceptual overview of how to create bullet lists and automatic numbering runs in a wordprocessingML-compliant document using the Infragistics WordDocumentWriter class.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:word-create-a-word-document.html[Creating a Word Document]
+|This topic illustrates how to create a Word document using the forward-only WordDocumentWriter streamer object.
+
+|====
+
+=== In this topic
+
+This topic contains the following sections:
+
+* <<UsingBulletListsandAutomaticNumbering,Bullet Lists and Automatic Numbering Overview>>
+
+** <<Overview,Overview>>
+** <<Preview,Preview>>
+** <<Paragraphs,Paragraphs>>
+** <<APIAdditions,API Additions>>
+** <<BulletLevelPropertyClass,BulletLevelProperty Class>>
+** <<ConfiguringaDocumentforBulletPoints,Configuring a Document for Bullet Points>>
+** <<ConfiguringaDocumentforAutomaticNumbering,Configuring a Document for Automatic Numbering>>
+
+* <<RelatedContent,Related Content>>
+
+[[UsingBulletListsandAutomaticNumbering]]
+== Bullet Lists and Automatic Numbering Overview
+
+[[Overview]]
+
+=== Overview
+
+*Bullet points* are used to draw attention to important information within a document so that a reader can identify the key issues and facts quickly. Each item in the list is typically preceded with a symbolic character such as a dot, arrow, circle, etc. Each item in the list is related, but the order in which they appear is not emphasized. Developers who are familiar with HTML will notice the similarities between bullet lists and the *<ul>* element.*Automatic numbering runs* are similar to bullet points, except that each item in the list is given sequential significance. Automatic numbering runs are typically used when the order in which the items appear is relevant, such as when enumerating the steps to perform a task. Developers who are familiar with HTML will notice the similarities between automatic numbering runs and the *<ol>* element. 
+
+[[Preview]]
+
+=== Preview
+
+Most readers will already be familiar with bullet points and automatic numbering runs, but for the sake of those who are not, here is an example of a *bullet list* :
+
+* Monday
+* Tuesday
+* Wednesday
+
+Here is an example of an *automatic numbering run* :
+
+[start=1]
+. Lather
+[start=2]
+. Rinse
+[start=3]
+. Repeat
+
+[[Paragraphs]]
+
+=== Paragraphs
+
+If you are already familiar with the WordDocumentWriter class, you will probably already be familiar with the concept of *paragraphs* . A paragraph represents a block of content for a document, usually consisting of several sentences which are somehow related to one another.
+
+To the WordDocumentWriter, a bullet point or an item in an automatic numbering run is also a paragraph. In the example above, where days of the week are listed as bullet points, *each day of the week is a separate paragraph* . This point is emphasized because it is not necessarily intuitive at first glance; one might think of the whole list as one paragraph, with each item being a constituent part of that paragraph, but in actuality each item is itself a paragraph.
+
+Developers who are already familiar with the WordDocumentWriter class will probably already have used the ParagraphProperties class to format their paragraphs – alignment, indentation, line spacing, and other formatting attributes are changed by manipulating the properties of this class.A bullet point or an automatic numbering run item can be thought of as a paragraph with special formatting attributes. These attributes are programmatically accessible via a new property of the ParagraphProperties class: *BulletLevel* .
+
+[[APIAdditions]]
+
+=== API Additions
+
+This section contains a high-level overview of the new API members which were added to the existing object model in order to enable you to generate documents with bullet points and/or automatic numbering runs.
+
+* *CreateBulletProperties* method (WordDocumentWriter class)
+
+** Creates and registers an instance of the *BulletProperties* class
+** Necessary because bullet properties are serialized to a separate part of the resulting document.
+
+* *BulletProperties* class
+
+** Exposes a *Levels* collection – one for each level, zero-based
+** Each level is usually indented with respect to the preceding level
+** Each member of the Levels collection is an object of type <<BulletLevelPropertiesClass,BulletLevelProperties>>
+
+* *BulletLevelProperties* class
+
+** Exposes properties which control the way that level is formatted
+
+*** The symbol and font for the bullet point
+*** Indentation
+*** The numbering style for automatic numbering runs, for example: [1, 2, 3, …], [a, b, c, …], [One, Two, Three, …]
+
+** Assign a BulletLevelProperties instance to the *BulletLevel* property of the existing ParagraphProperties class.
+
+* *BulletLevel* property (ParagraphProperties class)
+
+** New property on an existing class
+** Takes an instance of type BulletLevelProperties
+** The same BulletLevelProperties instance can be assigned to multiple ParagraphProperties instances; such assignments result in the same bulleting/numbering properties for the associated paragraphs
+
+[[BulletLevelPropertyClass]]
+== BulletLevelProperties Class
+
+=== BulletLevel Properties summary
+
+The BulletLevelProperties class encapsulates the main functionality for bullet lists and automatic numbering. This class exposes the properties that allow you to customize the bullet symbol/font, indentation, whether bullets or numbers are shown, etc.
+
+The following table summarizes the properties of the BulletLevelProperties class:
+
+[options="header", cols="a,a,a"]
+|====
+|Property Name|Property Type|Description
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
+|`String`
+| 
+
+Returns or sets the character(s) which depict the bullet point. Applicable only when the NumberingStyle property is set to ‘None’.This property *must be explicitly set* when the NumberingStyle property is set to ‘None’ in order to see a bullet symbol. 
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font]
+|`Font`
+| 
+
+Returns the Font used for the associated bullet point or automatic numbering. 
+
+Use this in conjunction with the BulletText property to customize the bullet symbol. For example, assigning a font of ‘Wingdings’ to this property,and assigning a lowercase ‘L’ to the BulletText property causes a heavy dot to be shown as the bullet symbol.When used for automatic numbering, formats the font of the letter or number. 
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+|` _Nullable<float>_ `
+| 
+
+Returns or sets a value which determines the indentation, as relative to the left or right edge of the page, for the bullet point or automatically numbered item. 
+
+The unit of measurement here depends on the WordDocumentWriter’s Unit property; if Unit is set to ‘Inch’, and this property is assigned a value of .25, the indentation is one quarter inch from the edge. 
+
+Which edge the value is relative to depends on the value of the ParagraphProperties’ RightToLeft property. When RightToLeft is false, bullets are aligned with the left edge, and when RightToLeft is set to true, they are aligned with the right edge. 
+
+Also note that the ParagraphProperties’ Alignment property overrides this one, i.e., when Alignment is explicitly set, this value is not applicable.When this value is not set at all, the indentation defaults to ¼” as relative to the previous level, with level zero being indented by ¼” from the edge of the page. 
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+|`AutomaticNumberingStyle`
+| 
+
+Enumeration value which identifies the numbering style, if any, that is applied to automatic numbering runs.When set to the default value, ‘None’, bullet points are show, assuming that the BulletText property has been explicitly set. 
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~start.html[Start]
+|`Int`
+| 
+
+Returns or sets the number at which the numbering sequence begins. Only applicable when the NumberingStyle property is set to a value other than ‘None’.By default, automatic numbering runs begin at 1. Use this property to override that, and begin at any arbitrary number. 
+
+|====
+
+[[ConfiguringaDocumentforBulletPoints]]
+== Configuring a document for bullet points
+
+=== Example
+
+The following example demonstrates how the document appears as a result of the following property settings (of a BulletLevelProperties instance):
+
+[options="header", cols="a,a"]
+|====
+|Property|Value
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+|None
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
+|"l" (lowercase L)
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font].Name
+|"Wingdings"
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+|0.25
+
+|====
+
+Which will result in a document that appears as follows:
+
+* Item #1
+* Item #2
+* Item #3
+
+*In C#:* 
+[source, csharp]
+---- 
+using Infragistics.Documents.Word; 
+using ( WordDocumentWriter writer = WordDocumentWriter.Create("Bullet.docx") ) 
+{ 
+ // Use inches as the unit of measurement. 
+ writer.Unit = UnitOfMeasurement.Inch; 
+ // Create a BulletProperties object 
+ BulletProperties bulletProps = writer.CreateBulletProperties(); 
+ // Set the property values for level zero 
+ bulletProps.Levels[0].NumberingStyle = AutomaticNumberingStyle.None; 
+ bulletProps.Levels[0].Font.Name = "Wingdings"; 
+ bulletProps.Levels[0].Indent = .25f; 
+ bulletProps.Levels[0].BulletText = "l"; 
+ // Create a ParagraphProperties object and assign the 
+ // BulletLevelProperties instance we created above to its 
+ // BulletLevel property. 
+ ParagraphProperties paragraphProps = writer.CreateParagraphProperties(); 
+ paragraphProps.BulletLevel = bulletProps.Levels[0]; 
+ // Start the document. 
+ writer.StartDocument(); 
+ // Add three paragraphs, each using the same ParagraphProperties 
+ // instance, which will cause the same bullet to be used for each one. 
+ for ( int i = 1; i $$<=$$ 3; i ++ ) 
+ { 
+ writer.StartParagraph(paragraphProps); 
+ writer.AddTextRun(string.Format("Item #{0}", i)); 
+ writer.EndParagraph(); 
+ } 
+ // End the document. 
+ writer.EndDocument(); 
+ // Close the writer, which causes the content to be written out. 
+ writer.Close(); 
+}
+---- 
+
+*In Visual Basic:* 
+[source, vb]
+---- 
+Imports Infragistics.Documents.Word 
+Using writer As WordDocumentWriter = WordDocumentWriter.Create("Bullet.docx") 
+ ' Use inches as the unit of measurement. 
+ writer.Unit = UnitOfMeasurement.Inch 
+ ' Create a BulletProperties object 
+ Dim bulletProps As BulletProperties = writer.CreateBulletProperties() 
+ ' Set the property values for level zero 
+ bulletProps.Levels(0).NumberingStyle = AutomaticNumberingStyle.None 
+ bulletProps.Levels(0).Font.Name = "Wingdings" 
+ bulletProps.Levels(0).Indent = .25F 
+ bulletProps.Levels(0).BulletText = "l" 
+ ' Create a ParagraphProperties object and assign the 
+ ' BulletLevelProperties instance we created above to its 
+ ' BulletLevel property. 
+ Dim paragraphProps As ParagraphProperties = writer.CreateParagraphProperties() 
+ paragraphProps.BulletLevel = bulletProps.Levels(0) 
+ ' Start the document. 
+ writer.StartDocument() 
+ ' Add three paragraphs, each using the same ParagraphProperties 
+ ' instance, which will cause the same bullet to be used for each one. 
+ For i As Integer = 1 To 3 
+ writer.StartParagraph(paragraphProps) 
+ writer.AddTextRun(String.Format("Item #{0}", i)) 
+ writer.EndParagraph() 
+ Next i 
+ ' End the document. 
+ writer.EndDocument() 
+ ' Close the writer, which causes the content to be written out. 
+ writer.Close() 
+End Using
+---- 
+
+[[ConfiguringaDocumentforAutomaticNumbering]]
+== Configuring a document for automatic numbering
+
+The following example demonstrates how the document appears as a result of the following property settings. In this example, two BulletLevelProperties instances are used. The first one specifies the settings for level zero, and the second for level one:
+
+BulletProperties.Levels[0]
+
+[options="header", cols="a,a"]
+|====
+|Property|Value
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+|Decimal
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+|0.25
+
+|====
+
+BulletProperties.Levels[1]
+
+[options="header", cols="a,a"]
+|====
+|Property|Value
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+|LowerLetter
+
+| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+|0.5
+
+|====
+
+Which will result in a document that appears as follows:
+
+1. Level 0 Item #1
+
+a. Level 1 Item #1
+
+b. Level 1 Item #2
+
+c. Level 1 Item #3
+
+2. Level 0 Item #2
+
+a. Level 1 Item #1
+
+b. Level 1 Item #2
+
+c. Level 1 Item #3
+
+3. Level 0 Item #3
+
+a. Level 1 Item #1
+
+b. Level 1 Item #2
+
+c. Level 1 Item #3
+
+*In C#:* 
+[source, csharp]
+---- using Infragistics.Documents.Word; 
+using ( WordDocumentWriter writer = WordDocumentWriter.Create("Bullet.docx") ) 
+{ 
+ // Use inches as the unit of measurement. 
+ writer.Unit = UnitOfMeasurement.Inch; 
+ // Create a BulletProperties object 
+ BulletProperties bulletProps = writer.CreateBulletProperties(); 
+ // Set the property values for level zero 
+ bulletProps.Levels[0].NumberingStyle = AutomaticNumberingStyle.Decimal; 
+ bulletProps.Levels[0].Indent = .25f; 
+ // Set the property values for level one 
+ bulletProps.Levels[1].NumberingStyle = AutomaticNumberingStyle.LowerLetter; 
+ bulletProps.Levels[1].Indent = .5f; 
+ // Create a ParagraphProperties object and assign the level zero 
+ // BulletLevelProperties instance we created above to its 
+ // BulletLevel property. 
+ ParagraphProperties pp0 = writer.CreateParagraphProperties(); 
+ pp0.BulletLevel = bulletProps.Levels[0]; 
+ // Create a ParagraphProperties object and assign the level zero 
+ // BulletLevelProperties instance we created above to its 
+ // BulletLevel property. 
+ ParagraphProperties pp1 = writer.CreateParagraphProperties(); 
+ pp1.BulletLevel = bulletProps.Levels[1]; 
+ // Start the document. 
+ writer.StartDocument(); 
+ // Add three paragraphs, each using the level zero ParagraphProperties. 
+ for ( int i = 1; i $$<=$$ 3; i ++ ) 
+ { 
+ writer.StartParagraph(pp0); 
+ writer.AddTextRun(string.Format("Level 0 Item #{0}", i)); 
+ writer.EndParagraph(); 
+ // Add three paragraphs, each using the level one ParagraphProperties. 
+ for ( int j = 1; j $$<=$$ 3; j ++ ) 
+ { 
+ writer.StartParagraph(pp1); 
+ writer.AddTextRun(string.Format("Level 1 Item #{0}", j)); 
+ writer.EndParagraph(); 
+ } 
+ } 
+ // End the document. 
+ writer.EndDocument(); 
+ // Close the writer, which causes the content to be written out. 
+ writer.Close(); 
+}
+---- 
+
+*In Visual Basic:* 
+[source, vb]
+---- 
+Imports Infragistics.Documents.Word 
+Using writer As WordDocumentWriter = WordDocumentWriter.Create("Bullet.docx") 
+ ' Use inches as the unit of measurement. 
+ writer.Unit = UnitOfMeasurement.Inch 
+ ' Create a BulletProperties object 
+ Dim bulletProps As BulletProperties = writer.CreateBulletProperties() 
+ ' Set the property values for level zero 
+ bulletProps.Levels(0).NumberingStyle = AutomaticNumberingStyle.Decimal 
+ bulletProps.Levels(0).Indent = 0.25F 
+ ' Set the property values for level one 
+ bulletProps.Levels(1).NumberingStyle = AutomaticNumberingStyle.LowerLetter 
+ bulletProps.Levels(1).Indent = 0.5F 
+ ' Create a ParagraphProperties object and assign the level zero 
+ ' BulletLevelProperties instance we created above to its 
+ ' BulletLevel property. 
+ Dim pp0 As ParagraphProperties = writer.CreateParagraphProperties() 
+ pp0.BulletLevel = bulletProps.Levels(0) 
+ ' Create a ParagraphProperties object and assign the level zero 
+ ' BulletLevelProperties instance we created above to its 
+ ' BulletLevel property. 
+ Dim pp1 As ParagraphProperties = writer.CreateParagraphProperties() 
+ pp1.BulletLevel = bulletProps.Levels(1) 
+ ' Start the document. 
+ writer.StartDocument() 
+ ' Add three paragraphs, each using the level zero ParagraphProperties. 
+ For i As Integer = 1 To 3 
+ writer.StartParagraph(pp0) 
+ writer.AddTextRun(String.Format("Level 0 Item #{0}", i)) 
+ writer.EndParagraph() 
+ ' Add three paragraphs, each using the level one ParagraphProperties. 
+ For j As Integer = 1 To 3 
+ writer.StartParagraph(pp1) 
+ writer.AddTextRun(String.Format("Level 1 Item #{0}", j)) 
+ writer.EndParagraph() 
+ Next j 
+ Next i 
+ ' End the document. 
+ writer.EndDocument() 
+ ' Close the writer, which causes the content to be written out. 
+ writer.Close() 
+End Using
+---- 
+
+[[RelatedContent]]
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:word-using-the-infragistics-word-library.html[Using the Infragistics Word Library]
+|Contains important task-based information that will help you to effectively use the various features and functionalities provided by the Word Library.
+
+|====

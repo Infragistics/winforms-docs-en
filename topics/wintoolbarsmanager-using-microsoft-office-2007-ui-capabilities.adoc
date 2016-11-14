@@ -1,0 +1,75 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-using-microsoft-office-2007-ui-capabilities",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{36ECC34A-109B-4AA7-A6E5-97F5F980B26E}",  
+    "buildFlags": [],
+    "createdOn": "2006-09-10T16:16:13Z"
+}
+|metadata|
+////
+
+= Using Microsoft Office 2007 UI Capabilities
+
+Microsoft® Office 2007 adds new UI capabilities for organizing and navigating applications. These innovations represent a new wave for usability in application development.
+
+.Note
+[NOTE]
+====
+When using the Microsoft Office 2007 UI capabilities provided as part of Infragistics Windows Forms, be aware that the Infragistics license grants you no rights to the Microsoft Office 2007 UI. For more information, please visit link:http://msdn.microsoft.com/en-us/library/bf08984t.aspx[http://msdn.microsoft.com/en-us/library/bf08984t.aspx].
+====
+
+The Office2007UICompatibility property (set to True by default) helps you to ensure that the applications you develop using the WinToolbarsManager™ component will conform to the Office 2007 UI look and feel.
+
+.Note
+[NOTE]
+====
+WinToolbarsManager is a highly-customizable component; therefore, some property settings which are not affected by the Office2007UICompatibility property (e.g., alignment, size, visibility) may cause your application UI not to conform to the standard Office 2007 look and feel.
+====
+
+When set to True, the Office2007UICompatibility property will help you to maintain the application's Office 2007 UI compatibility by resolving particular properties to their default values, despite what you set them to at design time or run time. Therefore, the following list will help you understand what changes cannot be made while the Office2007UICompatibility property is set to True.
+
+== WinToolbarsManager
+
+* All  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[UltraToolbar]"]  instances in the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarscollection.html[Toolbars]"]  collection (except  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultrataskpanetoolbar.html[UltraTaskPaneToolbars]"] ) will be hidden.
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~style.html[Style]"]  property of  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolbarsManager]"]  will be resolved to Office2007.
+
+== PopupGalleryTool
+
+* The gallery drop down's height will never exceed 2/3 the screen height.
+* In the gallery preview in the ribbon, the gallery's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool~activationinitialactiondelay.html[ActivationInitialActionDelay]"]  will be resolved to 250ms and the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool~activationactiondelay.html[ActivationActionDelay]"]  will be resolved to 0ms.
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool~mindropdowncolumns.html[MinDropDownColumns]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool~maxdropdowncolumns.html[MaxDropDownColumns]"]  of gallery tools that are displaying a preview within a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbongroup.html[RibbonGroup]"]  will resolve to be no less than the number of preview columns displayed at the time when the drop-down menu is displayed. (Note: It is possible for the value to be less if the preview spans multiple monitors.)
+
+== Application Menu
+
+* The width of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.applicationmenu.html[ApplicationMenu]"]  drop-down menu will remain fixed.
+* The open delay for hovering over pop-up tools in the application menu will be resolved to 100 ms.
+* The open delay for hovering over segmented drop-down menus in the application menu will be resolved to 200 ms.
+* The Cancel property of  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforetooldropdown_ev.html[BeforeToolDropdown]"]  event will be ignored for any pop-up tools (e.g.,  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool.html[PopupControlContainerTool]"] , etc.) directly within the application menu.
+* The Cancel property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforeapplicationmenudropdown_ev.html[BeforeApplicationMenuDropdown]"]  event will be ignored. This event cannot be cancelled.
+
+== Quick Access Toolbar
+
+* The ImageSize for the tools displayed within the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.quickaccesstoolbar.html[QuickAccessToolbar]"]  will be resolved to 16x16.
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.quickaccesstoolbar~location.html[Location]"]  property of the QuickAccessToolbar will not be serialized at design time.
+
+== Ribbon
+
+* The Ribbon will be hidden if the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer]"]  property is not set to a top level form (i.e., a form without a parent).
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~autocollapsethresholdvertical.html[AutoCollapseThresholdVertical]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~autocollapsethresholdhorizontal.html[AutoCollapseThresholdHorizontal]"]  of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon.html[Ribbon]"]  will be resolved to be 250 and 300 respectively.
+* Any trailing ellipses ("…") in the resolved Caption of a tool within a RibbonGroup will be removed.
+* PopupMenuTools will have their Enabled property resolved to False if there are no enabled menu items.
+* The Visible state of all tools in a RibbonGroup will be resolved to True. Any tools that should have been hidden will resolve their Enabled state to False.
+* The  _IsMinimized_   property of the Ribbon will not be serialized at design time.
+* The TextHAlign/TextVAlign of RibbonTabs will be resolved to Center/Middle, respectively.
+* The Cancel property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforeribbongroupdropdown_ev.html[BeforeRibbonGroupDropDown]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforeribbontabselected_ev.html[BeforeRibbonTabSelected]"]  events will be ignored. These events cannot be cancelled.
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showquickaccesstoolbaraddremovemenuitem.html[ShowQuickAccessToolbarAddRemoveMenuItem]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showquickaccesstoolbarpositionmenuitem.html[ShowQuickAccessToolbarPositionMenuItem]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showminimizeribbonmenuitem.html[ShowMinimizeRibbonMenuItem]"]  of the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~beforetoolbarlistdropdown_ev.html[BeforeToolbarListDropdown]"]  event will be ignored and these items will always be shown in the right-click menu.
+* The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showcustomizemenuitem.html[ShowCustomizeMenuItem]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showlocktoolbarsmenuitem.html[ShowLockToolbarsMenuItem]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.beforetoolbarlistdropdowneventargs~showtoolbarmenuitems.html[ShowToolbarMenuItems]"]  properties of the BeforeToolbarListDropdown event arguments will be ignored, and these items will never be shown in the right-click menu.
+
+== Contextual Tabs
+
+* The Image property of a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.contextualtabgroup.html[ContextualTabGroup]"]  caption will be ignored. ContextualTabGroups will never show an image.
+* The TextHAlign/TextVAlign of a ContextualTabGroup caption will be resolved to Left/Middle, respectively.

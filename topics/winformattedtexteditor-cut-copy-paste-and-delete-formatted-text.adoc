@@ -1,0 +1,43 @@
+﻿////
+
+|metadata|
+{
+    "name": "winformattedtexteditor-cut-copy-paste-and-delete-formatted-text",
+    "controlName": [],
+    "tags": ["How Do I"],
+    "guid": "{1144D11C-A257-46A6-8C1C-9B549E364D3F}",  
+    "buildFlags": [],
+    "createdOn": "2006-12-09T13:27:51Z"
+}
+|metadata|
+////
+
+= Cut, Copy, Paste, and Delete Formatted Text
+
+When developing word processing applications, you need to give the end user a way to easily transfer words or blocks of text from one location to another. You need to give them a way to remove words and blocks of text as well. WinFormattedTextEditor™ accommodates all these actions by default. When typing in the WinFormattedTextEditor control, the end user can use the Ctrl+X, Ctrl+C, Ctrl+V, and Delete keys at any time to perform the Cut, Copy, Paste, and Delete actions respectively. You can also give the end user the option of performing these operations on a button click, perhaps in a toolbar. By using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~cut.html[Cut]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~copy().html[Copy]"] ,  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~paste().html[Paste]"] , and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~delete().html[Delete]"]  methods off the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object, you can perform just that.
+
+The following code demonstrates how to copy, paste, and then delete a line of text.
+
+*In Visual Basic:*
+
+----
+' Copies the currently selected text to the clipboard.
+Me.UltraFormattedTextEditor1.EditInfo.Copy()
+' Pastes the contents of the clipboard to the current 
+' cursor location.
+Me.UltraFormattedTextEditor1.EditInfo.Paste()
+' Deletes the currently selected text.
+Me.UltraFormattedTextEditor1.EditInfo.Delete()
+----
+
+*In C#:*
+
+----
+// Copies the currently selected text to the clipboard.
+this.ultraFormattedTextEditor1.EditInfo.Copy();
+// Pastes the contents of the clipboard to the current 
+// cursor location.
+this.ultraFormattedTextEditor1.EditInfo.Paste();
+// Deletes the currently selected text.
+this.ultraFormattedTextEditor1.EditInfo.Delete();
+----

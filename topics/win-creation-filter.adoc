@@ -1,0 +1,182 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-creation-filter",
+    "controlName": [],
+    "tags": [],
+    "guid": "{D2BD911B-EDB7-4844-B433-B4556542FE5B}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Creation Filter
+
+Users of Infragistics controls normally don't need an understanding of how UIElements are implemented and most often have no need for using a UIElement creation filter. This advanced extensibility mechanism is available for developers who want to modify, add to and/or replace the UIElements of a control.
+
+All controls that are based on the PLF expose a UIElement creation/positioning extensibility mechanism. To customize the size and/or location of UIElements or to add or replace one or more UIElements of a control you need to implement the IUIElementCreationFilter interface on an object and set the CreationFilter property of the control to that object at runtime.
+
+The IUIElementCreationFilter interface has the following 2 methods (each of which gets passed the parent element as a parameter):
+
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcreationfilter~beforecreatechildelements.html[BeforeCreateChildElements]"]  -- called from inside the VerifyChildElements method if the child elements were marked dirty. This is called before PositionChildElements. A returned True from this method indicates that the default creation logic should be bypassed and PositionChildElements will not be called.
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcreationfilter~aftercreatechildelements.html[AfterCreateChildElements]"]  -- called after PositionChildElements is called.
+
+The ChildElements collection property is used to add/remove/replace elements.
+
+.Note
+[NOTE]
+====
+when replacing elements with custom elements it is recommended that you derive a class from the class of the element being replaced in case the control's logic is expecting that element type.
+====
+
+The following sample code illustrates how to add a button element to an UltraGrid cell:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+' Implement the IUIElementCreationFilter interface on a class
+' (in this case the form)
+Public Class Form1
+  Inherits System.Windows.Forms.Form
+  Implements Infragistics.Win.IUIElementCreationFilter
+Private Sub Form1_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Set the grid's CreationFilter property to the object that
+	' implements the IUIElementCreationFilter interface.
+	Me.UltraGrid1.CreationFilter = Me
+End Sub
+Public Function BeforeCreateChildElements( _
+  ByVal parent As Infragistics.Win.UIElement) _
+  As Boolean Implements _
+  Infragistics.Win.IUIElementCreationFilter.BeforeCreateChildElements
+	' return false so PositionChildElements will get called 
+	' to do the default child element creation
+	Return False
+End Function
+Public Sub AfterCreateChildElements( _
+  ByVal parent As Infragistics.Win.UIElement) _
+  Implements Infragistics.Win.IUIElementCreationFilter.AfterCreateChildElements
+    Dim column As UltraGridColumn
+    Dim child As UIElement
+    Dim rc As Rectangle
+    Dim childRect As Rectangle
+    Dim elementToAdd As ButtonUIElement
+	' if the parent element is not a cell element return
+	If (Not (TypeOf (parent) Is CellUIElement)) Then Return
+	' get the associated column
+	column = parent.GetContext(GetType(UltraGridColumn))
+	' Return if the column isn't the one we want to add the button to.
+	If column Is Nothing Then Return
+	If Not column.Key = "City" Then Return
+	' create a new button element
+	elementToAdd = New ButtonUIElement(parent)
+	' hook into its click event
+	AddHandler elementToAdd.ElementClick, AddressOf Me.OnCustomButtonClick
+	' get the rect of the parent element inside its borders
+	rc = parent.RectInsideBorders
+	' set the width of the button's rect
+	rc.Width = 12
+	' set the button element's rect
+	elementToAdd.Rect = rc
+	' loop over the child elements and adjust their
+	' rects so they don't overlap the button
+	For Each child In parent.ChildElements
+		childRect = child.Rect
+		If (childRect.Left < rc.Right) Then
+			childRect.Width -= rc.Right - childRect.Left
+			childRect.X += rc.Right - childRect.Left
+			child.Rect = childRect
+		End If
+	Next
+	' append the button element to the 
+	' child elements collection
+	parent.ChildElements.Add(elementToAdd)
+End Sub
+Private Sub OnCustomButtonClick(ByVal sender As System.Object, _
+  ByVal e As UIElementEventArgs)
+	Dim cell As UltraGridCell
+	' get the associated cell
+    cell = e.Element.GetContext(GetType(UltraGridCell))
+	' display the cell's text or do something more meaningful
+	If (Not cell Is Nothing) Then
+		MessageBox.Show( _
+		  "Custom cell button clicked. Cell.Text = " + cell.Text)
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+// Implement the IUIElementCreationFilter interface on a class
+// (in this case the form)
+public class Form1 : System.Windows.Forms.Form,
+  Infragistics.Win.IUIElementCreationFilter
+{
+private void Form1_Load(object sender, System.EventArgs e)
+{
+	// Set the grid's CreationFilter property to the object that
+	// implements the IUIElementCreationFilter interface.
+	this.ultraGrid1.CreationFilter = this;
+}
+public bool BeforeCreateChildElements(Infragistics.Win.UIElement parent)
+{
+	// return false so PositionChildElements will get called 
+	// to do the default child element creation
+	return false;
+}
+public void AfterCreateChildElements(Infragistics.Win.UIElement parent)
+{
+	// if the parent element is not a cell element return
+	if ( !(parent is CellUIElement ) )
+		return;
+	// get the associated column
+	UltraGridColumn column = 
+	  parent.GetContext( typeof( UltraGridColumn ) ) as UltraGridColumn;
+	// Return if the column isn't the one we want to add the button to.
+	if ( column == null || column.Key != "City" )
+		return;
+	// create a new button element
+	ButtonUIElement elementToAdd = new ButtonUIElement( parent );
+	// hook into its click event
+	elementToAdd.ElementClick += 
+	  new UIElementEventHandler(this.OnCustomButtonClick);
+	// get the rect of the parent element inside its borders
+	Rectangle rect = parent.RectInsideBorders;
+	// set the width of the button's rect
+	rect.Width = 12;
+	// set the button element's rect
+	elementToAdd.Rect = rect;
+	// loop over the child elements and adjust their
+	// rects so they don't overlap the button
+	foreach ( UIElement child in parent.ChildElements )
+	{
+		Rectangle childRect = child.Rect;
+		if ( childRect.Left < rect.Right )
+		{
+			childRect.Width -= rect.Right - childRect.Left;
+			childRect.X     += rect.Right - childRect.Left;
+			child.Rect = childRect;
+		}
+	}
+	// append the button element to the 
+	// child elements collection
+	parent.ChildElements.Add( elementToAdd );
+}
+private void OnCustomButtonClick( object sender, UIElementEventArgs e )
+{
+	// get the associated cell
+	UltraGridCell cell = 
+	  e.Element.GetContext( typeof( UltraGridCell ) ) as UltraGridCell;
+	// display the cell's text or do something more meaningful
+	if ( cell != null )
+		MessageBox.Show( 
+		 "Custom cell button clicked. Cell.Text = " + cell.Text);
+}
+----

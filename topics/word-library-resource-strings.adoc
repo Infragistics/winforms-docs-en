@@ -1,0 +1,151 @@
+﻿////
+
+|metadata|
+{
+    "name": "word-library-resource-strings",
+    "controlName": [],
+    "tags": ["Localization","Resource Strings"],
+    "guid": "d06e27a8-8cda-45b7-8c7b-b20561ddb5d3",  
+    "buildFlags": [],
+    "createdOn": "2011-05-19T18:43:52.0097723Z"
+}
+|metadata|
+////
+
+= Word Library Resource Strings Reference
+
+You can quickly and easily modify any resource string value that is displayed to a user by a control/component. Resource strings include items such as dialog box captions, warning messages, alerts, etc.
+
+The following table lists the names of the resource strings that are used by this assembly, along with the string's default text value.
+
+[options="header", cols="a,a"]
+|====
+|Resource String Name|Default Value
+
+|Exception_AddHyperlink_BadUri
+|The value '{0}' could not be specified as a valid Uniform Resource Identifier (URI).
+
+|Exception_AssociatedWithDifferentWriter
+|The instance being assigned was created by a different writer, and cannot be assigned to this object.
+
+|Exception_CellNotClosed
+|Closure of a previously opened table cell is still pending. Each call to the StartTableCell method must be balanced by a call to the EndTableCell method.
+
+|Exception_CellNotClosedTableClosed
+|The table could not be closed because closure of a previously opened table cell is still pending. Use the EndTableCell method to close the table cell.
+
+|Exception_CellNotOpen
+|The operation cannot be performed because there is currently no open table cell. Use the StartTableCell method to begin a table cell.
+
+|Exception_CellOpenSectionStarted
+|A section cannot be defined because a table cell is currently open. Sections can only be defined for root-level content blocks.
+
+|Exception_DocumentClosureError
+|An exception was thrown while closing the document. Check the InnerException for details.
+
+|Exception_DocumentNotOpen
+|The document has not been opened. Use the StartDocument method to begin the document.
+
+|Exception_FooterWriterError
+|An exception was thrown while writing content to the footer part of a section. Check the InnerException for details.
+
+|Exception_HeaderFooterWriterClosureError
+|An exception was thrown while closing a header or footer. Check the InnerException for details.
+
+|Exception_HeaderFooterWriterNotClosed
+|The document writer was closed, but closure of a header/footer writer is still pending. Header/footer writers must be properly closed prior to closure of the document writer.
+
+|Exception_HeaderFooterWriterNotOpened
+|The document writer was closed, but a header/footer writer that was previously created was never opened. Any header/footer writers that are created must be opened and properly closed.
+
+|Exception_HeaderWriterError
+|An exception was thrown while writing content to the header part of a section. Check the InnerException for details.
+
+|Exception_InvalidCulture
+|"The value '{0}' is not the name of a valid culture for the local machine."
+
+|Exception_MissingHyperlinkAddress
+|A hyperlink must have a valid address.
+
+|Exception_NestedCell
+|A table cell cannot be added because closure of a previously opened table cell is still pending, and nested table cells are not supported. Use the EndTableCell method to close the table cell that is currently open.
+
+|Exception_NestedParagraph
+|A paragraph cannot be opened because closure of an opened paragraph is still pending. Nested paragraphs are not supported.
+
+|Exception_NestedRow
+|A table row cannot be added because closure of a previously opened table row is still pending, and nested table rows are not supported. Use the EndTableRow method to close the table row that is currently open.
+
+|Exception_NestedTable
+|A table cannot be opened because closure of a previously opened table is still pending. Nested tables are supported, but must appear within a table cell of the parent table.
+
+|Exception_NoImageEncoder
+|Images cannot be added to the document because no Infragistics.Imaging.IImageEncoder implementation has been assigned to the ImageEncoder property. Because the Silverlight runtime provides no intrinsic support for the encoding of image information, the WordDocumentWriter requires a reference to an IImageEncoder implementation in order to serialize image information.
+
+|Exception_PackageFactoryNullOnCLR2
+|When running under version 2.0 of the .NET framework, you must provide an IPackageFactory implementation to handle the packaging of data. If you are using version 3.0 (or higher) of the .NET Framework, use the Infragistics3.Documents.IO assembly instead, and the packaging will be handled by the WindowsBase class.
+
+|Exception_PaddingTextParseFailedFormat
+|The specified string: '{0}' cannot be converted to a Padding object. Please specify the padding in the following format: "left, top, right, bottom"
+
+|Exception_ParagraphNotClosed
+|Closure of a previously opened paragraph is still pending. Each call to the StartParagraph method must be balanced by a call to the EndParagraph method.
+
+|Exception_ParagraphNotClosedSectionStarted
+|A section cannot be defined because closure of an opened paragraph is still pending. A section must be defined at a point where the document is open, but no paragraphs are open.
+
+|Exception_ParagraphNotClosedTableCellStarted
+|A table cell cannot be started because closure of an opened paragraph is still pending. Use the EndParagraph method to close the paragraph.
+
+|Exception_ParagraphNotClosedTableRowStarted
+|A table row cannot be started because closure of an opened paragraph is still pending. Use the EndParagraph method to close the paragraph.
+
+|Exception_ParagraphNotClosedTableStarted
+|A table cannot be started because closure of an opened paragraph is still pending. A table can be nested within a cell of another table, but cannot be nested within a paragraph.
+
+|Exception_ParagraphNotOpen
+|The operation cannot be performed because there is currently no open paragraph. Use the StartParagraph method to begin a paragraph.
+
+|Exception_PropertyValueOutOfRange
+|The value {0} is out of range. The '{1}' property must be set to a value within the range of {2} and {3} ({4}), inclusive.
+
+|Exception_RotatableShape_Rotation
+|The value must be within the range of -180 to 180.
+
+|Exception_RowClosedNoCell
+|The table row could not be closed because it contains no table cells. A table row must contain at least one table cell.
+
+|Exception_RowNotClosed
+|Closure of a previously opened table row is still pending. Each call to the StartTableRow method must be balanced by a call to the EndTableRow method.
+
+|Exception_RowNotClosedTableClosed
+|The table could not be closed because closure of a previously opened table row is still pending. Use the EndTableRow method to close the table row.
+
+|Exception_RowNotOpen
+|The operation cannot be performed because there is currently no open table row. Use the StartTableRow method to begin a table row.
+
+|Exception_RowOpenSectionStarted
+|A section cannot be defined because a table row is currently open. Sections can only be defined for root-level content blocks.
+
+|Exception_SectionProperties_MaxPageSize
+|The specified value, ({0}), is out of range. The maximum page size for a document section is (22" x 22").
+
+|Exception_TableNotClosed
+|Closure of a previously opened table is still pending. Each call to the StartTable method must be balanced by a call to the EndTable method.
+
+|Exception_TableNotOpen
+|The operation cannot be performed because there is currently no open table. Use the StartTable method to begin a table.
+
+|Exception_TableOpenSectionStarted
+|A section cannot be defined because a table is currently open. Sections can only be defined for root-level content blocks.
+
+|Exception_ValueMustBePositive
+|The value '{0}' is not within the valid range for the {1} property; the value being assigned must be a positive number.
+
+|Exception_WriterError
+|An exception was thrown by the XmlWriter.
+
+|WordDocumentWriter_TooManyColumns
+|A table cannot contain {0} columns; a table must have at least one column and no more than {1}.
+
+|====

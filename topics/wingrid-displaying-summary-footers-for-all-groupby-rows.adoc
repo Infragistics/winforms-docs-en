@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-displaying-summary-footers-for-all-groupby-rows",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Summaries"],
+    "guid": "{635746C0-8F95-4633-B32F-0C55DE35F813}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Displaying Summary Footers for All GroupBy Rows
+
+Group-by rows are displayed when rows are grouped by column(s). Each row collection in a group displays its own summary footers. You may want to display summary footers for the group-by row collections as well. For example, suppose you group rows by a Country column. Each country group will have its own summary footer displayed for the rows contained by the group. However you may want to display the overall summaries of all the rows across all the countries.
+
+== To display summary footers for all Group-by rows:
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~summarydisplayarea.html[SummaryDisplayArea]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  to a value that has GroupByRowsFooter and one of Top, TopFixed, Bottom or BottomFixed bits turned on. The SummaryDisplayArea property is a flagged enumeration type. You can specify multiple values by using the bitwise or operation.
+
+The GroupByRowsFooter flag specifies that the summaries for the group-by rows should be displayed. However it does not specify where, whether on top, bottom or whether scrolling or fixed. That's why you also need to specify one of the Top, TopFixed, Bottom or BottomFixed flags as well in order for the GroupByRowsFooter to have any effect.
+
+*In Visual Basic:*
+
+----
+Private Sub CustomersUltraGrid_InitializeLayout(ByVal sender As System.Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles CustomersUltraGrid.InitializeLayout
+	Me.CustomersUltraGrid.DisplayLayout.Override.AllowRowSummaries = _
+	  Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+	Me.CustomersUltraGrid.DisplayLayout.Override.SummaryDisplayArea = _
+	  Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.GroupByRowsFooter _
+	  Or Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.TopFixed
+End Sub
+----
+
+*In C#:*
+
+----
+private void customersUltraGrid_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	this.customersUltraGrid.DisplayLayout.Override.AllowRowSummaries = 
+	  AllowRowSummaries.True;
+	this.customersUltraGrid.DisplayLayout.Override.SummaryDisplayArea =
+	  SummaryDisplayAreas.GroupByRowsFooter |
+	  SummaryDisplayAreas.TopFixed;
+}
+----
+
+[start=3]
+. When you run the project do a summary on the Country column, then do a GroupBy on ContactTitle. You see the summary is displayed at the top.
+
+.Note
+[NOTE]
+====
+If you wanted to do a summary on the Country column and also GroupBy that column you would need to set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbycolumnshidden.html[GroupByColumnsHidden]"]  property to false off the Override.
+====
+
+[start=4]
+. The SummaryDisplayArea property is exposed on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings]"]  object as well. This allows you to control whether a summary is displayed in the summary footers of group-by rows on a per summary basis. In other words you can have some summaries appear in summary footers of group-by rows and not others.

@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-controlcontainer-about-the-controlcontainer-tool",
+    "controlName": ["WinToolbarsManager"],
+    "tags": ["Getting Started"],
+    "guid": "{3E9D101D-E112-42E4-BA5B-8B1D52294CC2}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= About the ControlContainer Tool
+
+In WinToolbarsManager™, tools are the basic building blocks of all toolbars and menus. Tools are analogous to MenuItems in standard .NET menus or Commands in Microsoft Office menus and toolbars. There are over 15 native tool types available in WinToolbarsManager. Each tool type can exist as either a Root Tool or an Instance Tool (for more information, see link:wintoolbarsmanager-terms-and-concepts.html[Root Tools and Instance Tools]).
+
+[cols="a,a"]
+|====
+|Class Name:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.controlcontainertool.html[ControlContainerTool]"] 
+
+|Derived From:
+| pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[Toolbase]"] 
+
+|Description:
+|The ControlContainer tool lets you embed any .NET control in a tool. This allows you to place virtually any kind of user interface element on a toolbar or menu. The control can be assigned to the ControlContainer tool using the design-time customizer dialog or programmatically at run-time.
+
+|Sample:
+|image::Images\WinToolbarsManager_About_Tools_04.png[example of ultratoolbarsmanager controlcontainer tool] 
+
+|====

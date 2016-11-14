@@ -1,0 +1,33 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-about-card-view",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","Layouts"],
+    "guid": "{9BFB7776-F47A-4523-AB28-36B069352780}",  
+    "buildFlags": [],
+    "createdOn": "2008-10-04T16:01:25Z"
+}
+|metadata|
+////
+
+= About Card View
+
+You can choose Card View as an alternative to the traditional display of rows and columns for any band of the WinGrid™. Card view presents an interface similar to the Contacts view of Microsoft Outlook, where each data record is represented as an "index card" and multiple cards are displayed on screen. The WinGrid version of card view provides you with a range of options for configuring the look of the cards and maximizing screen real estate.
+
+There are some limitations to using card view. One is that a band displaying its records in card view mode is automatically the final band in a hierarchy. There is no way to display child records for the cards. Another limitation is that it is possible to set up card view in such a way that you cannot add data to empty fields, although this is not the default setting.
+
+Card view replaces the band in the grid, with the space occupied by the band being replaced by the card view area which contains the cards. The card view area has a fixed vertical height (which can be changed by you or the user) and scrolls horizontally to display the cards that make up the band.
+
+To enable card view, you use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~cardview.html[CardView]"]  property of the Band object. There is a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~cardsettings.html[CardSettings]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand]"]  object that you use to access the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcardsettings.html[UltraGridCardSettings]"]  object. This object controls the display of card view and specifies how cards and the card are will behave.
+
+The following snapshots display UltraWinGrid in Card View with various different settings.
+
+image::Images/WinGrid_Card_View_Overview_02.png[ultragrid's card view layout]
+
+image::Images/WinGrid_Card_View_Overview_03.png[ultragrid's card view layout]
+
+image::Images/WinGrid_Card_View_Overview_04.png[ultragrid's card view layout]
+
+image::Images/WinGrid_Card_View_Overview_05.png[ultragrid's card view layout]

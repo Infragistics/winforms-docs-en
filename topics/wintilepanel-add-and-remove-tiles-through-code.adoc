@@ -1,0 +1,100 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintilepanel-add-and-remove-tiles-through-code",
+    "controlName": ["WinTilePanel"],
+    "tags": ["How Do I"],
+    "guid": "{3D33C572-8D0F-4D45-A2D0-2E08740ED9AF}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Add and Remove Tiles through Code
+
+WinTilePanel™ allows any number of tiles to be placed within the control.
+
+An UltraTile can be added to the TilePanel in one of two ways. One way would be to create an UltraTile control instance and then add it to the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tiles.html[UltraTilePanel.Tiles]"]  collection. Later the controls that will serve as the content can be placed on the tile using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~control.html[Control]"]  property. Alternatively, the content control can directly be added to the UltraTilePanel at design time. The Panel will recognize that it is not an UltraTile being added and hence create a default UltraTile instance to host the content control.
+
+.Note
+[NOTE]
+====
+The UltraTile cannot be added to the controls collection of the UltraTilePanel directly. This will cause an InvalidOperationException.
+====
+
+The following code assumes that you have an UltraTilePanel control, UltraCalculator, UltraGrid, UltraDayView and UltraMonthViewSingle controls dropped onto your form. For this topic the UltraGrid control is bound to the Products table of the Northwind database.
+
+*In Visual Basic:*
+
+----
+Dim tile1 As New Infragistics.Win.Misc.UltraTile()
+tile1.Settings.Appearance.BackColor = Color.PaleTurquoise 
+Dim tile2 As New Infragistics.Win.Misc.UltraTile()
+tile2.Settings.Appearance.BackColor = Color.Olive 
+Dim tile3 As New Infragistics.Win.Misc.UltraTile()
+tile3.Settings.Appearance.BackColor = Color.Plum 
+Dim tile4 As New Infragistics.Win.Misc.UltraTile()
+tile4.Settings.Appearance.BackColor = Color.LightGray 
+Me.ultraTilePanel1.Tiles.Add(tile1) 
+Me.ultraTilePanel1.Tiles.Add(tile2) 
+Me.ultraTilePanel1.Tiles.Add(tile3) 
+Me.ultraTilePanel1.Tiles.Add(tile4)
+----
+
+----
+' Each Tile added to the TilePanel will be visible only if any content is placed within it.
+tile1.Control = Me.ultraCalculator1
+tile2.Control = Me.ultraGrid1
+tile3.Control = Me. ultraDayView1
+tile4.Control = Me.ultraMonthViewSingle1
+----
+
+*In C#:*
+
+----
+Infragistics.Win.Misc.UltraTile tile1 = new Infragistics.Win.Misc.UltraTile();
+tile1.Settings.Appearance.BackColor = Color.PaleTurquoise;
+Infragistics.Win.Misc.UltraTile tile2 = new Infragistics.Win.Misc.UltraTile();
+tile2.Settings.Appearance.BackColor = Color.Olive;
+Infragistics.Win.Misc.UltraTile tile3 = new Infragistics.Win.Misc.UltraTile();
+tile3.Settings.Appearance.BackColor = Color.Plum;
+Infragistics.Win.Misc.UltraTile tile4 = new Infragistics.Win.Misc.UltraTile();
+tile4.Settings.Appearance.BackColor = Color.LightGray;
+this.ultraTilePanel1.Tiles.Add(tile1);
+this.ultraTilePanel1.Tiles.Add(tile2);
+this.ultraTilePanel1.Tiles.Add(tile3);
+this.ultraTilePanel1.Tiles.Add(tile4);
+----
+
+----
+// Each Tile will be visible in the TilePanel only if any content is placed within it.
+tile1.Control = this.ultraCalculator1;
+tile2.Control = this.ultraGrid1;
+tile3.Control = this. ultraDayView1;
+tile4.Control = this.ultraMonthViewSingle1;
+----
+
+image::Images\WinTilePanel_Add_and_Remove_Tiles_through_Code_01.png[]
+
+*Removing Tile from TilePanel*
+
+An UltraTile can be removed from the UltraTilePanel.Tiles collection using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.tilecollection~remove.html[Remove]"]  method. If you hide the content control, the tile still remains and will be visible within the UltraTilePanel.
+
+*In Visual Basic:*
+
+----
+Me.ultraTilePanel1.Tiles.Remove(tile3)
+----
+
+*In C#:*
+
+----
+this.ultraTilePanel1.Tiles.Remove(tile3);
+----
+
+== Related Topics
+
+* link:wintilepanel-add-and-remove-tiles-at-design-time.html[Add and Remove Tiles at Design Time]
+* link:wintilepanel-adding-multiple-controls-to-a-tile-in-wintilepanel.html[Adding Multiple Controls to a Tile in WinTilePanel]

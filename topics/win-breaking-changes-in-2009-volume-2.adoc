@@ -1,0 +1,79 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-breaking-changes-in-2009-volume-2",
+    "controlName": [],
+    "tags": ["Known Issues"],
+    "guid": "{63DE5896-352B-4130-ABE0-0102348CB027}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Breaking Changes in 2009 Volume 2
+
+=== WinGrid™
+
+* The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~text.html[Text]"]  property and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getcelltext.html[GetCellText]"]  method of a cell have now been changed so that they will honor the Password Characters on the editor and also the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~charactercasing.html[CharacterCasing]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"] . When WinGrid is exported to PDF, XPS or Excel sheet the password characters in the Grid cell will now appear masked instead of plain text.
+
+* The EditorControl property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  and UltraGridColumn objects has now been replaced with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~editorcomponent.html[EditorComponent]"]  property.
+
+=== WinPanel™
+
+Some resource string keys for the WinPanel control have been changed. The resource string keys that have changed are listed below:
+
+[options="header", cols="a,a"]
+|====
+|Old Resource string keys|New Resource string keys
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaBackColor
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyBackColor
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaMaximumSize
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyMaximumSize
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaMinimumSize
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyMinimumSize
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaClientSize
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyClientSize
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaAnchor
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyAnchor
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaAutoScrollMargin
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyAutoScrollMargin
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaAutoScrollMinSize
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyAutoScrollMinSize
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaBorderStyle
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyBorderStyle
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaBounds
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyBounds
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaDock
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyDock
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaImeMode
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyImeMode
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaLocation
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyLocation
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaMargin
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyMargin
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaName
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyName
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaSize
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifySize
+
+|UltraPanel_InvalidOperationException_CannotModifyClientAreaTabIndex
+|AutoScrollContainerPanel_InvalidOperationException_CannotModifyTabIndex
+
+|====

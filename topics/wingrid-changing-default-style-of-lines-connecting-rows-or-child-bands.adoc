@@ -1,0 +1,51 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-changing-default-style-of-lines-connecting-rows-or-child-bands",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Styling"],
+    "guid": "{DF4BCDF0-616A-4D53-90B5-BD7F79D220C8}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Changing Default Style of lines connecting Rows or child bands
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~rowconnectorstyle.html[RowConnectorStyle]"]  RowConnectorStyle property is used to determine the type of line that will be used to connect sibling rows, child rows, and also child bands to their parent band. Using the RowConnectorStyle and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~rowconnectorcolor.html[RowConnectorColor]"]  properties the appearance of row connectors can be modified.
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.Raised
+Me.ultraGrid1.DisplayLayout.RowConnectorColor = Color.HotPink
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.Raised;
+this.ultraGrid1.DisplayLayout.RowConnectorColor = Color.HotPink;
+----
+
+*WinGrid with Raised, Pink colored Row connectors:*
+
+image::Images\WinGrid_Changing_Default_Style_of_Lines_connecting_rows_or_child_bands_to_their_parent_bands_01.png[]
+
+*In Visual Basic:*
+
+----
+Me.ultraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.None
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.RowConnectorStyle = RowConnectorStyle.None;
+----
+
+*WinGrid without Row connectors:*
+
+image::Images\WinGrid_Changing_Default_Style_of_Lines_connecting_rows_or_child_bands_to_their_parent_bands_02.png[]

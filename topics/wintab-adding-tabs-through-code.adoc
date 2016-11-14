@@ -1,0 +1,73 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintab-adding-tabs-through-code",
+    "controlName": ["WinTab"],
+    "tags": ["How Do I"],
+    "guid": "{E4276B6B-B230-4482-B6B2-3AE5E6C36653}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Adding Tabs through Code
+
+Tabs can be added to WinTab™ using the designer or through code. In this topic you will learn how to add Tabs through code.
+
+This topic assumes that you have an UltraTabControl dropped onto your form.
+
+*In Visual Basic:*
+
+----
+' Call BeginUpdate to prevent the display from refreshing as we add individual tabs. 
+' Note: This MUST be paired with a call to EndUpdate below. 
+Me.ultraTabControl1.BeginUpdate() 
+Dim tabsCollection As UltraTabsCollection = ultraTabControl1.Tabs
+' Add Tabs to the Tabs Collection 
+Dim nameTab As UltraTab = tabsCollection.Add("tab1", "Name")
+Dim addressTab As UltraTab = tabsCollection.Add("tab2", "Address")
+' Create controls to be added to the Tabs and set its properties 
+Dim txtName1 As New TextBox()
+Dim lblName1 As New Label()
+lblName1.Location = New Point(20, 40) 
+lblName1.Size = New Size(80, 20) 
+lblName1.Text = "NAME:" 
+txtName1.Location = New Point(110, 40) 
+txtName1.Size = New Size(100, 20) 
+' Add controls to the Tab 
+nameTab.TabPage.Controls.Add(txtName1) 
+nameTab.TabPage.Controls.Add(lblName1) 
+' Call EndUpdate to allow the display to refresh 
+Me.ultraTabControl1.EndUpdate()
+----
+
+*In C#:*
+
+----
+// Call BeginUpdate to prevent the display from refreshing as we add individual tabs.
+// Note: This MUST be paired with a call to EndUpdate below.
+this.ultraTabControl1.BeginUpdate();
+UltraTabsCollection tabsCollection = ultraTabControl1.Tabs;
+// Add Tabs to the Tabs Collection
+UltraTab nameTab = tabsCollection.Add("tab1","Name");
+UltraTab addressTab = tabsCollection.Add("tab2","Address");
+// Create controls to be added to the Tabs and set its properties 
+ TextBox txtName1 = new TextBox();
+ Label lblName1   = new Label();
+ lblName1.Location = new Point(20, 40);
+ lblName1.Size = new Size(80, 20);
+ lblName1.Text = "NAME:";
+ txtName1.Location = new Point(110, 40);
+ txtName1.Size = new Size(100, 20);
+ // Add controls to the Tab
+ nameTab.TabPage.Controls.Add(txtName1);
+ nameTab.TabPage.Controls.Add(lblName1);
+// Call EndUpdate to allow the display to refresh
+this.ultraTabControl1.EndUpdate();
+----
+
+The following screenshot shows a WinTab with two tabs namely Name and Address added to it.
+
+image::Images\WinTab_Adding_Tabs_to_Wintab_through_Code.png[]

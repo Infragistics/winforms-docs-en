@@ -1,0 +1,67 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintoolbarsmanager-add-an-mdiwindowlist-tool-to-a-toolbar",
+    "controlName": ["WinToolbarsManager"],
+    "tags": [],
+    "guid": "{36F97D7F-4AE1-47A9-963E-AF24B602C9B4}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Add an MDIWindowList Tool to a Toolbar
+
+The WinToolbarsManager™ component has 15 different tool types that you can add to a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbar.html[ToolBar]"] . This demonstrates how to create an  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.mdiwindowlisttool.html[MDIWindowList]"]  tool on a menu belonging to an MDI parent form. The MDIWindowList tool displays a list of the current open MDI child windows belonging to the parent. No code is required to achieve this behavior, just simply place an MDIWindowList tool on a menu and it handles the rest.
+
+[start=1]
+. Set the IsMdiContainer property of the desired parent form to True.
+[start=2]
+. Add the UltraToolbarsManager element from the Toolbox.
+[start=3]
+. To configure the UltraWinToolbar element, open the design-time customizer by right-clicking on the UltraToolbarManager element and selecting "Customize".
+[start=4]
+. To create a new Tool, click the "Tools" tab in the customizer, and then the "New..." button.
+[start=5]
+. Select Popup Menu as your Tool Type and click on the Add button.
+[start=6]
+. Select MDI Window List Tool as your Tool Type and click on the Add button.
+[start=7]
+. Click the "ToolBars" tab in the customizer, and then the "New..." button.
+[start=8]
+. Click the "Tools" tab and drag the Popup Menu Tool to the ToolBar residing on the form.
+[start=9]
+. Drag the MdiWindowList tool to the Popup Menu Tool.
+[start=10]
+. Add another form to the project.
+[start=11]
+. Place the following code in the Form1_Load event procedure:
+
+*In Visual Basic:*
+
+----
+Private Sub Add_an_MDIWindowList_Tool_to_a_Toolbar_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim frm As New ChildForm_ToolbarsManager()
+	frm.MdiParent = Me
+	frm.Show()
+End Sub
+----
+
+*In C#:*
+
+----
+private void Add_an_MDIWindowList_Tool_to_a_Toolbar_Load( 
+  object sender, EventArgs e)
+{
+	ChildForm frm = new ChildForm_ToolbarsManager();
+	frm.MdiParent = this;
+	frm.Show();
+}
+----
+
+[start=12]
+. Run your project and click to drop down the menu and you will see the MDIWindowList tool. ChildForm will have a check mark since it is the activated form.

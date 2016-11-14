@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "windockmanager-pin-and-unpin-a-window",
+    "controlName": ["WinDockManager"],
+    "tags": [],
+    "guid": "{A4DD94AD-3B93-4AFD-863A-9AA68CE6CD2C}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Pin and Unpin a Window
+
+Using the WinDockManager™ component, a window that is pinned can be unpinned, so as to hide it. Likewise, a window that is hidden and flies out on a mouseover can be pinned, so that it is always visible. A window can be pinned and unpinned in code, or by the user at run-time.
+
+The following code shows how to  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablecontrolpane~pin.html[Pin]"]  a  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"]  using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnPin_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnPin.Click
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Pin()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnPin_Click(object sender, EventArgs e)
+{
+	this.ultraDockManager1.DockAreas[0].Panes[0].Pin();
+}
+----
+
+The following code shows how to  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~pinall.html[PinAll]"]  the Panes associated with the UltraDockManager, using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnPinAll_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnPinAll.Click
+	Me.UltraDockManager1.PinAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnPinAll_Click(object sender, EventArgs e)
+{
+	this.ultraDockManager1.PinAll();
+}
+----
+
+The following code shows how to  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablecontrolpane~unpin.html[Unpin]"]  a Pane using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnUnpin_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnUnpin.Click
+	Me.UltraDockManager1.DockAreas(0).Panes(0).Unpin()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnUnpin_Click(object sender, EventArgs e)
+{
+	this.ultraDockManager1.DockAreas[0].Panes[0].Unpin();
+}
+----
+
+The following code shows how to  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~unpinall.html[UnpinAll]"]  the Panes associated with the UltraDockManager, using a button click.
+
+*In Visual Basic:*
+
+----
+Private Sub btnUnpinAll_Click(ByVal sender As Object, _
+  ByVal e As System.EventArgs) Handles btnUnpinAll.Click
+	Me.UltraDockManager1.UnpinAll()
+End Sub
+----
+
+*In C#:*
+
+----
+private void btnUnpinAll_Click(object sender, EventArgs e)
+{
+	this.ultraDockManager1.UnpinAll();
+}
+----
+
+A user can also toggle whether or not a pane is pinned by clicking the thumbtack icon in the upper right corner of a pane. This is similar to the way windows are pinned in Visual Studio, and other Microsoft products such as Outlook. This functionality can be disabled by setting the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~showpinbutton.html[ShowPinButton]"] . This will remove the icon from the upper right corner of a pane.

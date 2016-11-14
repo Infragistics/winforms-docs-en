@@ -1,0 +1,103 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-positioning-column-summaries",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Summaries"],
+    "guid": "{F36B884B-AF1A-4A69-BC1E-92B51AE5EFD1}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Positioning Column Summaries
+
+== Background
+
+By default, when performing calculations on columns, the results will be shown directly at the bottom of the affected column. This article will show you how to manipulate these summaries so they can be shown in various locations within the summaries area.
+
+== Questions
+
+* How can you display the column summaries in a position other than the bottom of the column?
+
+== Solution
+
+In order to move the summaries to different locations, you will have to set the SummaryPosition property. This property can be set through the SummariesCollection or when adding a Summary to this collection.
+
+In order to grant the user summary functionality, the AllowRowSummaries property must be set to True on the column.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Country").AllowRowSummaries = _
+  AllowRowSummaries.True
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+this.ultraGrid1.DisplayLayout.Bands[0].Columns["Country"].AllowRowSummaries = 
+  AllowRowSummaries.True;
+----
+
+Now, a summary can be added to the SummariesCollection for this column by using the Add method and passing in parameters for the calculation to be performed, the column to be utilized and the position of the summary. 'Nothing' is passed in for the parameters not needed. Those parameters, CustomSummaryCalculator and SummaryPositionColumn, are respectively employed if needing a custom summary calculation or if the SummaryPosition is UseColumn.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Me.UltraGrid1.DisplayLayout.Bands(0).Summaries.Add(SummaryType.Minimum, _
+  Nothing, Me.UltraGrid1.DisplayLayout.Bands(0).Columns("Country"), SummaryPosition.Left, _
+  Nothing)
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+this.ultraGrid1.DisplayLayout.Bands[0].Summaries.Add(SummaryType.Minimum, null, 
+  this.ultraGrid1.DisplayLayout.Bands[0].Columns["Country"], SummaryPosition.Left, 
+  null);
+----
+
+For this line of code, the summary will be positioned all the way to the left of the summary area. As stated earlier, the SummaryPosition property can be set through the Summaries collection as well.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Me.UltraGrid1.DisplayLayout.Bands(0).Summaries(0).SummaryPosition = _
+  SummaryPosition.Center
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+this.ultraGrid1.DisplayLayout.Bands[0].Summaries[0].SummaryPosition = 
+  SummaryPosition.Center;
+----
+
+The Caption in the Summary area can also be changed by setting the SummaryFooterCaption property.
+
+*In Visual Basic:*
+
+----
+Me.UltraGrid1.DisplayLayout.Bands(0).SummaryFooterCaption = "My Sums"
+----
+
+*In C#:*
+
+----
+this.ultraGrid1.DisplayLayout.Bands[0].SummaryFooterCaption = "My Sums";
+----

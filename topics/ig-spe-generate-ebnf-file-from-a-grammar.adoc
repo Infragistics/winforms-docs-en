@@ -1,0 +1,91 @@
+﻿////
+
+|metadata|
+{
+    "name": "ig-spe-generate-ebnf-file-from-a-grammar",
+    "controlName": [],
+    "tags": [],
+    "guid": "9e947c75-df6f-4f26-a95f-c918aa762936",  
+    "buildFlags": [],
+    "createdOn": "2013-06-13T18:57:35.0948544Z"
+}
+|metadata|
+////
+
+= Generate EBNF File From a Grammar
+
+== Topic Overview
+
+=== Purpose
+
+This topic explains the process of creating EBNF content from a grammar.
+
+=== Required background
+
+The following topics are prerequisites to understanding this topic:
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-syntax-parsing-engine-overview.html[Syntax Parsing Engine Overview]
+|This topic provides an overview of the Syntax Parsing Engine.
+
+| link:ig-spe-grammar-overview.html[Grammar Overview]
+|This topic provides an overview of the Syntax Parsing Engine’s Grammar.
+
+| link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview]
+|This topic gives an overview of the EBNF file format used to define a grammar.
+
+|====
+
+== Process Overview
+
+=== Overview
+
+You can create an EBNF file from a Grammar instance using the following methods of the Grammar class:
+
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~saveebnf(ebnfserializationsettings).html[Grammar.SaveEbnf] - Obtain EBNF as string
+* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~saveebnf(stream,encoding,ebnfserializationsettings).html[Grammar.SaveEbnf] - Save EBNF to a stream
+
+Both methods accept an argument of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfserializationsettings.html[EbnfSerializationSettings] with the following properties:
+
+[options="header", cols="a,a"]
+|====
+|*Property*|* Description*
+
+| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfserializationsettings~usealternatesyntax.html[UseAlternateSyntax]
+|Indicates whether to write out the EBNF file with the alternate operator syntax. 
+
+.Note 
+
+[NOTE] 
+
+==== 
+
+For more information about the alternate operator syntax, please see the link:ig-spe-ebnf-file-format-overview.html[EBNF File Format Overview] topic. 
+
+====
+
+|====
+
+== Related Content
+
+=== Topics
+
+The following topics provide additional information related to this topic.
+
+[options="header", cols="a,a"]
+|====
+|Topic|Purpose
+
+| link:ig-spe-special-sequence-format.html[Special Sequence Format]
+|This topic explains the format of the special sequence sections in the EBNF file used to configure the grammar.
+
+| link:ig-spe-ebnf-specification-deviations.html[EBNF Specification Deviations]
+|This topic explains the deviations from the ISO 14977 specification in the EBNF format used by the Syntax Parsing Engine.
+
+| link:ig-spe-generate-grammar-from-an-ebnf-file.html[Generate Grammar From an EBNF File]
+|This topic explains the process of creating a grammar from EBNF content.
+
+|====

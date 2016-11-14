@@ -1,0 +1,59 @@
+﻿////
+
+|metadata|
+{
+    "name": "wintree-columnset-layout-designer",
+    "controlName": ["WinTree"],
+    "tags": ["Layouts"],
+    "guid": "{9C7337E7-A471-42C5-81A9-351379B8CC41}",  
+    "buildFlags": [],
+    "createdOn": "2005-07-07T00:00:00Z"
+}
+|metadata|
+////
+
+= ColumnSet Layout Designer
+
+In Infragistics Windows Forms 2005 Volume 2, WinTree™ was updated to support columns. The addition of this functionality added a new class called  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  which defines the properties of a set of columns in the tree. The ColumnSet Layout Designer is a visual designer for organizing and repositioning the columns within a ColumnSet. In this topic we will be looking at this designer and some of the benefits it provides.
+
+The screenshots for this topic are based on the results of the link:wintree-binding-wintree-to-windatasource.html[Binding WinTree to WinDataSource] topic. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  property should be set to the Customers Band defined in WinDataSource's schema.
+
+To display the layout designer dialog, right click on the UltraTree on the form designer and choose "ColumnSet Layout Designer". The designer dialog is broken up into several sections.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_01.png[UltraTree columnset layout designer]
+
+The top section contains a combobox which contains a list of the UltraTreeColumnSet objects in the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~columnsets.html[ColumnSets]"]  collection. Immediately to the right of the combo is a checkbox that is used to enable/disable the resizing guides. The resizing guides are the adorners that are displayed on the right and bottom edge of every cell and column header.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_02.png[ultratree columnset layout designer highlighting the show resizing guides]
+
+The resize adorners are used to adjust the size and span size of the cells and headers. The square adorner is used to adjust the width/height of the item and the diamond adorner is used to adjust the span size of the item. When the Show Resizing Guides is unchecked, the resize guides are hidden and the cells and columns may be resized by dragging the right or bottom edge. To adjust the span size when the resize guides are hidden, you need to hold the {Ctrl} key while over the edge to be resized.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_03.png[ultratree columnset layout designer showing the last name column being resized]
+
+The main section (displayed in the screenshot above) is the UltraTree containing the ColumnSet selected using the combobox from the top section. The columns and cells displayed in the tree can be resized as described above. In addition, the columns may be repositioned by pressing the mouse down on a column header and dragging. While dragging, drop indicators (red arrows or a red rectangle depending on the reposition action) will be displayed when the mouse is over a valid drop area. In addition, dragging the column header outside the bounds of the tree and releasing will hide the column.
+
+Right clicking on this area will display one of two possible context menus depending upon the area on which you right click. Right clicking on a column header will display options specific to adjusting that column including the option to hide the column, adjust its label position (that is where the label is displayed relative to the cell) as well as the option to select the column and display its  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~layoutinfo.html[LayoutInfo]"]  properties within the Column Settings pane.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_04.png[ultratree columnset layout designer showing the context menu shown over columns]
+
+Right clicking on an area not occupied by a cell or column header will display a context menu with options for activating a particular pane and selecting/hiding all the columns as well as an option to reset the layout. Resetting the layout does not restore the layout as it existed when the dialog was first displayed but instead resets the layout info of all the columns so that they are displayed within a single row.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_05.png[ultratree columnset layout designer showing the context menu shown when not over a column or cell]
+
+The section on the left contains three areas hosted within an UltraDockManager:
+
+* *Available Columns* -- This section displays a list of the hidden columns in the selected ColumnSet. These columns may be dragged onto the UltraTree on the right. As the item is positioned over a valid drop location, a drop indicator - either a pair of red arrows indicating where the item will be inserted adjacent to or a red rectangle indicating the location where the item will be positioned - is displayed. In addition, you may double click on a header to have the column unhidden and added to the layout.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_06.png[ultratree columnset layout designer available columns area]
+
+* *Layout Design* -- This section displays a list of options which affect the various properties of the selected UltraTreeColumnSet. Note, many of these settings affect how the end user may manipulate the layout (e.g. Allow Cell Sizing, Allow Column Moving, etc.) and are not applied in the designer itself.
+
+image::Images\WinTree_The_ColumnSet_Layout_Designer_07.png[ultratree columnset layout designer layout design area]
+
+* *Column Settings* -- This section displays a property grid. The property grid allows you to alter the LayoutInfo settings of the column(s) that are selected in the UltraTree on the right.
+
+.Note
+[NOTE]
+====
+These sections can be rearranged and the positions will be saved between sessions. In addition, the size and position of the dialog itself are persisted.
+====

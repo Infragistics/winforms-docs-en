@@ -1,0 +1,62 @@
+﻿////
+
+|metadata|
+{
+    "name": "windayview-set-specific-working-hours",
+    "controlName": ["WinDayView"],
+    "tags": ["FAQ","How Do I"],
+    "guid": "{1AFB0102-0F8E-4423-944A-D627851FA0B6}",  
+    "buildFlags": [],
+    "createdOn": "2005-02-09T00:00:00Z"
+}
+|metadata|
+////
+
+= Set Specific Working Hours
+
+The WinSchedule™ CalendarInfo object extends the ability to set the working hours for a day of the week, as well as whether a particular day of the week is considered a working day. This functionality is exposed through the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek.html[DayOfWeek]"]  object; there are seven DayOfWeek objects in the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~daysofweek.html[DaysOfWeek]"]  collection, one to represent each day of the week. Each DayOfWeek object can be accessed by indexing into the DaysOfWeek collection using the constant of the System.DayOfWeek enumeration that corresponds to the desired day of the week.
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinSchedule
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinSchedule;
+----
+
+[start=2]
+. The DayOfWeek object exposes properties that make it possible to define different working hours for that day, as well as whether that day of the week is considered a working day. The  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayStartTime]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayEndTime]"]  properties determine the time at which a work day begins and ends, respectively. These properties are of type DateTime, but only the hour and minute components of the value are significant. To define a work day that (for example) begins at 10AM and has a duration of six hours, the syntax would look something like this:
+
+*In Visual Basic:*
+
+----
+Dim monday As Infragistics.Win.UltraWinSchedule.DayOfWeek = Nothing
+monday = Me.ultraCalendarInfo1.DaysOfWeek(System.DayOfWeek.Monday)
+monday.WorkDayStartTime = DateTime.Today.AddHours(10.0F)
+monday.WorkDayEndTime = monday.WorkDayStartTime.AddHours(6.0)
+Me.UltraDayView1.TimeSlotInterval = TimeSlotInterval.ThirtyMinutes
+Me.UltraDayView1.CalendarInfo = this.ultraCalendarInfo1
+----
+
+*In C#:*
+
+----
+Infragistics.Win.UltraWinSchedule.DayOfWeek monday = null;
+monday = this.ultraCalendarInfo1.DaysOfWeek[System.DayOfWeek.Monday];
+monday.WorkDayStartTime = DateTime.Today.AddHours(10f);
+monday.WorkDayEndTime = monday.WorkDayStartTime.AddHours(6f);
+this.ultraDayView1.TimeSlotInterval = TimeSlotInterval.ThirtyMinutes;
+this.ultraDayView1.CalendarInfo = this.ultraCalendarInfo1;
+----
+
+[start=3]
+. If you run the project, and make sure that the day displayed by the WinDayView is a Monday, you should see something like the following:
+
+image::Images/WinCalendarInfo_Set_Owner_Specific_Working_Hours_01.png[ultracalendarinfo showing specific working hours for an owner]

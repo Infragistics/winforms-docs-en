@@ -1,0 +1,99 @@
+﻿////
+
+|metadata|
+{
+    "name": "winoptionset-assigning-a-valuelist-to-winoptionset",
+    "controlName": ["WinOptionSet"],
+    "tags": ["Grouping","How Do I"],
+    "guid": "{DA3B4CE6-36EF-4A7E-BC12-7C9938C43367}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Assigning a ValueList to WinOptionSet
+
+You may want to display text to the user in an Option Set but use a numeric or other value when checking or saving the value. You can do this through the use of ValueLists by creating a ValueList and assigning it to the WinOptionSet™ control. You must do this through code at run time.
+
+The following code illustrates how to do this.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+...
+Private Sub AssigningaValueListtoanWinOptionSet_Load( _
+  ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+	' Create a new Valuelist
+	Dim vList As New ValueList()
+	' Add items using the add method
+	' Add(DataValue, displayText)
+	vList.ValueListItems.Add("Default", "Default")
+	vList.ValueListItems.Add("Office2000", "Office 2000")
+	vList.ValueListItems.Add("OfficeXP", "Office XP")
+	vList.ValueListItems.Add("Office2003", "Office 2003")
+	vList.ValueListItems.Add("VisualStudio2005", "Visual Studio 2005")
+	vList.ValueListItems.Add("Standard", "Standard")
+	vList.ValueListItems.Add("Office2007", "Office 2007")
+	' Set the valuelist for the optionset
+	Me.UltraOptionSet1.ValueList = vList
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+...
+private void AssigningaValueListtoaWinOptionSet_Load(object sender, EventArgs e)
+{
+	// Create a new Valuelist
+	ValueList vList = new ValueList();
+	// Add items using the add method
+	// Add(DataValue, displayText)
+	vList.ValueListItems.Add("Default", "Default");
+	vList.ValueListItems.Add("Office2000", "Office 2000");
+	vList.ValueListItems.Add("OfficeXP", "Office XP");
+	vList.ValueListItems.Add("Office2003", "Office 2003");
+	vList.ValueListItems.Add("VisualStudio2005", "Visual Studio 2005");
+	vList.ValueListItems.Add("Standard", "Standard");
+	vList.ValueListItems.Add("Office2007", "Office 2007");
+	// Set the valuelist for the optionset
+	this.ultraOptionSet1.ValueList = vList;
+}
+----
+
+This will create a ValueList that looks like this:
+
+[options="header", cols="a,a"]
+|====
+|DataValue|DisplayedText
+
+|Default
+|Default
+
+|Office2000
+|Office 2000
+
+|OfficeXP
+|Office XP
+
+|Office2003
+|Office 2003
+
+|VisualStudio2005
+|Visual Studio 2005
+
+|Standard
+|Standard
+
+|Office2007
+|Office 2007
+
+|====
+
+When you check the value property of the OptionSet it will return the Data Value of what the user has selected in the OptionSet.
+
+image::images\WinOptionSet_Assigning_a_ValueList_to_WinOptionSet_01.png[resulting winoptionset after assign valuelistitems to it]

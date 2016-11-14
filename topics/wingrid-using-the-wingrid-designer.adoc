@@ -1,0 +1,45 @@
+﻿////
+|metadata|
+{
+    "name": "wingrid-using-the-wingrid-designer",
+    "controlName": ["WinGrid"],
+    "tags": ["Application Scenarios","Grids"],
+    "guid": "{4CEA6402-EE8C-4686-B22A-F8810516B508}",
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the WinGrid Designer
+
+The WinGrid™ Designer can help you set up the WinGrid control with minimal effort. By default, the WinGrid Designer appears automatically when you drag and drop the WinGrid control onto your Form. Alternatively the Designer can be opened by clicking the Designer Dialog… link in the WinGrid Smart Tag or by clicking the Start! Button located towards the bottom of WinGrid when on the design surface. The WinGrid designer is composed of various options to explore and set up the control using a simple User Interface.
+
+Each option has been numbered as seen in the screenshot below and its functionality has been explained following the image.
+
+image::Images\WinGrid_Using_the_WinGrid_Designer_1.png[]
+
+. Basic Settings
++
+Basic Settings option enables you to apply the settings that affect the data displayed in the WinGrid, as well as its overall look and behavior. The 4 groups of basic settings are
+
+.. DataSchema – To define the schema that the control will use to generate bands and columns.
+.. Presets – To quickly design your control to look and behave exactly as you want.
+
+.. Feature Picker – To quickly apply features instead of setting properties.
+
+.. Appearance Browser – To Quickly set complex appearance properties like Card Appearances, Outlook GroupBy Appearances, Summary Appearances to list a few, by using the simple list in the Appearance Browser rather than the control’s object model.
+
+. Bands and Columns Settings:
++
+The WinGrid control automatically generates a Band for each table or view in the Data schema. The properties on each Band or column can be modified using the Bands and Columns settings option. There are two different methods of Column arrangement that can be designed for the WinGrid: Row Layout or Groups and Levels. Also, if the WinGrid control is bound to a Data Source, additional unbound columns (Columns that are not part of the Data Model) can be added to the grid using this setting.
++
+image::Images\WinGrid_Using_the_WinGrid_Designer_2.png[]
+
+. Control Settings
++
+The Control settings is a quick and convenient shortcut to a Property Grid that represents the WinGrid object model. Here you can access any property that you would normally find in the Visual Studio™ property window.
+
+. Infragistics.com
++
+This section provides various links that help you to familiarize yourself and excel with Infragistics products.

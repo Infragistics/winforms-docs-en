@@ -1,0 +1,215 @@
+﻿////
+
+|metadata|
+{
+    "name": "wincalcmanager-date-and-time-functions",
+    "controlName": ["WinCalcManager"],
+    "tags": [],
+    "guid": "{228C6107-A461-47E8-8A75-89A0D9FC5A41}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Date and Time Functions
+
+The table below lists all of the Excel®-style date and time functions provided by the WinCalcManager™ control, along with a description and example of each function.
+
+[options="header", cols="a,a,a,a"]
+|====
+|Function|Description|Remarks|Example
+
+|DATE
+|Returns the number of ticks representing a particular date in the server's local time zone. This function should be used to represent a date to other functions instead of representing a date as text, as text dates can lead to problems.
+|The *Year* argument can be one to four digits between 1 and 9999. 
+
+*Month* is a number representing the month of the year between 1 and 12. 
+
+*Day* is a number representing the day of the month between 1 and the number of days in the month specified. 
+
+Values given outside any of these parameters' legal ranges will return an error.
+|*_Example: YEAR(DATE(2008,7,4))*_ - returns the _*Gregorian_* calendar year of the date, July 4, 2008, produced by this function (2008).
+
+|DATEVALUE
+|Returns the number of ticks of the date represented in text. 
+
+Use *DATEVALUE* to convert a date represented in text ( _i.e.,_ MM/DD/YYYY) into ticks that can be passed to other functions.
+|*Date_text* is some text representing a date. For example, *"30-Jan-2008"* or *"1/30/2008"* are quoted text strings representing dates. The day can only appear before the month in Date_text if month is spelled out ( _i.e.,_ "Jan," in the first format) to avoid an ambiguity that can arise in the second format. *DATEVALUE* returns the *_#VALUE!_* error value if Date_text appears out of range. 
+
+Any time information in the Date_text is ignored. The ticks returned always represent a time-of-day of Midnight (in the server's local time). 
+
+If the year portion of Date_text is omitted, *DATEVALUE* uses the current year on the server.
+|*_Example=MONTH(DATEVALUE("15-Apr-2008"))_* - returns the month number of April 15, 2008 (4).
+
+|TIME
+|Returns a time value in ticks for a particular time based on its number of hours, minutes and seconds. 
+
+Use TIME to create durations and time periods to be added to other date/time values also represented in ticks.
+|*Hour* is a number from 0 (zero) to 23 representing the hour. Any value greater than 12 is interpreted as being in the afternoon. 
+
+*Minute* is a number from 0 to 59 representing minutes past the hour. 
+
+*Second* is a number from 0 to 59 representing seconds past the minute. 
+
+When these arguments are outside of their range a *_#VALUE!_* error is returned.
+|*_Example=SECOND(TIME(14,50,5))_* - returns the seconds portion of the time value (5).
+
+|TIMEVALUE
+|Returns a number of ticks representing the time portion of a text string representing the time. 
+
+Time values can serve as a duration that can be added to other time or date/time values also represented in ticks.
+|*Time_text* is a text string within quotation marks that represents a time. 
+
+Examples of acceptable formats include "5:55 PM" and "17:55", if AM/PM is not present AM is assumed (PM times can be entered based on a 24-hour clock, _i.e._, 5:00 PM is 17:00). Specification of seconds is optional. A time separator is mandatory ("17:00" is acceptable, "1700" is not). When specifying AM or PM, do not use periods ("A.M." or "P.M." will return an error). 
+
+Any Date information in time_text is ignored. Time values are a portion of a date/time value represented in ticks. When the return value from *TIMEVALUE* is treated as a date, it is based off of the minimum date, January 1st, 1 AD.
+|*_Example=HOUR(TIMEVALUE("17:00"))_* - returns the hours portion of the time's text representation (17).
+
+|DATEADD
+|Returns a Date value containing a date and time value in ticks to which a specified time interval has been added.
+|The *Interval* is a String expression representing the time interval you want to add. Its possible values include "yyyy" (year), "y" (days), "d" (days), "w" (weeks), "m" (months), "h" (hours), "n" (minutes), "s" (seconds), "ww" (weeks of year), "q" (quarters). 
+
+The *Number* is a real number representing how many intervals are to be added. Number can be positive (to get date/time values in the future) or negative (to get date/time values in the past). It can contain a fractional part when Interval specifies hours, minutes, or seconds. For other values of Interval, any fractional part of Number is ignored. 
+
+The *DateValue* is a Date. An expression representing the date and time to which the interval is to be added.
+|*_Example=DATEADD("h",1.5,NOW( )) -_* returns the ticks representing a date and time 1 1/2 hours from now.
+
+|DATEDIFF
+|Returns a whole number representing the number of time intervals between two date values represented in ticks.
+|The *Interval* is a String expression representing the time interval you want as the unit of difference between two dates. Its possible values include "yyyy" (year), "y" (days), "d" (days), "w" (weeks), "m" (months), "h" (hours), "n" (minutes), "s" (seconds), "ww" (weeks of year), "q" (quarters). 
+
+The *Date1, Date2* arguments are two date/time values you want to use in the calculation. The value of Date1 is subtracted from the value of Date2 to produce the difference. 
+
+The *DayOfWeek* is an optional value chosen from an enumeration specifying the first day of the week ranging from 1 (Sunday) to 7 (Saturday). If unspecified, Sunday (1) is used. If DayOfWeek is 0, then the first day of week configured on the server's local settings is used.The *WeekOfYear* is another optional value chosen from an enumeration with values of January 1st (1), the week having at least four days (2), or the first full week (3). If unspecified, January 1st is used. If WeekOfYear is 0, then the week of year configured on the server's local settings is used. 
+|*_Example=DATEDIFF("m",DATE(2004,1,1),DATE(2005,3,1))_* - returns the number of months between January, 2004, and March, 2005 (14).
+
+|DAYS360
+|Returns the number of days between two dates based on a 360-day year (twelve 30-day months) used in some accounting applications. 
+
+Use this function when computing payments if your accounting system is based on twelve 30-day months.
+|*Start_date* and *end_date* are the two dates between which you want to know the number of days (based on a 360-day year). If start_date occurs after end_date, *DAYS360* will return a negative number. Dates should be entered by using the *DATE* function, or received as results from other formulas and functions. 
+
+*Method* is an optional argument indicating whether to use the European method of computation instead of the American (U.S. NASD) method. Each produces slightly different answers when either Start_date or End_date occurs on the 31st day of a month. The default Method is U.S. NASD (") when omitted. 
+
+Any time component of these dates is interpreted in the local time zone of the server.
+|*_Example=DAYS360(DATE(2005,1,1),DATE(2005,1,31),"TRUE")_* - calculates the number of days on an accounting calendar having 30-day months between January 1, 2005 and January 31, 2005 using the European method which treats January 31st as January 30th (29). Using the American method would produce a different answer (30).
+
+|YEAR
+|Returns the year portion of a date as a whole number, ranging from 1 to 9999.
+|*Serial_number* is a number of ticks representing a date/time value. *Dates* should be entered by using the *DATE* function, or received as results of other formulas and functions. For example, use *_DATE(2007,2,14)_* for the 14th day of February, 2007. Problems can occur if dates are entered as text. 
+
+Values returned by the *YEAR*, *MONTH* and *DAY* functions will be *_Gregorian_* Calendar values regardless of the display format for the supplied date value. 
+
+Involving date/time values exceeding the year 9999 in calculations results in an error.
+|*_Example=YEAR(DATEVALUE("2/14/2007"))_* - returns the year portion of the date (2007).
+
+|MONTH
+|Returns the month portion of a date as a whole number, ranging from 1 (January) to 12 (December).
+|*Serial_number* is a number of ticks representing a date/time value. *Dates* should be entered by using the *DATE* function, or received as results of other formulas and functions. For example, use *_DATE(2008,4,15)_* for the 15th day of April, 2008. Problems can occur if dates are entered as text. 
+
+Values returned by the *YEAR*, *MONTH* and *DAY* functions will be *_Gregorian_* Calendar values regardless of the display format for the supplied date value.
+|*_Example=MONTH(DATEVALUE("15-Apr-2008"))_* - returns the month portion of the date (4).
+
+|DAY
+|Returns the day portion of a date as a whole number.
+|*Serial_number* is a number of ticks representing a date/time value. *Dates* should be entered by using the *DATE* function, or received as results of other formulas and functions. For example, use *_DATE(2006,6,22)_* for the 22nd day of June, 2006. Problems can occur if dates are entered as text. 
+
+Values returned by the *YEAR*, *MONTH* and *DAY* functions will be *_Gregorian_* Calendar values regardless of the display format for the supplied date value.
+|*_Example=DAY(DATE(2006,6,22))_* - returns the day portion of June 22, 2006 (22).
+
+|TODAY
+|Returns the ticks representing today's date, in server local time. The returned date will have no time component ( _i.e._, midnight server local time).
+|Date/time values are stored as sequential counts of ticks, so they can be used in calculations. 
+
+See the *_NOW( )_* function to get today's date _with_ its time component.
+|*_Example=HOUR(TODAY( ))_* - returns midnight because this function returns a date value with no time component (0).
+
+|HOUR
+|Returns the hour of a time value. The hour is given as a whole number (fractions rounded down), ranging from 0 (12:00 AM) to 23 (11:00 PM). Hours past noon are always returned based on a 24-hour clock.
+|*Serial_number* is a date/time in ticks containing the hour you want to find. Time values are represented in ticks as a portion of a date/time value. 
+
+Times may be entered as text strings within quotation marks (for example, "5:55 PM") or received from other formulas and functions (for example, *_TIMEVALUE("5:55 PM")_* ).
+|*_Example=HOUR("2:50:05PM")_* - returns the hour portion of the time (14).
+
+|MINUTE
+|Returns the minutes of a time value. The minute is given as a whole number (fractions rounded down), ranging from 0 to 59.
+|*Serial_number* is a date/time in ticks containing minutes you want to find. Times values are represented in ticks as a portion of a date/time value. 
+
+Times may be entered as text strings within quotation marks (for example, "5:55 PM"), or received from other formulas and functions (for example, *_TIMEVALUE("5:55 PM")_* ).
+|*_Example=MINUTE("2:50:05PM")_* - returns the minute portion of the time (50).
+
+|SECOND
+|Returns the seconds of a time value. The second is given as a whole number (fractions rounded down), ranging from 0 to 59. When a time omits seconds, 0 (zero) is assumed.
+|*Serial_number* is a date/time in ticks containing seconds you want to find. Times values are represented in ticks as a portion of a date/time value. 
+
+Times may be entered as text strings within quotation marks (for example, "5:55 PM"), or received from other formulas and functions (for example, *_TIMEVALUE("5:55 PM")_* ).
+|*_Example=SECOND("2:50PM")_* - returns the seconds portion of the time (0).
+
+|NOW
+|Returns the ticks representing today's date and time (in server local time).
+|Date/time values are stored as sequential counts of ticks, so they can be used in calculations. 
+
+See the *_TODAY( )_* function to get today's date _without_ its time component.
+|*_Example=HOUR(NOW( ))_* - returns the current hour in local server time.
+
+|EDATE
+|Returns a date that is a specified number of months before or after a specified date (the start date).
+|EDATE is frequently used to determine due dates that occur on the same day of the month as the start date. 
+
+*WORKDAY(start_date,days,holidays)*
+
+Start_date is a date that represents the start date.Days is the number of non-weekend and non-holiday days before or after start_date. 
+
+A positive value for days yields a future date; a negative value yields a past date.
+|*Example: =EDATE (A2, 1)* – cell A2 has a Date 01/15/2008. Returns the date, one month after the date specified in cell A2. Will return February 15, 2008.
+
+|EOMONTH
+|Returns the last day of the month before or after a specified date.
+|Enter start date using the DATE function or some other function that returns a date to prevent the problems that can occur when a date is entered as text. 
+
+Use a positive number for months to represent a future date and a negative number to represent a past date. If months is not an integer, it is truncated.
+|*Example: =EOMONTH (A2, 1)* cell A2 has a date 01/01/2008. Returns the day of the month, one month after the date (February 29, 2008). Will return 02/29/2008.
+
+|NETWORKDAYS
+|Returns the number of whole workdays between two dates.
+|Work days exclude weekends and any dates identified in holidays. 
+
+Enter Dates using the DATE function, or as results of other formulas or functions. For example, use DATE (2008, 5, 23) for the 23rd day of May, 2008.
+|*NETWORKDAYS (A2, A3)* 
+
+– cell A2 has start date 10/01/2008, cell A3 has End Date 3/01/2009. 
+
+Considering 11/2./2008,12/4/2008, 1/21/2009 as holidays. Will return 108.
+
+|WEEKDAY
+|Converts a serial number to a day of the week
+|*Serial number* is a sequential number that represents the date of the day you are trying to find.
+|*Example: =WEEKDAY (A2)* 
+
+– cell A2 has a date 2/14/2008. Returns the day of the week, with numbers 1(Sunday) through 7(Saturday), i.e. 5.
+
+|WEEKNUM
+|Converts a serial number to a number representing where the week falls numerically with a year
+|*WEEKNUM(serial_num, return_type)* 
+
+*Serial_num* is a date within the week.*Return_type* is a number that determines on which day the week begins. The default is 1.
+|*Example: =WEEKNUM(A2,1)* – cell A2 has a date March 9, 2008. Returns the number of the week in the year, with a week beginning on Sunday, i.e. 11.
+
+|WORKDAY
+|Returns the serial number of the date before or after a specified number of workdays.
+|Workdays exclude weekends and any dates identified as holidays.
+|*Example: =WORKDAY (A2, A3)* – cell A2 has a date 10/01/2008 and A3 has the Days to completion, i.e. 151. Considering 11/26/2008, 12/4/2008, 1/21/2009 as holidays, the output would be the Date 151 workdays from the start date, i.e. 4/30/2009.
+
+|====
+
+*Related Topics:*
+
+* link:wincalcmanager-engineering-functions.html[Engineering Functions]
+* link:wincalcmanager-financial-functions.html[Financial Functions]
+* link:wincalcmanager-information-functions.html[Information Functions]
+* link:wincalcmanager-logical-functions.html[Logical Functions]
+* link:wincalcmanager-lookup-and-reference-functions.html[Lookup and Reference Functions]
+* link:wincalcmanager-math-functions.html[Math Functions]
+* link:wincalcmanager-statistical-functions.html[Statistical Functions]
+* link:wincalcmanager-text-and-data-functions.html[Text and Data Functions]

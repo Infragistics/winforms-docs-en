@@ -1,0 +1,64 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingauge-move-the-needle-marker-automatically",
+    "controlName": ["WinGauge"],
+    "tags": ["Charting"],
+    "guid": "{9A1828CA-9B86-44B1-BCFB-D45B3879BD1B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Move the Needle Marker Automatically
+
+This topic explains how you can configure the needle on your Radial gauge to move automatically. For example, if you created a Radial gauge to represent a clock, you could configure the hands of the clock to move automatically, giving the impression of a real-time clock.
+
+This topic assumes that you have a Radial gauge already created. For information on how to create a gauge, see link:wingauge-creating-a-radial-gauge-in-design-view.html[Creating a Radial Gauge in Design View].
+
+*To move the needle marker automatically on your gauge:*
+
+[start=1]
+. From the components tab, drag the Timer component to your form.
+[start=2]
+. In the Properties window, set the Enabled properties to True.
+[start=3]
+. In the component tray, double click the Timer component.
+[start=4]
+. The following example code accesses the needle marker on your Radial gauge and increases the value by 5. Place the code in the timer1_Tick method:
+
+*In Visual Basic:*
+
+----
+Dim myRadialGauge As RadialGauge = Me.ultraGauge1.Gauges(0)' Access Needle marker
+Dim myMarker As RadialGaugeMarker = myRadialGauge.Scales(0).Markers(0)
+Dim currentValue As Integer = CInt(myMarker.Value)
+' Increases needle by 5
+myMarker.Value = currentValue + 5
+----
+
+*In C#:*
+
+----
+RadialGauge myRadialGauge = this.ultraGauge1.Gauges[0] as RadialGauge;
+// Access Needle marker
+RadialGaugeMarker myMarker = myRadialGauge.Scales[0].Markers[0];
+int currentValue = (int)myMarker.Value;
+// Increase needle by 5
+myMarker.Value = currentValue + 5;
+----
+
+[start=5]
+. In the Properties window, click the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
+[start=6]
+. Locate the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"]  property and click the ellipsis (…) button to open the Scales collection editor.
+[start=7]
+. Locate the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"]  property and click the ellipsis (…) button to open the Markers collection editor.
+[start=8]
+. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarker~response.html[Response]"]  property.
+[start=9]
+. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~enabled.html[Enabled]"]  property to True. The  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~refreshrate.html[RefreshRate]"]  property is the amount of time between each update of the gauge. Set the RefreshRate property to 00:00:00.1000000. The ResponseRate property is the amount of time taken for the marker to traverse the entire scale of the gauge. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~responsetime.html[ResponseTime]"]  property to 00:00:01. Setting the Response property gives your bar a smoother appearance as it increases along the scale;your bar marker doesn't appear as if it is jumping from value to value.
+[start=10]
+. Save and run the application.

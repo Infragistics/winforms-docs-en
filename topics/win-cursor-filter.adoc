@@ -1,0 +1,87 @@
+﻿////
+
+|metadata|
+{
+    "name": "win-cursor-filter",
+    "controlName": [],
+    "tags": ["API","Application Blocks","Application Scenarios","Grids","Tips and Tricks"],
+    "guid": "{8D89768C-63E3-440A-B684-E6BED9BE4253}",  
+    "buildFlags": [],
+    "createdOn": "2005-06-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Cursor Filter
+
+Cursors are normally specified as a property setting on a control or on an Appearance object that the control or one of its objects exposes. However, there are rare occasions when this flexibility is not enough (e.g. when the developer wants to specify a custom cursor to be used during a resize of an element). To provide this level of extensibility all controls that are based on the PLF expose a CursorFilter property that can be set to an object that implements the IUIElementCursorFilter interface.
+
+The IUIElementCursorFilter interface has a single method:
+
+*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcursorfilter~beforesetcursor.html[BeforeSetCursor]"]  -- called before a cursor is set from an element. It is passed the element, a boolean indicating if the mouse is over the element's adjustable area and a reference to the cursor object. The cursor is initialized to the default cursor for this element but can be changed to supply a different one.
+
+The following sample code illustrates how to supply a custom resize cursor for column headers:
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+' Implement the IUIElementCursorFilter interface on a class
+' (in this case the form)
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+    Implements Infragistics.Win.IUIElementCursorFilter
+Private myCustomCursor As Cursor
+Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+  Handles MyBase.Load
+	' load and cache the resize cursor from an embedded resource 
+	Me.myCustomCursor = New Cursor(Me.GetType(), "MyResizeCursor.cur")
+	' Set the grid's CursorFilter property to the object that
+	' implements the IUIElementCursorFilter interface.
+	Me.UltraGrid1.CursorFilter = Me
+End Sub
+Public Sub BeforeSetCursor(ByVal element As Infragistics.Win.UIElement, _
+  ByVal adjustableCursor As Boolean, ByRef cursor As System.Windows.Forms.Cursor) _
+  Implements Infragistics.Win.IUIElementCursorFilter.BeforeSetCursor
+	' If the mouse is over the adjustable area of a 
+	' HeaderUIElement then return our custom resize cursor
+	If adjustableCursor = True Then
+		If TypeOf (element) Is HeaderUIElement Then
+			cursor = Me.myCustomCursor
+		End If
+	End If
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+// Implement the IUIElementCursorFilter interface on a class
+// (in this case the form)
+public class Form1 : System.Windows.Forms.Form, 
+  Infragistics.Win.IUIElementCursorFilter
+{
+private Cursor myCustomCursor = null;
+private void Form1_Load(object sender, System.EventArgs e)
+{
+	// load and cache the resize cursor from an embedded resource 
+	this.myCustomCursor = new Cursor(this.GetType(), "MyResizeCursor.cur");
+	// Set the grid's CursorFilter property to the object that
+	// implements the IUIElementCursorFilter interface.
+	this.ultraGrid1.CursorFilter = this;
+}
+public void BeforeSetCursor(Infragistics.Win.UIElement element, 
+  bool adjustableCursor, ref System.Windows.Forms.Cursor cursor)
+{
+	// If the mouse is over the adjustable area of a 
+	// HeaderUIElement then return our custom resize cursor
+	if (adjustableCursor && 
+	  element is HeaderUIElement)
+	{
+		cursor = this.myCustomCursor;
+	}
+}
+----

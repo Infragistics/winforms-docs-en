@@ -1,0 +1,298 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-using-the-ieditordatafilter-interface-with-wingrid",
+    "controlName": ["WinGrid"],
+    "tags": ["Extending","Grids","How Do I"],
+    "guid": "{FC3B31A4-7C71-40E1-85DF-B63AE8CD42F9}",  
+    "buildFlags": [],
+    "createdOn": "2005-09-09T00:00:00Z"
+}
+|metadata|
+////
+
+= Using the IEditorDataFilter Interface with WinGrid
+
+== Background
+
+In using the WinGrid™, you may have come across the term  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[embeddable editors]"] . The embeddable editor concept was first introduced with the WinGrid, and is now leveraged across most of the editable Infragistics Win controls. In short, embeddable editors provide a way to render and optionally edit cell values. One of the nifty things about them is that when you learn how to use them in one Win control, you can apply that same logic to any other Win control, since they communicate with the controls via a standard, opaque interface - in fact, the editor is oblivious to which control it is dealing with.
+
+One of the features supported by embeddable editors is support for the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ieditordatafilter.html[IEditorDataFilter]"]  interface. This interface makes it possible for the implementor to "intercept" the values assigned to and from the editor and its owner, and change those values as required by the application. We're going to take a close look at the IEditorDataFilter interface, and how to use it to improve the 
+user experience.
+
+== Example
+
+[start=1]
+. Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
+
+*In Visual Basic:*
+
+----
+Imports System.Globalization
+Imports Infragistics.Win
+Imports Infragistics.Win.UltraWinGrid
+----
+
+*In C#:*
+
+----
+using System.Globalization;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid;
+----
+
+[start=2]
+. For our data filter example, we're going to use a simple DataTable which lists employees and their days off. To improve ease-of-use for the end user, we are going to present a drop-down list of the days of the week, since for this application they should not have to be concerned with the actual date, and we'll leave it up to the data filter to handle the conversion. First we'll need some data, so let's create a DataTable with 2 columns - 'Name' and 'DayOff', and add a few employees to the table.
+
+If you were to run the project with just the Data and click on the drop-down button in the 'DayOff' column, you will see that the standard DateTimeEditor is assigned to that column - usually sufficient, but not appropriate for the special requirements of this application. For that we'll need to assign an EditorWithCombo to the column, and also assign a ValueList with the names of the days of the week. Let's not forget to make this application culture-aware, by using the appropriate names of the days of the week for the current culture, and remember to cross-reference them with the numeric value of that day of the week. We can accomplish this by using the overload of the ValueListItems collection's Add method which takes both a DataValue and the DisplayText for the item; the DataValue is the numeric value and the DisplayText is the name of the day of the week:
+
+Finally every EmbeddableEditorBase-derived editor exposes a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase~datafilter.html[DataFilter]"]  property. The DataFilter property is of type IEditorDataFilter, which is the interface that we implemented on our custom class in the previous step. Let's assign an instance of that class to the DataFilter property of the editor in the "DayOff" column:
+
+*In Visual Basic:*
+
+----
+Private Sub Using_the_IEditorDataFilter_Interface_with_WinGrid_Load( _
+  ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+	Dim dataTable As DataTable = New DataTable("WorkSchedule")
+	dataTable.Columns.Add("Employee", GetType(String))
+	dataTable.Columns.Add("DayOff", GetType(DateTime))
+	dataTable.Rows.Add(New Object() {"Alice", Nothing})
+	dataTable.Rows.Add(New Object() {"Bob", Nothing})
+	dataTable.Rows.Add(New Object() {"Cher", Nothing})
+	dataTable.Rows.Add(New Object() {"Don", Nothing})
+	dataTable.Rows.Add(New Object() {"Ellen", Nothing})
+	Me.UltraGrid1.Text = "Employee Schedule"
+	Me.UltraGrid1.DataSource = dataTable
+	Dim column As UltraGridColumn = Me.UltraGrid1.DisplayLayout.Bands(0).Columns("DayOff")
+	column.Editor = New EditorWithCombo()
+	Dim ValueList As ValueList = New ValueList()
+	Dim daysOfWeekNames As String() = CultureInfo.CurrentCulture.DateTimeFormat.DayNames
+	Dim i As Integer
+	For i = 0 To daysOfWeekNames.Length - 1
+		ValueList.ValueListItems.Add(CType(i, DayOfWeek), daysOfWeekNames(i))
+	Next
+	column.ValueList = ValueList
+	column = Me.UltraGrid1.DisplayLayout.Bands(0).Columns("DayOff")
+	Dim editorWithCombo As New EditorWithCombo()
+	editorWithCombo.DataFilter = New DayOfWeekToDateConverter()
+	column.Editor = editorWithCombo
+End Sub
+----
+
+*In C#:*
+
+----
+private void Using_the_IEditorDataFilter_Interface_with_WinGrid_Load(object sender, System.EventArgs e)
+{
+	DataTable dataTable = new DataTable("WorkSchedule");
+	dataTable.Columns.Add( "Employee", typeof(string) );
+	dataTable.Columns.Add( "DayOff", typeof(DateTime) );
+	dataTable.Rows.Add( new object[]{"Alice", null} );
+	dataTable.Rows.Add( new object[]{"Bob", null} );
+	dataTable.Rows.Add( new object[]{"Cher", null} );
+	dataTable.Rows.Add( new object[]{"Don", null} );
+	dataTable.Rows.Add( new object[]{"Ellen", null} );
+	this.ultraGrid1.Text = "Employee Schedule";
+	this.ultraGrid1.DataSource = dataTable;
+	UltraGridColumn column = this.ultraGrid1.DisplayLayout.Bands[0].Columns["DayOff"];
+	column.Editor = new EditorWithCombo();
+	ValueList valueList = new ValueList();
+	string[] daysOfWeekNames = CultureInfo.CurrentCulture.DateTimeFormat.DayNames;
+	for ( int i = 0; i < daysOfWeekNames.Length; i ++ )
+	{
+		valueList.ValueListItems.Add((System.DayOfWeek)i, daysOfWeekNames[i] );
+	}
+	column.ValueList = valueList;
+	column = this.ultraGrid1.DisplayLayout.Bands[0].Columns["DayOff"];
+	EditorWithCombo editorWithCombo = new EditorWithCombo();
+	editorWithCombo.DataFilter = new DayOfWeekToDateConverter();
+	column.Editor = editorWithCombo;
+}
+----
+
+Now we have a drop-down list assigned to the 'DayOff' column, which is what we want - the end user should only be concerned with the name of the day of the week, and under the hood, the application will take care of converting the value into a date. This is where the IEditorDataFilter interface comes into play.
+[start=3]
+. *Implementing the IEditorDataFilter interface*
+
+My favorite kind of interface is the kind where there are very few methods that have to be implemented. If you are like me, you will love the IEditorDataFilter interface, because there is only *one* method to implement - the Convert method. Don't underestimate its power, however; this one method is all that is necessary to convert virtually any value to any other value for any embeddable editor.
+
+Here, we will implement the IEditorDataFilter interface on a custom class designed specifically to solve the problem described above, which we can then assign to an embeddable editor's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase~datafilter.html[DataFilter]"]  property. Then, we focus individually on each of the conversion directions, and examine which phase of the data conversion they represent, as well as how the implementation handles that aspect of the conversion. To begin, copy the following class implementation to your project:
+
+*In Visual Basic:*
+
+----
+Public Class DayOfWeekToDateConverter
+	Implements IEditorDataFilter
+	Public Function Convert(ByVal conversionArgs As EditorDataFilterConvertArgs) _
+	  As Object Implements IEditorDataFilter.Convert
+		Select Case conversionArgs.Direction
+			Case ConversionDirection.DisplayToEditor
+				If (Not conversionArgs.Value Is Nothing) AndAlso _
+				  conversionArgs.Value.GetType() Is GetType(String) Then
+					Dim value As String = CType(conversionArgs.Value, String)
+					If Not value Is Nothing Then
+						If (value.ToLower().Equals("today")) Then
+							conversionArgs.Handled = True
+							conversionArgs.IsValid = True
+							Return DateTime.Today
+						End If
+					End If
+				End If
+			Case ConversionDirection.EditorToDisplay
+				If (Not conversionArgs.Value Is Nothing) AndAlso _
+				  conversionArgs.Value.GetType() Is GetType(DayOfWeek) Then
+					Dim dayOfWeek As DayOfWeek = conversionArgs.Value
+					Dim theDate As DateTime = _
+					  Me.GetDateFromDayOfWeek(dayOfWeek)
+					If theDate = DateTime.Today Then
+						Dim daysOfWeekNames As String() = _
+						  CultureInfo.CurrentCulture.DateTimeFormat.DayNames
+						conversionArgs.Handled = True
+						conversionArgs.IsValid = True
+						Return daysOfWeekNames(dayOfWeek) + " (Today)"
+					End If
+				End If
+			Case ConversionDirection.EditorToOwner
+				If (Not conversionArgs.Value Is Nothing) AndAlso _
+				  conversionArgs.Value.GetType() Is GetType(DayOfWeek) Then
+					Dim dayOfWeek As DayOfWeek = _
+					  CType(conversionArgs.Value, DayOfWeek)
+					Dim theDate As DateTime = _
+					  Me.GetDateFromDayOfWeek(dayOfWeek)
+					conversionArgs.Handled = True
+					conversionArgs.IsValid = True
+					Return theDate
+				End If
+			Case ConversionDirection.OwnerToEditor
+				If (Not conversionArgs.Value Is Nothing) AndAlso _
+				  conversionArgs.Value.GetType() Is GetType(DateTime) Then
+					Dim theDate As DateTime = _
+					  CType(conversionArgs.Value, DateTime)
+					conversionArgs.Handled = True
+					conversionArgs.IsValid = True
+					Return theDate.DayOfWeek
+				End If
+		End Select
+	End Function
+	Private Function GetDateFromDayOfWeek(ByVal dayOfWeek As DayOfWeek) As DateTime
+		Dim i As Integer
+		For i = 0 To 6
+			Dim theDate As DateTime = DateTime.Today.AddDays(i)
+			If theDate.DayOfWeek = dayOfWeek Then
+				Return theDate
+			End If
+		Next
+		Return DateTime.Today
+	End Function
+End Class
+----
+
+*In C#:*
+
+----
+public class DayOfWeekToDateConverter : IEditorDataFilter
+{
+	object IEditorDataFilter.Convert( EditorDataFilterConvertArgs conversionArgs )
+	{
+		switch (conversionArgs.Direction )
+		{
+			case ConversionDirection.DisplayToEditor:
+			{
+				string value = conversionArgs.Value as string;
+				if (value != null)
+				{
+					if (value.ToLower().Equals("today"))
+					{
+						conversionArgs.Handled = true;
+						conversionArgs.IsValid = true;
+						return DateTime.Today;
+					}
+				}
+				break;
+			}
+			case ConversionDirection.EditorToDisplay:
+			{
+				if (conversionArgs.Value is DayOfWeek)
+				{
+					DayOfWeek dayOfWeek = (DayOfWeek)conversionArgs.Value;
+					DateTime theDate = this.GetDateFromDayOfWeek(dayOfWeek);
+					if (theDate == DateTime.Today)
+					{
+						string[] daysOfWeekNames = 
+						  CultureInfo.CurrentCulture.
+						    DateTimeFormat.DayNames;
+						conversionArgs.Handled = true;
+						conversionArgs.IsValid = true;
+						return daysOfWeekNames[(int)dayOfWeek] + 
+						  " (Today)";
+					}
+				}
+					break;
+			}
+			case ConversionDirection.EditorToOwner:
+			{
+				if (conversionArgs.Value is DayOfWeek)
+				{
+					DayOfWeek dayOfWeek =y (DayOfWeek)conversionArgs.Value;
+					DateTime theDate = this.GetDateFromDayOfWeek(dayOfWeek);
+					conversionArgs.Handled = true;
+					conversionArgs.IsValid = true;
+					return theDate;
+				}
+				break;
+			}
+			case ConversionDirection.OwnerToEditor:
+			{
+				if (conversionArgs.Value is DateTime)
+				{
+					DateTime theDate = (DateTime)conversionArgs.Value;
+					conversionArgs.Handled = true;
+					conversionArgs.IsValid = true;
+					return theDate.DayOfWeek;
+				}
+				break;
+			}				
+		}
+		return conversionArgs.Value;
+	}
+	private DateTime GetDateFromDayOfWeek(DayOfWeek dayOfWeek)
+	{
+		for (int i = 0; i < 7; i ++)
+		{
+			DateTime theDate = DateTime.Today.AddDays((double)i);
+			if (theDate.DayOfWeek == dayOfWeek)
+			return theDate;
+		}
+		return DateTime.Today;
+	}
+}
+----
+
+Now we can start using the application. If you compile and run the project, and select values from the drop-down, you will see that they are accepted without error when the cell exits edit mode, even though it does not appear that we are assigning a value of type DateTime to the cell. This is because the necessary conversions are being made by our IEditorDataFilter implementation.
+
+Now, let's take a look at each of the conversion directions and what they mean.
+[start=4]
+. *The 'DisplayToEditor' conversion direction*
+
+The *DisplayToEditor* constant of the ConversionDirection enumeration represents the transfer of information from the display (i.e., that which appears to the end user) to the editor's value. For our example, the display value is the text that appears in the cell; when a value is selected from the drop-down list, the value of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  (which was set to the name of the day of the week the item represents)of the ValueListItem that was selected appears in the cell. When the end user leaves the cell, the EditorWithCombo will attempt to match the text in the cell to an item in the ValueList, and if it finds one, it assigns that value to the cell. We can use the DisplayToEditor conversion direction to allow some predefined token to act as an alias for the text that corresponds to an item in the list. In our implementation of the DisplayToEditor case, the token "Today" is reserved to refer to the current date; when the end user types the word "Today" and leaves the cell, the data filter calls our Convert method implementation, in which we translate the word "Today" into a meaningful value - DateTime.Today in this case.
+[start=5]
+. *The 'EditorToDisplay' conversion direction*
+
+The *EditorToDisplay* constant of the ConversionDirection enumeration represents the transfer of information from the editor's value to the display; as with the DisplayToEditor conversion direction, the term "display" refers to the text that appears in the cell. For our example, when the System.DayOfWeek constant to which the editor's value is set is the same as that of the current date, we display the word "Today" next to it, so that the end user can easily identify the employee(s) whose day off is the current date. As with the the DisplayToEditor conversion direction, we can change what is displayed to the end user without changing the underlying value.
+[start=6]
+. *The 'EditorToOwner' conversion direction*
+
+The *EditorToOwner* constant of the ConversionDirection enumeration represents the transfer of information from the editor's value to the owner's (i.e., cell's) value. This typically coincides with the ending of an edit mode session by the end user. Since we know that the editor's value will be of type System.DayOfWeek, we handle that case and make an arbitrary conversion from a day of the week to a value of type DateTime. We then return that value to the editor, and it then assigns the actual date we provided to the cell's Value property, as seamlessly as if a DateTimeEditor was assigned to the cell.
+[start=7]
+. *The 'OwnerToEditor' conversion direction*
+
+The *OwnerToEditor* constant of the ConversionDirection enumeration represents the transfer of information from the owner's (i.e., cell's) value to the editor's value. In this case, we are reversing the conversion made in the EditorToOwner conversion phase. The cell's value (as is the value in the data column) is of type DateTime, but we want the editor to think it is of type System.DayOfWeek, so we simply return the value of the DateTime's DayOfWeek property to the editor. When the editor gets this value, it will match it to an item in the list, and that item's text (which we set to the name of the day of the week) is displayed.
+[start=8]
+. *The 'Handled' and 'IsValid' properties of the EditorDataFilterConvertArgs class*
+
+You may have noticed that in each of the conversion direction cases we handled, the Handled and IsValid properties of the EditorDataFilterConvertArgs instance that the editor passes us both get set to true. Setting the Handled property to true signifies to the editor that we are handling the conversion, and that it should use the value that we provide, not the one selected by the end user. Setting the IsValid property to true signifies to the editor that it should not consider the value to be invalid, since we are in this case redefining what we consider to be a valid value.
+[start=9]
+. *Conclusion*
+
+The IEditorDataFilter interface extends a way for the end developer to handle the conversion of data to and from an embeddable editor and an owner such as an UltraGridCell. This mechanism can be used to create a highly specialized user interface using an existing embeddable editor.

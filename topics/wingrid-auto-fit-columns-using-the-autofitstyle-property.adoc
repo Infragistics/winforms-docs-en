@@ -1,0 +1,44 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-auto-fit-columns-using-the-autofitstyle-property",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I","Layouts"],
+    "guid": "{9938F592-27EA-48D2-BCD6-9D6AAFBAFE0B}",  
+    "buildFlags": [],
+    "createdOn": "2005-11-07T00:00:00Z"
+}
+|metadata|
+////
+
+= Auto-Fit Columns Using the AutoFitStyle Property
+
+You can specify that the WinGrid™ automatically resizes the last column in each band in order to occupy all of the available horizontal space. You can do this by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~autofitstyle.html[AutoFitStyle]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  to 'ExtendLastColumn'.
+
+For more information on auto-fitting columns, see link:wingrid-auto-sizing-columns-and-rows.html[Auto-Sizing Columns and Rows].
+
+== To set the AutoFitStyle property:
+
+[start=1]
+. Right-click on the WinGrid and select UltraWinGrid Designer.
+[start=2]
+. In the designer on the right select the option called "Control Settings". Scroll down and expand the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property, then scroll down to AutoFitStyle. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.autofitstyle.html[AutoFitStyle]"]  enumeration provides three options:
+
+* *None* - Automatic resizing is disabled. This is the default value of the property.
+* *ResizeAllColumns* - Resizes all of the columns so that they occupy all of the visible area.
+* *ExtendLastColumn* - Resizes the last column in a band so that it occupies all of the visible area that is not occupied by the other columns.
+
+The ExtendLastColumn setting does not have any effect when at least one of the following conditions is true:
+
+* Card-view functionality is enabled.
+* Horizontal ViewStyle is being used.
+* There are multiple column scroll regions.
+
+Below is a screen shot of a WinGrid whose AutoFitStyle property is set to 'None':
+
+image::Images/WinGrid_AutoFitStyle_Extend_Last_Column_01.png[auto fit columns using the autofitstyle property in ultragrid]
+
+If the AutoFitStyle property were set to 'ExtendLastColumn', the WinGrid would look like this:
+
+image::Images/WinGrid_AutoFitStyle_Extend_Last_Column_02.png[auto fit columns using the autofitstyle property in wingrid]

@@ -1,0 +1,91 @@
+﻿////
+
+|metadata|
+{
+    "name": "wingrid-handling-invalid-cell-input",
+    "controlName": ["WinGrid"],
+    "tags": ["Grids","How Do I"],
+    "guid": "{69719CFE-A984-4546-A8DA-10C287028E8B}",  
+    "buildFlags": [],
+    "createdOn": "0001-01-01T00:00:00Z"
+}
+|metadata|
+////
+
+= Handling Invalid Cell Input
+
+== InvalidValueBehavior Property
+
+The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~invalidvaluebehavior.html[InvalidValueBehavior]"]  property lets you easily specify the behavior that occurs when the user attempts to leave a cell after an invalid value is entered. For example, you can specify that WinGrid™ reverts the value back to the original value and cell is no longer in "edit" mode. The InvalidValueBehavior property is exposed on the Override and Column objects. The following code shows you how to set this property.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_InitializeLayout(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs) _
+  Handles ultraGrid1.InitializeLayout
+    ' Set the property on the display layout's override so it affects the whole WinGrid.
+    Me.ultraGrid1.DisplayLayout.Override.InvalidValueBehavior = _
+      InvalidValueBehavior.RevertValue
+    ' You can override the property on a specific column.
+    Me.ultraGrid1.DisplayLayout.Bands(0).Columns(0).InvalidValueBehavior = _
+      InvalidValueBehavior.RetainValueAndFocus
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_InitializeLayout(object sender, 
+  Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+	// Set the property on the display layout's override so it affects the whole WinGrid.
+	this.ultraGrid1.DisplayLayout.Override.InvalidValueBehavior = 
+	  InvalidValueBehavior.RevertValue;
+	// You can override the property on a specific column.
+	this.ultraGrid1.DisplayLayout.Bands[0].Columns[0].InvalidValueBehavior = 
+	  InvalidValueBehavior.RetainValueAndFocus;
+}
+----
+
+== CellDataError Event
+
+The InvalidValueBehavior property simply provides the default values for  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~restoreoriginalvalue.html[RestoreOriginalValue]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~stayineditmode.html[StayInEditMode]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs.html[CellDataErrorEventArgs]"]  of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~celldataerror_ev.html[CellDataError]"]  event. Therefore the alternative to using InvalidValueBehavior property is to use CellDataError event. CellDataErrorEventArgs also exposes  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~raiseerrorevent.html[RaiseErrorEvent]"]  property that lets you prevent the WinGrid from displaying the error message box.
+
+*In Visual Basic:*
+
+----
+Imports Infragistics.Win.UltraWinGrid
+...
+Private Sub UltraGrid1_CellDataError(ByVal sender As Object, _
+  ByVal e As Infragistics.Win.UltraWinGrid.CellDataErrorEventArgs) _
+  Handles ultraGrid1.CellDataError
+    ' Prevent the message box from displaying.
+    e.RaiseErrorEvent = False
+    ' Revert back to the original value.
+    e.RestoreOriginalValue = True
+    ' Stay in the same cell.
+    e.StayInEditMode = True
+End Sub
+----
+
+*In C#:*
+
+----
+using Infragistics.Win.UltraWinGrid;
+...
+private void ultraGrid1_CellDataError(object sender, 
+  Infragistics.Win.UltraWinGrid.CellDataErrorEventArgs e)
+{
+	// Prevent the message box from displaying.
+	e.RaiseErrorEvent = false;
+	// Revert back to the original value.
+	e.RestoreOriginalValue = true;
+	// Stay in the same cell.
+	e.StayInEditMode = true;
+}
+----

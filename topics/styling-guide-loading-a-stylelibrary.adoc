@@ -1,0 +1,48 @@
+﻿////
+
+|metadata|
+{
+    "name": "styling-guide-loading-a-stylelibrary",
+    "controlName": [],
+    "tags": ["Styling","Theming"],
+    "guid": "{FA8CD200-E3C5-42A2-BB38-1758344F1A6E}",  
+    "buildFlags": [],
+    "createdOn": "2006-11-04T00:00:00Z"
+}
+|metadata|
+////
+
+= Loading a Style Library
+
+If your application is going to take advantage of Application Styling, there needs to be a way to tell your application what styles to use. This is the job of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appstyling.stylemanager.html[StyleManager]"]  class in the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appstyling_namespace.html[Infragistics.Win.AppStyling]"]  namespace. Loading a Style Library involves just one line of code.
+
+AppStylist® produces a Style Library in XML format. What you need to do is load this Style Library into your application using the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appstyling.stylemanager~load.html[Load]"]  method of the StyleManager class. While you can load a Style Library at any time using the StyleManager.Load method, you will most likely want to load it before any forms are displayed. It is recommended that you load the Style Library in your application's entry point. If you call the Load method in the Main method, do so before you call the Application.Run method or the Load method will not load the Style Library until after your application terminates.
+
+*In Visual Basic:*
+
+----
+Public Sub New()
+	MyBase.New()
+	InitializeComponent()
+	Infragistics.Win.AppStyling.StyleManager.Load("StyleLibrary.isl")
+End Sub
+----
+
+*In C#:*
+
+----
+Windows Form Designer Generated Code
+/// <summary>
+/// The main entry point for the application.
+/// </summary>
+[STAThread]
+static void Main() 
+{
+	Infragistics.Win.AppStyling.StyleManager.Load("StyleLibrary.isl");
+	Application.Run(new Form1());
+}
+----
+
+== Related Topic
+
+link:styling-guide-changing-stylesets-at-run-time.html[Changing StyleSets at Run Time]
