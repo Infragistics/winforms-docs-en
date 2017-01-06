@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "windockmanager-determine-whether-a-pane-is-docked",
     "controlName": ["WinDockManager"],
     "tags": ["Layouts"],
-    "guid": "{12ACBB6B-03B8-4BC3-A73C-3A43BC7681DA}",  
+    "guid": "{12ACBB6B-03B8-4BC3-A73C-3A43BC7681DA}",
     "buildFlags": [],
     "createdOn": "2005-07-07T00:00:00Z"
 }
@@ -16,7 +15,7 @@
 
 To determine whether a  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"]  is docked, you must first locate a particular pane. The code snippet below makes use of the  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~panefromcontrol.html[PaneFromControl]"]  method, but you can use any of the other similar methods for getting a pane. For more information, see link:windockmanager-locate-a-specific-pane.html[Locate a Specific Pane].
 
-The follow code snippet finds a pane, then checks to see if that pane is docked, if it is docked it makes it a floating pane.
+The following code snippet finds a pane, then checks to see if that pane is docked, if it is docked it makes it a floating pane.
 
 *In Visual Basic:*
 

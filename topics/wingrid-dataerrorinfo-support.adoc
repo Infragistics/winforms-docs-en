@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "wingrid-dataerrorinfo-support",
     "controlName": ["WinGrid"],
     "tags": ["Error Handling","Grids"],
-    "guid": "7d55d255-5d79-4ed5-a617-346c974de165",  
+    "guid": "7d55d255-5d79-4ed5-a617-346c974de165",
     "buildFlags": [],
     "createdOn": "2013-02-05T03:00:43.5042981Z"
 }
@@ -55,7 +54,7 @@ This topic contains the following sections:
 
 The  _WinGrid_   control already supports displaying errors, images and tooltips in rows and cells where the grid’s data source returns information via the `IDataErrorInfo` interface. Since the data errors were set and retrieved from the data source, the data validation was unavailable in unbound columns cells.
 
-A new link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo_methods.html[UltraGridRow.UltraGridRowDataErrorInfo] property allows getting or setting error information in rows, and cells within a row. This information is completely independent of any error information returned by the data source’s implementation of IDataErrorInfo. Applying an error to the `UltraGridRow.DataErrorInfo` does not affect the underlying data source errors in any way.
+The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo_methods.html[UltraGridRow.UltraGridRowDataErrorInfo] property allows getting or setting error information in rows, and cells within a row. This information is completely independent of any error information returned by the data source’s implementation of IDataErrorInfo. Applying an error to the `UltraGridRow.DataErrorInfo` does not affect the underlying data source errors in any way.
 
 You can display data errors in cells of unbound columns, and rows that have not used the `IDataErrorInfo` interface. It also allows you to override the retrieved error text from the data source directly in  _UltraGridRow_   object.
 

@@ -22,14 +22,14 @@ The WinGrid does not create  pick:[win-forms="link:infragistics4.win.ultrawingri
 *In Visual Basic:*
 [source, vb]
 Private Sub ultraGrid1_InitializeRow(ByVal sender As Object, ByVal e As InitializeRowEventArgs)
-    e.Row.Cells("Total").Value = CDbl(e.Row.Cells("Quantity").Value) $$*$$ CDbl(e.Row.Cells("Price").Value)
+    e.Row.Cells("Total").Value = CDbl(e.Row.Cells("Quantity").Value) * CDbl(e.Row.Cells("Price").Value)
 End Sub
 +
 *In C#:*
 [source, csharp]
 private void ultraGrid1_InitializeRow(object sender, InitializeRowEventArgs e)
         {
-            e.Row.Cells["Total"].Value = (double)e.Row.Cells["Quantity"].Value $$*$$ (double)e.Row.Cells["Price"].Value;
+            e.Row.Cells["Total"].Value = (double)e.Row.Cells["Quantity"].Value * (double)e.Row.Cells["Price"].Value;
         }
 +
 If you wish to avoid the lazy creation of these cells, you can use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getcellvalue.html[GetCellValue]"]  method located on the row. This method is designed to simply return specific cell values while avoiding the lazy creation of the entire cell object in memory thus resulting in memory savings.
@@ -39,7 +39,7 @@ If you wish to avoid the lazy creation of these cells, you can use the  pick:[wi
 Private Sub ultraGrid1_InitializeRow(ByVal sender As Object, ByVal e As InitializeRowEventArgs)
     Dim quantityColumn As UltraGridColumn = e.Row.Band.Columns("Quantity")
     Dim priceColumn As UltraGridColumn = e.Row.Band.Columns("Price")
-    e.Row.Cells("Total").Value = CDbl(e.Row.GetCellValue(quantityColumn)) $$*$$ CDbl(e.Row.GetCellValue(priceColumn))
+    e.Row.Cells("Total").Value = CDbl(e.Row.GetCellValue(quantityColumn)) * CDbl(e.Row.GetCellValue(priceColumn))
 End Sub
 +
 *In C#:*
@@ -48,7 +48,7 @@ private void ultraGrid1_InitializeRow(object sender, InitializeRowEventArgs e)
     {
        UltraGridColumn quantityColumn = e.Row.Band.Columns["Quantity"];
        UltraGridColumn priceColumn = e.Row.Band.Columns["Price"];
-       e.Row.Cells["Total"].Value = (double)e.Row.GetCellValue(quantityColumn) $$*$$(double)e.Row.GetCellValue(priceColumn);
+       e.Row.Cells["Total"].Value = (double)e.Row.GetCellValue(quantityColumn) * (double)e.Row.GetCellValue(priceColumn);
     }
 
 . *Re-using Appearances*

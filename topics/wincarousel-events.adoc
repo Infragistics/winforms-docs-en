@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "wincarousel-events",
     "controlName": [],
     "tags": [],
-    "guid": "175e4576-0e4f-48f4-b788-950ebf8ad2b2",  
+    "guid": "175e4576-0e4f-48f4-b788-950ebf8ad2b2",
     "buildFlags": [],
     "createdOn": "2014-09-12T21:04:50.5114841Z"
 }
@@ -14,106 +13,92 @@
 
 = WinCarousel Events
 
-== Topic Overview
-
-=== Purpose
-
 This topic provides an overview of the link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel_members.html[UltraCarousel] control’s commonly used events.
 
-== Event Summary
+== Events Summary
 
-=== Event name
+[options="header", cols="a,a"]
+|====
+|Event Name|Description
 
-== Description
+|AnimationCompleted
 
-=== AnimationCompleted
+|This event is triggered after the carousel items stop scrolling or rotating along the path.
 
-This event is triggered after the carousel items stop scrolling or rotating along the path.
-
-.Note:
+.Note
 [NOTE]
 ====
 If the link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel~animationstarting_ev.html[AnimationStarting] event is cancelled, this event will not be raised.
 ====
 
-=== AnimationStarting
+|AnimationStarting
 
-This event is triggered before the carousel items start scrolling or rotating along the path.
+|This event is triggered before the carousel items start scrolling or rotating along the path.
 
-=== DataItemsCollectionPopulated
+|DataItemsCollectionPopulated
 
-This event is triggered when the carousel items have been populated through data binding, in which the  _UltraCarousel_   is bound to a `DataSet` object.
+|This event is triggered when the carousel items have been populated through data binding, in which the  _UltraCarousel_   is bound to a `DataSet` object.
 
-=== DataItemsCollectionPopulating
+|DataItemsCollectionPopulating
 
-This event is triggered while the carousel items are being populated through data binding, in which the  _UltraCarousel_   is bound to a `DataSet` object.
+|This event is triggered while the carousel items are being populated through data binding, in which the  _UltraCarousel_   is bound to a `DataSet` object.
 
-=== InitializeDataItem
+|InitializeDataItem
 
-This event is triggered when the carousel items are created through data binding of the  _UltraCarousel_   to a `DataSet` object.
+|This event is triggered when the carousel items are created through data binding of the  _UltraCarousel_   to a `DataSet` object.
 
-.Note:
+.Note
 [NOTE]
 ====
 Adding items to the control will not trigger this event.
 ====
 
-=== ItemActivated
+|ItemActivated
 
-This event is triggered when the active carousel item has changed. Any item at any point can be active when clicked.
+|This event is triggered when the active carousel item has changed. Any item at any point can be active when clicked.
 
-.Note:
+.Note
 [NOTE]
 ====
 If the link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel~itemactivating_ev.html[ItemActivating] event is cancelled, this event will not be raised.
 ====
 
-=== ItemActivating
+|ItemActivating
 
-This event is triggered before the active carousel item has changed, which takes place before the items are rotated along the path.
+|This event is triggered before the active carousel item has changed, which takes place before the items are rotated along the path.
 
-=== ItemClick
+|ItemClick
 
-This event is triggered when a carousel item is clicked.
+|This event is triggered when a carousel item is clicked.
 
-.Note:
+.Note
 [NOTE]
 ====
 This event is only triggered when the control’s link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel~selectiontype.html[SelectionType] is set to  _None_   (Other options are:  _Extended_   and  _Single_  ), otherwise the `ItemSelectionChanging` and `ItemSelectionChanged` events are triggered.
 ====
 
-=== ItemSelectionChanged
+|ItemSelectionChanged
 
-This event is triggered when item selection has changed.
+|This event is triggered when item selection has changed.
 
-.Note:
+.Note
 [NOTE]
 ====
 If the link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel~itemselectionchanging_ev.html[ItemSelectionChanging] event is cancelled, this event will not be raised.
 ====
 
-=== ItemSelectionChanging
+|ItemSelectionChanging
 
-This event is triggered before item selection has changed through user interaction.
+|This event is triggered before item selection has changed through user interaction.
 
-.Note:
+.Note
 [NOTE]
 ====
 This event is only triggered when the control’s link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel~selectiontype.html[SelectionType] is set to  _Single_   or  _Extended_  .
 ====
+|====
 
-[[_Ref381022312]]
+
 == Related Content
 
-=== Topics
-
-The following topics provide additional information related to this topic.
-
-[options="header", cols="a,a"]
-|====
-|Topic|Purpose
-
-| link:wincarousel.html[WinCarousel]
-|This section contains help topics covering the WinCarousel control.
-
-|====
+* link:wincarousel.html[WinCarousel] -- This section contains help topics covering the WinCarousel control.

@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "winribboncustomizationprovider-using-the-ribbon-customization-dialog",
     "controlName": ["WinRibbonCustomizationProvider"],
     "tags": ["Editing","Extending","Getting Started","How Do I"],
-    "guid": "366a4424-a84d-4387-88c3-fc3c48a5b4f8",  
+    "guid": "366a4424-a84d-4387-88c3-fc3c48a5b4f8",
     "buildFlags": [],
     "createdOn": "2011-04-26T21:32:27.1423671Z"
 }
@@ -16,40 +15,8 @@
 
 This topic explains the Ribbon Customization dialog, its implementation, and the end-user interactions with it.
 
-== Overview
+toc::[]
 
-* <<Intro,Introduction>>
-
-Purpose and structure.
-
-* <<Implement,Implementation>>
-
-How to enable the dialog and implement its functionalities.
-
-* <<RibbonCust,Enabling/Disabling Ribbon Customization>>
-
-** <<EnableRibbonCust,Enabling Ribbon Customization>>
-** <<DisableRibbonCust,Disabling Ribbon Customization>>
-** <<Events,Events>>
-
-* <<ShowCustDialog,Showing the Customization Dialog>>
-
-How to display the Customization Dialog at run-time.
-* <<CustFunctionalities,Implementing the Customization Functionalities>>
-
-** <<PopularCommands,Adding the Popular Commands Functionality>>
-** <<CustDefault,Customizing the Default Tabs, Groups and Tools>>
-** <<ResetButton,Implementing the Reset Button Functionality>>
-
-Programmatically design/change the default reset point for the Ribbon.
-
-* <<UserInteractions,User Interactions in the Customization Dialog>>
-
-What users can do in the dialog: add, remove, show/hide, modify, move.
-* <<Layout,Importing/Exporting the Layout of the Ribbon>>
-* <<RelatedTopics,Related Topics>>
-
-[[Intro]]
 == Introduction
 
 The Ribbon Customization Dialog enables end users to customize ribbon tabs, groups and tools. It is implemented through the WinRibbonCustomizationProvider control. Once implemented, users can access through options in their right-click context menu (For details, refer to the About WinRibbonCustomizationProvider topic).
@@ -66,11 +33,6 @@ Figure 1: The Ribbon Customization dialog, Customize Ribbon tab
 You can use the RibbonCustomizationControl and the QATCustomizationControl also in custom-created dialogs.
 ====
 
-[[Implement]]
-== Implementation
-
-[[RibbonCust]]
-== Enabling/Disabling Ribbon Customization
 
 [[EnableRibbonCust]]
 == Enabling Ribbon Customization
@@ -137,9 +99,6 @@ Me. ultraToolbarsManager1.Ribbon. ShowRibbonCustomizationDialog (RibbonCustomiza
 using Infragistics.Win.UltraWinToolbars;
 this.ultraToolbarsManager1.Ribbon.ShowRibbonCustomizationDialog(RibbonCustomizationType.QuickAccessToolbar);
 ----
-
-[[CustFunctionalities]]
-== Implementing the Customization Functionalities
 
 [[PopularCommands]]
 == Adding the Popular Commands Functionality

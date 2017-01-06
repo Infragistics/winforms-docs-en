@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "word-using-bullet-lists-and-automatic-numbering",
     "controlName": [],
     "tags": [],
-    "guid": "5df8d550-a895-4325-b567-61d783997365",  
+    "guid": "5df8d550-a895-4325-b567-61d783997365",
     "buildFlags": [],
     "createdOn": "2015-02-26T18:43:24.2524919Z"
 }
@@ -56,7 +55,7 @@ This topic contains the following sections:
 
 === Overview
 
-*Bullet points* are used to draw attention to important information within a document so that a reader can identify the key issues and facts quickly. Each item in the list is typically preceded with a symbolic character such as a dot, arrow, circle, etc. Each item in the list is related, but the order in which they appear is not emphasized. Developers who are familiar with HTML will notice the similarities between bullet lists and the *<ul>* element.*Automatic numbering runs* are similar to bullet points, except that each item in the list is given sequential significance. Automatic numbering runs are typically used when the order in which the items appear is relevant, such as when enumerating the steps to perform a task. Developers who are familiar with HTML will notice the similarities between automatic numbering runs and the *<ol>* element. 
+*Bullet points* are used to draw attention to important information within a document so that a reader can identify the key issues and facts quickly. Each item in the list is typically preceded with a symbolic character such as a dot, arrow, circle, etc. Each item in the list is related, but the order in which they appear is not emphasized. Developers who are familiar with HTML will notice the similarities between bullet lists and the *<ul>* element. *Automatic numbering runs* are similar to bullet points, except that each item in the list is given sequential significance. Automatic numbering runs are typically used when the order in which the items appear is relevant, such as when enumerating the steps to perform a task. Developers who are familiar with HTML will notice the similarities between automatic numbering runs and the *<ol>* element. 
 
 [[Preview]]
 
@@ -102,7 +101,7 @@ This section contains a high-level overview of the new API members which were ad
 
 ** Exposes a *Levels* collection – one for each level, zero-based
 ** Each level is usually indented with respect to the preceding level
-** Each member of the Levels collection is an object of type <<BulletLevelPropertiesClass,BulletLevelProperties>>
+** Each member of the Levels collection is an object of type link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties.html[BulletLevelProperties]
 
 * *BulletLevelProperties* class
 

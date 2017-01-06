@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "styling-guide-create-a-user-control-to-apply-stylesets-at-runtime",
     "controlName": [],
     "tags": ["Styling","Theming"],
-    "guid": "{0367ECFB-DE49-4DC8-AB06-6276F65A8A22}",  
+    "guid": "{0367ECFB-DE49-4DC8-AB06-6276F65A8A22}",
     "buildFlags": [],
     "createdOn": "0001-01-01T00:00:00Z"
 }
@@ -176,10 +175,13 @@ AppStylingLib.AppStyleUserControl.StylePath = Application.StartupPath & "\Styles
 AppStylingLib. AppStyleUserControl.LoadPersistedStyle()
 +
 *In C#:*
++
 [source, csharp]
-//Use the static member to set things up: 
+----
+//Use the static member to set things up:
 AppStylingLib.AppStyleUserControl.StylePath = Application.StartupPath + @"\Styles";
 AppStylingLib.AppStyleUserControl.LoadPersistedStyle();
+----
 
 . Adding Style Libraries to your Application
 

@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "getting-started-where-files-are-placed-on-your-file-system-during-installation",
     "controlName": [],
     "tags": ["Getting Started"],
-    "guid": "{954281B4-BF65-48B0-950D-113FED711CDA}",  
+    "guid": "{954281B4-BF65-48B0-950D-113FED711CDA}",
     "buildFlags": [],
     "createdOn": "0001-01-01T00:00:00Z"
 }
@@ -18,13 +17,7 @@ This topic explains where files and folders that are included in the Installer a
 
 == Win Presets
 
-*In Windows 7 and Windows 8*
-
 `C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Presets\CLR4x\Win`
-
-*In XP*
-
-`C:\Documents and Settings\All Users\Documents\Infragistics\20{ProductVersion}\Presets\CLR4x\Win`
 
 This folder contains all the in-box presets provided by Infragistics for all Infragistics Windows Forms controls and components. You can use a preset to apply a range of formatting and behavior options across the elements of your interface and applications. Presets are saved in an XML format.
 
@@ -41,7 +34,7 @@ There are three different types of presets:
 
 During installation you will be given the option to install 'Just Me' or 'All Users'. Depending on your selection, the Templates, Palettes and Styles folders will be placed in different areas.
 
-=== In Windows 7 and Windows 8 - 'Just Me' option selected
+=== 'Just Me' option selected
 
 `C:\Users\[USERID]\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
 
@@ -49,39 +42,7 @@ During installation you will be given the option to install 'Just Me' or 'All Us
 
 `C:\Users\[USERID]\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Templates`
 
-=== In Windows 7 and Windows 8 - 'All Users' option selected*
-
-`C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
-
-`C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Styles`
-
-`C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Templates`
-
-=== In XP - 'Just Me' option selected
-
-`C:\Documents and Settings\[USERID]\MyDocuments\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
-
-`C:\Documents and Settings\[USERID]\MyDocuments\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Styles`
-
-`C:\Documents and Settings\[USERID]\MyDocuments\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Templates`
-
-=== In XP - 'All Users' option selected
-
-`C:\Documents and Settings\All Users\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
-
-`C:\Documents and Settings\All Users\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Styles`
-
-`C:\Documents and Settings\All Users\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Templates`
-
-=== In Vista - 'Just Me' option selected
-
-`C:\Users\[USERID]\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
-
-`C:\Users\[USERID]\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Styles`
-
-`C:\Users\[USERID]\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Templates`
-
-=== In Vista - 'All Users' option selected
+=== 'All Users' option selected
 
 `C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\AppStylist for Windows Forms\Palettes`
 
@@ -93,18 +54,9 @@ These folders contain all the styles available within Windows Forms. Styles are 
 
 == Global Assembly Cache
 
-=== In CLR 4.0 and later
-
 `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\`
 
-=== In CLR 2.0
-
-`C:\WINDOWS\assembly\`
-
-By default when you install Infragistics Windows Forms the control assemblies are installed into the GAC.
-
-
-For more information on installing Infragistics Windows Forms, see Deploying Your Application in the Windows Forms help.
+For more information, see link:win-deploying-your-application.html[Deploying Your Application].
 
 
 == Version Utility

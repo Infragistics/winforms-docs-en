@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "wingrid-binding-wingrid-to-a-hierarchical-data-source-clr2",
     "controlName": ["WinGrid"],
     "tags": ["Grids","How Do I","Sample Data Source"],
-    "guid": "{7E801D10-FA96-401C-8FFE-5B89D97D223A}",  
+    "guid": "{7E801D10-FA96-401C-8FFE-5B89D97D223A}",
     "buildFlags": ["win-forms"],
     "createdOn": "0001-01-01T00:00:00Z"
 }
@@ -30,13 +29,10 @@ image::images/WinGrid_Bind_WinGrid_to_a_Flat_Data_Source_CLR2_01.png[datasource 
 [start=4]
 . The Data Source Configuration Wizard will appear. This wizard will aid you in connecting to a Database, Web Service, or Object. Select Database and click Next.
 [start=5]
-. Select the New Connection button, in the "Chooser Your Data Connection" dialog. This will cause the Add Connection dialog to appear which will allow you to navigate out to the location of your database. For this example, we will be using the Northwind database (NWind.mdb), which is available as part of the Infragistics Professional SDK install. By default, the NWind.mdb file is located in the following installation folder, depending on your operating system:
-
-** XP -- C:\Documents and Settings\All Users\Documents\Infragistics\20{ProductVersion}\Windows Forms\Samples\Legacy\Data
-** Vista -- C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\Samples\Legacy\Data
-
+. Select the New Connection button, in the "Chooser Your Data Connection" dialog. This will cause the Add Connection dialog to appear which will allow you to navigate out to the location of your database. For this example, we will be using the Northwind database (NWind.mdb), which is available as part of the Infragistics Professional SDK install. By default, the NWind.mdb file is located in the following installation folder: C:\Users\Public\Documents\Infragistics\20{ProductVersion}\Windows Forms\Samples\Legacy\Data
++
 Click Browse... to navigate out to the installation path, and select the NWind.mdb file. The Add Connection dialog box should look similar to the following. When you have the connection established, click OK.
-
++
 image::images/WinGrid_Bind_WinGrid_to_a_Flat_Data_Source_CLR2_02.png[add connection dialog box]
 
 [start=6]

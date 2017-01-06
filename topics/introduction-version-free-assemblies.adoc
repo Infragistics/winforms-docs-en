@@ -1,0 +1,59 @@
+﻿////
+|metadata|
+{
+    "tags": [],
+    "controlName": [""]
+}
+|metadata|
+////
+
+= Version Free Assemblies
+
+toc::[]
+
+
+== About Version Free Assemblies
+
+The version-free assemblies are libraries that do not have the version number or framework version identifier in their assembly names. For example, Infragistics assembly names like `{ApiPlatform}Shared.v{ProductVersion}.dll` will be available as `Infragistics.Shared.dll`. 
+
+With the version-free assemblies, you can easily upgrade from one Infragistics version to another using assembly binding redirection supported by .Net, without the need to re-build your application.
+
+.Note
+[NOTE]
+====
+When using the version-free assemblies, you must perform a complete regression test on your application and also review the breaking changes section of our Help, starting from the volume release that you previously had before upgrading.
+====
+
+Assembly binding redirection allows you to tell the .Net runtime that any assembly, binding to some version of the assembly, should redirect to a different version. The bindingRedirect element within the application configuration file (app.config) accepts attributes oldVersion and newVersion, that enable version redirection; and the assemblyIdentity element accepts the name attribute that requires the name of the assembly. With the versioned assembly names, the assembly names change for each release (e.g. `{ApiPlatform}Shared.v12.1.dll, {ApiPlatform}Shared.v12.2.dll`) and hence cannot be specified for the assemblyIdentity element. With the version-free assembly names, the assembly names will remain the same across every Infragistics volume release and thus you can upgrade from one version to another using bindingRedirect, without the necessity to rebuild your application.
+
+Following is an example of using bindingRedirect within the app.config file in order to redirect the application to use the new version:
+
+[source, xml]
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<runtime>
+<assemblyBinding xmlns = "urn:schemas-microsoft-com:asm.v1">
+<dependentAssembly>
+<assemblyIdentity name = "Infragistics.Shared" publicKeyToken = "7dd5c3163f2cd0cb" culture = "neutral" />
+<bindingRedirect oldVersion = "12.1.20101.0" newVersion = "12.2.20102.50" />
+</dependentAssembly>
+<dependentAssembly>
+<assemblyIdentity name = "Infragistics.Win" publicKeyToken [source] = "7dd5c3163f2cd0cb" culture = "neutral" />
+<bindingRedirect oldVersion = "12.1.20101.0" newVersion = "12.2.20102.50" />
+</dependentAssembly>
+</assemblyBinding>
+</runtime>
+</configuration>
+
+
+== Using Version Free Assemblies
+
+Version-free assemblies are available to you in a zipped format (within ‘Version-Free’ folder) along with the product install at location: `{InstallPath}`
+
+To use these version-free assemblies, you should manually do the following:
+
+. Take a backup of the assemblies that you already have in the Bin (`{InstallPath}\CLR4.0\Bin`) folder.
+. Unzip the ‘`WinForms_{ProductVersionFull}_VersionFree.zip`’ folder available at `{InstallPath}\Version-Free`.
+. Copy the version-free assemblies from the extracted folder into the Bin folder.
+. Add the version-free assemblies located in the Bin folder to the Global Assembly Cache (GAC). You can add assemblies to the GAC by using the link:http://msdn.microsoft.com/en-us/library/ex0ss12c.aspx[Gacutil.exe]. Starting with the .NET Framework 4, the default location for the global assembly cache is `%windir%\Microsoft.NET\assembly`.
+. Create a toolbox tab in Visual Studio and add the controls in the version-free assemblies located in the Bin folder.

@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "win-breaking-changes-in-2012-volume-1",
     "controlName": [],
     "tags": ["Breaking Changes"],
-    "guid": "cb75e42c-736c-4998-b256-07cf7fa27a18",  
+    "guid": "cb75e42c-736c-4998-b256-07cf7fa27a18",
     "buildFlags": [],
     "createdOn": "2012-03-30T16:05:33.5920411Z"
 }
@@ -50,12 +49,12 @@ The following table summarizes the breaking changes in Excel library Format supp
 |`Styles` collection is now pre-populated with all built in styles and clearing the collection will not remove the _Normal_ style as it did in the earlier versions.
 
 |`WorkbookPaletteMode` enumeration has been marked obsolete.
-|The `Work``bookPaletteMode` enumeration and the `Workbook` constructor that takes a `WorkbookPaletteMode` have been marked obsolete. 
+|The `WorkbookPaletteMode` enumeration and the `Workbook` constructor that takes a `WorkbookPaletteMode` have been marked obsolete. 
 
 If a `Workbook` constructor taking a `WorkbookPaletteMode` is used, the value will be ignored.
 
-|`FillPatternStyle.``Default` value has been marked obsolete
-|`FillPatternStyle` `Default` value has been marked obsolete. It can be still used on the deprecated `IWorksheetCellFormat.``FillPattern` property to indicate unset value.
+|`FillPatternStyle.Default` value has been marked obsolete
+|`FillPatternStyle` `Default` value has been marked obsolete. It can be still used on the deprecated `IWorksheetCellFormat.FillPattern` property to indicate unset value.
 
 |The Color properties on the `IWorksheetCellFormat` and `IWorkbookFont` interfaces have been marked obsolete.
 |The Color properties on the `IWorksheetCellFormat` and `IWorkbookFont` interfaces have been marked obsolete. Setting the old property will set the new property to an equivalent value. 
@@ -67,10 +66,10 @@ For more information, see the <<_Ref320781793, Set of Color properties have been
 
 For more information, see the <<_Ref320781827, CellFormat have been marked obsolete >> block below.
 
-|The `Workbook.``DefaultFontHeight` property has been marked obsolete
+|The `Workbook.DefaultFontHeight` property has been marked obsolete
 |The `Workbook` `DefaultFontHeight` property has been marked obsolete. It is redundant now that the default font height can be set on the _Normal_ style of the workbook. Setting and getting the old property will set and get the font height of the _Normal_ style.
 
-|The `Workbook.``MaxExcelColorCount` constant has been marked obsolete.
+|The `Workbook.MaxExcelColorCount` constant has been marked obsolete.
 |The `Workbook` `MaxExcelColorCount` constant has been marked obsolete. There is now no limit to the number of unique colors which can be used in a workbook.
 
 |When value of the cell is link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString], its associated fonts must now be fully resolved.
@@ -108,28 +107,28 @@ The following color properties have been marked obsolete. Setting the old proper
 |====
 |Obsolete properties|New properties
 
-|`FormattedFontBase.``Color`
+|`FormattedFontBase.Color`
 |`FormattedFontBase` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedfontbase~colorinfo.html[ColorInfo]
 
-|`IWorkbookFont.``Color`
+|`IWorkbookFont.Color`
 |`IWorkbookFont` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworkbookfont~colorinfo.html[ColorInfo]
 
-|`IWorksheetCellFormat.``BottomBorderColor`
+|`IWorksheetCellFormat.BottomBorderColor`
 |`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~bottombordercolorinfo.html[BottomBorderColorInfo]
 
-|`IWorksheetCellFormat.``DiagonalBorderColor`
+|`IWorksheetCellFormat.DiagonalBorderColor`
 |`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~diagonalbordercolorinfo.html[DiagonalBorderColorInfo]
 
-|`IWorksheetCellFormat.``LeftBorderColor`
+|`IWorksheetCellFormat.LeftBorderColor`
 |`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~leftbordercolorinfo.html[LeftBorderColorInfo]
 
-|`IWorksheetCellFormat.``RightBorderColor`
+|`IWorksheetCellFormat.RightBorderColor`
 |`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~rightbordercolorinfo.html[RightBorderColorInfo]
 
-|`IWorksheetCellFormat.``TopBorderColor`
+|`IWorksheetCellFormat.TopBorderColor`
 |`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~topbordercolorinfo.html[TopBorderColorInfo]
 
-|`WorksheetDisplayOptions.``TabColor`
+|`WorksheetDisplayOptions.TabColor`
 |`WorksheetDisplayOptions` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetdisplayoptions~tabcolorinfo.html[TabColorInfo]
 
 |====

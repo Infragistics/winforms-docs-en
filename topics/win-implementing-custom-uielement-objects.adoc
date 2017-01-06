@@ -23,15 +23,15 @@ In order to create a custom element you must derive a class from the UIElement b
 
 The following are a few element classes implemented in the PLF that might be useful to use as base classes:
 
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.adjustableuielement.html[AdjustableUIElement]"]  -- this is useful as the base class for elements that can be moved or resized by the user (e.g. a column header). It exposes some additional virtual methods and properties to specify if the element supports left/right and/or up/down adjustments as well as adjustment range limits. It has logic for capturing the mouse and inverting and appropriate line/rectangle during the resize operation. In addition to exposing an 'ElementAdjusted' event it has a virtual 'ApplyAdjustment' method that is passed a delta value. This method is overridden to do the actual adjustment.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.buttonuielement.html[ButtonUIElement]"]  -- this can be used as is or as a base class. It implements all of the functionality of a button and exposes a 'ButtonStyle' enumeration property so that it can support more than a dozen button styles.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.adjustableuielement.html[AdjustableUIElement] -- this is useful as the base class for elements that can be moved or resized by the user (e.g. a column header). It exposes some additional virtual methods and properties to specify if the element supports left/right and/or up/down adjustments as well as adjustment range limits. It has logic for capturing the mouse and inverting and appropriate line/rectangle during the resize operation. In addition to exposing an 'ElementAdjusted' event it has a virtual 'ApplyAdjustment' method that is passed a delta value. This method is overridden to do the actual adjustment.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.buttonuielement.html[ButtonUIElement] -- this can be used as is or as a base class. It implements all of the functionality of a button and exposes a 'ButtonStyle' enumeration property so that it can support more than a dozen button styles.
 * CheckBoxUIElement - this can be used as is or as a base class.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controluielementbase.html[ControlUIElementBase]"]  -- this class must be used as the base class for the main UIElement of a control. The control must have a single instance of this element as its primary UIElement. In other words, elements derived from ControlUIElementBase must not have parent elements. It has a virtual 'OnPreMouseDown' method that is called when the user clicks on the mouse. This can be overridden to perform special logic (such as setting focus to the control) or to prevent the default mouse down logic from executing by returning True. Also, if the control makes use of KeyActionMappings (see section on 'Keyboard Handling), it needs to override the read-only 'CurrentState' property and the 'PerformKeyAction' method.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableuielementbase.html[EmbeddableUIElementBase]"]  -- this is the base class that embeddable editors derive their element classes from (see the section on 'Embeddable Editors').
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.imageuielement.html[ImageUIElement]"]  -- this can be used as is or as a base class. It does not draw its background or borders. It simply displays a foreground image.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.splitteruielement.html[SplitterUIElement]"]  -- this class derives from AdjustableUIElement and implements all of the functionality of a splitter bar. Usually a derived class just needs to override the 'ApplyAdjustment' method.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.splitterintersectionuielement.html[SplitterIntersectionUIElement]"]  -- this element represents the intersection of a vertical and horizontal SplitterUIElement. It has logic for applying the appropriate adjustment to both splitters when the user drags the intersection element diagonally. It also listens to the ElementAdjusted event of both splitter elements to reposition itself automatically.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.textuielement.html[TextUIElement]"]  -- this can be used as is or as a base class. It does not draw its background or borders. It simply displays text.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.controluielementbase.html[ControlUIElementBase] -- this class must be used as the base class for the main UIElement of a control. The control must have a single instance of this element as its primary UIElement. In other words, elements derived from ControlUIElementBase must not have parent elements. It has a virtual 'OnPreMouseDown' method that is called when the user clicks on the mouse. This can be overridden to perform special logic (such as setting focus to the control) or to prevent the default mouse down logic from executing by returning True. Also, if the control makes use of KeyActionMappings (see section on 'Keyboard Handling), it needs to override the read-only 'CurrentState' property and the 'PerformKeyAction' method.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableuielementbase.html[EmbeddableUIElementBase] -- this is the base class that embeddable editors derive their element classes from (see the section on 'Embeddable Editors').
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.imageuielement.html[ImageUIElement] -- this can be used as is or as a base class. It does not draw its background or borders. It simply displays a foreground image.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.splitteruielement.html[SplitterUIElement] -- this class derives from AdjustableUIElement and implements all of the functionality of a splitter bar. Usually a derived class just needs to override the 'ApplyAdjustment' method.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.splitterintersectionuielement.html[SplitterIntersectionUIElement] -- this element represents the intersection of a vertical and horizontal SplitterUIElement. It has logic for applying the appropriate adjustment to both splitters when the user drags the intersection element diagonally. It also listens to the ElementAdjusted event of both splitter elements to reposition itself automatically.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textuielement.html[TextUIElement] -- this can be used as is or as a base class. It does not draw its background or borders. It simply displays text.
 
 The following two tables list the virtual properties and methods that are exposed by the UIElement base class.
 
@@ -41,104 +41,108 @@ The following two tables list the virtual properties and methods that are expose
 |====
 |Property Name|Type|Description|Value returned by the base UIElement class
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.headeruielementbase~adjustable.html[Adjustable]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~adjustable.html[Adjustable] 
 |Boolean
 |Returns True if this element can be moved or resized by the user. This property is read-only.
 |False
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.textuielement~bordersides.html[BorderSides]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~bordersides.html[BorderSides]
 |Border3DSide
 |Bit flags indicating which sides the borders should be drawn on (e.g. left, right, top and/or bottom
 |All
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.textuielement~borderstyle.html[BorderStyle]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~borderstyle.html[BorderStyle]
 |UIElementBorderStyle
 |Specifies the style of border that needs to be drawn (e.g. solid, dotted, inset, raised, none etc.). This property is read-only.
 |None
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~cancelcaptureonescape.html[CancelCaptureOnEscape]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~cancelcaptureonescape.html[CancelCaptureOnEscape] 
 |Boolean
 |Indicates if capture for this element should be terminated if the escape key is pressed. This property is read-only.
 |True
 
-|*ChildElementArrayCapacity*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~ChildElementArrayCapacity.html[ChildElementArrayCapacity]
 |Integer
 |Returns the expected number of child elements for this element. This should be overridden for elements that will have a lot of children to optimize the child collection allocations This property is read-only.
 |3
 
-|*ClipChildren*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~ClipChildren.html[ClipChildren]
 |Boolean
 |Determines if the drawing for this element's child elements will be clipped inside the borders of this element. This should only return true for those elements that need it since there is some execution overhead to intersecting the clip region. This property is read-only.
 |False
 
-|*ClipRectChildren*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~ClipRectChildren.html[ClipRectChildren]
 |Rectangle
 |Returns the rectangle that will be used to clip child elements if ClipChildren returns True. This property is read-only.
 |RectInsideBorders
 
-|*ClipSelf*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~ClipSelf.html[ClipSelf]
 |Boolean
 |Determines if the drawing for this element will be clipped so that it can't draw outside its area. This should only return True for those elements that need it since there is some execution overhead to intersecting the clip region. This property is read-only.
 |False
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controluielementbase~control.html[Control]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.controluielementbase~control.html[Control] 
 |Windows.Forms.Control
 |Returns the control associated with this element. This property is read-only.
 |Walks up the parent chain until it reaches the main control element and returns the associated control.
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controluielementbase~cursor.html[Cursor]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.controluielementbase~cursor.html[Cursor] 
 |Windows.Forms.Cursor
 |Returns the cursor that should be used when the mouse is over the element.
 |Calls InitAppearance to get any assigned cursor. If none is set, it returns its parent element's cursor.
 
-|*DrawsFocusRect*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~DrawsFocusRect.html[DrawsFocusRect]
 |Boolean
 |If, during a drawing operation, this property returns true and the control has input focus (or the forceDrawAsFocused parameter was true on the call to the Draw method) then the DrawFocus method will be called on this element. This property is read-only.
 |False
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.buttonuielementbase~enabled.html[Enabled]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.buttonuielementbase~enabled.html[Enabled] 
 |Boolean
 |Returns true if the element is enabled. This property is read-write.
 |Returns false if Enabled is false. Otherwise it returns its parent element's Enabled property. This effectively walks up the parent chain until it reaches the main control element which overrides this property to return the Enabled property of the associated control.
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~iselementdrawn.html[IsElementDrawn]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~iselementdrawn.html[IsElementDrawn] 
 |Boolean
 |Returns true if this element should be drawn. This property is read-only. Note: returning false for this property will prevent this element and all of its child elements from being drawn.
 |True
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~rect.html[Rect]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~rect.html[Rect] 
 |Rectangle
 |The elements bounding rectangle in client coordinates of the control. This property is read-write.
 |The element's Rect. Setting this property will mark the child elements collection dirty which will trigger a call to PositionChildElements on the next paint.
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~rectinsideborders.html[RectInsideBorders]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~rectinsideborders.html[RectInsideBorders] 
 |Rectangle
 |The elements rectangle within its borders in client coordinates of the control. This property is read-only.
 |The element's rect adjusted for its borders based on the BorderStyle and BorderSides properties.
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~region.html[Region]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~region.html[Region] 
 |System.Drawing.Region
 |The region of the element. It is called during a drawing operation if the ClipSelf property returns true. Override this property to return an irregular shaped region.
 |A rectangular region that must be disposed by the caller.
 
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~selectableitem.html[SelectableItem]"] 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~selectableitem.html[SelectableItem] 
 |ISelectableItem
 |Returns an object that implements the ISelectableItem interface or Null. The SelectableItem is used by the SelectionStrategy to select individual items and/or ranges of items. This property is read-only.
 |The PrimaryContext if it implements the ISelectableItem interface. Otherwise it returns the SelectableItem property of its parent element.
 
-|*SupportsHorizontalMousePanning*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~SupportsHorizontalMousePanning.html[SupportsHorizontalMousePanning]
 |Boolean
 |Return True for those elements that want to support horizontal mouse panning. If an element overrides this property it should also override the OnMousePanHorizontal method to perform the pan operation. This property is read-only.
 |False
 
-|*SupportsVerticalMousePanning*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~SupportsVerticalMousePanning.html[SupportsVerticalMousePanning]
 |Boolean
 |Return True for those elements that want to support vertical mouse panning. If an element overrides this property it should also override the OnMousePanVertical method to perform the pan operation. This property is read-only.
 |False
 
-|*WantsMouseHoverNotification*
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~WantsMouseHoverNotification.html[WantsMouseHoverNotification]
 |Boolean
-|Return True if the element wants its OnMouseHover method to be called when the mouse is paused over the element or one of its child elements. This property is read-only. Note: when the mouse is paused over an element the PLF logic first checks this property on the element. If the property returns false it then walks up the element's parent chain and calls OnMouseHover on the first element that returns true for this property.
+|Return True if the element wants its OnMouseHover method to be called when the mouse is paused over the element or one of its child elements. This property is read-only.
+
+.Note
+[NOTE]
+When the mouse is paused over an element the PLF logic first checks this property on the element. If the property returns false it then walks up the element's parent chain and calls OnMouseHover on the first element that returns true for this property.
 |False
 
 |====

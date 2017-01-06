@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "wincarousel-adding-carousel-items-using-the-designer",
     "controlName": [],
     "tags": [],
-    "guid": "9becaadd-037e-43ca-9630-92ec983627e1",  
+    "guid": "9becaadd-037e-43ca-9630-92ec983627e1",
     "buildFlags": [],
     "createdOn": "2014-09-12T22:11:09.4642173Z"
 }
@@ -14,59 +13,33 @@
 
 = Adding Carousel Items Using the Designer
 
-== Topic Overview
-
-=== Purpose
-
 This topic demonstrates how to add and configure the link:{ApiPlatform}win.ultrawincarousel.v{ProductVersion}~infragistics.win.ultrawincarousel.ultracarousel_members.html[UltraCarousel] items using the control’s design-time interface.
 
-=== In this topic
+toc::[]
 
-This topic contains the following sections:
 
-* <<_Ref397459010,Overview>>
-
-** <<_Ref397459018,Introduction>>
-** <<_Ref397459026,Application Requirements>>
-** <<_Ref397459035,Adding UltraCarousel Control>>
-
-*** <<_Ref397459045,Smart Tag>>
-*** <<_Ref397459050,Carousel Designer>>
-*** <<_Ref397459062,Adding Path>>
-*** <<_Ref397459072,Adding Items>>
-
-* <<_Ref381022312,Related Content>>
-
-[[_Ref397459010]]
-== Overview
-
-[[_Ref397459018]]
-
-=== Introduction
+== Introduction
 
 In this topic, you will learn how to add the UltraCarousel control and configure it through the control’s design-time interface. The main components of the carousel control are the `Path`, `Items`, and `Scroll buttons`.
 
 image::images/Adding_Carousel_Items_Using_the_Designer_1.png[]
 
-[[_Ref397459026]]
 
-=== Application Requirements
+== Application Requirements
 
-1. Install the  _Infragistics WinForms 2014 Volume 2_   or later version of the product.
+. Install the  _Infragistics WinForms 2014 Volume 2_   or later version of the product.
 
-2. Start with a new Windows Forms application using Visual Studio 2010 or later version.
+. Start with a new Windows Forms application using Visual Studio 2010 or later version.
 
-[[_Ref397459035]]
 
-=== Adding UltraCarousel Control
+== Adding UltraCarousel Control
 
 Drag and drop the UltraCarousel control from the Visual Studio toolbox area on to the form. As you can see the control displays the default item path and navigation buttons by default.
 
 image::images/Adding_Carousel_Items_Using_the_Designer_2.png[]
 
-[[_Ref397459045]]
 
-=== Smart Tag
+== Smart Tag
 
 The UltraCarousel control contains a smart tag for optional, initial property settings.
 
@@ -74,17 +47,15 @@ Click on the surface of the control to enable the smart tag indicator (arrow) lo
 
 image::images/Adding_Carousel_Items_Using_the_Designer_3.png[]
 
-[[_Ref397459050]]
 
-=== Carousel Designer
+== Carousel Designer
 
 To open the carousel designer simply `Right-click` on the control’s surface and select “ _Carousel Designer_  ”. Another way to open the carousel designer is through “ *Edit Path* ” link on the smart tag drop-down, explained in the next section.
 
 image::images/Adding_Carousel_Items_Using_the_Designer_4.png[]
 
-[[_Ref397459062]]
 
-=== Adding Path
+== Adding Path
 
 The Path is the continuous track on the control on which the carousel items are rendered. There are various predefined Path types for configuration. The UltraCarousel design-time interface provides a convenient way to interact with those Path properties.
 
@@ -133,9 +104,8 @@ Glyphs are merely for visualizing the start/end and stop points on the path at d
 
 image::images/Adding_Carousel_Items_Using_the_Designer_9.png[]
 
-[[_Ref397459072]]
 
-=== Adding Items
+== Adding Items
 
 An Item in the UltraCarousel control is the visual representations of the data object. Items can be added using the designer or in code, and also can be bound to a data source. The next screenshot illustrates adding items through the design-time interface.
 
@@ -157,27 +127,14 @@ After adding five items, the carousel should look similar to the following scree
 
 image::images/Adding_Carousel_Items_Using_the_Designer_13.png[]
 
-[[_Ref381022312]]
+
 == Related Content
 
-=== Topics
+* link:wincarousel-adding-carousel-items-in-code.html[Adding Carousel Items in Code] -- This topic demonstrates how to add UltraCarousel items using the Code-Behind.
 
-The following topics provide additional information related to this topic.
-
-[options="header", cols="a,a"]
-|====
-|Topic|Purpose
-
-| link:wincarousel-adding-carousel-items-in-code.html[Adding Carousel Items in Code]
-|This topic demonstrates how to add UltraCarousel items using the Code-Behind.
-
-| link:wincarousel-binding-data-to-carousel-in-code.html[Binding Data to Carousel in Code]
+* link:wincarousel-binding-data-to-carousel-in-code.html[Binding Data to Carousel in Code]
 |This topic demonstrates binding data to the UltraCarousel in code-behind.
 
-| link:wincarousel-binding-data-to-carousel-using-the-designer.html[Binding Data to Carousel Using the Designer]
-|This topic will demonstrate with steps, how to set up a data source at design-time, and bind it to the UltraCarousel control.
+* link:wincarousel-binding-data-to-carousel-using-the-designer.html[Binding Data to Carousel Using the Designer] -- This topic will demonstrate with steps, how to set up a data source at design-time, and bind it to the UltraCarousel control.
 
-| link:wincarousel-save-load-carousel-layout.html[Save/Load Carousel Layout]
-|This topic demonstrates how to Save/Load the UltraCarousel layout including carousel items, unless the control is bound to data. In that case the control has to be re-bound after loading the saved layout.
-
-|====
+* link:wincarousel-save-load-carousel-layout.html[Save/Load Carousel Layout] -- This topic demonstrates how to Save/Load the UltraCarousel layout including carousel items, unless the control is bound to data. In that case the control has to be re-bound after loading the saved layout.

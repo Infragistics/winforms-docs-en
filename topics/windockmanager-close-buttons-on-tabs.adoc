@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "windockmanager-close-buttons-on-tabs",
     "controlName": [],
     "tags": [],
-    "guid": "6fa86f8f-5288-4863-94b5-ed07f0eed641",  
+    "guid": "6fa86f8f-5288-4863-94b5-ed07f0eed641",
     "buildFlags": [],
     "createdOn": "2015-02-27T20:59:12.2659871Z"
 }
@@ -147,15 +146,7 @@ this.ultraDockManager1.DefaultGroupSettings.CloseButtonLocation = Infragistics.W
 // Dock some controls as a TabGroup. 
 Infragistics.Win.UltraWinDock.DockAreaPane dockAreaPane = this.ultraDockManager1.DockControls( 
  new Control[] { this.ultraTree1, this.ultraExplorerBar1 },
----- 
-
-[source]
----- 
  Infragistics.Win.UltraWinDock.DockedLocation.DockedLeft,
----- 
-
-[source]
----- 
  Infragistics.Win.UltraWinDock.ChildPaneStyle.TabGroup);
 ---- 
 

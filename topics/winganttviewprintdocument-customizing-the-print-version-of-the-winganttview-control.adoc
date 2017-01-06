@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "winganttviewprintdocument-customizing-the-print-version-of-the-winganttview-control",
     "controlName": ["WinGanttView"],
     "tags": ["Application Scenarios","How Do I","Printing"],
-    "guid": "28023138-5d9a-4a63-a3e7-00180fe44eae",  
+    "guid": "28023138-5d9a-4a63-a3e7-00180fe44eae",
     "buildFlags": [],
     "createdOn": "2012-03-09T15:20:20.4781061Z"
 }
@@ -59,7 +58,9 @@ At times, you may need to modify the WinGanttView control such that it affects t
 
 The UltraGanttViewPrintDocument component renders the control’s information to the printer by creating an instance of the UltraGanttView control. When the UltraGanttView control instance is created, it is initialized based on the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview_members.html[GanttView] property and then the  _InitializeGanttView_  event is invoked to allow any further customizations to the control. This event can be used to set a different visual state of the UltraGanttView control for printing without modifying the control’s original or on-screen visual state.
 
-Note:{label} The UltraGanttView instance that is created for printing is hooked up to the same UltraCalendarInfo™ and UltraCalendarLook™ components of the on-screen UltraGanttView control. Hence any changes made to the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarinfo.html[CalendarInfo] and link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarlook.html[CalendarLook] properties within the InitializeGanttView event affect both the print and the on-screen UltraGanttView control. This includes properties on any individual tasks since the tasks are stored in the  _CalendarInfo_  object, and also in the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~activetask.html[ActiveTask] object.
+[NOTE]
+.NOTE
+The UltraGanttView instance that is created for printing is hooked up to the same UltraCalendarInfo™ and UltraCalendarLook™ components of the on-screen UltraGanttView control. Hence any changes made to the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarinfo.html[CalendarInfo] and link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~calendarlook.html[CalendarLook] properties within the InitializeGanttView event affect both the print and the on-screen UltraGanttView control. This includes properties on any individual tasks since the tasks are stored in the  _CalendarInfo_  object, and also in the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~activetask.html[ActiveTask] object.
 
 [[Supported_Customizations]]
 
@@ -102,7 +103,8 @@ image::images/Customizing_the_Print_Version_of_the_WinGanttView_Control_02.png[]
 *In Visual Basic:*
 
 [source,vb]
-----Private Sub ultraGanttViewPrintDocument1_InitializeGanttView(sender As Object, e As Infragistics.Win.UltraWinGanttView.Printing.InitializeGanttViewEventArgs)
+----
+Private Sub ultraGanttViewPrintDocument1_InitializeGanttView(sender As Object, e As Infragistics.Win.UltraWinGanttView.Printing.InitializeGanttViewEventArgs)
       ' Change the position of the ‘Resource Names’ column
       e.Control.GridSettings.ColumnSettings(TaskField.Resources).VisiblePosition = 1
 ' Change the cell appearance of the ‘Resource Names’ column
@@ -112,7 +114,7 @@ End Sub
 
 *In C#:*
 
-[source,c#]
+[source,csharp]
 ----
 private void ultraGanttViewPrintDocument1_InitializeGanttView(object sender, Infragistics.Win.UltraWinGanttView.Printing.InitializeGanttViewEventArgs e)
 {

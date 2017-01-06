@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "winformattedlinklabel-formatting-text-and-hyperlinks",
     "controlName": ["WinFormattedLinkLabel"],
     "tags": ["How Do I","Navigation"],
-    "guid": "{5931F8D4-0556-4295-9EBF-657CC06467CE}",  
+    "guid": "{5931F8D4-0556-4295-9EBF-657CC06467CE}",
     "buildFlags": [],
     "createdOn": "2006-11-01T00:00:00Z"
 }
@@ -93,10 +92,12 @@ Nested <p> tags are not allowed. This will result in undefined rendering behavio
 
 ====
 
-|<p align="left|center|right|justify">text</p>
+
+|<p align="left\|center\|right\|justify">text</p>
 |Aligns the enclosed text to the left, center, or right, or justifies the text (only one may be used at a time).
 
-|<p wraptext="true|>text</p>
+
+|<p wraptext="true\|false>text</p>
 |Wraps the text to the next line when it reaches the end of the first line if set to True. Causes the text to continue without wrapping to the next line (horizontal scrollbars will be used if necessary) if set to False.
 
 |<hr/> 
@@ -128,10 +129,10 @@ The following table lists several examples of how values will render:
 |FormattedLinkEditor Example|Displayed Text
 
 |Link to <a href="http://www.infragistics.com"> Infragistics</a>.
-|Link to <a title="infragistics example tag" href="">Infragistics.</a>
+|+++Link to <a title="infragistics example tag" href="">Infragistics.</a>+++
 
 |Two Links: <a href="http://www.yahoo.com">Yahoo</a> and <a href="http://www.google.com">Google</a>.
-|Two Links: <a title="yahoo example tag" href="">Yahoo</a> and <a title="google example tag" href="">Google</a>.
+|+++Two Links: <a title="yahoo example tag" href="">Yahoo</a> and <a title="google example tag" href="">Google</a>.+++
 
 |<i>Italics</i> 
 
@@ -140,17 +141,20 @@ The following table lists several examples of how values will render:
 <u>Underline</u> 
 
 <b><i><u>Italics, Bold & Underline</u></i></b>
-| _Italics_ *Bold* Underline *_Italics, Bold & Underline_* 
+
+| ++++
+<i>Italics</i> 
+
+<b>Bold</b> 
+
+<u>Underline</u> 
+++++
 
 |<font color="red">Red Text</font> <font color="green">Green Text</font> <font color="#0000ff">Blue Text</font>
-|Red Text Green Text Blue Text
+|+++<font color="red">Red Text</font> <font color="green">Green Text</font> <font color="#0000ff">Blue Text</font>+++
 
 |<p align="left">Left Aligned Text</p> <p align="center">Center Aligned Text</p> <p align="right">Right Aligned Text</p>
-|Left Aligned Text 
-
-Center Aligned Text 
-
-Right Aligned Text
+|+++<p align="left">Left Aligned Text</p> <p align="center">Center Aligned Text</p> <p align="right">Right Aligned Text</p>+++
 
 |<p>This is paragraph 1. Text in a paragraph is wrapped. 
 
@@ -159,9 +163,15 @@ Right Aligned Text
 <p>When a new paragraph is started, the text in that paragraph starts on a new line. 
 
 </p>
-|This is paragraph 1. Text in a paragraph is wrapped. 
+|++++
+<p>This is paragraph 1. Text in a paragraph is wrapped. 
 
-When a new paragraph is started, the text in that paragraph starts on a new line after leaving an empty line before it.
+</p> 
+
+<p>When a new paragraph is started, the text in that paragraph starts on a new line. 
+
+</p>
+++++
 
 |<hr/> 
 
@@ -170,33 +180,39 @@ When a new paragraph is started, the text in that paragraph starts on a new line
 <hr align="center"/> 
 
 <hr NoShade="true" size="1px"/>
-|''' 
+|++++
+<hr/> 
 
-''' 
+<hr size="10px"/> 
 
-''' 
+<hr align="center"/> 
 
-'''
+<hr NoShade="true" size="1px"/>
+++++
 
 |<img src="smiley.png"/> 
 
 <img src="smiley.png" align="left"/> 
 
-<img src="smiley.png" width="32px" height="32px"/> 
+<img src="smiley.png" width="64px" height="64px"/> 
 
 <img src="smiley.png" border="solid"/> 
 
 <img src="smiley.png" HSpace="10px" VSpace="10px"/>
-|The image is 
+|The image is +++<img src="images/smiley.png"/>+++
+inline with the text. 
 
-image:images/smiley.png[example of image inline with text] inline with the text. 
++++<img src="images/smiley.png" align="left"/>+++
+The image is floated all the way to the left.
+ +
+ +
+ +
+ +
 
-image:images/smiley.png[example of image floated to the right] The image is floated all the way to the right. 
++++<img src="images/smiley.png" width="64px" height="64px"/>+++ The image size is doubled from 32x32 to 64x64. 
 
-image:images/smiley.png[example of image enlarged] The image size is doubled from 32x32 to 64x64. 
++++<img src="images/smiley.png" border="solid"/>+++ The image is given a solid border of 1px. 
 
-image:images/smiley.png[example of image with border] The image is given a solid border of 1px. 
-
-image:images/smiley.png[example of image with margin] The image has extra horizontal and vertical space outside the border.
++++<img src="images/smiley.png" HSpace="10px" VSpace="10px"/>+++ The image has extra horizontal and vertical space outside the border.
 
 |====

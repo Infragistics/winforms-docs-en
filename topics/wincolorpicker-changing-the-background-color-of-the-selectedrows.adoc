@@ -1,11 +1,10 @@
 ﻿////
-
 |metadata|
 {
     "name": "wincolorpicker-changing-the-background-color-of-the-selectedrows",
     "controlName": ["WinEditors"],
     "tags": ["Editing","Styling"],
-    "guid": "{7D18ABA5-9573-40A5-BCBF-F612B63F3878}",  
+    "guid": "{7D18ABA5-9573-40A5-BCBF-F612B63F3878}",
     "buildFlags": [],
     "createdOn": "2005-06-07T00:00:00Z"
 }
@@ -25,7 +24,7 @@ A example use case, is where you want to allow your end user to specify a differ
 .Note
 [NOTE]
 ====
-We set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~useappstyling.html[UseAppStyling]"]  property to False off WinGrid, because if you are using Application Styling when the customer makes a selection, the setting will have no effect if UseAppStyling is True.
+We set the WinGrid's   pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~useappstyling.html[UseAppStyling]"]  property to False, because if you are using Application Styling when the customer makes a selection the setting will have no effect while UseAppStyling is True.
 ====
 
 *In Visual Basic:*
