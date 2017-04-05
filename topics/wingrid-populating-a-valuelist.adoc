@@ -14,7 +14,7 @@
 
 = Populating a ValueList
 
-You can use a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"]  object to provide a dropdown list of values for a WinGrid™ column. The ValueList object is ideal for any WinGrid column that represents a foreign key field that contains related information in a lookup table. The ValueList object is a lightweight alternative to the WinCombo™ control. To use a ValueList object, you will need to loop through the data you want to add to the ValueList object. At each iteration of the loop, set the DataValue and DisplayText properties of a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem.html[ValueListItem]"]  object and then add the ValueListItem object to the ValueListItems collection.
+You can use a  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelist.html[ValueList]"]  object to provide a dropdown list of values for a WinGrid™ column. The ValueList object is ideal for any WinGrid column that represents a foreign key field that contains related information in a lookup table. The ValueList object is a lightweight alternative to the WinCombo™ control. To use a ValueList object, you will need to loop through the data you want to add to the ValueList object. At each iteration of the loop, set the DataValue and DisplayText properties of a  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem.html[ValueListItem]"]  object and then add the ValueListItem object to the ValueListItems collection.
 
 The following code demonstrates how to populate a ValueList object with descriptions and pictures, then add that ValueList to a WinGrid column.
 

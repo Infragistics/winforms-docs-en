@@ -18,7 +18,7 @@
 
 === Purpose
 
-This topic lists the available methods for removing the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances from the undo/redo history.
+This topic lists the available methods for removing the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances from the undo/redo history.
 
 === Required background
 
@@ -62,13 +62,13 @@ The following table summarizes the purpose and functionality of the methods that
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~clearhistory.html[ClearHistory]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~clearhistory.html[ClearHistory]
 |Removes all items in the undo and redo history.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~removeall.html[RemoveAll]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~removeall.html[RemoveAll]
 |Removes all specified `UndoUnit` instances from the `UndoHistory` and RedoHistory collections. 
 
-If the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] is a member of an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction] and it is the last unit in the transaction, the transaction will be removed as well.
+If the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] is a member of an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction] and it is the last unit in the transaction, the transaction will be removed as well.
 
 |====
 

@@ -21,13 +21,13 @@ The Button panel is simply a panel on the WinStatusBar™ that displays a standa
 [start=1]
 . Add an UltraStatusBar to your Windows Form.
 [start=2]
-. In the Property Pages scroll down to the Panels property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+. In the Property Pages scroll down to the Panels property. Click the ellipsis to bring up the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
 [start=3]
 . Click the "Add" button. This will add a new panel.
 [start=4]
-. Scroll the properties until you come to the pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the style property equal to "Button".
+. Scroll the properties until you come to the pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the style property equal to "Button".
 [start=5]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property to the text you want displayed on the button.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property to the text you want displayed on the button.
 [start=6]
 . Click OK to close the window and you will see your panel added to the status bar.
 
@@ -73,7 +73,7 @@ private void Set_the_Panel_Style_to_Button_Load(object sender, EventArgs e)
 
 == Event for Button Style Panel
 
-The button fires an event called  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"] . There is one parameter passed to the event:  _e.Panel_ . This parameter provides a reference to the Panel that holds the button. For example, to get a reference to the panel in the ButtonClick event and print out the text on the panel:
+The button fires an event called  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"] . There is one parameter passed to the event:  _e.Panel_ . This parameter provides a reference to the Panel that holds the button. For example, to get a reference to the panel in the ButtonClick event and print out the text on the panel:
 
 *In Visual Basic:*
 

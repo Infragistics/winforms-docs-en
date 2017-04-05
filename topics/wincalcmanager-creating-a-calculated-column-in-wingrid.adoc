@@ -46,9 +46,9 @@ image::images/WinCalcManager_Creating_a_Calculated_Column_in_the_WinGrid_02.png[
 image::images/WinCalcManager_Creating_a_Calculated_Column_in_the_WinGrid_03.png[ultragrid's designer column area zoomed in]
 
 [start=7]
-. Just to make things look a little neater, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~format.html[Format]"]  property on the UnitPrice and Item Total columns to c2, and set the Format of the Discount column to "p0" to make it show as a percentage. Also, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~hidden.html[Hidden]"]  property of the OrderID and ProductID columns to True.
+. Just to make things look a little neater, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~format.html[Format]"]  property on the UnitPrice and Item Total columns to c2, and set the Format of the Discount column to "p0" to make it show as a percentage. Also, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~hidden.html[Hidden]"]  property of the OrderID and ProductID columns to True.
 [start=8]
-. To create a Formula for the unbound column go to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula]"]  property of the Item Total column and click the ellipsis (...) to bring up the FormulaBuilder.
+. To create a Formula for the unbound column go to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula]"]  property of the Item Total column and click the ellipsis (...) to bring up the FormulaBuilder.
 
 On the left-hand side you will see the Operands list. Click on the "Controls" node and press the asterisk ($$*$$) on the numeric keypad of your keyboard. This will expand the entire tree. You will see the UltraGrid1, its single band (Order Details), and the six columns in the grid.
 

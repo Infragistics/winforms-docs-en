@@ -16,9 +16,9 @@
 
 This topic shows you how dragging of tiles can be prevented. To prevent your end users from dragging tiles, one of the following options can be adopted.
 
-* Hide the tile’s header by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~headerposition.html[UltraTile.Settings.HeaderPosition]"]  orUltraTilePanel.TileSettings.HeaderPosition to the hidden enumeration value.
-* If you prefer to show the header but deny dragging, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~allowmoving.html[AllowMoving]"]  property on the UltraTile can be set to false.
-* The UltraTile  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~dragging_ev.html[Dragging]"]  event can be handled so that you can cancel a drag operation. Set the property on the event argument to True in order to effectively cancel the Dragging event.
+* Hide the tile’s header by setting the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilesettings~headerposition.html[UltraTile.Settings.HeaderPosition]"]  orUltraTilePanel.TileSettings.HeaderPosition to the hidden enumeration value.
+* If you prefer to show the header but deny dragging, the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~allowmoving.html[AllowMoving]"]  property on the UltraTile can be set to false.
+* The UltraTile  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~dragging_ev.html[Dragging]"]  event can be handled so that you can cancel a drag operation. Set the property on the event argument to True in order to effectively cancel the Dragging event.
 
 *In Visual Basic:*
 

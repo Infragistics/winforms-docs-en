@@ -14,25 +14,25 @@
 
 = About WinCalcManager
 
-The WinCalcManager™ Assembly is a non-visual component that extends the capabilities of all controls on a form. To implement formulas on your form, drag the UltraCalcManager component from the Toolbox onto your form. Once this is done, almost all of the controls on the form will have a new property called  pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings.html[CalcSettings]"] . Some controls (like the WinGrid) support special handling of formulas, and will not show the CalcSettings property. These controls handle formulas in other ways. For example, WinGrid has a Formula property on the Column and SummarySettings objects. CalcSettings is of type UltraCalcSettings which has the following properties:
+The WinCalcManager™ Assembly is a non-visual component that extends the capabilities of all controls on a form. To implement formulas on your form, drag the UltraCalcManager component from the Toolbox onto your form. Once this is done, almost all of the controls on the form will have a new property called  pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings.html[CalcSettings]"] . Some controls (like the WinGrid) support special handling of formulas, and will not show the CalcSettings property. These controls handle formulas in other ways. For example, WinGrid has a Formula property on the Column and SummarySettings objects. CalcSettings is of type UltraCalcSettings which has the following properties:
 
 [options="header", cols="a,a"]
 |====
 |Property Name|Description
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~alias.html[Alias]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~alias.html[Alias]"] 
 |Gets or sets the alias name of the control.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~erroriconalignment.html[ErrorIconAlignment]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~erroriconalignment.html[ErrorIconAlignment]"] 
 |Gets or sets where the ErrorIcon from the ErrorProvider should be aligned in relationship to the control, if an error occurs in a calculation.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~errorvalue.html[ErrorValue]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~errorvalue.html[ErrorValue]"] 
 |Gets or sets the value displayed in the element when an error occurs in the formula.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~formula.html[Formula]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~formula.html[Formula]"] 
 |Gets or sets the formula which will be used to set the value of this object.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~propertyname.html[PropertyName]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~propertyname.html[PropertyName]"] 
 |Gets or sets which property (Text, Tag, Value, etc., based on the element) is used as either the source or target of any calculations involving the control. 
 
 .Note 
@@ -48,7 +48,7 @@ that in order for a control to function properly as the Source value of a calcul
 |Tag
 |Gets or sets any additional information that should be associated with this object.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.calcsettings~treatastype.html[TreatAsType]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.calcsettings~treatastype.html[TreatAsType]"] 
 |Gets or sets a type to use for conversion purposes when the UltraCalcManager interprets the value from the control.
 
 |====

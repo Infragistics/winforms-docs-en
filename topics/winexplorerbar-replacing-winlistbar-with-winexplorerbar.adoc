@@ -14,9 +14,9 @@
 
 = Replacing WinListBar with WinExplorerBar
 
-Though the object models of the WinExplorerBar™ and the WinListbar™ controls are similar they are not the same. For example, Group and Item objects in the WinListbar element are now called  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[UltraExplorerBarGroup]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"] .
+Though the object models of the WinExplorerBar™ and the WinListbar™ controls are similar they are not the same. For example, Group and Item objects in the WinListbar element are now called  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[UltraExplorerBarGroup]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"] .
 
-In addition, many properties that were originally on the Group and Item objects have been moved to the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings.html[GroupSettings]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[ItemSettings]"]  objects for greater flexibility when setting properties.
+In addition, many properties that were originally on the Group and Item objects have been moved to the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupsettings.html[GroupSettings]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[ItemSettings]"]  objects for greater flexibility when setting properties.
 
 If you are replacing an WinListbar element in an existing project with an WinExplorerBar element, there are a couple of tasks you will need to complete:
 
@@ -118,8 +118,8 @@ this.ultraExplorerBar1.Groups[1].Items[0].Settings.AppearancesSmall.Appearance.F
 * Since the UltraExplorerBar element does not support multiple orientations as the UltraListbar did, the element no longer has an Orientation property. You will need to remove any code that accesses the Orientation property and possibly redesign your form if you were using the element in a horizontal orientation. (The UltraExplorerBar element can only display its contents in a vertical orientation).
 * The GroupSelected event in the UltraListbar element has been replaced with 2 events:
 
-**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanging_ev.html[SelectedGroupChanging]"] 
-**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanged_ev.html[SelectedGroupChanged]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanging_ev.html[SelectedGroupChanging]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~selectedgroupchanged_ev.html[SelectedGroupChanged]"] 
 
 * The ItemSelected event in the UltraListbar element has been replaced by the ItemClick event.
 
@@ -130,5 +130,5 @@ There are two additional events that apply to Item selection for Item type State
 
 ====
 
-**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanging_ev.html[ItemCheckStateChanging]"] 
-**  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanged_ev.html[ItemCheckStateChanged]"]
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanging_ev.html[ItemCheckStateChanging]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~itemcheckstatechanged_ev.html[ItemCheckStateChanged]"]

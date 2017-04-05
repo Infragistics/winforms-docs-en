@@ -36,7 +36,7 @@ The following table summarizes the new Infragistics Excel Engine features includ
 
 === Accessing Cells and Regions by their Reference Name
 
-The Worksheet object’s link:{ApiPlatform}documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheet~getcell.html[GetCell] and link:{ApiPlatform}documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheet~getregion.html[GetRegion] methods now accept a reference name denoting a cell or range. Previously these methods accepted only the address of the cell or region.
+The Worksheet object’s link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheet~getcell.html[GetCell] and link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheet~getregion.html[GetRegion] methods now accept a reference name denoting a cell or range. Previously these methods accepted only the address of the cell or region.
 
 ==== Related Topics:
 
@@ -52,7 +52,7 @@ Excel library now supports accessing built-in styles, parent styles, format opti
 
 === Excel 2007 Color Model
 
-This release introduces an updated color object model. Using Excel 2007 Color model you can specify a color, work with Workbook palette and use new link:{ApiPlatform}documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~fill.html[Fill] property for filing a cells.
+This release introduces an updated color object model. Using Excel 2007 Color model you can specify a color, work with Workbook palette and use new link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~fill.html[Fill] property for filing a cells.
 
 ==== Related Topics:
 
@@ -146,7 +146,7 @@ The following topics provide additional information related to this topic.
 |This topic provides information about the Legend feature of the WinGanttViewPrintDocument™ component.
 
 | link:winganttviewprintdocument-customizing-the-print-version-of-the-winganttview-control.html[Customizing the Print Version of the WinGanttView Control]
-|This topic explains, with code examples, how to customize the Print Version of the WinGanttView control using the link:{ApiPlatform}win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttviewprintdocument~initializeganttview_ev.html[InitializeGanttView] event.
+|This topic explains, with code examples, how to customize the Print Version of the WinGanttView control using the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttviewprintdocument~initializeganttview_ev.html[InitializeGanttView] event.
 
 |====
 
@@ -241,7 +241,7 @@ The following topics provide additional information related to this topic.
 [[WinGridExternalFiltering]]
 == WinGrid - External Filtering
 
-Starting with 2012 Volume 1 of Infragistics Windows Forms, the WinGrid™ control allows external filtering. With external filtering, it is possible to filter data on WinGrid with custom filtering logic and also have the Load-On-Demand functionality enabled. Previously, when filtering was performed, the UltraGrid control used to load all rows and iterate over all of them making the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.loadstyle.html[LoadOnDemand] setting ineffective. Now it is possible to bypass this internal filtering logic, but retain the built-in filtering UI and supply custom filtering code.
+Starting with 2012 Volume 1 of Infragistics Windows Forms, the WinGrid™ control allows external filtering. With external filtering, it is possible to filter data on WinGrid with custom filtering logic and also have the Load-On-Demand functionality enabled. Previously, when filtering was performed, the UltraGrid control used to load all rows and iterate over all of them making the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.loadstyle.html[LoadOnDemand] setting ineffective. Now it is possible to bypass this internal filtering logic, but retain the built-in filtering UI and supply custom filtering code.
 
 For details on how to use this feature, see the link:wingrid-enabling-external-filtering.html[Enabling External Filtering] topic.
 

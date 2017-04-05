@@ -20,7 +20,7 @@ This topic applies to the following WinEditor™ controls:
 * WinNumericEditor™
 * WinCurrencyEditor™
 
-In many applications, the user should be limited to inputting certain characters within an editor. The WinDateTimeEditor, WinNumericEditor and WinCurrencyEditor provide a  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultranumericeditorbase~maskinput.html[MaskInput]"]  property which can be used to determine which characters are valid input while ignoring invalid keystrokes.
+In many applications, the user should be limited to inputting certain characters within an editor. The WinDateTimeEditor, WinNumericEditor and WinCurrencyEditor provide a  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultranumericeditorbase~maskinput.html[MaskInput]"]  property which can be used to determine which characters are valid input while ignoring invalid keystrokes.
 
 To limit the allowable characters entered into the editors, set the MaskInput property. The mask specified below will only allow numeric characters and stipulate that two decimal places be supplied. The characters used in creating the mask are consistent with Visual Basic formatting standards. For a complete list of the characters that may be used in the input mask, see Input Mask Characters below.
 

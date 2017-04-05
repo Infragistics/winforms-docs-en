@@ -18,7 +18,7 @@
 
 WinSpellChecker™ uses its default dictionary to check a control's spelling. This default dictionary is the English dictionary and is embedded into the assembly; therefore, WinSpellChecker does not need any extra dictionaries deployed along with it in order to function properly. If your application uses some language other than English, it will be necessary to deploy extra dictionaries with your application.
 
-WinSpellChecker comes out of the box with dictionaries for nine different languages including Australian, Canadian, English (generic), Dutch, French, German, Portuguese, and Spanish. You will find these dictionaries in the {InstallPath}\Dictionaries folder. In order to use one of these dictionaries, you'll need to set the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~dictionary.html[Dictionary]"]  property of WinSpellChecker to the file name (including the full path) of the dictionary.
+WinSpellChecker comes out of the box with dictionaries for nine different languages including Australian, Canadian, English (generic), Dutch, French, German, Portuguese, and Spanish. You will find these dictionaries in the {InstallPath}\Dictionaries folder. In order to use one of these dictionaries, you'll need to set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~dictionary.html[Dictionary]"]  property of WinSpellChecker to the file name (including the full path) of the dictionary.
 
 .Note
 [NOTE]
@@ -38,4 +38,4 @@ We recommend you give the user dictionary an extension such as .dic or .dict. Th
 
 When adding words to the user dictionary, WinSpellChecker will add one word per line. This is the same format Microsoft® Word uses and is very convenient as the end user might wish to use their Word custom dictionary with WinSpellChecker.
 
-In order to set the user dictionary, the process is almost exactly the same as setting the default dictionary. Set the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~userdictionary.html[UserDictionary]"]  property to the file name (including the full path) of the user dictionary.
+In order to set the user dictionary, the process is almost exactly the same as setting the default dictionary. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~userdictionary.html[UserDictionary]"]  property to the file name (including the full path) of the user dictionary.

@@ -22,9 +22,9 @@
 This topic is a continuation of link:wingridrowedittemplate-adding-a-wingridrowedittemplate-dialog-box-to-wingrid.html[Adding a WinGridRowEditTemplate Dialog Box to WinGrid]. Please be sure to read that topic before continuing.
 ====
 
-In Adding a WinGridRowEditTemplate Dialog Box to WinGrid, you learned how to associate a WinGrid band with a RowEditTemplate and then set up the template to edit the row. However, with the template being a modal dialog box, you were only able to edit one row at a time before closing the dialog box. You can side-step this limitation by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~displaymode.html[DisplayMode]"]  property to Modeless.
+In Adding a WinGridRowEditTemplate Dialog Box to WinGrid, you learned how to associate a WinGrid band with a RowEditTemplate and then set up the template to edit the row. However, with the template being a modal dialog box, you were only able to edit one row at a time before closing the dialog box. You can side-step this limitation by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~displaymode.html[DisplayMode]"]  property to Modeless.
 
-Since  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate.html[UltraGridRowEditTemplate]"]  derives from the System.Windows.Forms.Panel object, you can add any windows forms control to the template, even another WinGrid control if your data source is hierarchical. Therefore, you can add additional buttons to perform navigation-type actions.
+Since  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate.html[UltraGridRowEditTemplate]"]  derives from the System.Windows.Forms.Panel object, you can add any windows forms control to the template, even another WinGrid control if your data source is hierarchical. Therefore, you can add additional buttons to perform navigation-type actions.
 
 == What You Will Accomplish
 
@@ -39,7 +39,7 @@ Open WinGridRowEditTemplate's smart tag and set the DisplayMode to Modeless. Set
 [start=2]
 . *Add buttons to the template for navigation* .
 
-.. Drag two  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultrabutton.html[UltraButton]"]  controls from the Microsoft® Visual Studio® toolbox into the RowEditTemplate.
+.. Drag two  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultrabutton.html[UltraButton]"]  controls from the Microsoft® Visual Studio® toolbox into the RowEditTemplate.
 .. Name one of the buttons 'btnScrollDown' and the other button 'btnScrollUp'.
 .. Set the Text property of these two buttons to be greater than (>) and less than (<), respectively.
 .. Set the Width property for both buttons to 20\.
@@ -50,7 +50,7 @@ image::images/WinGridRowEditTemplate_Adding_Buttons_to_WinGridRowEditTemplates_D
 [start=3]
 . *Add the code to navigate back in the rows collection* .
 
-Your end user will use btnScrollUp to cycle backwards in the band's Rows collection. WinGrid exposes an incredibly useful method called  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~performaction.html[PerformAction]"] . Through the method's one parameter, you can perform a myriad of useful and common actions, such as move to the next and previous rows. The parameter accepts values from the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridaction.html[UltraGridAction]"]  enumeration, and there happens to be a NextRow action, which selects the next row in the band and activates it. You don't have to worry about any error testing as WinGrid does the work for you (you won't get an exception if you move to the previous row from the first row).
+Your end user will use btnScrollUp to cycle backwards in the band's Rows collection. WinGrid exposes an incredibly useful method called  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~performaction.html[PerformAction]"] . Through the method's one parameter, you can perform a myriad of useful and common actions, such as move to the next and previous rows. The parameter accepts values from the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridaction.html[UltraGridAction]"]  enumeration, and there happens to be a NextRow action, which selects the next row in the band and activates it. You don't have to worry about any error testing as WinGrid does the work for you (you won't get an exception if you move to the previous row from the first row).
 
 Double-click the btnScrollUp button in Design view to have Visual Studio generate the button's Click event. Add the following code to the button's Click event.
 
@@ -94,9 +94,9 @@ this.ultraGrid1.PerformAction
 [start=5]
 . *Modify the Ok button to commit changes, but not close the template* .
 
-To make editing the row template easier, you may want to modify the generated code for the Ok button. By default, clicking Ok will call WinGridRowEditTemplate's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~close.html[Close]"]  method. The Close method accepts a Boolean determining whether or not to commit any changes to the data source. Both the Ok and Cancel buttons call this method, but they pass in True (commit changes) and False (do not commit changes), respectively.
+To make editing the row template easier, you may want to modify the generated code for the Ok button. By default, clicking Ok will call WinGridRowEditTemplate's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~close.html[Close]"]  method. The Close method accepts a Boolean determining whether or not to commit any changes to the data source. Both the Ok and Cancel buttons call this method, but they pass in True (commit changes) and False (do not commit changes), respectively.
 
-Instead of calling the Close method for the Ok button, you can call the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~commitchanges.html[CommitChanges]"]  method. The CommitChanges method returns True if the changes were committed successfully. Therefore, you can use an IF statement to check if the changes were made, and then use WinGrid's PerformAction method again to move to the next row.
+Instead of calling the Close method for the Ok button, you can call the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~commitchanges.html[CommitChanges]"]  method. The CommitChanges method returns True if the changes were committed successfully. Therefore, you can use an IF statement to check if the changes were made, and then use WinGrid's PerformAction method again to move to the next row.
 
 Locate btnTemplateOk's Click event in the code-behind and replace the code with the following code.
 

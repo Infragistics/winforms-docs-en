@@ -59,7 +59,7 @@ There are many things which are not allowed in a grammar definition (for more in
 
 === Obtain warnings
 
-To determine the issues in your grammar definition you can use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~analyze.html[Grammar.Analyze] method and you can configure the analysis by passing an instance of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions.html[GrammarAnalysisOptions].
+To determine the issues in your grammar definition you can use the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~analyze.html[Grammar.Analyze] method and you can configure the analysis by passing an instance of type link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions.html[GrammarAnalysisOptions].
 
 .Note
 [NOTE]
@@ -75,31 +75,31 @@ properties:
 |====
 |*Properties*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforambiguity.html[AnalyzeForAmbiguity]
-|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[Ambiguity] warnings. This value is `true` by default.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforambiguity.html[AnalyzeForAmbiguity]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[Ambiguity] warnings. This value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforcomplexnonterminalsymbol.html[AnalyzeForComplexNonTerminalSymbol]
-|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[ComplexNonTerminalSymbol] warnings. This value is `true` by default.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforcomplexnonterminalsymbol.html[AnalyzeForComplexNonTerminalSymbol]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[ComplexNonTerminalSymbol] warnings. This value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforsymbolcannotbeparsed.html[AnalyzeForSymbolCannotBeParsed]
-|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[SymbolCannotBeParsed] warnings. This value is `true` by default.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforsymbolcannotbeparsed.html[AnalyzeForSymbolCannotBeParsed]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[SymbolCannotBeParsed] warnings. This value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforunnecessarysyntaxrule.html[AnalyzeForUnnecessarySyntaxRule]
-|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[UnnecessarySyntaxRule] warnings. This value is `true` by default.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions~analyzeforunnecessarysyntaxrule.html[AnalyzeForUnnecessarySyntaxRule]
+|Indicates whether to analyze the grammar for link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[UnnecessarySyntaxRule] warnings. This value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisoptions~complexnonterminalsymbolproductionlimit.html[ComplexNonTerminalSymbolProductionLimit]
-|The minimum number of productions a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[NonTerminalSymbol] must own before it is considered complex. This value is 100 by default.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisoptions~complexnonterminalsymbolproductionlimit.html[ComplexNonTerminalSymbolProductionLimit]
+|The minimum number of productions a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[NonTerminalSymbol] must own before it is considered complex. This value is 100 by default.
 
 |====
 
-The return value of this method is an instance of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisresult.html[GrammarAnalysisResult], which contains the grammar and a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammaranalysisresult~warnings.html[Warnings] collection containing objects of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning.html[GrammarWarning]. The `GrammarWarning` type has a descriptive link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning~message.html[Message] property of type string and a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarning~type.html[Type] property of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammarwarningtype.html[GrammarWarningType], which is an enumeration with the following values:
+The return value of this method is an instance of type link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisresult.html[GrammarAnalysisResult], which contains the grammar and a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammaranalysisresult~warnings.html[Warnings] collection containing objects of type link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarning.html[GrammarWarning]. The `GrammarWarning` type has a descriptive link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarning~message.html[Message] property of type string and a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarning~type.html[Type] property of type link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammarwarningtype.html[GrammarWarningType], which is an enumeration with the following values:
 
 [options="header", cols="a,a"]
 |====
 |*Value*|*Description*
 
 |`Ambiguity`
-|Indicates when the productions of the grammar may cause an ambiguity when parsing certain text. For more information look at the link:ig-spe-ambiguities.html[Ambiguities] topic. If an ambiguity is known to be acceptable and its warnings are cluttering the warnings produced by analyzing a grammar, they can be suppressed by setting the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[NonTerminalSymbol.SuppressAmbiguityWarnings] property to `true` on one of the non-terminal symbols involved in the ambiguity.
+|Indicates when the productions of the grammar may cause an ambiguity when parsing certain text. For more information look at the link:ig-spe-ambiguities.html[Ambiguities] topic. If an ambiguity is known to be acceptable and its warnings are cluttering the warnings produced by analyzing a grammar, they can be suppressed by setting the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[NonTerminalSymbol.SuppressAmbiguityWarnings] property to `true` on one of the non-terminal symbols involved in the ambiguity.
 
 |`ComplexNonTerminalSymbol`
 |Indicates when the rule tree for a non-terminal symbol will internally expand to over 100 productions, although this limit is configurable using the GrammarAnalysisOptions. Having complex non-terminal symbols can significantly slowdown the process of generating the syntax analyzer as well as error reporting.
@@ -110,11 +110,11 @@ The return value of this method is an instance of type link:{ApiPlatform}documen
 |`UnnecessarySyntaxRule`
 |Indicates when a syntax rule is not necessary, such as: 
 
-* Using an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule] within a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]. Concatenating empty onto a sequence of symbols is the same as just having the sequence of symbols. 
+* Using an link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule] within a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]. Concatenating empty onto a sequence of symbols is the same as just having the sequence of symbols. 
 
-* Using an `EmptySyntaxRule` within an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] which is itself the child of an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]. The optional or repetition rule implies that one of the alternatives in addition to those specified is the empty rule. Specifying it is unnecessary. 
+* Using an `EmptySyntaxRule` within an link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] which is itself the child of an link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] or link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]. The optional or repetition rule implies that one of the alternatives in addition to those specified is the empty rule. Specifying it is unnecessary. 
 
-* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has as its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property an instance of `RepetitionSyntaxRule`. Having a fixed number of zero or more things is the same as just having zero or more of them, so the use of the `FactorSyntaxRule` is unnecessary and the `RepetitionSyntaxRule` can just be used in its place. 
+* A link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has as its link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property an instance of `RepetitionSyntaxRule`. Having a fixed number of zero or more things is the same as just having zero or more of them, so the use of the `FactorSyntaxRule` is unnecessary and the `RepetitionSyntaxRule` can just be used in its place. 
 
 |====
 

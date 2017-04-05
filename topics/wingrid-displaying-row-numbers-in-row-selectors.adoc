@@ -14,16 +14,16 @@
 
 = Displaying Row Numbers in Row Selectors
 
-You can easily display row numbers in the row selectors of the WinGrid™ using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectornumberstyle.html[RowSelectorNumberStyle]"]  property.
+You can easily display row numbers in the row selectors of the WinGrid™ using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectornumberstyle.html[RowSelectorNumberStyle]"]  property.
 
 This property has four settings:
 
 * *None* - No row numbers are displayed. This is the default setting.
-* *ListIndex* - This is the index associated with  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~listindex.html[ListIndex]"]  property. These row numbers represent the index of a row in the data source.
-* *RowIndex* - This is the index associated with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~index.html[Index]"]  property. These row numbers represent the index of a row in its parent's row collection.
-* *VisibleIndex* - This is the index associated with  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~visibleindex.html[VisibleIndex]"]  property. These row numbers represent a row's visible index in its parent's row collection.
+* *ListIndex* - This is the index associated with  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~listindex.html[ListIndex]"]  property. These row numbers represent the index of a row in the data source.
+* *RowIndex* - This is the index associated with the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~index.html[Index]"]  property. These row numbers represent the index of a row in its parent's row collection.
+* *VisibleIndex* - This is the index associated with  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~visibleindex.html[VisibleIndex]"]  property. These row numbers represent a row's visible index in its parent's row collection.
 
-*Note:* Make sure that you have  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectors.html[RowSelectors]"]  set to "true" when using row numbers.
+*Note:* Make sure that you have  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectors.html[RowSelectors]"]  set to "true" when using row numbers.
 
 == To access the RowSelectorNumberStyle property:
 
@@ -32,9 +32,9 @@ This property has four settings:
 [start=2]
 . In the designer on the right-hand side, select the option called "Control Settings".
 [start=3]
-. Scroll down and expand the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property.
+. Scroll down and expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property.
 [start=4]
-. Scroll down to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property and expand it.
+. Scroll down to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property and expand it.
 [start=5]
 . In the Override property, scroll down to the RowSelectorNumberStyle property.
 

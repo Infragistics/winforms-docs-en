@@ -31,7 +31,7 @@ The operations supported by complex numbers fall into the following basic catego
 [[Imaginary_Unit]]
 == Creating the Imaginary Unit
 
-The imaginary unit  *_i_*  can be created as a new complex number with a real part equal to 0 and an imaginary part equal to 1. The imaginary unit is also provided in the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant.html[Constant] class.
+The imaginary unit  *_i_*  can be created as a new complex number with a real part equal to 0 and an imaginary part equal to 1. The imaginary unit is also provided in the link:{ApiPlatform}math{ApiVersion}~infragistics.math.constant.html[Constant] class.
 
 *In Visual Basic:*
 
@@ -62,7 +62,7 @@ Complex numbers have one constructor, specifying the real and imaginary componen
 
 A less formal and less efficient way of constructing a complex number is to use the plus operator along with the imaginary unit.
 
-The following code snippet demonstrates how to create a new link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant.html[Complex] object using the constructor and the plus operator:
+The following code snippet demonstrates how to create a new link:{ApiPlatform}math{ApiVersion}~infragistics.math.constant.html[Complex] object using the constructor and the plus operator:
 
 *In Visual Basic:*
 
@@ -86,7 +86,7 @@ Complex z = new Complex(1, 1);
 Complex z = 1 + 1 * Constant.I;
 ----
 
-The two variables titled *z* will be equivalent. The second notation is less computationally efficient because it involves the construction of link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.constant~i.html[Constant.I], plus an addition and multiplication operation.
+The two variables titled *z* will be equivalent. The second notation is less computationally efficient because it involves the construction of link:{ApiPlatform}math{ApiVersion}~infragistics.math.constant~i.html[Constant.I], plus an addition and multiplication operation.
 
 [[Numbers_Using_Properties]]
 == Creating Complex Numbers Using Properties
@@ -113,7 +113,7 @@ double magnitude = z.Mag;
 double phase = z.Phase;
 ----
 
-These functions also have static versions in the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class, though with slightly different names to specify their functional forms:
+These functions also have static versions in the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute.html[Compute] class, though with slightly different names to specify their functional forms:
 
 *In Visual Basic:*
 
@@ -160,7 +160,7 @@ The following operations are predefined for complex numbers:
 [[Functions_With_Complex_Numbers]]
 == Using Standard Mathematical Functions With Complex Numbers
 
-The link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class contains static methods, which represent all of the standard mathematical functions extended to use complex numbers. Following is a code example of several mathematical functions:
+The link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute.html[Compute] class contains static methods, which represent all of the standard mathematical functions extended to use complex numbers. Following is a code example of several mathematical functions:
 
 *In Visual Basic:*
 

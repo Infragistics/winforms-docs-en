@@ -24,9 +24,9 @@ Due to assumptions made in the  *Coded UI Test*  framework for User Interface Au
 
 Affected containers:
 
-* link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor_members.html[ControlContainerEditor] (any Infragistics control that allows specifying an embeddable editor)
-* link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.controlcontainertool_members.html[ControlContainerTool] and link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool_members.html[PopupControlContainerTool] ( link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager])
-* Control Container Group ( link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar_members.html[UltraExplorerBar]).
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor_members.html[ControlContainerEditor] (any Infragistics control that allows specifying an embeddable editor)
+* link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.controlcontainertool_members.html[ControlContainerTool] and link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupcontrolcontainertool_members.html[PopupControlContainerTool] ( link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager])
+* Control Container Group ( link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar_members.html[UltraExplorerBar]).
 
 ==== Workaround:
 
@@ -46,11 +46,11 @@ No workaround is available at this time. Currently in research.
 
 ==== Issue:
 
-During the same recording session, moving the Quick Access Toolbar below a collapsed ribbon may cause some actions performed on the link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] to fail to replay. This is due to the CUIT framework attempting to use the same `UITestControl` for different automation elements without remapping the native elements.
+During the same recording session, moving the Quick Access Toolbar below a collapsed ribbon may cause some actions performed on the link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] to fail to replay. This is due to the CUIT framework attempting to use the same `UITestControl` for different automation elements without remapping the native elements.
 
 ==== Workaround:
 
-Modify scripts so that the UltraUiaButton for the link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] includes the `AlwaysSearch` field option from the link:http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.testtools.uitest.extension.searchconfiguration.aspx[SearchConfiguration] class of `Microsoft.VisualStudio.TestTools.UITest.Extension`.
+Modify scripts so that the UltraUiaButton for the link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaraction.html[QuickCustomizeButton] includes the `AlwaysSearch` field option from the link:http://msdn.microsoft.com/en-us/library/microsoft.visualstudio.testtools.uitest.extension.searchconfiguration.aspx[SearchConfiguration] class of `Microsoft.VisualStudio.TestTools.UITest.Extension`.
 
 *In C#:*
 
@@ -70,11 +70,11 @@ Me.SearchConfigurations.Add(SearchConfiguration.AlwaysSearch)
 
 ==== Issue:
 
-Records click instead of drag in link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] when the mouse up is not on the thumb.
+Records click instead of drag in link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] when the mouse up is not on the thumb.
 
 ==== Workaround:
 
-Be sure to `MouseUp` on the Thumb after dragging the Thumb or do a `SetValue` on the link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] directly from the script.
+Be sure to `MouseUp` on the Thumb after dragging the Thumb or do a `SetValue` on the link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratrackbar_members.html[UltraTrackBar] directly from the script.
 
 === UltraGrid
 
@@ -84,7 +84,7 @@ Clicking on a dropdown or editor button in a grid cell does not play back proper
 
 ==== Detail:
 
-By default, buttons in cells do not display until the mouse moves over the cell. You can change this behavior using the `CellDisplayStyle` property of the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn]. However, when the buttons are not displayed,  *Coded UI Test*  will be unable to find them during playback because  *Coded UI Test*  does not record every mouse movement.
+By default, buttons in cells do not display until the mouse moves over the cell. You can change this behavior using the `CellDisplayStyle` property of the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn]. However, when the buttons are not displayed,  *Coded UI Test*  will be unable to find them during playback because  *Coded UI Test*  does not record every mouse movement.
 
 ==== Workaround:
 
@@ -146,7 +146,7 @@ Mouse.StopDragging(uILastNameHeaderItem, New Point(14, 16))
 
 Observe in the code above, that the drop point is relative to the drop header location.
 
-Similar issues exist with dragging columns to and from the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~groupbybox.html[GroupByBox], which are similarly handled.
+Similar issues exist with dragging columns to and from the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~groupbybox.html[GroupByBox], which are similarly handled.
 
 === Cached DropDown Windows
 

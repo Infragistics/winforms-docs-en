@@ -51,7 +51,7 @@ This topic contains the following sections:
 
 === Introduction
 
-The link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] is an abstract base class that is used to undo/redo changes.
+The link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] is an abstract base class that is used to undo/redo changes.
 
 If you need to support undo/redo of specific type of changes, you need to create a custom `UndoUnit`. The class exposes several abstract members listed below.
 
@@ -70,7 +70,7 @@ The following table summarizes the purpose and functionality of the methods expo
 |`Execute`
 |Used to perform the undo/redo operation for the change. 
 
-The method takes link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undoexecutecontext_members.html[UndoExecuteContext] object as a parameter. This parameter provides information about: 
+The method takes link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undoexecutecontext_members.html[UndoExecuteContext] object as a parameter. This parameter provides information about: 
 
 * the type of operation being performed (for example - Undo, Redo, Rollback) 
 
@@ -90,12 +90,12 @@ If the object being manipulated is not responsible for doing this, the custom Un
 
 ====
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~getdescription.html[GetDescription]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit~getdescription.html[GetDescription]
 |Returns a string description of the type of change. 
 
 The method takes two parameters: 
 
-* an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undohistoryitemtype.html[UndoHistoryItemType] – to indicate from which history a description is required 
+* an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undohistoryitemtype.html[UndoHistoryItemType] – to indicate from which history a description is required 
 
 * a boolean value to specify if a detailed description is needed. 
 
@@ -114,7 +114,7 @@ The following table summarizes the purpose and functionality of the properties e
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~target.html[Target]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit~target.html[Target]
 |Identifies the object that will be affected by the `UndoUnit`. 
 
 This is a read-only property used mainly for informational purposes when the methods `ForEach` or `RemoveAll` are used.

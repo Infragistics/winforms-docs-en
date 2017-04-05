@@ -16,7 +16,7 @@
 
 In order to apply formatting to text in the WinFormattedTextEditor™ control, you should have a good understanding of the Style attribute. Once you know how to use The Style Attribute in WinFormattedTextEditor, applying styles to a single word or a block of text is much easier.
 
-You can apply a style by using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~applystyle(string,boolean).html[ApplyStyle]"]  method off the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object. The method takes in two arguments: and stating whether or not to apply the style to blocks of text.
+You can apply a style by using the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~applystyle(string,boolean).html[ApplyStyle]"]  method off the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo.html[EditInfo]"]  object. The method takes in two arguments: and stating whether or not to apply the style to blocks of text.
 
 * The style to be applied -- This first argument takes in a string. This string can be one style or multiple styles by separating them with a semi-colon ( ; ).
 * A Boolean -- This argument states whether or not to apply the style to blocks of text (a <p> tag is considered a block of text). Passing True will apply the style to the entire block of text containing the selected text.

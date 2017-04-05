@@ -24,18 +24,18 @@ Although basic mathematical functions are built in to the WinCalculator™ contr
 
 == Solution
 
-There are several events you can use to implement custom button functionality. The  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforeactionbuttonpressed_ev.html[BeforeActionButtonPressed]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforecalculateimmediate_ev.html[BeforeCalculateImmediate]"]  are just two of the events that you can use to provide ways to implement custom functions.
+There are several events you can use to implement custom button functionality. The  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforeactionbuttonpressed_ev.html[BeforeActionButtonPressed]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~beforecalculateimmediate_ev.html[BeforeCalculateImmediate]"]  are just two of the events that you can use to provide ways to implement custom functions.
 
 == Code Discussion
 
 [start=1]
-. In the designer, set the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~showcustombuttons.html[ShowCustomButtons]"]  property to True off the WinCalculator.
+. In the designer, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~showcustombuttons.html[ShowCustomButtons]"]  property to True off the WinCalculator.
 [start=2]
-. In the Properties window find the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~buttons.html[Buttons]"]  collection and navigate down to Button 24 and 25.
+. In the Properties window find the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculator~buttons.html[Buttons]"]  collection and navigate down to Button 24 and 25.
 [start=3]
-. On Button 24 change the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.keyedsubobjectbase~key.html[Key]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~text.html[Text]"]  properties to "A1".
+. On Button 24 change the  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.keyedsubobjectbase~key.html[Key]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~text.html[Text]"]  properties to "A1".
 [start=4]
-. With Button 25 change the Key and Text properties to "SQ". In addition, on this button change the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~type.html[Type]"]  property to OperatorImmediateAction.
+. With Button 25 change the Key and Text properties to "SQ". In addition, on this button change the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.calculatorbutton~type.html[Type]"]  property to OperatorImmediateAction.
 [start=5]
 . Wire the WinCalculator's BeforeActionButtonPressed and BeforeCalculateImmediate events.
 [start=6]

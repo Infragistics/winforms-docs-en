@@ -29,7 +29,7 @@ The following table lists the topics required as a prerequisite to understanding
 |Topic|Purpose
 
 | link:windatasource-load-data-on-demand.html[Load Data On-Demand]
-|This topic demonstrates loading of data on demand with the link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~celldatarequested_ev.html[CellDataRequested] event.
+|This topic demonstrates loading of data on demand with the link:{ApiPlatform}win.ultrawindatasource{ApiVersion}~infragistics.win.ultrawindatasource.ultradatasource~celldatarequested_ev.html[CellDataRequested] event.
 
 |====
 
@@ -76,16 +76,16 @@ The following table lists the configurable aspects of the WinGrid control. Addit
 |Enabling external summary calculations
 |The summary type is set to External on the summaries collection for the specific Band.
 |
-* link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarytype.html[SummaryType] - enum 
+* link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summarytype.html[SummaryType] - enum 
 
 |Implementing external summary calculations
-|The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event exposes a link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] method that is used to set the summary value directly or externally.
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] - method
+|The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event exposes a link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] method that is used to set the summary value directly or externally.
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] - method
 
 |Implementing external summary calculations on summary calculator
-|Set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property to true.
+|Set the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property to true.
 |
-* link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] - property 
+* link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] - property 
 
 |====
 
@@ -105,7 +105,7 @@ The following table maps the desired configuration to property setting.
 |In order to:|Use this Enum:|And set it to:
 
 |Enable external summary calculation
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarytype.html[SummaryType]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summarytype.html[SummaryType]
 |External
 
 |====
@@ -141,7 +141,7 @@ SummarySettings summary = band.Summaries.Add( SummaryType.External, band.Columns
 
 === Overview
 
-When the summary type is set to External, the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event is fired. This event exposes a link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] method that is used to set the summary value directly or externally.
+When the summary type is set to External, the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event is fired. This event exposes a link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue] method that is used to set the summary value directly or externally.
 
 [[_Property_settings_1]]
 
@@ -154,7 +154,7 @@ The following table maps the desired configuration to property setting.
 |In order to:|Use this property:|And set it to:
 
 |Assign an external summary value
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
 |The desired value
 
 |====
@@ -171,7 +171,7 @@ The code example that follows demonstrates the UltraGrid control displaying the 
 |====
 |Property|Value
 
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
 |90
 
 |====
@@ -217,7 +217,7 @@ private void ultraGrid1_ExternalSummaryValueRequested(object sender, ExternalSum
 
 === Overview
 
-Summaries (Average, Count, Maximum, Minimum and Sum) on the Summary Calculator can also be calculated externally. This is achieved by setting the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property to true. This property is available on `UltraGrid.Override` as well as on a particular `Band.Override`. When this property is set to True, UltraGrid will cease summary calculations and fire the ExternalSummaryValueRequested event, requesting the value to place in the summary.
+Summaries (Average, Count, Maximum, Minimum and Sum) on the Summary Calculator can also be calculated externally. This is achieved by setting the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property to true. This property is available on `UltraGrid.Override` as well as on a particular `Band.Override`. When this property is set to True, UltraGrid will cease summary calculations and fire the ExternalSummaryValueRequested event, requesting the value to place in the summary.
 
 [[_Property_settings_2]]
 
@@ -230,15 +230,15 @@ The following table maps the desired configuration to property setting.
 |In order to:|Use this property:|And set it to:
 
 |Enable external summary calculation on summary calculator
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator]
 |DefaultableBoolean.True
 
 |Assign an external summary value to the _Count_ summary type
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
 |The desired value
 
 |Assign an external summary value to the _Maximum_ summary type
-| link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
+| link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~setexternalsummaryvalue.html[SetExternalSummaryValue]
 |The desired value
 
 |====
@@ -276,7 +276,7 @@ image::images/Performing_External_Summary_Calculations__1_2.png[]
 
 === Code
 
-The following sample code sets the Summary Calculator to External. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property is set to `True`. UltraGrid displays external summary value on Summary Calculator for child band. The summary value is set within the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event.
+The following sample code sets the Summary Calculator to External. The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~useexternalsummarycalculator.html[UseExternalSummaryCalculator] property is set to `True`. UltraGrid displays external summary value on Summary Calculator for child band. The summary value is set within the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~externalsummaryvaluerequested_ev.html[ExternalSummaryValueRequested] event.
 
 *In Visual Basic:*
 

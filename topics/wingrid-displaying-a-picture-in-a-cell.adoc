@@ -15,7 +15,7 @@
 = Displaying a Picture in a Cell
 
 [start=1]
-. You must set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~imagebackground.html[ImageBackground]"]  property of the CellAppearance object to a picture object, or to an image in an image list.
+. You must set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~imagebackground.html[ImageBackground]"]  property of the CellAppearance object to a picture object, or to an image in an image list.
 
 *In Visual Basic:*
 
@@ -40,6 +40,6 @@ private void ultraGrid1_InitializeLayout(object sender,
 ----
 
 [start=2]
-. Place the above snippets into the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event of the WinGrid™.
+. Place the above snippets into the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event of the WinGrid™.
 [start=3]
 . Run the project and you should see the picture you loaded as the background of the first column on band 0.

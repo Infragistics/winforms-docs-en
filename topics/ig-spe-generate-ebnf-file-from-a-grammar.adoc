@@ -45,16 +45,16 @@ The following topics are prerequisites to understanding this topic:
 
 You can create an EBNF file from a Grammar instance using the following methods of the Grammar class:
 
-* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~saveebnf(ebnfserializationsettings).html[Grammar.SaveEbnf] - Obtain EBNF as string
-* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~saveebnf(stream,encoding,ebnfserializationsettings).html[Grammar.SaveEbnf] - Save EBNF to a stream
+* link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~saveebnf(ebnfserializationsettings).html[Grammar.SaveEbnf] - Obtain EBNF as string
+* link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~saveebnf(stream,encoding,ebnfserializationsettings).html[Grammar.SaveEbnf] - Save EBNF to a stream
 
-Both methods accept an argument of type link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfserializationsettings.html[EbnfSerializationSettings] with the following properties:
+Both methods accept an argument of type link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfserializationsettings.html[EbnfSerializationSettings] with the following properties:
 
 [options="header", cols="a,a"]
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfserializationsettings~usealternatesyntax.html[UseAlternateSyntax]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfserializationsettings~usealternatesyntax.html[UseAlternateSyntax]
 |Indicates whether to write out the EBNF file with the alternate operator syntax. 
 
 .Note 

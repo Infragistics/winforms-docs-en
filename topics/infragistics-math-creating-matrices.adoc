@@ -16,7 +16,7 @@
 
 == Introduction
 
-The Infragistics Math Library™ offers several approaches to creating matrices. Though this topic demonstrates how to create only link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] instances, the approaches shown apply to all matrix types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexMatrix]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
+The Infragistics Math Library™ offers several approaches to creating matrices. Though this topic demonstrates how to create only link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] instances, the approaches shown apply to all matrix types – link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix], link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix], and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexmatrix.html[ComplexMatrix]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
 
 == Overview
 
@@ -41,7 +41,7 @@ Each of them is explained in an individual sub-section below. In addition to the
 [[Elements_and_Dimensions]]
 == Creating a Matrix by Specifying Its Elements and Dimensions
 
-The most general constructor for the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] class takes any *IList<double>* object containing the matrix elements, together with an integer array specifying the dimensions of the matrix. The product of the items in the dimensions array must be equal to the length of the array with the elements, otherwise an exception will be thrown.
+The most general constructor for the link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] class takes any *IList<double>* object containing the matrix elements, together with an integer array specifying the dimensions of the matrix. The product of the items in the dimensions array must be equal to the length of the array with the elements, otherwise an exception will be thrown.
 
 The following code example creates a three-dimensional matrix – each dimension has 2 elements, with a total of 8 elements.
 
@@ -123,7 +123,7 @@ Matrix x = new Matrix(1, 10);
 [[Multidimensional_Array]]
 == Creating a Matrix from a Multidimensional Array
 
-Since a multidimensional array is a type of matrix, it can be used to create a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] instance:
+Since a multidimensional array is a type of matrix, it can be used to create a link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] instance:
 
 *In Visual Basic:*
 

@@ -17,7 +17,7 @@ It is possible to prevent end users from changing the state of the tiles. By def
 
 == Hiding the StateChangeButton
 
-The StateChangeButton enables tiles to be switched between the normal and large states. Hence hiding the StateChangeButton by setting the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilesettings~showstatechangebutton.html[ShowStateChangeButton]"]  boolean property to False prevents end users from switching states. This can be done for a specific tile or on all tiles by setting the UltraTilePanel control’s TileSettings.ShowStateChangeButton property to False.
+The StateChangeButton enables tiles to be switched between the normal and large states. Hence hiding the StateChangeButton by setting the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilesettings~showstatechangebutton.html[ShowStateChangeButton]"]  boolean property to False prevents end users from switching states. This can be done for a specific tile or on all tiles by setting the UltraTilePanel control’s TileSettings.ShowStateChangeButton property to False.
 
 *In Visual Basic:*
 
@@ -39,7 +39,7 @@ this.ultraTilePanel1.TileSettings.ShowStateChangeButton = Infragistics.Win.Defau
 
 == Cancelling State Change events
 
-All the tiles in an UltraTilePanel fire  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~statechanging_ev.html[StateChanging]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~statechanged_ev.html[StateChanged]"]  events. These events are cancellable and hence you can set the cancel property to True on the event arguments to prevent the state change operation from occurring. Similarly the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilestatechanging_ev.html[TileStateChanging]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tilestatechanged_ev.html[TileStateChanged]"]  events can also be handled on the UltraTilePanel level.
+All the tiles in an UltraTilePanel fire  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~statechanging_ev.html[StateChanging]"]  and  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~statechanged_ev.html[StateChanged]"]  events. These events are cancellable and hence you can set the cancel property to True on the event arguments to prevent the state change operation from occurring. Similarly the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~tilestatechanging_ev.html[TileStateChanging]"]  and  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~tilestatechanged_ev.html[TileStateChanged]"]  events can also be handled on the UltraTilePanel level.
 
 .Note
 [NOTE]

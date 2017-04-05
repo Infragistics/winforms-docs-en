@@ -25,7 +25,7 @@ This topic assumes you have a bound grid with at least one row of data.
 == To create a multiple-row layout:
 
 [start=1]
-. To use multi-level rows, you must have your columns divided into  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridgroup.html[Groups]"] . Start by creating some groups.
+. To use multi-level rows, you must have your columns divided into  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridgroup.html[Groups]"] . Start by creating some groups.
 
 Suppose your database contained personal address information. Your fields might include First Name, Last Name, Street Address, City, State, Zip, Phone Number, Fax Number.
 
@@ -50,7 +50,7 @@ UltraGridGroup thePhoneGroup = b.Groups.Add("Phone");
 ----
 
 [start=2]
-. You can then assign each  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column]"]  to a particular Group.
+. You can then assign each  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column]"]  to a particular Group.
 
 *In Visual Basic:*
 
@@ -85,7 +85,7 @@ b.Columns["Fax"].Group = thePhoneGroup;
 ----
 
 [start=3]
-. To create a new level, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~levelcount.html[LevelCount]"]  property.
+. To create a new level, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~levelcount.html[LevelCount]"]  property.
 
 *In Visual Basic:*
 
@@ -100,7 +100,7 @@ b.LevelCount = 2;
 ----
 
 [start=4]
-. At this point, all the columns are on Level 0, and Level 1 is empty (Note that Levels are 0-based). Move some columns to the second (lower) level by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~level.html[Level]"]  property.
+. At this point, all the columns are on Level 0, and Level 1 is empty (Note that Levels are 0-based). Move some columns to the second (lower) level by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~level.html[Level]"]  property.
 
 *In Visual Basic:*
 

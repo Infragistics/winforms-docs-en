@@ -14,13 +14,13 @@
 
 = Headers on Top and No Repeat Headers
 
-A  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~headerplacement.html[HeaderPlacement]"]  property has been added to  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"] . This specifies if and how headers are displayed. This property is of  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerplacement.html[HeaderPlacement]"]  enumeration type.
+A  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~headerplacement.html[HeaderPlacement]"]  property has been added to  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"] . This specifies if and how headers are displayed. This property is of  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.headerplacement.html[HeaderPlacement]"]  enumeration type.
 
 The enumeration has the following members:
 
 * Default -- The default is resolved to RepeatOnBreak.
 * RepeatOnBreak -- Headers are repeated on every band break. The current row displays headers if the previous row is from a different row collection. This is the default behavior.
-* FixedOnTop -- Headers of all the bands are displayed on top. They always remain visible, even if a row from that band is currently not visible. You can hide headers of certain bands by setting the existing  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~colheadersvisible.html[ColHeadersVisible]"]  property of the band.
+* FixedOnTop -- Headers of all the bands are displayed on top. They always remain visible, even if a row from that band is currently not visible. You can hide headers of certain bands by setting the existing  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~colheadersvisible.html[ColHeadersVisible]"]  property of the band.
 * OncePerRowIsland -- Headers are displayed only once per row island. When a row is expanded with visible children, the next sibling does not display the headers.
 * OncePerGroupedRowIsland -- Same as OncePerRowIsland however when rows are grouped by one or more columns, the headers are displayed above the group-by-rows. Here the row island is taken to mean the collection of rows associated with an IList.
 

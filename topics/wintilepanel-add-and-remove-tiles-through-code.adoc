@@ -16,7 +16,7 @@
 
 WinTilePanel™ allows any number of tiles to be placed within the control.
 
-An UltraTile can be added to the TilePanel in one of two ways. One way would be to create an UltraTile control instance and then add it to the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~tiles.html[UltraTilePanel.Tiles]"]  collection. Later the controls that will serve as the content can be placed on the tile using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~control.html[Control]"]  property. Alternatively, the content control can directly be added to the UltraTilePanel at design time. The Panel will recognize that it is not an UltraTile being added and hence create a default UltraTile instance to host the content control.
+An UltraTile can be added to the TilePanel in one of two ways. One way would be to create an UltraTile control instance and then add it to the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~tiles.html[UltraTilePanel.Tiles]"]  collection. Later the controls that will serve as the content can be placed on the tile using the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~control.html[Control]"]  property. Alternatively, the content control can directly be added to the UltraTilePanel at design time. The Panel will recognize that it is not an UltraTile being added and hence create a default UltraTile instance to host the content control.
 
 .Note
 [NOTE]
@@ -80,7 +80,7 @@ image::Images\WinTilePanel_Add_and_Remove_Tiles_through_Code_01.png[]
 
 *Removing Tile from TilePanel*
 
-An UltraTile can be removed from the UltraTilePanel.Tiles collection using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.tilecollection~remove.html[Remove]"]  method. If you hide the content control, the tile still remains and will be visible within the UltraTilePanel.
+An UltraTile can be removed from the UltraTilePanel.Tiles collection using the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.tilecollection~remove.html[Remove]"]  method. If you hide the content control, the tile still remains and will be visible within the UltraTilePanel.
 
 *In Visual Basic:*
 

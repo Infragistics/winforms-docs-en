@@ -206,7 +206,7 @@ The following is a list of properties that are affected by this limitation:
 
 *AutomaticExceptForDataTables*  *:*
 
-* When the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.workbook~calculationmode.html[Workbook.CalculationMode] is AutomaticExceptForDataTables, the formulas would be solved as if the mode were Automatic. In functionality, the two modes are identical at run-time. However, the option saved to the Workbook file and seen in Excel when the file is open will still accurately reflect the selected calculation mode.
+* When the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.workbook~calculationmode.html[Workbook.CalculationMode] is AutomaticExceptForDataTables, the formulas would be solved as if the mode were Automatic. In functionality, the two modes are identical at run-time. However, the option saved to the Workbook file and seen in Excel when the file is open will still accurately reflect the selected calculation mode.
 
 *External References:*
 
@@ -214,11 +214,11 @@ The following is a list of properties that are affected by this limitation:
 
 *Function Library:*
 
-* Not all Excel functions can be solved by the Excel assembly. If a formula is applied to a cell with a function that cannot be solved by the Excel assembly, the cell will result in a #NAME? error, which will be represented by the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.errorvalue~wrongfunctionname.html[ErrorValue.WrongFunctionName] singleton value. However, if the Workbook is exported to a Workbook file and the file is opened in Microsoft Excel, the formula will be re-evaluated and will show the correct value.
+* Not all Excel functions can be solved by the Excel assembly. If a formula is applied to a cell with a function that cannot be solved by the Excel assembly, the cell will result in a #NAME? error, which will be represented by the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.errorvalue~wrongfunctionname.html[ErrorValue.WrongFunctionName] singleton value. However, if the Workbook is exported to a Workbook file and the file is opened in Microsoft Excel, the formula will be re-evaluated and will show the correct value.
 
 *UnknownShape*   *Base Type:*
 
-* The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.unknownshape.html[UnknownShape] class now derives from link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext.html[WorksheetShapeWithText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshape.html[WorksheetShape]. This is not a breaking change because WorksheetShapeWithText also derives from WorksheetShape.
+* The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.unknownshape.html[UnknownShape] class now derives from link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext.html[WorksheetShapeWithText] instead of link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshape.html[WorksheetShape]. This is not a breaking change because WorksheetShapeWithText also derives from WorksheetShape.
 
 == AppStylist® for Windows Forms
 
@@ -304,7 +304,7 @@ The CHARFORMAT2 fields’ Spacing, lcid and wKerning are not supported by _Ultra
 
 === Reserve the Sort Indicator when rotating Column Headers
 
-When rotating text in column headers in  _WinGrid_   _™_   vertically, the total space consumed by the header can be decreased using the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~performautoresize.html[PerformAutoResize] method of the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn] class. But, you may experience that on resizing column header, the sort indicator disappears. In order to accommodate for this issue, set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~reservesortindicatorspacewhenautosizing.html[ultraGrid.DisplayLayout.Override.ReserveSortIndicatorSpaceWhenAutoSizing] property to either `Default`, WhenColumnIsSortable or WhenVisible setting.
+When rotating text in column headers in  _WinGrid_   _™_   vertically, the total space consumed by the header can be decreased using the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~performautoresize.html[PerformAutoResize] method of the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn_members.html[UltraGridColumn] class. But, you may experience that on resizing column header, the sort indicator disappears. In order to accommodate for this issue, set the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~reservesortindicatorspacewhenautosizing.html[ultraGrid.DisplayLayout.Override.ReserveSortIndicatorSpaceWhenAutoSizing] property to either `Default`, WhenColumnIsSortable or WhenVisible setting.
 
 === Requirements for Creating Child Bands
 
@@ -418,11 +418,11 @@ There is no way to determine the appropriate size of the image, because the size
 
 === Tool Text Displays as Translucent in Vista When Glass is Enabled
 
-When a link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.textboxtool_members.html[TextBoxTool], link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.comboboxtool_members.html[ComboBoxTool], or link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.fontlistmruitemscollection~fontlisttool.html[FontListTool] is placed on the Quick Access Toolbar (QAT) or caption area of the Ribbon in Microsoft® Windows® Vista™ while Glass is enabled, the text and cursor will display as translucent. This problem is a result of how the Desktop Window Manager (DWM) in Vista determines what should be rendered as Glass. The DWM uses the color black to render Glass in Vista; therefore, any control placed on an extended glass region (such as the QAT or caption area) will experience this limitation.
+When a link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.textboxtool_members.html[TextBoxTool], link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.comboboxtool_members.html[ComboBoxTool], or link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.fontlistmruitemscollection~fontlisttool.html[FontListTool] is placed on the Quick Access Toolbar (QAT) or caption area of the Ribbon in Microsoft® Windows® Vista™ while Glass is enabled, the text and cursor will display as translucent. This problem is a result of how the Desktop Window Manager (DWM) in Vista determines what should be rendered as Glass. The DWM uses the color black to render Glass in Vista; therefore, any control placed on an extended glass region (such as the QAT or caption area) will experience this limitation.
 
 === Ribbon StyleSet
 
-In order to overcome an issue where UI Roles collide between the standard toolbar and the Ribbon user interface, each ISL file now has a style set that is specifically designed to work with the Ribbon and its elements. The name of the style set is RibbonStyleSet and can be found in each of the provided ISL files. . Therefore, in order to apply any of the available styles successfully to the Ribbon, you are required to set the UltraToolBarsManager object’s link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~stylesetname.html[StyleSetName] property to RibbonStyleSet.
+In order to overcome an issue where UI Roles collide between the standard toolbar and the Ribbon user interface, each ISL file now has a style set that is specifically designed to work with the Ribbon and its elements. The name of the style set is RibbonStyleSet and can be found in each of the provided ISL files. . Therefore, in order to apply any of the available styles successfully to the Ribbon, you are required to set the UltraToolBarsManager object’s link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~stylesetname.html[StyleSetName] property to RibbonStyleSet.
 
 Example:
 

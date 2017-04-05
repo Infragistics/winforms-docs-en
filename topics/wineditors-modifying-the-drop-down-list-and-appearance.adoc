@@ -19,13 +19,13 @@ This topic applies to the following WinEditor™ controls:
 * WinComboEditor™
 * WinFontNameEditor™
 
-WinComboEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selecteditem.html[SelectedItem]"]  property is of type ValueListItem. A ValueListItem object exposes 2 properties that relate to its value: the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~datavalue.html[DataValue]"]  property and the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  property.
+WinComboEditor's  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selecteditem.html[SelectedItem]"]  property is of type ValueListItem. A ValueListItem object exposes 2 properties that relate to its value: the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem~datavalue.html[DataValue]"]  property and the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  property.
 
-The DataValue property, which is of type object, represents the underlying data value of the ValueListItem. The DisplayText property stores the text that is displayed by the item. The Add method of WinComboEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~items.html[Items]"]  collection is overloaded such that the value of the DisplayText can be specified, but is not required.
+The DataValue property, which is of type object, represents the underlying data value of the ValueListItem. The DisplayText property stores the text that is displayed by the item. The Add method of WinComboEditor's  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~items.html[Items]"]  collection is overloaded such that the value of the DisplayText can be specified, but is not required.
 
 == Setting the appearance of individual items in the drop-down list
 
-Each item in WinComboEditor's drop-down list can have its own  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object, separate and distinct from all other items. To apply a uniform appearance to all items in the list, use the element's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~itemappearance.html[ItemAppearance]"] . Furthermore, each property of the Appearance object is resolved independently of the other properties, making it possible, for example, to specify the same  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance~backcolor.html[BackColor]"]  for all items, while assigning a specific  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~forecolor.html[ForeColor]"]  for each individual item.
+Each item in WinComboEditor's drop-down list can have its own  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance.html[Appearance]"]  object, separate and distinct from all other items. To apply a uniform appearance to all items in the list, use the element's  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~itemappearance.html[ItemAppearance]"] . Furthermore, each property of the Appearance object is resolved independently of the other properties, making it possible, for example, to specify the same  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~backcolor.html[BackColor]"]  for all items, while assigning a specific  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~forecolor.html[ForeColor]"]  for each individual item.
 
 The following code demonstrates how to set the appearance of the items in WinComboEditor's Items collection:
 
@@ -125,7 +125,7 @@ private void btnDeselectingItem_Click(object sender, System.EventArgs e)
 
 == Querying the element's current value
 
-The following code demonstrates how to obtain WinComboEditor's current *Value* , which can be different than the value of its  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~text.html[Text]"]  property:
+The following code demonstrates how to obtain WinComboEditor's current *Value* , which can be different than the value of its  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~text.html[Text]"]  property:
 
 *In Visual Basic:*
 

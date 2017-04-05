@@ -14,14 +14,14 @@
 
 = Specifying the Cell Behavior on Cell-Click
 
-In 2005 Volume 2, the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~cellclickaction.html[CellClickAction]"]  property was given another option called  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.cellclickaction.html[EditAndSelectText]"] . This option causes a cell to enter edit mode and select the text in the cell when that cell is clicked on. The other available options are shown in the following table.
+In 2005 Volume 2, the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~cellclickaction.html[CellClickAction]"]  property was given another option called  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.cellclickaction.html[EditAndSelectText]"] . This option causes a cell to enter edit mode and select the text in the cell when that cell is clicked on. The other available options are shown in the following table.
 
 [options="header", cols="a,a"]
 |====
 |CellClickAction Enumerator|Description
 
 |Default
-|Default option specifies that the parent object's setting should be used. If the parent object also has the property set to Default then pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.cellclickaction.html[Edit]"] will be used.
+|Default option specifies that the parent object's setting should be used. If the parent object also has the property set to Default then pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.cellclickaction.html[Edit]"] will be used.
 
 |Edit
 |Puts the cell into edit mode. The following snapshots shows what a cell looks like after it's clicked. Notice how the caret flashing at the location where the mouse was clicked on. 
@@ -45,4 +45,4 @@ image::Images/WinGrid_How_To_Use_the_CellClickAction_Property_04.png[rowselect c
 
 |====
 
-To use this option set the CellClickAction property on an UltraGridOverride object. You can specify this setting for all Bands in the grid by setting it on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"] . Alternatively, you can set this property on the Override property of any Band.
+To use this option set the CellClickAction property on an UltraGridOverride object. You can specify this setting for all Bands in the grid by setting it on the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"] . Alternatively, you can set this property on the Override property of any Band.

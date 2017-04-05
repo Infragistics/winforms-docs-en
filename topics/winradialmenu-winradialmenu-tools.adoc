@@ -67,7 +67,7 @@ image::images/WinRadialMenu_Tools_1.png[]
 
 === RadialMenu Tool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] is the base class for all radial menu tools types. Some tool types derive from link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] class; others use it directly. For example, Font, Copy/Paste and Undo/Redo tools are of link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] type, so are their child tools.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] is the base class for all radial menu tools types. Some tool types derive from link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] class; others use it directly. For example, Font, Copy/Paste and Undo/Redo tools are of link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] type, so are their child tools.
 
 The following screenshot illustrates the Copy tool on the main menu, which is a descendant of the center tool.
 
@@ -81,7 +81,7 @@ image::images/WinRadialMenu_Tools_3.png[]
 
 === RadialMenu ColorTool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] derives from the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool]. Color tools for text appearance consists of Font, Fill and Highlight. Select the appearance options by drilling into the color tool’s submenu. For example, clicking the drilldown button of the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool].
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] derives from the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool]. Color tools for text appearance consists of Font, Fill and Highlight. Select the appearance options by drilling into the color tool’s submenu. For example, clicking the drilldown button of the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool].
 
 The following screenshot illustrates the  _RadialMenuTool_   containing color tools.
 
@@ -91,13 +91,13 @@ The following screenshot illustrates the `RadialMenuColorTools`.
 
 image::images/WinRadialMenu_Tools_5.png[]
 
-In addition to the three color tools (Font, Fill and Highlight), the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] contains color well tools for to select from available colors. Each color well consists of a collection of colors, displaying various tones of the selected color. For example, Red color tool may consist of light and dark tones of red. Those colors are of type link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolorwelltool_members.html[RadialMenuColorWellTool].
+In addition to the three color tools (Font, Fill and Highlight), the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] contains color well tools for to select from available colors. Each color well consists of a collection of colors, displaying various tones of the selected color. For example, Red color tool may consist of light and dark tones of red. Those colors are of type link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolorwelltool_members.html[RadialMenuColorWellTool].
 
 [[_Ref364619444]]
 
 === RadialMenu ColorWellTool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolorwelltool_members.html[RadialMenuColorWellTool] represents collection of colors for each link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] with different tones of the selected color. This hierarchy of tools can be built to be as deep as desired.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolorwelltool_members.html[RadialMenuColorWellTool] represents collection of colors for each link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenucolortool_members.html[RadialMenuColorTool] with different tones of the selected color. This hierarchy of tools can be built to be as deep as desired.
 
 The following screenshot illustrates the color well tool menu, which displays color tones of a selected color tool.
 
@@ -117,9 +117,9 @@ Moving the mouse over a color well causes the tooltip to appear on top of the me
 
 === RadialMenu NumericTool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenunumerictool_members.html[RadialMenuNumericTool] represents a numeric values collection. It can be a list of font sizes or any other numeric collection. Similar to Microsoft’s OneNote MX 2013, use the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] for font sizes, instead of numeric list, explained in the next section.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenunumerictool_members.html[RadialMenuNumericTool] represents a numeric values collection. It can be a list of font sizes or any other numeric collection. Similar to Microsoft’s OneNote MX 2013, use the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] for font sizes, instead of numeric list, explained in the next section.
 
-The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenunumerictool_members.html[RadialMenuNumericTool].
+The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenunumerictool_members.html[RadialMenuNumericTool].
 
 image::images/WinRadialMenu_Tools_7.png[]
 
@@ -127,9 +127,9 @@ image::images/WinRadialMenu_Tools_7.png[]
 
 === RadialMenu NumericGauge Tool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] displays radial gauge, like a clock, with a needle and numbers displayed radially around the center button. Select the numbers by tapping (touch monitor) or left-mouse button down on the needle and moving clockwise or counterclockwise. Then clicking the back button to go back to the parent menu.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] displays radial gauge, like a clock, with a needle and numbers displayed radially around the center button. Select the numbers by tapping (touch monitor) or left-mouse button down on the needle and moving clockwise or counterclockwise. Then clicking the back button to go back to the parent menu.
 
-The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] with a tooltip indicating the selected font size when moving the needle over the numbers along the inner ring.
+The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenunumericgaugetool_members.html[RadialMenuNumericGaugeTool] with a tooltip indicating the selected font size when moving the needle over the numbers along the inner ring.
 
 image::images/WinRadialMenu_Tools_8.png[]
 
@@ -137,9 +137,9 @@ image::images/WinRadialMenu_Tools_8.png[]
 
 === RadialMenu FontListTool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] is a pre-defined list of the system fonts. You can select a font type by clicking the drilldown button that drops down containing the list of fonts. After selecting a font the list closes. This tool does not have a submenu; it can only contain a collection of items.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] is a pre-defined list of the system fonts. You can select a font type by clicking the drilldown button that drops down containing the list of fonts. After selecting a font the list closes. This tool does not have a submenu; it can only contain a collection of items.
 
-The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] with dropdown list of fonts.
+The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] with dropdown list of fonts.
 
 image::images/WinRadialMenu_Tools_9.png[]
 
@@ -151,9 +151,9 @@ image::images/WinRadialMenu_Tools_10.png[]
 
 === RadialMenu ListTool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenulisttool_members.html[RadialMenuListTool] is similar to the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] except the pre-defined list of items. In this tool you can define your own collection of items. Selecting an item is the same as in link:infragistics4.win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool]. Also, this tool does not have a submenu; it can only contain a collection of items.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenulisttool_members.html[RadialMenuListTool] is similar to the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool] except the pre-defined list of items. In this tool you can define your own collection of items. Selecting an item is the same as in link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenufontlisttool_members.html[RadialMenuFontListTool]. Also, this tool does not have a submenu; it can only contain a collection of items.
 
-The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenulisttool_members.html[RadialMenuListTool].
+The following screenshot illustrates the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenulisttool_members.html[RadialMenuListTool].
 
 image::images/WinRadialMenu_Tools_11.png[]
 

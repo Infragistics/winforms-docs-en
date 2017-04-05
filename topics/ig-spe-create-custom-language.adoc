@@ -61,19 +61,19 @@ This topic contains the following sections:
 
 Once a grammar definition is complete you can use it to parse documents which must conform to that grammatical structure. Here are the steps for doing this:
 
-* create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from the EBNF grammar definition or construct a Grammar instance with code
-* create a custom language class, which derives from link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] and owns the Grammar instance
-* create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument.html[TextDocument] and set its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~language.html[Language] property to an instance of the custom language class
+* create a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from the EBNF grammar definition or construct a Grammar instance with code
+* create a custom language class, which derives from link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] and owns the Grammar instance
+* create a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument.html[TextDocument] and set its link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument~language.html[Language] property to an instance of the custom language class
 
 .Note
 [NOTE]
 ====
-Once a `Grammar` is used to create a language, it can never be modified again. Trying to change the `Grammar` or any object directly or indirectly owned by the `Grammar` will throw an exception. A Grammar which has been used to create a language will have its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~ismutable.html[IsMutable] readonly property set to False.
+Once a `Grammar` is used to create a language, it can never be modified again. Trying to change the `Grammar` or any object directly or indirectly owned by the `Grammar` will throw an exception. A Grammar which has been used to create a language will have its link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~ismutable.html[IsMutable] readonly property set to False.
 ====
 
 There are two ways to create a custom language from a grammar:
 
-* using the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.customlanguage.html[CustomLanguage] class
+* using the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.customlanguage.html[CustomLanguage] class
 * generating a language class
 
 [[_Ref350245532]]
@@ -88,10 +88,10 @@ The following table contains the members that are publicly exposed on the `Custo
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~grammar.html[Grammar]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~grammar.html[Grammar]
 |The `Grammar` instance used to create the instance.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~servicesmanager.html[ServicesManager]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~servicesmanager.html[ServicesManager]
 |An instance for managing services available to an editor when documents are edited in this language.
 
 |====
@@ -100,7 +100,7 @@ The following table contains the members that are publicly exposed on the `Custo
 |====
 |*Event*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.customlanguage~globalambiguitydetected_ev.html[GlobalAmbiguityDetected]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.customlanguage~globalambiguitydetected_ev.html[GlobalAmbiguityDetected]
 |Occurs when a global ambiguity is detected while parsing a document. For more information, please refer to the link:ig-spe-ambiguities.html[Ambiguities] topic.
 
 |====
@@ -123,44 +123,44 @@ One of the options for generating the language class is to give it the “partia
 |====
 |*Protected Virtual Method*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias]
 |Returns a string containing a display name for the symbol when used in error messages. For more information please refer to the link:ig-spe-customize-error-messages.html[Customize Error Messages] topic.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~initializedefaultservices.html[InitializeDefaultServices]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~initializedefaultservices.html[InitializeDefaultServices]
 |Initializes the default services in the `ServicesManager` for the language.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError]
 |Called when the syntax analyzer discovers an error. For more information please refer to the link:ig-spe-customize-error-messages.html[Customize Error Messages] topic.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onglobalambiguitydetected.html[OnGlobalAmbiguityDetected]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~onglobalambiguitydetected.html[OnGlobalAmbiguityDetected]
 |Called when a global ambiguity is detected when parsing text. For more information, please refer to the link:ig-spe-ambiguities.html[Ambiguities] topic.
 
 |====
 
-You can generate a language by using the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator.html[LanguageGenerator] class in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace. This class has the following static methods:
+You can generate a language by using the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerator.html[LanguageGenerator] class in the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace. This class has the following static methods:
 
 [options="header", cols="a,a"]
 |====
 |*Static Method*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams).html[GenerateClass]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams).html[GenerateClass]
 |Generates a language file using the specified options and returns the string containing the content of the file.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams,stream,encoding).html[GenerateClass]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerator~generateclass(languagegenerationparams,stream,encoding).html[GenerateClass]
 |Generates a language file using the specified options and writes it to the specified stream.
 
 |====
 
-The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams.html[LanguageGenerationParams] class used as argument in the `GenerateClass` methods has several options to customize the language generation process. They are as follows:
+The link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams.html[LanguageGenerationParams] class used as argument in the `GenerateClass` methods has several options to customize the language generation process. They are as follows:
 
 [options="header", cols="a,a"]
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~classname.html[ClassName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~classname.html[ClassName]
 |The name to give the generated language class.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~format.html[Format]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~format.html[Format]
 |Indicates in which coding language the class file should be generated. Available values are 
 
 * `CSharp` 
@@ -169,25 +169,25 @@ The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.docu
 
 The value is `CSharp` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~generatesymbolnameconstants.html[GenerateSymbolNameConstants]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~generatesymbolnameconstants.html[GenerateSymbolNameConstants]
 |Indicates whether to generate a nested `SymbolNames` class in the generated language which contains constants for the names of all symbol which could have nodes represent them in the syntax tree (symbols which will always be pruned out of the syntax tree will not have symbol name constants generated). The value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~grammar.html[Grammar]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~grammar.html[Grammar]
 |The `Grammar` instance which will be used to generate the class.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~ispartial.html[IsPartial]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~ispartial.html[IsPartial]
 |Indicates whether the "partial" modifier should be added to the class. The value is `false` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~ispublic.html[IsPublic]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~ispublic.html[IsPublic]
 |Indicates whether the “public” modifier should be added to the class. If `false`, the “internal” modifier will be added instead. The value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~issealed.html[IsSealed]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~issealed.html[IsSealed]
 |Indicates whether the “sealed” modifier should be added to the class. The value is `true` by default.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~namespacename.html[NamespaceName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~namespacename.html[NamespaceName]
 |The namespace in which to place the generated language class. If `null`, it will be placed in the `Infragistics.Documents.Parsing` namespace.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagegenerationparams~summary.html[Summary]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagegenerationparams~summary.html[Summary]
 |The documentation summary comment to add to the class.
 
 |====

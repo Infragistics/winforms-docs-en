@@ -22,7 +22,7 @@ Each Infragistics assembly is equipped with a feature that allows you to quickly
 For a list of all topics containing the resource strings for each assembly, see link:win-assembly-resource-strings.html[Assembly Resource Strings]. Keep in mind that there is no correlation between resource strings and controls/components; the correlation is between the resource strings and the assemblies.
 ====
 
-To access the functionality of customizing assembly resource strings, you can use the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.resources~customizer.html[Customizer]"]  property of an assembly's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appstyling.runtime.applicationstylelibrary~resources.html[Resources]"]  class. This property returns an instance of the ResourceCustomizer class (from Infragistics.Shared) that is specific to the assembly you are customizing. This ResourceCustomizer class contains a collection of the following:
+To access the functionality of customizing assembly resource strings, you can use the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.resources~customizer.html[Customizer]"]  property of an assembly's  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appstyling.runtime.applicationstylelibrary~resources.html[Resources]"]  class. This property returns an instance of the ResourceCustomizer class (from Infragistics.Shared) that is specific to the assembly you are customizing. This ResourceCustomizer class contains a collection of the following:
 
 * name -- The internal name used by the assembly to identify a particular resource string.
 * value -- The text that is displayed to the end user.
@@ -31,12 +31,12 @@ By changing the value associated with a specific name, you can customize any mes
 
 The ResourceCustomizer class provides several methods that you can use to customize the resource string values:
 
-*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~setcustomizedstring.html[SetCustomizedString]"]  method -- Sets the string for a particular  _name_  to the text you specify.
-*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~getcustomizedstring.html[GetCustomizedString]"]  method -- Returns the custom text that has been set for a specific  _name_, or null if there is no customization for the given  _name_ .
-*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~resetcustomizedstring.html[ResetCustomizedString]"]  method -- Removes the customized string for the  _name_  that you specify and returns that string to its default (built-in) message text.
-*  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resourcecustomizer~resetallcustomizedstrings.html[ResetAllCustomizedStrings]"]  method -- Discards all the customizations that have been made. Every  _name_  is reset to its default (built-in) message text at once.
+*  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resourcecustomizer~setcustomizedstring.html[SetCustomizedString]"]  method -- Sets the string for a particular  _name_  to the text you specify.
+*  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resourcecustomizer~getcustomizedstring.html[GetCustomizedString]"]  method -- Returns the custom text that has been set for a specific  _name_, or null if there is no customization for the given  _name_ .
+*  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resourcecustomizer~resetcustomizedstring.html[ResetCustomizedString]"]  method -- Removes the customized string for the  _name_  that you specify and returns that string to its default (built-in) message text.
+*  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resourcecustomizer~resetallcustomizedstrings.html[ResetAllCustomizedStrings]"]  method -- Discards all the customizations that have been made. Every  _name_  is reset to its default (built-in) message text at once.
 
-In addition, the Resources class contains the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resources~getstring.html[GetString]"]  and  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.resources~getobject.html[GetObject]"]  methods, which allow you to access the resolved resource string value.
+In addition, the Resources class contains the  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resources~getstring.html[GetString]"]  and  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.resources~getobject.html[GetObject]"]  methods, which allow you to access the resolved resource string value.
 
 Resource string customization is a run-time feature; customized string settings are not local to a control. If you create code to customize the resource strings, you will need to place that code in a procedure that is executed every time your application runs, preferably before the interface is displayed to the end user.
 

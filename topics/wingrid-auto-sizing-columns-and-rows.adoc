@@ -14,7 +14,7 @@
 
 = Auto-Sizing Columns and Rows
 
-The WinGrid™ has the ability to auto sizing the columns and rows based on the setting of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~autofitstyle.html[AutoFitStyle]"]  property.
+The WinGrid™ has the ability to auto sizing the columns and rows based on the setting of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~autofitstyle.html[AutoFitStyle]"]  property.
 
 == Auto-fitting columns to WinGrid's width
 
@@ -34,7 +34,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. To automatically resize columns so they fit the width of the WinGrid set the AutoFitStyle property to  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.autofitstyle.html[ResizeAllColumns]"] . This will make each column proportionally bigger or smaller so they all fit the WinGrid and eliminate the need for having a horizontal scrollbar. Also as the user resizes WinGrid, the columns will be continuously auto-resized to fit the WinGrid.
+. To automatically resize columns so they fit the width of the WinGrid set the AutoFitStyle property to  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.autofitstyle.html[ResizeAllColumns]"] . This will make each column proportionally bigger or smaller so they all fit the WinGrid and eliminate the need for having a horizontal scrollbar. Also as the user resizes WinGrid, the columns will be continuously auto-resized to fit the WinGrid.
 
 *In Visual Basic:*
 
@@ -53,10 +53,10 @@ image::images/WinGrid_Auto_Sizing_Columns_and_Rows_01.png[auto sizing ultragrid 
 [start=3]
 . You can exempt a specific column from automatically resizing by doing the following:
 
-When Row-Layout mode is disabled - Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~lockedwidth.html[LockedWidth]"]  to true.
+When Row-Layout mode is disabled - Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~lockedwidth.html[LockedWidth]"]  to true.
 ** 
 
-When Row-Layout mode is enabled - Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~weightx.html[WeightX]"]  of all the columns that you want to resize to auto-fit to a non-zero value and leave the WeightX of the column(s) that you want to exempt from resizing.
+When Row-Layout mode is enabled - Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~weightx.html[WeightX]"]  of all the columns that you want to resize to auto-fit to a non-zero value and leave the WeightX of the column(s) that you want to exempt from resizing.
 
 *Related Topics*
 

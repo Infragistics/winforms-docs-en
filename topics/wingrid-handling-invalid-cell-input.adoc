@@ -16,7 +16,7 @@
 
 == InvalidValueBehavior Property
 
-The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~invalidvaluebehavior.html[InvalidValueBehavior]"]  property lets you easily specify the behavior that occurs when the user attempts to leave a cell after an invalid value is entered. For example, you can specify that WinGrid™ reverts the value back to the original value and cell is no longer in "edit" mode. The InvalidValueBehavior property is exposed on the Override and Column objects. The following code shows you how to set this property.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~invalidvaluebehavior.html[InvalidValueBehavior]"]  property lets you easily specify the behavior that occurs when the user attempts to leave a cell after an invalid value is entered. For example, you can specify that WinGrid™ reverts the value back to the original value and cell is no longer in "edit" mode. The InvalidValueBehavior property is exposed on the Override and Column objects. The following code shows you how to set this property.
 
 *In Visual Basic:*
 
@@ -54,7 +54,7 @@ private void ultraGrid1_InitializeLayout(object sender,
 
 == CellDataError Event
 
-The InvalidValueBehavior property simply provides the default values for  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~restoreoriginalvalue.html[RestoreOriginalValue]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~stayineditmode.html[StayInEditMode]"]  properties of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs.html[CellDataErrorEventArgs]"]  of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~celldataerror_ev.html[CellDataError]"]  event. Therefore the alternative to using InvalidValueBehavior property is to use CellDataError event. CellDataErrorEventArgs also exposes  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~raiseerrorevent.html[RaiseErrorEvent]"]  property that lets you prevent the WinGrid from displaying the error message box.
+The InvalidValueBehavior property simply provides the default values for  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~restoreoriginalvalue.html[RestoreOriginalValue]"]  and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~stayineditmode.html[StayInEditMode]"]  properties of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.celldataerroreventargs.html[CellDataErrorEventArgs]"]  of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~celldataerror_ev.html[CellDataError]"]  event. Therefore the alternative to using InvalidValueBehavior property is to use CellDataError event. CellDataErrorEventArgs also exposes  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.celldataerroreventargs~raiseerrorevent.html[RaiseErrorEvent]"]  property that lets you prevent the WinGrid from displaying the error message box.
 
 *In Visual Basic:*
 

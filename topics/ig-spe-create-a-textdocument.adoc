@@ -43,7 +43,7 @@ The following topics are prerequisites to understanding this topic:
 
 === Overview
 
-The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument.html[TextDocument] is a class in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents_namespace.html[Infragistics.Documents] namespace which provides all the functionality for parsing and modifying a document. To set custom languages use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~language.html[Language] property of the `TextDocument` class.
+The link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument.html[TextDocument] is a class in the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents_namespace.html[Infragistics.Documents] namespace which provides all the functionality for parsing and modifying a document. To set custom languages use the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument~language.html[Language] property of the `TextDocument` class.
 
 For example, here is how to set a C# language to the `TextDocument`:
 
@@ -55,7 +55,7 @@ var document = new TextDocument();
 document.Language = CSharpLanguage.Instance;
 ----
 
-To load content in the document you can use the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~initializetext.html[InitializeText] method or one of the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocument~load.html[Load] methods. As changes are made to the document, almost all tokens are reused so that the lexical analyzer only needs to analyze the parts of the document which have changed.
+To load content in the document you can use the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument~initializetext.html[InitializeText] method or one of the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocument~load.html[Load] methods. As changes are made to the document, almost all tokens are reused so that the lexical analyzer only needs to analyze the parts of the document which have changed.
 
 == Related Content
 

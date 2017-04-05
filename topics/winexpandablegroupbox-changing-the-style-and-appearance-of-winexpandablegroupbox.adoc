@@ -26,14 +26,14 @@ In 2005 Volume 1 the WinExpandableGroupBox™ control was added to the list of W
 ** {ApiPlatform}Win.v{ProductVersion}
 
 [start=2]
-. The first property we will look at is the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultraexpandablegroupbox~viewstyle.html[ViewStyle]"]  property. Toggling this property will change the look of the control. 
+. The first property we will look at is the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultraexpandablegroupbox~viewstyle.html[ViewStyle]"]  property. Toggling this property will change the look of the control. 
 
 The XP style changes the caption text to blue, and also rounds off the corners.
 
 image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_01.png[shows the style and appearance changed that can be made to expandablegroupbox]
 
 [start=3]
-. The next property we will look at is the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragroupbox~headerposition.html[HeaderPosition]"] . This property determines where the header will be displayed at on the UltraExpandableGroupBox. It has several options including:
+. The next property we will look at is the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultragroupbox~headerposition.html[HeaderPosition]"] . This property determines where the header will be displayed at on the UltraExpandableGroupBox. It has several options including:
 
 ** Default - Header appears in the default location, based on the ViewStyle of the control.
 ** TopOnBorder - Header appears on the upper edge of the control, on the border.
@@ -54,7 +54,7 @@ The screenshot below shows the WinExpandableGroupBox control with the HeaderPosi
 image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_05.png[shows a winexpandablegroupbox with its header locationed on the left]
 
 [start=4]
-. You can also change the location of the Caption by changing the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragroupbox~captionalignment.html[CaptionAlignment]"]  property. There are the following three options: 
+. You can also change the location of the Caption by changing the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultragroupbox~captionalignment.html[CaptionAlignment]"]  property. There are the following three options: 
 
 ** Near
 ** Far
@@ -64,11 +64,11 @@ image::Images/WinMisc_Introduction_to_the_WinExpandableGroupBox_05.png[shows a w
 . The functionality that the UltraExpandableGroupBox has over the standard GroupBox is that it is expandable. There are a couple properties of interest you can set when it comes to how the GroupBox will expand. One of them is the HeaderClick action, this property allows you to set what should happen if they user clicks on just the header. You can set it so that it causes the GroupBox to expand/collapse or you can leave to its Default value which is clicking on just the header has no effect in terms of expand/collapsing the GroupBox.
 
 [start=6]
-. You can also set the location of the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultraexpandablegroupbox~expansionindicator.html[ExpansionIndicator]"] , the options are:
+. You can also set the location of the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultraexpandablegroupbox~expansionindicator.html[ExpansionIndicator]"] , the options are:
 
 ** Near
 ** Far
 ** None
 
 [start=7]
-. You can also set the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultraexpandablegroupbox~expanded.html[Expanded]"]  property determining if the GroupBox starts expanded or collapsed.
+. You can also set the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultraexpandablegroupbox~expanded.html[Expanded]"]  property determining if the GroupBox starts expanded or collapsed.

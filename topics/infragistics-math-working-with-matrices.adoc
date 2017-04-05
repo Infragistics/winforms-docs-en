@@ -14,7 +14,7 @@
 
 = Working With Matrices
 
-This topic demonstrates the operations you can perform with Matrices. It covers link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] instances only, but the information in it applies to all matrix types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexMatrix].
+This topic demonstrates the operations you can perform with Matrices. It covers link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] instances only, but the information in it applies to all matrix types – link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix], link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix], and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexmatrix.html[ComplexMatrix].
 
 == Types of Matrix Operations
 
@@ -197,7 +197,7 @@ Infragistics Math Library’s matrices support the following arithmetical operat
 
 The arithmetical operations are performed on the counterpart elements of the matrices.
 
-The link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] class also supports arithmetical operations between a matrix and a complex number.
+The link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] class also supports arithmetical operations between a matrix and a complex number.
 
 == Requirements
 
@@ -241,7 +241,7 @@ Multiplication of matrices in the Infragistics Math Library consists of multiply
 
 *Note:*
 
-If you want true matrix multiplication, use the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute~matrixproduct.html[Compute.MatrixProduct] method instead of the multiplication shown here.
+If you want true matrix multiplication, use the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute~matrixproduct.html[Compute.MatrixProduct] method instead of the multiplication shown here.
 
 The example below multiplies two matrices using the $$*$$ operator.
 
@@ -378,9 +378,9 @@ These operations are performed on counterpart elements of the matrices.
 
 The == and != operators compare the elements and the dimensions of the matrices and return a Boolean value.
 
-The <, $$<=$$, >, and >= operators compare the corresponding values in the matrices. These operators return a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix] instance and are defined only for link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexMatrix]. Each element of the returned Boolean matrix will be the result of the comparison of the corresponding elements from the initial matrices.
+The <, $$<=$$, >, and >= operators compare the corresponding values in the matrices. These operators return a link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix] instance and are defined only for link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexmatrix.html[ComplexMatrix]. Each element of the returned Boolean matrix will be the result of the comparison of the corresponding elements from the initial matrices.
 
-link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrix.html[Matrix] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexMatrix] can be compared to each other and to *double* and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complex.html[Complex]. link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix] can be compared also to a Boolean value.
+link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrix.html[Matrix] and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexmatrix.html[ComplexMatrix] can be compared to each other and to *double* and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complex.html[Complex]. link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanmatrix.html[BooleanMatrix] can be compared also to a Boolean value.
 
 == Requirements
 

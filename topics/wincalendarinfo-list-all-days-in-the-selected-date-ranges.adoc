@@ -14,7 +14,7 @@
 
 = List All Days in the Selected Date Ranges
 
-The WinCalendarInfo™ has a  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~selecteddateranges.html[SelectedDateRanges]"]  collection, which contains all the selected dates that your end-user have made. You can loop over this collection and display the dates, for example, you can display the end-user selected dates as nodes in the WinTree™.
+The WinCalendarInfo™ has a  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~selecteddateranges.html[SelectedDateRanges]"]  collection, which contains all the selected dates that your end-user have made. You can loop over this collection and display the dates, for example, you can display the end-user selected dates as nodes in the WinTree™.
 
 [start=1]
 . Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
@@ -36,7 +36,7 @@ using Infragistics.Win.UltraWinSchedule;
 [start=3]
 . Set the UltraButton's Name property to "btnSelectedDates". In addition, specify the UltraButton's Text property to say "Disable Select Dates as Nodes in Tree".
 [start=4]
-. Set the UltraMonthViewSingle's  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarinfo.html[CalendarInfo]"]  property to the UltraCalendarInfo instance you have placed on your form.
+. Set the UltraMonthViewSingle's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultraschedulecontrolbase~calendarinfo.html[CalendarInfo]"]  property to the UltraCalendarInfo instance you have placed on your form.
 [start=5]
 . In the btnSelectedDates click event, place the following example code. This code clears the tree's nodes collection, then loops over the UltraCalendarInfo's SelectedDateRanges collection. It then loops over every SelectedDateRanges Days collection, and adds them as nodes to the UltraTree.
 

@@ -14,7 +14,7 @@
 
 = Specifying Fixed Rows
 
-The fixed rows feature allows you to fix (freeze) rows on the top or bottom of the WinGrid™ so that when the grid is scrolled vertically, the fixed rows will not be scrolled out of view. Fixed rows are supported in the root row collection only. They are not currently supported in child bands or when the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyle.html[ViewStyle]"]  is set to 'OutlookGroupBy'.
+The fixed rows feature allows you to fix (freeze) rows on the top or bottom of the WinGrid™ so that when the grid is scrolled vertically, the fixed rows will not be scrolled out of view. Fixed rows are supported in the root row collection only. They are not currently supported in child bands or when the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyle.html[ViewStyle]"]  is set to 'OutlookGroupBy'.
 
 [start=1]
 . Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
@@ -34,7 +34,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. You can enable fixed rows in the WinGrid by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowstyle.html[FixedRowStyle]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property of the grid's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  to one of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.fixedrowstyle.html[FixedRowStyle]"]  values. FixedRowStyle specifies whether the fixed rows are displayed at the top or bottom of the row collection.
+. You can enable fixed rows in the WinGrid by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowstyle.html[FixedRowStyle]"]  property on the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property of the grid's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  to one of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.fixedrowstyle.html[FixedRowStyle]"]  values. FixedRowStyle specifies whether the fixed rows are displayed at the top or bottom of the row collection.
 
 *In Visual Basic:*
 
@@ -51,7 +51,7 @@ this.ultraGrid1.DisplayLayout.Override.FixedRowStyle = FixedRowStyle.Top;
 ----
 
 [start=3]
-. In addition to setting the FixedRowStyle property you also need to specify the row(s) you want to be fixed. You can use the following line of code to add a row to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowscollection~fixedrows.html[FixedRows]"]  collection of the root band. 
+. In addition to setting the FixedRowStyle property you also need to specify the row(s) you want to be fixed. You can use the following line of code to add a row to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.rowscollection~fixedrows.html[FixedRows]"]  collection of the root band. 
 
 *In Visual Basic:*
 
@@ -67,7 +67,7 @@ Me.UltraGrid1.Rows.FixedRows.Add(Me.UltraGrid1.Rows(0))
 this.ultraGrid1.Rows.FixedRows.Add(this.ultraGrid1.Rows[0]);
 ----
 
-Alternatively, you can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~fixed.html[Fixed]"]  property on a row to indicate that it should be fixed. The following code demonstrates this technique:
+Alternatively, you can set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~fixed.html[Fixed]"]  property on a row to indicate that it should be fixed. The following code demonstrates this technique:
 
 *In Visual Basic:*
 
@@ -84,7 +84,7 @@ this.ultraGrid1.Rows[0].Fixed = true;
 ----
 
 [start=4]
-. Setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowindicator.html[FixedRowIndicator]"]  property determines if users can fix rows at run-time. Setting this property to 'Button' causes state buttons to be displayed in the row selectors. Those state buttons can be used for fixing and unfixing rows. When the state buttons are displayed in row selectors the row selector width is automatically adjusted to accommodate them. Setting this property to 'None' prevents an indicator from being displayed. The 'Default' value is resolved to 'None'. 
+. Setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowindicator.html[FixedRowIndicator]"]  property determines if users can fix rows at run-time. Setting this property to 'Button' causes state buttons to be displayed in the row selectors. Those state buttons can be used for fixing and unfixing rows. When the state buttons are displayed in row selectors the row selector width is automatically adjusted to accommodate them. Setting this property to 'None' prevents an indicator from being displayed. The 'Default' value is resolved to 'None'. 
 
 *In Visual Basic:*
 
@@ -99,7 +99,7 @@ this.ultraGrid1.DisplayLayout.Override.FixedRowIndicator = FixedRowIndicator.But
 ----
 
 [start=5]
-. You can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~allowfixing.html[AllowFixing]"]  property on an UltraGridRow object. This gives you the ability to indicate whether the user can make a row fixed or not on a per row basis. 
+. You can set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~allowfixing.html[AllowFixing]"]  property on an UltraGridRow object. This gives you the ability to indicate whether the user can make a row fixed or not on a per row basis. 
 
 *In Visual Basic:*
 
@@ -118,9 +118,9 @@ this.ultraGrid1.Rows[0].AllowFixing = DefaultableBoolean.False;
 [start=6]
 . You can use the next three Appearance objects off the WinGrid to style the appearance of the rows or cells that are fixed.
 
-**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowappearance.html[FixedRowAppearance]"] 
-**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowcellappearance.html[FixedRowCellAppearance]"] 
-**  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowcellappearance.html[FixedRowSelectorAppearance]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowappearance.html[FixedRowAppearance]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowcellappearance.html[FixedRowCellAppearance]"] 
+**  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~fixedrowcellappearance.html[FixedRowSelectorAppearance]"] 
 
 [start=7]
 . The screen shot below shows four fixed rows, with the first one fixed and is not changeable by the end user. The other three can be unfixed by the end user at run time.

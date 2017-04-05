@@ -16,7 +16,7 @@
 
 == Introduction
 
-The Infragistics Math Library™ provides several approaches for creating vectors. Though this topic demonstrates how to create only link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances, the approaches shown apply to all vector types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVector]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
+The Infragistics Math Library™ provides several approaches for creating vectors. Though this topic demonstrates how to create only link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] instances, the approaches shown apply to all vector types – link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexvector.html[ComplexVector]. This is because the matrices and vectors classes in the Infragistics Math Library are all derived from the link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrixbase.html[MatrixBase] class – so their instances are created and used in common ways.
 
 == Overview
 
@@ -36,7 +36,7 @@ When creating a vector, you can:
 [[Elements_and_Dimensions]]
 == Creating a Vector by Specifying Its Elements and Dimensions
 
-The most general constructor of link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] takes any *IList<double>* containing the elements of the vector, along with an integer array specifying the dimensions of the vector.
+The most general constructor of link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] takes any *IList<double>* containing the elements of the vector, along with an integer array specifying the dimensions of the vector.
 
 Following is a code snippet, which creates two vectors:
 
@@ -140,7 +140,7 @@ In the above snippet, both *x1* and *x2* will be column Vectors. In fact, they w
 [[Length]]
 == Creating a Vector by Specify Its Length
 
-Passing in an integer length *N* into the constructor will provide a length *N* row vector. This can also be done with the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute~zeros.html[Zeros] method of the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class. The following code snippet demonstrates the two approaches:
+Passing in an integer length *N* into the constructor will provide a length *N* row vector. This can also be done with the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute~zeros.html[Zeros] method of the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute.html[Compute] class. The following code snippet demonstrates the two approaches:
 
 *In Visual Basic:*
 
@@ -182,7 +182,7 @@ Vector x = new Vector(c, N);
 [[Implicit_Conversion]]
 == Creating a Vector by Using Implicit Conversion
 
-Furthermore, *double[]* implicitly converts to link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], allowing for vectors to be specified element-wise. A constructor exists to do that as well. It takes an enumeration specifying the orientation as the first parameter. In the following example, *x1* and *x2* will contain the same values and have the same orientation:
+Furthermore, *double[]* implicitly converts to link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector], allowing for vectors to be specified element-wise. A constructor exists to do that as well. It takes an enumeration specifying the orientation as the first parameter. In the following example, *x1* and *x2* will contain the same values and have the same orientation:
 
 *In Visual Basic:*
 
@@ -201,7 +201,7 @@ Vector x2 = new Vector(VectorType.Row, 0, 1, 2, 3, 4);
 [[Empty_Vector]]
 == Creating an Empty Vector
 
-The default constructor returns an empty vector, which can also be constructed as a static variable on the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] class:
+The default constructor returns an empty vector, which can also be constructed as a static variable on the link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] class:
 
 *In Visual Basic:*
 

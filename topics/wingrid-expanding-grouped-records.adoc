@@ -14,14 +14,14 @@
 
 = Configuring the Expanding of Grouped Rows (WinGrid, GroupBy)
 
-The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowexpansionstyle.html[GroupByRowExpansionStyle]"]  property allows you to specify how GroupBy rows are expanded by the end-user. By default the GroupBy rows can be expanded by either clicking on a GroupBy row's expansion indicator, double-clicking on the GroupBy row, or with the keyboard. All of the expansion options will allow the user to toggle expansion via the keyboard except for 'Disabled'.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowexpansionstyle.html[GroupByRowExpansionStyle]"]  property allows you to specify how GroupBy rows are expanded by the end-user. By default the GroupBy rows can be expanded by either clicking on a GroupBy row's expansion indicator, double-clicking on the GroupBy row, or with the keyboard. All of the expansion options will allow the user to toggle expansion via the keyboard except for 'Disabled'.
 
 == To access the GroupByRowExpansionStyle property:
 
 [start=1]
 . Right click on the WinGrid™ at design-time and select "UltraWinGrid Designer" from the context menu.
 [start=2]
-. In the designer on the right select the option called "Control Settings". Scroll down and expand the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property. Scroll down to the Override property and expand it. Inside the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property scroll down to the GroupByRowExpansionStyle property. 
+. In the designer on the right select the option called "Control Settings". Scroll down and expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~displaylayout.html[DisplayLayout]"]  property. Scroll down to the Override property and expand it. Inside the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~override.html[Override]"]  property scroll down to the GroupByRowExpansionStyle property. 
 
 This property has four settings:
 
@@ -30,7 +30,7 @@ This property has four settings:
 ** *DoubleClick* - GroupBy rows can be expanded/collapsed via double clicking on the GroupBy row. When this setting is used the GroupBy rows will not contain expansion indicators.
 ** *Disabled* - GroupBy rows cannot be expanded/collapsed by the end-user via the mouse or the keyboard.
 
-If the GroupByRowExpansionStyle is set to 'Disabled' then the end-user will not be able to expand/collapse the GroupBy rows. In that case, the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowinitialexpansionstate.html[GroupByRowInitialExpansionState]"]  property will resolve to 'Expanded'. This means that when a column is grouped all of the GroupBy rows will initially be expanded. Regardless of the GroupByRowExpansionStyle setting, you can set the GroupByRowInitialExpansionState property to specify how GroupBy rows should appear when a grouping is created.
+If the GroupByRowExpansionStyle is set to 'Disabled' then the end-user will not be able to expand/collapse the GroupBy rows. In that case, the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~groupbyrowinitialexpansionstate.html[GroupByRowInitialExpansionState]"]  property will resolve to 'Expanded'. This means that when a column is grouped all of the GroupBy rows will initially be expanded. Regardless of the GroupByRowExpansionStyle setting, you can set the GroupByRowInitialExpansionState property to specify how GroupBy rows should appear when a grouping is created.
 
 When setting the GroupByRowExpansionStyle to DoubleClick and then grouping on a column, the WinGrid will look similar to the screenshot below. Notice that the GroupBy rows do not have expansion indicators:
 

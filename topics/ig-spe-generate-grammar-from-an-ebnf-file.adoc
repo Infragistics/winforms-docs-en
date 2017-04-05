@@ -43,24 +43,24 @@ The following topics are prerequisites to understanding this topic:
 
 === Overview
 
-You can create a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from an EBNF file using the static methods of the `Grammar` class:
+You can create a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance from an EBNF file using the static methods of the `Grammar` class:
 
-* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~loadebnf(stream,encoding).html[Grammar.LoadEbnf] - Create a grammar from stream, which contains the EBNF
-* link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~loadebnf(string).html[Grammar.LoadEbnf] - Create a grammar from string, which contains the EBNF
+* link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~loadebnf(stream,encoding).html[Grammar.LoadEbnf] - Create a grammar from stream, which contains the EBNF
+* link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~loadebnf(string).html[Grammar.LoadEbnf] - Create a grammar from string, which contains the EBNF
 
-Both these methods return an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult.html[EbnfLoadResult] instance, which has the following properties:
+Both these methods return an link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfloadresult.html[EbnfLoadResult] instance, which has the following properties:
 
 [options="header", cols="a,a"]
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~errors.html[Errors]
-|A collection of link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloaderror.html[EbnfLoadError] instances, which will be empty if `Success` is `true` and non-empty if `Success` is `false.` Each `EbnfLoadError` describes a different error with the EBNF file.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfloadresult~errors.html[Errors]
+|A collection of link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfloaderror.html[EbnfLoadError] instances, which will be empty if `Success` is `true` and non-empty if `Success` is `false.` Each `EbnfLoadError` describes a different error with the EBNF file.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~grammar.html[Grammar]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfloadresult~grammar.html[Grammar]
 |The `Grammar` instance which was created if Success is `true`. This will be `Null` is `Success` is `false`.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ebnfloadresult~success.html[Success]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ebnfloadresult~success.html[Success]
 |Indicates whether the EBNF file was successfully loaded. If `true`, the `Grammar` property will be the `Grammar` instance created from the file. If `false`, `Errors` will contain one or more errors describing the problems with the document.
 
 |====

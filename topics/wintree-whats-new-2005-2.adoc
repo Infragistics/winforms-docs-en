@@ -16,11 +16,11 @@
 
 == Multi-Column Support
 
-The WinTree™ now supports the ability to display multiple columns of data. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  determines how the columns are displayed and includes the following three column styles. For more information on the view styles, see link:wintree-styles-of-wintree.html[Styles of WinTree].
+The WinTree™ now supports the ability to display multiple columns of data. The  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  determines how the columns are displayed and includes the following three column styles. For more information on the view styles, see link:wintree-styles-of-wintree.html[Styles of WinTree].
 
 === Outlook Express Style
 
-When set to OutlookExpress, a single set of column headers is displayed at the top of the control based on the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~rootcolumnset.html[RootColumnSet]"]  property. All nodes display their cell values within these columns. This style is commonly used when the entire tree will display homogenous data although it is possible to assign different columnset for nodes and indicate which column in the root columnset, the column should be displayed within.
+When set to OutlookExpress, a single set of column headers is displayed at the top of the control based on the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~rootcolumnset.html[RootColumnSet]"]  property. All nodes display their cell values within these columns. This style is commonly used when the entire tree will display homogenous data although it is possible to assign different columnset for nodes and indicate which column in the root columnset, the column should be displayed within.
 
 image::images/Whats_New_UltraWinTree_2005_2_01.png[outlook express style in ultratree]
 
@@ -59,7 +59,7 @@ There is also a value of Standard which provides the functionality available in 
 
 == DataBinding Support
 
-The UltraTree now supports the ability to bind the tree or a specific nodes collection. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datasource.html[DataSource]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  properties of the control can be used to bind the root nodes collection. In addition, the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~setdatabinding.html[SetDataBinding]"]  method of an unbound node's Nodes collection can be used to bind the collection to a datasource providing the ability to display bound data nodes under unbound nodes.
+The UltraTree now supports the ability to bind the tree or a specific nodes collection. The  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~datasource.html[DataSource]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  properties of the control can be used to bind the root nodes collection. In addition, the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~setdatabinding.html[SetDataBinding]"]  method of an unbound node's Nodes collection can be used to bind the collection to a datasource providing the ability to display bound data nodes under unbound nodes.
 
 image::images/Whats_New_UltraWinTree_2005_2_04.png[data binding support in ultratree]
 

@@ -40,7 +40,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. To use filter rows you must first enable  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowrowfiltering.html[AllowRowFiltering]"] .
+. To use filter rows you must first enable  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowrowfiltering.html[AllowRowFiltering]"] .
 
 *In Visual Basic:*
 
@@ -57,7 +57,7 @@ this.ultraGrid1.DisplayLayout.Override.AllowRowFiltering =
 ----
 
 [start=3]
-. Next you can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteruitype.html[FilterUIType]"]  property, which specifies the type of user interface displayed for filtering rows. The options are to either display filter icons in the column headers or to display a filter row. The AllowRowFiltering property must be set to True in order for this property to have any effect.
+. Next you can set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filteruitype.html[FilterUIType]"]  property, which specifies the type of user interface displayed for filtering rows. The options are to either display filter icons in the column headers or to display a filter row. The AllowRowFiltering property must be set to True in order for this property to have any effect.
 
 *In Visual Basic:*
 
@@ -74,7 +74,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterUIType =
 ----
 
 [start=4]
-. You can specify when the WinGrid should apply a filter. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filterevaluationtrigger.html[FilterEvaluationTrigger]"]  specifies what must happen to cause the row filtration to occur. The default behavior is to apply the filter as soon as the user changes the value of a filter operator or operand.
+. You can specify when the WinGrid should apply a filter. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filterevaluationtrigger.html[FilterEvaluationTrigger]"]  specifies what must happen to cause the row filtration to occur. The default behavior is to apply the filter as soon as the user changes the value of a filter operator or operand.
 
 *In Visual Basic:*
 
@@ -93,7 +93,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterEvaluationTrigger =
 ----
 
 [start=5]
-. You can also specify the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatordefaultvalue.html[FilterOperatorDefaultValue]"]  property. This property represents the default value of the operator cells in a filter row. If operator cells are hidden, this is used as the filter operator for values entered in the associated filter operand cells. This can be overridden by each column. 'Default' is resolved to 'FilterOperatorDefaultValue'.
+. You can also specify the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filteroperatordefaultvalue.html[FilterOperatorDefaultValue]"]  property. This property represents the default value of the operator cells in a filter row. If operator cells are hidden, this is used as the filter operator for values entered in the associated filter operand cells. This can be overridden by each column. 'Default' is resolved to 'FilterOperatorDefaultValue'.
 
 *In Visual Basic:*
 
@@ -110,7 +110,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterOperatorDefaultValue =
 ----
 
 [start=6]
-. You can also to set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperandstyle.html[FilterOperandStyle]"]  property to specify the style of operand input displayed in the filter row cells. The 'Default' value is be resolved to 'Combo'. This can be overridden on each column using the FilterOperandStyle property.
+. You can also to set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filteroperandstyle.html[FilterOperandStyle]"]  property to specify the style of operand input displayed in the filter row cells. The 'Default' value is be resolved to 'Combo'. This can be overridden on each column using the FilterOperandStyle property.
 
 *In Visual Basic:*
 
@@ -127,7 +127,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterOperandStyle =
 ----
 
 [start=7]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatorlocation.html[FilterOperatorLocation]"]  property to specify the style of operator input displayed in the filter row cells. This can be overridden on each column using the FilterOperatorLocation property.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filteroperatorlocation.html[FilterOperatorLocation]"]  property to specify the style of operator input displayed in the filter row cells. This can be overridden on each column using the FilterOperatorLocation property.
 
 *In Visual Basic:*
 
@@ -144,7 +144,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterOperatorLocation =
 ----
 
 [start=8]
-. You also can set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filteroperatordropdownitems.html[FilterOperatorDropDownItems]"]  to specify which operators should be listed in the filter operator drop down in filter rows. This is only useful if the FilterOperatorLocation is *not* set to 'Hidden'.
+. You also can set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filteroperatordropdownitems.html[FilterOperatorDropDownItems]"]  to specify which operators should be listed in the filter operator drop down in filter rows. This is only useful if the FilterOperatorLocation is *not* set to 'Hidden'.
 
 *In Visual Basic:*
 
@@ -161,7 +161,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterOperatorDropDownItems =
 ----
 
 [start=9]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.filterclearbuttonlocation.html[FilterClearButtonLocation]"]  property to specify if and where "Clear Filter" buttons are displayed in filter rows. The options are to either display them in the filter row selector, filter cells, or both. A "Filter Clear" button is used to reset the filter of a cell or an entire row.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.filterclearbuttonlocation.html[FilterClearButtonLocation]"]  property to specify if and where "Clear Filter" buttons are displayed in filter rows. The options are to either display them in the filter row selector, filter cells, or both. A "Filter Clear" button is used to reset the filter of a cell or an entire row.
 
 *In Visual Basic:*
 
@@ -178,7 +178,7 @@ this.ultraGrid1.DisplayLayout.Override.FilterClearButtonLocation =
 ----
 
 [start=10]
-. One other relevant setting is the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowprompt.html[FilterRowPrompt]"]  property. This property specifies the prompt text to display in the filter row. By default the prompt is an empty string. Once the filter row is activated the prompt disappears (and reappears when it's deactivated).
+. One other relevant setting is the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowprompt.html[FilterRowPrompt]"]  property. This property specifies the prompt text to display in the filter row. By default the prompt is an empty string. Once the filter row is activated the prompt disappears (and reappears when it's deactivated).
 
 *In Visual Basic:*
 
@@ -212,10 +212,10 @@ this.ultraGrid1.DisplayLayout.Bands[0].SpecialRowPromptField = "ContactTitle";
 
 There are four appearance settings that you can use to configure the visual style of filter rows:
 
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearance]"] 
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearanceactive.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearanceActive]"] 
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~filtercellappearance.html[ultraGrid1.DisplayLayout.Override.FilterCellAppearance]"] 
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowselectorappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowSelectorAppearance]"] 
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearance]"] 
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowappearanceactive.html[ultraGrid1.DisplayLayout.Override.FilterRowAppearanceActive]"] 
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~filtercellappearance.html[ultraGrid1.DisplayLayout.Override.FilterCellAppearance]"] 
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~filterrowselectorappearance.html[ultraGrid1.DisplayLayout.Override.FilterRowSelectorAppearance]"] 
 
 The screen shot below shows the WinGrid using the filter row feature. The filter row has the operator user interface on the left of the operand. When clicked upon, the filter operator drop-down appears for selecting the operator. The button in the row selector is for clearing the filters of all the columns.
 

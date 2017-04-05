@@ -14,14 +14,14 @@
 
 = Embedding WinFormattedTextEditor in a WinGrid Column
 
-The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  class gives you the ability to add formatted text and hyperlinks to any Infragistics Windows Forms control which uses embeddable editors. FormattedLinkEditor derives from the embeddable editors base class in order to give Infragistics Windows Forms controls this functionality. This topic will guide you through the task of setting up the WinGrid™ control using the WinDataSource™ component to store unformatted text. You will then use the WinFormattedTextEditor™ control to format this text.
+The  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  class gives you the ability to add formatted text and hyperlinks to any Infragistics Windows Forms control which uses embeddable editors. FormattedLinkEditor derives from the embeddable editors base class in order to give Infragistics Windows Forms controls this functionality. This topic will guide you through the task of setting up the WinGrid™ control using the WinDataSource™ component to store unformatted text. You will then use the WinFormattedTextEditor™ control to format this text.
 
 [start=1]
 . *Set up WinDataSource and WinGrid.*
 
 .. Drag the UltraDataSource component onto the form. The ultraDataSource1 component appears in the component tray.
 .. Drag the UltraGrid control from the toolbox onto the form.
-.. In the Properties window, find the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~datasource.html[DataSource]"]  property and set it to ultraDataSource1.
+.. In the Properties window, find the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~datasource.html[DataSource]"]  property and set it to ultraDataSource1.
 
 [start=2]
 . *Set up the data source.*

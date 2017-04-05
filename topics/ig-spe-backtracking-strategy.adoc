@@ -57,7 +57,7 @@ This topic contains the following sections:
 
 === Overview
 
-It is possible for the Syntax Parsing Engine to parse things incorrectly if the user omits something from the code. Special cases of this can be handled by the synchronizer pair error handling strategy, but it does not make sense to set link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair] on most symbols. The backtracking strategy handles the general case of backing out of a bad parsing decision. The following is an example of part of a document the parser has started analyzing:
+It is possible for the Syntax Parsing Engine to parse things incorrectly if the user omits something from the code. Special cases of this can be handled by the synchronizer pair error handling strategy, but it does not make sense to set link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair] on most symbols. The backtracking strategy handles the general case of backing out of a bad parsing decision. The following is an example of part of a document the parser has started analyzing:
 
 *In C#:*
 
@@ -92,7 +92,7 @@ The backtracking strategy will break up some small syntax nodes recently created
 
 A few things to note about the backtracking error handling strategy:
 
-* This strategy can be disabled for a non-terminal symbol by setting its link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~preventbacktracking.html[NonTerminalSymbol.PreventBacktracking] property to True. Once a reduction occurs to a non-terminal symbol with this value set to True, the syntax node created by that reduction can never be broken up to try a backtracking approach.
+* This strategy can be disabled for a non-terminal symbol by setting its link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~preventbacktracking.html[NonTerminalSymbol.PreventBacktracking] property to True. Once a reduction occurs to a non-terminal symbol with this value set to True, the syntax node created by that reduction can never be broken up to try a backtracking approach.
 * Only a small number of syntax nodes will be broken up like this when an error occurs, and if a node is made of up too many tokens, the backtracking strategy will not be used. It would be too slow to re-parse a hundreds or thousands of tokens once they were already parsed into a node structure.
 
 [[_Ref349639333]]

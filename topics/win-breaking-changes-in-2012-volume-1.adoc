@@ -15,7 +15,7 @@
 
 == IDropDownResizeHandleOwner Interface
 
-A new property of type link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableelementdisplaystyle.html[EmbeddableElementDisplayStyle] called link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner~displaystyle.html[DisplayStyle] was added to the link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface. This additional property is used for determining the proper style to apply to the link:infragistics4.win.v{ProductVersion}~infragistics.win.dropdownresizehandleuielement_members.html[DropDownResizeHandleUIElement]. The new property had to be implemented on anything that implements the link:infragistics4.win.v{ProductVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface, including the UltraPopupControlContainer, the ValueList, the EditorButonBase, and the UltraDropDownBase.
+A new property of type link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableelementdisplaystyle.html[EmbeddableElementDisplayStyle] called link:{ApiPlatform}win{ApiVersion}~infragistics.win.idropdownresizehandleowner~displaystyle.html[DisplayStyle] was added to the link:{ApiPlatform}win{ApiVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface. This additional property is used for determining the proper style to apply to the link:{ApiPlatform}win{ApiVersion}~infragistics.win.dropdownresizehandleuielement_members.html[DropDownResizeHandleUIElement]. The new property had to be implemented on anything that implements the link:{ApiPlatform}win{ApiVersion}~infragistics.win.idropdownresizehandleowner_members.html[IDropDownResizeHandleOwner] interface, including the UltraPopupControlContainer, the ValueList, the EditorButonBase, and the UltraDropDownBase.
 
 == Infragistics Excel Engine
 
@@ -27,16 +27,16 @@ The following table summarizes the breaking changes in Excel library Format supp
 |====
 |Change|Description
 
-| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
-|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and derives from link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshape_members.html[WorksheetShape] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText]. This change should only affect people who are storing a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] instance in a variable of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText].
+| link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
+|The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] now defines a Text property of type link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and derives from link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshape_members.html[WorksheetShape] instead of link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText]. This change should only affect people who are storing a link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetcellcomment~_ctor.html[WorksheetCellComment] instance in a variable of type link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText].
 
-| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
-|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]. The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class defines the same link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods as link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and they perform the same function, but return a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] instead of a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont]. link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] can be used in the same way as link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont] as it defines the same font properties. Unlike the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] class, the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class does not have an link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~unformattedstring.html[UnformattedString] property. However, the unformatted string can be retrieved by calling `ToString()` on the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instance.
+| link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]
+|The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext_members.html[WorksheetShapeWithText] link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetshapewithtext~text.html[Text] property is now of type link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instead of link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString]. The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class defines the same link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods as link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] and they perform the same function, but return a link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] instead of a link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont]. link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtextfont_members.html[FormattedTextFont] can be used in the same way as link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstringfont_members.html[FormattedStringFont] as it defines the same font properties. Unlike the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString] class, the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] class does not have an link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring~unformattedstring.html[UnformattedString] property. However, the unformatted string can be retrieved by calling `ToString()` on the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedtext_members.html[FormattedText] instance.
 
-|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat_members.html[IWorksheetCellFormat] interface has changed.
+|The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat_members.html[IWorksheetCellFormat] interface has changed.
 |If you have a custom implementation of this interface, this will cause build errors.
 
-|The link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworkbookfont_members.html[IWorkbookFont] interface has changed.
+|The link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworkbookfont_members.html[IWorkbookFont] interface has changed.
 |If you have custom implementation of this interface, this will cause build errors.
 
 |Indexing into the Workbook Styles collection with built-in style names may no longer work correctly.
@@ -45,7 +45,7 @@ The following table summarizes the breaking changes in Excel library Format supp
 |Workbook palette is not auto-populated.
 |Now, workbook palette is not auto-populated. For more information, see the <<_Ref320781747, Workbook palette is not auto-populated >> block below.
 
-| link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.workbook~styles.html[Styles] collection is pre-populated.
+| link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.workbook~styles.html[Styles] collection is pre-populated.
 |`Styles` collection is now pre-populated with all built in styles and clearing the collection will not remove the _Normal_ style as it did in the earlier versions.
 
 |`WorkbookPaletteMode` enumeration has been marked obsolete.
@@ -62,7 +62,7 @@ If a `Workbook` constructor taking a `WorkbookPaletteMode` is used, the value wi
 For more information, see the <<_Ref320781793, Set of Color properties have been marked obsolete >> blockbelow.
 
 |The fill related properties on the `IWorksheetCellFormat` instance have been marked obsolete.
-|The fill related properties on the `IWorksheetCellFormat` instance have been marked obsolete and have all been replaced by `IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~fill.html[Fill] property. 
+|The fill related properties on the `IWorksheetCellFormat` instance have been marked obsolete and have all been replaced by `IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~fill.html[Fill] property. 
 
 For more information, see the <<_Ref320781827, CellFormat have been marked obsolete >> block below.
 
@@ -72,8 +72,8 @@ For more information, see the <<_Ref320781827, CellFormat have been marked obsol
 |The `Workbook.MaxExcelColorCount` constant has been marked obsolete.
 |The `Workbook` `MaxExcelColorCount` constant has been marked obsolete. There is now no limit to the number of unique colors which can be used in a workbook.
 
-|When value of the cell is link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString], its associated fonts must now be fully resolved.
-|When a FormattedString is the value of a cell, its associated fonts, obtained with the link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods of the FormattedString instance, must have their fonts fully resolved.
+|When value of the cell is link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring_members.html[FormattedString], its associated fonts must now be fully resolved.
+|When a FormattedString is the value of a cell, its associated fonts, obtained with the link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedstring~getfont.html[GetFont] methods of the FormattedString instance, must have their fonts fully resolved.
 
 |When a `FormattedString` is the value of a cell and font properties are changed on the cell, font properties will be copied entirely of the `FormattedString`.
 |When a `FormattedString` is the value of a cell and font properties are changed on the cell, font properties will be copied to the entirety of the `FormattedString`. 
@@ -108,28 +108,28 @@ The following color properties have been marked obsolete. Setting the old proper
 |Obsolete properties|New properties
 
 |`FormattedFontBase.Color`
-|`FormattedFontBase` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.formattedfontbase~colorinfo.html[ColorInfo]
+|`FormattedFontBase` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.formattedfontbase~colorinfo.html[ColorInfo]
 
 |`IWorkbookFont.Color`
-|`IWorkbookFont` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworkbookfont~colorinfo.html[ColorInfo]
+|`IWorkbookFont` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworkbookfont~colorinfo.html[ColorInfo]
 
 |`IWorksheetCellFormat.BottomBorderColor`
-|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~bottombordercolorinfo.html[BottomBorderColorInfo]
+|`IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~bottombordercolorinfo.html[BottomBorderColorInfo]
 
 |`IWorksheetCellFormat.DiagonalBorderColor`
-|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~diagonalbordercolorinfo.html[DiagonalBorderColorInfo]
+|`IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~diagonalbordercolorinfo.html[DiagonalBorderColorInfo]
 
 |`IWorksheetCellFormat.LeftBorderColor`
-|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~leftbordercolorinfo.html[LeftBorderColorInfo]
+|`IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~leftbordercolorinfo.html[LeftBorderColorInfo]
 
 |`IWorksheetCellFormat.RightBorderColor`
-|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~rightbordercolorinfo.html[RightBorderColorInfo]
+|`IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~rightbordercolorinfo.html[RightBorderColorInfo]
 
 |`IWorksheetCellFormat.TopBorderColor`
-|`IWorksheetCellFormat` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat~topbordercolorinfo.html[TopBorderColorInfo]
+|`IWorksheetCellFormat` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat~topbordercolorinfo.html[TopBorderColorInfo]
 
 |`WorksheetDisplayOptions.TabColor`
-|`WorksheetDisplayOptions` link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheetdisplayoptions~tabcolorinfo.html[TabColorInfo]
+|`WorksheetDisplayOptions` link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheetdisplayoptions~tabcolorinfo.html[TabColorInfo]
 
 |====
 
@@ -178,7 +178,7 @@ The following properties on `IWorksheetCellFormat` have been marked obsolete and
 </table><br />
 ++++
 
-Setting the old properties to non-default values will set the `Fill` property to a link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.cellfillpattern_members.html[CellFillPattern] instance corresponding to the values that were set. Getting the properties gets the closest match colors it can from the current `Fill` property value. If it is a `CellFillPattern` instance, they will be accurate values, but if the new gradient fills are being used, the old properties will reflect a solid fill with a background color of the first gradient stop.
+Setting the old properties to non-default values will set the `Fill` property to a link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.cellfillpattern_members.html[CellFillPattern] instance corresponding to the values that were set. Getting the properties gets the closest match colors it can from the current `Fill` property value. If it is a `CellFillPattern` instance, they will be accurate values, but if the new gradient fills are being used, the old properties will reflect a solid fill with a background color of the first gradient stop.
 
 [[_Ref320017114]]
 == Related Content

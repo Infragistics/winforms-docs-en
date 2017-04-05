@@ -18,11 +18,11 @@
 
 It is highly unlikely that your grid will be in perfect form for a printable document such as a PDF file. Because of this, WinGridDocumentExporter™ has an expansive Event model to give you as much control as possible over converting your grid into a PDF document. Some important events covered in this walkthrough are listed below:
 
-pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~beginexport_ev.html[BeginExport]"]  – Fires when the entire exporting process first begins. This is where you would set Section-specific properties and modify the ExportLayout by hiding a few columns. The ExportLayout is the layout of the exported grid, just as the DisplayLayout is the layout of the on-screen grid. Whatever you modify in the ExportLayout object will not affect WinGrid's on-screen layout.
+pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.documentexport{ApiVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~beginexport_ev.html[BeginExport]"]  – Fires when the entire exporting process first begins. This is where you would set Section-specific properties and modify the ExportLayout by hiding a few columns. The ExportLayout is the layout of the exported grid, just as the DisplayLayout is the layout of the on-screen grid. Whatever you modify in the ExportLayout object will not affect WinGrid's on-screen layout.
 
-pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~initializerow_ev.html[InitializeRow]"]  – Fires when each individual row of the exported grid (not the on-screen grid) is initialized. This event gives you access to the row and all its cells, allowing you to modify appearances.
+pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.documentexport{ApiVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~initializerow_ev.html[InitializeRow]"]  – Fires when each individual row of the exported grid (not the on-screen grid) is initialized. This event gives you access to the row and all its cells, allowing you to modify appearances.
 
-pick:[win-forms="link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~cellexporting_ev.html[CellExporting]"]  – Fires when an individual cell is about to be exported to a report. This event is important if you need to change the Value of a cell.
+pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.documentexport{ApiVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~cellexporting_ev.html[CellExporting]"]  – Fires when an individual cell is about to be exported to a report. This event is important if you need to change the Value of a cell.
 
 == What You Will Accomplish
 
@@ -150,7 +150,7 @@ private void ultraGridDocumentExporter1_CellExporting(object sender,
 [start=5]
 . *Export the grid through the button's Click event.*
 
-In Design view, double-click the button to create the Click event. In this event, you will call the link:infragistics4.win.ultrawingrid.documentexport.v{ProductVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~export.html[Export] method off the UltraGridDocumentExporter. The fourth overload accepts three parameters:
+In Design view, double-click the button to create the Click event. In this event, you will call the link:{ApiPlatform}win.ultrawingrid.documentexport{ApiVersion}~infragistics.win.ultrawingrid.documentexport.ultragriddocumentexporter~export.html[Export] method off the UltraGridDocumentExporter. The fourth overload accepts three parameters:
 
 ** the WinGrid that you want to export (UltraGrid)
 ** the file name and path (System.String)

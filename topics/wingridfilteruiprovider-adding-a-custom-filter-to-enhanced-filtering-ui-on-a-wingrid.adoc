@@ -15,7 +15,7 @@
 
 === Before You Begin
 
-All of the items shown in the Enhanced filtering UI are tools that appear in a menu created through the concept of FilterTool. These tools can be rearranged, removed or new tools can be added through the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~beforemenupopulate_ev.html[BeforeMenuPopulate]"]  and  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~aftermenupopulate_ev.html[AfterMenuPopulate]"]  events on the WinGridFilterUIProvider™. When a new tool is added, the required action that has to be performed when the tool is clicked should also be taken care of. This can be achieved by handling the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~buttontoolclick_ev.html[ButtonToolClick]"]  event of the UltraGridFilterUIProvider and using the event arguments to determine which tool was clicked and then take the appropriate action.
+All of the items shown in the Enhanced filtering UI are tools that appear in a menu created through the concept of FilterTool. These tools can be rearranged, removed or new tools can be added through the  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~beforemenupopulate_ev.html[BeforeMenuPopulate]"]  and  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~aftermenupopulate_ev.html[AfterMenuPopulate]"]  events on the WinGridFilterUIProvider™. When a new tool is added, the required action that has to be performed when the tool is clicked should also be taken care of. This can be achieved by handling the  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~buttontoolclick_ev.html[ButtonToolClick]"]  event of the UltraGridFilterUIProvider and using the event arguments to determine which tool was clicked and then take the appropriate action.
 
 === What You Will Accomplish
 
@@ -30,7 +30,7 @@ Using different tools, custom filters can be added to the Enhanced filtering UI.
 .Note
 [NOTE]
 ====
-The only tool that cannot be manually created is the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtertreetool.html[FilterTreeTool]"] , though it can be removed or repositioned in the list.
+The only tool that cannot be manually created is the  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.filtertreetool.html[FilterTreeTool]"] , though it can be removed or repositioned in the list.
 ====
 
 In this walkthrough, you will learn how to create custom Filters and add to the existing Enhanced filters on WinGrid™.
@@ -57,7 +57,7 @@ ultraGridFilterUIProvider1.ButtonToolClick +=new ButtonToolClickEventHandler(ult
 ----
 
 [start=2]
-. Write the following code that manually populates tools (e.g., filter menus that will be shown by the filter provider), within the BeforeMenuPopulate event. A custom Date filter that filters Order Dates is added to the OrderDate column of the WinGrid control. A  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterMenuTool]"]  is created to display the year (1997) and two  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterButtonTools]"]  created to display the month periods( from January to April and from May to August). Also the filtering code is written within the event.
+. Write the following code that manually populates tools (e.g., filter menus that will be shown by the filter provider), within the BeforeMenuPopulate event. A custom Date filter that filters Order Dates is added to the OrderDate column of the WinGrid control. A  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterMenuTool]"]  is created to display the year (1997) and two  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.filtermenutool.html[FilterButtonTools]"]  created to display the month periods( from January to April and from May to August). Also the filtering code is written within the event.
 
 .Note
 [NOTE]

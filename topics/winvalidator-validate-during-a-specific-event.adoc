@@ -14,13 +14,13 @@
 
 = Validate during a Specific Event
 
-Not only can WinValidator™ validate all Infragistics Windows Forms controls and components, it can also validate any in-box, windows forms control or component. WinValidator validates a control at a specific time, or in other words, during a specific event. You can choose during which event WinValidator validates a control with the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validationtrigger.html[ValidationTrigger]"]  property. The ValidationTrigger property is aptly named for defining which type of event triggers a validation on a control or group of controls. There are several ways a control can trigger its own validation.
+Not only can WinValidator™ validate all Infragistics Windows Forms controls and components, it can also validate any in-box, windows forms control or component. WinValidator validates a control at a specific time, or in other words, during a specific event. You can choose during which event WinValidator validates a control with the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~validationtrigger.html[ValidationTrigger]"]  property. The ValidationTrigger property is aptly named for defining which type of event triggers a validation on a control or group of controls. There are several ways a control can trigger its own validation.
 
 * OnValidating – WinValidator validates the control when its Validating event fires.
 * OnPropertyValueChanged – WinValidator validates the control when a specific property's Changed event fires. You can choose the property that triggers validation by setting the ValidationPropertyName property off the ValidationSettings object extended to each control by WinValidator. For more information, see link:winvalidator-validate-a-single-control.html[Validate a Single Control].
-* Programmatic – WinValidator will not validate the control unless you specifically call the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validate.html[Validate]"]  method.
+* Programmatic – WinValidator will not validate the control unless you specifically call the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~validate.html[Validate]"]  method.
 
-For more information on these values, see  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationtrigger.html[the ValidationTriggers enumeration]"] .
+For more information on these values, see  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationtrigger.html[the ValidationTriggers enumeration]"] .
 
 The following example code demonstrates how to validate the WinNumericEditor™ control during its TextChanged event. Validating during WinNumericEditor's TextChanged event can be useful if you need to validate the editor as your end user types.
 

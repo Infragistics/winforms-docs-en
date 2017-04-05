@@ -26,11 +26,11 @@ This topic provides an overview of the  _WinRadialMenu_   _™_   component’s 
 |====
 |Event name|Description|Cancellable?
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolclick_ev.html[ToolClick]
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolclick_ev.html[ToolClick]
 |This event is triggered when a tool is clicked.
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcolorchanged_ev.html[ToolColorChanged]
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcolorchanged_ev.html[ToolColorChanged]
 |This event is triggered when the following actions take place: 
 
 . Color selection is changed via the User Interface (UI), for example the Font tool exposes color tools for styling a document. Selecting a color triggers this event. 
@@ -64,8 +64,8 @@ After a selection is made in the (above) child `ColorWell`, going back to parent
 image::images/WinRadialMenu_Events_3.png[]
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging]
-|Trigger this event by toggling a checkable tool between “checked” and “unchecked” state via the User Interface ( UI ). Disabling (`false`), the tool’s link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool~checkable.html[Checkable] property precludes this event from triggering. 
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging]
+|Trigger this event by toggling a checkable tool between “checked” and “unchecked” state via the User Interface ( UI ). Disabling (`false`), the tool’s link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool~checkable.html[Checkable] property precludes this event from triggering. 
 
 This event will also be raised when changing the tool’s checked property via code-behind such as: 
 
@@ -76,13 +76,13 @@ if (tool != null)  tool.Checked = true;
 
 |Yes
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanged_ev.html[ToolCheckedChanged]
-|Executes the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging] event’s through the UI in order to commit changes triggers this event for a checkable tool. 
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanged_ev.html[ToolCheckedChanged]
+|Executes the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging] event’s through the UI in order to commit changes triggers this event for a checkable tool. 
 
-If the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging] event is cancelled, this event will not be triggered.
+If the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~toolcheckedchanging_ev.html[ToolCheckedChanging] event is cancelled, this event will not be triggered.
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged]
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged]
 |Selecting an item from a `ListTool` triggers this event. 
 
 The item selection can be made from the drop down list, or with a keyboard arrow key by traversing up and down a list of items triggering this event with each item selection. After selecting an item pressing the Enter key commits the selection. 
@@ -96,17 +96,17 @@ if (listTool != null)  listTool.SetSelectedValue("Item2", true);
 
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluecommitted_ev.html[ListToolSelectedValueCommitted]
-|This event is triggered after the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged] event’s execution. 
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluecommitted_ev.html[ListToolSelectedValueCommitted]
+|This event is triggered after the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged] event’s execution. 
 
-The reason for this sequence of events is that you may select an item using the arrow key on the keyboard by moving up and down until you decide which item to select, rather than clicking on a single item on a drop-down. This triggers the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged] event’s execution upon each item change. After you select an item pressing the Enter key triggers this even to be raised.
+The reason for this sequence of events is that you may select an item using the arrow key on the keyboard by moving up and down until you decide which item to select, rather than clicking on a single item on a drop-down. This triggers the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~listtoolselectedvaluechanged_ev.html[ListToolSelectedValueChanged] event’s execution upon each item change. After you select an item pressing the Enter key triggers this even to be raised.
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~drilldownbuttonclick_ev.html[DrillDownButtonClick]
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~drilldownbuttonclick_ev.html[DrillDownButtonClick]
 |Clicking the tool’s drill-down button triggers this event.
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~centerbuttonclick_ev.html[CenterButtonClick]
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~centerbuttonclick_ev.html[CenterButtonClick]
 |Clicking the `RadialMenu’s` center button triggers this event. 
 
 The following operations trigger this event’s execution. 
@@ -124,12 +124,12 @@ image::images/WinRadialMenu_Events_5.png[]
 image::images/WinRadialMenu_Events_6.png[]
 |No
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction]
-|Performing a keyboard action triggers this event. The event responds to the radial menu’s link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~keyactionmappings.html[KeyActionMappings].
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction]
+|Performing a keyboard action triggers this event. The event responds to the radial menu’s link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~keyactionmappings.html[KeyActionMappings].
 |Yes
 
-| link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~afterperformaction_ev.html[AfterPerformAction]
-|Completing a keyboard action triggers this event after the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction] event. If the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction] event is cancelled, this event will not be raised.
+| link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~afterperformaction_ev.html[AfterPerformAction]
+|Completing a keyboard action triggers this event after the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction] event. If the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu~beforeperformaction_ev.html[BeforePerformAction] event is cancelled, this event will not be raised.
 |No
 
 |====

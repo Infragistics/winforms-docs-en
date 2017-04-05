@@ -19,7 +19,7 @@ Row previewing allows you to add a description to a row.
 == To add a description to a row:
 
 [start=1]
-. In order to use row preview, it must first be enabled. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~autopreviewenabled.html[AutoPreviewEnabled]"]  property is a property of each Band object in the grid. This can be done in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event.
+. In order to use row preview, it must first be enabled. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~autopreviewenabled.html[AutoPreviewEnabled]"]  property is a property of each Band object in the grid. This can be done in the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event.
 
 *In Visual Basic:*
 
@@ -42,9 +42,9 @@ private void ultraGrid1_InitializeLayout(object sender,
 ----
 
 [start=2]
-. You can then set a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~description.html[Description]"]  for any  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Row]"]  in the grid.
+. You can then set a  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~description.html[Description]"]  for any  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Row]"]  in the grid.
 
-Typically you would do this inside the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializerow_ev.html[InitializeRow]"]  event handler so the description is displayed when the row first appears.
+Typically you would do this inside the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializerow_ev.html[InitializeRow]"]  event handler so the description is displayed when the row first appears.
 
 *In Visual Basic:*
 

@@ -18,7 +18,7 @@ This topic introduces the WinGridFilterUIProvider and its enhanced filtering cap
 
 == Introduction
 
-The WinGridFilterUIProvider™ component provides an enhanced filtering User Interface (UI) for UltraGrid™ columns. It replicates the filtering functionality of Microsoft Excel® and displays a variety of constraints (Text Filters, Number Filters, and Date Filters) that are appropriate to the UltraGrid column data. For example, in a date column, you can filter by next week, month, or quarter or even filter to within a date range. By setting the WinGrid™ control’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~filteruiprovider.html[FilterUIProvider] property to a link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider.html[UltraGridFilterUIProvider], data in WinGrid columns can be filtered using the enhanced filtering UI of the WinGridFilterUIProvider (Figure 1).
+The WinGridFilterUIProvider™ component provides an enhanced filtering User Interface (UI) for UltraGrid™ columns. It replicates the filtering functionality of Microsoft Excel® and displays a variety of constraints (Text Filters, Number Filters, and Date Filters) that are appropriate to the UltraGrid column data. For example, in a date column, you can filter by next week, month, or quarter or even filter to within a date range. By setting the WinGrid™ control’s link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~filteruiprovider.html[FilterUIProvider] property to a link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider.html[UltraGridFilterUIProvider], data in WinGrid columns can be filtered using the enhanced filtering UI of the WinGridFilterUIProvider (Figure 1).
 
 image::Images/WinGridFilterUIProvider_About_WinGridFilterUIProvider.png[]
 
@@ -26,7 +26,7 @@ Figure 1: UltraGridFilterUIProvider enabled and dropped down on the WinGrid
 
 == Filtering Interface
 
-All the filter comparison operators (E.g., Equals, DoesNotEqual, Begins With, etc.) shown in the filtering interface provided by the WinGridFilterUIProvider control are tools that appear as a menu, created through the concept of a FilterTool (Figure 1). These tools can be rearranged, removed, or new tools can be added by handling the link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~beforemenupopulate_ev.html[BeforeMenuPopulate] and link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~aftermenupopulate_ev.html[AfterMenuPopulate] events.
+All the filter comparison operators (E.g., Equals, DoesNotEqual, Begins With, etc.) shown in the filtering interface provided by the WinGridFilterUIProvider control are tools that appear as a menu, created through the concept of a FilterTool (Figure 1). These tools can be rearranged, removed, or new tools can be added by handling the link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~beforemenupopulate_ev.html[BeforeMenuPopulate] and link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.ultragridfilteruiprovider~aftermenupopulate_ev.html[AfterMenuPopulate] events.
 
 == Default Behavior
 
@@ -34,7 +34,7 @@ Microsoft Excel filters the list of cell values to only include the values that 
 
 == Backward Compatibility
 
-Versions of this control prior to 2011 Volume 2 showed values in the filter drop down regardless of whether or not they were filtered out. For backward capability with the old functionality, a new property named link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.operandlistfilterbehavior.html[OperandListFilterBehavior] is now available on the UltraGridFilterUIProvider.
+Versions of this control prior to 2011 Volume 2 showed values in the filter drop down regardless of whether or not they were filtered out. For backward capability with the old functionality, a new property named link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.operandlistfilterbehavior.html[OperandListFilterBehavior] is now available on the UltraGridFilterUIProvider.
 
 == Related Topics
 

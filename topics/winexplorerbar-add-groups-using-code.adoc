@@ -14,11 +14,11 @@
 
 = Add Groups Using Code
 
-There are several ways to add  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Groups]"]  to WinExplorerBar™ at run time. Groups are contained by the element's Groups collection, and you can use standard collection methods to add and work with Groups. Groups are also part of the element's layout, and can be created by restoring a layout that has been saved to a binary or XML file.
+There are several ways to add  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup.html[Groups]"]  to WinExplorerBar™ at run time. Groups are contained by the element's Groups collection, and you can use standard collection methods to add and work with Groups. Groups are also part of the element's layout, and can be created by restoring a layout that has been saved to a binary or XML file.
 
 Use one of the following methods to add Groups to the element:
 
-* *Groups collection Add method* - You can add Groups to the element by invoking the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection~add.html[Add]"]  method. The Add method will return the newly added Group, which you can then use to set any Group-related properties. You can also use the Add method to create the new Group with a specific  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~text.html[Text]"]  and/or Key value.
+* *Groups collection Add method* - You can add Groups to the element by invoking the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection~add.html[Add]"]  method. The Add method will return the newly added Group, which you can then use to set any Group-related properties. You can also use the Add method to create the new Group with a specific  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroup~text.html[Text]"]  and/or Key value.
 
 The code below illustrates several ways of using the Add method:
 
@@ -58,6 +58,6 @@ private void Add_Groups_Using_Code_Load(object sender, EventArgs e)
 
 image::images\WinExplorerBar_Add_Groups_Using_Code_01.png[resulting ultraexplorerbar based on code above.]
 
-* *Groups collection AddRange method* - The Groups collection also supports an  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection~addrange.html[AddRange]"]  method that can be used to add multiple Groups at once from an array of Group objects. This method provides functionality consistent with the .NET form generator code for instantiating elements.
+* *Groups collection AddRange method* - The Groups collection also supports an  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbargroupscollection~addrange.html[AddRange]"]  method that can be used to add multiple Groups at once from an array of Group objects. This method provides functionality consistent with the .NET form generator code for instantiating elements.
 * *Load Groups from Saved Layout* - The WinExplorerBar can save its group and item information in either an XML or a binary file. You can later load this file into the element to restore the Groups that previously existed, as well as setting any other saved attributes.
 * You can also add groups at design time. For information, see the topic link:winexplorerbar-add-groups-and-items-at-design-time.html[Add Groups and Items at Design Time].

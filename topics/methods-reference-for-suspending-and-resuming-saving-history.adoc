@@ -53,7 +53,7 @@ This topic contains the following sections:
 
 === Introduction
 
-The link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] class exposes two methods - for suspending and for resuming saving in the undo/redo history.
+The link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager_members.html[UndoManager] class exposes two methods - for suspending and for resuming saving in the undo/redo history.
 
 You may want to suspend the saving process when data is initially loaded – then it is not needed to preserve the collection changes.
 
@@ -61,21 +61,21 @@ You may want to suspend the saving process when data is initially loaded – the
 
 === Methods reference summary
 
-The following table summarizes the purpose and functionality of the `UndoManager` methods for suspending and resuming the recording of link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances in the history.
+The following table summarizes the purpose and functionality of the `UndoManager` methods for suspending and resuming the recording of link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances in the history.
 
 [options="header", cols="a,a"]
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~resume.html[Resume]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~resume.html[Resume]
 |Resumes the recording of `UndoUnit` instances in the history. 
 
 Each call to the `Suspend` method must have corresponding call to the `Resume` method so the saving is resumed.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~suspend.html[Suspend]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~suspend.html[Suspend]
 |Suspends the recording of `UndoUnit` instances in the history. 
 
-Any calls to link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addchange.html[AddChange] or the other helper methods for creating and saving UndoUnit instances will not affect the undo/redo history.
+Any calls to link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~addchange.html[AddChange] or the other helper methods for creating and saving UndoUnit instances will not affect the undo/redo history.
 
 |====
 

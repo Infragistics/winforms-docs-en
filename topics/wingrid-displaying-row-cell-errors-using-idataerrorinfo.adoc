@@ -34,7 +34,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. IDataErrorInfo is a .NET interface for providing row and cell errors to databound controls. This interface is typically implemented on row objects. IDataErrorInfo provides error messages for the individual cells of a row and the row itself. IDataErrorInfo is implemented by DataRowView .NET class which means that DataSet and DataTable are among the data sources that support IDataErrorInfo. To enable support for displaying IDataErrorInfo errors in WinGrid™, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~supportdataerrorinfo.html[SupportDataErrorInfo]"]  property on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object.
+. IDataErrorInfo is a .NET interface for providing row and cell errors to databound controls. This interface is typically implemented on row objects. IDataErrorInfo provides error messages for the individual cells of a row and the row itself. IDataErrorInfo is implemented by DataRowView .NET class which means that DataSet and DataTable are among the data sources that support IDataErrorInfo. To enable support for displaying IDataErrorInfo errors in WinGrid™, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~supportdataerrorinfo.html[SupportDataErrorInfo]"]  property on the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object.
 
 *In Visual Basic:*
 
@@ -136,7 +136,7 @@ image::Images\WinGrid_Display_Row_Cell_Errors_Using_IDataErrorInfo_01.png[displa
 .Note
 [NOTE]
 ====
-When IDataErrorInfo support has been enabled to display row errors, the UltraGrid by default makes the row selectors wider to accommodate the row error icons as well as other various icons that the UltraGrid normally displays, like the active row icon or the add-row icon or the row modified icon. You can change the row selector width by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorwidth.html[RowSelectorWidth]"]  property of the Override object.
+When IDataErrorInfo support has been enabled to display row errors, the UltraGrid by default makes the row selectors wider to accommodate the row error icons as well as other various icons that the UltraGrid normally displays, like the active row icon or the add-row icon or the row modified icon. You can change the row selector width by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectorwidth.html[RowSelectorWidth]"]  property of the Override object.
 ====
 
 == Related Topics

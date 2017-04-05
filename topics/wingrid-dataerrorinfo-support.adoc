@@ -54,7 +54,7 @@ This topic contains the following sections:
 
 The  _WinGrid_   control already supports displaying errors, images and tooltips in rows and cells where the grid’s data source returns information via the `IDataErrorInfo` interface. Since the data errors were set and retrieved from the data source, the data validation was unavailable in unbound columns cells.
 
-The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo_methods.html[UltraGridRow.UltraGridRowDataErrorInfo] property allows getting or setting error information in rows, and cells within a row. This information is completely independent of any error information returned by the data source’s implementation of IDataErrorInfo. Applying an error to the `UltraGridRow.DataErrorInfo` does not affect the underlying data source errors in any way.
+The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo_methods.html[UltraGridRow.UltraGridRowDataErrorInfo] property allows getting or setting error information in rows, and cells within a row. This information is completely independent of any error information returned by the data source’s implementation of IDataErrorInfo. Applying an error to the `UltraGridRow.DataErrorInfo` does not affect the underlying data source errors in any way.
 
 You can display data errors in cells of unbound columns, and rows that have not used the `IDataErrorInfo` interface. It also allows you to override the retrieved error text from the data source directly in  _UltraGridRow_   object.
 
@@ -68,7 +68,7 @@ While it is possible to override the DataSource’s error text using the `DataEr
 
 === Enabling DataErrorInfo
 
-To support the feature, you must first enable the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.supportdataerrorinfo.html[SupportDataErrorInfo] before applying or retrieving any errors on the grid.
+To support the feature, you must first enable the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.supportdataerrorinfo.html[SupportDataErrorInfo] before applying or retrieving any errors on the grid.
 
 Possible `SupportDataErrorInfo` enumeration options are:
 
@@ -96,7 +96,7 @@ ultraGrid1.DisplayLayout.Override.SupportDataErrorInfo = SupportDataErrorInfo.Ro
 
 === Applying data error to a cell
 
-Use the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo~setcolumnerror.html[SetColumnError] method to set cells with data error information in the  _InitializeRow_   event.
+Use the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo~setcolumnerror.html[SetColumnError] method to set cells with data error information in the  _InitializeRow_   event.
 
 *In C#:*
 
@@ -115,7 +115,7 @@ If CDbl(e.Row.Cells("BasePrice").Value) = 0 Then
 End If
 ----
 
-Use the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+resolvedultragridrowdataerrorinfo~getcolumnerror.html[GetColumnError] method to retrieve a cell’s data error information.
+Use the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow+resolvedultragridrowdataerrorinfo~getcolumnerror.html[GetColumnError] method to retrieve a cell’s data error information.
 
 *In C#:*
 
@@ -137,7 +137,7 @@ image::images/WinGrid_DataErrorInfo_Support_1.png[]
 
 === Applying data error to a row
 
-The following code example uses the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo~rowerror.html[RowError] property to apply data error information to a row in the  _InitializeRow_   event.
+The following code example uses the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow+ultragridrowdataerrorinfo~rowerror.html[RowError] property to apply data error information to a row in the  _InitializeRow_   event.
 
 *In C#:*
 
@@ -158,7 +158,7 @@ End If
 
 image::images/WinGrid_DataErrorInfo_Support_2.png[]
 
-As a side note, you can retrieve the resolved errors using link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~dataerrorinforesolved.html[DataErrorInfoResolved] property, which returns the resolved error information from the data source and grid rows.
+As a side note, you can retrieve the resolved errors using link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~dataerrorinforesolved.html[DataErrorInfoResolved] property, which returns the resolved error information from the data source and grid rows.
 
 [[_Ref341518687]]
 == Related Content

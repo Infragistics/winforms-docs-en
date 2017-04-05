@@ -14,9 +14,9 @@
 
 = Embeddable Editor Events
 
-WinTree™ does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorOwnerBase]"]  class. For more information please see the link:wintree-embeddable-editors-overview.html[Embeddable Editors Overview] topic.
+WinTree™ does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorOwnerBase]"]  class. For more information please see the link:wintree-embeddable-editors-overview.html[Embeddable Editors Overview] topic.
 
-Consider a WinComboEditor control loaded with a list of items, and assigned to the EditorComponent property of a WinTree. When a control is assigned to the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property, the embedded WinComboEditor control provides an editor to the host, in this case, WinTree. Similarly for this example the WinComboEditor control provides an EditorWithCombo embeddable editor to the WinTree cell from which the dropdown appears.
+Consider a WinComboEditor control loaded with a list of items, and assigned to the EditorComponent property of a WinTree. When a control is assigned to the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property, the embedded WinComboEditor control provides an editor to the host, in this case, WinTree. Similarly for this example the WinComboEditor control provides an EditorWithCombo embeddable editor to the WinTree cell from which the dropdown appears.
 
 Hence when an item is selected from the dropdown in a cell, the events of the EditorWithCombo embeddable editor can be handled.
 
@@ -26,7 +26,7 @@ Hence when an item is selected from the dropdown in a cell, the events of the Ed
 The WinComboEditor control is not involved in the interaction, therefore its events do not fire.
 ====
 
-The following code shows you how to handle the EditorWithCombo specific events (in this example  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selectionchanged_ev.html[SelectionChanged]"]  event), when an item is selected from the WinComboEditor control embedded within WinTree.
+The following code shows you how to handle the EditorWithCombo specific events (in this example  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selectionchanged_ev.html[SelectionChanged]"]  event), when an item is selected from the WinComboEditor control embedded within WinTree.
 
 *In Visual Basic:*
 

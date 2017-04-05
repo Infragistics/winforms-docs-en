@@ -14,14 +14,14 @@
 
 = Invalid Value Behavior
 
-Specifies the behavior when the user attempts to leave a cell after entering an invalid value. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~invalidvaluebehavior.html[InvalidValueBehavior]"]  property has the following members:
+Specifies the behavior when the user attempts to leave a cell after entering an invalid value. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~invalidvaluebehavior.html[InvalidValueBehavior]"]  property has the following members:
 
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[Default]"]  - Default is resolved to RetainValueAndFocus.
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RetainValueAndFocus]"]  - Retains the value entered by the user and also keeps the cell in edit mode.
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RevertValue]"]  - Reverts the value back to the original value. The cell does not stay in edit mode.
-*  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RevertValueAndRetainFocus]"]  - Reverts the value back to the original value and the cell is kept in edit mode.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[Default]"]  - Default is resolved to RetainValueAndFocus.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RetainValueAndFocus]"]  - Retains the value entered by the user and also keeps the cell in edit mode.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RevertValue]"]  - Reverts the value back to the original value. The cell does not stay in edit mode.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.invalidvaluebehavior.html[RevertValueAndRetainFocus]"]  - Reverts the value back to the original value and the cell is kept in edit mode.
 
-The functionality to control the behavior when the user attempts to leave a cell after entering an invalid value already existed prior to implementation of this functionality via the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~celldataerror_ev.html[CellDataError]"]  event. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.celldataerroreventargs.html[CellDataErrorEventArgs]"]  has RetainFocus and RevertValue (among other properties) that let you do the same thing as the new InvalidValueBehavior property. The InvalidValueBehavior property was added mainly to make it easier for the users to discover the functionality and also easily set it.
+The functionality to control the behavior when the user attempts to leave a cell after entering an invalid value already existed prior to implementation of this functionality via the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~celldataerror_ev.html[CellDataError]"]  event. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.celldataerroreventargs.html[CellDataErrorEventArgs]"]  has RetainFocus and RevertValue (among other properties) that let you do the same thing as the new InvalidValueBehavior property. The InvalidValueBehavior property was added mainly to make it easier for the users to discover the functionality and also easily set it.
 
 == Related Topic:
 

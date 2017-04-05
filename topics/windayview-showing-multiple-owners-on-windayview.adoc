@@ -14,7 +14,7 @@
 
 = Showing Multiple Owners on WinDayView
 
-WinSchedule's™ support for  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  grouping is realized primarily through the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"]  object. The Owner object usually represents a person, department, or other entity by which the end developer might want to group appointments. The repository for these objects is exposed through the CalendarInfo's  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~owners.html[Owners]"]  collection.
+WinSchedule's™ support for  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.appointment.html[Appointment]"]  grouping is realized primarily through the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.owner.html[Owner]"]  object. The Owner object usually represents a person, department, or other entity by which the end developer might want to group appointments. The repository for these objects is exposed through the CalendarInfo's  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~owners.html[Owners]"]  collection.
 
 The following code snippet adds a few members in our Owners collection, and sets up the WinDayView™ control to view these owners separately. In addition, it hides the unassigned owner, and sets the TimeSlotInterval on the WinDayView to ThirtyMinutes so we can see more TimeSlots on the screen.
 

@@ -30,7 +30,7 @@ using Infragistics.Win;
 ----
 
 [start=2]
-. You must set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~cellmultiline.html[CellMultiLine]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column]"]  object to True.
+. You must set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~cellmultiline.html[CellMultiLine]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column]"]  object to True.
 
 *In Visual Basic:*
 
@@ -45,7 +45,7 @@ this.ultraGrid1.DisplayLayout.Bands[0].Columns[1].CellMultiLine = DefaultableBoo
 ----
 
 [start=3]
-. A natural implementation of the CellMultiLine property could be as follows by also setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~vertscrollbar.html[VertScrollBar]"]  property of the column to True.
+. A natural implementation of the CellMultiLine property could be as follows by also setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~vertscrollbar.html[VertScrollBar]"]  property of the column to True.
 
 *In Visual Basic:*
 
@@ -60,7 +60,7 @@ this.ultraGrid1.DisplayLayout.Bands[0].Columns[1].VertScrollBar = true;
 ----
 
 [start=4]
-. You may want to increase the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~defaultrowheight.html[DefaultRowHeight]"]  of the grid to better illustrate this sample.
+. You may want to increase the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~defaultrowheight.html[DefaultRowHeight]"]  of the grid to better illustrate this sample.
 
 *In Visual Basic:*
 
@@ -75,7 +75,7 @@ this.ultraGrid1.DisplayLayout.Override.DefaultRowHeight = 100;
 ----
 
 [start=5]
-. Place the above snippets into the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event of the WinGrid™.
+. Place the above snippets into the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event of the WinGrid™.
 
 Run the project and type into a cell on column 1.
 

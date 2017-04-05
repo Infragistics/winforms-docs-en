@@ -14,7 +14,7 @@
 
 = Set Up WinToolTipManager at Design Time
 
-The  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager.html[UltraToolTipManager]"]  class adds an extender property called "UltraToolTip" to any control. The UltraToolTip property allows for a control to be managed by the WinToolTipManager™. This allows a tooltip to automatically display when the mouse hovers over the control.
+The  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager.html[UltraToolTipManager]"]  class adds an extender property called "UltraToolTip" to any control. The UltraToolTip property allows for a control to be managed by the WinToolTipManager™. This allows a tooltip to automatically display when the mouse hovers over the control.
 
 [start=1]
 . *Start by placing some controls on a form.*
@@ -25,7 +25,7 @@ These can be any controls, but for the purposes of this example, a TextBox will 
 [start=3]
 . *Set the ToolTipText property on the TextBox.*
 
-By default, the WinToolTipManager will show a tooltip when the mouse hovers over a control only when that control has it's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptext.html[ToolTipText]"]  set to a valid string.
+By default, the WinToolTipManager will show a tooltip when the mouse hovers over a control only when that control has it's  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptext.html[ToolTipText]"]  set to a valid string.
 
 image::images/WinToolTips_Walk_Through_Setting_Up_ToolTips_At_Design-Time_02.png[shows the properties window for a control that has been extended by the ultratooltipmanager]
 
@@ -34,14 +34,14 @@ image::images/WinToolTips_Walk_Through_Setting_Up_ToolTips_At_Design-Time_02.png
 
 Once the ToolTipText is set, a tooltip will be displayed for the TextBox when the mouse hovers over it at run-time.
 
-If you want the tooltip to display a title as well, set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptitle.html[ToolTipTitle]"]  property.
+If you want the tooltip to display a title as well, set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltiptitle.html[ToolTipTitle]"]  property.
 
-If you want the tooltip to display an Image in the title, set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltipimage.html[ToolTipImage]"] . ToolTipImage gives you some options for some common images. To display a custom Image, set the ToolTipImage property to  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.tooltipimage.html[Custom]"]  and set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~image.html[Appearance.Image]"]  or ToolTipTitleAppearance.Image property.
+If you want the tooltip to display an Image in the title, set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintooltip.ultratooltipinfo~tooltipimage.html[ToolTipImage]"] . ToolTipImage gives you some options for some common images. To display a custom Image, set the ToolTipImage property to  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.tooltipimage.html[Custom]"]  and set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~image.html[Appearance.Image]"]  or ToolTipTitleAppearance.Image property.
 
 At this point, you can also set other Appearance properties such as BackColor, ForeColor, etc.
 [start=5]
 . *Run the application.*
 
-Run the application and hover the mouse over the TextBox. The WinToolTip will display after a delay specified by the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager~initialdelay.html[InitialDelay]"]  property of the WinToolTipManager (half a second by default).
+Run the application and hover the mouse over the TextBox. The WinToolTip will display after a delay specified by the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintooltip.ultratooltipmanager~initialdelay.html[InitialDelay]"]  property of the WinToolTipManager (half a second by default).
 
 image::images/WinToolTips_Walk_Through_Setting_Up_ToolTips_At_Design-Time_04.png[shows the ultratooltipmanager working on the inbox text box]

@@ -16,7 +16,7 @@
 
 == Introduction
 
-Embeddable editors were first introduced with the WinGrid™ control, to create a consistent communication layer between the WinGrid and the various editors it utilizes. As with the WinGrid control, the WinTree™ control does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorownerbase.html[EmbeddableEditorOwnerBase]"]  class. Similarly, the embeddable editors have no awareness of the control with which they are communicating - they call the appropriate method of the EmbeddableEditorOwnerBase class, and do whatever the return value tells them to do.
+Embeddable editors were first introduced with the WinGrid™ control, to create a consistent communication layer between the WinGrid and the various editors it utilizes. As with the WinGrid control, the WinTree™ control does not interact directly with the embeddable editors, but rather relays information to them via its implementation of the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableeditorownerbase.html[EmbeddableEditorOwnerBase]"]  class. Similarly, the embeddable editors have no awareness of the control with which they are communicating - they call the appropriate method of the EmbeddableEditorOwnerBase class, and do whatever the return value tells them to do.
 
 [[newproperties]]
 
@@ -24,11 +24,11 @@ Embeddable editors were first introduced with the WinGrid™ control, to create 
 
 In order to make using embeddable editors easier for the end developer, the following properties were added to the UltraWinTree control:
 
-*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~editorresolved.html[EditorResolved]"]  - Returns the resolved value of the associated Override's Editor property.
-*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editor.html[Editor]"]  - Sets or returns the editor used for editing the node's text. This property evaluates to an instance of an embeddable editor class from the Infragistics.Win assembly.
-*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  - Sets or returns the control that implements the IProvidesEmbeddableEditor interface for editing the Node's text. This property is typically set to an UltraWinEditors control that has been placed on the form along with the UltraWinTree.
-*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~showeditorbuttons.html[ShowEditorButtons]"]  - Sets or returns a value indicating when to show editing buttons when using embeddable editors.
-*  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  - Sets or returns a value indicating whether to use embeddable editors.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~editorresolved.html[EditorResolved]"]  - Returns the resolved value of the associated Override's Editor property.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~editor.html[Editor]"]  - Sets or returns the editor used for editing the node's text. This property evaluates to an instance of an embeddable editor class from the Infragistics.Win assembly.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  - Sets or returns the control that implements the IProvidesEmbeddableEditor interface for editing the Node's text. This property is typically set to an UltraWinEditors control that has been placed on the form along with the UltraWinTree.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~showeditorbuttons.html[ShowEditorButtons]"]  - Sets or returns a value indicating when to show editing buttons when using embeddable editors.
+*  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  - Sets or returns a value indicating whether to use embeddable editors.
 
 For more information regarding the differences between the Editor and the EditorComponent property, and the implications of using one over the other, consult the <<editorversuscontrol,Editor vs. EditorComponent>> section later in this topic.
 
@@ -38,21 +38,21 @@ For more information regarding the differences between the Editor and the Editor
 
 The following section provides a short primer on the way embeddable editors work, and how embeddable editors communicate with the UltraWinTree control.
 
-All of the embeddable editor controls expose an interface through which the control provides an instance of its editor to other controls (such as WinGrid or WinTree) that want to "embed" that editor for use within themselves. (The UltraWinEditors controls are actually just simple implementations of these editing interfaces; each one exposes a single embedded editor without any other functionality.) The editor interface is  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"] . It exposes only one member - the Editor property, which returns a copy of the same  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"] -derived object that realizes the control's rendering and editing functionality.
+All of the embeddable editor controls expose an interface through which the control provides an instance of its editor to other controls (such as WinGrid or WinTree) that want to "embed" that editor for use within themselves. (The UltraWinEditors controls are actually just simple implementations of these editing interfaces; each one exposes a single embedded editor without any other functionality.) The editor interface is  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"] . It exposes only one member - the Editor property, which returns a copy of the same  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"] -derived object that realizes the control's rendering and editing functionality.
 
-The EmbeddableEditorBase class is the abstract class from which all embeddable editors derive. It provides one or more instances of  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableuielementbase.html[EmbeddableUIElementBase]"] -derived embeddable elements specific to that editor, which handle rendering and editing of the values provided by the owner.
+The EmbeddableEditorBase class is the abstract class from which all embeddable editors derive. It provides one or more instances of  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableuielementbase.html[EmbeddableUIElementBase]"] -derived embeddable elements specific to that editor, which handle rendering and editing of the values provided by the owner.
 
 The EmbeddableUIElementBase class is the abstract class from which all embeddable elements derive. Most of the behavior of these embeddable elements is governed by the control in which they are embedded, via that control's implementation of an EmbeddableEditorOwnerBase-derived class.
 
-The EmbeddableEditorOwnerBase class provides the main communication layer between the embeddable elements and the control in which they are embedded. An example of the communication that occurs between the embeddable element and its owning control is exhibited by the EmbeddableEditorOwnerBase class'  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorownerbase~getvalue.html[GetValue]"]  method; when an embeddable element is drawn, it determines what value it should render by calling this method, and then converts the value returned by the owning control into a data type that it can reliably render (e.g., a string).
+The EmbeddableEditorOwnerBase class provides the main communication layer between the embeddable elements and the control in which they are embedded. An example of the communication that occurs between the embeddable element and its owning control is exhibited by the EmbeddableEditorOwnerBase class'  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableeditorownerbase~getvalue.html[GetValue]"]  method; when an embeddable element is drawn, it determines what value it should render by calling this method, and then converts the value returned by the owning control into a data type that it can reliably render (e.g., a string).
 
 [[usingeditors]]
 
 == Using Embeddable Editors in the UltraWinTree Control
 
-By default, the UltraWinTree control does not use embeddable editors. If the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  property is specifically set to DefaultableBoolean.True, but neither the Editor nor EditorComponent properties of the control's  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  object have been set, the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtext.html[EditorWithText]"]  editor is used to render and edit node text. EditorWithText is especially geared towards the display of textual values. The EditorWithText editor provides an  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtextuielement.html[EditorWithTextUIElement]"]  embeddable element for all nodes displayed by the control. If the node is brought into "edit mode", the editor displays a TextBox-derived control which allows the node's text to be modified by the end user. When the edit mode session ends, the value typed by the end user is then assigned to the node's Text property, assuming the edit session was not canceled by pressing the Escape key. So far, this really hasn't deviated from version 2 behavior, except in what goes on under the hood.
+By default, the UltraWinTree control does not use embeddable editors. If the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~useeditor.html[UseEditor]"]  property is specifically set to DefaultableBoolean.True, but neither the Editor nor EditorComponent properties of the control's  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override.html[Override]"]  object have been set, the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithtext.html[EditorWithText]"]  editor is used to render and edit node text. EditorWithText is especially geared towards the display of textual values. The EditorWithText editor provides an  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithtextuielement.html[EditorWithTextUIElement]"]  embeddable element for all nodes displayed by the control. If the node is brought into "edit mode", the editor displays a TextBox-derived control which allows the node's text to be modified by the end user. When the edit mode session ends, the value typed by the end user is then assigned to the node's Text property, assuming the edit session was not canceled by pressing the Escape key. So far, this really hasn't deviated from version 2 behavior, except in what goes on under the hood.
 
-When either the Editor or  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property have been specifically set, nodes that are affected by the Override on which the Editor or EditorComponent property was set then use the specified editor to render and edit the node's text. The resolution hierarchy is the same for the Editor and EditorComponent properties as it is for any other property exposed by the Override object. For example, if the properties are set on the control-level Override, all nodes use that editor, provided that they are not affected by a more specific (lower-level) Override setting. The order of precedence for properties exposed by the Override object is outlined in the following table, in descending priority: 
+When either the Editor or  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~editorcomponent.html[EditorComponent]"]  property have been specifically set, nodes that are affected by the Override on which the Editor or EditorComponent property was set then use the specified editor to render and edit the node's text. The resolution hierarchy is the same for the Editor and EditorComponent properties as it is for any other property exposed by the Override object. For example, if the properties are set on the control-level Override, all nodes use that editor, provided that they are not affected by a more specific (lower-level) Override setting. The order of precedence for properties exposed by the Override object is outlined in the following table, in descending priority: 
 
 [options="header", cols="a,a"]
 |====
@@ -79,39 +79,39 @@ The Editor property can be set to any of the editors provided by the Win assembl
 |WinEditor control|EmbeddableEditorBase-derived editor|Data type
 
 |WinTextEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithtext.html[EditorWithText]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithtext.html[EditorWithText]"] 
 |System.String
 
 |WinComboEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithcombo.html[EditorWithCombo]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithcombo.html[EditorWithCombo]"] 
 |System.Object
 
 |WinFontNameEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.fontnameeditor.html[FontNameEditor]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.fontnameeditor.html[FontNameEditor]"] 
 |System.String
 
 |WinDateTimeEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
 |System.DateTime
 
 |WinNumericEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
 |System.Int32, System.Double
 
 |WinCurrencyEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorwithmask.html[EditorWithMask]"] 
 |System.Decimal
 
 |WinColorPicker
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.colorpickereditor.html[ColorPickerEditor]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.colorpickereditor.html[ColorPickerEditor]"] 
 |System.Color
 
 |WinOptionSet
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.optionseteditor.html[OptionSetEditor]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.optionseteditor.html[OptionSetEditor]"] 
 |System.Object
 
 |WinCheckEditor
-| pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.checkeditor.html[CheckEditor]"] 
+| pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.checkeditor.html[CheckEditor]"] 
 |System.Boolean
 
 |====

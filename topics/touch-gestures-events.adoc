@@ -33,7 +33,7 @@ This topic contains the following sections:
 
 === Touch Gestures Events Introduction
 
-New touch gestures handling capabilities are now available to the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase.html[UltraControlBase] class providing you with the ability to allow or prevent their functionalities. The events listed below encapsulate gestures such as  _panning_  ,  _zooming_  ,  _rotating_  ,  _press-and-tap_  ,  _press-and-hold_   and  _two-finger-tap_  .
+New touch gestures handling capabilities are now available to the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase.html[UltraControlBase] class providing you with the ability to allow or prevent their functionalities. The events listed below encapsulate gestures such as  _panning_  ,  _zooming_  ,  _rotating_  ,  _press-and-tap_  ,  _press-and-hold_   and  _two-finger-tap_  .
 
 [[_Ref349131273]]
 == Touch Gestures Events
@@ -46,51 +46,51 @@ The following section details the touch gesture events in response to user inter
 |====
 |Events|Description
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus]
 |Raised when the user initially makes contact with the touch surface. It is the first of the gesture-related events raised upon user interaction. 
 
 Leaving the event argument’s Mode property set to `All`; its default value; enables all gestures and raises their corresponding events.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting]
-|Raised when the system gesture recognizer identifies the user interaction as a gesture supported by the operating system. It always follows the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus] event. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting]
+|Raised when the system gesture recognizer identifies the user interaction as a gesture supported by the operating system. It always follows the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturequerystatus_ev.html[GestureQueryStatus] event. 
 
 Setting the event argument’s `Cancel` property to `True` prevents any other events from being raised from this gesture.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pangesture_ev.html[PanGesture]
-|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact. The gesture’s speed determines if the visible content continues to scroll following contact. This behavior is known as `inertia` or `inertial panning`. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~pangesture_ev.html[PanGesture]
+|Raised initially immediately following the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact. The gesture’s speed determines if the visible content continues to scroll following contact. This behavior is known as `inertia` or `inertial panning`. 
 
 Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture]
-|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact for example, as the user’s fingers move closer together or further apart. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture]
+|Raised initially immediately following the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the contact point changes location and immediately after losing contact for example, as the user’s fingers move closer together or further apart. 
 
-There is no default action for link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture] event.
+There is no default action for link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~zoomgesture_ev.html[ZoomGesture] event.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture]
-|Raised initially immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the users second finger; non-stationary; continues to move for example, as the user’s finger moves around the pivot point. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture]
+|Raised initially immediately following the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event and continuously thereafter as the users second finger; non-stationary; continues to move for example, as the user’s finger moves around the pivot point. 
 
-There is no default action for the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture] event.
+There is no default action for the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~rotategesture_ev.html[RotateGesture] event.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pressandtapgesture_ev.html[PressAndTapGesture]
-|Raised only once, immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~pressandtapgesture_ev.html[PressAndTapGesture]
+|Raised only once, immediately following the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
 
 Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture]
-|Raised only once, immediately following the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture]
+|Raised only once, immediately following the link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturestarting_ev.html[GestureStarting] event. 
 
-There is no default action for link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture] event.
+There is no default action for link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~twofingertapgesture_ev.html[TwoFingerTapGesture] event.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~pressandholdgesture_ev.html[PressAndHoldGesture]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~pressandholdgesture_ev.html[PressAndHoldGesture]
 |Raised twice 
 
-* Initially, the first raised event coincides with the elapsing of the `press-and-hold` timeout, for example, when the amount of time specified by the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.gesture.html[PressAndHold] property has elapsed. 
+* Initially, the first raised event coincides with the elapsing of the `press-and-hold` timeout, for example, when the amount of time specified by the link:{ApiPlatform}win{ApiVersion}~infragistics.win.touch.gesture.html[PressAndHold] property has elapsed. 
 
 * Additionally, raised a second time when the user loses contact with the touch surface. 
 
 Setting the event argument’s `Handled` property to `True` prevents the default actions scrolling, selecting and dragging depending on the direction of the initial movement, from occurring.
 
-| link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultracontrolbase~gesturecompleted_ev.html[GestureCompleted]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~gesturecompleted_ev.html[GestureCompleted]
 |Raised once for each gesture, after the raising of the last gesture-specific event.
 
 |====

@@ -19,10 +19,10 @@ In the 2006 volume 3 release, we added the Office 2007 look and feel to several 
 .Note
 [NOTE]
 ====
-If you want to view instances of UltraOptionSet inside WinGrid™, WinTree™, WinListView™, etc. (not as an embeddable editor) in the Office 2007 style, you need to set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams~radiobuttonglyphinfo.html[RadioButtonGlyphInfo]"]  property off of  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielementdrawparams.html[Infragistics.Win.UIElementDrawParams]"]  instead. This is an application-wide setting and will affect all WinCheckEditors and WinOptionSets displayed in any of the previously mentioned controls. You can still set the WinOptionSet control's GlyphStyle property if it is being used as an embeddable editor.
+If you want to view instances of UltraOptionSet inside WinGrid™, WinTree™, WinListView™, etc. (not as an embeddable editor) in the Office 2007 style, you need to set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielementdrawparams~radiobuttonglyphinfo.html[RadioButtonGlyphInfo]"]  property off of  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielementdrawparams.html[Infragistics.Win.UIElementDrawParams]"]  instead. This is an application-wide setting and will affect all WinCheckEditors and WinOptionSets displayed in any of the previously mentioned controls. You can still set the WinOptionSet control's GlyphStyle property if it is being used as an embeddable editor.
 ====
 
-View WinOptionSet in the Office 2007 look and feel by setting the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset~glyphinfo.html[GlyphInfo]"]  property to Office2007, and UseOsThemes to False.
+View WinOptionSet in the Office 2007 look and feel by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultraoptionset~glyphinfo.html[GlyphInfo]"]  property to Office2007, and UseOsThemes to False.
 
 image::images/WinOptionSet_Apply_the_Office_2007_Style_to_WinOptionSet_01.png[apply the office 2007 style to ultraoptionset]
 

@@ -68,11 +68,11 @@ This feature has no effect when the grid is in CardView. The printing behavior a
 
 === Page break on specified rows
 
-This requires using an link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid_members.html[UltraGrid] print preview or print configured project. If this is not the case refer to the <<_Ref364352141,Prerequisites>> section before you continue.
+This requires using an link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid_members.html[UltraGrid] print preview or print configured project. If this is not the case refer to the <<_Ref364352141,Prerequisites>> section before you continue.
 
-Specify the row as the start of a new page by configuring the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow_members.html[UltraGridRow] object’s link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] property superseding the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] settings.
+Specify the row as the start of a new page by configuring the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow_members.html[UltraGridRow] object’s link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] property superseding the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] settings.
 
-For example, setting the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] to Horizontal with the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] set on a child row, that child row begins with the new page. If that child row is the first visible child, then the parent row will also be on the new page. The complete code for this scenario appears at the end of this topic.
+For example, setting the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~viewstyleband.html[ViewStyleBand] to Horizontal with the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~startsnewprintedpage.html[StartsNewPrintedPage] set on a child row, that child row begins with the new page. If that child row is the first visible child, then the parent row will also be on the new page. The complete code for this scenario appears at the end of this topic.
 
 [[_Ref364356874]]
 

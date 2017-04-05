@@ -38,7 +38,7 @@ This topic contains the following sections:
 
 === Introduction
 
-The link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory_members.html[UndoUnitFactory] is a factory class used for creating link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances.
+The link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory_members.html[UndoUnitFactory] is a factory class used for creating link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] instances.
 
 The UndoUnitFactory class provides methods using the link:undounit-derived-classes-properties-and-methods-reference.html#_derived[derived UndoUnit classes]. They may be overridden to provide custom `UndoUnit` classes.
 
@@ -54,7 +54,7 @@ The following table summarizes the purpose and functionality of the UndoUnitFact
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory~current.html[Current]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory~current.html[Current]
 |Returns the default factory used to create `UndoUnit` instances for use in an UndoManager 
 
 .Note 
@@ -79,17 +79,17 @@ The following table summarizes the purpose and functionality of the UndoUnitFact
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory~createchange.html[CreateChange]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory~createchange.html[CreateChange]
 |Creates an `UndoUnit` for the specified method.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory~createcollectionchange.html[CreateCollectionChange]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory~createcollectionchange.html[CreateCollectionChange]
 |Creates an `UndoUnit` for a collection change based upon a specified `System.Collections.Specialized.NotifyCollectionChangedEventArgs`.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory~createpropertychange.html[CreatePropertyChange]
-|Creates an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase] for the specified property change.
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory~createpropertychange.html[CreatePropertyChange]
+|Creates an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase] for the specified property change.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory~createtransaction.html[CreateTransaction]
-|Creates an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction].
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory~createtransaction.html[CreateTransaction]
+|Creates an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction].
 
 |====
 

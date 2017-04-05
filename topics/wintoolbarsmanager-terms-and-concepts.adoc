@@ -18,7 +18,7 @@
 
 A *Tool* is an item that appear on menus and toolbars. Tools are rendered differently depending on whether they appear on a menu or toolbar. When tools appear on a toolbar they are rendered as buttons that display an image and/or text. When a tool appears on a menu it is rendered as a list entry with text and/or an image.
 
-WinToolbarsManager™ supports twelve native tool types. Internally in UltraToolbarsManager, each tool type is represented by a class that is derived from the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbase.html[ToolBase]"]  class. For more information, see link:wintoolbarsmanager-working-with-tool-types.html[Working with Tool Types].
+WinToolbarsManager™ supports twelve native tool types. Internally in UltraToolbarsManager, each tool type is represented by a class that is derived from the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.toolbase.html[ToolBase]"]  class. For more information, see link:wintoolbarsmanager-working-with-tool-types.html[Working with Tool Types].
 
 == Toolbar
 
@@ -26,11 +26,11 @@ WinToolbarsManager™ supports twelve native tool types. Internally in UltraTool
 
 Internally in UltraToolbarsManager, toolbars are represented by the UltraToolbar class.
 
-UltraToolbar objects have a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarbase~tools.html[Tools]"]  property which is a collection of ToolBase derived objects (i.e., Tools). The tools that reside in this collection are Instance Tools ( _see below_ )
+UltraToolbar objects have a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarbase~tools.html[Tools]"]  property which is a collection of ToolBase derived objects (i.e., Tools). The tools that reside in this collection are Instance Tools ( _see below_ )
 
 == Menu
 
-A menu is a special type of tool (called a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] ) that can contain other tools, and as such is a 'tool container' just like toolbars. Tools contained in a menu are rendered in typical menu fashion - as a vertical series of entries containing text and optionally an image. Tools on an UltraToolbarsManager Menu are analogous to MenuItems on a standard .NET menu. Within this documentation, the terms Menu and PopupMenu are used interchangeably.
+A menu is a special type of tool (called a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"] ) that can contain other tools, and as such is a 'tool container' just like toolbars. Tools contained in a menu are rendered in typical menu fashion - as a vertical series of entries containing text and optionally an image. Tools on an UltraToolbarsManager Menu are analogous to MenuItems on a standard .NET menu. Within this documentation, the terms Menu and PopupMenu are used interchangeably.
 
 PopupMenu Tools can be placed on Toolbars, or 'popped-up' as context menus anywhere on the desktop. When used in this fashion the menus are referred to as top-level menus. If a PopupMenuTool is added to another PopupMenuTool, it is referred to as a submenu
 
@@ -44,7 +44,7 @@ A submenu is the term for a menu that is embedded inside another menu. It is rep
 
 == Container
 
-The term container is used to refer to the object within which the UltraToolbarsManager displays and docks its toolbars. The container can be a form or a container control on a form. Since the UltraToolbarsManager is a Windows.Forms.Component which sits in the component tray beneath the forms designer in Visual Studio .NET IDE, it cannot be 'drawn' inside a container the way you would a control like a checkbox or button. Instead, UltraToolbarsManager has a property called  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer]"]  that lets you specify the form or container control that the UltraToolbarsManager should target.
+The term container is used to refer to the object within which the UltraToolbarsManager displays and docks its toolbars. The container can be a form or a container control on a form. Since the UltraToolbarsManager is a Windows.Forms.Component which sits in the component tray beneath the forms designer in Visual Studio .NET IDE, it cannot be 'drawn' inside a container the way you would a control like a checkbox or button. Instead, UltraToolbarsManager has a property called  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer]"]  that lets you specify the form or container control that the UltraToolbarsManager should target.
 
 == Dock Area
 
@@ -86,7 +86,7 @@ To summarize, root tools do not appear on toolbars or menus, rather they serve a
 
 == SharedProps and InstanceProps
 
-Every tool has two important properties that relate to their status as either Root Tools or Instance Tools. They are called  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.instanceprops.html[InstanceProps]"] .
+Every tool has two important properties that relate to their status as either Root Tools or Instance Tools. They are called  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.instanceprops.html[InstanceProps]"] .
 
 The SharedProps property on each tool returns the SharedProps object which contains properties that are shared across all instances of the tool. As a result, the SharedProps property of a Root Tool and the SharedProps property of all its related Instance Tools returns the same SharedProps object. The SharedProps object contains properties such as Appearance, Caption and Category.
 

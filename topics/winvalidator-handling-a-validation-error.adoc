@@ -16,14 +16,14 @@
 
 == Before You Begin
 
-When validating your controls, you're bound to get a few validation errors along the way; otherwise, there'd be no need to validate! You can leave handling these validation errors to WinValidator™ and its default settings, or you can handle the errors yourself in WinValidator's  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validationerror_ev.html[ValidationError]"]  event.
+When validating your controls, you're bound to get a few validation errors along the way; otherwise, there'd be no need to validate! You can leave handling these validation errors to WinValidator™ and its default settings, or you can handle the errors yourself in WinValidator's  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~validationerror_ev.html[ValidationError]"]  event.
 
 A few important arguments that the ValidationError event exposes are:
 
-*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationerroreventargs~control.html[Control]"]  – A reference to the validated control
-*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationerroreventargs~editor.html[Editor]"]  – A reference to the validated embeddable editor
-*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationerroreventargs~notificationsettings.html[NotificationSettings]"]  – An object that defines how you notify your end user of failed validations
-*  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationerroreventargs~validation.html[Validation]"]  – A collection of all validations, including failed ones
+*  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationerroreventargs~control.html[Control]"]  – A reference to the validated control
+*  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationerroreventargs~editor.html[Editor]"]  – A reference to the validated embeddable editor
+*  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationerroreventargs~notificationsettings.html[NotificationSettings]"]  – An object that defines how you notify your end user of failed validations
+*  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationerroreventargs~validation.html[Validation]"]  – A collection of all validations, including failed ones
 
 Each of these arguments is extremely useful in singling out individual controls that were validated, along with their associated validation results. You can even notify your end user in different ways for different controls. For example, you can notify your end users based on the control's name to individualize the notification based on each control, or you can notify your end user based on the condition a control is being validated by.
 
@@ -49,7 +49,7 @@ image::images/WinValidator_Handling_a_Validation_Error_01.png[handling a validat
 
 A likely scenario that you will need to validate is a password entry box. Therefore, you'll need to be certain that certain criteria are met, for instance, that the password contains only letters and numbers and is a certain length. In order to validate the password, you'll need to create an operator condition that fails validation when your end user's password does not match the given regular expression.
 
-Create a method that returns a  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object. In this method, you'll get the ValidationSettings object for whichever control you pass in (in this case, the text box). Once you have a reference to the control's ValidationSettings object, you can create a condition to validate the text box. Later on in this topic, you'll call this method when setting the text box's ValidationSettings object.
+Create a method that returns a  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.validationsettings.html[ValidationSettings]"]  object. In this method, you'll get the ValidationSettings object for whichever control you pass in (in this case, the text box). Once you have a reference to the control's ValidationSettings object, you can create a condition to validate the text box. Later on in this topic, you'll call this method when setting the text box's ValidationSettings object.
 
 *In Visual Basic:*
 
@@ -116,7 +116,7 @@ private ValidationSettings CreateRangeCondition(Control theControl)
 [start=4]
 . *Handle the specific validation errors for WinTextEditor and WinNumericEditor* .
 
-WinValidator exposes a ValidationError event which gives you access to every failed validation. In this event, you can use a SWITCH (SELECT in Visual Basic) statement or IF/ELSE statement to single out different controls and customize their error messages. In the ValidationError event, you'll use a SWITCH statement to apply different logic based on each control's name. In each case, you'll modify the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.notificationsettings.html[NotificationSettings]"]  object to notify your end users in different ways.
+WinValidator exposes a ValidationError event which gives you access to every failed validation. In this event, you can use a SWITCH (SELECT in Visual Basic) statement or IF/ELSE statement to single out different controls and customize their error messages. In the ValidationError event, you'll use a SWITCH statement to apply different logic based on each control's name. In each case, you'll modify the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.notificationsettings.html[NotificationSettings]"]  object to notify your end users in different ways.
 
 In the Form's designer, select the ultraValidator1 component. In the properties window, click the lightning bolt to display the available WinValidator events. Double-click the ValidationError event, Visual Studio creates the ValidationError event handler and you are now in code view. Add the following code to the ValidationError event handler.
 
@@ -176,7 +176,7 @@ switch (e.Control.Name)
 [start=5]
 . *Set WinTextEditor and WinNumericEditor's ValidationSettings by calling the previously defined methods* .
 
-WinValidator lets you set a control's ValidationSettings object through either the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~setvalidationsettings.html[SetValidationSettings]"]  or  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~getvalidationsettings.html[GetValidationSettings]"]  methods. Calling SetValidationSettings allows you to pass in a control and ValidationSettings object to quickly set the given control's ValidationSettings object. Calling the GetValidationSettings method will create a new ValidationSettings object, sets the given control's ValidationSettings property to that object, and returns that ValidationSettings object so you can modify it.
+WinValidator lets you set a control's ValidationSettings object through either the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~setvalidationsettings.html[SetValidationSettings]"]  or  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~getvalidationsettings.html[GetValidationSettings]"]  methods. Calling SetValidationSettings allows you to pass in a control and ValidationSettings object to quickly set the given control's ValidationSettings object. Calling the GetValidationSettings method will create a new ValidationSettings object, sets the given control's ValidationSettings property to that object, and returns that ValidationSettings object so you can modify it.
 
 In your Form's Load event, add the following code to set both the WinTextEditor's and WinNumericEditor's ValidationSettings property. Remember that the methods you defined earlier return a ValidationSettings object; therefore, you can pass that method in as the second parameter of the SetValidationSettings method.
 

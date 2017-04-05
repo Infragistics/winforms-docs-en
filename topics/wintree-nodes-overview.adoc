@@ -18,7 +18,7 @@ The WinTree™ control is based on a hierarchy of Nodes. Each node in the tree c
 
 == Overrides
 
-Many properties of nodes can be controlled on various levels of the tree, allowing for great flexibility and control. The programmer can set properties on a large group of nodes and then override those settings on a group of nodes or a single node. There are  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  objects on 4 levels. Each level has a smaller scope than the level above it, and the smaller the scope the higher the precedence.
+Many properties of nodes can be controlled on various levels of the tree, allowing for great flexibility and control. The programmer can set properties on a large group of nodes and then override those settings on a group of nodes or a single node. There are  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override.html[Override]"]  objects on 4 levels. Each level has a smaller scope than the level above it, and the smaller the scope the higher the precedence.
 
 Overrides in order of precedence from lowest to highest:
 
@@ -54,29 +54,29 @@ Node Appearances in order of precedence from lowest to highest:
 |====
 |Name|State
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~nodeappearance.html[NodeAppearance]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~nodeappearance.html[NodeAppearance]"] 
 |Default appearance of the node
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~expandednodeappearance.html[ExpandedNodeAppearance]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~expandednodeappearance.html[ExpandedNodeAppearance]"] 
 |Appearance of the node when it is expanded
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~selectednodeappearance.html[SelectedNodeAppearance]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~selectednodeappearance.html[SelectedNodeAppearance]"] 
 |Appearance of the node when it is selected
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~activenodeappearance.html[ActiveNodeAppearance]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~activenodeappearance.html[ActiveNodeAppearance]"] 
 |Appearance of the node when it is Active
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~hottrackingnodeappearance.html[HotTrackingNodeAppearance]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~hottrackingnodeappearance.html[HotTrackingNodeAppearance]"] 
 |Appearance of the node when it is HotTracking
 
-| pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~labeleditappearance.html[LabelEditAppearance]"] 
-|Appearance of the pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override~labeledit.html[LabelEdit]"] control when the node is in edit mode.
+| pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~labeleditappearance.html[LabelEditAppearance]"] 
+|Appearance of the pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override~labeledit.html[LabelEdit]"] control when the node is in edit mode.
 
 |====
 
 == LeftImages and RightImages
 
-In addition to the standard Image that is applied to a node via the Appearances, nodes can have a series of images displayed to the right or left of the text. Add images to the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~leftimages.html[LeftImages]"]  or  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~rightimages.html[RightImages]"]  collection to display addition images on a node.
+In addition to the standard Image that is applied to a node via the Appearances, nodes can have a series of images displayed to the right or left of the text. Add images to the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~leftimages.html[LeftImages]"]  or  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~rightimages.html[RightImages]"]  collection to display addition images on a node.
 
 == NodeStyle
 
@@ -93,7 +93,7 @@ Several different Styles of node are available for use in the WinTree to provide
 |The node simply displays text which may or may not be editable.
 
 |CheckBox
-|The node displays a CheckBox which can be checked or unchecked by the user, in addition to whatever Text and Image are displayed. To determine the state of a checkbox on a node, use the pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~checkedstate.html[CheckedState]"] property of the Node.
+|The node displays a CheckBox which can be checked or unchecked by the user, in addition to whatever Text and Image are displayed. To determine the state of a checkbox on a node, use the pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~checkedstate.html[CheckedState]"] property of the Node.
 
 |TriStateCheckBox
 |Same as CheckBox but with the capacity to show an indeterminate state.
@@ -105,7 +105,7 @@ Several different Styles of node are available for use in the WinTree to provide
 
 == Working with Nodes
 
-Accessing nodes in the tree can be done by  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~index.html[Index]"]  or by  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~key.html[Key]"] . When adding nodes to the tree, the keys must be unique across the entire tree. So a child node cannot have the same key as its parent node, its child nodes, or any other node anywhere in the same tree control. The only exception to this rule is if the node does not have a key. The key in this case will be null, and there can be an indefinite number of nodes with null keys. However, it is recommended that all nodes in the tree have a unique key so that the node can be accessed more easily.
+Accessing nodes in the tree can be done by  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~index.html[Index]"]  or by  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~key.html[Key]"] . When adding nodes to the tree, the keys must be unique across the entire tree. So a child node cannot have the same key as its parent node, its child nodes, or any other node anywhere in the same tree control. The only exception to this rule is if the node does not have a key. The key in this case will be null, and there can be an indefinite number of nodes with null keys. However, it is recommended that all nodes in the tree have a unique key so that the node can be accessed more easily.
 
 == Accessing nodes by Index
 
@@ -184,11 +184,11 @@ private void IterateNodes ( UltraTreeNode node )
 
 == Accessing a specific node
 
-If you want to access a specific node anywhere in the tree, you can do so if the node has a key by using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method. This method use is demonstrated in the next section Accessing a Relative Node.
+If you want to access a specific node anywhere in the tree, you can do so if the node has a key by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method. This method use is demonstrated in the next section Accessing a Relative Node.
 
 == Accessing a relative node
 
-If you want to get a node which is relative to another node, you can do this via the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~hassibling.html[HasSibling]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~getsibling.html[GetSibling]"]  methods of the node.
+If you want to get a node which is relative to another node, you can do this via the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~hassibling.html[HasSibling]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~getsibling.html[GetSibling]"]  methods of the node.
 
 *In Visual Basic:*
 
@@ -262,7 +262,7 @@ private void btnSiblings_Click(object sender, EventArgs e)
 
 == Accessing a node at a mouse position
 
-To get the node under the current position of the mouse, or any set of coordinates within the tree control, use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodefrompoint.html[GetNodeFromPoint]"]  method.
+To get the node under the current position of the mouse, or any set of coordinates within the tree control, use the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~getnodefrompoint.html[GetNodeFromPoint]"]  method.
 
 *In Visual Basic:*
 
@@ -300,7 +300,7 @@ private void ultraTree1_MouseUp(object sender, System.Windows.Forms.MouseEventAr
 
 == Repositioning Nodes
 
-To move a node to a new position, either within the same parent, to a different parent, or even to a different tree control, you can use the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~reposition.html[Reposition]"]  method of the node.
+To move a node to a new position, either within the same parent, to a different parent, or even to a different tree control, you can use the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~reposition.html[Reposition]"]  method of the node.
 
 *In Visual Basic:*
 

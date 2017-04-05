@@ -55,7 +55,7 @@ This topic contains the following sections:
 
 === Overview summary
 
-When a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance is complete and used to generate the lexical and syntax analyzers, it must be in a valid state. There are certain things which are not allowed because they are either logical contradictions or because they lack sufficient information needed to create the analyzers. Here are the conditions which make a `Grammar` invalid.
+When a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar.html[Grammar] instance is complete and used to generate the lexical and syntax analyzers, it must be in a valid state. There are certain things which are not allowed because they are either logical contradictions or because they lack sufficient information needed to create the analyzers. Here are the conditions which make a `Grammar` invalid.
 
 [[_Ref349293354]]
 == Start Symbol Not Set
@@ -64,31 +64,31 @@ When a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.d
 
 === Restriction summary
 
-The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol] is not set – without specifying the start symbol the Syntax Parsing Engine does not know what non-terminal symbol should be at the root of the syntax trees.
+The link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol] is not set – without specifying the start symbol the Syntax Parsing Engine does not know what non-terminal symbol should be at the root of the syntax trees.
 
 .Note
 [NOTE]
 ====
-This only applies when link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[Grammar.SupportsParsing] is true.
+This only applies when link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[Grammar.SupportsParsing] is true.
 ====
 
 [[_Ref349293359]]
 == No Symbols Defined for a Lexer State
 
-It is not very useful if a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[LexerState.Symbols] collection is empty. If there are no terminal symbols in a lexer state, it would only create tokens associated with the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol] and it can never be exited. Therefore, each lexer state must contain at least one terminal symbol.
+It is not very useful if a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate~symbols.html[LexerState.Symbols] collection is empty. If there are no terminal symbols in a lexer state, it would only create tokens associated with the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol] and it can never be exited. Therefore, each lexer state must contain at least one terminal symbol.
 
 [[_Ref349293363]]
 == No Rule Defined for a Non-Terminal Symbol
 
-A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[NonTerminalSymbol.Rule] is `null` – All non-terminal symbols need to have at least one production and so they need to have at least one rule in their rule tree. If a non-terminal symbol is meant to match nothing (like the omitted argument in Visual Basic), then the `Rule` should be set to an instance of link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule].
+A link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[NonTerminalSymbol.Rule] is `null` – All non-terminal symbols need to have at least one production and so they need to have at least one rule in their rule tree. If a non-terminal symbol is meant to match nothing (like the omitted argument in Visual Basic), then the `Rule` should be set to an instance of link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule].
 
 [[_Ref349293371]]
 == A Non-Terminal Symbol’s Rule is Invalid
 
 A rule in a non-terminal symbol’s rule tree is invalid based on one of the following conditions:
 
-* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule] has fewer than two child rules – These rules are meant to contain multiple rules. One of many options must be used for an alternation rule and multiple rules must be concatenated together for a concatenation rule. It doesn’t make sense for these rules to contain zero or one child rule.
-* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule] has a `null` link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule~exception.html[Exception] or link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property.
+* An link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule] or link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule] has fewer than two child rules – These rules are meant to contain multiple rules. One of many options must be used for an alternation rule and multiple rules must be concatenated together for a concatenation rule. It doesn’t make sense for these rules to contain zero or one child rule.
+* An link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule] has a `null` link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.exceptionsyntaxrule~exception.html[Exception] or link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.syntaxruleownerbase~rule.html[Rule] property.
 * An `ExceptionSyntaxRule.Exception` property is a rule tree which contains one or more recursively defined symbols – recursion is not allowed in syntactic exceptions. This includes repetition symbols (which require recursively defined productions internally). So the following production would be invalid in a grammar
 
 RestrictedBlock → Block-{Statement}
@@ -110,11 +110,11 @@ RestrictedLetter → Letter-(AThruM|NThruZ)
 
 “RestrictedLetter” now has a contradiction and will cause the grammar to be invalid.
 
-* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has a `null` `Rule` property
-* An link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] has a `null` `Rule` property
-* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule] has a `null` `Rule` property
-* A link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule] has a Symbol which doesn’t belong to the Grammar
-* A `SymbolReferenceSyntaxRule` references the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~endofstreamsymbol.html[Grammar.EndOfStreamSymbol] and the owning non-terminal symbol is not the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[Grammar.StartSymbol] – Only the start symbol can expect the symbol indicating the end of a document. It doesn’t make sense for another symbol to use it in one of its productions because they are by definition somewhere in the interior of the document. There are even some restrictions to how the start symbol can use it. The start symbol can only reference the end of stream symbol if it has only one production of the following form
+* A link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule] has a `null` `Rule` property
+* An link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule] has a `null` `Rule` property
+* A link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule] has a `null` `Rule` property
+* A link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule] has a Symbol which doesn’t belong to the Grammar
+* A `SymbolReferenceSyntaxRule` references the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~endofstreamsymbol.html[Grammar.EndOfStreamSymbol] and the owning non-terminal symbol is not the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~startsymbol.html[Grammar.StartSymbol] – Only the start symbol can expect the symbol indicating the end of a document. It doesn’t make sense for another symbol to use it in one of its productions because they are by definition somewhere in the interior of the document. There are even some restrictions to how the start symbol can use it. The start symbol can only reference the end of stream symbol if it has only one production of the following form
 
 StartSymbol → SomeOtherNonTerminalSymbol EndOfStreamSymbol
 

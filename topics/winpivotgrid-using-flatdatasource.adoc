@@ -18,7 +18,7 @@
 
 === Purpose
 
-This topic explains how to use the link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.flatdatasource_members.html[FlatDataSource] class for displaying  _IEnumerable_   data in the  _WinPivotGrid_™.
+This topic explains how to use the link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.flatdatasource_members.html[FlatDataSource] class for displaying  _IEnumerable_   data in the  _WinPivotGrid_™.
 
 === Application Requirements
 
@@ -141,17 +141,17 @@ This section describes the process which makes it possible to simulate the OLAP 
 
 |====
 
-When a FlatDataSource is instantiated with a reference to the `List<SportsData>` and calls the link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.flatdatasource~generatecube.html[GenerateCube] method, the following sequence of events take place:
+When a FlatDataSource is instantiated with a reference to the `List<SportsData>` and calls the link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.flatdatasource~generatecube.html[GenerateCube] method, the following sequence of events take place:
 
-1. A list of link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.olapaxiselementdescriptorbase~propertydescriptor.html[PropertyDescriptor] objects describing the publicly exposed properties for that class is obtained via the `TypeDescriptor.GetProperties` method.
+1. A list of link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.olapaxiselementdescriptorbase~propertydescriptor.html[PropertyDescriptor] objects describing the publicly exposed properties for that class is obtained via the `TypeDescriptor.GetProperties` method.
 
 2. The property descriptor list is iterated.
 
-3. Each property of a numeric type (in this example, the “Budget” and “Players” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.measuredescriptor_members.html[MeasureDescriptor], which defines the schematic attributes of the resulting Measures which can appear on the measures slice of the cube.
+3. Each property of a numeric type (in this example, the “Budget” and “Players” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.measuredescriptor_members.html[MeasureDescriptor], which defines the schematic attributes of the resulting Measures which can appear on the measures slice of the cube.
 
-4. Each property of a non-numeric type (in this example, the “Nation”, “City” and “Sport” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor], which defines the schematic attributes of the resulting Hierarchies which can appear on the row, column, or filter dimensions.
+4. Each property of a non-numeric type (in this example, the “Nation”, “City” and “Sport” members) triggers creation of a link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor], which defines the schematic attributes of the resulting Hierarchies which can appear on the row, column, or filter dimensions.
 
-5. For each link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor] a corresponding link:{ApiPlatform}olap.datasource.flat.v{ProductVersion}~infragistics.olap.flatdata.leveldescriptor_members.html[LevelDescriptor] objects of the `HierarchyDescriptor` are generated.
+5. For each link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.hierarchydescriptor_members.html[HierarchyDescriptor] a corresponding link:{ApiPlatform}olap.datasource.flat{ApiVersion}~infragistics.olap.flatdata.leveldescriptor_members.html[LevelDescriptor] objects of the `HierarchyDescriptor` are generated.
 
 * Non-numeric members are represented by two levels that are generated as “All Member” level and default level. Headers for the “All Member” level are expandable, and allow to show or hide the headers which represent data members of that dimension on a default level.
 * DateTime member is represented by three levels, generated as: (1) for the year, (2) for the month, and (3) for the date. Expanding the year will show one or more months, each of which is also expandable. Finally, expanding a month header shows the dates in that month.

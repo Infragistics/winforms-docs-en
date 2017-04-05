@@ -16,9 +16,9 @@
 
 {Warning}
 
-When the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~office2007uicompatibility.html[Office2007UICompatibility]"]  property is set to True, the Ribbon cannot display at the same time as a main menu toolbar. Even though the main menu toolbar doesn't display, it's still there, just hidden. Because the main menu still exists, the mnemonics still exist. However, the Ribbon creates its own KeyTips for the Application Menu, Quick Access Toolbar, Tabs, Groups, and Tools, and can create KeyTips that are the same as some of the mnemonics that still exist from the main menu toolbar.
+When the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~office2007uicompatibility.html[Office2007UICompatibility]"]  property is set to True, the Ribbon cannot display at the same time as a main menu toolbar. Even though the main menu toolbar doesn't display, it's still there, just hidden. Because the main menu still exists, the mnemonics still exist. However, the Ribbon creates its own KeyTips for the Application Menu, Quick Access Toolbar, Tabs, Groups, and Tools, and can create KeyTips that are the same as some of the mnemonics that still exist from the main menu toolbar.
 
-You can prevent the Ribbon from creating conflicting KeyTips by setting the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~reservemenubarkeytips.html[ReserveMenuBarKeyTips]"]  to True. When the user types a KeyTip matching one of these hidden mnemonics, a message displays and the end user will be able to navigate through the hidden menu to a tool.
+You can prevent the Ribbon from creating conflicting KeyTips by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ribbon~reservemenubarkeytips.html[ReserveMenuBarKeyTips]"]  to True. When the user types a KeyTip matching one of these hidden mnemonics, a message displays and the end user will be able to navigate through the hidden menu to a tool.
 
 *In Visual Basic:*
 

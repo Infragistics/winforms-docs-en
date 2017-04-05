@@ -14,7 +14,7 @@
 
 = Setting Focus on a Cell for Editing
 
-Sometimes you may want to force focus into a cell and put that cell into edit mode to indicate to a user that a value needs to be changed. This can be accomplished by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~activecell.html[ActiveCell]"]  property of the grid, and then calling  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~performaction.html[PerformAction]"]  to put the cell into Edit mode.
+Sometimes you may want to force focus into a cell and put that cell into edit mode to indicate to a user that a value needs to be changed. This can be accomplished by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~activecell.html[ActiveCell]"]  property of the grid, and then calling  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~performaction.html[PerformAction]"]  to put the cell into Edit mode.
 
 == To force focus on a cell and place the cell in Edit mode:
 
@@ -34,7 +34,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. You need a reference to the cell you want to set focus to. In this case, assume the cell is in the active row and is in a column called "CompanyName" You get a reference to the cell by using the Cells collection of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~activerow.html[ActiveRow]"]  object.
+. You need a reference to the cell you want to set focus to. In this case, assume the cell is in the active row and is in a column called "CompanyName" You get a reference to the cell by using the Cells collection of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~activerow.html[ActiveRow]"]  object.
 
 *In Visual Basic:*
 

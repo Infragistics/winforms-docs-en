@@ -20,7 +20,7 @@ WinSpellChecker™ is capable of customizing the end user's spell checking exper
 |====
 |Property|Default Value|Description|Example
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowcapitalizedwords.html[AllowCapitalizedWords]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowcapitalizedwords.html[AllowCapitalizedWords]"] 
 |False
 |WinSpellChecker checks the spelling of words with all capital letters. For example, the words in the Example column would be spelling errors.
 |AJAX 
@@ -29,14 +29,14 @@ ATLAS
 
 XML
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowcaseinsensitivesuggestions.html[AllowCaseInsensitiveSuggestions]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowcaseinsensitivesuggestions.html[AllowCaseInsensitiveSuggestions]"] 
 |True
 |WinSpellChecker converts the entire word to lowercase before spell checking it. For example, the words "bmW" or bMw would have the same suggestions, as illustrated in the Example column.
 |BMW 
 
 bum
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowmixedcase.html[AllowMixedCase]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowmixedcase.html[AllowMixedCase]"] 
 |False
 |WinSpellChecker treats words with mixed upper and lowercase letters as misspellings if they are not in the dictionary exactly as is. For example, The words in the Example column will be spelling errors.
 |HoUsE 
@@ -45,7 +45,7 @@ PeoPLe
 
 DoG
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowwordswithdigits.html[AllowWordsWithDigits]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowwordswithdigits.html[AllowWordsWithDigits]"] 
 |False
 |WinSpellChecker treats words with numbers in them (see the Example column) as misspelled words.
 |ultraWinGrid1 
@@ -54,7 +54,7 @@ e11even
 
 Allevi8
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowxml.html[AllowXml]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~allowxml.html[AllowXml]"] 
 |True
 |WinSpellChecker does not attempt to check the spelling of XML and HTML tags. For example, the tags in the Example column would be ignored.
 |<html> 
@@ -63,7 +63,7 @@ Allevi8
 
 <span>
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~checkcompoundwords.html[CheckCompoundWords]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~checkcompoundwords.html[CheckCompoundWords]"] 
 |False
 |WinSpellChecker ignores words that should be separated by a space. This property is handy in languages such as German where two words can be combined to form a compound word (e.g. liederhosen). For example, the words in the Example column would not be spelling errors if this property were set to True. 
 
@@ -84,7 +84,7 @@ Tooltips
 
 CheckCompoundWords
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~checkhyphenatedtext.html[CheckHyphenatedText]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~checkhyphenatedtext.html[CheckHyphenatedText]"] 
 |True
 |WinSpellChecker looks at each part of the hyphenated word to determine if there is a spelling error. Setting this property to False will force WinSpellChecker to check for the entire hyphenated word in the dictionary, not the separate parts. For example, the words in the Example column will all be spelling errors if this property is set to False; even though the separate words are spelled correctly.
 |right-click 
@@ -93,17 +93,17 @@ spell-checker
 
 hair-gel
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~considerationrange.html[ConsiderationRange]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~considerationrange.html[ConsiderationRange]"] 
 |80
 |WinSpellChecker considers suggested words with up to 80 characters for misspelled words. Setting this property to a lower value will increase the speed with which WinSpellChecker retrieves suggestions. If this value is set to a negative number at run time, it will default to 80.
 |If the ConsiderationRange is 3 and the misspelled word is 'carr', WinSpellChecker will suggest 'car'. If the ConsiderationRange is then set to 4, WinSpellChecker would then suggest 'care' as well as 'car'.
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~includeuserdictionaryinsuggestions.html[IncludeUserDictionaryInSuggestions]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~includeuserdictionaryinsuggestions.html[IncludeUserDictionaryInSuggestions]"] 
 |True
 |WinSpellChecker uses the user dictionary along with the default dictionary when suggesting corrections for misspelled words.
 |
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~languageparser.html[LanguageParser]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~languageparser.html[LanguageParser]"] 
 |0
 |WinSpellChecker can use nine different language parsers to give the spell checking engine hints about punctuation usage. This property should match the language of the dictionary file being used.
 |0 – English 
@@ -120,7 +120,7 @@ hair-gel
 
 6 – Spanish
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~separatehyphenwords.html[SeparateHyphenWords]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~separatehyphenwords.html[SeparateHyphenWords]"] 
 |False
 |WinSpellChecker treats words with hyphens as one word. If set to True, only the misspelled portion of the hyphenated word is treated as an error.
 |SeparateHyphenWords = False: 
@@ -139,7 +139,7 @@ Right-clck (only 'clck' is an error)
 
 ____
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~splitwordthreshold.html[SplitWordThreshold]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~splitwordthreshold.html[SplitWordThreshold]"] 
 |2
 |WinSpellChecker will retrieve suggestions for words as small as two characters. SuggestSplitWords must be set to True in order to use this property.
 |SplitWordThreshold = 2 
@@ -158,14 +158,14 @@ Asfault ('As fault' is not considered)
 
 ____
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~suggestionmethod.html[SuggestionsMethod]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~suggestionmethod.html[SuggestionsMethod]"] 
 |0
 |WinSpellChecker will find suggestions by hashing the misspelled word. If set to PhoneticSuggestions, WinSpellChecker will search for suggestions phonetically.
 |0 – HashingSuggestions 
 
 1 – PhoneticSuggestions
 
-| pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spelloptions~suggestsplitwords.html[SuggestSplitWords]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spelloptions~suggestsplitwords.html[SuggestSplitWords]"] 
 |True
 |If WinSpellChecker can see that a combined word is two separate words, the split word will appear as a suggestion. CheckCompoundWords must be set to False in order for this property to be used.
 |'helloword' will have 'hello world' as a suggestion.

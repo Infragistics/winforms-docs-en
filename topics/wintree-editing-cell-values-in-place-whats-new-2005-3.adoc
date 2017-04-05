@@ -16,7 +16,7 @@
 
 You can now edit cell values in-place. In addition to the in-place cell editing support, the control has been modified to support writing the result of an edit mode session back to the corresponding data field, in the case where the control is data-bound.
 
-Since the WinGrid™ control automatically assigns the appropriate embeddable editor to be used by a column based on its data type, the WinTree™ has been modified to do the same thing. Note that to maintain backward compatibility, editors will not be automatically selected unless the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowcelledit.html[AllowCellEdit]"]  property is set to a non-default value for the column, or its associated ColumnSet (or ColumnSettings).
+Since the WinGrid™ control automatically assigns the appropriate embeddable editor to be used by a column based on its data type, the WinTree™ has been modified to do the same thing. Note that to maintain backward compatibility, editors will not be automatically selected unless the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreecolumnset~allowcelledit.html[AllowCellEdit]"]  property is set to a non-default value for the column, or its associated ColumnSet (or ColumnSettings).
 
 * Added support to edit cells in-place via the existing embeddable editor architecture.
 * Added basic support to navigate between cells with the keyboard.

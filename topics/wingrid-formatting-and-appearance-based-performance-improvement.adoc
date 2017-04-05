@@ -30,7 +30,7 @@ foreach (UltraGridRow row in this.ultraGrid1.Rows)
     row. Cells ["Price"].Value = (double) row. Cells ["Price"].Value + 1.0;
   }
 
-Each time a cell is updated, some part of the grid will be invalidated and may re-paint itself on the screen many times. In a case like this, the grid can be explicitly prevented from painting by disabling the painting before the loop begins and re-enabling it once all operations are complete. By using this logic, you can update the Grid millions of times and when you are done and re-enable the painting, it just re-paints once. This alone will yield great savings in CPU usage and results in drastically increased performance. This can all be achieved with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultracontrolbase~beginupdate.html[BeginUpdate]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~endupdate.html[EndUpdate]"]  methods.
+Each time a cell is updated, some part of the grid will be invalidated and may re-paint itself on the screen many times. In a case like this, the grid can be explicitly prevented from painting by disabling the painting before the loop begins and re-enabling it once all operations are complete. By using this logic, you can update the Grid millions of times and when you are done and re-enable the painting, it just re-paints once. This alone will yield great savings in CPU usage and results in drastically increased performance. This can all be achieved with the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultracontrolbase~beginupdate.html[BeginUpdate]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~endupdate.html[EndUpdate]"]  methods.
 
 *Note:* A try…finally block is used here to make sure that no matter what happens, the grid’s painting always gets turned back on eventually.
 
@@ -62,7 +62,7 @@ finally
 
 . *Row Synchronization*
 +
-When making changes to the Grid’s DataSource directly, most data sources will notify the Grid of changes and as a result, the Grid will perform some internal processing, even if it is not painting. This internal processing can be turned off and some performance can be gained using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~suspendrowsynchronization.html[SuspendRowSynchronization]"] /  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~resumerowsynchronization.html[ResumeRowSynchronization]"]  methods. These methods should always be called inside a block with `BeginUpdate` and `EndUpdate`.
+When making changes to the Grid’s DataSource directly, most data sources will notify the Grid of changes and as a result, the Grid will perform some internal processing, even if it is not painting. This internal processing can be turned off and some performance can be gained using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~suspendrowsynchronization.html[SuspendRowSynchronization]"] /  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~resumerowsynchronization.html[ResumeRowSynchronization]"]  methods. These methods should always be called inside a block with `BeginUpdate` and `EndUpdate`.
 +
 *In Visual Basic:*
 [source, vb]
@@ -102,11 +102,11 @@ finally
 
 . *CellDisplayStyle Property*
 +
-By default, every cell in the grid uses an Editor to display and edit its value. Editors have a lot of power and flexibility, providing valuelists, color pickers, date dropdowns, masking, checkboxes, buttons and many other editor styles. But with all these features come extra overhead and more complex painting. The Grid cannot know what features your application will and will not need at run-time, so by default, all features are enabled. However, if you know you will not be using certain features in a column, you can turn some features off by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell~celldisplaystyle.html[CellDisplayStyle]"]  property.
+By default, every cell in the grid uses an Editor to display and edit its value. Editors have a lot of power and flexibility, providing valuelists, color pickers, date dropdowns, masking, checkboxes, buttons and many other editor styles. But with all these features come extra overhead and more complex painting. The Grid cannot know what features your application will and will not need at run-time, so by default, all features are enabled. However, if you know you will not be using certain features in a column, you can turn some features off by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcell~celldisplaystyle.html[CellDisplayStyle]"]  property.
 
 . *EditAreaDisplayStyle Property*
 +
-When an item is selected from a WinDropDown (or WinCombo) attached to a cell, the item’s appearance is copied into the WinGrid cell. For example if an image exits in the list of WinDropDown items, the image will appear in the WinGrid cell when the corresponding item is selected from the DropDown. In order to handle this, the WinDropDown searches the list of items to find the largest image and space the cell accordingly. This searching of the list can slow down the painting of the WinGrid. Therefore, by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultradropdownbase~editareadisplaystyle.html[EditAreaDisplayStyle]"]  property of WinDropDown to DisplayText, implies that the WinGrid cell displays only Text and it does not display images, based on the items selected from the WinDropDown.
+When an item is selected from a WinDropDown (or WinCombo) attached to a cell, the item’s appearance is copied into the WinGrid cell. For example if an image exits in the list of WinDropDown items, the image will appear in the WinGrid cell when the corresponding item is selected from the DropDown. In order to handle this, the WinDropDown searches the list of items to find the largest image and space the cell accordingly. This searching of the list can slow down the painting of the WinGrid. Therefore, by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultradropdownbase~editareadisplaystyle.html[EditAreaDisplayStyle]"]  property of WinDropDown to DisplayText, implies that the WinGrid cell displays only Text and it does not display images, based on the items selected from the WinDropDown.
 
 . *ValueLists*
 +
@@ -132,13 +132,13 @@ The UltraDropDown control has a property called DropDownSearchMethod, which defa
 
 . *Recursion*
 +
-The WinGrid drills down into its data source and creates a CurrencyManager for every level. If the Grid is bound to a recursive data source, this means that the Grid will, by default, create 100 levels of CurrencyManagers. The number 100 is the default of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~maxbanddepth.html[MaxBandDepth]"]  property. Each level of depth in the data source will increase the number of CurrencyManagers in a logarithmic scale. So the first level of the grid only requires 1 CurrencyManager. The second level requires one CurrencyManager for each row in the first level. The third level of depth requires one CurrencyManager for each row in the second level, and so on. This can quickly add up to a huge memory footprint and make it very difficult for the Grid to synchronize its current row with the current Position of the CurrencyManager.
+The WinGrid drills down into its data source and creates a CurrencyManager for every level. If the Grid is bound to a recursive data source, this means that the Grid will, by default, create 100 levels of CurrencyManagers. The number 100 is the default of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~maxbanddepth.html[MaxBandDepth]"]  property. Each level of depth in the data source will increase the number of CurrencyManagers in a logarithmic scale. So the first level of the grid only requires 1 CurrencyManager. The second level requires one CurrencyManager for each row in the first level. The third level of depth requires one CurrencyManager for each row in the second level, and so on. This can quickly add up to a huge memory footprint and make it very difficult for the Grid to synchronize its current row with the current Position of the CurrencyManager.
 +
 To alleviate this kind of issue, two things can be done.
 +
 .. Set MaxBandDepth to a more reasonable number. Very few end-users will find it useful to drill down into the data 100 levels deep. They will become lost long before they ever reach that point. A value of between 5 and 8 usually gives a good balance between displaying a reasonable depth of data and still having a grid that performs well.
 
-.. Set link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~syncwithcurrencymanager.html[SyncWithCurrencyManager] to false. This tells the grid not to synchronize the current row with the current position of the CurrencyManager. This means that if there are other controls in the application bound to the same data source as the Grid, changing the Grid’s current row will not position the CurrencyManager and thus not update the other controls. But very often, this is not necessary, anyway.
+.. Set link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~syncwithcurrencymanager.html[SyncWithCurrencyManager] to false. This tells the grid not to synchronize the current row with the current position of the CurrencyManager. This means that if there are other controls in the application bound to the same data source as the Grid, changing the Grid’s current row will not position the CurrencyManager and thus not update the other controls. But very often, this is not necessary, anyway.
 
 . *Using a BindingSource*
 +
@@ -160,7 +160,7 @@ As mentioned briefly above (under ValueLists) thrown exceptions can have a big i
 
 . *Deferred Scrolling*
 +
-Setting the WinGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~scrollstyle.html[Scroll style]"]  property Deferred causes WinGrid to render rows when scrolling is complete, significantly increasing application usability when dealing with large record quantities.
+Setting the WinGrid control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~scrollstyle.html[Scroll style]"]  property Deferred causes WinGrid to render rows when scrolling is complete, significantly increasing application usability when dealing with large record quantities.
 +
 In deferred mode, WinGrid’s display is not updated when the scrollbar is being dragged. It is updated only when dragging the scrollbar has stopped and the thumb track is released. Since row information is not known until the thumb track is released, scroll tips are provided instead.
 +
@@ -174,7 +174,7 @@ this.ultraGrid1.DisplayLayout.ScrollStyle = ScrollStyle.Deferred;
 
 . *Always showing Expansion Indicators*
 +
-Row Expansion Indicators can be shown or hidden depending upon whether or not child records exist for a parent row. Setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~expansionindicator.html[ShowExpansionIndicator]"]  property to always will always display the expansion Indicator for all the bands and thus avoids scanning of each parent record to check for any child records, thus improving WinGrid performance.
+Row Expansion Indicators can be shown or hidden depending upon whether or not child records exist for a parent row. Setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~expansionindicator.html[ShowExpansionIndicator]"]  property to always will always display the expansion Indicator for all the bands and thus avoids scanning of each parent record to check for any child records, thus improving WinGrid performance.
 +
 *In Visual Basic:*
 [source, vb]
@@ -187,7 +187,7 @@ Infragistics.Win.UltraWinGrid.ShowExpansionIndicator.Always;
 
 . *CellHottrackInvalidationStyle*
 +
-WinGrid always invalidates a cell when entering or leaving the cell with the mouse. This causes the cell to redraw itself. In many situations, you may find that there are actually no changes (visually or in the underlying data) taking place and therefore no invalidation is needed. In order to increase performance, you can set  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~cellhottrackinvalidationstyle.html[CellHottrackInvalidationStyle]"]  to Never and WinGrid will never invalidate a cell, which would result in WinGrid not redrawing the cell.
+WinGrid always invalidates a cell when entering or leaving the cell with the mouse. This causes the cell to redraw itself. In many situations, you may find that there are actually no changes (visually or in the underlying data) taking place and therefore no invalidation is needed. In order to increase performance, you can set  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~cellhottrackinvalidationstyle.html[CellHottrackInvalidationStyle]"]  to Never and WinGrid will never invalidate a cell, which would result in WinGrid not redrawing the cell.
 +
 *In Visual Basic:*
 [source, vb]

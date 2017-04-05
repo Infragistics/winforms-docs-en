@@ -20,7 +20,7 @@ For the most part, comparing a cell's value to a single condition will be good e
 
 == What You Will Accomplish
 
-In order to accomplish the above-mentioned scenario, you would need to create two conditions. For this topic, we'll use Operator conditions as you don't need to customize them much. Once you create your conditions (one to test the low bounds, another to test the high bounds), you will create a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.conditionvalueappearance.html[ConditionValueAppearance]"]  object and add both conditions, with matching appearances, to the ConditionValueAppearance object. The only thing left to do is set that ConditionValueAppearance object to the Column's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~valuebasedappearance.html[ValueBasedAppearance]"]  property.
+In order to accomplish the above-mentioned scenario, you would need to create two conditions. For this topic, we'll use Operator conditions as you don't need to customize them much. Once you create your conditions (one to test the low bounds, another to test the high bounds), you will create a  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.conditionvalueappearance.html[ConditionValueAppearance]"]  object and add both conditions, with matching appearances, to the ConditionValueAppearance object. The only thing left to do is set that ConditionValueAppearance object to the Column's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~valuebasedappearance.html[ValueBasedAppearance]"]  property.
 
 == Follow These Steps
 
@@ -94,7 +94,7 @@ private void Combining_Multiple_Conditions_Load(object sender, EventArgs e)
 [start=4]
 . *Create the Operator conditions.*
 
-Instantiate two  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"]  objects. The first should test the cell's value if it is less than 0, the second if it is greater than 5. The first parameter passed into the constructor is a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.operatorcondition~conditionoperator.html[ConditionOperator]"] . There are several built-in operators to choose from. The second parameter is the value that you want to test the cell value against.
+Instantiate two  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"]  objects. The first should test the cell's value if it is less than 0, the second if it is greater than 5. The first parameter passed into the constructor is a  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.operatorcondition~conditionoperator.html[ConditionOperator]"] . There are several built-in operators to choose from. The second parameter is the value that you want to test the cell value against.
 
 *In Visual Basic:*
 

@@ -14,7 +14,7 @@
 
 = Tooltip Settings for Tasks
 
-This topic demonstrates the various tooltip customization options available for tasks displayed in the WinGanttView™ control. Tooltips are displayed for tasks that are visible in the chart area of the control. The tooltip settings exist within the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinesettings.html[TimelineSettings] object of the control. For more information on adding tasks to GanttView please see the link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView] topic.
+This topic demonstrates the various tooltip customization options available for tasks displayed in the WinGanttView™ control. Tooltips are displayed for tasks that are visible in the chart area of the control. The tooltip settings exist within the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttview~timelinesettings.html[TimelineSettings] object of the control. For more information on adding tasks to GanttView please see the link:winganttview-adding-tasks-to-winganttview.html[Adding Tasks to WinGanttView] topic.
 
 The following code assumes that you have an UltraGanttView control dropped onto the form that displays parent and child tasks.
 
@@ -54,7 +54,7 @@ this.ultraGanttView1.TimelineSettings.ToolTipSettingsDeadline.DisplayCompleteThr
 this.ultraGanttView1.TimelineSettings.ToolTipSettingsSummary.DisplayDuration = DefaultableBoolean.False;
 ----
 
-The link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.tasktooltipdisplayingeventargs.html[TaskToolTipDisplaying] event can be fired to add tooltips to Tasks.
+The link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.tasktooltipdisplayingeventargs.html[TaskToolTipDisplaying] event can be fired to add tooltips to Tasks.
 
 *In Visual Basic:*
 

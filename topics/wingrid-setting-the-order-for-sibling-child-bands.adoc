@@ -14,7 +14,7 @@
 
 = Setting the Order for Sibling Child Bands
 
-WinGrid™ displays sibling child bands in the order in which they are provided by the BindingManager and previously there was no way to change this order. But now, a new  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~visibleposition.html[VisiblePosition]"]  property has been added to the UltraGridBand. This new property will default to 0 for all bands. When the WinGrid displays sibling bands, it will sort them based on the VisiblePosition from lowest to highest. So sibling bands with the lowest VisibilePosition will appear first and those with the highest VisiblePosition will appear last.
+WinGrid™ displays sibling child bands in the order in which they are provided by the BindingManager and previously there was no way to change this order. But now, a new  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~visibleposition.html[VisiblePosition]"]  property has been added to the UltraGridBand. This new property will default to 0 for all bands. When the WinGrid displays sibling bands, it will sort them based on the VisiblePosition from lowest to highest. So sibling bands with the lowest VisibilePosition will appear first and those with the highest VisiblePosition will appear last.
 
 .Note
 [NOTE]

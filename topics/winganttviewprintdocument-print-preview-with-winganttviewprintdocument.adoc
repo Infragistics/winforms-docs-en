@@ -80,7 +80,7 @@ The following steps demonstrate how to setup WinGanttView, WinGanttViewPrintDocu
 
 === Assign UltraGanttView control to UltraGanttViewPrintDocument component.
 
-The UltraGanttViewPrintDocument component exposes a link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview_members.html[GanttView] property to which the UltraGanttView control on the form must be assigned.
+The UltraGanttViewPrintDocument component exposes a link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttview_members.html[GanttView] property to which the UltraGanttView control on the form must be assigned.
 
 *In Visual Basic:*
 
@@ -98,7 +98,7 @@ this.ultraGanttViewPrintDocument1.GanttView = this.ultraGanttView1;
 
 === Assign UltraGanttViewPrintDocument to UltraPrintPreviewDialog component.
 
-The UltraGanttViewPrintDocument component must be assigned to the link:infragistics4.win.ultrawinprintpreviewdialog.v{ProductVersion}~infragistics.win.printing.ultraprintpreviewdialog~document.html[Document] property of UltraPrintPreviewDialog.
+The UltraGanttViewPrintDocument component must be assigned to the link:{ApiPlatform}win.ultrawinprintpreviewdialog{ApiVersion}~infragistics.win.printing.ultraprintpreviewdialog~document.html[Document] property of UltraPrintPreviewDialog.
 
 *In Visual Basic:*
 
@@ -154,6 +154,6 @@ The following topics provide additional information related to this topic.
 |This topic provides information about the Legend feature of the WinGanttViewPrintDocument™ component.
 
 | link:winganttviewprintdocument-customizing-the-print-version-of-the-winganttview-control.html[Customizing the Print Version of the WinGanttView Control]
-|This topic explains, with code examples, how to customize the Print Version of the WinGanttView control using the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttviewprintdocument~initializeganttview_ev.html[InitializeGanttView] event.
+|This topic explains, with code examples, how to customize the Print Version of the WinGanttView control using the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttviewprintdocument~initializeganttview_ev.html[InitializeGanttView] event.
 
 |====

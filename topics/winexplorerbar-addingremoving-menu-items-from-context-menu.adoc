@@ -16,12 +16,12 @@
 
 A default context menu appears when you right click on Groups and items added to WinExplorerBar™. In some situations you may want to add custom menu items in addition to the default context menu or even have a context menu with just the custom menu.
 
-The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~contextmenuinitializing_ev.html[ContextMenuIntializing]"]  or  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcontextmenuinitializing_ev.html[NavigationContextMenuIntializing]"]  events can be handled for this purpose.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~contextmenuinitializing_ev.html[ContextMenuIntializing]"]  or  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcontextmenuinitializing_ev.html[NavigationContextMenuIntializing]"]  events can be handled for this purpose.
 
 .Note
 [NOTE]
 ====
-When the WinExplorerBar control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property is set to OutlookNavigationPane, you must handle the NavigationContextMenuIntializing event. For all other values, the contextMenuIntializing event must be handled.
+When the WinExplorerBar control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~style.html[Style]"]  property is set to OutlookNavigationPane, you must handle the NavigationContextMenuIntializing event. For all other values, the contextMenuIntializing event must be handled.
 ====
 
 The following code example shows you how to add/ remove the context menu by handling the ContextMenuIntializing event.

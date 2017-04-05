@@ -14,7 +14,7 @@
 
 = Configure a Context Menu at Design Time
 
-There are two ways to add and remove tools from a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  from within the customize dialog at design time. If the tool is on a toolbar then you may simply click on the tool to drop it down and then either click on the "[Insert New Tool]" placeholder or right click on a tool already on the menu and open the "Insert Tools" submenu. The alternative is to use the PopupMenuTool Designer of the customize dialog.
+There are two ways to add and remove tools from a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  from within the customize dialog at design time. If the tool is on a toolbar then you may simply click on the tool to drop it down and then either click on the "[Insert New Tool]" placeholder or right click on a tool already on the menu and open the "Insert Tools" submenu. The alternative is to use the PopupMenuTool Designer of the customize dialog.
 
 image::Images\WinToolbars_Configure_Context_Menu_Design_Time_01.png[ultratoolbarsmanager designer with popupmenutool designer tab selected]
 
@@ -23,7 +23,7 @@ image::Images\WinToolbars_Configure_Context_Menu_Design_Time_01.png[ultratoolbar
 [start=2]
 . Click the "PopupMenuTool Designer" tab in the customizer.
 [start=3]
-. Either select an existing PopupMenuTool from the Current Menu combo box or click the New... button to create a new PopupMenuTool. The listbox below the Current menu combobox displays the current contents of the menu tool's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools]"]  collection.
+. Either select an existing PopupMenuTool from the Current Menu combo box or click the New... button to create a new PopupMenuTool. The listbox below the Current menu combobox displays the current contents of the menu tool's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools]"]  collection.
 [start=4]
 . The Available Tools listbox on the right contains all of the tools that may be added to the selected menu tool's Tools collection. If the list is empty, you can go to the Tools tab to create new tools. To add a tool from this listbox to the menu's Tools collection, select one or more items in the listbox and drag them to the list on the right. A drop indicator will be displayed indicating where the tools will be inserted.
 [start=5]

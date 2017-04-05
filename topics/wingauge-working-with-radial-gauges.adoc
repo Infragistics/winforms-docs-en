@@ -14,13 +14,13 @@
 
 = Working with Radial Gauges
 
-A Radial gauge is composed of many separate, but related, parts. These parts (e.g.,   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~ranges.html[Ranges]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"] ) can be customized in detail;. But before approaching them individually, it is important to understand how all of these parts work together to make a Radial gauge.
+A Radial gauge is composed of many separate, but related, parts. These parts (e.g.,   pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~ranges.html[Ranges]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"] ) can be customized in detail;. But before approaching them individually, it is important to understand how all of these parts work together to make a Radial gauge.
 
 image::images/Gauge_Working_with_Radial_Gauges_01.png[Shows key parts of a radial gauge.]
 
 == Dial
 
-The Radial gauge dial is what gives it its shape. By default, the dial sweeps 360 degrees, so it appears as a circle. It is also possible, using the dial properties, to change the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~startangle.html[StartAngle]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~endangle.html[EndAngle]"] . Furthermore, the dial provides several other properties, such as InnerExtent, for customizing the shape.
+The Radial gauge dial is what gives it its shape. By default, the dial sweeps 360 degrees, so it appears as a circle. It is also possible, using the dial properties, to change the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~startangle.html[StartAngle]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~endangle.html[EndAngle]"] . Furthermore, the dial provides several other properties, such as InnerExtent, for customizing the shape.
 
 image::Images/Gauge_Working_with_Radial_Gauges_02.png[Shows how you can make your radial gauge not be a full 360 degrees.]
 
@@ -34,7 +34,7 @@ image::Images/Gauge_Working_with_Radial_Gauges_03.png[Shows how you can customiz
 
 == Markers
 
-A marker is an element that points out a value on a scale. The most common form of marker for Radial gauges is the needle. Each marker has a  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarker~value.html[Value]"]  property which tells it where to point on the scale.
+A marker is an element that points out a value on a scale. The most common form of marker for Radial gauges is the needle. Each marker has a  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugemarker~value.html[Value]"]  property which tells it where to point on the scale.
 
 image::Images/Gauge_Working_with_Radial_Gauges_04.png[Shows how you can put multiple markers on a radial gauge.]
 
@@ -42,6 +42,6 @@ image::Images/Gauge_Working_with_Radial_Gauges_04.png[Shows how you can put mult
 
 Each scale is capable of displaying one or more ranges. A range is a visual element which begins and ends at specified values within a scale. The most common real-world examples of ranges are the high-RPM zones (typically yellow and red or orange and red) on a vehicle tachometer, which indicate that the engine is running at higher than the optimal load.
 
-Like many other elements on a radial gauge, ranges are positioned using extent properties. In addition to the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~startvalue.html[StartValue]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~endvalue.html[EndValue]"]  properties, the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~outerextent.html[OuterExtent]"] ,  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentstart.html[InnerExtentStart]"] , and  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentend.html[InnerExtentEnd]"]  are used to specify the position and shape of ranges.
+Like many other elements on a radial gauge, ranges are positioned using extent properties. In addition to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugerange~startvalue.html[StartValue]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugerange~endvalue.html[EndValue]"]  properties, the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugerange~outerextent.html[OuterExtent]"] ,  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentstart.html[InnerExtentStart]"] , and  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugerange~innerextentend.html[InnerExtentEnd]"]  are used to specify the position and shape of ranges.
 
 image::Images/Gauge_Working_with_Radial_Gauges_05.png[Shows how you can put multiple ranges on a radial gauge.]

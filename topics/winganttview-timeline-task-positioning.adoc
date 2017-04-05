@@ -65,7 +65,7 @@ You can easily customize the interface parameters related to the tasks by reposi
 
 === Introduction
 
-The following table lists the properties added to the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.timeline_members.html[Timeline] class to support timeline task sizing and positioning feature.
+The following table lists the properties added to the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.timeline_members.html[Timeline] class to support timeline task sizing and positioning feature.
 
 === Timeline property reference chart
 
@@ -74,7 +74,7 @@ The following table lists the properties added to the link:infragistics4.win.ult
 |Property|Description|Default Value
 
 |TaskPositioning
-|Returns or sets a value that determines whether the size and position of a link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.uielements.taskuielement_members.html[TaskUIElement] adjusts accounting for the difference between the task's start/end time and the start/end times of the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.timelineview.timeslotuielement_members.html[TimeSlotUIElement] with which the task element intersects. *Possible Value:* 
+|Returns or sets a value that determines whether the size and position of a link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.uielements.taskuielement_members.html[TaskUIElement] adjusts accounting for the difference between the task's start/end time and the start/end times of the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.timelineview.timeslotuielement_members.html[TimeSlotUIElement] with which the task element intersects. *Possible Value:* 
 
 * _FillTimeSlots_ 
 
@@ -83,7 +83,7 @@ The following table lists the properties added to the link:infragistics4.win.ult
 | _FillTimeSlots_ 
 
 |MinimumTaskWidth
-|Returns or sets a value defining the minimum width (in pixels) for a link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.uielements.taskuielement_members.html[TaskUIElement]. 
+|Returns or sets a value defining the minimum width (in pixels) for a link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.uielements.taskuielement_members.html[TaskUIElement]. 
 
 .Note: 
 
@@ -148,7 +148,7 @@ The following table summarizes the new features of the  _WinGanttView_   control
 
 === Timeline positioning with AutoAdjust Mode
 
-As the cursor moves, when dragging the timeline, the right-edge of the task changes its position accordingly, even when the cursor is not at the edge of a time slot. Since link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.timeline~taskdragincrement.html[TaskDragIncrement] resolves to one hour for a primary interval of one day, this raises the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event. The task element’s width changes when the cursor moves approximately 1/24th the width of the time slot. The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~duration.html[Duration] properties change by one hour with each mouse movement.
+As the cursor moves, when dragging the timeline, the right-edge of the task changes its position accordingly, even when the cursor is not at the edge of a time slot. Since link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.timeline~taskdragincrement.html[TaskDragIncrement] resolves to one hour for a primary interval of one day, this raises the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event. The task element’s width changes when the cursor moves approximately 1/24th the width of the time slot. The link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] and link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~duration.html[Duration] properties change by one hour with each mouse movement.
 
 === Property settings
 
@@ -231,7 +231,7 @@ image::images/WinGanttView_Task_And_TimeLine_Positioning_2.png[]
 
 === Timeline positioning with Manual Mode
 
-As the cursor moves, when dragging the timeline, the right edge of the task changes position accordingly, even when the cursor is not at the edge of a time slot. Since link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.timeline~taskdragincrement.html[TaskDragIncrement] is explicitly set to four hours, the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event is raised. The task element’s width changes when the cursor moves approximately 1/6th the width of the time slot. The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~duration.html[Duration] properties change by four hours with each mouse movement.
+As the cursor moves, when dragging the timeline, the right edge of the task changes position accordingly, even when the cursor is not at the edge of a time slot. Since link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.timeline~taskdragincrement.html[TaskDragIncrement] is explicitly set to four hours, the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event is raised. The task element’s width changes when the cursor moves approximately 1/6th the width of the time slot. The link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] and link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~duration.html[Duration] properties change by four hours with each mouse movement.
 
 === Property settings
 
@@ -284,7 +284,7 @@ image::images/WinGanttView_Task_And_TimeLine_Positioning_4.png[]
 
 This section demonstrates the percent element’s behavior and configuration.
 
-As the cursor moves, the percent complete bar becomes wider, ending approximately at the cursor position. Each cursor movement of approximately 1/12th of the time slot’s width raises the link:infragistics4.win.ultrawinganttview.v{ProductVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event. The event executes 14 times (once for the  *beginning phase* , 12 times for the  *moving phase* , and once for the  *ending phase* ) during the course of the drag operation.
+As the cursor moves, the percent complete bar becomes wider, ending approximately at the cursor position. Each cursor movement of approximately 1/12th of the time slot’s width raises the link:{ApiPlatform}win.ultrawinganttview{ApiVersion}~infragistics.win.ultrawinganttview.ultraganttview~taskelementdragging_ev.html[TaskElementDragging] event. The event executes 14 times (once for the  *beginning phase* , 12 times for the  *moving phase* , and once for the  *ending phase* ) during the course of the drag operation.
 
 === Property settings
 
@@ -345,7 +345,7 @@ This section demonstrates the task deadline indicator’s behavior and configura
 
 As the cursor moves, the deadline indicator moves in a manner similar to the duration and percent complete drag operations. In this case, every four-mouse move segments bring the indicator across one time slot.
 
-You can add a deadline to any task by using the task’s link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~deadline.html[Deadline] property, and assigning a start date to it.
+You can add a deadline to any task by using the task’s link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~deadline.html[Deadline] property, and assigning a start date to it.
 
 `[Task name].Deadline = [Task name].StartDateTime.AddDays([n days]);`
 
@@ -404,7 +404,7 @@ image::images/WinGanttView_Task_And_TimeLine_Positioning_9.png[]
 
 This section demonstrates the task start date behavior and configuration.
 
-On each mouse move, the left edge of the task snaps to match the drag position on the timeline. As the cursor moves by each mouse drag increment, the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~startdatetime.html[StartDateTime] and link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] property values change accordingly.
+On each mouse move, the left edge of the task snaps to match the drag position on the timeline. As the cursor moves by each mouse drag increment, the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~startdatetime.html[StartDateTime] and link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~enddatetime.html[EndDateTime] property values change accordingly.
 
 === Property settings
 
@@ -460,7 +460,7 @@ image::images/WinGanttView_Task_And_TimeLine_Positioning_11.png[]
 
 This section demonstrates the task-working hour’s behavior.
 
-The task’s width increases with each mouse drag movement as it does when you set link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.taskworkinghourmode.html[TaskWorkingHourMode] to  _AutoAdjust_  . The duration increases by 2 hours with each drag movement. When the drag operation is committed to ending at 12AM, however, the right edge snaps back to 5PM, necessary to enforce the working hours.
+The task’s width increases with each mouse drag movement as it does when you set link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.taskworkinghourmode.html[TaskWorkingHourMode] to  _AutoAdjust_  . The duration increases by 2 hours with each drag movement. When the drag operation is committed to ending at 12AM, however, the right edge snaps back to 5PM, necessary to enforce the working hours.
 
 === Property settings
 

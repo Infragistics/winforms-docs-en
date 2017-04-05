@@ -14,10 +14,10 @@
 
 = Display the Background Image Behind the Days of WinWeekView
 
-The following example demonstrates how to use the WinWeekView's™  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook.html[CalendarLook]"]  Object to display the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultraweekview.html[UltraWeekView's]"]   pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~imagebackground.html[ImageBackground]"]  "behind" the days using the element's rich alpha-blending capabilities. This can be used to, for example, display a corporate logo in the element without distracting the end user.
+The following example demonstrates how to use the WinWeekView's™  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarlook.html[CalendarLook]"]  Object to display the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultraweekview.html[UltraWeekView's]"]   pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~imagebackground.html[ImageBackground]"]  "behind" the days using the element's rich alpha-blending capabilities. This can be used to, for example, display a corporate logo in the element without distracting the end user.
 
 [start=1]
-. Set the property of the WinWeekView's  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"] .
+. Set the property of the WinWeekView's  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance.html[Appearance]"] .
 
 *In Visual Basic:*
 
@@ -34,7 +34,7 @@ this.ultraWeekView1.Appearance.ImageBackground =
 ----
 
 [start=2]
-. Set the of the CalendarLook  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~dayappearance.html[DayAppearance]"]  to half transparency.
+. Set the of the CalendarLook  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~dayappearance.html[DayAppearance]"]  to half transparency.
 
 *In Visual Basic:*
 
@@ -49,7 +49,7 @@ this.ultraWeekView1.CalendarLook.DayAppearance.AlphaLevel = 128;
 ----
 
 [start=3]
-. Set the CalendarLook DayAppearance  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~backcoloralpha.html[BackColorAlpha]"]  to use the previously set AlphaLevel.
+. Set the CalendarLook DayAppearance  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~backcoloralpha.html[BackColorAlpha]"]  to use the previously set AlphaLevel.
 
 *In Visual Basic:*
 
@@ -66,7 +66,7 @@ this.ultraWeekView1.CalendarLook.DayAppearance.BackColorAlpha =
 ----
 
 [start=4]
-. Because the WinWeekView's DayAppearance is layered above it's WeekAppearance, set the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~weekappearance.html[WeekAppearance]"]  BackColorAlpha to be transparent so that the ImageBackground will be displayed.
+. Because the WinWeekView's DayAppearance is layered above it's WeekAppearance, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarlook~weekappearance.html[WeekAppearance]"]  BackColorAlpha to be transparent so that the ImageBackground will be displayed.
 
 *In Visual Basic:*
 

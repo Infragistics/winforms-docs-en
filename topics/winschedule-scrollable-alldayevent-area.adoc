@@ -18,7 +18,7 @@
 
 === Purpose
 
-This topic provides users with the ability to scroll the  _UltraDayView_   control’s link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area allowing for the simultaneous display of all-day events without limitation.
+This topic provides users with the ability to scroll the  _UltraDayView_   control’s link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area allowing for the simultaneous display of all-day events without limitation.
 
 === Required background
 
@@ -51,17 +51,17 @@ This topic contains the following sections:
 
 === Introduction and preview
 
-Earlier versions (prior to 13.1) of the  _UltraDayView_   control did not support scrolling within the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area and imposed a 16-event limit.
+Earlier versions (prior to 13.1) of the  _UltraDayView_   control did not support scrolling within the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area and imposed a 16-event limit.
 
 By default, the  _UltraDayView_   control will continue displaying the all-day event area as it appeared in previous versions without a scrollbar or scroll buttons.
 
-This feature allows you to set the  _UltraDayView_   control’s properties to enable the scroll buttons and scrollbars in the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area without limitations.
+This feature allows you to set the  _UltraDayView_   control’s properties to enable the scroll buttons and scrollbars in the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area without limitations.
 
 The following preview illustrates all-day events with scrollbar and scroll buttons enabled.
 
 image::images/WinSchedule_Scrollable_AllDayEvent_Area_1.png[]
 
-In addition to scrolling capability, the  _UltraDayView_   control introduces the new link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~alldayeventareapreferredmaxheight.html[AllDayEventAreaPreferredMaxHeight] property allowing you to control the link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area’s vertical size. By default, size is 0 (Integer value), which informs the control to calculate the view’s optimum size.
+In addition to scrolling capability, the  _UltraDayView_   control introduces the new link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultradayview~alldayeventareapreferredmaxheight.html[AllDayEventAreaPreferredMaxHeight] property allowing you to control the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.appointment~alldayevent.html[AllDayEvent] area’s vertical size. By default, size is 0 (Integer value), which informs the control to calculate the view’s optimum size.
 
 .Note:
 [NOTE]
@@ -82,7 +82,7 @@ Enabling scrolling while the `AllDayEventAreaPreferredMaxHeight=0`, the all-day 
 
 === Property setting
 
-The  _UltraDayView_   control exposes the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultradayview~alldayeventareascrolling.html[AllDayEventAreaScrolling] property with three options with scrolling capability.
+The  _UltraDayView_   control exposes the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultradayview~alldayeventareascrolling.html[AllDayEventAreaScrolling] property with three options with scrolling capability.
 
 [options="header", cols="a,a,a,a"]
 |====

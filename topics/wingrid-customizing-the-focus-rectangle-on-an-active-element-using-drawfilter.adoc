@@ -20,7 +20,7 @@ The Active element of the WinGrid™ control displays a Focus Rectangle (the dot
 
 *What You Will Accomplish*
 
-In this walkthrough, you will learn how to customize the Focus Rectangle (dotted lines) surrounding an active cell or row by creating a Draw Filter Class that implements the link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter] Interface.
+In this walkthrough, you will learn how to customize the Focus Rectangle (dotted lines) surrounding an active cell or row by creating a Draw Filter Class that implements the link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter] Interface.
 
 *Follow These Steps*
 
@@ -29,7 +29,7 @@ In this walkthrough, you will learn how to customize the Focus Rectangle (dotted
 [start=2]
 . Bind the WinGrid control to the Customers table of the Northwind database. For information on this see, Bind WinGrid to a Flat Data Source topic.
 [start=3]
-. Create a class named ActivationObjectDrawFilter that implements the IUIElementDrawFilter Interface. In this Draw Filter implementation, the two methods  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement~drawelement.html[DrawElement]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter~getphasestofilter.html[GetPhasesToFilter]"]  are defined. The DrawElement method is passed a UIElementDrawParams structure and a bit flag indicating which single draw phase is being performed. The method returns a boolean. If False is returned then the default drawing for that phase will be performed. If True is returned for a 'Before' phase then the default drawing for that phase will be skipped. Write the following code within the ActivationObjectDrawFilter class.
+. Create a class named ActivationObjectDrawFilter that implements the IUIElementDrawFilter Interface. In this Draw Filter implementation, the two methods  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement~drawelement.html[DrawElement]"]  and  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementdrawfilter~getphasestofilter.html[GetPhasesToFilter]"]  are defined. The DrawElement method is passed a UIElementDrawParams structure and a bit flag indicating which single draw phase is being performed. The method returns a boolean. If False is returned then the default drawing for that phase will be performed. If True is returned for a 'Before' phase then the default drawing for that phase will be skipped. Write the following code within the ActivationObjectDrawFilter class.
 
 *In Visual Basic:*
 

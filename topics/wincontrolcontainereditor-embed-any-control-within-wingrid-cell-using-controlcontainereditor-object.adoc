@@ -16,7 +16,7 @@
 
 *Before You Begin*
 
-WinControlContainerEditor™ enables you to embed any control within any Infragistics Windows Forms controls that support embeddable editors. You can embed two controls, one used for rendering and the other used for editing by using the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~renderingcontrol.html[RenderingControl]"]  and  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor~editingcontrol.html[EditingControl]"]  property settings. The rendering control renders the underlying value or text of the object it is attached to (e.g., WinGrid™ cells, WinTree™ nodes, etc). The editing control provides editing ability for the object it is attached to.
+WinControlContainerEditor™ enables you to embed any control within any Infragistics Windows Forms controls that support embeddable editors. You can embed two controls, one used for rendering and the other used for editing by using the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.controlcontainereditor~renderingcontrol.html[RenderingControl]"]  and  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.controlcontainereditor~editingcontrol.html[EditingControl]"]  property settings. The rendering control renders the underlying value or text of the object it is attached to (e.g., WinGrid™ cells, WinTree™ nodes, etc). The editing control provides editing ability for the object it is attached to.
 
 .Note
 [NOTE]
@@ -159,7 +159,7 @@ End Property
 ----
 
 [start=8]
-. The following code assigns the Editor class that specifies the Rendering and Editing controls, to the UnitsInStock column of UltraGrid. Write the code in UltraGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[IntializeLayout]"]  event.
+. The following code assigns the Editor class that specifies the Rendering and Editing controls, to the UnitsInStock column of UltraGrid. Write the code in UltraGrid control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[IntializeLayout]"]  event.
 
 *In Visual Basic:*
 

@@ -14,7 +14,7 @@
 
 = Filter Options to Filter Suggested Values
 
-The link:infragistics4.win.v{ProductVersion}~infragistics.win.autocompletemode.html[AutoCompleteMode] property offers different settings that allow your end users to have possible suggested values listed, as they type in the text box of WinComboEditor™. By default, when the AutoCompleteMode property is set to Suggest or SuggestAppend, only the items that start with the characters typed in the Textbox will be listed. The link:infragistics4.win.v{ProductVersion}~infragistics.win.autosuggestfiltermode.html[AutoSuggestFilterMode] property provides you the option to choose between StartWith and Contains, so that your end users can have items suggested that either start with the specific character string or contains the specific character string.
+The link:{ApiPlatform}win{ApiVersion}~infragistics.win.autocompletemode.html[AutoCompleteMode] property offers different settings that allow your end users to have possible suggested values listed, as they type in the text box of WinComboEditor™. By default, when the AutoCompleteMode property is set to Suggest or SuggestAppend, only the items that start with the characters typed in the Textbox will be listed. The link:{ApiPlatform}win{ApiVersion}~infragistics.win.autosuggestfiltermode.html[AutoSuggestFilterMode] property provides you the option to choose between StartWith and Contains, so that your end users can have items suggested that either start with the specific character string or contains the specific character string.
 
 .Note
 [NOTE]
@@ -25,7 +25,7 @@ When the AutoSuggestFilterMode property is set to 'Contains', the AutoCompleteMo
 .Note
 [NOTE]
 ====
-By default when the AutoSuggestFilterMode is set to Contains, the character string typed by the end user during an auto-suggest session will be highlighted within each item in the drop down. This setting can be altered using the link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist~formatfiltereditems.html[FormatFilteredItems] property.
+By default when the AutoSuggestFilterMode is set to Contains, the character string typed by the end user during an auto-suggest session will be highlighted within each item in the drop down. This setting can be altered using the link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelist~formatfiltereditems.html[FormatFilteredItems] property.
 ====
 
 Assuming your form contains an UltraComboEditor control, the following example code demonstrates how to list items that contains the character string typed by the end user. Write the following code in the form load event.

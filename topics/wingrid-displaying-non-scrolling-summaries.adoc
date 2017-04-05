@@ -42,7 +42,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~summarydisplayarea.html[SummaryDisplayArea]"]  to a value that has either BottomFixed or TopFixed bit turned on. The SummaryDisplayArea property is a flagged enumeration type. You can specify multiple values by using the bitwise or operation.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~summarydisplayarea.html[SummaryDisplayArea]"]  to a value that has either BottomFixed or TopFixed bit turned on. The SummaryDisplayArea property is a flagged enumeration type. You can specify multiple values by using the bitwise or operation.
 
 *In Visual Basic:*
 
@@ -73,7 +73,7 @@ private void customersUltraGrid_InitializeLayout(object sender,
 .Note
 [NOTE]
 ====
-that the SummaryDisplayArea property is exposed off the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings]"]  object as well so different summaries can be displayed in different areas.
+that the SummaryDisplayArea property is exposed off the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summarysettings.html[SummarySettings]"]  object as well so different summaries can be displayed in different areas.
 ====
 
 [start=3]

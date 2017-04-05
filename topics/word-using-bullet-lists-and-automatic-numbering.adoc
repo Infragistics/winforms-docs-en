@@ -101,7 +101,7 @@ This section contains a high-level overview of the new API members which were ad
 
 ** Exposes a *Levels* collection – one for each level, zero-based
 ** Each level is usually indented with respect to the preceding level
-** Each member of the Levels collection is an object of type link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties.html[BulletLevelProperties]
+** Each member of the Levels collection is an object of type link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties.html[BulletLevelProperties]
 
 * *BulletLevelProperties* class
 
@@ -132,13 +132,13 @@ The following table summarizes the properties of the BulletLevelProperties class
 |====
 |Property Name|Property Type|Description
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
 |`String`
 | 
 
 Returns or sets the character(s) which depict the bullet point. Applicable only when the NumberingStyle property is set to ‘None’.This property *must be explicitly set* when the NumberingStyle property is set to ‘None’ in order to see a bullet symbol. 
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font]
 |`Font`
 | 
 
@@ -146,7 +146,7 @@ Returns the Font used for the associated bullet point or automatic numbering.
 
 Use this in conjunction with the BulletText property to customize the bullet symbol. For example, assigning a font of ‘Wingdings’ to this property,and assigning a lowercase ‘L’ to the BulletText property causes a heavy dot to be shown as the bullet symbol.When used for automatic numbering, formats the font of the letter or number. 
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
 |` _Nullable<float>_ `
 | 
 
@@ -158,13 +158,13 @@ Which edge the value is relative to depends on the value of the ParagraphPropert
 
 Also note that the ParagraphProperties’ Alignment property overrides this one, i.e., when Alignment is explicitly set, this value is not applicable.When this value is not set at all, the indentation defaults to ¼” as relative to the previous level, with level zero being indented by ¼” from the edge of the page. 
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
 |`AutomaticNumberingStyle`
 | 
 
 Enumeration value which identifies the numbering style, if any, that is applied to automatic numbering runs.When set to the default value, ‘None’, bullet points are show, assuming that the BulletText property has been explicitly set. 
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~start.html[Start]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~start.html[Start]
 |`Int`
 | 
 
@@ -183,16 +183,16 @@ The following example demonstrates how the document appears as a result of the f
 |====
 |Property|Value
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
 |None
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~bullettext.html[BulletText]
 |"l" (lowercase L)
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font].Name
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~font.html[Font].Name
 |"Wingdings"
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
 |0.25
 
 |====
@@ -286,10 +286,10 @@ BulletProperties.Levels[0]
 |====
 |Property|Value
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
 |Decimal
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
 |0.25
 
 |====
@@ -300,10 +300,10 @@ BulletProperties.Levels[1]
 |====
 |Property|Value
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~numberingstyle.html[NumberingStyle]
 |LowerLetter
 
-| link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
+| link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.bulletlevelproperties~indent.html[Indent]
 |0.5
 
 |====

@@ -28,7 +28,7 @@ This topic provides an overview on disabling the confirmation dialog when deleti
 
 This feature provides the developer with an additional option for disabling the confirmation dialog when the user attempts to delete a row.
 
-By default, when selecting and deleting a row from the  _WinGrid_  , a confirmation dialog box appears prompting the user to confirm the deletion before actually deleting the row. There are 2 ways of disabling the confirmation dialog. Either set the  _DisplayPromptMsg_   to `False` on the link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~beforerowsdeleted_ev.html[BeforeRowsDeleted] event, or change the control’s Boolean property link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~showdeleterowsprompt.html[ShowDeleteRowsPrompt] from its default setting, `True`, to `False`.
+By default, when selecting and deleting a row from the  _WinGrid_  , a confirmation dialog box appears prompting the user to confirm the deletion before actually deleting the row. There are 2 ways of disabling the confirmation dialog. Either set the  _DisplayPromptMsg_   to `False` on the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~beforerowsdeleted_ev.html[BeforeRowsDeleted] event, or change the control’s Boolean property link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~showdeleterowsprompt.html[ShowDeleteRowsPrompt] from its default setting, `True`, to `False`.
 
 Disabling the confirmation dialog.
 

@@ -22,7 +22,7 @@ Special situations arise that may not be the default situation or even close to 
 
 == What You Will Accomplish
 
-You will learn how to create a new tab in the Ribbon based on a context. You will create an instance of a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.contextualtabgroup.html[ContextualTabGroup]"] that will display contextual tabs when a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButtonTool]"]  is toggled.
+You will learn how to create a new tab in the Ribbon based on a context. You will create an instance of a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.contextualtabgroup.html[ContextualTabGroup]"] that will display contextual tabs when a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.statebuttontool.html[StateButtonTool]"]  is toggled.
 
 == Follow these Steps
 
@@ -49,7 +49,7 @@ image::images/WinToolbarsManager_Creating_a_Tab_Based_on_a_Context_01.png[ribbon
 . *Generate the necessary events.*
 
 .. Double-click inside the grey area of the form (not on the Ribbon). A FormLoad event is generated in the code-behind.
-.. Switch back to design view and double-click a blank area in the Ribbon (the area to the right of the New Group button will do fine). A  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event for ultraToolbarsManager1 is generated in the code-behind.
+.. Switch back to design view and double-click a blank area in the Ribbon (the area to the right of the New Group button will do fine). A  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event for ultraToolbarsManager1 is generated in the code-behind.
 
 [start=3]
 . *Add using/Imports statements*
@@ -73,7 +73,7 @@ using Infragistics.Win.UltraWinToolbars;
 [start=4]
 . *Create RibbonTabs that will be added to a ContextualTabGroup.*
 
-Inside the FormLoad event, you will need to create two tabs and add them to the Ribbon's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbontabcollection.html[Tabs]"]  collection. Right now, you are doing nothing different then if you were creating two standard tabs.
+Inside the FormLoad event, you will need to create two tabs and add them to the Ribbon's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ribbontabcollection.html[Tabs]"]  collection. Right now, you are doing nothing different then if you were creating two standard tabs.
 
 *In Visual Basic:*
 
@@ -106,7 +106,7 @@ private void Creating_a_Tab_Based_on_a_Context_Load(object sender, EventArgs e)
 [start=5]
 . *Instantiate the already existing ContextualTabGroupCollection.*
 
-Rather than create a new  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.contextualtabgroupcollection.html[ContextualTabGroupCollection]"] , you'll just use the one that already exists off the Ribbon. Place the following code in the FormLoad event after the previous block of code.
+Rather than create a new  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.contextualtabgroupcollection.html[ContextualTabGroupCollection]"] , you'll just use the one that already exists off the Ribbon. Place the following code in the FormLoad event after the previous block of code.
 
 *In Visual Basic:*
 
@@ -139,7 +139,7 @@ Now that tabGroupColl represents
 this.ultraToolbarsManager1.Ribbon.ContextulTabGroups
 ----
 
-, you can use its  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.contextualtabgroupcollection~add.html[Add]"]  method to add a new ContextualTabGroup to the collection. Since we can access the ContextualTabGroup from the tabGroupColl variable by index or key, we don't need to instantiate it with its own variable. Add the following code to the FormLoad event after the previous block of code.
+, you can use its  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.contextualtabgroupcollection~add.html[Add]"]  method to add a new ContextualTabGroup to the collection. Since we can access the ContextualTabGroup from the tabGroupColl variable by index or key, we don't need to instantiate it with its own variable. Add the following code to the FormLoad event after the previous block of code.
 
 *In Visual Basic:*
 
@@ -162,7 +162,7 @@ this.ultraToolbarsManager1.Ribbon.ContextulTabGroups
 [start=7]
 . *Add the tabs to the ContextualTabGroup and hide them.*
 
-Once you place a tab in the Tabs collection of a ContextualTabGroup, they become contextual tabs. You also need to set the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.contextualtabgroup~visible.html[Visible]"]  property to false so that the contextual tabs don't display right away. Add the following code to the FormLoad event after the previous block of code.
+Once you place a tab in the Tabs collection of a ContextualTabGroup, they become contextual tabs. You also need to set the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.contextualtabgroup~visible.html[Visible]"]  property to false so that the contextual tabs don't display right away. Add the following code to the FormLoad event after the previous block of code.
 
 *In Visual Basic:*
 

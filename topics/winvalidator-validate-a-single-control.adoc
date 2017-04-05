@@ -16,7 +16,7 @@
 
 WinValidator™ can validate any in-box control. You can validate a control during its Validating event, one of its property changed events, or manually by calling the Validate method. The simplest of these types of validation is calling the Validate method.
 
-The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultravalidator~validate.html[Validate]"]  method has several overloads for you to choose from. If you need to validate a specific control, you simply need to pass the control itself as a parameter. However, the drawback to this method is that you need to manually call it each time you want to validate the control. If you'd prefer to validate a control, such as the WinNumericEditor™ control, during its TextChanged event, see link:winvalidator-validate-during-a-specific-event.html[Validate during a Specific Event].
+The  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultravalidator~validate.html[Validate]"]  method has several overloads for you to choose from. If you need to validate a specific control, you simply need to pass the control itself as a parameter. However, the drawback to this method is that you need to manually call it each time you want to validate the control. If you'd prefer to validate a control, such as the WinNumericEditor™ control, during its TextChanged event, see link:winvalidator-validate-during-a-specific-event.html[Validate during a Specific Event].
 
 The following example code demonstrates how to manually validate the TextBox control.
 

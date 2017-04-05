@@ -14,7 +14,7 @@
 
 = Working with Menus
 
-Menus in WinToolbarsManager™ are conceptually the same as standard .NET menus and Microsoft Office menus. In the .NET menu architecture, a menu is a special MenuItem that contains a collection of other MenuItems. Similarly, in UltraToolbarsManager a Menu is a special Tool represented by the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  class - one of the 12 native tool types supported by UltraToolbarsManager. The PopupMenuTool has the ability to contain other tools (including other PopupMenuTools).
+Menus in WinToolbarsManager™ are conceptually the same as standard .NET menus and Microsoft Office menus. In the .NET menu architecture, a menu is a special MenuItem that contains a collection of other MenuItems. Similarly, in UltraToolbarsManager a Menu is a special Tool represented by the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopupMenuTool]"]  class - one of the 12 native tool types supported by UltraToolbarsManager. The PopupMenuTool has the ability to contain other tools (including other PopupMenuTools).
 
 PopupMenu Tools can be placed on toolbars or menus. In these cases the tool displays a pop-up menu containing the tools defined for the menu when it is clicked. PopupMenu Tools can also be 'popped-up' as context menus anywhere on the desktop using the ShowPopup method of the UltraToolbarsManager element.
 

@@ -14,7 +14,7 @@
 
 = Set Template AddRows to Fixed
 
-This feature emulates the behavior of the add-row in Microsoft Outlook, most notably the fact that the add-row is fixed. It does not scroll as other rows are scrolled. Although Microsoft Outlook shows the add-row on the top, WinGrid™ offers the ability to show the fixed add-row on the top or the bottom of the row collection. To facilitate this functionality FixedAddRowOnTop and FixedAddRowOnBottom members are made available on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.allowaddnew.html[AllowAddNew]"]  enum, which is associated with the Override's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property. These enum members differ from the TemplateOnTop and TemplateOnBottom members in the sense that they keep the add-row fixed so it does not scroll as the UltraGrid is scrolled. Although the template add-rows can be displayed in all bands, they will be fixed only in the root band. In addition, adding rows is not supported when rows are grouped by a column.
+This feature emulates the behavior of the add-row in Microsoft Outlook, most notably the fact that the add-row is fixed. It does not scroll as other rows are scrolled. Although Microsoft Outlook shows the add-row on the top, WinGrid™ offers the ability to show the fixed add-row on the top or the bottom of the row collection. To facilitate this functionality FixedAddRowOnTop and FixedAddRowOnBottom members are made available on the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.allowaddnew.html[AllowAddNew]"]  enum, which is associated with the Override's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property. These enum members differ from the TemplateOnTop and TemplateOnBottom members in the sense that they keep the add-row fixed so it does not scroll as the UltraGrid is scrolled. Although the template add-rows can be displayed in all bands, they will be fixed only in the root band. In addition, adding rows is not supported when rows are grouped by a column.
 
 .Note
 [NOTE]
@@ -55,7 +55,7 @@ this.ultraGrid1.DisplayLayout.Override.AllowAddNew =
 ----
 
 [start=3]
-. You can also display a prompt in the template add-row by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowprompt.html[TemplateAddRowPrompt]"]  property.
+. You can also display a prompt in the template add-row by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowprompt.html[TemplateAddRowPrompt]"]  property.
 
 *In Visual Basic:*
 
@@ -72,7 +72,7 @@ this.ultraGrid1.DisplayLayout.Override.TemplateAddRowPrompt =
 ----
 
 [start=4]
-. By default the prompt spans across multiple cells. You can confine it to a single cell by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~specialrowpromptfield.html[SpecialRowPromptField]"]  property of the Band to a column's key. The prompt will be confined to this column's cell in the template add-row.
+. By default the prompt spans across multiple cells. You can confine it to a single cell by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~specialrowpromptfield.html[SpecialRowPromptField]"]  property of the Band to a column's key. The prompt will be confined to this column's cell in the template add-row.
 
 *In Visual Basic:*
 

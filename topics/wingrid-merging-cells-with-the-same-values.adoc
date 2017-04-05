@@ -38,7 +38,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellstyle.html[MergedCellStyle]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[column]"]  object to either Always or OnlyWhenSorted. OnlyWhenSorted setting merges cells of a column only when that column is sorted.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellstyle.html[MergedCellStyle]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[column]"]  object to either Always or OnlyWhenSorted. OnlyWhenSorted setting merges cells of a column only when that column is sorted.
 
 *In Visual Basic:*
 
@@ -53,7 +53,7 @@ this.ultraGrid1.DisplayLayout.Bands[0].Columns[3].MergedCellStyle = MergedCellSt
 ----
 
 [start=3]
-. You can also merge cells in all the columns of an WinGrid™ by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~mergedcellstyle.html[MergedCellStyle]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object. This eliminates having to set the MergedCellStyle on all the columns.
+. You can also merge cells in all the columns of an WinGrid™ by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~mergedcellstyle.html[MergedCellStyle]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object. This eliminates having to set the MergedCellStyle on all the columns.
 
 *In Visual Basic:*
 
@@ -68,7 +68,7 @@ this.ultraGrid1.DisplayLayout.Override.MergedCellStyle = MergedCellStyle.Always;
 ----
 
 [start=4]
-. You can set the appearance of merged cells by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~mergedcellappearance.html[MergedCellAppearance]"]  property of the Override and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  objects. Override's MergedCellAppearance affects all the columns whereas the column's MergedCellAppearance affects only the associated column.
+. You can set the appearance of merged cells by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~mergedcellappearance.html[MergedCellAppearance]"]  property of the Override and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  objects. Override's MergedCellAppearance affects all the columns whereas the column's MergedCellAppearance affects only the associated column.
 
 *In Visual Basic:*
 
@@ -83,9 +83,9 @@ this.ultraGrid1.DisplayLayout.Override.MergedCellAppearance.BackColor = Color.Li
 ----
 
 [start=5]
-. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellevaluator.html[MergedCellEvaluator]"]  property can be used for specifying custom logic for determining which cells should merge. The IMergedCellEvaluator interface should be implemented to specify the custom logic for merging cells. For more information on this please see the link:wingrid-using-custom-merge-cell-logic.html[Use Custom Merge Cell Logic] topic.
+. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellevaluator.html[MergedCellEvaluator]"]  property can be used for specifying custom logic for determining which cells should merge. The IMergedCellEvaluator interface should be implemented to specify the custom logic for merging cells. For more information on this please see the link:wingrid-using-custom-merge-cell-logic.html[Use Custom Merge Cell Logic] topic.
 [start=6]
-. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellevaluationtype.html[MergedCellEvaluationType]"]  property of the UltraGridColumn object dictates whether cells are merged based on the cell values or the cell display text. Under certain circumstances cells with different values can display the same text. This can occur for example when a ValueList has been set on the column that maps two values to the same display text, or when some formatting has been applied to the column that rounds numbers off so that two different numbers end up with the same display text. In these situations you may want to merge cells based on the display text rather than the cell values. You can set the MergedCellEvaluationType property to MergeSameText to accomplish this.
+. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~mergedcellevaluationtype.html[MergedCellEvaluationType]"]  property of the UltraGridColumn object dictates whether cells are merged based on the cell values or the cell display text. Under certain circumstances cells with different values can display the same text. This can occur for example when a ValueList has been set on the column that maps two values to the same display text, or when some formatting has been applied to the column that rounds numbers off so that two different numbers end up with the same display text. In these situations you may want to merge cells based on the display text rather than the cell values. You can set the MergedCellEvaluationType property to MergeSameText to accomplish this.
 
 *In Visual Basic:*
 

@@ -53,16 +53,16 @@ The following table summarizes the purpose of the UndoUnit derived classes.
 |====
 |Class|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.collectionchangeundounit`1.html[CollectionChangeUndoUnit] 
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.collectionchangeundounit`1.html[CollectionChangeUndoUnit] 
 |This class is used for reverting the changes to an _ICollection_ _._
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounit`2.html[PropertyChangeUndoUnit]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.propertychangeundounit`2.html[PropertyChangeUndoUnit]
 |This class is used for reverting the changes to a single CLR property.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase]
 |This class is base class for an `UndoUnit` and represents a change of a single property value.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction]
 |This class is a custom UndoUnit class that contains one or more UndoUnits. 
 
 For more information, refer to the Methods and Properties Reference for Performing Transactions topic.
@@ -79,8 +79,8 @@ The following table summarizes the purpose and functionality of the UndoUnit cla
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~target.html[Target]
-|Returns the target object that will be affected by the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] .
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit~target.html[Target]
+|Returns the target object that will be affected by the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] .
 
 |====
 
@@ -94,7 +94,7 @@ The following table summarizes the purpose and functionality of the UndoUnit cla
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit~getdescription.html[GetDescription]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit~getdescription.html[GetDescription]
 |Returns a string representation of the action based on whether this is for an undo or redo operation.
 
 |====

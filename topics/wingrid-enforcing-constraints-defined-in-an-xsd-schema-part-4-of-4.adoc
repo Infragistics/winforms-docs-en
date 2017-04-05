@@ -14,12 +14,12 @@
 
 = Enforcing Constraints Defined in an XSD Schema (Part 4 of 4)
 
-The WinGrid™ has the ability to extract data constraints from an XSD schema and enforce those constraints on data inputted by the end-user. These constraints apply to both the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~band.html[Bands]"]  and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.headerbase~column.html[Columns]"]  of the grid. Band-level constraints involve the number of rows allowed in the Band. Column-level constraints involve restrictions on the data allowed in the cells of columns.
+The WinGrid™ has the ability to extract data constraints from an XSD schema and enforce those constraints on data inputted by the end-user. These constraints apply to both the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~band.html[Bands]"]  and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.headerbase~column.html[Columns]"]  of the grid. Band-level constraints involve the number of rows allowed in the Band. Column-level constraints involve restrictions on the data allowed in the cells of columns.
 
 This page is a continues from link:wingrid-defining-dataset-schema-and-generating-test-data-part-3-of-4.html[Defining DataSet Schema and Generating Test Data (Part 3 of 4)].
 
 [start=1]
-. To enforce constraints that you have defined in an XSD file you call the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~enforcexsdconstraints.html[EnforceXSDConstraints]"]  method on the WinGrid. Place the following code in the Click event handler for the button labeled "Enforce XSD Constraints":
+. To enforce constraints that you have defined in an XSD file you call the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~enforcexsdconstraints.html[EnforceXSDConstraints]"]  method on the WinGrid. Place the following code in the Click event handler for the button labeled "Enforce XSD Constraints":
 
 *In Visual Basic:*
 

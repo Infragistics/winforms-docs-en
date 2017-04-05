@@ -13,9 +13,9 @@
 
 = Grouping Columns in Row Layout using code
 
-Grouping Columns is possible in Row Layout mode by setting the WinGrid control’s  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~rowlayoutstyle.html[RowLayoutStyle]"]  property to GroupLayout. This allows for an indefinite number of groupings.
+Grouping Columns is possible in Row Layout mode by setting the WinGrid control’s  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~rowlayoutstyle.html[RowLayoutStyle]"]  property to GroupLayout. This allows for an indefinite number of groupings.
 
-The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo.html[RowLayoutColumnInfo]"]  object exposed on columns and groups contains a  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~parentgroup.html[ParentGroup]"]  property. This indicates the parent group of either a column or a group. In other words, a column or group can be the child of another group.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo.html[RowLayoutColumnInfo]"]  object exposed on columns and groups contains a  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.rowlayoutcolumninfo~parentgroup.html[ParentGroup]"]  property. This indicates the parent group of either a column or a group. In other words, a column or group can be the child of another group.
 
 The following code shows how you can group columns in Row Layout mode. For this topic the WinGrid control is bound to a data source with the following schema. For more information on how to bind WinGrid to data, please review the link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Binding WinGrid to a Flat Data Source] topic.
 

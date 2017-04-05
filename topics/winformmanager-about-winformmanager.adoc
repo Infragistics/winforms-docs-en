@@ -30,7 +30,7 @@ The styling allows the developer to disable the  _Aero_   and operating system t
 
 Similar to the  _WinToolbarsManager_   component,  _WinFormManager_   will also prompt to add a panel to the form in order to properly position controls inside the client area, when dropped onto the form at design-time. You will have an option to choose between filling the form with  _WinPanel_™ (extensive styling capabilities) or a standard Panel (light-weight).  _WinFormManager_   is defined in the `Infragistics.Win` assembly and derived from `Infragistics.Win.UltraComponentBase` assembly.
 
-Unlike  _UltraWinToolbars_  , the link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle] and link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported] properties disable the  _Aero_   theme, by default, displaying link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.ultrawintoolbars.formdisplaystyle.html[RoundedSizable] border with ability to resize.
+Unlike  _UltraWinToolbars_  , the link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle] and link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported] properties disable the  _Aero_   theme, by default, displaying link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawintoolbars.formdisplaystyle.html[RoundedSizable] border with ability to resize.
 
 For example:
 
@@ -38,7 +38,7 @@ For example:
 |====
 |Property|Default value
 
-| link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle]
+| link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~formdisplaystyle.html[FormDisplayStyle]
 |_Default_ (same as _Standard_ ) 
 
 .Note: 
@@ -51,7 +51,7 @@ This property is in effect if the counterpart component ( _WinToolbarsManager_ )
 
 ====
 
-| link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported]
+| link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~isglasssupported.html[IsGlassSupported]
 | _False_ 
 
 |====
@@ -62,7 +62,7 @@ This property is in effect if the counterpart component ( _WinToolbarsManager_ )
 It is not recommended to include both  _WinFormManager_   and  _WinToolbarsManager_   components on the same form. They are mutually exclusive in managing the form; meaning only one of the components can be docked in the Form.
 ====
 
-Even though these two components have mutual exclusive behavior both components can reside in the same form provided each is docked separately onto different container controls. Setting the  _WinToolbarsManager_   component’s link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer] property to the  *Form* , then  _WinFormManager_   disables itself from form management and yield precedence to the  _WinToolbarsManager_  .
+Even though these two components have mutual exclusive behavior both components can reside in the same form provided each is docked separately onto different container controls. Setting the  _WinToolbarsManager_   component’s link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~dockwithincontainer.html[DockWithinContainer] property to the  *Form* , then  _WinFormManager_   disables itself from form management and yield precedence to the  _WinToolbarsManager_  .
 
 The  _WinFormManager_   component also allows you to:
 

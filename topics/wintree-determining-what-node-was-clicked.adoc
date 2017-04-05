@@ -16,12 +16,12 @@
 
 When working with the WinTree™ control, a common task would be to determine which node was clicked, and respond accordingly.
 
-The following code shows you how to find out the node that was clicked by checking the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.selecteventargs.html[SelectEventArgs]"]  object, which contains data related to the event. The SelectEventArgs object’s  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.selecteventargs~newselections.html[NewSelections]"]  property contains a collection of the currently selected nodes. In this case, we expect to click on one node at a time; therefore we can access the first element in the collection.
+The following code shows you how to find out the node that was clicked by checking the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.selecteventargs.html[SelectEventArgs]"]  object, which contains data related to the event. The SelectEventArgs object’s  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.selecteventargs~newselections.html[NewSelections]"]  property contains a collection of the currently selected nodes. In this case, we expect to click on one node at a time; therefore we can access the first element in the collection.
 
 .Note
 [NOTE]
 ====
-Clicking a node will select it therefore causing the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~afterselect_ev.html[AfterSelect]"]  event to fire. Clicking the same exact node again will not cause the AfterSelect event to fire. A different node will have to be clicked in order for the AfterSelect event to fire.
+Clicking a node will select it therefore causing the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~afterselect_ev.html[AfterSelect]"]  event to fire. Clicking the same exact node again will not cause the AfterSelect event to fire. A different node will have to be clicked in order for the AfterSelect event to fire.
 ====
 
 *In Visual Basic:*

@@ -22,12 +22,12 @@ image::images/Collapsible_Child_Bands_1.png[]
 
 == Enable Expansion Indicators on Child Bands
 
-It is best to set layout properties through the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[UltraGrid.InitializeLayout] event to ensure that the layout is persisted whenever data is bound to the grid.
+It is best to set layout properties through the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[UltraGrid.InitializeLayout] event to ensure that the layout is persisted whenever data is bound to the grid.
 
 [start=1]
 . Create a WinGrid bound to a hierarchical data source with sibling child bands.
 [start=2]
-. Set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~bandexpansionindicators.html[Layout.BandExpansionIndicators] property to link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.bandexpansionindicators.html[ShowOnChildBand].
+. Set the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~bandexpansionindicators.html[Layout.BandExpansionIndicators] property to link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.bandexpansionindicators.html[ShowOnChildBand].
 
 The following code snippet demonstrates how to set the property through an InitializeLayout event handler.
 

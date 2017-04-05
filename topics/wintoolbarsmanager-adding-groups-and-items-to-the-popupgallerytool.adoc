@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupgallerytool.html[PopupGalleryTool]"]  adds a new layer to the user interface. Using the PopupGalleryTool, you can display a visual selection of options for the user to select. The PopupGalleryTool supports a preview area and a drop-down area. The user will only see Images in the preview area, but clicking the drop-down button will display several items inside the PopupGalleryTool at a time. The PopupGalleryTool gives the end user a visual cue for any item.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupgallerytool.html[PopupGalleryTool]"]  adds a new layer to the user interface. Using the PopupGalleryTool, you can display a visual selection of options for the user to select. The PopupGalleryTool supports a preview area and a drop-down area. The user will only see Images in the preview area, but clicking the drop-down button will display several items inside the PopupGalleryTool at a time. The PopupGalleryTool gives the end user a visual cue for any item.
 
 == What You Will Accomplish
 
@@ -104,7 +104,7 @@ image::images/WinToolbarsManager_Adding_Groups_and_Items_to_the_PopupGalleryTool
 [start=4]
 . *Create the GalleryToolItems and add them to the PopupGalleryTool.*
 
-The first order of business is to instantiate eight  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.gallerytoolitem.html[GalleryToolItems]"] . Four of these items will represent the 2D chart group and the other four the 3D chart group. Once created, you will need to instantiate an instance of the PopupGalleryTool so the application recognizes it at run time as a PopupGalleryTool. Once you have the instance of the PopupGalleryTool, you can add all the items to it's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemcollection.html[Items]"]  collection using the AddRange method. Place the following code in the FormLoad event. You can generate a FormLoad event by double-clicking the Form's header in Design view.
+The first order of business is to instantiate eight  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.gallerytoolitem.html[GalleryToolItems]"] . Four of these items will represent the 2D chart group and the other four the 3D chart group. Once created, you will need to instantiate an instance of the PopupGalleryTool so the application recognizes it at run time as a PopupGalleryTool. Once you have the instance of the PopupGalleryTool, you can add all the items to it's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemcollection.html[Items]"]  collection using the AddRange method. Place the following code in the FormLoad event. You can generate a FormLoad event by double-clicking the Form's header in Design view.
 
 *In Visual Basic:*
 
@@ -150,7 +150,7 @@ chartGallery.Items.AddRange(galleryItems);
 [start=5]
 . *Set the images for each of the GalleryToolItems.*
 
-Each GalleryToolItem has a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemsettings.html[Settings]"]  object which allows you to set several properties having to do with appearances, images, and text. In order to display an image in a GalleryToolItem, you need to set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~image.html[Image]"]  property off the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemsettings~appearance.html[Appearance]"]  object found in the Settings object. You can do this by looping through the array of GalleryToolItems and setting their image to the corresponding image in the ImageList (which is why it was important to add the images in the correct order).
+Each GalleryToolItem has a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemsettings.html[Settings]"]  object which allows you to set several properties having to do with appearances, images, and text. In order to display an image in a GalleryToolItem, you need to set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~image.html[Image]"]  property off the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.gallerytoolitemsettings~appearance.html[Appearance]"]  object found in the Settings object. You can do this by looping through the array of GalleryToolItems and setting their image to the corresponding image in the ImageList (which is why it was important to add the images in the correct order).
 
 *In Visual Basic:*
 
@@ -175,7 +175,7 @@ for(int i=0; i<galleryItems.Length; i++)
 [start=6]
 . *Set the description for each of the GalleryToolItems.*
 
-Each GalleryToolItem also has a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.gallerytoolitem~description.html[Description]"]  property. You can set this property to any string that describes what the item represents. For this walkthrough, we are just going to set it to the same text as the Caption. You also have the option of using formatted text in the description. For more information on formatted text, see link:winformattedlinklabel-formatting-text-and-hyperlinks.html[Formatting Text and Hyperlinks]. The following code will loop through each GalleryToolItem and set its Description text to its Caption text.
+Each GalleryToolItem also has a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.gallerytoolitem~description.html[Description]"]  property. You can set this property to any string that describes what the item represents. For this walkthrough, we are just going to set it to the same text as the Caption. You also have the option of using formatted text in the description. For more information on formatted text, see link:winformattedlinklabel-formatting-text-and-hyperlinks.html[Formatting Text and Hyperlinks]. The following code will loop through each GalleryToolItem and set its Description text to its Caption text.
 
 *In Visual Basic:*
 

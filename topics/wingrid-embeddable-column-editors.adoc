@@ -18,11 +18,11 @@
 
 Embeddable editors represent a major structural enhancement to WinGrid™ as well as other Infragistics Window Forms controls. Simply put, Embeddable editors embody all of the features and functionality that will allow you to provide a solid data entry point without having to write code. You can use these editors as stand-alone form controls or you can seamlessly integrate them into WinGrid.
 
-Within the context of WinGrid, the embeddable editors are associated with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object. Whenever you assign an embeddable editor to a WinGrid Column, an instance of that editor is used whenever data is being edited.
+Within the context of WinGrid, the embeddable editors are associated with the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  object. Whenever you assign an embeddable editor to a WinGrid Column, an instance of that editor is used whenever data is being edited.
 
 In WinGrid, embeddable editors are used automatically depending on the data type associated with the UltraGridColumn object. However, different types of editors can also be assigned using stand-alone elements. For example, suppose a column in WinGrid displays numeric data. By default, the control uses the Numeric embeddable editor to display and edit the data in that column. However, if the programmer wishes to display a different type of editor, say a Progress Bar, they can do so by adding the Progress Bar element to the form as a stand-alone element and then associating it with the UltraGridColumn object.
 
-This is accomplished using a property of the UltraGridColumn object called  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~editorcomponent.html[EditorComponent]"] . This property can attach the UltraGridColumn to any element that implements the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"]  interface, as all WinEditors™ do.
+This is accomplished using a property of the UltraGridColumn object called  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~editorcomponent.html[EditorComponent]"] . This property can attach the UltraGridColumn to any element that implements the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iprovidesembeddableeditor.html[IProvidesEmbeddableEditor]"]  interface, as all WinEditors™ do.
 
 == What You Will Accomplish
 
