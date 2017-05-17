@@ -14,7 +14,7 @@
 
 = Set Specific Working Hours
 
-The WinSchedule™ CalendarInfo object extends the ability to set the working hours for a day of the week, as well as whether a particular day of the week is considered a working day. This functionality is exposed through the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek.html[DayOfWeek]"]  object; there are seven DayOfWeek objects in the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~daysofweek.html[DaysOfWeek]"]  collection, one to represent each day of the week. Each DayOfWeek object can be accessed by indexing into the DaysOfWeek collection using the constant of the System.DayOfWeek enumeration that corresponds to the desired day of the week.
+The WinSchedule™ CalendarInfo object extends the ability to set the working hours for a day of the week, as well as whether a particular day of the week is considered a working day. This functionality is exposed through the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.dayofweek.html[DayOfWeek]"]  object; there are seven DayOfWeek objects in the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~daysofweek.html[DaysOfWeek]"]  collection, one to represent each day of the week. Each DayOfWeek object can be accessed by indexing into the DaysOfWeek collection using the constant of the System.DayOfWeek enumeration that corresponds to the desired day of the week.
 
 [start=1]
 . Before you start writing any code, you should place using/imports directives in your code-behind so you don't need to always type out a member's fully qualified name.
@@ -32,7 +32,7 @@ using Infragistics.Win.UltraWinSchedule;
 ----
 
 [start=2]
-. The DayOfWeek object exposes properties that make it possible to define different working hours for that day, as well as whether that day of the week is considered a working day. The  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayStartTime]"]  and  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayEndTime]"]  properties determine the time at which a work day begins and ends, respectively. These properties are of type DateTime, but only the hour and minute components of the value are significant. To define a work day that (for example) begins at 10AM and has a duration of six hours, the syntax would look something like this:
+. The DayOfWeek object exposes properties that make it possible to define different working hours for that day, as well as whether that day of the week is considered a working day. The  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayStartTime]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.dayofweek~workdaystarttime.html[WorkDayEndTime]"]  properties determine the time at which a work day begins and ends, respectively. These properties are of type DateTime, but only the hour and minute components of the value are significant. To define a work day that (for example) begins at 10AM and has a duration of six hours, the syntax would look something like this:
 
 *In Visual Basic:*
 

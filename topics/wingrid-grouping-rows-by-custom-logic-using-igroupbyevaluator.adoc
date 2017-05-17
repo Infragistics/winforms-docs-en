@@ -15,7 +15,7 @@
 
 == Before you Begin
 
-There are different ways of grouping records of a band by a column. The GroupByMode property allows you to select one of several predefined Outlook Group By behaviors by which you can group your data by. It is possible that you might have to group the Grid rows using some custom logic that is above and beyond just setting the GroupByMode property. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator.html[IGroupByEvaluator]"] Interface can be used to supply custom logic for grouping rows whenever none of the GroupByMode values meet your needs. Also if sorting of the rows is not consistent with the grouping criteria, you will need to implement the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex.html[IGroupByEvaluatorEx]"]  Interface.
+There are different ways of grouping records of a band by a column. The GroupByMode property allows you to select one of several predefined Outlook Group By behaviors by which you can group your data by. It is possible that you might have to group the Grid rows using some custom logic that is above and beyond just setting the GroupByMode property. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.igroupbyevaluator.html[IGroupByEvaluator]"] Interface can be used to supply custom logic for grouping rows whenever none of the GroupByMode values meet your needs. Also if sorting of the rows is not consistent with the grouping criteria, you will need to implement the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex.html[IGroupByEvaluatorEx]"]  Interface.
 
 == What You Will Accomplish
 
@@ -39,7 +39,7 @@ using Infragistics.Win.UltraWinGrid;
 
 . Add an UltraButton™ to the form.
 
-. Create a class file named MyGroupByEvaluator that implements IGroupByEvaluator and IGroupByEvaluatorEx interface. This class contains code that implements  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~getgroupbyvalue.html[GetGroupByValue]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~doesgroupcontainrow.html[DoesGroupContainRow]"]  methods that are member of the IGroupByEvaluator interface and also  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex~compare.html[Compare]"]  method that is a member of IGroupByEvaluatorEx interface. Write the following code within MyGroupByEvaluator class.
+. Create a class file named MyGroupByEvaluator that implements IGroupByEvaluator and IGroupByEvaluatorEx interface. This class contains code that implements  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~getgroupbyvalue.html[GetGroupByValue]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.igroupbyevaluator~doesgroupcontainrow.html[DoesGroupContainRow]"]  methods that are member of the IGroupByEvaluator interface and also  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.igroupbyevaluatorex~compare.html[Compare]"]  method that is a member of IGroupByEvaluatorEx interface. Write the following code within MyGroupByEvaluator class.
 +
 *In Visual Basic:*
 [source, vb]

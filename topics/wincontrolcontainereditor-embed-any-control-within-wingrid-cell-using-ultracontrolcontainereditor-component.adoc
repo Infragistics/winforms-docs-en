@@ -22,13 +22,13 @@ The ControlContainerEditor component is an embeddable Editor that allows you to 
 The Rendering control will be drawn to a Bitmap. Hence any control used as the Rendering control must support the DrawToBitmap method.
 ====
 
-The editing control enables the end-user to edit cells while in edit mode. When used with WinGrid, if no editing control is specified, editing will not be possible; the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  will essentially be a renderer and not an editor. Similarly, if no Rendering control is specified the UltraGridCell will simply display the value of the cell as text. 
+The editing control enables the end-user to edit cells while in edit mode. When used with WinGrid, if no editing control is specified, editing will not be possible; the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcell.html[UltraGridCell]"]  will essentially be a renderer and not an editor. Similarly, if no Rendering control is specified the UltraGridCell will simply display the value of the cell as text. 
 
 By default, when the editor is not in edit mode, the rendering control is displayed with the same appearances (BackColor, ForeColor, Font etc.,) similar to its owner or parent control.
 
 This example code shows that you can either assign only an Editing control or only a Rendering control to ControlContainerEditor, which can then be embedded into a control that supports embeddable editors. For information on how to assign both Editing and Rendering controls to the ControlContainerEditor component, please see the link:wincontrolcontainereditor-embed-any-control-within-wingrid-cell-using-controlcontainereditor-object.html[Embed Any Control within WinGrid Cell using ControlContainerEditor Object] topic.
 
-The Editing or Rendering controls can be assigned to either the design -time available  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor.html[UltraControlContainerEditor]"]  component or to an instance of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.controlcontainereditor.html[ControlContainerEditor]"]  object.
+The Editing or Rendering controls can be assigned to either the design -time available  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawineditors.ultracontrolcontainereditor.html[UltraControlContainerEditor]"]  component or to an instance of the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.controlcontainereditor.html[ControlContainerEditor]"]  object.
 
 This topic assumes that you have an UltraGrid control, a .Net TrackBar control and an UltraControlContainerEditor component dropped onto your Form. The WinGrid control is bound to the Products DataTable of Northwind database.
 

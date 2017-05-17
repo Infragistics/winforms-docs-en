@@ -51,7 +51,7 @@ The forward-only streaming approach improves performance but decreases the ease 
 [[WordDocumentWriterIntro]]
 ===== Introduction to the WordDocumentWriter Object
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] is a streamer object that provides a fast, non-cached, forward-only means of generating streams or files containing word processing data. This object is available in the Infragistics.Documents.IO assembly. The WordDocumentWriter object enables you to create Word documents with improved performance through the forward-only streaming approach.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] is a streamer object that provides a fast, non-cached, forward-only means of generating streams or files containing word processing data. This object is available in the Infragistics.Documents.IO assembly. The WordDocumentWriter object enables you to create Word documents with improved performance through the forward-only streaming approach.
 
 The WinGridWordWriter™ and WinFormattedTextWordWriter™ components use the WordDocumentWriter object for their exporting to Word functionality. The content exported by these components is directly exported to a file without creating the document in memory and hence use much less RAM and avoid memory issues caused during export of very large data.
 
@@ -65,7 +65,7 @@ A reference to the Infragistics3.Documents.IO assembly is required.
 [[Instance]]
 ===== Creating an Instance
 
-The WordDocumentWriter class is abstract, and does not support direct instantiation. Therefore, a static link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~create.html[Create] method is exposed to create an instance of a derived class.
+The WordDocumentWriter class is abstract, and does not support direct instantiation. Therefore, a static link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~create.html[Create] method is exposed to create an instance of a derived class.
 
 *In C#:*
 
@@ -169,7 +169,7 @@ End Sub
 [[DocumentIntro]]
 ===== Introduction to the Document Class
 
-The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document.html[Document] class encapsulates all content associated with the Word document. It is the root-level entity in the object hierarchy, under which all other objects are grouped. For generating a Microsoft Word document you need to create an instance of the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document.html[Document] class, manipulate it using publicly exposed properties and methods, and then call a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~save.html[Save] method.
+The link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document.html[Document] class encapsulates all content associated with the Word document. It is the root-level entity in the object hierarchy, under which all other objects are grouped. For generating a Microsoft Word document you need to create an instance of the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document.html[Document] class, manipulate it using publicly exposed properties and methods, and then call a link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document~save.html[Save] method.
 
 [[DOMReq]]
 ===== Requirements
@@ -204,12 +204,12 @@ doc.Save(filename)
 [[AddPara]]
 ===== Adding Paragraphs
 
-The following code sample demonstrates how to use the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph.html[Paragraph] class to add text to a Document, and align that text with the center of the printable area:
+The following code sample demonstrates how to use the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.paragraph.html[Paragraph] class to add text to a Document, and align that text with the center of the printable area:
 
 [[DOMPara]]
 ===== Introduction to the Paragraph Class
 
-The Paragraph class encapsulates a single paragraph in the document. A Paragraph is created by adding a member to the Document’s content blocks collection. A Paragraph provides the ability to display a block of text which can be aligned or indented. The Paragraph class exposes a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph~contentruns.html[ContentRuns] collection, which provides a way to add content to the paragraph.
+The Paragraph class encapsulates a single paragraph in the document. A Paragraph is created by adding a member to the Document’s content blocks collection. A Paragraph provides the ability to display a block of text which can be aligned or indented. The Paragraph class exposes a link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.paragraph~contentruns.html[ContentRuns] collection, which provides a way to add content to the paragraph.
 
 *In C#:*
 

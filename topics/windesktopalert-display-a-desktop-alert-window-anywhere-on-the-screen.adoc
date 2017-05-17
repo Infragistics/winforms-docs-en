@@ -14,7 +14,7 @@
 
 = Display a Desktop Alert Window Anywhere on the Screen
 
-You can position the desktop alert window in several standard locations using the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenposition.html[ScreenPosition] property. One of the "positions" that you can set is link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.screenposition.html[Manual]. This isn't necessarily a position, but it allows you to set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenlocation.html[ScreenLocation] property, leading to a completely custom screen location.
+You can position the desktop alert window in several standard locations using the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenposition.html[ScreenPosition] property. One of the "positions" that you can set is link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.screenposition.html[Manual]. This isn't necessarily a position, but it allows you to set the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalertshowwindowinfo~screenlocation.html[ScreenLocation] property, leading to a completely custom screen location.
 
 The ScreenLocation property is of type System.Drawing.Point; you simply need to provide an x- and y-coordinate for the point. The point will determine the location of the desktop alert window by positioning its upper-left corner at the specified coordinates. Using the ScreenPosition and ScreenLocation properties in conjunction will give you the ability to place the alert window anywhere on the screen.
 

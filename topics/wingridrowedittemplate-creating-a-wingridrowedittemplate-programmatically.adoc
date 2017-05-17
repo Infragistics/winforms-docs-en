@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-The WinGridRowEditTemplate™ control is a powerful editing tool for your end user. You can manage the layout of the template just as you would a normal Windows Forms panel. Since the template derives from System.Windows.Forms.Panel, you can use any one of our layout managers to control the template's layout at run time. Adding labels, text boxes, and buttons to the panel requires only the Add method off the template's Controls object. Laying out the controls in a suitable pattern requires only the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragridbaglayoutmanager~setgridbagconstraint.html[SetGridBagConstraint]"]  method off the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultragridbaglayoutmanager.html[UltraGridBagLayoutManager]"]  object. For more information on the WinGridBagLayoutManager™ control, see link:winlayoutmanager-using-the-winlayoutmanager-components.html[Using the Layout Manager Components].
+The WinGridRowEditTemplate™ control is a powerful editing tool for your end user. You can manage the layout of the template just as you would a normal Windows Forms panel. Since the template derives from System.Windows.Forms.Panel, you can use any one of our layout managers to control the template's layout at run time. Adding labels, text boxes, and buttons to the panel requires only the Add method off the template's Controls object. Laying out the controls in a suitable pattern requires only the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultragridbaglayoutmanager~setgridbagconstraint.html[SetGridBagConstraint]"]  method off the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultragridbaglayoutmanager.html[UltraGridBagLayoutManager]"]  object. For more information on the WinGridBagLayoutManager™ control, see link:winlayoutmanager-using-the-winlayoutmanager-components.html[Using the Layout Manager Components].
 
 == What You Will Accomplish
 
@@ -27,7 +27,7 @@ Upon completing this topic, you will have learned how to instantiate a WinGridRo
 [start=1]
 . *Add a WinGrid control to your form and bind it to the Northwind Customers table* .
 
-.. In a new Windows Forms project, double-click  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid.html[UltraGrid]"]  from the Microsoft® Visual Studio® toolbox. WinGrid is added to your form and the UltraWinGrid Quick Start dialog box appears.
+.. In a new Windows Forms project, double-click  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid.html[UltraGrid]"]  from the Microsoft® Visual Studio® toolbox. WinGrid is added to your form and the UltraWinGrid Quick Start dialog box appears.
 .. Click Finish to dismiss the dialog box.
 .. With WinGrid still selected, locate the Dock property in the properties window and set it to Fill.
 .. Bind WinGrid to the Customers table in the Northwind database. For more information, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
@@ -35,7 +35,7 @@ Upon completing this topic, you will have learned how to instantiate a WinGridRo
 [start=2]
 . *Create a new instance of an UltraGridRowEditTemplate object* .
 
-In order to use a row's edit template, you need to create one and set it to the band's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~rowedittemplate.html[RowEditTemplate]"]  property. Just above the form's Load event in the code-behind, instantiate a new UltraGridRowEditTemplate object. In the form's Load event, you'll set WinGrid's first band's RowEditTemplate property to the template you just instantiated. You'll then set a few aesthetic properties on the template, add it to the form's Controls collection, and set the template to the first band in WinGrid.
+In order to use a row's edit template, you need to create one and set it to the band's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~rowedittemplate.html[RowEditTemplate]"]  property. Just above the form's Load event in the code-behind, instantiate a new UltraGridRowEditTemplate object. In the form's Load event, you'll set WinGrid's first band's RowEditTemplate property to the template you just instantiated. You'll then set a few aesthetic properties on the template, add it to the form's Controls collection, and set the template to the first band in WinGrid.
 
 *In Visual Basic:*
 
@@ -167,7 +167,7 @@ gridBag.SetGridBagConstraint(
 [start=5]
 . *Add a WinGridCellProxy control to the template* .
 
-The WinGridCellProxy control is a unique textbox that only functions properly within an associated WinGridRowEditTemplate control. WinGridCellProxy must be a member of WinGridRowEditTemplate's Controls collection in order for it to inherit the proper data bindings. Once a member of the Controls collection, you only need to set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcellproxy~columnkey.html[ColumnKey] property to whichever column's key that you want to display from the WinGridRowEditTemplate's associated band.
+The WinGridCellProxy control is a unique textbox that only functions properly within an associated WinGridRowEditTemplate control. WinGridCellProxy must be a member of WinGridRowEditTemplate's Controls collection in order for it to inherit the proper data bindings. Once a member of the Controls collection, you only need to set the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcellproxy~columnkey.html[ColumnKey] property to whichever column's key that you want to display from the WinGridRowEditTemplate's associated band.
 
 *In Visual Basic:*
 
@@ -245,7 +245,7 @@ gridBag.SetGridBagConstraint(
 [start=7]
 . *Add Accept and Cancel buttons to the template* .
 
-Your end users need a way to update the data and cancel any changes, if necessary. Therefore, you need to add two buttons to the template that will act as accept and cancel buttons. To do this, you need to instantiate two buttons and add event handlers so you can later call the template's link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~close.html[Close] method and either save or cancel changes depending on the button.
+Your end users need a way to update the data and cancel any changes, if necessary. Therefore, you need to add two buttons to the template that will act as accept and cancel buttons. To do this, you need to instantiate two buttons and add event handlers so you can later call the template's link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~close.html[Close] method and either save or cancel changes depending on the button.
 
 The following example code instantiates two buttons, adds handlers for their Click events, and places them in the grid bag's layout.
 

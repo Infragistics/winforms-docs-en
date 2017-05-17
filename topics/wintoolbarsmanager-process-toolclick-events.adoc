@@ -14,14 +14,14 @@
 
 = Process ToolClick Events
 
-This topic demonstrates how to process  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  events for a tool on an MDI child form. Even though an MDI child form's toolbars and tools can be set to merge into the MDI parent form's toolbars, the ToolClick events for tools that originated from the child will be fired on the MDI child UltraToolBarsManager. This is advantageous since it allows you to encapsulate all processing for child tools directly on the child form. This sample can be followed to see this behavior.
+This topic demonstrates how to process  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  events for a tool on an MDI child form. Even though an MDI child form's toolbars and tools can be set to merge into the MDI parent form's toolbars, the ToolClick events for tools that originated from the child will be fired on the MDI child UltraToolBarsManager. This is advantageous since it allows you to encapsulate all processing for child tools directly on the child form. This sample can be followed to see this behavior.
 
 [start=1]
 . Set the IsMdiContainer property of your parent form to True.
 [start=2]
 . Add an MDI child form called ProcessingToolClickChildForm to your project.
 [start=3]
-. Add the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolBarsManager]"]  to each of these forms.
+. Add the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolBarsManager]"]  to each of these forms.
 [start=4]
 . Add some tools to the UltraToolBarsManager of the MDI parent and the MDI child form.
 [start=5]

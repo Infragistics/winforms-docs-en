@@ -14,7 +14,7 @@
 
 = Differences Between WinTab and WinTabStip
 
-Both the WinTab™ and WinTabStrip™ controls are derived from the  pick:[win-forms="link:infragistics4.win.ultrawintabcontrol.v{ProductVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase.html[UltraTabControlBase]"]  abstract base class and the majority of their functionality is shared between them. The following lists the differences:
+Both the WinTab™ and WinTabStrip™ controls are derived from the  pick:[win-forms="link:{ApiPlatform}win.ultrawintabcontrol{ApiVersion}~infragistics.win.ultrawintabcontrol.ultratabcontrolbase.html[UltraTabControlBase]"]  abstract base class and the majority of their functionality is shared between them. The following lists the differences:
 
 * *Per tab child controls* -- Only the UltraTabControl facilitates supplying different child controls per tab. It does this by creating an UltraTabPageControl for each tab which child controls can be placed on at design or run-time. The UltraTabStripControl instead uses the single SharedControlsPage as the tab page for every tab.
 

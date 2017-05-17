@@ -31,9 +31,9 @@ DockableGroupPanes are created and destroyed as needed in a similar fashion. The
 [[control]]
 == Control Pane
 
-*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablecontrolpane.html[DockableControlPane]"]
+*Class Name:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablecontrolpane.html[DockableControlPane]"]
 
-*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
+*Derived From:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
 
 *Description:* The control pane is a specialized pane for containing a Control. Control panes are the only type of pane that may be unpinned. Unpinning may occur programmatically when the Unpin method of a control pane or its ancestor group is invoked. It may also be invoked via the user interface by either depressing the Unpin button or by selecting the AutoHideoption from the context menu displayed when right clicking on a pane caption or tab item. When a control pane is unpinned, a tab is displayed in the unpinned tab area based on the location of the dock area that contains the control pane.
 
@@ -43,9 +43,9 @@ image::Images/WinDockManager_Panes_Overview_02.PNG[another example of ultradockm
 
 == Group Pane
 
-*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
+*Class Name:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
 
-*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
+*Derived From:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablepanebase.html[DockablePaneBase]"]
 
 *Description:* The group pane is the basic pane for grouping together other panes. They may contain control panes or other group panes. Since group panes may contain control panes (DockableControlPane) and group panes (DockableGroupPane), the return type of the group's Panes collection is of type DockablePaneBase. Because of this, it may be necessary to cast the value to the derived type to access some of the type specific properties (e.g. the Control property of a DockableControlPane).
 
@@ -53,8 +53,8 @@ image::Images/WinDockManager_Panes_Overview_02.PNG[another example of ultradockm
 
 == DockArea Pane
 
-*Class Name:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockareapane.html[DockAreaPane]"]
+*Class Name:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockareapane.html[DockAreaPane]"]
 
-*Derived From:*  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
+*Derived From:*  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPane]"]
 
 *Description:* Dock areas are specialized types of group panes that cannot be contained by other group panes. They are the root ancestor pane for containing and displaying all other panes. A dock area can be created docked to the left, right, top, or bottom of the container or may be created in a floating window. As with group panes, once a group pane is created, it cannot be moved.

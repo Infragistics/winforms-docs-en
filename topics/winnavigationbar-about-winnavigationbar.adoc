@@ -18,22 +18,22 @@ WinNavigationBar™ is a navigation control that behaves like a breadcrumb contr
 
 == Locations
 
-pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarlocation.html[Locations]"]  are to WinNavigationBar as  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode.html[Nodes]"]  are to WinTree. You can think of WinNavigationBar as a flat tree that only displays the path taken at any one time. Each location in WinNavigationBar includes its own collection of  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.navigationbarlocationscollection.html[locations]"] , giving the control a node-like hierarchical structure.
+pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultranavigationbarlocation.html[Locations]"]  are to WinNavigationBar as  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode.html[Nodes]"]  are to WinTree. You can think of WinNavigationBar as a flat tree that only displays the path taken at any one time. Each location in WinNavigationBar includes its own collection of  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.navigationbarlocationscollection.html[locations]"] , giving the control a node-like hierarchical structure.
 
 image::images/WinNavigationBar_About_WinNavigationBar_01.png[example of ultranavigationbar]
 
-The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbarrootlocation.html[root location]"]  is yet another location; however, only one root location can exist per WinNavigationBar control. The root location is the top-most location and is not a child location of any other location.
+The  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultranavigationbarrootlocation.html[root location]"]  is yet another location; however, only one root location can exist per WinNavigationBar control. The root location is the top-most location and is not a child location of any other location.
 
 image::images/WinNavigationBar_About_WinNavigationBar_02.png[example of ultranavigationbar]
 
 == Previous Locations
 
-The  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.navigationbarpreviouslocationscollection.html[previous locations]"]  collection keeps track of each location that you visit. WinNavigationBar accomplishes this by adding each visited location to a custom collection of locations. This collection is then exposed to the end user through a drop-down button to the right of the control. Clicking the drop-down button will display a drop-down list containing the full path of all previously visited locations.
+The  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.navigationbarpreviouslocationscollection.html[previous locations]"]  collection keeps track of each location that you visit. WinNavigationBar accomplishes this by adding each visited location to a custom collection of locations. This collection is then exposed to the end user through a drop-down button to the right of the control. Clicking the drop-down button will display a drop-down list containing the full path of all previously visited locations.
 
 image::images/WinNavigationBar_About_WinNavigationBar_03.png[example of ultranavigationbar]
 
 == Action Buttons
 
-WinNavigationBar allows you to add custom buttons to the right of itself. With the help of  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbaractionbutton.html[Action buttons]"] , you could add favorite locations to your application, refresh WinNavigationBar's representation of the file system, or search for a specific location.
+WinNavigationBar allows you to add custom buttons to the right of itself. With the help of  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultranavigationbaractionbutton.html[Action buttons]"] , you could add favorite locations to your application, refresh WinNavigationBar's representation of the file system, or search for a specific location.
 
 image::images/WinNavigationBar_About_WinNavigationBar_04.png[example of ultranavigationbar]

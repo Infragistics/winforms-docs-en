@@ -66,7 +66,7 @@ At this point we have created the two fundamental elements in our schema, Custom
 
 In the markup seen above, we are declaring that the DataSet will contain two tables; Customers and Orders. The maxOccurs attribute used in those elements indicates the maximum number of rows that can appear in those tables. Those attribute settings indicate that the Customers table can contain up to three customers. The WinGrid™ will not allow the end-user to add more rows to that band once there are three rows in it. The maxOccurs on the Orders element indicates that each customer can have up to three orders. The minOccurs attribute indicates the minimal number of rows each band can contain.
 
-The maxOccurs attribute corresponds to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~maxrows.html[MaxRows]"]  property on the *UltraGridBand* class and minOccurs corresponds to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~minrows.html[MinRows]"]  property.
+The maxOccurs attribute corresponds to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~maxrows.html[MaxRows]"]  property on the *UltraGridBand* class and minOccurs corresponds to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~minrows.html[MinRows]"]  property.
 
 == Generating Test Data
 

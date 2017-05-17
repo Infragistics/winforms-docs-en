@@ -14,12 +14,12 @@
 
 = WinGanttView Sorting
 
-The WinGanttView™ control allows sorting of single and multiple task fields in the grid section of the control. Tasks can be sorted on multiple field criteria through the user interface by shift+clicking on the column headers in the grid area of the control. Sorting can also be done through code by adding task fields to the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.roottaskscollection~sortedfields.html[SortedFields] collection. You can also perform custom sorting using the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.sortedtaskfieldscollection~comparer.html[Comparer] property.
+The WinGanttView™ control allows sorting of single and multiple task fields in the grid section of the control. Tasks can be sorted on multiple field criteria through the user interface by shift+clicking on the column headers in the grid area of the control. Sorting can also be done through code by adding task fields to the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.roottaskscollection~sortedfields.html[SortedFields] collection. You can also perform custom sorting using the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.sortedtaskfieldscollection~comparer.html[Comparer] property.
 
 .Note
 [NOTE]
 ====
-Sorting is not supported for all Task properties; for example, sorting on the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~dependencies.html[Dependencies]"]  collection is not supported.
+Sorting is not supported for all Task properties; for example, sorting on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~dependencies.html[Dependencies]"]  collection is not supported.
 ====
 
 The following example code assumes that you have an UltraGanttView control dropped onto your form that displays tasks and task details.

@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-One of the most exciting features of WinSpellChecker™ is its ability to perform exactly as Microsoft® Word's spell checker. One of the ways in which WinSpellChecker can mimic Microsoft Word's spell checker is by showing its spell checking status on a status bar at the bottom of a document. The task of showing WinSpellChecker's status is very simple: it will involve two events, one line of code each. You will be using the KeyDown event of the RichTextBox control as well as the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~spellchecked_ev.html[SpellChecked]"]  event of the WinSpellChecker component.
+One of the most exciting features of WinSpellChecker™ is its ability to perform exactly as Microsoft® Word's spell checker. One of the ways in which WinSpellChecker can mimic Microsoft Word's spell checker is by showing its spell checking status on a status bar at the bottom of a document. The task of showing WinSpellChecker's status is very simple: it will involve two events, one line of code each. You will be using the KeyDown event of the RichTextBox control as well as the  pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~spellchecked_ev.html[SpellChecked]"]  event of the WinSpellChecker component.
 
 == What You Will Accomplish
 
@@ -27,7 +27,7 @@ This walkthrough will guide you through the process of creating a status bar tha
 [start=1]
 . *Set up your form.*
 
-You will need to place a RichTextBox control, StatusBar control, and WinSpellChecker component on your form. Double-click RichTextBox and UltraStatusBar in the toolbox. Set richTextBox1's Dock property to Fill. Double-click the UltraSpellChecker component from the Infragistics {ProductVersion} Win tab in the toolbox. Once WinSpellChecker is placed in the component tray, you can go back to richTextBox1 and set its  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings~enabled.html[Enabled]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings.html[SpellCheckerSettings]"]  object to True.
+You will need to place a RichTextBox control, StatusBar control, and WinSpellChecker component on your form. Double-click RichTextBox and UltraStatusBar in the toolbox. Set richTextBox1's Dock property to Fill. Double-click the UltraSpellChecker component from the Infragistics {ProductVersion} Win tab in the toolbox. Once WinSpellChecker is placed in the component tray, you can go back to richTextBox1 and set its  pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings~enabled.html[Enabled]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.spellcheckersettings.html[SpellCheckerSettings]"]  object to True.
 [start=2]
 . *Create the events to show WinSpellChecker's status on the status bar.*
 

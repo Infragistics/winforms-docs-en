@@ -20,8 +20,8 @@ All controls that are based on the PLF expose a UIElement creation/positioning e
 
 The IUIElementCreationFilter interface has the following 2 methods (each of which gets passed the parent element as a parameter):
 
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcreationfilter~beforecreatechildelements.html[BeforeCreateChildElements]"]  -- called from inside the VerifyChildElements method if the child elements were marked dirty. This is called before PositionChildElements. A returned True from this method indicates that the default creation logic should be bypassed and PositionChildElements will not be called.
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcreationfilter~aftercreatechildelements.html[AfterCreateChildElements]"]  -- called after PositionChildElements is called.
+*  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementcreationfilter~beforecreatechildelements.html[BeforeCreateChildElements]"]  -- called from inside the VerifyChildElements method if the child elements were marked dirty. This is called before PositionChildElements. A returned True from this method indicates that the default creation logic should be bypassed and PositionChildElements will not be called.
+*  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementcreationfilter~aftercreatechildelements.html[AfterCreateChildElements]"]  -- called after PositionChildElements is called.
 
 The ChildElements collection property is used to add/remove/replace elements.
 

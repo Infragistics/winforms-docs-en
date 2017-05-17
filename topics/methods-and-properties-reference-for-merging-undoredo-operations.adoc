@@ -54,8 +54,8 @@ The following table summarizes the purpose and functionality of the methods rela
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~preventmerge.html[PreventMerge]
-|Ensures that the next link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] that is recorded is not allowed to merge with the last operation on the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~undohistory.html[UndoHistory].
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~preventmerge.html[PreventMerge]
+|Ensures that the next link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] that is recorded is not allowed to merge with the last operation on the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~undohistory.html[UndoHistory].
 
 |====
 
@@ -69,10 +69,10 @@ The following table summarizes the purpose and functionality of the properties r
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~allowmerging.html[AllowMerging]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~allowmerging.html[AllowMerging]
 |Returns or sets a boolean value indicating if the merging of related changes is allowed.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~mergetimeout.html[MergeTimeout]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~mergetimeout.html[MergeTimeout]
 |Indicates the maximum amount of time since the last operation within which a merge operation may be considered. 
 
 The default value is 0 and this indicates that there is no timeout.

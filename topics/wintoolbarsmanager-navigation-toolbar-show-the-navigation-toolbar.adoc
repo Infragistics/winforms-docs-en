@@ -14,14 +14,14 @@
 
 = Show the Navigation Toolbar
 
-By default, the Navigation toolbar's  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~visible.html[Visible]"]  property is set to False, which means the toolbar is hidden. Unlike the link:wintoolbarsmanager-working-with-the-ribbon.html[Ribbon] or the link:wintoolbarsmanager-creating-a-minitoolbar.html[Mini toolbar], the Navigation toolbar does not have a button on the link:wintoolbarsmanager-in-place-designer.html[WinToolbarsManager in-place designer] allowing you to quickly show the toolbar. While the ultraToolbarsManager1 component is selected, find the Visible property off the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar.html[NavigationToolbar]"]  object in the properties window and set it to True. You can also set the Navigation toolbar’s visibility at run time in the form’s Load event or a method call that suits your application’s logic.
+By default, the Navigation toolbar's  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar~visible.html[Visible]"]  property is set to False, which means the toolbar is hidden. Unlike the link:wintoolbarsmanager-working-with-the-ribbon.html[Ribbon] or the link:wintoolbarsmanager-creating-a-minitoolbar.html[Mini toolbar], the Navigation toolbar does not have a button on the link:wintoolbarsmanager-in-place-designer.html[WinToolbarsManager in-place designer] allowing you to quickly show the toolbar. While the ultraToolbarsManager1 component is selected, find the Visible property off the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar.html[NavigationToolbar]"]  object in the properties window and set it to True. You can also set the Navigation toolbar’s visibility at run time in the form’s Load event or a method call that suits your application’s logic.
 
 The following code will cause the Navigation toolbar to be visible.
 
 .Note
 [NOTE]
 ====
-The Navigation toolbar will not display if the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~office2007uicompatibility.html[Office2007UICompatibility]"]  property is set to True and the Ribbon is visible.
+The Navigation toolbar will not display if the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~office2007uicompatibility.html[Office2007UICompatibility]"]  property is set to True and the Ribbon is visible.
 ====
 
 *In Visual Basic:*

@@ -16,14 +16,14 @@
 
 WinGrid™ column headers help your end user identify exactly what it is that they are looking at. Column headers can be very descriptive and very long. In several cases, the text in your column headers may be much longer than the text in the actual column (especially when using numeric data). In order to shorten the column width despite a lengthy column header, you can rotate the column header until the column is a more suitable width.
 
-You can rotate column headers on WinGrid's link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override], link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[Band], and link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column] levels, as well as group headers. For the most part, setting the text orientation for a specific object involves setting a TextOrientation property to an instance of the link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo.html[TextOrientationInfo] object. The TextOrientationInfo object exposes several properties which return predefined TextOrientationInfo objects. These predefined objects rotate column header text in common rotations and are provided for your convenience. You can rotate column headers with the following predefined TextOrientationInfo objects:
+You can rotate column headers on WinGrid's link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override], link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband.html[Band], and link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Column] levels, as well as group headers. For the most part, setting the text orientation for a specific object involves setting a TextOrientation property to an instance of the link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo.html[TextOrientationInfo] object. The TextOrientationInfo object exposes several properties which return predefined TextOrientationInfo objects. These predefined objects rotate column header text in common rotations and are provided for your convenience. You can rotate column headers with the following predefined TextOrientationInfo objects:
 
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~horizontal45degrees.html[Horizontal45Degrees] – Rotates column headers horizontally by 45 degrees.
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~horizontal90degrees.html[Horizontal90Degrees] -- Rotates column headers horizontally by 90 degrees.
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~horizontalnegative45degrees.html[HorizontalNegative45Degrees] -- Rotates column headers horizontally by -45 degrees.
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~horizontalnegative90degrees.html[HorizontalNegative90Degrees] -- Rotates column headers horizontally by -90 degrees.
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~vertical.html[Vertical] -- Rotates column headers horizontally by 90 degrees.
-* link:infragistics4.win.v{ProductVersion}~infragistics.win.textorientationinfo~horizontal.html[Horizontal] -- No rotation.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~horizontal45degrees.html[Horizontal45Degrees] – Rotates column headers horizontally by 45 degrees.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~horizontal90degrees.html[Horizontal90Degrees] -- Rotates column headers horizontally by 90 degrees.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~horizontalnegative45degrees.html[HorizontalNegative45Degrees] -- Rotates column headers horizontally by -45 degrees.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~horizontalnegative90degrees.html[HorizontalNegative90Degrees] -- Rotates column headers horizontally by -90 degrees.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~vertical.html[Vertical] -- Rotates column headers horizontally by 90 degrees.
+* link:{ApiPlatform}win{ApiVersion}~infragistics.win.textorientationinfo~horizontal.html[Horizontal] -- No rotation.
 
 *In Visual Basic:*
 
@@ -73,7 +73,7 @@ Once you've figured out how you want to rotate your header text, you need to ide
 |The ColumnHeaderTextOrientation property of the Override object.
 
 |Individual Band Headers.
-|The TextOrientation property of the Header object of the Band I want to rotate. The WinGrid Band Header is hidden by default and can be made visible if the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~headervisible.html[HeaderVisible] property of the Band is set to true.
+|The TextOrientation property of the Header object of the Band I want to rotate. The WinGrid Band Header is hidden by default and can be made visible if the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~headervisible.html[HeaderVisible] property of the Band is set to true.
 
 |A Column Header in a single column.
 |The TextOrientation property of the Header object of the specific Column whose header I want to rotate.
@@ -86,5 +86,5 @@ Once you've figured out how you want to rotate your header text, you need to ide
 .Note
 [NOTE]
 ====
-When rotating text in column headers in WinGrid vertically, the total space consumed by the header can be decreased using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~performautoresize.html[PerformAutoResize]"]  method of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  class. But, you may experience that on resizing column header, the sort indicator disappears. In order to accommodate for this issue, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~reservesortindicatorspacewhenautosizing.html[ultraGrid.DisplayLayout.Override.ReserveSortIndicatorSpaceWhenAutoSizing]"]  property to either Default, WhenColumnIsSortable or WhenVisible setting.
+When rotating text in column headers in WinGrid vertically, the total space consumed by the header can be decreased using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~performautoresize.html[PerformAutoResize]"]  method of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"]  class. But, you may experience that on resizing column header, the sort indicator disappears. In order to accommodate for this issue, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~reservesortindicatorspacewhenautosizing.html[ultraGrid.DisplayLayout.Override.ReserveSortIndicatorSpaceWhenAutoSizing]"]  property to either Default, WhenColumnIsSortable or WhenVisible setting.
 ====

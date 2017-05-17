@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-The WinListView™ control is capable of displaying all of its items in groups. This is similar to the way in which the Windows® Explorer functions. Each  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewitem.html[UltraListViewItem]"]  can be assigned a  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewgroup.html[Group]"]  to which it corresponds. In this walkthrough, you will create a WinListView control filled with several items. The  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewmaincolumn.html[MainColumn]"]  will be a specific type of food; the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[SubItemColumn]"]  will be the general type of food that the items will be grouped by. You will also be using a WinComboEditor™ to switch between the different View styles of WinListView and a WinCheckEditor™ to turn Groups on and off.
+The WinListView™ control is capable of displaying all of its items in groups. This is similar to the way in which the Windows® Explorer functions. Each  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewitem.html[UltraListViewItem]"]  can be assigned a  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewgroup.html[Group]"]  to which it corresponds. In this walkthrough, you will create a WinListView control filled with several items. The  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewmaincolumn.html[MainColumn]"]  will be a specific type of food; the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[SubItemColumn]"]  will be the general type of food that the items will be grouped by. You will also be using a WinComboEditor™ to switch between the different View styles of WinListView and a WinCheckEditor™ to turn Groups on and off.
 
 == What You Will Accomplish
 
@@ -44,20 +44,20 @@ using Infragistics.Win;
 ----
 
 [start=2]
-. Add an  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview.html[UltraListView]"]  control from the toolbox to your form.
+. Add an  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview.html[UltraListView]"]  control from the toolbox to your form.
 [start=3]
 . Set its Dock property to Top.
 [start=4]
-. Add an  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor.html[UltraComboEditor]"]  and  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor.html[UltraCheckEditor]"] . Arrange the controls so they look something like this:
+. Add an  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor.html[UltraComboEditor]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor.html[UltraCheckEditor]"] . Arrange the controls so they look something like this:
 
 image::images/WinListView_Showing_Groups_in_WinListView_02.png[showing groups in ultralistview]
 
 *Set up the WinListView control and add some data.*
 
 [start=1]
-. With WinListView selected, set the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property in the Properties window to Details and the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~showgroups.html[ShowGroups]"]  property to False.
+. With WinListView selected, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property in the Properties window to Details and the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview~showgroups.html[ShowGroups]"]  property to False.
 [start=2]
-. Find the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewgroupscollection.html[Groups]"]  collection in the properties window and click the ellipsis (…) next to it. The UltraListViewGroup Collection Editor opens.
+. Find the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewgroupscollection.html[Groups]"]  collection in the properties window and click the ellipsis (…) next to it. The UltraListViewGroup Collection Editor opens.
 [start=3]
 . Click Add. Upon clicking Add, the first group is created. Set its Text property to "Fruit".
 [start=4]
@@ -70,7 +70,7 @@ image::images/WinListView_Showing_Groups_in_WinListView_03.png[ultralistviewgrou
 [start=6]
 . Click OK to close the Editor.
 [start=7]
-. Find the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection in the Properties window and click the ellipsis (…) to open the UltraListView Designer. The Columns tab is selected by default.
+. Find the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection in the Properties window and click the ellipsis (…) to open the UltraListView Designer. The Columns tab is selected by default.
 [start=8]
 . Click the green (+) button to add a SubItem column.
 [start=9]
@@ -226,7 +226,7 @@ foreach (string s in Enum.GetNames(typeof (UltraListViewStyle)))
 
 This code will loop through each of the enumerations for UltraListViewStyle. For each enumeration, the loop will retrieve the string value and add it as an Item to the WinComboEditor control.
 
-Create a  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selectionchanged_ev.html[SelectionChanged]"]  event for ultraComboEditor1 and add the following code to it:
+Create a  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~selectionchanged_ev.html[SelectionChanged]"]  event for ultraComboEditor1 and add the following code to it:
 
 *In Visual Basic:*
 
@@ -249,11 +249,11 @@ this.ultraListView1.View =
 }
 ----
 
-This code snippet uses the Parse method of the System.Enum class. This method accepts two parameters: an enumeration type (in this case, the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewstyle.html[UltraListViewStyle]"]  enumeration), and a string that represents that enumeration. In the above code, when the WinComboEditor's selection is changed, it uses the string of what it was changed to, matches that string to an enumeration in UltraListViewStyle, and sets the View property of ultraListView1 to the corresponding enumeration.
+This code snippet uses the Parse method of the System.Enum class. This method accepts two parameters: an enumeration type (in this case, the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewstyle.html[UltraListViewStyle]"]  enumeration), and a string that represents that enumeration. In the above code, when the WinComboEditor's selection is changed, it uses the string of what it was changed to, matches that string to an enumeration in UltraListViewStyle, and sets the View property of ultraListView1 to the corresponding enumeration.
 
 *Add the code-behind for the WinCheckEditor control.*
 
-Create a  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor~checkedchanged_ev.html[CheckedChanged]"]  event handler for ultraCheckEditor1 and add the following code to it:
+Create a  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor~checkedchanged_ev.html[CheckedChanged]"]  event handler for ultraCheckEditor1 and add the following code to it:
 
 *In Visual Basic:*
 

@@ -14,11 +14,11 @@
 
 = Export WinGrid Asynchronously
 
-The WinGridExcelExporter™ component enables you to asynchronously export your entire WinGrid™ directly into a Microsoft Excel file. You do this by calling the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~exportasync.html[ExportAsync] method of the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter.html[UltraGridExcelExporter] object.
+The WinGridExcelExporter™ component enables you to asynchronously export your entire WinGrid™ directly into a Microsoft Excel file. You do this by calling the link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~exportasync.html[ExportAsync] method of the link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter.html[UltraGridExcelExporter] object.
 
 == Introduction
 
-Asynchronous exporting, as opposed to synchronous, allows users to interact with the user interface of the application while the export process is executing. You must ensure that neither the WinGrid, nor its data source is accessed by your application in any way while the asynchronous export is in progress. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~isexportasyncinprogress.html[IsExportAsyncInProgress] property of the WinGrid is used to determine whether or not the asynchronous export is still in progress to avoid any access conflicts.
+Asynchronous exporting, as opposed to synchronous, allows users to interact with the user interface of the application while the export process is executing. You must ensure that neither the WinGrid, nor its data source is accessed by your application in any way while the asynchronous export is in progress. The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~isexportasyncinprogress.html[IsExportAsyncInProgress] property of the WinGrid is used to determine whether or not the asynchronous export is still in progress to avoid any access conflicts.
 
 == Requirements
 

@@ -62,10 +62,10 @@ The Syntax Parsing Engine generates messages when an error is detected. Unless o
 * For skipped tokens: “Unexpected token ‘<text from token>’”
 * For inserted missing nodes:
 ** If the node is a non-terminal symbol: “<NonTerminalSymbol.Name> expected”
-** If the node is a terminal symbol with a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison] value of `RegularExpression`: “<TerminalSymbol.Name> expected”
+** If the node is a terminal symbol with a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison] value of `RegularExpression`: “<TerminalSymbol.Name> expected”
 ** If the node is any other terminal symbol: “<TerminalSymbol.Value> expected”
 
-For nodes representing non-terminal symbols with their link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError] value set to `true`: “ _<NonTerminalSymbol.Name>_  is incorrect”
+For nodes representing non-terminal symbols with their link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError] value set to `true`: “ _<NonTerminalSymbol.Name>_  is incorrect”
 
 [[_Ref350251095]]
 
@@ -73,14 +73,14 @@ For nodes representing non-terminal symbols with their link:{ApiPlatform}documen
 
 In some situations, the default error messages may not be suitable for the purpose of the application. In this case you can customize the messages using one of the methods below:
 
-* Override link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias] method on the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] derived class
-* Override the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError] method
+* Override link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~geterroralias.html[GetErrorAlias] method on the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase.html[LanguageBase] derived class
+* Override the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.languagebase~onerror.html[OnError] method
 
 [[_Ref350251099]]
 
 === Overriding the GetErrorAlias method
 
-When an error occurs, the parser will call the `GetErrorAlias` method, which allows the language to provide an alias for the specified link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol.html[Symbol]. It returns `null` by default. If you override it and return a non-null value, the error messages will be changed like so:
+When an error occurs, the parser will call the `GetErrorAlias` method, which allows the language to provide an alias for the specified link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol.html[Symbol]. It returns `null` by default. If you override it and return a non-null value, the error messages will be changed like so:
 
 * For skipped tokens: “Unexpected token ‘<alias>’”
 * For inserted missing nodes: “<alias> expected”
@@ -92,28 +92,28 @@ An example of where this might be used is in the Visual Basic language, which ha
 
 === Overriding the OnError method
 
-To get more control over the error messages displayed or add or remove error messages, you can alternatively override the `OnError` method. The link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext.html[ParseErrorContext] class, which is an argument to the `OnError` method, has the following members for allowing you to inspect and customize the error:
+To get more control over the error messages displayed or add or remove error messages, you can alternatively override the `OnError` method. The link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext.html[ParseErrorContext] class, which is an argument to the `OnError` method, has the following members for allowing you to inspect and customize the error:
 
 [options="header", cols="a,a"]
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~errors.html[Errors]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~errors.html[Errors]
 |The collection of errors, which will only contain the single error detected by the parser. This collection can be modified to change the errors attached to the document at the location of the error.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~ismissing.html[IsMissing]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~ismissing.html[IsMissing]
 |Indicates whether the error represents a missing syntax node structure which needed to be inserted because it was expected but not provided by the user.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~isskipped.html[IsSkipped]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~isskipped.html[IsSkipped]
 |Indicates whether the error represents skipped content which was unexpected in the document. Only terminal symbols will be skipped.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~snapshotspan.html[SnapshotSpan]
-|Indicates the location of the error in the document with respect to the current link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.textdocumentsnapshot.html[TextDocumentSnapshot] being parsed.
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~snapshotspan.html[SnapshotSpan]
+|Indicates the location of the error in the document with respect to the current link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.textdocumentsnapshot.html[TextDocumentSnapshot] being parsed.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~span.html[Span]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~span.html[Span]
 |Indicates the location of the error in the document. This is the same as `SnapshotSpan`, but is not associated with a snapshot.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.parseerrorcontext~symbol.html[Symbol]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.parseerrorcontext~symbol.html[Symbol]
 |The `Symbol` associated with the error which was either skipped or expected.
 
 |====

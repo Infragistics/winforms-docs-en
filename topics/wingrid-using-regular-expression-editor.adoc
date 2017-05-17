@@ -14,7 +14,7 @@
 
 = Using Regular Expression Editor
 
-WinGrid™ columns can apply a regular expression constraint on the text of their cells. After the user inputs a value into a cell and attempts to move focus out of that cell, the new text in the cell will be validated against the column's regular expression. You can specify the regular expression a column should use via its  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~regexpattern.html[RegexPattern]"]  property.
+WinGrid™ columns can apply a regular expression constraint on the text of their cells. After the user inputs a value into a cell and attempts to move focus out of that cell, the new text in the cell will be validated against the column's regular expression. You can specify the regular expression a column should use via its  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~regexpattern.html[RegexPattern]"]  property.
 
 A complement to this feature is the Regular Expression Editor. This design-time utility allows you to quickly create and test a regular expression. Once you have created the regular expression for a column, simply click the OK button and your regular expression will be assigned to that column's RegexPattern property.
 
@@ -53,7 +53,7 @@ image::Images/WinGrid_Use_the_Regular_Expression_Editor_01.png[ultragrid designe
 . In the UltraWinGrid Designer expand the Band and Column Settings node, then expand a Band node.
 
 [start=3]
-. Select the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Columns]"]  node beneath the expanded Band, and in the far right pane the properties for the selected column will be displayed. In the Columns PropertyGrid scroll down to the RegexPattern property. Select this property in the right-hand column and a button with an ellipse on it will appear. Clicking on this button will open the Regular Expression Editor.
+. Select the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[Columns]"]  node beneath the expanded Band, and in the far right pane the properties for the selected column will be displayed. In the Columns PropertyGrid scroll down to the RegexPattern property. Select this property in the right-hand column and a button with an ellipse on it will appear. Clicking on this button will open the Regular Expression Editor.
 
 image::Images/WinGrid_Regular_Expression_Editor_03.png[use the regular expression editor for ultragrid]
 
@@ -89,7 +89,7 @@ image::Images/WinGrid_Regular_Expression_Editor_04.png[use the regular expressio
 image::Images/WinGrid_Regular_Expression_Editor_05.png[displaying error messages in ultragrid when using regular expressions]
 
 [start=2]
-. You can set a customized error message to be displayed when the input value fails validation by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~error_ev.html[Error]"]  event of the WinGrid. You can cancel the event and display your own message box or you can just change the text displayed in the default message box. After you have determined that the ActiveCell is in the telephone number column, you could use the following code in an Error event handler:
+. You can set a customized error message to be displayed when the input value fails validation by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~error_ev.html[Error]"]  event of the WinGrid. You can cancel the event and display your own message box or you can just change the text displayed in the default message box. After you have determined that the ActiveCell is in the telephone number column, you could use the following code in an Error event handler:
 
 == Canceling the Error Event and Displaying a Custom Message Box.
 

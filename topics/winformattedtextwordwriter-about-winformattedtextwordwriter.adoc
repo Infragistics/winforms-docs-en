@@ -14,21 +14,21 @@
 
 = About WinFormattedTextWordWriter
 
-WinFormattedTextWordWriter™, like WinGridWordWriter™, is a component with exporting functionality that enables the contents of WinFormattedTextEditor™ or WinFormattedLinkLabel™ to write to a new Word document. This functionality is based on the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object in the Infragistics.Documents.IO assembly.
+WinFormattedTextWordWriter™, like WinGridWordWriter™, is a component with exporting functionality that enables the contents of WinFormattedTextEditor™ or WinFormattedLinkLabel™ to write to a new Word document. This functionality is based on the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object in the Infragistics.Documents.IO assembly.
 
-The link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~export.html[Export] method implements the basic exporting functionality. You can export the entire text including font styles, font size, text alignment, images, hyperlinks, special characters and other formatted text features supported by the WinFormattedTextEditor and WinFormattedLinkLabel controls. There are also several events that you may take advantage of to customize the export to your liking, such as:
+The link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~export.html[Export] method implements the basic exporting functionality. You can export the entire text including font styles, font size, text alignment, images, hyperlinks, special characters and other formatted text features supported by the WinFormattedTextEditor and WinFormattedLinkLabel controls. There are also several events that you may take advantage of to customize the export to your liking, such as:
 
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportstarted_ev.html[ExportStarted]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportending_ev.html[ExportEnding]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportended_ev.html[ExportEnded]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexporting_ev.html[TextExporting]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexported_ev.html[TextExported]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexporting_ev.html[HyperlinkExporting]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexported_ev.html[HyperlinkExported]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexporting_ev.html[ImageExporting]
-* link:infragistics4.win.ultrawinformattedtext.wordwriter.v{ProductVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexported_ev.html[ImageExported]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportstarted_ev.html[ExportStarted]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportending_ev.html[ExportEnding]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~exportended_ev.html[ExportEnded]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexporting_ev.html[TextExporting]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~textexported_ev.html[TextExported]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexporting_ev.html[HyperlinkExporting]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~hyperlinkexported_ev.html[HyperlinkExported]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexporting_ev.html[ImageExporting]
+* link:{ApiPlatform}win.ultrawinformattedtext.wordwriter{ApiVersion}~infragistics.win.ultrawinformattedtext.wordwriter.ultraformattedtextwordwriter~imageexported_ev.html[ImageExported]
 
-The following code listing demonstrates the basic implementation required for the export process. To begin, drag and drop an UltraFormattedTextWordWriter component and an UltraFormattedTextEditor control onto the form and set the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditorbase~value.html[Value] property of the UltraFormattedTextEditor control to some formatted text.
+The following code listing demonstrates the basic implementation required for the export process. To begin, drag and drop an UltraFormattedTextWordWriter component and an UltraFormattedTextEditor control onto the form and set the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditorbase~value.html[Value] property of the UltraFormattedTextEditor control to some formatted text.
 
 .Note
 [NOTE]

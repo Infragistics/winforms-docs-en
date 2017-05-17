@@ -14,12 +14,12 @@
 
 = Set the Appointment Dialog Box to the Current Active Day
 
-You can force the appointment dialog to always open to the active day, by using the WinCalendarInfo's™  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~activeday.html[ActiveDay]"]  property.
+You can force the appointment dialog to always open to the active day, by using the WinCalendarInfo's™  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~activeday.html[ActiveDay]"]  property.
 
 .Note
 [NOTE]
 ====
-This code will not work if placed in the  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~beforedisplayappointmentdialog_ev.html[BeforeDisplayAppointmentDialog]"]  event, as the call to  pick:[win-forms="link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~displayappointmentdialog.html[DisplayAppointmentDialog]"]  would make a call to the BeforeDisplayAppointmentDialog causing a loop. This code is for use with your own custom appointment dialog or if you are making the appointment dialog show on a button click.
+This code will not work if placed in the  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~beforedisplayappointmentdialog_ev.html[BeforeDisplayAppointmentDialog]"]  event, as the call to  pick:[win-forms="link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~displayappointmentdialog.html[DisplayAppointmentDialog]"]  would make a call to the BeforeDisplayAppointmentDialog causing a loop. This code is for use with your own custom appointment dialog or if you are making the appointment dialog show on a button click.
 ====
 
 *In Visual Basic:*

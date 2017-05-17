@@ -14,9 +14,9 @@
 
 = Working With Vectors
 
-The instance methods in link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.matrixbase.html[MatrixBase] are all concerned with the size component of a vector. They determine whether the vector is empty, has one element, is a row or column vector, is two-dimensional, or is a square data structure.
+The instance methods in link:{ApiPlatform}math{ApiVersion}~infragistics.math.matrixbase.html[MatrixBase] are all concerned with the size component of a vector. They determine whether the vector is empty, has one element, is a row or column vector, is two-dimensional, or is a square data structure.
 
-This topics demonstrates how to use link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances, but it applies to all vector types – link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexmatrix.html[ComplexVector].
+This topics demonstrates how to use link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] instances, but it applies to all vector types – link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector], link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector], and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexmatrix.html[ComplexVector].
 
 == Types of Vector Operations
 
@@ -241,7 +241,7 @@ As with matrices, the vectors need to be of the same dimensions. For example, a 
 
 == Code Example
 
-The following code snippet demonstrates the use of the logical operations for link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector]:
+The following code snippet demonstrates the use of the logical operations for link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector]:
 
 *In Visual Basic:*
 
@@ -293,7 +293,7 @@ Infragistics Math Library’s matrices support the following operations for comp
 
 The == and != operators compare the elements and the dimensions of the vector and return a Boolean value.
 
-The <, $$<=$$, >, and >= operators compare the corresponding values in the vectors. These operators return a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] instance and are defined only for link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVectovr].
+The <, $$<=$$, >, and >= operators compare the corresponding values in the vectors. These operators return a link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector] instance and are defined only for link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexvector.html[ComplexVectovr].
 
 == *Requirements*
 
@@ -303,9 +303,9 @@ As with matrices, the vectors need to be of the same dimensions. This means that
 
 === Comparing Vectors to Values
 
-Since double and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complex.html[Complex] can be compared, link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.complexvector.html[ComplexVector] are also comparable to each other and to double and Complex.
+Since double and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complex.html[Complex] can be compared, link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] and link:{ApiPlatform}math{ApiVersion}~infragistics.math.complexvector.html[ComplexVector] are also comparable to each other and to double and Complex.
 
-link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] can be compared also to a Boolean value. The following code snippet compares different vectors to values:
+link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector] can be compared also to a Boolean value. The following code snippet compares different vectors to values:
 
 *In Visual Basic:*
 
@@ -355,7 +355,7 @@ bool areEqual = x1 == x2;
 
 === Storing the Result of the Comparison
 
-The following code compares two link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.vector.html[Vector] instances and stores the result in a link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.booleanvector.html[BooleanVector] instance:
+The following code compares two link:{ApiPlatform}math{ApiVersion}~infragistics.math.vector.html[Vector] instances and stores the result in a link:{ApiPlatform}math{ApiVersion}~infragistics.math.booleanvector.html[BooleanVector] instance:
 
 *In Visual Basic:*
 
@@ -385,7 +385,7 @@ BooleanVector c = a > b;
 
 === Indexing a Vector with the Comparison Results
 
-Comparison operators can be used as inputs to the vector indexer. The code below compares all elements of the vector *x* to 7 and uses the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute~find.html[Find] method of the link:{ApiPlatform}math.v{ProductVersion}~infragistics.math.compute.html[Compute] class to get the indices of all elements that are greater than 7. These indices can be later used to get the values from *x* .
+Comparison operators can be used as inputs to the vector indexer. The code below compares all elements of the vector *x* to 7 and uses the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute~find.html[Find] method of the link:{ApiPlatform}math{ApiVersion}~infragistics.math.compute.html[Compute] class to get the indices of all elements that are greater than 7. These indices can be later used to get the values from *x* .
 
 *In Visual Basic:*
 

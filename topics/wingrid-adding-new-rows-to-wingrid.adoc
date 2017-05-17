@@ -31,7 +31,7 @@ Turn on the "Add New" buttons by setting the .Layout.AddNewBox.Hidden property t
 
 To add a new row with code, invoke the .AddNew method of the band into which the new row is to be added.
 
-Initialize the cell values of a new row in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~afterrowinsert_ev.html[AfterRowInsert]"]  event.
+Initialize the cell values of a new row in the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~afterrowinsert_ev.html[AfterRowInsert]"]  event.
 
 When a new row is added to the underlying DataTable, in most cases it will display in the grid as if it was added with the .AddNew method of the grid. However, there are some instances when the grid can not detect the add and thus the new row does not display. The best way to add new rows to the grid after it is bound is to use the AddNew method.
 

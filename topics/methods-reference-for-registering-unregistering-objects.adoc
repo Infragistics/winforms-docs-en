@@ -62,21 +62,21 @@ The following table summarizes the purpose and functionality of the methods for 
 |====
 |Methods|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~fromreference.html[FromReference]
-|This static method obtains a reference to the associated link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] instance. The method takes an already registered object as a parameter.
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~fromreference.html[FromReference]
+|This static method obtains a reference to the associated link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager_members.html[UndoManager] instance. The method takes an already registered object as a parameter.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~registerreference.html[RegisterReference]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~registerreference.html[RegisterReference]
 |Associates an object with a specific `UndoManager` instance. 
 
 This method is helpful when 
 
 * you do not want to maintain an object strong reference to an `UndoManager` instance 
 
-* you do not want to use the shared thread static UndoManager instance returned by the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~current.html[Current] property 
+* you do not want to use the shared thread static UndoManager instance returned by the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~current.html[Current] property 
 
 The references are maintained via weak references so it is not mandatory to unregister them.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~unregisterreference.html[UnregisterReference]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~unregisterreference.html[UnregisterReference]
 |Removes the registration of an object to an `UndoManager` instance.
 
 |====

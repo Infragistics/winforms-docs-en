@@ -14,7 +14,7 @@
 
 = Hide the Navigation Pane Context Menu for a Particular Group
 
-Each group can display its own context menu by right-clicking on the group header. This context menu allows the end user to customize the WinExplorerBar control. If you do not want a group's context menu to display on a right-click, you will need to cancel the context menu from the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcontextmenuinitializing_ev.html[NavigationContextMenuInitializing]"]  event. Two of the arguments passed into this event are Group and Cancel. The Group property allows you to determine which group the end user right-clicked, and the Cancel property allows you to stop the context menu from displaying.
+Each group can display its own context menu by right-clicking on the group header. This context menu allows the end user to customize the WinExplorerBar control. If you do not want a group's context menu to display on a right-click, you will need to cancel the context menu from the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~navigationcontextmenuinitializing_ev.html[NavigationContextMenuInitializing]"]  event. Two of the arguments passed into this event are Group and Cancel. The Group property allows you to determine which group the end user right-clicked, and the Cancel property allows you to stop the context menu from displaying.
 
 The following code will stop the context menu from displaying only if the end user right-clicked the fourth group.
 

@@ -27,17 +27,17 @@ Right-click the WinGrid and select "UltraGrid Designer" to launch the grid desig
 
 In the grid designer, drill down to the node: "Band and Column Settings> Band[0] - 'Order Details'."
 
-In the properties grid on the right scroll down to where the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband~summaries.html[Summaries]"]  collection is located.
+In the properties grid on the right scroll down to where the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband~summaries.html[Summaries]"]  collection is located.
 
 image::Images\WinCalcManager_Using_WinCalcManager_to_Create_a_Calculated_Summary_in_the_WinGrid_01.png[wingrid's properties window in its designer]
 
 [start=2]
-. Click the ellipse to open up the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summaryvalue~summarysettings.html[SummarySettings]"]  collection editor. With the editor open click the add Button to add a new SummarySettings.
+. Click the ellipse to open up the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summaryvalue~summarysettings.html[SummarySettings]"]  collection editor. With the editor open click the add Button to add a new SummarySettings.
 
 image::Images\WinCalcManager_Using_WinCalcManager_to_Create_a_Calculated_Summary_in_the_WinGrid_02.png[wingrid's summarysettings collection editor]
 
 [start=3]
-. Set in the properties grid on the SummarySettings the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.summarysettings~summaryposition.html[SummaryPosition]"]  to Right and the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula]"]  property to the following formula.
+. Set in the properties grid on the SummarySettings the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.summarysettings~summaryposition.html[SummaryPosition]"]  to Right and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn~formula.html[Formula]"]  property to the following formula.
 
 ----
 sum ( [ItemTotal] )

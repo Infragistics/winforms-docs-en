@@ -14,7 +14,7 @@
 
 = Turning On Clipboard Operations
 
-In order to take advantage of WinGrid's™ clipboard operations, a single property needs to be set. Setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowmulticelloperations.html[AllowMultiCellOperations]"]  property (found in the Properties window by expanding DisplayLayout, then Override) to  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.allowmulticelloperation.html[All]"]  will allow the end user to perform all clipboard operations, including Copy, Copy with headers, Cut, Delete, Paste, Undo, and Redo.
+In order to take advantage of WinGrid's™ clipboard operations, a single property needs to be set. Setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowmulticelloperations.html[AllowMultiCellOperations]"]  property (found in the Properties window by expanding DisplayLayout, then Override) to  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.allowmulticelloperation.html[All]"]  will allow the end user to perform all clipboard operations, including Copy, Copy with headers, Cut, Delete, Paste, Undo, and Redo.
 
 It is possible to only allow the end user to perform a select few operations. For example, if you wanted the end user to be able to copy and paste to and from WinGrid, but not delete data, then you would select the checkboxes by Copy and Paste, but deselect the checkbox next to Delete. Selecting None (same as Default) will not allow any multi-cell operations.
 

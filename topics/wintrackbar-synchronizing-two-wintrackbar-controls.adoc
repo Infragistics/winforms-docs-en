@@ -28,8 +28,8 @@ You will create a stereo volume control consisting of two WinTrackBar controls a
 . *Setup the WinTrackBar controls to act as faders.*
 
 .. Drag a WinGroupBox control onto the form and in the properties window, set its Text property to "Volume".
-.. Drag two WinTrackBar controls into WinGroupBox and set their  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar~orientation.html[Orientation]"]  property to Vertical.
-.. Set the right WinTrackBar's  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.ultrawineditors.tickmarksettingsbase~location.html[TickmarkSettingsMinor.Location]"]  property to TopOrLeft. Your form should now look similar to the following screen shot.
+.. Drag two WinTrackBar controls into WinGroupBox and set their  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratrackbar~orientation.html[Orientation]"]  property to Vertical.
+.. Set the right WinTrackBar's  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.ultrawineditors.tickmarksettingsbase~location.html[TickmarkSettingsMinor.Location]"]  property to TopOrLeft. Your form should now look similar to the following screen shot.
 
 image::images/WinTrackBar_Synchronizing_Two_WinTrackBar_Controls_01.png[synchronizing two ultratrackbar controls]
 
@@ -56,7 +56,7 @@ image::images/WinTrackBar_Synchronizing_Two_WinTrackBar_Controls_03.png[synchron
 [start=4]
 . *Mute the faders by Enabling/Disabling the two WinTrackBar controls.*
 
-When the end user selects the check box, they will essentially be muting that particular stereo channel . Therefore, you can emulate this function by disabling the TrackBar so the end user will know it's muted. You can do this by simply setting the Enabled property to False. In each WinCheckEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor~checkedchanged_ev.html[CheckedChanged]"]  event (easily set up by double-clicking the check box in the designer), toggle the respective WinTrackBar Enabled property.
+When the end user selects the check box, they will essentially be muting that particular stereo channel . Therefore, you can emulate this function by disabling the TrackBar so the end user will know it's muted. You can do this by simply setting the Enabled property to False. In each WinCheckEditor's  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor~checkedchanged_ev.html[CheckedChanged]"]  event (easily set up by double-clicking the check box in the designer), toggle the respective WinTrackBar Enabled property.
 
 *In Visual Basic:*
 
@@ -116,7 +116,7 @@ private void ultraCheckEditor3_CheckedChanged(object sender, EventArgs e)
 [start=6]
 . *Synchronize the two WinTrackBar controls.*
 
-In order to synchronize the WinTrackBar controls, you will be setting the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar~value.html[Value]"]  of one WinTrackBar control in the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratrackbar~valuechanged_ev.html[ValueChanged]"]  event of the other WinTrackBar control. Before you set the Value, you will need to test for two conditions:
+In order to synchronize the WinTrackBar controls, you will be setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratrackbar~value.html[Value]"]  of one WinTrackBar control in the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratrackbar~valuechanged_ev.html[ValueChanged]"]  event of the other WinTrackBar control. Before you set the Value, you will need to test for two conditions:
 
 ** Are the two WinTrackBar's synced?
 ** Is the other WinTrackBar Enabled?

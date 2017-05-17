@@ -23,7 +23,7 @@ You can control the order in which the Fixed Template Add Row, Fixed Filter Row,
 [start=3]
 . Fixed Filter Row
 
-If this arrangement does not suit your needs, you can specify the order in which they should be displayed by setting the corresponding Sequence property for each type of row. The Sequence properties are in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  class so that they can be given a default value on the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[DisplayLayout's]"]  Override object. Each band can have its own values for these properties by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand's]"]  Override object.
+If this arrangement does not suit your needs, you can specify the order in which they should be displayed by setting the corresponding Sequence property for each type of row. The Sequence properties are in the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[UltraGridOverride]"]  class so that they can be given a default value on the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout.html[DisplayLayout's]"]  Override object. Each band can have its own values for these properties by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband.html[UltraGridBand's]"]  Override object.
 
 The Sequence property with the lowest value will have its associated row type displayed above the others. The default value for the Sequence properties is -1, so make sure that you set these properties to values greater than or equal to 0.
 
@@ -47,7 +47,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. To change the relative position of Fixed Template Add Rows, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefixedaddrow.html[SequenceFixedAddRow]"]  property.
+. To change the relative position of Fixed Template Add Rows, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefixedaddrow.html[SequenceFixedAddRow]"]  property.
 
 *In Visual Basic:*
 
@@ -64,7 +64,7 @@ this.ultraGrid1.DisplayLayout.Override.SequenceFixedAddRow = 2;
 ----
 
 [start=3]
-. To change the relative position of Fixed Filter Rows, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefilterrow.html[SequenceFilterRow]"]  property.
+. To change the relative position of Fixed Filter Rows, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefilterrow.html[SequenceFilterRow]"]  property.
 
 *In Visual Basic:*
 
@@ -83,7 +83,7 @@ this.ultraGrid1.DisplayLayout.Override.SequenceFilterRow = 1;
 ----
 
 [start=4]
-. To change the relative position of Fixed Summary Footer Rows, set the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefilterrow.html[SequenceSummaryRow]"]  property.
+. To change the relative position of Fixed Summary Footer Rows, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~sequencefilterrow.html[SequenceSummaryRow]"]  property.
 
 *In Visual Basic:*
 

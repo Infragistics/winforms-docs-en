@@ -14,7 +14,7 @@
 
 = Using LimitToList and ItemNotInList
 
-In 2005 Volume 1, functionality was added to WinComboEditor™ allowing you to limit input text in the WinComboEditor to values only in the  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~items.html[Items]"]  collection. In addition, an event was added that fires when ever something is inputted that is not in the Items collection.
+In 2005 Volume 1, functionality was added to WinComboEditor™ allowing you to limit input text in the WinComboEditor to values only in the  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~items.html[Items]"]  collection. In addition, an event was added that fires when ever something is inputted that is not in the Items collection.
 
 The following steps walk you through the creation of an application that uses this functionality.
 
@@ -51,7 +51,7 @@ private void Use_LimitToList_and_ItemNotInList_Load(object sender,
 ----
 
 [start=4]
-. Wire a handler for the WinComboEditor's  pick:[win-forms="link:infragistics4.win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor~itemnotinlist_ev.html[ItemNotInList]"]  event. This event will fire whenever a value is inputted that is not in the Items Collection. You could use this event only, and not set *LimitToList* to True. These two features do not depend upon each other. In the ItemNotInList event place the following code, to show a message box to notify the end user of the error.
+. Wire a handler for the WinComboEditor's  pick:[win-forms="link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor~itemnotinlist_ev.html[ItemNotInList]"]  event. This event will fire whenever a value is inputted that is not in the Items Collection. You could use this event only, and not set *LimitToList* to True. These two features do not depend upon each other. In the ItemNotInList event place the following code, to show a message box to notify the end user of the error.
 
 *In Visual Basic:*
 

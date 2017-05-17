@@ -69,22 +69,22 @@ The following table summarizes the purpose and functionality of the methods rela
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~starttransaction.html[StartTransaction]
-|Creates and start a transaction. This is an `UndoManager` method and returns link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction] as a result. Once the transaction is started, any changes that are added to the `UndoManager` will be added to that transaction. 
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~starttransaction.html[StartTransaction]
+|Creates and start a transaction. This is an `UndoManager` method and returns link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction_members.html[UndoTransaction] as a result. Once the transaction is started, any changes that are added to the `UndoManager` will be added to that transaction. 
 
 Nested transactions can be created by invoking the `StartTransaction` method while a transaction is still in progress.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~commit.html[Commit]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction~commit.html[Commit]
 |Closes the transaction as well as any open nested transactions within it and the transaction is added to the undo/redo history. 
 
 The `Commit` method can only be invoked while the transaction is still opened. Once the transaction is closed, its property `IsClosed` returns _T_ _rue_ and invoking the method results in an exception.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~rollback.html[Rollback]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction~rollback.html[Rollback]
 |Closes the transaction and reverses the actions that had happened up to that point while the transaction was open. 
 
 The `Rollback` method can only be invoked while the transaction is still opened. Once the transaction is closed, its property `IsClosed` returns _True_ and invoking the method results in an exception.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~executeintransaction.html[ExecuteInTransaction]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~executeintransaction.html[ExecuteInTransaction]
 |Executes a specified `Action` within a transaction. 
 
 If an exception occurs while the transaction is in progress, the `Rollback` method is invoked. Otherwise, the `Commit` method is invoked.
@@ -101,18 +101,18 @@ The following table summarizes the purpose and functionality of the properties r
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~roottransaction.html[RootTransaction]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~roottransaction.html[RootTransaction]
 |Returns the current open root `UndoTransaction`. 
 
 If there is no open transaction, the method returns _null_ .
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~currenttransaction.html[CurrentTransaction]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~currenttransaction.html[CurrentTransaction]
 |Returns the current open leaf `UndoTransaction`.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~isperformingrollback.html[IsPerformingRollback]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~isperformingrollback.html[IsPerformingRollback]
 |Returns a boolean value indicating if the `UndoManager` is performing a `Rollback` of an `UndoTransaction`.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undotransaction~isclosed.html[IsClosed]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undotransaction~isclosed.html[IsClosed]
 |Returns a boolean value indicating if the transaction has been closed.
 
 |====

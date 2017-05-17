@@ -51,7 +51,7 @@ This code begins the export process by invoking the Export method of the UltraGr
 
 If all you want to do is dump all of the grid data into an Excel file, retaining any current formatting, this is all you have to do, and you can stop here.
 [start=5]
-. If you wish to fine-tune the exported data, you can do so by using the events fired by the ExcelExporter element. The first event that occurs is the  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~beginexport_ev.html[BeginExport]"]  event, which will you can use to set up the conditions that will apply to all the exported data.
+. If you wish to fine-tune the exported data, you can do so by using the events fired by the ExcelExporter element. The first event that occurs is the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~beginexport_ev.html[BeginExport]"]  event, which will you can use to set up the conditions that will apply to all the exported data.
 
 The following code gives an example of how to use the BeginExport event. This code will first create a worksheet with a specific name in the Excel workbook to hold the exported data. Then the newly added worksheet is made current so that it will receive the exported data. Finally, the new worksheet is made active so that it will be the first one the user sees when opening the XLS file.
 
@@ -80,7 +80,7 @@ private void ultraGridExcelExporter1_BeginExport(object sender,
 ----
 
 [start=6]
-. As the export proceeds, you can use other events to control the data that is being written out. The following code goes in the link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexported_ev.html[CellExported] event. It examines each cell exported to see if it is a string data type. Strings that begin with the words "Accounting Manager" are not to be exported from the application, so the code substitutes a abbreviation that will appear in the Excel file:
+. As the export proceeds, you can use other events to control the data that is being written out. The following code goes in the link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexported_ev.html[CellExported] event. It examines each cell exported to see if it is a string data type. Strings that begin with the words "Accounting Manager" are not to be exported from the application, so the code substitutes a abbreviation that will appear in the Excel file:
 
 *In Visual Basic:*
 

@@ -14,7 +14,7 @@
 
 = Using Embeddable Editors in the DataGridView
 
-The DataGridView control in Visual Studio 2005 (.NET Framework 2.0) can create custom derived columns. We have created derived columns which host our embeddable editors. There is a separate column class designed for each type of editor that corresponds to their existing class (derived from  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"] ). There will be a column for every editor, but not for every editor control (for example, CurrencyEditor and NumericEditor will not have column types since they both use EditorWithMask). Add these derived columns to the grid at run-time or design-time, bound or unbound.
+The DataGridView control in Visual Studio 2005 (.NET Framework 2.0) can create custom derived columns. We have created derived columns which host our embeddable editors. There is a separate column class designed for each type of editor that corresponds to their existing class (derived from  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.embeddableeditorbase.html[EmbeddableEditorBase]"] ). There will be a column for every editor, but not for every editor control (for example, CurrencyEditor and NumericEditor will not have column types since they both use EditorWithMask). Add these derived columns to the grid at run-time or design-time, bound or unbound.
 
 == Related Topics
 

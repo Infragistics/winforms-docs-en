@@ -14,17 +14,17 @@
 
 = Creating a Word Document
 
-This topic illustrates how to create a Word document using the forward-only link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] streamer object. The static Create method of the WordDocumentWriter object creates a new Word document.
+This topic illustrates how to create a Word document using the forward-only link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] streamer object. The static Create method of the WordDocumentWriter object creates a new Word document.
 
 The following screenshot shows a Word document created with text and hyper link:
 
 image::images/Word_Create_a_Word_Document_01.png[]
 
-The various properties of the document such as Author, Title, Subject etc., can be set using the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~documentproperties.html[DocumentProperties] property of the WordDocumentWriter object. These information can be accessed in Word 2007 by clicking the Office Button and navigating to Prepare > Properties section. Similarly in Word 2010 by clicking the File tab the document properties can be accessed from the right side of the backstage view.
+The various properties of the document such as Author, Title, Subject etc., can be set using the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~documentproperties.html[DocumentProperties] property of the WordDocumentWriter object. These information can be accessed in Word 2007 by clicking the Office Button and navigating to Prepare > Properties section. Similarly in Word 2010 by clicking the File tab the document properties can be accessed from the right side of the backstage view.
 
-In order to start writing into the Word document use the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~startdocument.html[StartDocument] method that must be balanced with a corresponding call to the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~enddocument.html[EndDocument] method.
+In order to start writing into the Word document use the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~startdocument.html[StartDocument] method that must be balanced with a corresponding call to the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~enddocument.html[EndDocument] method.
 
-A Paragraph provides the ability to display a block of text which can be aligned or indented. Use the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~startparagraph.html[StartParagraph] method to begin a paragraph. The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~addtextrun.html[AddTextRun] method provides a way to add content to the paragraph. Once content is added the paragraph must be closed using the link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter~endparagraph.html[EndParagraph] method.
+A Paragraph provides the ability to display a block of text which can be aligned or indented. Use the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~startparagraph.html[StartParagraph] method to begin a paragraph. The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~addtextrun.html[AddTextRun] method provides a way to add content to the paragraph. Once content is added the paragraph must be closed using the link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter~endparagraph.html[EndParagraph] method.
 
 .Note
 [NOTE]

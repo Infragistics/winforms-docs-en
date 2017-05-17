@@ -18,7 +18,7 @@ Selection strategy filters are often not necessary since the PLF has implemented
 
 The ISelectionStrategyFilter is a simple interface with a single method:
 
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iselectionmanager~getselectionstrategy.html[GetSelectionStrategy]"]  -- called to return the strategy for a specific type of selectable item.
+*  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iselectionmanager~getselectionstrategy.html[GetSelectionStrategy]"]  -- called to return the strategy for a specific type of selectable item.
 
 The following sample code illustrates how to supply a custom selection strategy for cells. Note: this is not usually necessary. Normally, the selection strategy for cells is based on the setting of the SelectTypeCell property of the Override object.
 

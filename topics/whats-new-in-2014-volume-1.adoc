@@ -285,9 +285,9 @@ This feature allows developers to configure the visibility of the Ribbon tab ite
 
 This feature introduces the tool’s priority property allowing tools to be prioritized whenever toolbar space is limited due to data usage. When there is not enough room for a toolbar to display all of its tools, the toolbar will sort the tools displaying more frequently used tools, and moving less frequently used tools to a bumped toolbar.
 
-Each tool exposes a link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~priority.html[Priority] property on the `SharedProps` object providing developers a way to specify the tool’s level of importance. Additionally, the  _UltraToolbarsManager_   keeps a counter of tool usage (known as usage data), which is also taken into consideration when sorting the tools.
+Each tool exposes a link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.sharedprops~priority.html[Priority] property on the `SharedProps` object providing developers a way to specify the tool’s level of importance. Additionally, the  _UltraToolbarsManager_   keeps a counter of tool usage (known as usage data), which is also taken into consideration when sorting the tools.
 
-The  _UltraToolbarsManager_   class exposes a new property link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolsortingprecedence.html[ToolSortingPrecedence] allowing users to specify the priority taking precedence over the usage data.
+The  _UltraToolbarsManager_   class exposes a new property link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolsortingprecedence.html[ToolSortingPrecedence] allowing users to specify the priority taking precedence over the usage data.
 
 == _WinCombo_,  _WinComboEditor_
 
@@ -337,7 +337,7 @@ This feature provides the user with an option to use a predefined sort order whe
 
 === Configurable spellchecker underline
 
-Configure the spellchecker underline using the link:{ApiPlatform}win.ultrawinspellchecker.v{ProductVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~underlineverticaloffset.html[UnderlineVerticalOffset] property, which accepts positive and negative integer values for setting the vertical offset for the underline positioned beneath misspelled words.
+Configure the spellchecker underline using the link:{ApiPlatform}win.ultrawinspellchecker{ApiVersion}~infragistics.win.ultrawinspellchecker.ultraspellchecker~underlineverticaloffset.html[UnderlineVerticalOffset] property, which accepts positive and negative integer values for setting the vertical offset for the underline positioned beneath misspelled words.
 
 ==== Related topics:
 

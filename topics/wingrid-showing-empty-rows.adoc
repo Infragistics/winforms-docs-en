@@ -39,7 +39,7 @@ This topic contains the following sections:
 
 === Introduction
 
-The Empty Rows feature allows you to fill the blank space after the last visible row with empty rows for aesthetic appeal only. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.emptyrowsettings_members.html[EmptyRowSettings]"]  object exposes various properties to display empty rows as well as control the appearance of empty rows.
+The Empty Rows feature allows you to fill the blank space after the last visible row with empty rows for aesthetic appeal only. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.emptyrowsettings_members.html[EmptyRowSettings]"]  object exposes various properties to display empty rows as well as control the appearance of empty rows.
 
 * `AlignWithDataRows`
 * `ExtendFirstCell` (Default)
@@ -113,7 +113,7 @@ this.ultraGrid1.DisplayLayout.EmptyRowSettings.Style = EmptyRowStyle.AlignWithDa
 Me.ultraGrid1.DisplayLayout.EmptyRowSettings.Style = EmptyRowStyle.AlignWithDataRows
 ----
 
-2. The  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.emptyrowsettings_members.html[EmptyRowSettings]"]  object exposes properties for controlling the appearance of empty rows as well.
+2. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.emptyrowsettings_members.html[EmptyRowSettings]"]  object exposes properties for controlling the appearance of empty rows as well.
 
 *In C#:*
 
@@ -180,7 +180,7 @@ RowAppearance.BackColor = Color.Red;
 
 |====
 
-3. The  _WinGrid_   introduced the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowalternateappearance.html[RowAlternateAppearance] property used to apply alternate row settings. The following previews and code examples demonstrate the settings that you need to apply in order to achieve an alternate row appearance for empty rows.
+3. The  _WinGrid_   introduced the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowalternateappearance.html[RowAlternateAppearance] property used to apply alternate row settings. The following previews and code examples demonstrate the settings that you need to apply in order to achieve an alternate row appearance for empty rows.
 
 .Note:
 [NOTE]

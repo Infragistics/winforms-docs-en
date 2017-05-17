@@ -14,7 +14,7 @@
 
 = NamedReferences Formula
 
-A  pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference.html[NamedReference]"]  is essentially a formula that is independent of a control. NamedReferences have many uses, such as defining constants or formulas that are used in other calculations but do not need to be visible to the end-user.
+A  pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.namedreference.html[NamedReference]"]  is essentially a formula that is independent of a control. NamedReferences have many uses, such as defining constants or formulas that are used in other calculations but do not need to be visible to the end-user.
 
 The most important properties of the NamedReferences are:
 
@@ -22,16 +22,16 @@ The most important properties of the NamedReferences are:
 |====
 |Property Name|Description
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~category.html[Category]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.namedreference~category.html[Category]"] 
 |Used by the FormulaBuilder to organize NamedReferences.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~key.html[Key]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.namedreference~key.html[Key]"] 
 |A unique key for this NamedReference. Key is used to reference the NamedReference in a formula.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~formula.html[Formula]"] 
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.namedreference~formula.html[Formula]"] 
 |The formula for this NamedReference. Note that Formula can be a literal, so that NamedReferences can be used as constants.
 
-| pick:[win-forms="link:infragistics4.win.ultrawincalcmanager.v{ProductVersion}~infragistics.win.ultrawincalcmanager.namedreference~formularesult.html[FormulaResult]"] (run-time only)
+| pick:[win-forms="link:{ApiPlatform}win.ultrawincalcmanager{ApiVersion}~infragistics.win.ultrawincalcmanager.namedreference~formularesult.html[FormulaResult]"] (run-time only)
 |FormulaResult returns the calculated result of the formula.
 
 |====

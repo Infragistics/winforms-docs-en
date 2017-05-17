@@ -17,7 +17,7 @@
 == To create and apply an Appearance object:
 
 [start=1]
-. To create an  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object, you use the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearancescollection.html[Appearances]"]  collection of the WinGrid™. Objects in the grid that support Appearances already have an Appearance object, so you do not need to create any Appearance objects if you don't want to. However, it is useful to create an Appearance object when you want to apply the same appearance to several different objects.
+. To create an  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance.html[Appearance]"]  object, you use the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearancescollection.html[Appearances]"]  collection of the WinGrid™. Objects in the grid that support Appearances already have an Appearance object, so you do not need to create any Appearance objects if you don't want to. However, it is useful to create an Appearance object when you want to apply the same appearance to several different objects.
 
 Start by adding an Appearance object to the Appearances collection and assigning it a key.
 
@@ -51,7 +51,7 @@ this.ultraGrid1.DisplayLayout.Appearances["Highlighted"].BackColor = Color.White
 ----
 
 [start=3]
-. You can then apply this Appearance to almost any object in the grid. For example, if you always want the ActiveRow to appear with white text on a red background, you can apply the Appearance you just created to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~activerowappearance.html[ActiveRowAppearance]"]  of the grid.
+. You can then apply this Appearance to almost any object in the grid. For example, if you always want the ActiveRow to appear with white text on a red background, you can apply the Appearance you just created to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~activerowappearance.html[ActiveRowAppearance]"]  of the grid.
 
 *In Visual Basic:*
 
@@ -68,7 +68,7 @@ this.ultraGrid1.DisplayLayout.Override.ActiveRowAppearance =
 ----
 
 [start=4]
-. You can apply the same settings to the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectors.html[RowSelectors]"]  by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~rowselectorappearance.html[RowSelectorAppearance]"]  to the same Appearance object.
+. You can apply the same settings to the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowselectors.html[RowSelectors]"]  by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~rowselectorappearance.html[RowSelectorAppearance]"]  to the same Appearance object.
 
 *In Visual Basic:*
 

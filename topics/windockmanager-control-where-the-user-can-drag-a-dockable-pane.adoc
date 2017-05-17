@@ -14,9 +14,9 @@
 
 = Control Where the User Can Drag a Dockable Pane
 
-It may be necessary to limit where a user can move a dockable  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"] . Each pane has a  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablepanebase~settings.html[Settings]"]  object that has Allow properties that can control where a pane can be docked.
+It may be necessary to limit where a user can move a dockable  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablepanebase.html[Pane]"] . Each pane has a  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablepanebase~settings.html[Settings]"]  object that has Allow properties that can control where a pane can be docked.
 
-The following code uses a form that has two controls on it. One control is docked left and the other is docked right. The first two lines of code makes the control on the left ( pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.ultradockmanager~dockareas.html[DockArea]"]  - 0) so that it can't be Docked Bottom or can't be turned into a floating pane. The last line of code makes the control on the right (DockArea - 1) so you can't drag it around to re-dock it.
+The following code uses a form that has two controls on it. One control is docked left and the other is docked right. The first two lines of code makes the control on the left ( pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.ultradockmanager~dockareas.html[DockArea]"]  - 0) so that it can't be Docked Bottom or can't be turned into a floating pane. The last line of code makes the control on the right (DockArea - 1) so you can't drag it around to re-dock it.
 
 .Note
 [NOTE]

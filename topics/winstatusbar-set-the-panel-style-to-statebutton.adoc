@@ -21,13 +21,13 @@ The WinStatusBar™ StateButton style mimics the type of button used in Microsof
 [start=1]
 . Add a UltraStatusBar to your Windows Form.
 [start=2]
-. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
+. In the Property Pages scroll down to the Panels Property. Click the ellipsis to bring up the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanelscollection.html[Panels]"]  Collection.
 [start=3]
 . Click the "Add" button. This will add a new panel.
 [start=4]
-. Scroll the properties until you come to the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the Style property equal to StateButton.
+. Scroll the properties until you come to the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~style.html[Style]"]  property. Set the Style property equal to StateButton.
 [start=5]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property equal to what you want the default text value of the status bar to be.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~text.html[Text]"]  property equal to what you want the default text value of the status bar to be.
 [start=6]
 . Click OK to close the window and you will see your panel added to the status bar as a StateButton.
 
@@ -80,7 +80,7 @@ private void Set_the_Panel_Style_to_StateButton_Load(object sender, EventArgs e)
 
 == Event for StateButton Style Panel
 
-The  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"]  event will pass in a panel parameter that will help determine which button was clicked. The following code uses this Panel parameter and the  pick:[win-forms="link:infragistics4.win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~checked.html[Checked]"]  property to determine the status of the StateButton and process accordingly. If the button is pressed (Checked = "true") then the ForeColor of the textbox will be black, if not, the ForeColor will be red.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar~buttonclick_ev.html[ButtonClick]"]  event will pass in a panel parameter that will help determine which button was clicked. The following code uses this Panel parameter and the  pick:[win-forms="link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatuspanel~checked.html[Checked]"]  property to determine the status of the StateButton and process accordingly. If the button is pressed (Checked = "true") then the ForeColor of the textbox will be black, if not, the ForeColor will be red.
 
 *In Visual Basic:*
 

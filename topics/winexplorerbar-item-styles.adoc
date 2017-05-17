@@ -14,9 +14,9 @@
 
 = Item Styles
 
-When creating the Items that make up the WinExplorerBar™ interface, you can choose from among several different types. These types provide basic functionality for a point-and-click interface. The  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~style.html[Style]"]  property of the Item determines how it will interact with the user.
+When creating the Items that make up the WinExplorerBar™ interface, you can choose from among several different types. These types provide basic functionality for a point-and-click interface. The  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings~style.html[Style]"]  property of the Item determines how it will interact with the user.
 
-The Style property is not located directly on the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"]  object, but on the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[UltraExplorerBarItemSettings]"]  object. This provides encapsulation of Item formatting and behavior. For more information, see link:winexplorerbar-control-the-appearance-of-groups-and-items.html[Controlling Group and Item Appearance]. Other properties discussed below are also found on the UltraExplorerBarItemSettings object, except as noted.
+The Style property is not located directly on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritem.html[UltraExplorerBarItem]"]  object, but on the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbaritemsettings.html[UltraExplorerBarItemSettings]"]  object. This provides encapsulation of Item formatting and behavior. For more information, see link:winexplorerbar-control-the-appearance-of-groups-and-items.html[Controlling Group and Item Appearance]. Other properties discussed below are also found on the UltraExplorerBarItemSettings object, except as noted.
 
 .Note
 [NOTE]
@@ -31,7 +31,7 @@ There are four possible Styles for Items:
 [start=2]
 . State Button - This Item style is similar to Button, except that the item toggles between the "pressed" and "unpressed" states when it is clicked.
 
-An Item that uses the State Button style comes under the control of the UltraExplorerBar's  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~statebuttoncheckstyle.html[StateButtonCheckStyle]"]  property. This property regulates state button exclusivity. By default, the element sets the exclusivity of state buttons in a way consistent with the element's Style, but you can also choose to have state buttons be exclusive within Groups or within the entire element (across Groups).
+An Item that uses the State Button style comes under the control of the UltraExplorerBar's  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~statebuttoncheckstyle.html[StateButtonCheckStyle]"]  property. This property regulates state button exclusivity. By default, the element sets the exclusivity of state buttons in a way consistent with the element's Style, but you can also choose to have state buttons be exclusive within Groups or within the entire element (across Groups).
 [start=3]
 . Label - An Item with this style behaves as a label in the Group. It's purpose is to display information.
 [start=4]

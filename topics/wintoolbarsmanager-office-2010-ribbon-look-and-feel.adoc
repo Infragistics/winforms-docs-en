@@ -16,7 +16,7 @@
 
 The Ribbon in the WinToolbarsManager™ component gains a new style: Office2010. The Office 2010 style ribbon is similar to the previous versions of the ribbon, with a few changes in the color scheme and styles, plus a few additional features.
 
-A new link:infragistics4.win.v{ProductVersion}~infragistics.win.office2010colortable.html[Office2010ColorTable] has been added to manage all the colors used in this style. You can change between the colors using the link:infragistics4.win.v{ProductVersion}~infragistics.win.office2010colortable~colorscheme.html[ColorScheme] property of the Office2010ColorTable object.
+A new link:{ApiPlatform}win{ApiVersion}~infragistics.win.office2010colortable.html[Office2010ColorTable] has been added to manage all the colors used in this style. You can change between the colors using the link:{ApiPlatform}win{ApiVersion}~infragistics.win.office2010colortable~colorscheme.html[ColorScheme] property of the Office2010ColorTable object.
 
 .Note
 [NOTE]
@@ -54,7 +54,7 @@ this.ultraToolbarsManager1.Style = Infragistics.Win.UltraWinToolbars.ToolbarStyl
 
 When the UltraToolbarsManager Style property resolves to Office2010, the style of the File Menu Button, visible on the top-left corner of the Ribbon, will be replaced with the Office 2010-style File Menu button. Also the Ribbon has an extended glass which extends into the client area, and the tab strip draws over the glass.
 
-A link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ribbon~filemenustyle.html[FileMenuStyle] property has been added to the Ribbon object, which defines the type of menu (ApplicationMenu, ApplicationMenu2010, None) that drops down when the File Menu Button is clicked. An application menu similar to Microsoft Office 2010 Backstage view can be obtained, by setting the FileMenuStyle property to ApplicationMenu2010. This Office 2010-style application menu is comprised of Header, Navigation Menu and Content Area.
+A link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ribbon~filemenustyle.html[FileMenuStyle] property has been added to the Ribbon object, which defines the type of menu (ApplicationMenu, ApplicationMenu2010, None) that drops down when the File Menu Button is clicked. An application menu similar to Microsoft Office 2010 Backstage view can be obtained, by setting the FileMenuStyle property to ApplicationMenu2010. This Office 2010-style application menu is comprised of Header, Navigation Menu and Content Area.
 
 .Note
 [NOTE]

@@ -14,7 +14,7 @@
 
 = Display/Store Values Using ValueLists
 
-Using  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueLists]"] , you can display one value and store another. This example assumes your WinGrid™ is already bound to some type of data source.
+Using  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelist.html[ValueLists]"] , you can display one value and store another. This example assumes your WinGrid™ is already bound to some type of data source.
 
 == To display and store a ValueList:
 
@@ -49,7 +49,7 @@ this.ultraGrid1.DisplayLayout.ValueLists.Add("List1");
 ----
 
 [start=3]
-. In order to show a particular value and save another value, you must work with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~datavalue.html[DataValue]"]  property as well as the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  property when you add  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitem.html[ValueListItems]"]  to the ValueList. You can pass both of these values to the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitemscollection~add.html[Add]"]  method of the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelistitemscollection.html[ValueListItems]"]  collection when you are populating the value list.
+. In order to show a particular value and save another value, you must work with the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem~datavalue.html[DataValue]"]  property as well as the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem~displaytext.html[DisplayText]"]  property when you add  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitem.html[ValueListItems]"]  to the ValueList. You can pass both of these values to the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitemscollection~add.html[Add]"]  method of the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelistitemscollection.html[ValueListItems]"]  collection when you are populating the value list.
 
 *In Visual Basic:*
 

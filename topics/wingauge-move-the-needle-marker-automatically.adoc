@@ -51,14 +51,14 @@ myMarker.Value = currentValue + 5;
 ----
 
 [start=5]
-. In the Properties window, click the   pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
+. In the Properties window, click the   pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gauge.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
 [start=6]
-. Locate the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"]  property and click the ellipsis (…) button to open the Scales collection editor.
+. Locate the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgauge~scales.html[Scales]"]  property and click the ellipsis (…) button to open the Scales collection editor.
 [start=7]
-. Locate the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"]  property and click the ellipsis (…) button to open the Markers collection editor.
+. Locate the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~markers.html[Markers]"]  property and click the ellipsis (…) button to open the Markers collection editor.
 [start=8]
-. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarker~response.html[Response]"]  property.
+. Expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugemarker~response.html[Response]"]  property.
 [start=9]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~enabled.html[Enabled]"]  property to True. The  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~refreshrate.html[RefreshRate]"]  property is the amount of time between each update of the gauge. Set the RefreshRate property to 00:00:00.1000000. The ResponseRate property is the amount of time taken for the marker to traverse the entire scale of the gauge. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~responsetime.html[ResponseTime]"]  property to 00:00:01. Setting the Response property gives your bar a smoother appearance as it increases along the scale;your bar marker doesn't appear as if it is jumping from value to value.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~enabled.html[Enabled]"]  property to True. The  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~refreshrate.html[RefreshRate]"]  property is the amount of time between each update of the gauge. Set the RefreshRate property to 00:00:00.1000000. The ResponseRate property is the amount of time taken for the marker to traverse the entire scale of the gauge. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugemarkerresponse~responsetime.html[ResponseTime]"]  property to 00:00:01. Setting the Response property gives your bar a smoother appearance as it increases along the scale;your bar marker doesn't appear as if it is jumping from value to value.
 [start=10]
 . Save and run the application.

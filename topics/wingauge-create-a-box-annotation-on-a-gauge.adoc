@@ -76,33 +76,33 @@ image::images/Gauge_How_Do_I_Create_Annotations_03.png[Finished sample based on 
 *To create a box annotation on your gauge at design time:*
 
 [start=1]
-. In the Properties window, click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugeannotation.html[Annotation]"]  property. Then, click the ellipsis (…) button to open the Annotations collection editor.
+. In the Properties window, click the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugeannotation.html[Annotation]"]  property. Then, click the ellipsis (…) button to open the Annotations collection editor.
 [start=2]
 . In the Annotations collection editor, click Add, and select Add Box Annotation.
 
 image::images/Gauge_How_Do_I_Create_Annotations_01.png[WinGauge's annotation collection editor.]
 
 [start=3]
-. Create a new BrushElement object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.brushelement.html[BrushElement]"]  property in the right-hand pane. Then, from the drop-down list, select Solid Fill.
+. Create a new BrushElement object by clicking the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.brushelement.html[BrushElement]"]  property in the right-hand pane. Then, from the drop-down list, select Solid Fill.
 [start=4]
-. Expand the BrushElement property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.solidfillbrushelement~color.html[Color]"]  property to Gray.
+. Expand the BrushElement property, and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.solidfillbrushelement~color.html[Color]"]  property to Gray.
 [start=5]
-. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.boundedannotation~bounds.html[Bounds]"]  property to adjust the size of the annotation and to position the annotation on your gauge. Set the X property to 38, the Y property to 70, the Width property to 25, the Height property to 10 and the Units to Percent.
+. Expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.boundedannotation~bounds.html[Bounds]"]  property to adjust the size of the annotation and to position the annotation on your gauge. Set the X property to 38, the Y property to 70, the Width property to 25, the Height property to 10 and the Units to Percent.
 [start=6]
 . So far if you run the project, the annotation should look similar to the one in the form below.
 
 image::images/Gauge_How_Do_I_Create_Annotations_02.png[WinGauge with the radial gauge showing a box annotation.]
 
 [start=7]
-. To add text to the annotation, expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.radialgaugescale~labels.html[Label]"]  property.
+. To add text to the annotation, expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.radialgaugescale~labels.html[Label]"]  property.
 [start=8]
 . Create a new BrushElement object by clicking the BrushElement property. Then from the drop-down list, select Solid Fill.
 [start=9]
 . Expand the BrushElement property, and set the Color property to White.
 [start=10]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.labelappearance~formatstring.html[FormatString]"]  property to "Speed".
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.labelappearance~formatstring.html[FormatString]"]  property to "Speed".
 [start=11]
-. Expand the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.labelappearance~font.html[Font]"]  property.
+. Expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.labelappearance~font.html[Font]"]  property.
 [start=12]
 . Set Size to 14 and Name to Arial.
 

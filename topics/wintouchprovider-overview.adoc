@@ -65,7 +65,7 @@ The size of the  _Infragistics_   touch-enabled controls may be the first thing 
 
 The following measures were taken into consideration in the design process of the touch functionality:
 
-Enabling the Touch functionality occurs at the form level rather than the control level as it is unlikely that both Touch and Non-Touch system use the same application. Adding the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.touch.ultratouchprovider.html[UltraTouchProvider] component to the form enables Form level touch support for  _Infragistics_   controls.
+Enabling the Touch functionality occurs at the form level rather than the control level as it is unlikely that both Touch and Non-Touch system use the same application. Adding the link:{ApiPlatform}win{ApiVersion}~infragistics.win.touch.ultratouchprovider.html[UltraTouchProvider] component to the form enables Form level touch support for  _Infragistics_   controls.
 
 Although other approaches were analyzed for enabling Touch functionality at the application level, none appeared to be a feasible solution allowing you to interact with the touch metrics at design-time to arrange controls on the form using the designer. The only way to enable touch at the application level is via the static property. Since the static property is not available at design-time, best practice dictates enabling the touch functionality at the Form level.
 

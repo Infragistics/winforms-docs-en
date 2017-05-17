@@ -14,7 +14,7 @@
 
 = Handle a Navigation Path Parsing Error
 
-There will be times when your end user will try to navigate to a path that doesn't exist; when this happens, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultranavigationbar~navigationpathparseerror_ev.html[NavigationPathParsingError]"]  event fires. By default, when this event fires, a dialog box appears with a message stating that the particular path the end user navigated to could not be parsed. When the end user clicks OK, WinNavigationBar™ returns to the last successfully parsed location and exits edit mode. The following screen shot is the default parsing error dialog box.
+There will be times when your end user will try to navigate to a path that doesn't exist; when this happens, the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultranavigationbar~navigationpathparseerror_ev.html[NavigationPathParsingError]"]  event fires. By default, when this event fires, a dialog box appears with a message stating that the particular path the end user navigated to could not be parsed. When the end user clicks OK, WinNavigationBar™ returns to the last successfully parsed location and exits edit mode. The following screen shot is the default parsing error dialog box.
 
 image::images/WinNavigationBar_Handle_a_Navigation_Path_Parsing_Error_01.png[Image of default NavigationPathParsingError dialog box.]
 

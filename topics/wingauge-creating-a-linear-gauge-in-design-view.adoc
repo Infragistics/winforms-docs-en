@@ -21,7 +21,7 @@ You can use Linear gauges to visually represent information that increases/decre
 [start=1]
 . In Design view, click the UltraGauge control on your form.
 [start=2]
-. In the Properties window, click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.win.ultrawingauge.ultragauge~gauges.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
+. In the Properties window, click the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.win.ultrawingauge.ultragauge~gauges.html[Gauges]"]  property. Then, click the ellipsis (…) button to open the Gauges collection editor.
 [start=3]
 . In the Gauges collection editor, click Add, and select Add Linear Gauge.
 
@@ -30,38 +30,38 @@ image::images/Gauge_Adding_Linear_Gauge.png[WinGauge's gauge's collection editor
 [start=4]
 . At this point, the Linear Gauge has been added, but it is not visible because you haven't set specific properties. To start configuring the Gauge, expand the Misc property.
 [start=5]
-. Create a new BrushElement object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.dialappearance~brushelement.html[BrushElement]"]  property. Then from the drop-down list, select Solid Fill.
+. Create a new BrushElement object by clicking the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.dialappearance~brushelement.html[BrushElement]"]  property. Then from the drop-down list, select Solid Fill.
 [start=6]
-. Expand the BrushElement property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.colorstop~color.html[Color]"]  property to Silver.
+. Expand the BrushElement property, and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.colorstop~color.html[Color]"]  property to Silver.
 [start=7]
 . At this point, you should see the Linear gauge.
 
 image::images/Gauge_Adding_Digital_Gauge_02.png[WinGauge linear gauge on a form without any scales, or tickmarks added.]
 
 [start=8]
-. Resize the gauge by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gauge~bounds.html[Bounds]"]  property. Set the Width property to 250, and the Height property to 100\.
+. Resize the gauge by expanding the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gauge~bounds.html[Bounds]"]  property. Set the Width property to 250, and the Height property to 100\.
 [start=9]
-. Create a new Scale by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargauge~scales.html[Scales]"]  property . Then click the ellipsis (…) button to open the Scale cCollection editor.
+. Create a new Scale by clicking the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargauge~scales.html[Scales]"]  property . Then click the ellipsis (…) button to open the Scale cCollection editor.
 [start=10]
 . Click Add to create a new Scale.
 [start=11]
-. Create a new Axis object by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.axis.html[Axis]"]  property of the Scale. Then, from the drop-down list, select Numeric Axis.
+. Create a new Axis object by clicking the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.axis.html[Axis]"]  property of the Scale. Then, from the drop-down list, select Numeric Axis.
 [start=12]
-. Expand the Axis property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~startvalue.html[StartValue]"]  property to 0. Then set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~endvalue.html[EndValue]"]  property to 100\.
+. Expand the Axis property, and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugerange~startvalue.html[StartValue]"]  property to 0. Then set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugerange~endvalue.html[EndValue]"]  property to 100\.
 [start=13]
-. Add major tick marks to the Scale by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~majortickmarks.html[MajorTickmarks]"]  property. Then, create a new brush element by clicking the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.gaugerange~brushelement.html[BrushElement]"]  property, and from the drop-down list, selecting Solid Fill.
+. Add major tick marks to the Scale by expanding the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescale~majortickmarks.html[MajorTickmarks]"]  property. Then, create a new brush element by clicking the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.gaugerange~brushelement.html[BrushElement]"]  property, and from the drop-down list, selecting Solid Fill.
 [start=14]
-. Expand the BrushElement property, and set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.solidfillbrushelement~color.html[Color]"]  property to White.
+. Expand the BrushElement property, and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.solidfillbrushelement~color.html[Color]"]  property to White.
 [start=15]
-. In order to align the outer edge of the tick marks, set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~endextent.html[EndExtent]"]  property to 55.
+. In order to align the outer edge of the tick marks, set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescale~endextent.html[EndExtent]"]  property to 55.
 [start=16]
-. You must also change the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~startextent.html[StartExtent]"]  property so that its value is less than the EndExtent property. Set the StartExtent property to 45.
+. You must also change the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescale~startextent.html[StartExtent]"]  property so that its value is less than the EndExtent property. Set the StartExtent property to 45.
 [start=17]
-. Set the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescaletickmarkappearance~startwidth.html[StartWidth]"]  property to 2 and the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescaletickmarkappearance~endwidth.html[EndWidth]"]  property to 2.
+. Set the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescaletickmarkappearance~startwidth.html[StartWidth]"]  property to 2 and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescaletickmarkappearance~endwidth.html[EndWidth]"]  property to 2.
 [start=18]
-. Set the stroke element of the major tick marks by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.strokeelement.html[StrokeElement]"]  property, and setting the color to Gray.
+. Set the stroke element of the major tick marks by expanding the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.strokeelement.html[StrokeElement]"]  property, and setting the color to Gray.
 [start=19]
-. Add minor tick marks to the scale by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~minortickmarks.html[MinorTickmarks]"]  property.
+. Add minor tick marks to the scale by expanding the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescale~minortickmarks.html[MinorTickmarks]"]  property.
 [start=20]
 . Expand the StrokeElement property, and set the Color property to Black.
 [start=21]
@@ -71,13 +71,13 @@ image::images/Gauge_Adding_Digital_Gauge_02.png[WinGauge linear gauge on a form 
 [start=23]
 . Set the StartWidth property to 1, the EndWidth property to 1 and the Frequency property to 0.2.
 [start=24]
-. Add a label to the scale by expanding the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.labelappearance.html[Label]"]  property. Then, create a new brush element by clicking the BrushElement property, and from the drop-down list, selecting Solid Fill.
+. Add a label to the scale by expanding the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.labelappearance.html[Label]"]  property. Then, create a new brush element by clicking the BrushElement property, and from the drop-down list, selecting Solid Fill.
 [start=25]
 . Expand the BrushElement property, and set the Color property to White.
 [start=26]
-. Set the Extent property to 65 and the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescalelabelsappearance~zposition.html[ZPosition]"]  property to AboveMarkers.
+. Set the Extent property to 65 and the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescalelabelsappearance~zposition.html[ZPosition]"]  property to AboveMarkers.
 [start=27]
-. Now all that is needed is a marker that indicates the current value that should be displayed. Click the  pick:[win-forms="link:infragistics4.win.ultrawingauge.v{ProductVersion}~infragistics.ultragauge.resources.lineargaugescale~markers.html[Markers]"]  property of the scale, and click the ellipsis (…) button to open the Markers collection editor.
+. Now all that is needed is a marker that indicates the current value that should be displayed. Click the  pick:[win-forms="link:{ApiPlatform}win.ultrawingauge{ApiVersion}~infragistics.ultragauge.resources.lineargaugescale~markers.html[Markers]"]  property of the scale, and click the ellipsis (…) button to open the Markers collection editor.
 
 image::images/Gauge_Adding_Linear_Gauge_03.png[WinGauge's markers collection editor.]
 

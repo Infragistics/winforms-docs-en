@@ -14,11 +14,11 @@
 
 = Set Tiles to Large State
 
-The WinTilePanel™ control allows one or more tiles to be put into large state. By default only one tile can be set to large state. In order to set multiple tiles to large state, the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~maximumvisiblelargetiles.html[MaximumVisibleLargeTiles]"]  property of the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel.html[ultraTilePanel]"]  object must be set to an integer value.
+The WinTilePanel™ control allows one or more tiles to be put into large state. By default only one tile can be set to large state. In order to set multiple tiles to large state, the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~maximumvisiblelargetiles.html[MaximumVisibleLargeTiles]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel.html[ultraTilePanel]"]  object must be set to an integer value.
 
 The end-user can maximize a tile by clicking the StateChangeButton. When a tile is maximized all other Normal state tiles shrink and move to the side of the Panel.
 
-It is also possible to maximize a tile through code using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~setstate(tilestate,boolean).html[SetState]"]  method or the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile~state.html[State]"]  property of the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratile.html[UltraTile]"]  object. The SetState method accepts two parameters: the new state of the tile and a Boolean value whether to animate the tile’s state change.
+It is also possible to maximize a tile through code using the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~setstate(tilestate,boolean).html[SetState]"]  method or the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile~state.html[State]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratile.html[UltraTile]"]  object. The SetState method accepts two parameters: the new state of the tile and a Boolean value whether to animate the tile’s state change.
 
 The following code assumes that you have an UltraTilePanel dropped onto your form. For information on how to add tiles to WinTilePanel please see the link:wintilepanel-add-and-remove-tiles-through-code.html[Add and Remove Tiles through Code] topic.
 
@@ -38,7 +38,7 @@ tile1.SetState(Infragistics.Win.Misc.TileState.Large,true);
 tile3.State = TileState.Large;
 ----
 
-You can also set the position and orientation of the large tiles using the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~largetileposition.html[LargeTilePosition]"]  and  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultratilepanel~largetileorientation.html[LargeTileOrientation]"]  properties.
+You can also set the position and orientation of the large tiles using the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~largetileposition.html[LargeTilePosition]"]  and  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultratilepanel~largetileorientation.html[LargeTileOrientation]"]  properties.
 
 *In Visual Basic:*
 

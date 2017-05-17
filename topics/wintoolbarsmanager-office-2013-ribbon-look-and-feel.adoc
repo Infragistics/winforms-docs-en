@@ -66,7 +66,7 @@ This topic contains the following sections:
 
 Microsoft introduced a new version of the Ribbon with the release of Office 2013. The Office 2013 Ribbon is similar to the previous versions of the Ribbon with a new color scheme, different styles and other features.
 
-The link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager] component already provides support for multiple view styles to replicate the Office 2007, Office 2010 and Scenic Ribbons. The Office 2013 Ribbon feature typically involves changes to the existing Ribbon design style.
+The link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager] component already provides support for multiple view styles to replicate the Office 2007, Office 2010 and Scenic Ribbons. The Office 2013 Ribbon feature typically involves changes to the existing Ribbon design style.
 
 [[_Ref361932142]]
 
@@ -183,7 +183,7 @@ image::images/WinToolbarsManager_Office_2013_Ribbon_11.png[]
 
 === Form Border New Style
 
-The link:{ApiPlatform}win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager] has the ability to integrate with the hosting form to render custom form borders. Office 2013 uses a new border style, not seen in previous versions. The form borders are rectangular with a single-pixel border around the form. Additionally, the form is given a glow/shadow affect when active.
+The link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager_members.html[UltraToolbarsManager] has the ability to integrate with the hosting form to render custom form borders. Office 2013 uses a new border style, not seen in previous versions. The form borders are rectangular with a single-pixel border around the form. Additionally, the form is given a glow/shadow affect when active.
 
 ==== Active Form
 
@@ -400,7 +400,7 @@ The following table lists the existing enumerations that contain the new values 
 
 === Glyph Editor
 
-The existing Glyph Editor for link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] and link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset_members.html[UltraOptionSet] glyphs were updated to include an option for the Office 2013 style. The Glyph Editor dialog displays for any property of the link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.standardglyphinfo_members.html[GlyphInfo] type. The Office 2013 style has been added to the  _AppStylist for Windows Forms_   design dialog (shown in the screenshot called “Check Box Designer” and “Radio Button Designer”) for the link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] and link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultraoptionset_members.html[UltraOptionSet] controls. These options are configured using the link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultrawinnavigationbar.ultranavigationbarrole~checkboxglyphinfo.html[CheckBoxGlyphInfo] and link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultrawinnavigationbar.ultranavigationbarrole~radiobuttonglyphinfo.html[RadioButtonGlyphInfo] properties, respectively.
+The existing Glyph Editor for link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] and link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultraoptionset_members.html[UltraOptionSet] glyphs were updated to include an option for the Office 2013 style. The Glyph Editor dialog displays for any property of the link:{ApiPlatform}win{ApiVersion}~infragistics.win.standardglyphinfo_members.html[GlyphInfo] type. The Office 2013 style has been added to the  _AppStylist for Windows Forms_   design dialog (shown in the screenshot called “Check Box Designer” and “Radio Button Designer”) for the link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] and link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultraoptionset_members.html[UltraOptionSet] controls. These options are configured using the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultrawinnavigationbar.ultranavigationbarrole~checkboxglyphinfo.html[CheckBoxGlyphInfo] and link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultrawinnavigationbar.ultranavigationbarrole~radiobuttonglyphinfo.html[RadioButtonGlyphInfo] properties, respectively.
 
 ==== _UltraCheckEditor_   component Role settings
 
@@ -440,9 +440,9 @@ The following controls support the Office 2013 Ribbon style. The screenshots ill
 |====
 |*Controls*|*Screenshot*
 
-| link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultrabutton_members.html[UltraButton] 
+| link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultrabutton_members.html[UltraButton] 
 
-link:{ApiPlatform}win.misc.v{ProductVersion}~infragistics.win.misc.ultradropdownbutton_members.html[UltraDropDownButton]
+link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradropdownbutton_members.html[UltraDropDownButton]
 
 | ==== Normal   
 
@@ -456,21 +456,21 @@ image::images/WinToolbarsManager_Office_2013_Ribbon_38.png[]
 
 image::images/WinToolbarsManager_Office_2013_Ribbon_39.png[] 
 
-| link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculatordropdown_members.html[UltraCalculatorDropDown] 
+| link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrawincalc.ultracalculatordropdown_members.html[UltraCalculatorDropDown] 
 
-link:{ApiPlatform}win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarcombo_members.html[UltraCalendarCombo] 
+link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarcombo_members.html[UltraCalendarCombo] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracolorpicker_members.html[UltraColorPicker] 
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracolorpicker_members.html[UltraColorPicker] 
 
-link:{ApiPlatform}win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultracombo_members.html[UltraCombo] link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracomboeditor_members.html[UltraComboEditor] 
+link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultracombo_members.html[UltraCombo] link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracomboeditor_members.html[UltraComboEditor] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracurrencyeditor_members.html[UltraCurrencyEditor] 
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracurrencyeditor_members.html[UltraCurrencyEditor] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor_members.html[UltraDateTimeEditor] 
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultradatetimeeditor_members.html[UltraDateTimeEditor] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultrafontnameeditor_members.html[UltraFontNameEditor] 
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultrafontnameeditor_members.html[UltraFontNameEditor] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratimezoneeditor_members.html[UltraTimeZoneEditor]
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratimezoneeditor_members.html[UltraTimeZoneEditor]
 
 | ==== Normal
 
@@ -488,7 +488,7 @@ image::images/WinToolbarsManager_Office_2013_Ribbon_42.png[]
 
 image::images/WinToolbarsManager_Office_2013_Ribbon_43.png[]
 
-| link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] (Checked and Unchecked)
+| link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultracheckeditor_members.html[UltraCheckEditor] (Checked and Unchecked)
 
 | ==== Normal   
 
@@ -508,9 +508,9 @@ image::images/WinToolbarsManager_Office_2013_Ribbon_46.png[]
 
 image::images/WinToolbarsManager_Office_2013_Ribbon_49.png[] 
 
-| link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultranumericeditor_members.html[UltraNumericEditor] 
+| link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultranumericeditor_members.html[UltraNumericEditor] 
 
-link:{ApiPlatform}win.ultrawineditors.v{ProductVersion}~infragistics.win.ultrawineditors.ultratimespaneditor_members.html[UltraTimeSpanEditor]
+link:{ApiPlatform}win.ultrawineditors{ApiVersion}~infragistics.win.ultrawineditors.ultratimespaneditor_members.html[UltraTimeSpanEditor]
 | ==== Normal 
 
 image::images/WinToolbarsManager_Office_2013_Ribbon_50.png[] 
@@ -525,7 +525,7 @@ image::images/WinToolbarsManager_Office_2013_Ribbon_52.png[]
 
 image::images/WinToolbarsManager_Office_2013_Ribbon_53.png[]
 
-| link:{ApiPlatform}win.ultrawinstatusbar.v{ProductVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar_members.html[UltraStatusBar]
+| link:{ApiPlatform}win.ultrawinstatusbar{ApiVersion}~infragistics.win.ultrawinstatusbar.ultrastatusbar_members.html[UltraStatusBar]
 
 | ==== Normal 
 

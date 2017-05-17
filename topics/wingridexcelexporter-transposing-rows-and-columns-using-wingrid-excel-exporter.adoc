@@ -48,7 +48,7 @@ using System.Diagnostics;
 ----
 
 [start=4]
-. Declare a class scoped reference to  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.iworksheetcellformat.html[IWorksheetCellFormat]"] . This will be used to customize the cell format of the Excel worksheet cells. We create and reuse only one instance of IWorkSheetCellFormat specifically for our data cells in order to keep the memory footprint to a minimum. You can create a new one each time the  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~rowexporting_ev.html[RowExporting]"]  event fires, however that will be more costly.
+. Declare a class scoped reference to  pick:[win-forms="link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.iworksheetcellformat.html[IWorksheetCellFormat]"] . This will be used to customize the cell format of the Excel worksheet cells. We create and reuse only one instance of IWorkSheetCellFormat specifically for our data cells in order to keep the memory footprint to a minimum. You can create a new one each time the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~rowexporting_ev.html[RowExporting]"]  event fires, however that will be more costly.
 
 *In Visual Basic:*
 
@@ -83,7 +83,7 @@ Process.Start(theFile);
 
 In this code, we create a file name for the Excel file, then we call the Export method of WinGridExcelExporter and we finally call the Process.Start method so that we can launch the Excel File with its associated application. In this case, Microsoft™ Excel™
 [start=6]
-. In this technique of transposing rows and columns in the Excel Worksheet, first we must cancel the default way of exporting data. This is done by cancelling the  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~headercellexporting_ev.html[HeaderCellExporting]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexporting_ev.html[CellExporting]"]  events of UltraGridExcelExporter1.
+. In this technique of transposing rows and columns in the Excel Worksheet, first we must cancel the default way of exporting data. This is done by cancelling the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~headercellexporting_ev.html[HeaderCellExporting]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~cellexporting_ev.html[CellExporting]"]  events of UltraGridExcelExporter1.
 
 *In Visual Basic:*
 
@@ -110,7 +110,7 @@ private void ultraGridExcelExporter1_CellExporting(object sender, Infragistics.W
 ----
 
 [start=7]
-. Create a method TransposeRowAndColumn. This method takes three parameters  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"] ,  pick:[win-forms="link:infragistics4.documents.excel.v{ProductVersion}~infragistics.documents.excel.worksheet.html[Worksheet]"]  and IWorksheetCellFormat.
+. Create a method TransposeRowAndColumn. This method takes three parameters  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow.html[UltraGridRow]"] ,  pick:[win-forms="link:{ApiPlatform}documents.excel{ApiVersion}~infragistics.documents.excel.worksheet.html[Worksheet]"]  and IWorksheetCellFormat.
 
 *In Visual Basic:*
 
@@ -157,7 +157,7 @@ This is the logic that is used within the TransposeRowAndColumn method:
 ** Finally, the Cell is styled by calling the SetFormatting method and passing in the IWorkSheetCellFormat instance.
 
 [start=8]
-. So far, we have written a method to handle the transposing of Rows, however we need one more method to transpose Column Headers. Create a method TransposeHeader(), which takes three parameters  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.columnscollection.html[ColumnsCollection]"] , Worksheet and IWorksheetCellFormat.
+. So far, we have written a method to handle the transposing of Rows, however we need one more method to transpose Column Headers. Create a method TransposeHeader(), which takes three parameters  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.columnscollection.html[ColumnsCollection]"] , Worksheet and IWorksheetCellFormat.
 
 *In Visual Basic:*
 
@@ -195,7 +195,7 @@ This is the logic that is used within the TransposeHeader method:
 ** Finally, the Cell is styled by calling the SetFormatting method and passing in the IWorkSheetCellFormat instance. You may want to create a style that distinguishes the Column Headers apart from the Data Cells.
 
 [start=9]
-. Finally we handle UltraGridExcelExporter’s ,  pick:[win-forms="link:infragistics4.win.ultrawingrid.excelexport.v{ProductVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~headerrowexporting_ev.html[HeaderRowExporting]"]  and RowExporting events so that we can cancel the default exporting behavior and then call our TransposeRowAndColumn and TransposeHeader methods respectively.
+. Finally we handle UltraGridExcelExporter’s ,  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid.excelexport{ApiVersion}~infragistics.win.ultrawingrid.excelexport.ultragridexcelexporter~headerrowexporting_ev.html[HeaderRowExporting]"]  and RowExporting events so that we can cancel the default exporting behavior and then call our TransposeRowAndColumn and TransposeHeader methods respectively.
 
 *In Visual Basic:*
 

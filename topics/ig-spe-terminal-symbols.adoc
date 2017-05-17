@@ -55,14 +55,14 @@ This topic contains the following sections:
 
 Terminal symbols define a group of characters the lexical analyzer should recognize as a unit when it is creating tokens. In addition to a unique name allowing the parser to distinguish it from other symbols, it also defines what text it can possibly represent. For example, a grammar might have a terminal symbol named “SemicolonToken” which indicates it can only represent “;” and a terminal symbol named “IdentifierToken” which indicates it can represent an underscore or letter followed by zero or more underscores, letters, or digits.
 
-The terminal symbols are represented by the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] class in the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace.
+The terminal symbols are represented by the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] class in the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing_namespace.html[Infragistics.Documents.Parsing] namespace.
 
 [[_Ref349222032]]
 == Defining Terminal Symbols
 
 === Defining terminal symbols summary
 
-Each link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] has a link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~symbols.html[Symbols] collection containing the `TerminalSymbol` instances that can be matched by the lexer when it is in that state. In addition to containing the `TerminalSymbol` instances, the `Symbols` collection is also the means by which new `TerminalSymbol`s are created since `TerminalSymbol` does not have a public constructor. Here is the signature of the Add method on the Symbols collection which creates a `TerminalSymbol`:
+Each link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] has a link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate~symbols.html[Symbols] collection containing the `TerminalSymbol` instances that can be matched by the lexer when it is in that state. In addition to containing the `TerminalSymbol` instances, the `Symbols` collection is also the means by which new `TerminalSymbol`s are created since `TerminalSymbol` does not have a public constructor. Here is the signature of the Add method on the Symbols collection which creates a `TerminalSymbol`:
 
 *In C#:*
 
@@ -78,7 +78,7 @@ public TerminalSymbol Add(
 .Note
 [NOTE]
 ====
-There is another link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~add.html[Add] method on the `Symbols` collection which takes a `TerminalSymbol` instance. This can be used to add a `TerminalSymbol` to multiple lexer states. It can be created in one `LexerState`, and then the created instance can be added into other `LexerState` in the same link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar]. In this way, a `TerminalSymbol` can be matched in multiple states of the lexer.
+There is another link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~add.html[Add] method on the `Symbols` collection which takes a `TerminalSymbol` instance. This can be used to add a `TerminalSymbol` to multiple lexer states. It can be created in one `LexerState`, and then the created instance can be added into other `LexerState` in the same link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar.html[Grammar]. In this way, a `TerminalSymbol` can be matched in multiple states of the lexer.
 ====
 
 [[_Ref349222036]]

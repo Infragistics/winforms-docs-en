@@ -44,9 +44,9 @@ using System.IO;
 [start=2]
 . In design view drag a UltraListView and ImageList from the toolbox onto the form. Add a folder looking image to the ImageList. The remaining of the topic is all done in the code behind file.
 [start=3]
-. Add members to the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection to represent the file size, file type, and creation date.
+. Add members to the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumnscollection.html[SubItemColumns]"]  collection to represent the file size, file type, and creation date.
 
-The SubItemColumns collection defines the columns that are displayed by the control when the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property is set to 'Details'. It also defines the additional data that is displayed under the item's text when the View is set to 'Tiles'. Additionally, sub-item values, and the name of the column to which they are associated, are displayed in the item's ToolTips when the ItemSettings' TipStyle property is set to Automatic. Let's add SubItemColumns to represent the file size, file type, and modified date, since that is what Windows Explorer displays by default:
+The SubItemColumns collection defines the columns that are displayed by the control when the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property is set to 'Details'. It also defines the additional data that is displayed under the item's text when the View is set to 'Tiles'. Additionally, sub-item values, and the name of the column to which they are associated, are displayed in the item's ToolTips when the ItemSettings' TipStyle property is set to Automatic. Let's add SubItemColumns to represent the file size, file type, and modified date, since that is what Windows Explorer displays by default:
 
 *In Visual Basic:*
 
@@ -74,7 +74,7 @@ UltraListViewSubItemColumn colDateModified = this.ultraListView1.SubItemColumns.
 [start=4]
 . Set some properties of the UltraListViewSubItemColumn instances we added in step 2.
 
-The  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[UltraListViewSubItemColumn]"]  class exposes some properties that enable you to control the way in which the column and its sub-items appear in the user interface. Let's use some of these properties to achieve a look similar to that of Windows Explorer:
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewsubitemcolumn.html[UltraListViewSubItemColumn]"]  class exposes some properties that enable you to control the way in which the column and its sub-items appear in the user interface. Let's use some of these properties to achieve a look similar to that of Windows Explorer:
 
 *In Visual Basic:*
 
@@ -147,9 +147,9 @@ colDateModified.Format = string.Format( "{0} {1}", shortDateFormat, shortTimeFor
 ----
 
 [start=5]
-. Set some properties of the control's  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~maincolumn.html[MainColumn]"] .
+. Set some properties of the control's  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview~maincolumn.html[MainColumn]"] .
 
-The control's MainColumn property returns a reference to an object of type  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistviewmaincolumn.html[UltraListViewMainColumn]"] . This column is different than those of the members of the SubItemColumns collection. It represents the column under which an item's value is displayed, and cannot be hidden like the members of the SubItemColumns collection can. However, it derives from the same class as the UltraListViewSubItemColumn class, and as such, exposes many of the same properties. Let's set some of the properties of the MainColumn, which will display the name of the file/directory:
+The control's MainColumn property returns a reference to an object of type  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistviewmaincolumn.html[UltraListViewMainColumn]"] . This column is different than those of the members of the SubItemColumns collection. It represents the column under which an item's value is displayed, and cannot be hidden like the members of the SubItemColumns collection can. However, it derives from the same class as the UltraListViewSubItemColumn class, and as such, exposes many of the same properties. Let's set some of the properties of the MainColumn, which will display the name of the file/directory:
 
 *In Visual Basic:*
 

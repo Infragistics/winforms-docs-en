@@ -78,10 +78,10 @@ The SuspendAnimation() method should be used whenever animation should be halted
 |====
 |Method Name|Description
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~suspendanimation().html[SuspendAnimation()]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager~suspendanimation().html[SuspendAnimation()]
 |Suspends animation on all images currently registered with the AnimatedImageManager
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~suspendanimation(image).html[SuspendAnimation(Image)]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager~suspendanimation(image).html[SuspendAnimation(Image)]
 |Suspends the animation on a specified image instance.
 
 |====
@@ -112,10 +112,10 @@ After having animation previously suspended, the ResumeAnimation() method can be
 |====
 |Method Name|Description
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~resumeanimation().html[ResumeAnimation()]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager~resumeanimation().html[ResumeAnimation()]
 |Resumes the animation for all suspended images.
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager~resumeanimation(image).html[ResumeAnimation(Image)]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager~resumeanimation(image).html[ResumeAnimation(Image)]
 |Resumes the animation on a specified image instance.
 
 |====
@@ -146,31 +146,31 @@ Whenever the current frame of an animated image changes, the AnimatedImageManage
 |====
 |EventArgs Property Name|Property Type|Description
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~image.html[Image]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~image.html[Image]
 |`Image`
 | 
 
 Gets the Image for which the current frame has changed.
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~framecount.html[FrameContent]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~framecount.html[FrameContent]
 |`Integer`
 | 
 
 Gets the total number of time-based frames in the Image
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~currentframe.html[CurrentFrame]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~currentframe.html[CurrentFrame]
 |`Integer`
 | 
 
 Gets or sets the index of the current frame of the Image.
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~islastframe.html[IsLastFrame]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~islastframe.html[IsLastFrame]
 |`Boolean`
 | 
 
 Indicates if the current frame is the last frame in the animation.
 
-| link:infragistics4.win.v{ProductVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~suspendanimation.html[SuspendAnimation]
+| link:{ApiPlatform}win{ApiVersion}~infragistics.win.animatedimagemanager+imageframechangedeventargs~suspendanimation.html[SuspendAnimation]
 |`Boolean`
 | 
 

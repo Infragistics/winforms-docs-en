@@ -90,7 +90,7 @@ The grammar properties section defines the grammar, lexer states, and terminal s
 
 The following tables list all elements allowed in the grammar properties section with their respective parent/child relations:
 
-link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar.html[Grammar] element:
+link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar.html[Grammar] element:
 
 Description: defines everything in a Grammar instance except the non-terminal symbols and syntax rule trees, which are done in the normal EBNF format.
 
@@ -100,39 +100,39 @@ Parent elements: (none)
 |====
 |*Attribute*|*Type*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~endofstreamsymbolname.html[EndOfStreamSymbolName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~endofstreamsymbolname.html[EndOfStreamSymbolName]
 |String
 |(optional) The value for the Grammar.EndOfStreamSymbolName property. If not specified, the value will be “EndOfStreamToken”.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~name.html[Name]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~name.html[Name]
 |String
 |(optional) The value for the Grammar.Name property. If not specified, the value will be null.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~newlinesymbolname.html[NewLineSymbolName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~newlinesymbolname.html[NewLineSymbolName]
 |String
 |(optional) The value for the Grammar.NewLineSymbolName property. If not specified, the value will be “NewLineToken”
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~startsymbol.html[StartSymbol]
 |String
 |(optional) The name of the NonTerminalSymbol which should be set as the Grammar.StartSymbol value. If not specified, the first non-terminal symbol defined in the file will be used as the start symbol.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[SupportsParsing]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~supportsparsing.html[SupportsParsing]
 |bool
 |(optional) The value for the Grammar.SupportsParsing property. If not specified, the value will be True.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~syntaxtreepruningmode.html[SyntaxTreePruningMode]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~syntaxtreepruningmode.html[SyntaxTreePruningMode]
 |SyntaxTreePruningMode
 |(optional) The value for the Grammar.SyntaxTreePruningMode property. If not specified, the value will be BasedOnChildrenAndName.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbolname.html[UnrecognizedSymbolName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbolname.html[UnrecognizedSymbolName]
 |String
 |(optional) The value for the Grammar.UnrecognizedSymbolName property. If not specified, the value will be “UnrecognizedToken”.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~whitespacesymbolname.html[WhitespaceSymbolName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~whitespacesymbolname.html[WhitespaceSymbolName]
 |String
 |(optional) The value for the Grammar.WhitespaceSymbolName property. If not specified, the value will be “WhitespaceToken”.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~whitespacepattern.html[WhitespacePattern]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~whitespacepattern.html[WhitespacePattern]
 |String
 |(optional) The value of the Grammar.WhitespacePattern property. If not specified, the value will be “[ \t]+”.
 
@@ -142,7 +142,7 @@ Parent elements: (none)
 |====
 |*Child Element*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol]
 |Defines a TerminalSymbol and adds it to the default LexerState of the grammar (Grammar.LexerStates.DefaultLexerState).
 
 |`TerminalSymbolReference`
@@ -150,7 +150,7 @@ Parent elements: (none)
 
 |====
 
-link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] element:
+link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol.html[TerminalSymbol] element:
 
 Description: Creates a new `TerminalSymbol` instance and adds it to the owning lexer state.
 
@@ -160,33 +160,33 @@ Parent Elements: `Grammar`, `LexerState`
 |====
 |*Attribute*|*Type*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison]
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbolcomparison.html[TerminalSymbolComparison]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~comparison.html[Comparison]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbolcomparison.html[TerminalSymbolComparison]
 |(optional) The value indicating how the Value attribute should be interpreted. Possible values are `Literal`, `LiteralIgnoreCase`, and `RegularExpression`. If not specified, the value will be Literal.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~isexitsymbol.html[IsExitSymbol]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstateterminalsymbolcollection~isexitsymbol.html[IsExitSymbol]
 |bool
 |(optional) Indicates whether the new `TerminalSymbol` should be added to its owning lexer state as an exit symbol. See the link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview] topic for more information on exit symbols.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~islookaheadnegative.html[IsLookaheadNegative]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~islookaheadnegative.html[IsLookaheadNegative]
 |bool
 |(optional) The value for the `TerminalSymbol. IsLookaheadNegative` property, which indicates whether the `LookaheadPattern` specifies a positive or negative lookahead. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~issignificant.html[IsSignificant]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~issignificant.html[IsSignificant]
 |bool?
 |(optional) The value for the `TerminalSymbol.IsSignificant` property. If not specified, the value will be null.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
 |bool
 |(optional) The value for the `TerminalSymbol.IsStartOfErrorRecoveryPair` property. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~languageelementname.html[LanguageElementName]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~languageelementname.html[LanguageElementName]
 |String
 |(optional) The value for the `TerminalSymbol. LanguageElementName` property. If not specified, the value will be “Undefined”.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~lexerstatetoenter.html[LexerStateToEnter]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~lexerstatetoenter.html[LexerStateToEnter]
 |String
-|(optional) The name of the existing link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] which should be set as the `TerminalSymbol. LexerStateToEnter` property. If not specified, the value will be null. 
+|(optional) The name of the existing link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] which should be set as the `TerminalSymbol. LexerStateToEnter` property. If not specified, the value will be null. 
 
 .Note 
 
@@ -198,15 +198,15 @@ The lexer state with the specified name may be defined before or after the `Lexe
 
 ====
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~lookaheadpattern.html[LookaheadPattern]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~lookaheadpattern.html[LookaheadPattern]
 |String
 |(optional) The value for the `TerminalSymbol.LookaheadPattern` property, which is a regular expression that makes an assertion about the text that should or should not follow a token associated with this terminal symbol. If not specified, the value will be null.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[Name]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~name.html[Name]
 |String
 |(required) The value for the `TerminalSymbol.Name` property.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.terminalsymbol~value.html[Value]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.terminalsymbol~value.html[Value]
 |String
 |(optional) The value for the `TerminalSymbol.Value` property. If not specified, the value from the `Name` attribute will be used.
 
@@ -241,15 +241,15 @@ Parent Elements: `Grammar`, `LexerState`
 |bool
 |(optional) Indicates whether the new TerminalSymbol should be added to its owning lexer state as an exit symbol or not. See the link:ig-spe-lexical-analysis-overview.html[Lexical Analysis Overview] topic for more information on exit symbols.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[Name]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~name.html[Name]
 |String
 |(required) The name of the existing `TerminalSymbol` instance to add to the owning lexer state.
 
 |====
 
-link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] element
+link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate.html[LexerState] element
 
-Description: Defines a new `LexerState` instance and adds it to the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~lexerstates.html[Grammar.LexerStates] collection.
+Description: Defines a new `LexerState` instance and adds it to the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~lexerstates.html[Grammar.LexerStates] collection.
 
 Parent Elements: `TerminalSymbol`
 
@@ -257,7 +257,7 @@ Parent Elements: `TerminalSymbol`
 |====
 |*Attribute*|*Type*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.lexerstate~name.html[Name]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.lexerstate~name.html[Name]
 |String
 |(required) The name of the new `LexerState` instance.
 
@@ -303,7 +303,7 @@ The following is an example of a grammar properties section:
 
 === Overview
 
-The non-terminal symbol attributes sections are allowed immediately before any non-terminal symbol definition. This section is used to set specific properties that will apply only to the next link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] instance defined.
+The non-terminal symbol attributes sections are allowed immediately before any non-terminal symbol definition. This section is used to set specific properties that will apply only to the next link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] instance defined.
 
 === Elements
 
@@ -313,29 +313,29 @@ The following table lists all attributes for the NonTerminalSymbolOptions elemen
 |====
 |*Attribute*|*Type*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~haspriority.html[HasPriority]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~haspriority.html[HasPriority]
 |bool
 |(optional) The value for the `NonTerminalSymbol.HasPriority` property. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~iserror.html[IsError]
 |bool
 |(optional) The value for the `NonTerminalSymbol.IsError` property. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~isstartoferrorrecoverypair.html[IsStartOfErrorRecoveryPair]
 |bool
 |(optional) The value for the `NonTerminalSymbol.IsStartOfErrorRecoveryPair` property. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~preventpruning.html[PreventPruning]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~preventpruning.html[PreventPruning]
 |bool
 |(optional) The value for the `NonTerminalSymbol.PreventPruning` property. If not specified, the value will be False.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[SuppressAmbiguityWarnings]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~suppressambiguitywarnings.html[SuppressAmbiguityWarnings]
 |bool
 |(optional) The value for the `NonTerminalSymbol.SuppressAmbiguityWarnings` property. If not specified, the value will be False.
 
 |`SuppressErrorRecoveryForSymbols`
 |string
-|(optional) A comma separated list of the names of symbols which should be passed to the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~suppresserrorrecoveryforsymbol.html[NonTerminalSymbol.SuppressErrorRecoveryForSymbol] method. The named symbols can be defined before or after the `NonTerminalSymbol`.
+|(optional) A comma separated list of the names of symbols which should be passed to the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~suppresserrorrecoveryforsymbol.html[NonTerminalSymbol.SuppressErrorRecoveryForSymbol] method. The named symbols can be defined before or after the `NonTerminalSymbol`.
 
 |====
 

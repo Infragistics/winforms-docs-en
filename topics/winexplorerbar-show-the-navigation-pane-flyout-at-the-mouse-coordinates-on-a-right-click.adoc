@@ -14,14 +14,14 @@
 
 = Show the Navigation Pane Flyout at the Mouse Coordinates on a Right-Click
 
-Instead of showing the Navigation Pane flyout immediately beside the collapsed Navigation Pane, you can have it appear wherever you like, perhaps as a context menu displaying on a right-click. All you need to do is invoke the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~shownavigationpaneflyout.html[ShowNavigationPaneFlyout]"]  method in a MouseUp event while passing it the mouse coordinates.
+Instead of showing the Navigation Pane flyout immediately beside the collapsed Navigation Pane, you can have it appear wherever you like, perhaps as a context menu displaying on a right-click. All you need to do is invoke the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~shownavigationpaneflyout.html[ShowNavigationPaneFlyout]"]  method in a MouseUp event while passing it the mouse coordinates.
 
 The following code will retrieve the mouse coordinates and display the Navigation Pane flyout on a right-click.
 
 .Note
 [NOTE]
 ====
-The Navigation Pane flyout cannot be displayed while the Navigation Pane is expanded. If you attempt to do so, an exception will be thrown. You may consider using an if/else statement to make sure the Navigation Pane is collapsed before attempting to display the flyout. Use the  pick:[win-forms="link:infragistics4.win.ultrawinexplorerbar.v{ProductVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~isnavigationpaneflyoutvisible.html[IsNavigationPaneFlyoutVisible]"]  property to determine this.
+The Navigation Pane flyout cannot be displayed while the Navigation Pane is expanded. If you attempt to do so, an exception will be thrown. You may consider using an if/else statement to make sure the Navigation Pane is collapsed before attempting to display the flyout. Use the  pick:[win-forms="link:{ApiPlatform}win.ultrawinexplorerbar{ApiVersion}~infragistics.win.ultrawinexplorerbar.ultraexplorerbar~isnavigationpaneflyoutvisible.html[IsNavigationPaneFlyoutVisible]"]  property to determine this.
 ====
 
 image::images/WinExplorerBar_Show_the_Navigation_Pane_Flyout_at_the_Mouse_Coordinates_on_a_Right_Click_01.png[show the navigation pane flyout at the mouse coordinates on a right-click]

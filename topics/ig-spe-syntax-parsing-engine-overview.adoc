@@ -57,18 +57,18 @@ Other features:
 
 The main part of the Syntax Parsing Engine is included in the following assembly:
 
-* link:{ApiPlatform}documents.textdocument.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.v{ProductVersion}.dll]
+* link:{ApiPlatform}documents.textdocument{ApiVersion}.html[{ApiPlatform}Documents.TextDocument.v{ProductVersion}.dll]
 
 In addition there are several predefined languages in external assemblies:
 
-* C# - link:{ApiPlatform}documents.textdocument.csharp.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.CSharp.v{ProductVersion}.dll]
-* Visual Basic - link:{ApiPlatform}documents.textdocument.visualbasic.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.VisualBasic.v{ProductVersion}.dll]
-* Transact-SQL - link:{ApiPlatform}documents.textdocument.tsql.v{ProductVersion}.html[{ApiPlatform}Documents.TextDocument.TSql.v{ProductVersion}.dll]
+* C# - link:{ApiPlatform}documents.textdocument.csharp{ApiVersion}.html[{ApiPlatform}Documents.TextDocument.CSharp.v{ProductVersion}.dll]
+* Visual Basic - link:{ApiPlatform}documents.textdocument.visualbasic{ApiVersion}.html[{ApiPlatform}Documents.TextDocument.VisualBasic.v{ProductVersion}.dll]
+* Transact-SQL - link:{ApiPlatform}documents.textdocument.tsql{ApiVersion}.html[{ApiPlatform}Documents.TextDocument.TSql.v{ProductVersion}.dll]
 
 .Note
 [NOTE]
 ====
-The internal grammatical structure of these languages, including the structure of the syntax tree created for documents parsed with them, is subject to change. With this in mind, if you are writing code to inspect or traverse a syntax tree you should use the nested link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbol~name.html[SymbolNames] class constants in each language definition to identify the name of each node's symbol (rather than the symbol name as a string literal), so that future changes to these symbol names will be highlighted via compilation errors. In addition, it is good practice to write logic to test assumptions and debug assert about the number and type of child nodes on a particular node so changes to a node’s child structure in the future will be detected and handled gracefully.
+The internal grammatical structure of these languages, including the structure of the syntax tree created for documents parsed with them, is subject to change. With this in mind, if you are writing code to inspect or traverse a syntax tree you should use the nested link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbol~name.html[SymbolNames] class constants in each language definition to identify the name of each node's symbol (rather than the symbol name as a string literal), so that future changes to these symbol names will be highlighted via compilation errors. In addition, it is good practice to write logic to test assumptions and debug assert about the number and type of child nodes on a particular node so changes to a node’s child structure in the future will be detected and handled gracefully.
 ====
 
 [[_Ref349119748]]

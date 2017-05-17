@@ -14,12 +14,12 @@
 
 = Selecting Multiple Values within WinCombo
 
-The WinCombo™ control supports multiple item selection through a checkbox located in a column within the drop down list. The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.propertyids.html[CheckStateMember] property enables you to specify the column name for which the checkbox will be displayed; this property is also what actually causes WinCombo to go into multi-select mode. The column object’s data type should be Boolean. Alternatively the column’s data type could also be one that can be parsed to and from the Boolean data type. For example, a column of type String can be used along with setting the column object’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.propertyids.html[style] property to CheckBox; in this configuration, the cell values for that column should either be "True" or " so that they can be parsed to Boolean. Finally, it is suggested that you simply add your own unbound column to WinCombo and configure the column to be used for the selection (shown in the code below). As an alternative to adding your own unbound column, you can also use an existing field from your underlying data model for the selection.
+The WinCombo™ control supports multiple item selection through a checkbox located in a column within the drop down list. The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.propertyids.html[CheckStateMember] property enables you to specify the column name for which the checkbox will be displayed; this property is also what actually causes WinCombo to go into multi-select mode. The column object’s data type should be Boolean. Alternatively the column’s data type could also be one that can be parsed to and from the Boolean data type. For example, a column of type String can be used along with setting the column object’s link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.propertyids.html[style] property to CheckBox; in this configuration, the cell values for that column should either be "True" or " so that they can be parsed to Boolean. Finally, it is suggested that you simply add your own unbound column to WinCombo and configure the column to be used for the selection (shown in the code below). As an alternative to adding your own unbound column, you can also use an existing field from your underlying data model for the selection.
 
 .Note
 [NOTE]
 ====
-When checkboxes are visible, ‘Suggest Mode’ functionality is disabled. When the link:infragistics4.win.v{ProductVersion}~infragistics.win.editorcheckedlistsettings~editorvaluesource.html[EditorValueSource] property is set to ‘CheckedItems’, character input is disabled; the edit portion is read only.
+When checkboxes are visible, ‘Suggest Mode’ functionality is disabled. When the link:{ApiPlatform}win{ApiVersion}~infragistics.win.editorcheckedlistsettings~editorvaluesource.html[EditorValueSource] property is set to ‘CheckedItems’, character input is disabled; the edit portion is read only.
 ====
 
 This topic assumes that you have an UltraCombo control dropped onto your form, which is bound to the Employees data table of the Northwind database. For more information, please see the Binding WinCombo to a Data Table topic.
@@ -76,7 +76,7 @@ this.ultraCombo1.DisplayMember = "FirstName";
 this.ultraCombo1.ValueMember = "EmployeeID";
 ----
 
-You can access the checked rows through the control’s link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultracombo~checkedrows.html[CheckedRows] property. The following code shows how to iterate through the checked rows after a selection has been confirmed. Drop an UltraButton onto your form and write the following code within the Button’s Click Event.
+You can access the checked rows through the control’s link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultracombo~checkedrows.html[CheckedRows] property. The following code shows how to iterate through the checked rows after a selection has been confirmed. Drop an UltraButton onto your form and write the following code within the Button’s Click Event.
 
 *In Visual Basic:*
 

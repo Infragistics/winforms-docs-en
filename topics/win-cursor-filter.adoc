@@ -18,7 +18,7 @@ Cursors are normally specified as a property setting on a control or on an Appea
 
 The IUIElementCursorFilter interface has a single method:
 
-*  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementcursorfilter~beforesetcursor.html[BeforeSetCursor]"]  -- called before a cursor is set from an element. It is passed the element, a boolean indicating if the mouse is over the element's adjustable area and a reference to the cursor object. The cursor is initialized to the default cursor for this element but can be changed to supply a different one.
+*  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementcursorfilter~beforesetcursor.html[BeforeSetCursor]"]  -- called before a cursor is set from an element. It is passed the element, a boolean indicating if the mouse is over the element's adjustable area and a reference to the cursor object. The cursor is initialized to the default cursor for this element but can be changed to supply a different one.
 
 The following sample code illustrates how to supply a custom resize cursor for column headers:
 

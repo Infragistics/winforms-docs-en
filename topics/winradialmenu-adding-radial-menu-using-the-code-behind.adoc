@@ -18,7 +18,7 @@
 
 === Purpose
 
-This topic provides an overview of adding the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu_members.html[UltraRadialMenu]™ tools using the code-behind.
+This topic provides an overview of adding the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu_members.html[UltraRadialMenu]™ tools using the code-behind.
 
 === Required background
 
@@ -61,7 +61,7 @@ In this topic, you will learn how to add the  _WinRadialMenu_   tools using the 
 
 === Adding WinRadialMenu to a form
 
-* Drop the link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu_members.html[UltraRadialMenu] component from the toolbox area onto a form.
+* Drop the link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.ultraradialmenu_members.html[UltraRadialMenu] component from the toolbox area onto a form.
 
 .Note:
 [NOTE]
@@ -93,7 +93,7 @@ image::images/Adding_Radial_Menu_Tool_Using_the_Code-Behind_1.png[]
 
 === Adding RadialMenu Tool
 
-The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] is the base class for all tool types. The button tool is of type link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] representing tools such as Copy, Paste, Undo, Redo, Bold, Italic, among others. By default, the radial menu only contains the center tool without any child tools in its collection. First, you need to add tools to the center tool’s collection and then for each tool add child tools.
+The link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] is the base class for all tool types. The button tool is of type link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] representing tools such as Copy, Paste, Undo, Redo, Bold, Italic, among others. By default, the radial menu only contains the center tool without any child tools in its collection. First, you need to add tools to the center tool’s collection and then for each tool add child tools.
 
 .Note:
 [NOTE]
@@ -101,7 +101,7 @@ The link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.
 The center button tool is the parent of all tools on the menu.
 ====
 
-The following code demonstrates how to add a link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] parent `Copy` tool type to the center tool’s collection.
+The following code demonstrates how to add a link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] parent `Copy` tool type to the center tool’s collection.
 
 *In C#:*
 
@@ -130,7 +130,7 @@ mainCopyTool.ToolSettings.Appearance.Image = ' Your image path
 ultraRadialMenu1.CenterTool.Tools.Add(mainCopyTool)
 ----
 
-The following code demonstrates how to add a child `Cut`, `Copy` and `Paste` tools of the type link:{ApiPlatform}win.ultrawinradialmenu.v{ProductVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] to the parent Copy tool’s collection.
+The following code demonstrates how to add a child `Cut`, `Copy` and `Paste` tools of the type link:{ApiPlatform}win.ultrawinradialmenu{ApiVersion}~infragistics.win.ultrawinradialmenu.radialmenutool_members.html[RadialMenuTool] to the parent Copy tool’s collection.
 
 *In C#:*
 

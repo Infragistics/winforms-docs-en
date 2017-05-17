@@ -14,15 +14,15 @@
 
 = ColumnSet Layout Designer
 
-In Infragistics Windows Forms 2005 Volume 2, WinTree™ was updated to support columns. The addition of this functionality added a new class called  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  which defines the properties of a set of columns in the tree. The ColumnSet Layout Designer is a visual designer for organizing and repositioning the columns within a ColumnSet. In this topic we will be looking at this designer and some of the benefits it provides.
+In Infragistics Windows Forms 2005 Volume 2, WinTree™ was updated to support columns. The addition of this functionality added a new class called  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreecolumnset.html[UltraTreeColumnSet]"]  which defines the properties of a set of columns in the tree. The ColumnSet Layout Designer is a visual designer for organizing and repositioning the columns within a ColumnSet. In this topic we will be looking at this designer and some of the benefits it provides.
 
-The screenshots for this topic are based on the results of the link:wintree-binding-wintree-to-windatasource.html[Binding WinTree to WinDataSource] topic. The  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  property should be set to the Customers Band defined in WinDataSource's schema.
+The screenshots for this topic are based on the results of the link:wintree-binding-wintree-to-windatasource.html[Binding WinTree to WinDataSource] topic. The  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~datamember.html[DataMember]"]  property should be set to the Customers Band defined in WinDataSource's schema.
 
 To display the layout designer dialog, right click on the UltraTree on the form designer and choose "ColumnSet Layout Designer". The designer dialog is broken up into several sections.
 
 image::Images\WinTree_The_ColumnSet_Layout_Designer_01.png[UltraTree columnset layout designer]
 
-The top section contains a combobox which contains a list of the UltraTreeColumnSet objects in the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~columnsets.html[ColumnSets]"]  collection. Immediately to the right of the combo is a checkbox that is used to enable/disable the resizing guides. The resizing guides are the adorners that are displayed on the right and bottom edge of every cell and column header.
+The top section contains a combobox which contains a list of the UltraTreeColumnSet objects in the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreecolumnsettings~columnsets.html[ColumnSets]"]  collection. Immediately to the right of the combo is a checkbox that is used to enable/disable the resizing guides. The resizing guides are the adorners that are displayed on the right and bottom edge of every cell and column header.
 
 image::Images\WinTree_The_ColumnSet_Layout_Designer_02.png[ultratree columnset layout designer highlighting the show resizing guides]
 
@@ -32,7 +32,7 @@ image::Images\WinTree_The_ColumnSet_Layout_Designer_03.png[ultratree columnset l
 
 The main section (displayed in the screenshot above) is the UltraTree containing the ColumnSet selected using the combobox from the top section. The columns and cells displayed in the tree can be resized as described above. In addition, the columns may be repositioned by pressing the mouse down on a column header and dragging. While dragging, drop indicators (red arrows or a red rectangle depending on the reposition action) will be displayed when the mouse is over a valid drop area. In addition, dragging the column header outside the bounds of the tree and releasing will hide the column.
 
-Right clicking on this area will display one of two possible context menus depending upon the area on which you right click. Right clicking on a column header will display options specific to adjusting that column including the option to hide the column, adjust its label position (that is where the label is displayed relative to the cell) as well as the option to select the column and display its  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~layoutinfo.html[LayoutInfo]"]  properties within the Column Settings pane.
+Right clicking on this area will display one of two possible context menus depending upon the area on which you right click. Right clicking on a column header will display options specific to adjusting that column including the option to hide the column, adjust its label position (that is where the label is displayed relative to the cell) as well as the option to select the column and display its  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~layoutinfo.html[LayoutInfo]"]  properties within the Column Settings pane.
 
 image::Images\WinTree_The_ColumnSet_Layout_Designer_04.png[ultratree columnset layout designer showing the context menu shown over columns]
 

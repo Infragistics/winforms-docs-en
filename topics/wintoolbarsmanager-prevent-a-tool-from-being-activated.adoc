@@ -14,7 +14,7 @@
 
 = Prevent a Tool from Being Activated
 
-Sometimes you do not want a tool to become activated as the mouse is over it. This means that it doesn't exhibit a "mouse over" appearance, such as being given focus or an image change. The tool will still look enabled, but the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event will not fire if you click on it.
+Sometimes you do not want a tool to become activated as the mouse is over it. This means that it doesn't exhibit a "mouse over" appearance, such as being given focus or an image change. The tool will still look enabled, but the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event will not fire if you click on it.
 
 Add the code below to your project. This will fire as you mouse over a tool and give you the option to check the tool and cancel the event if you like. This will not let the tool to be activated.
 

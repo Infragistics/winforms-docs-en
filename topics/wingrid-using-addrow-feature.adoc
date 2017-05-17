@@ -14,7 +14,7 @@
 
 = Using AddRow Feature
 
-The AddRow feature allows the user to conveniently add rows. This feature displays an AddRow template at the top or bottom of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Rows]"]  collection. To add a row, the user simply clicks in the AddRow template and starts to type.
+The AddRow feature allows the user to conveniently add rows. This feature displays an AddRow template at the top or bottom of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow.html[Rows]"]  collection. To add a row, the user simply clicks in the AddRow template and starts to type.
 
 == To use the AddRow feature:
 
@@ -36,7 +36,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. The Add Row can be turned on by setting the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property of the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object to one of following settings: TemplateOnTop, TemplateOnTopWithTabRepeat or TemplateOnBottom.
+. The Add Row can be turned on by setting the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~allowaddnew.html[AllowAddNew]"]  property of the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride.html[Override]"]  object to one of following settings: TemplateOnTop, TemplateOnTopWithTabRepeat or TemplateOnBottom.
 
 *In Visual Basic:*
 
@@ -53,7 +53,7 @@ this.ultraGrid1.DisplayLayout.Override.AllowAddNew = AllowAddNew.TemplateOnTop;
 ----
 
 [start=3]
-. By default, template Add Rows are colored with a shade of the row colors. Template Add Row appearance can be controlled by using  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowappearance.html[TemplateAddRowAppearance]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowcellappearance.html[TemplateAddRowCellAppearance]"]  properties.
+. By default, template Add Rows are colored with a shade of the row colors. Template Add Row appearance can be controlled by using  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowappearance.html[TemplateAddRowAppearance]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~templateaddrowcellappearance.html[TemplateAddRowCellAppearance]"]  properties.
 
 *In Visual Basic:*
 

@@ -16,7 +16,7 @@
 
 == Background
 
-For many applications, appearance is everything. WinGrid™ supports alpha blending as a standard part of the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.appearance.html[Appearance]"]  object, so the developer can blend images through  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.uielement.html[UIElements]"]  to provide a more pleasant user experience.
+For many applications, appearance is everything. WinGrid™ supports alpha blending as a standard part of the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance.html[Appearance]"]  object, so the developer can blend images through  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.uielement.html[UIElements]"]  to provide a more pleasant user experience.
 
 == Questions
 
@@ -24,7 +24,7 @@ For many applications, appearance is everything. WinGrid™ supports alpha blend
 
 == Solutions
 
-Set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~backcoloralpha.html[BackcolorAlpha]"]  property of the row to use the Alpha Level, and set the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.appearance~alphalevel.html[AlphaLevel]"]  property to blend the desired amount of the underlying pixels into the element's background. The AlphaLevel property values range from 0 to 255 with 0 representing 100% blend (opaque) and 255 representing 0% blend (transparent). So, to blend 25% of the underlying pixels, set the AlphaLevel to 192.
+Set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~backcoloralpha.html[BackcolorAlpha]"]  property of the row to use the Alpha Level, and set the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.appearance~alphalevel.html[AlphaLevel]"]  property to blend the desired amount of the underlying pixels into the element's background. The AlphaLevel property values range from 0 to 255 with 0 representing 100% blend (opaque) and 255 representing 0% blend (transparent). So, to blend 25% of the underlying pixels, set the AlphaLevel to 192.
 
 == Sample Project
 
@@ -34,7 +34,7 @@ image::Images\WinGrid_Alpha_Blending_01.png[alpha blending in ultragrid]
 
 The UltraGrid Events Region contains the following event handlers:
 
-* UltraGrid1.InitializeLayout - The code in the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event applies a picture to the background of the grid:
+* UltraGrid1.InitializeLayout - The code in the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid~initializelayout_ev.html[InitializeLayout]"]  event applies a picture to the background of the grid:
 
 *In Visual Basic:*
 

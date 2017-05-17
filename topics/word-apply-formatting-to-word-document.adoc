@@ -14,7 +14,7 @@
 
 = Applying Formatting to Word Document
 
-This topic demonstrates formatting of Word document using the Infragistics Word library. The code below uses the forward-only link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object. The various formatting functionalities discussed in this topic are Font, Paragraph formatting and Page attributes such as size, orientation etc.
+This topic demonstrates formatting of Word document using the Infragistics Word library. The code below uses the forward-only link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.worddocumentwriter.html[WordDocumentWriter] object. The various formatting functionalities discussed in this topic are Font, Paragraph formatting and Page attributes such as size, orientation etc.
 
 .Note
 [NOTE]
@@ -24,7 +24,7 @@ A reference to the Infragistics3.Documents.IO assembly is required.
 
 == Designating Fonts
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.font.html[Font] class provides a way to customize the visual attributes of a character or range of characters.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.font.html[Font] class provides a way to customize the visual attributes of a character or range of characters.
 
 *In C#:*
 
@@ -54,7 +54,7 @@ font.Effects.Capitalization = Capitalization.CapsOn
 
 == Paragraph Properties
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.paragraphproperties.html[ParagraphProperties] class provides a way to control formatting for a paragraph.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.paragraphproperties.html[ParagraphProperties] class provides a way to control formatting for a paragraph.
 
 *In C#:*
 
@@ -82,7 +82,7 @@ paraformat.Alignment = ParagraphAlignment.Right
 
 == Section Properties
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.sectionproperties.html[SectionProperties] class provides a way to control page attributes such as size, margin and orientation. The DefineSection method passing in the SectionProperties instance must be called after the EndParagraph method.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.sectionproperties.html[SectionProperties] class provides a way to control page attributes such as size, margin and orientation. The DefineSection method passing in the SectionProperties instance must be called after the EndParagraph method.
 
 *In C#:*
 

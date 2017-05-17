@@ -41,9 +41,9 @@ The ObservableCollectionExtendedWithUndo class provides automatic support for re
 
 The class provides two overloaded constructors:
 
-* One without parameters which uses the UndoManager instance returned from the static link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~current.html[Current] property.
+* One without parameters which uses the UndoManager instance returned from the static link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~current.html[Current] property.
 
-* One that takes as parameter a reference to link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] with which the collection changes are recorded as part of the undo/redo history.
+* One that takes as parameter a reference to link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager_members.html[UndoManager] with which the collection changes are recorded as part of the undo/redo history.
 
 [[_Ref320801246]]
 
@@ -55,7 +55,7 @@ The following table summarizes the purpose and functionality of the ObservableCo
 |====
 |Property|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager_members.html[UndoManager]
 |Returns the UndoManager with which the collection change operations should be recorded for undo.
 
 |====

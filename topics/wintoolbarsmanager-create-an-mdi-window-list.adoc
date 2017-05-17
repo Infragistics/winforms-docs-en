@@ -14,10 +14,10 @@
 
 = Create an MDI Window List
 
-The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.mdiwindowlisttool.html[MDIWindowList]"]  tool is a list tool to document all open MDI forms in the application and when you select one form from the list it will bring that form to the forefront and give it focus. It also gives you options to close all the windows, tile horizontally, vertically, minimize all windows, and cascade them.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.mdiwindowlisttool.html[MDIWindowList]"]  tool is a list tool to document all open MDI forms in the application and when you select one form from the list it will bring that form to the forefront and give it focus. It also gives you options to close all the windows, tile horizontally, vertically, minimize all windows, and cascade them.
 
 [start=1]
-. Open the Customize editor for the element, create and add a  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopUpMenu]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[Button]"]  tool to a toolbar that you have placed on an MDI parent form.
+. Open the Customize editor for the element, create and add a  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopUpMenu]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.buttontool.html[Button]"]  tool to a toolbar that you have placed on an MDI parent form.
 [start=2]
 . Create a MDIWindowList tool and add the MDIWindowList to the popup menu by dragging it towards the menu tool until the drop cursor is displayed and then dropping it.
 [start=3]
@@ -51,6 +51,6 @@ The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~
 |====
 
 [start=4]
-. The  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.listtool~displaycheckmark.html[DisplayCheckmark]"]  property takes a Boolean value but the others can be set to Hide, DisplayOnMenu, DisplayOnDialog or DisplayOnMenuAndDialog. (Dialog in this case means the "More Windows..." dialog.)
+. The  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.listtool~displaycheckmark.html[DisplayCheckmark]"]  property takes a Boolean value but the others can be set to Hide, DisplayOnMenu, DisplayOnDialog or DisplayOnMenuAndDialog. (Dialog in this case means the "More Windows..." dialog.)
 [start=5]
-. In the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event for the button tool, add code to display several MDI child forms. Run the project, display a number of child forms then display your MDIWindowList tool and you will see the text for all the open forms listed.
+. In the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event for the button tool, add code to display several MDI child forms. Run the project, display a number of child forms then display your MDIWindowList tool and you will see the text for all the open forms listed.

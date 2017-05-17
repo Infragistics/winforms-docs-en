@@ -30,12 +30,12 @@ In this topic you will learn how to create columns and nodes using the WinTree d
 image::Images\WinTree_Manually creating ColumnSets Using the Designer_01.png[]
 
 * Click Ok.
-* In the ColumnSet’s property section, under the Behavior node select  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreecolumnset~columns.html[Columns]"]  property. Click the ellipsis… button.
+* In the ColumnSet’s property section, under the Behavior node select  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreecolumnset~columns.html[Columns]"]  property. Click the ellipsis… button.
 
 image::Images\WinTree_Manually creating ColumnSets Using the Designer_02.png[]
 
 * The UltraTreeNodeColumn Collection Editor dialog window appears. The columns that need to be added to the ColumnSet are configured here. Click the Add button. A default column with Key “Column 1” is created.
-* Set the  pick:[win-forms="link:infragistics4.shared.v{ProductVersion}~infragistics.shared.keyedsubobjectbase~key.html[Key]"]  and Text property of the column to “FirstName”. Also change the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~datatype.html[DataType]"]  to System.String.
+* Set the  pick:[win-forms="link:{ApiPlatform}shared{ApiVersion}~infragistics.shared.keyedsubobjectbase~key.html[Key]"]  and Text property of the column to “FirstName”. Also change the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenodecolumn~datatype.html[DataType]"]  to System.String.
 * Repeat the above steps 7 & 8 to add three more columns (LastName, ContactTitle, and Address) to the Customer_ColumnSet and assign the respective Key and Text properties.
 
 image::Images\WinTree_Manually creating ColumnSets Using the Designer_03.png[]
@@ -46,12 +46,12 @@ image::Images\WinTree_Manually creating ColumnSets Using the Designer_03.png[]
 
 image::Images\WinTree_Manually creating ColumnSets Using the Designer_04.png[]
 
-* Locate and expand the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.override.html[Override]"]  property and then locate the ColumnSet property and select “Customers_ColumnSet” that is listed in the drop-down.
+* Locate and expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.override.html[Override]"]  property and then locate the ColumnSet property and select “Customers_ColumnSet” that is listed in the drop-down.
 
 image::Images\WinTree_Manually creating ColumnSets using the Designer_05.png[]
 
 * Click Ok.
-* Click the smart tag on WinTree and set the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  to FreeForm. Now your WinTree should look like the following screenshot with the ColumnSet arrangement.
+* Click the smart tag on WinTree and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~viewstyle.html[ViewStyle]"]  to FreeForm. Now your WinTree should look like the following screenshot with the ColumnSet arrangement.
 
 image::Images\WinTree_Manually creating ColumnSets Using the Designer_06.png[]
 

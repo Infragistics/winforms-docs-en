@@ -27,17 +27,17 @@ This walkthrough will help you create a simple web browsing application with the
 [start=1]
 . *Add the NavigationToolbar to your form.*
 
-.. Find  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolbarsManager]"]  in the toolbox and double-click it. The ultraToolbarsManager1 component is added to the component tray. Click Yes in the resulting UltraToolbarsManager Initialization dialog box.
-.. With the ultraToolbarsManager1 component selected, expand the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar.html[NavigationToolbar]"]  object in the properties window and set its Visible property to True.
+.. Find  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager.html[UltraToolbarsManager]"]  in the toolbox and double-click it. The ultraToolbarsManager1 component is added to the component tray. Click Yes in the resulting UltraToolbarsManager Initialization dialog box.
+.. With the ultraToolbarsManager1 component selected, expand the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.navigationtoolbar.html[NavigationToolbar]"]  object in the properties window and set its Visible property to True.
 .. On the NavigationToolbar, click Insert New Tool and then Insert New Tool... from the resulting pop-up menu. The New Tool dialog box displays.
-.. Change the Tool Type to  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.comboboxtool.html[ComboBox]"]  and the Caption to "AddressBar". The Key will automatically populate with the Caption’s text. Click Add.
-.. Change the Tool Type to  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"]  and the Caption to ‘Refresh’. Click Add.
+.. Change the Tool Type to  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.comboboxtool.html[ComboBox]"]  and the Caption to "AddressBar". The Key will automatically populate with the Caption’s text. Click Add.
+.. Change the Tool Type to  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.buttontool.html[ButtonTool]"]  and the Caption to ‘Refresh’. Click Add.
 .. Add one more ButtonTool with a Caption of ‘Stop’.
 .. Click Close to dismiss the New Tool dialog box.
-.. With the ultraToolbarsManager1 component still selected, locate the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings.html[ToolbarSettings]"]  object in the properties window and set the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~fillentirerow.html[FillEntireRow]"]  property to True.
-.. Locate the NavigationToolbar object in the properties window and drill down through the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools]"] , AddressBar,  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  objects and set the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.sharedprops~spring.html[Spring]"]  property to True.
+.. With the ultraToolbarsManager1 component still selected, locate the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.toolbarsettings.html[ToolbarSettings]"]  object in the properties window and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.toolbarsettings~fillentirerow.html[FillEntireRow]"]  property to True.
+.. Locate the NavigationToolbar object in the properties window and drill down through the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.toolscollection.html[Tools]"] , AddressBar,  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.sharedprops.html[SharedProps]"]  objects and set the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.sharedprops~spring.html[Spring]"]  property to True.
 [start=10]
-.. Still in the properties window for the AddressBar tool, locate the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.comboboxtool~dropdownstyle.html[DropDownStyle]"]  property and set it to DropDown. This will allow the end user to edit the contents of the combo box.
+.. Still in the properties window for the AddressBar tool, locate the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.comboboxtool~dropdownstyle.html[DropDownStyle]"]  property and set it to DropDown. This will allow the end user to edit the contents of the combo box.
 
 At this point, your form should look similar to the following screen shot:
 
@@ -65,7 +65,7 @@ this.webBrowser1.GoHome();
 [start=3]
 . *Create references to the ComboBox tool and its ValueList.*
 
-.. You are going to need a reference to the combo box tool so you can access it in various methods that you will create. You are also going to need a  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.valuelist.html[ValueList]"]  that will represent the combo box's history. Create two global variables just above the form's Load event.
+.. You are going to need a reference to the combo box tool so you can access it in various methods that you will create. You are also going to need a  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.valuelist.html[ValueList]"]  that will represent the combo box's history. Create two global variables just above the form's Load event.
 
 *In Visual Basic:*
 
@@ -191,7 +191,7 @@ private void CheckUrl()
 [start=6]
 . *Handle WinToolbarsManager’s ToolClick event* .
 
-Create a handler for the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event either with the lightning-bolt in the properties window if using C#, or with the drop-down boxes at the top of code view if using Visual Basic. The Refresh button will handle the actual browsing, while the Stop button will stop the browser from browsing.
+Create a handler for the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~toolclick_ev.html[ToolClick]"]  event either with the lightning-bolt in the properties window if using C#, or with the drop-down boxes at the top of code view if using Visual Basic. The Refresh button will handle the actual browsing, while the Stop button will stop the browser from browsing.
 
 *In Visual Basic:*
 
@@ -229,7 +229,7 @@ private void ultraToolbarsManager1_ToolClick(object sender,
 [start=7]
 . *Browse through the internet history* .
 
-At this point, you've completed most of the internet browsing functionality. Now you need to setup the WebBrowser control to browse when the end user navigates through the internet history with the Navigation toolbar. This task is quite simple and involves only two lines of code. You will need to handle the  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~afternavigation_ev.html[AfterNavigation]"]  event of UltraToolbarsManager. This event fires once navigation has completed on the Navigation toolbar. You will need to first set the text of the address bar to the item in the navigation history that the end user navigated to. You will then need to browse to that web page in the WebBrowser control. Create a handler for the AfterNavigation event either with the lightning-bolt in the properties window if using C#, or with the drop-down boxes at the top of code view if using Visual Basic.
+At this point, you've completed most of the internet browsing functionality. Now you need to setup the WebBrowser control to browse when the end user navigates through the internet history with the Navigation toolbar. This task is quite simple and involves only two lines of code. You will need to handle the  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.ultratoolbarsmanager~afternavigation_ev.html[AfterNavigation]"]  event of UltraToolbarsManager. This event fires once navigation has completed on the Navigation toolbar. You will need to first set the text of the address bar to the item in the navigation history that the end user navigated to. You will then need to browse to that web page in the WebBrowser control. Create a handler for the AfterNavigation event either with the lightning-bolt in the properties window if using C#, or with the drop-down boxes at the top of code view if using Visual Basic.
 
 *In Visual Basic:*
 

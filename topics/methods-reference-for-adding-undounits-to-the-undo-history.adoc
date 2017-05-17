@@ -66,22 +66,22 @@ The following table summarizes the purpose and functionality of the UndoManager 
 |====
 |Method|Description
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addchange.html[AddChange]
-|This is an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager_members.html[UndoManager] method that may be used to add any link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounit_members.html[UndoUnit] derived class object to the undo history. 
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~addchange.html[AddChange]
+|This is an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager_members.html[UndoManager] method that may be used to add any link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounit_members.html[UndoUnit] derived class object to the undo history. 
 
 The method has numerous overloads. 
 
 For all overloads except the AddChange(UndoUnit), the UndoUnit representing the change will automatically add itself back into the history (calling `AddChange` passing in itself). Therefore these delegates should not result in the same `AddChange` method being invoked. 
 
-These methods ultimately delegate the creation of the UndoUnit instance to the link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undounitfactory_members.html[UndoUnitFactory] of the UndoManager whose history will be updated. It is possible to change the UndoUnit instance that is used for these operations without needing to change the call to these methods.
+These methods ultimately delegate the creation of the UndoUnit instance to the link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undounitfactory_members.html[UndoUnitFactory] of the UndoManager whose history will be updated. It is possible to change the UndoUnit instance that is used for these operations without needing to change the call to these methods.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addcollectionchange.html[AddCollectionChange]
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~addcollectionchange.html[AddCollectionChange]
 |This method adds an UndoUnit for collection change in the history. 
 
 There are several overloads that take a collection of type _ICollection<T>_ and information about the type of change that occurred in the collection as parameters.
 
-| link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.undomanager~addpropertychange.html[AddPropertyChange]
-|This method adds an link:{ApiPlatform}undo.v{ProductVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase] for the specified property value change to the undo history. 
+| link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.undomanager~addpropertychange.html[AddPropertyChange]
+|This method adds an link:{ApiPlatform}undo{ApiVersion}~infragistics.undo.propertychangeundounitbase_members.html[PropertyChangeUndoUnitBase] for the specified property value change to the undo history. 
 
 The method has numerous overloads that take as parameters: 
 

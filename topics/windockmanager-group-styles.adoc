@@ -14,7 +14,7 @@
 
 = Group Styles
 
-The  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPanes]"]  class of the WinDockManager™ control can organize and display its child panes in one of four styles. The style used to display the child panes is based on the group's  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.childpanestyle.html[ChildPaneStyle]"]  property.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.dockablegrouppane.html[DockableGroupPanes]"]  class of the WinDockManager™ control can organize and display its child panes in one of four styles. The style used to display the child panes is based on the group's  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.childpanestyle.html[ChildPaneStyle]"]  property.
 
 == Horizontal Split
 
@@ -28,7 +28,7 @@ A vertical split group behaves the same as a horizontal split group. The only di
 
 Each child of a tab group is displayed as a tab item. Only the contents of one tab item in a group may be displayed at one time. An item may be programmatically selected by settings its IsSelectedTab property. By default, if the TextTab of a pane has not been set, the Text property will be used as the caption for the tab item.
 
-Certain properties of the group's GroupSettings property apply specifically to tab groups. These properties are all prefaced with the word 'Tab' (e.g. TabStyle, TabLocation, etc.). Two other properties also have an impact on the behavior of the tab items -  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.closebuttonbehavior.html[CloseButtonBehavior]"]  and  pick:[win-forms="link:infragistics4.win.ultrawindock.v{ProductVersion}~infragistics.win.ultrawindock.pinbuttonbehavior.html[PinButtonBehavior]"] . Each determines whether the associated button acts on the currently displayed tab or on all the tabs in the group. By default, the CloseButtonBehavior is set to CloseActiveTab and the PinButtonBehavior is set to PinTabGroup, which match Visual Studio's default settings. With these settings set as such, only the active tab will be closed when the Close button is pressed but all panes will be unpinned when the Pin button is pressed.
+Certain properties of the group's GroupSettings property apply specifically to tab groups. These properties are all prefaced with the word 'Tab' (e.g. TabStyle, TabLocation, etc.). Two other properties also have an impact on the behavior of the tab items -  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.closebuttonbehavior.html[CloseButtonBehavior]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawindock{ApiVersion}~infragistics.win.ultrawindock.pinbuttonbehavior.html[PinButtonBehavior]"] . Each determines whether the associated button acts on the currently displayed tab or on all the tabs in the group. By default, the CloseButtonBehavior is set to CloseActiveTab and the PinButtonBehavior is set to PinTabGroup, which match Visual Studio's default settings. With these settings set as such, only the active tab will be closed when the Close button is pressed but all panes will be unpinned when the Pin button is pressed.
 
 == Sliding Group
 

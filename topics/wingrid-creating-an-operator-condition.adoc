@@ -14,7 +14,7 @@
 
 = Creating an Operator Condition
 
-Conditional Formatting allows you to compare the cells of an entire column in WinGrid™ to one or more values and change the appearance if certain conditions are met. For instance, you can check to see if the cells are less than a specific number, or you can check to see if a certain string of text is contained within the cell. There are several operators that are built into the  pick:[win-forms="link:{ApiPlatform}win.v{ProductVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"]  object. For a complete list of conditions, see the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.conditionoperator.html[ConditionOperator]"]  enumeration.
+Conditional Formatting allows you to compare the cells of an entire column in WinGrid™ to one or more values and change the appearance if certain conditions are met. For instance, you can check to see if the cells are less than a specific number, or you can check to see if a certain string of text is contained within the cell. There are several operators that are built into the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.operatorcondition.html[OperatorCondition]"]  object. For a complete list of conditions, see the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.conditionoperator.html[ConditionOperator]"]  enumeration.
 
 Creating an operator condition is fairly simple. When you instantiate a OperatorCondition, the constructor takes in a ConditionOperator and a value to compare a column's cell to. The following code instantiates a OperatorCondition and checks to see if the compared value contains the string "Rio de Janeiro."
 

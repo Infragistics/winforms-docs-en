@@ -57,7 +57,7 @@ The following table lists the steps to enabling external filtering.
 
 === 1. Disable the default filtering action.
 
-Set the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowfilteraction.html[RowFilterAction] property to  _None_ .
+Set the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowfilteraction.html[RowFilterAction] property to  _None_ .
 
 *In Visual Basic:*
 
@@ -75,7 +75,7 @@ this.ultraGrid1.DisplayLayout.Override.RowFilterAction = RowFilterAction.None;
 
 === 2. Populate the drop-down with the custom filtering values.
 
-Handle the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~beforerowfilterdropdownpopulate_ev.html[BeforeRowFilterDropDownPopulate] event.
+Handle the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~beforerowfilterdropdownpopulate_ev.html[BeforeRowFilterDropDownPopulate] event.
 
 *In Visual Basic:*
 
@@ -97,7 +97,7 @@ private void ultraGrid1_BeforeRowFilterDropDownPopulate(object sender, BeforeRow
 
 === 3. Add custom filtering logic.
 
-Handle the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~afterrowfilterchanged_ev.html[AfterRowFilterChanged] event.
+Handle the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~afterrowfilterchanged_ev.html[AfterRowFilterChanged] event.
 
 *In Visual Basic:*
 
@@ -342,7 +342,7 @@ this.ultraDataSource1.Rows.SetCount(this.ds.Tables[0].Rows.Count);
 
 === 5. Define the grid load style.
 
-Set link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridlayout~loadstyle.html[LoadStyle] to `LoadOnDemand` so that the grid can load data on demand. Add this code within the form’s Load event.
+Set link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridlayout~loadstyle.html[LoadStyle] to `LoadOnDemand` so that the grid can load data on demand. Add this code within the form’s Load event.
 
 *In Visual Basic:*
 
@@ -362,7 +362,7 @@ this.ultraGrid1.DisplayLayout.LoadStyle = LoadStyle.LoadOnDemand;
 
 === 6. Disable the default filtering action.
 
-In order to display the WinGrid control’s built-in filtering UI without any internal filtering logic, the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowfilteraction.html[RowFilterAction] property must be set to `None`. Since internal filtering logic is bypassed, the grid data can load data on demand.
+In order to display the WinGrid control’s built-in filtering UI without any internal filtering logic, the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridoverride~rowfilteraction.html[RowFilterAction] property must be set to `None`. Since internal filtering logic is bypassed, the grid data can load data on demand.
 
 Add this code within the form’s load event.
 
@@ -388,7 +388,7 @@ this.ultraGrid1.DisplayLayout.Override.RowFilterAction = RowFilterAction.None;
 
 === 7. Supply the data.
 
-The data required for the UltraDataSource component is supplied from within the link:infragistics4.win.ultrawindatasource.v{ProductVersion}~infragistics.win.ultrawindatasource.ultradatasource~celldatarequested_ev.html[CellDataRequested] event. This event is fired when an UltraGrid bound to UltraDataSource component, requests value for a cell and the UltraDataSource component doesn't have the cell values. The following code resides within the  _CellDataRequested_  event of the UltraDataSource component.
+The data required for the UltraDataSource component is supplied from within the link:{ApiPlatform}win.ultrawindatasource{ApiVersion}~infragistics.win.ultrawindatasource.ultradatasource~celldatarequested_ev.html[CellDataRequested] event. This event is fired when an UltraGrid bound to UltraDataSource component, requests value for a cell and the UltraDataSource component doesn't have the cell values. The following code resides within the  _CellDataRequested_  event of the UltraDataSource component.
 
 *In Visual Basic:*
 
@@ -432,7 +432,7 @@ e.CacheData = false;
 
 === 8. Populate the drop-down with the custom filtering values.
 
-The link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~beforerowfilterdropdownpopulate_ev.html[BeforeRowFilterDropDownPopulate] event of the UltraGrid must be handled to manually populate the filter drop-down value list items. Here the filter drop down is populated with the alphabets ‘A’, ‘B’, ‘C’ and ‘D’ as the value list items.
+The link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~beforerowfilterdropdownpopulate_ev.html[BeforeRowFilterDropDownPopulate] event of the UltraGrid must be handled to manually populate the filter drop-down value list items. Here the filter drop down is populated with the alphabets ‘A’, ‘B’, ‘C’ and ‘D’ as the value list items.
 
 *In Visual Basic:*
 
@@ -490,7 +490,7 @@ e.ValueList.ValueListItems.Add("D");
 
 === 9. Add your custom filtering logic.
 
-To add custom filtering logic, the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~afterrowfilterchanged_ev.html[AfterRowFilterChanged] event of the UltraGrid must be handled. Here, the code is written to filter all the records starting with the alphabet that is selected from the  _Text_  column filter drop-down list.
+To add custom filtering logic, the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~afterrowfilterchanged_ev.html[AfterRowFilterChanged] event of the UltraGrid must be handled. Here, the code is written to filter all the records starting with the alphabet that is selected from the  _Text_  column filter drop-down list.
 
 *In Visual Basic:*
 

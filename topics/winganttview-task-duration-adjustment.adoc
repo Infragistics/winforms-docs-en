@@ -14,17 +14,17 @@
 
 = Task Duration Adjustment
 
-The value of the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskworkinghourmode.html[TaskWorkingHourMode] property determines whether non-working hours/non-working days should be included in the duration for a task, when calculating its end-date time. When set to its default value, ‘Manual’, non-working hours and non-working days are not skipped. When set to ‘AutoAdjust’, non-working hours and non-working days are skipped and the end-date time is pushed to the closest working hour or working day. For example, a task set up with ‘AutoAdjust’ that starts on a Friday and has duration of two days would end on Monday rather than on Saturday (assuming that Saturday and Sunday are both designated as non-working days).
+The value of the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskworkinghourmode.html[TaskWorkingHourMode] property determines whether non-working hours/non-working days should be included in the duration for a task, when calculating its end-date time. When set to its default value, ‘Manual’, non-working hours and non-working days are not skipped. When set to ‘AutoAdjust’, non-working hours and non-working days are skipped and the end-date time is pushed to the closest working hour or working day. For example, a task set up with ‘AutoAdjust’ that starts on a Friday and has duration of two days would end on Monday rather than on Saturday (assuming that Saturday and Sunday are both designated as non-working days).
 
 When the end user expresses the unit of time for duration in days, with the TaskWorkingHourMode property set to ‘AutoAdjust’, the effective duration is “converted” to working hours, with the length of the workday. Setting the duration to a value of (for example) 2 days with ‘8hours’ of working hours results in a conversion to (2 x 8hours) = 16hours, and the effective duration resolves to 16 hours. Since tasks skip over non-working hours when determining the end-date time of the task, the task spans two working days.
 
 When the end user expresses the duration value in hours or minutes the duration is interpreted as a literal assignment of the working hours. For example if the duration value is set to ’48 hours’ the task spans 6 working days, with ‘8 hours’ working hours per day.
 
-The unit of time for the duration can be set using the link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.task~setduration(timespan,timespanformat).html[SetDuration] method, which accepts a TimeSpanFormat parameter.
+The unit of time for the duration can be set using the link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.task~setduration(timespan,timespanformat).html[SetDuration] method, which accepts a TimeSpanFormat parameter.
 
-A link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskdurationworkingtimeperday.html[TaskDurationWorkingTimePerDay] property is exposed by the UltraCalendarInfo object, which provides a way to specify the number of working hours in a workday.
+A link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.ultracalendarinfo~taskdurationworkingtimeperday.html[TaskDurationWorkingTimePerDay] property is exposed by the UltraCalendarInfo object, which provides a way to specify the number of working hours in a workday.
 
-The link:infragistics4.win.ultrawinschedule.v{ProductVersion}~infragistics.win.ultrawinschedule.calendardatesettings.html[CalendarDateSettings] collection object provides ways to customize the workday status and working hours for a particular date.
+The link:{ApiPlatform}win.ultrawinschedule{ApiVersion}~infragistics.win.ultrawinschedule.calendardatesettings.html[CalendarDateSettings] collection object provides ways to customize the workday status and working hours for a particular date.
 
 The following code example shows you how the duration accounts for non-working days and non-working hours and the end-date time is adjusted accordingly.
 

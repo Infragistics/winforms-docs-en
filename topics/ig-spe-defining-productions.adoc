@@ -185,34 +185,34 @@ NonTerminalSymbol.Rule
             SymbolReferenceSyntaxRule (SemicolonToken)
 ----
 
-As you can see the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[Rule] property of the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] class indicates to the syntax analyzer the various ways in which the non-terminal symbol can be formed from other symbols. Here is a table of all available syntax rules:
+As you can see the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol~rule.html[Rule] property of the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.nonterminalsymbol.html[NonTerminalSymbol] class indicates to the syntax analyzer the various ways in which the non-terminal symbol can be formed from other symbols. Here is a table of all available syntax rules:
 
 [options="header", cols="a,a"]
 |====
 |Rule|Description
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.symbolreferencesyntaxrule.html[SymbolReferenceSyntaxRule]
 |Represents a single symbol.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.optionalsyntaxrule.html[OptionalSyntaxRule]
 |Represents a child rule which could optionally be used.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.repetitionsyntaxrule.html[RepetitionSyntaxRule]
 |Represents a child rule which could be used zero or more times.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.alternationsyntaxrule.html[AlternationSyntaxRule]
 |Represents a set of two or more child rules, one of which must be used.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.concatenationsyntaxrule.html[ConcatenationSyntaxRule]
 |Represents a set of two or more child rules, each of which must be used in order from left to right in the document.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.emptysyntaxrule.html[EmptySyntaxRule]
 |Represents no symbols.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.exceptionsyntaxrule.html[ExceptionSyntaxRule]
 |Represents a syntactic exception, which allows one sequence of symbols to be used as long as the tokens which match that sequence do not match an "exception sequence" of symbols.
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.factorsyntaxrule.html[FactorSyntaxRule]
 |Represents a syntactic factor, which is a rule repeated a specific number of times.
 
 |====

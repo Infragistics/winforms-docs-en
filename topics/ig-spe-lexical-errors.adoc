@@ -69,7 +69,7 @@ Consider a grammar with a default lexer state defined as having the following te
 
 Document content to be parsed: “x += y;”
 
-While the lexer is analyzing this document content it will first create tokens <Identifier, “x”> and <WhitespaceToken, “ ”>. Then it will come to the “+” character and no terminal symbol will be able to recognize it. The lexer will continue reading unrecognized characters until it comes to a piece of text which can be matched by any terminal symbol. In this case, that is the space after the “=”. The lexer will then gather up all contiguous unrecognized characters and make them a match of the special symbol exposed by link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol]. So the full token stream for this document content will be the following:
+While the lexer is analyzing this document content it will first create tokens <Identifier, “x”> and <WhitespaceToken, “ ”>. Then it will come to the “+” character and no terminal symbol will be able to recognize it. The lexer will continue reading unrecognized characters until it comes to a piece of text which can be matched by any terminal symbol. In this case, that is the space after the “=”. The lexer will then gather up all contiguous unrecognized characters and make them a match of the special symbol exposed by link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.grammar~unrecognizedsymbol.html[Grammar.UnrecognizedSymbol]. So the full token stream for this document content will be the following:
 
 <Identifier, “x”> <WhitespaceToken, “ ”> <*UnrecognizedToken*, “+=”> <WhitespaceToken, “ ”> <Identifier, “y”> <*UnrecognizedToken* , “;”> <EndOfStreamToken>
 

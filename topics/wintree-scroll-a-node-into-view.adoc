@@ -32,7 +32,7 @@ using Infragistics.Win.UltraWinTree;
 ----
 
 [start=2]
-. You will need a reference to the node. If you know the key of the node, you can get a reference using the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method of the tree.
+. You will need a reference to the node. If you know the key of the node, you can get a reference using the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~getnodebykey.html[GetNodeByKey]"]  method of the tree.
 
 *In Visual Basic:*
 
@@ -49,7 +49,7 @@ aNode = this.ultraTree1.GetNodeByKey("Bind WinGrid to a Flat Data Source");
 ----
 
 [start=3]
-. Once you have a reference to the node, you can call the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratreenode~bringintoview.html[BringIntoView]"]  method.
+. Once you have a reference to the node, you can call the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratreenode~bringintoview.html[BringIntoView]"]  method.
 
 *In Visual Basic:*
 
@@ -66,7 +66,7 @@ aNode.BringIntoView();
 [start=4]
 . The code in the previous step will bring the node into the viewable area of the tree. It will scroll the tree and expand any parent nodes as necessary to bring the node into view. However, the exact location of the node could be anywhere inside the viewable area.
 
-If you want more control, you can set the  pick:[win-forms="link:infragistics4.win.ultrawintree.v{ProductVersion}~infragistics.win.ultrawintree.ultratree~topnode.html[TopNode]"]  property of the control. This will move the node to the top of the viewable area.
+If you want more control, you can set the  pick:[win-forms="link:{ApiPlatform}win.ultrawintree{ApiVersion}~infragistics.win.ultrawintree.ultratree~topnode.html[TopNode]"]  property of the control. This will move the node to the top of the viewable area.
 
 *In Visual Basic:*
 

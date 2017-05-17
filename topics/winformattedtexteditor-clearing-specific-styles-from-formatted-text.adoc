@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-The WinFormattedTextEditor™ control can gather all style information applied to text. WinFormattedTextEditor can also remove individual styles from text. Using basic string manipulation, you can use the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~getcurrentstyle.html[GetCurrentStyle]"]  method along with the  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~clearstyleattributes.html[ClearStyleAttributes]"]  method to discover what styles are applied to text and then pick and choose only the styles you'd like to remove.
+The WinFormattedTextEditor™ control can gather all style information applied to text. WinFormattedTextEditor can also remove individual styles from text. Using basic string manipulation, you can use the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~getcurrentstyle.html[GetCurrentStyle]"]  method along with the  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedtexteditinfo~clearstyleattributes.html[ClearStyleAttributes]"]  method to discover what styles are applied to text and then pick and choose only the styles you'd like to remove.
 
 The GetCurrentStyle method returns a string of all style sub-attributes. For more information on these sub-attributes, see link:winformattedtexteditor-style-attribute.html[Style Attribute]. Once these sub-attributes are collected, they need to be sorted into an array of strings. The String.Split method is perfect for separating all the sub-attributes. Once all the sub-attributes have been collected, you need only to pass the undesired sub-attributes to the ClearStyleAttributes method. We split the string of styles into an array of strings because that is what needs to be passed into the ClearStyleAttributes method.
 
@@ -32,7 +32,7 @@ This walkthrough will guide you through the process of removing only the styles 
 image::images/WinFormattedTextEditor_Clearing_Specific_Styles_from_Formatted_Text_01.png[form design for clearing specific styles from formatted text]
 
 [start=2]
-. Copy and paste the following formatted text into the  pick:[win-forms="link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditorbase~value.html[Value]"]  property of ultraFormattedTextEditor1:
+. Copy and paste the following formatted text into the  pick:[win-forms="link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.formattedlinklabel.ultraformattedtexteditorbase~value.html[Value]"]  property of ultraFormattedTextEditor1:
 
 <p style='color:White; background-color:Red; font-family:Arial; font-size:16pt; text-align:Right;'>WinFormattedTextEditor</p>
 
@@ -42,7 +42,7 @@ image::images/WinFormattedTextEditor_Clearing_Specific_Styles_from_Formatted_Tex
 [start=3]
 . *Setup the WinListView control.*
 
-You want ultraListView1 to display Items in a list with checkboxes. With ultraListView1 selected, find the  pick:[win-forms="link:infragistics4.win.ultrawinlistview.v{ProductVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property in the Properties window and set it to List. Expand the ViewSettingsList object and set CheckBoxStyle to CheckBox.
+You want ultraListView1 to display Items in a list with checkboxes. With ultraListView1 selected, find the  pick:[win-forms="link:{ApiPlatform}win.ultrawinlistview{ApiVersion}~infragistics.win.ultrawinlistview.ultralistview~view.html[View]"]  property in the Properties window and set it to List. Expand the ViewSettingsList object and set CheckBoxStyle to CheckBox.
 [start=4]
 . *Create an EditStateChanged event for ultraFormattedTextEditor1 and a Click event for ultraButton1.*
 

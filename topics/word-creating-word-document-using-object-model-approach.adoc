@@ -38,13 +38,13 @@ The topic is organized as follows:
 [[CreateSimpleDoc]]
 == Creating a Simple Word Document
 
-The entire Word document is encapsulated by the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document.html[Document] class. The Document class is the root-level entity in the object hierarchy, under which all other objects are grouped. It serves as a container for block-level content such as paragraphs and tables. Block-level content is contained within the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~contentblocks.html[ContentBlocks] collection.
+The entire Word document is encapsulated by the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document.html[Document] class. The Document class is the root-level entity in the object hierarchy, under which all other objects are grouped. It serves as a container for block-level content such as paragraphs and tables. Block-level content is contained within the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document~contentblocks.html[ContentBlocks] collection.
 
-Individual paragraphs in the document are encapsulated by the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph.html[Paragraph] class. The Paragraph class exposes a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.paragraph~contentruns.html[ContentRuns] collection, which provides a way to add content to the paragraph.
+Individual paragraphs in the document are encapsulated by the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.paragraph.html[Paragraph] class. The Paragraph class exposes a link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.paragraph~contentruns.html[ContentRuns] collection, which provides a way to add content to the paragraph.
 
-To generate a Word document, create an instance of the Document class and manipulate it using publicly exposed properties and methods, and then call a link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~save.html[Save] method.
+To generate a Word document, create an instance of the Document class and manipulate it using publicly exposed properties and methods, and then call a link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document~save.html[Save] method.
 
-The various properties of the Word document such as Author, Title, Subject, etc., can be set using the link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.document~documentproperties.html[DocumentProperties] property. These information can be accessed in Word 2007 by clicking the Office Button and navigating to Prepare > Properties section. Similarly in Word 2010 by clicking the File tab the document properties can be accessed from the right side of the backstage view.
+The various properties of the Word document such as Author, Title, Subject, etc., can be set using the link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.document~documentproperties.html[DocumentProperties] property. These information can be accessed in Word 2007 by clicking the Office Button and navigating to Prepare > Properties section. Similarly in Word 2010 by clicking the File tab the document properties can be accessed from the right side of the backstage view.
 
 *In C#:*
 
@@ -85,7 +85,7 @@ para1.ContentRuns.AddTextRun("Sample Word Document with Hyperlinks,Images,Header
 [[AddHyperlink]]
 == Adding a Hyperlink to the Word Document
 
-The Infragistics Word library supports hyperlinks. The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addhyperlink.html[AddHyperlink] method adds a TextHyperlink to the associated paragraph.
+The Infragistics Word library supports hyperlinks. The link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.contentrunscollection~addhyperlink.html[AddHyperlink] method adds a TextHyperlink to the associated paragraph.
 
 *In C#:*
 
@@ -115,7 +115,7 @@ para2.ContentRuns.AddHyperlink("http://www.infragistics.com", "Infragistics Inc.
 [[AddAnchPic]]
 == Adding Anchored Picture
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.anchoredpicture.html[AnchoredPicture] class encapsulates a picture or image that is anchored to a specific location within the document. link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.anchorscollection~addanchoredpicture.html[AddAnchoredPicture] method adds an anchored picture to the associated paragraph.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.anchoredpicture.html[AnchoredPicture] class encapsulates a picture or image that is anchored to a specific location within the document. link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.anchorscollection~addanchoredpicture.html[AddAnchoredPicture] method adds an anchored picture to the associated paragraph.
 
 *In C#:*
 
@@ -160,7 +160,7 @@ para3.Anchors.AddAnchoredPicture(anchPic)
 [[AddInlinePic]]
 == Adding Inline Picture
 
-The link:infragistics4.documents.io.v{ProductVersion}~infragistics.documents.word.inlinepicture.html[InlinePicture] class encapsulates a picture, which appears inline with the textual content within the document. link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addinlinepicture.html[AddInlinePicture] method adds an inline picture to the associated paragraph.
+The link:{ApiPlatform}documents.io{ApiVersion}~infragistics.documents.word.inlinepicture.html[InlinePicture] class encapsulates a picture, which appears inline with the textual content within the document. link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.contentrunscollection~addinlinepicture.html[AddInlinePicture] method adds an inline picture to the associated paragraph.
 
 *In C#:*
 
@@ -194,7 +194,7 @@ inlinePic.AlternateTextDescription = "Word Image"
 para4.ContentRuns.AddInlinePicture(inlinePic)
 ----
 
-The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.section.html[Section] class encapsulates the pagination properties and header/footer content for a document section.
+The link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.section.html[Section] class encapsulates the pagination properties and header/footer content for a document section.
 
 [[HeaderFooter]]
 == Setting the Header and the Footer
@@ -247,7 +247,7 @@ headerPara.ContentRuns.AddTextRun("This is a header")
 [[Footer]]
 == Adding and Setting the Footer
 
-The link:infragistics4.documents.word.v{ProductVersion}~infragistics.documents.word.contentrunscollection~addpagenumberfield.html[AddPageNumberField] method adds a PageNumberField to the associated paragraph.
+The link:{ApiPlatform}documents.word{ApiVersion}~infragistics.documents.word.contentrunscollection~addpagenumberfield.html[AddPageNumberField] method adds a PageNumberField to the associated paragraph.
 
 *In C#:*
 

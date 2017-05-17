@@ -51,11 +51,11 @@ This topic contains the following sections:
 
 === Introduction
 
-Earlier version the  _UltraDesktopAlert_   did not expose the open windows collection requiring you to invoke the `IsOpen` method passing a Key or previously stored instance of an link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertwindowinfo_members.html[UltraDesktopAlertWindowInfo] in order to traverse the open windows.
+Earlier version the  _UltraDesktopAlert_   did not expose the open windows collection requiring you to invoke the `IsOpen` method passing a Key or previously stored instance of an link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalertwindowinfo_members.html[UltraDesktopAlertWindowInfo] in order to traverse the open windows.
 
-The newly enhanced feature, presented here, makes it much easier to query the collection of open windows using the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] property exposes a read-only version of the collection that internally tracks open windows.
+The newly enhanced feature, presented here, makes it much easier to query the collection of open windows using the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] property exposes a read-only version of the collection that internally tracks open windows.
 
-Users can traverse the collection of each link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalertwindowinfo_members.html[UltraDesktopAlertWindowInfo] object currently displayed and retrieve the count of the collection through the `ReadOnlyCollection` object; returned by the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] property.
+Users can traverse the collection of each link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalertwindowinfo_members.html[UltraDesktopAlertWindowInfo] object currently displayed and retrieve the count of the collection through the `ReadOnlyCollection` object; returned by the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] property.
 
 .Note:
 [NOTE]
@@ -67,11 +67,11 @@ Adding new windows to the collection and displaying the windows within the colle
 
 === Code Illustration
 
-The following IDE screenshot shows a code example, triggered by a button-click event for retrieving the count of open alert windows from the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] collection. Other properties and methods are also available as shown in the IntelliSense drop-down.
+The following IDE screenshot shows a code example, triggered by a button-click event for retrieving the count of open alert windows from the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalert~openwindows.html[OpenWindows] collection. Other properties and methods are also available as shown in the IntelliSense drop-down.
 
 image::images/WinDesktopAlert_Exposing_Open_Alert_Windows_1.png[]
 
-The open windows collection works best when paired with the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~autoclose.html[AutoClose] property set to  _false,_   and the link:infragistics4.win.misc.v{ProductVersion}~infragistics.win.misc.ultradesktopalert~multiplewindowdisplaystyle.html[MultipleWindowDisplayStyle] set to anything other than  _Default_   or  _None_  , otherwise it will always contain one alert window, for example:
+The open windows collection works best when paired with the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalert~autoclose.html[AutoClose] property set to  _false,_   and the link:{ApiPlatform}win.misc{ApiVersion}~infragistics.win.misc.ultradesktopalert~multiplewindowdisplaystyle.html[MultipleWindowDisplayStyle] set to anything other than  _Default_   or  _None_  , otherwise it will always contain one alert window, for example:
 
 *In C#:*
 

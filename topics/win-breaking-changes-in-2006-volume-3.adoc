@@ -18,7 +18,7 @@
 
 === Instantiating FormattedLinkEditor at Run Time
 
-pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  is the base class for both the WinFormattedLinkLabel and WinFormattedTextEditor™ controls. Since the WinFormattedLinkLabel was developed, there was no editing capabilities involved with the FormattedLinkEditor class. In 2006 Volume 3, we added WinFormattedTextEditor which does have editing capabilities. Because of this, it was necessary to add editing capabilities to the base class, FormattedLinkEditor.
+pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.formattedlinklabel.formattedlinkeditor.html[FormattedLinkEditor]"]  is the base class for both the WinFormattedLinkLabel and WinFormattedTextEditor™ controls. Since the WinFormattedLinkLabel was developed, there was no editing capabilities involved with the FormattedLinkEditor class. In 2006 Volume 3, we added WinFormattedTextEditor which does have editing capabilities. Because of this, it was necessary to add editing capabilities to the base class, FormattedLinkEditor.
 
 It is possible that this breaking change will not affect your project. If you build your project and it compiles with no errors, you don't have to worry. If you get a compile-time error when building, read on to find out what may be wrong.
 

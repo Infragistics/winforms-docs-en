@@ -34,7 +34,7 @@ using Infragistics.Win.UltraWinGrid;
 ----
 
 [start=2]
-. In order to traverse the rows in the grid, you must get a reference to a row. Commonly, you will want to access the first row in the grid and work from there. You can do this with the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridbase~getrow.html[GetRow]"]  method.
+. In order to traverse the rows in the grid, you must get a reference to a row. Commonly, you will want to access the first row in the grid and work from there. You can do this with the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridbase~getrow.html[GetRow]"]  method.
 
 *In Visual Basic:*
 
@@ -50,7 +50,7 @@ UltraGridRow aRow = this.ultraGrid1.GetRow(ChildRow.First);
 ----
 
 [start=3]
-. Once you have access to the first row, you can use several methods to get references to other rows. If you want to get the next row in the same band, you would first check to see if there is a next row. To see if the row has a next sibling, you use the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~hasnextsibling.html[HasNextSibling]"]  Method.
+. Once you have access to the first row, you can use several methods to get references to other rows. If you want to get the next row in the same band, you would first check to see if there is a next row. To see if the row has a next sibling, you use the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~hasnextsibling.html[HasNextSibling]"]  Method.
 
 *In Visual Basic:*
 
@@ -66,7 +66,7 @@ if(aRow.HasNextSibling())
 ----
 
 [start=4]
-. Once it is established there is a next sibling, you can access it by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getsibling.html[GetSibling]"]  method of the row.
+. Once it is established there is a next sibling, you can access it by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~getsibling.html[GetSibling]"]  method of the row.
 
 *In Visual Basic:*
 
@@ -89,7 +89,7 @@ else
 ----
 
 [start=5]
-. In a similar way, you can get a reference to a child row by using the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~haschild.html[HasChild]"]  and  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrow~getchild.html[GetChild]"]  methods.
+. In a similar way, you can get a reference to a child row by using the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~haschild.html[HasChild]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrow~getchild.html[GetChild]"]  methods.
 
 *In Visual Basic:*
 

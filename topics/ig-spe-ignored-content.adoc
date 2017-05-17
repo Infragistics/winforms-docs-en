@@ -49,13 +49,13 @@ The following topics are prerequisites to understanding this topic:
 
 === Overview
 
-Even though the syntax analyzer ignores insignificant tokens and skips unexpected tokens, they are still stored in the syntax tree because the syntax tree must represent the full content of the document. When the syntax analyzer comes across content which it can ignore, it gathers it up and stores it as “ignored content” on the next token node which is not ignored. This content is then accessible with the link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.syntaxnode~getleadingignoredcontent.html[GetLeadingIgnoredContent] method on the token node and all its ancestor nodes for which it is the first token node. This method returns an link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist.html[IgnoredContentList] class, which is a collection with the following key members:
+Even though the syntax analyzer ignores insignificant tokens and skips unexpected tokens, they are still stored in the syntax tree because the syntax tree must represent the full content of the document. When the syntax analyzer comes across content which it can ignore, it gathers it up and stores it as “ignored content” on the next token node which is not ignored. This content is then accessible with the link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.syntaxnode~getleadingignoredcontent.html[GetLeadingIgnoredContent] method on the token node and all its ancestor nodes for which it is the first token node. This method returns an link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ignoredcontentlist.html[IgnoredContentList] class, which is a collection with the following key members:
 
 [options="header", cols="a,a"]
 |====
 |*Property*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~count.html[Count]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ignoredcontentlist~count.html[Count]
 |The number of pieces of ignored content in the collection.
 
 |====
@@ -64,7 +64,7 @@ Even though the syntax analyzer ignores insignificant tokens and skips unexpecte
 |====
 |*Indexer*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~item.html[Item]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ignoredcontentlist~item.html[Item]
 |The piece of ignored content at the specified zero-based index in the collection.
 
 |====
@@ -73,12 +73,12 @@ Even though the syntax analyzer ignores insignificant tokens and skips unexpecte
 |====
 |*Method*|* Description*
 
-| link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontentlist~gettext.html[GetText]
+| link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ignoredcontentlist~gettext.html[GetText]
 |Returns a string containing the text of all ignored content in the collection.
 
 |====
 
-The indexer of the `IgnoredContentList` collection returns link:{ApiPlatform}documents.textdocument.v{ProductVersion}~infragistics.documents.parsing.ignoredcontent.html[IgnoredContent] values, which represent a single piece of ignored content.
+The indexer of the `IgnoredContentList` collection returns link:{ApiPlatform}documents.textdocument{ApiVersion}~infragistics.documents.parsing.ignoredcontent.html[IgnoredContent] values, which represent a single piece of ignored content.
 
 == Related Content
 

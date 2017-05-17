@@ -22,7 +22,7 @@ The current layout of your Tabbed MDI application (including tab position and ta
 that saving the layout of the tabbed MDI interface does not persist the forms or any of the data they contain, only their arrangement. If the number of forms in your application changes between the time the layout was saved and the time it was reloaded, those changes will not be reflected in the layout. Your application must ensure that the applications state is the same as it was when the layout was saved in order to exactly restore the Tabbed MDI interface to its previous state.
 ====
 
-The  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~storetab_ev.html[StoreTab]"]  and  pick:[win-forms="link:infragistics4.win.ultrawintabbedmdi.v{ProductVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~restoretab_ev.html[RestoreTab]"]  events must be implemented in order to properly load and save the tab layout. Refer to the link:wintabbedmdimanager-tab-serialization.html[Tab Serialization overview] for more information.
+The  pick:[win-forms="link:{ApiPlatform}win.ultrawintabbedmdi{ApiVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~storetab_ev.html[StoreTab]"]  and  pick:[win-forms="link:{ApiPlatform}win.ultrawintabbedmdi{ApiVersion}~infragistics.win.ultrawintabbedmdi.ultratabbedmdimanager~restoretab_ev.html[RestoreTab]"]  events must be implemented in order to properly load and save the tab layout. Refer to the link:wintabbedmdimanager-tab-serialization.html[Tab Serialization overview] for more information.
 
 To use the ToolClick event of the toolbar to save and load the layout of an WinTabbedMDIManager™.
 

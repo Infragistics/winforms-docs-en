@@ -14,7 +14,7 @@
 
 = Applying Enhanced Filter Condition to WinGrid at Run Time
 
-Sometimes, there may be a need to apply a filter condition at run time on any specific  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"] , so that you can control the Filtered rows that are displayed to the end-user.
+Sometimes, there may be a need to apply a filter condition at run time on any specific  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridcolumn.html[UltraGridColumn]"] , so that you can control the Filtered rows that are displayed to the end-user.
 
 The following code assumes WinGrid™ is bound to the Northwind Orders table. The following code filters all rows where the RequiredDate column values fall within the month of January.
 
@@ -34,7 +34,7 @@ this.ultraGrid1.DisplayLayout.Bands[0].ColumnFilters[“RequiredDate”].FilterC
 
 === Modifying DateTime Tree Appearance
 
-The Appearance of the Tree in DateTime Object can be modified using the  pick:[win-forms="link:infragistics4.win.supportdialogs.v{ProductVersion}~infragistics.win.supportdialogs.filteruiprovider.filteruiprovidertreesettings~datehierarchylevel.html[DateHierarchyLevel]"]  property. This property allows you to define the granularity of how specific you want to break down Dates for filtering (e.g., Year$$->$$ Month $$->$$Day$$->$$Hour$$->$$Minute$$->$$Second).
+The Appearance of the Tree in DateTime Object can be modified using the  pick:[win-forms="link:{ApiPlatform}win.supportdialogs{ApiVersion}~infragistics.win.supportdialogs.filteruiprovider.filteruiprovidertreesettings~datehierarchylevel.html[DateHierarchyLevel]"]  property. This property allows you to define the granularity of how specific you want to break down Dates for filtering (e.g., Year$$->$$ Month $$->$$Day$$->$$Hour$$->$$Minute$$->$$Second).
 
 *In Visual Basic:*
 

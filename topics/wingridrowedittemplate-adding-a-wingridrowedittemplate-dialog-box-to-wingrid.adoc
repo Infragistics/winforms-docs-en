@@ -16,7 +16,7 @@
 
 == Before You Begin
 
-WinGrid™ offers you several features to help your end users edit records quickly and efficiently. One of these editing features is the WinGridRowEditTemplate™ control. WinGridRowEditTemplate is simply a dialog box that contains data bound textboxes linked to specific cells in one of WinGrid's  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridband.html[Bands]"] . Which data bound cells that you display is completely up to you – WinGridRowEditTemplate includes a wizard to help you choose. The wizard displays when you set the RowEditTemplate property off a band to an instance of the WinGridRowEditTemplate control.
+WinGrid™ offers you several features to help your end users edit records quickly and efficiently. One of these editing features is the WinGridRowEditTemplate™ control. WinGridRowEditTemplate is simply a dialog box that contains data bound textboxes linked to specific cells in one of WinGrid's  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridband.html[Bands]"] . Which data bound cells that you display is completely up to you – WinGridRowEditTemplate includes a wizard to help you choose. The wizard displays when you set the RowEditTemplate property off a band to an instance of the WinGridRowEditTemplate control.
 
 == What You Will Accomplish
 
@@ -27,7 +27,7 @@ You will learn how to create a RowEditTemplate and associate it with a band in a
 [start=1]
 . *Set up your form with the necessary controls* .
 
-.. Double click the  pick:[win-forms="link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragrid.html[UltraGrid]"]  control in the Microsoft® Visual Studio® toolbox. WinGrid is added to your form.
+.. Double click the  pick:[win-forms="link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragrid.html[UltraGrid]"]  control in the Microsoft® Visual Studio® toolbox. WinGrid is added to your form.
 .. Set WinGrid's Dock property to True.
 .. Bind WinGrid to the customers table in the Northwind database. For more information, see link:wingrid-binding-wingrid-to-a-flat-data-source-clr2.html[Bind WinGrid to a Flat Data Source].
 .. Double click the UltraGridRowEditTemplate control in the Visual Studio toolbox. A blank RowEditTemplate is added to your form and the UltraGridRowEditTemplate Wizard appears.
@@ -62,6 +62,6 @@ image::images/WinGridRowEditTemplate_Adding_a_WinGridRowEditTemplate_Dialog_Box_
 
 When you run the application, you will notice that WinGridRowEditTemplate's dialog box is hidden. Click the row edit template button to the left of the first row. The RowEditTemplate appears. You can modify the row's values as if you were modifying the row itself because the WinGridCellProxy controls are bound to the values in the row. You can either click Ok to commit any changes to the data source, or you can click Cancel to abandon your changes.
 
-If you try to select another row to edit in WinGrid while WinGridRowEditTemplate's dialog box is open, you will not be able to because WinGridRowEditTemplate is set to be a modal dialog box by default. You can easily change this setting by setting the link:infragistics4.win.ultrawingrid.v{ProductVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~displaymode.html[DisplayMode] property to Modeless. Alternatively, you can add additional buttons to the dialog box to help your end user navigate through the rows. For more information on adding navigation buttons to the dialog box, see link:wingridrowedittemplate-adding-buttons-to-wingridrowedittemplates-dialog-box.html[Adding Buttons to WinGridRowEditTemplate's Dialog Box].
+If you try to select another row to edit in WinGrid while WinGridRowEditTemplate's dialog box is open, you will not be able to because WinGridRowEditTemplate is set to be a modal dialog box by default. You can easily change this setting by setting the link:{ApiPlatform}win.ultrawingrid{ApiVersion}~infragistics.win.ultrawingrid.ultragridrowedittemplate~displaymode.html[DisplayMode] property to Modeless. Alternatively, you can add additional buttons to the dialog box to help your end user navigate through the rows. For more information on adding navigation buttons to the dialog box, see link:wingridrowedittemplate-adding-buttons-to-wingridrowedittemplates-dialog-box.html[Adding Buttons to WinGridRowEditTemplate's Dialog Box].
 
 image::images/WinGridRowEditTemplate_Adding_a_WinGridRowEditTemplate_Dialog_Box_To_WinGrid_04.png[adding a ultragridrowedittemplate dialog box to ultragrid]

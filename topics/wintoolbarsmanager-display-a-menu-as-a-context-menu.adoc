@@ -14,7 +14,7 @@
 
 = Display a Menu as a Context Menu
 
-Sometimes you need to display a context menu when the user right-clicks on a form or any of the controls contained on that form. The WinToolbarsManager™ gives you the option of using its  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopUpMenu]"]  tool for this behavior once the element is added to the form.
+Sometimes you need to display a context menu when the user right-clicks on a form or any of the controls contained on that form. The WinToolbarsManager™ gives you the option of using its  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.popupmenutool.html[PopUpMenu]"]  tool for this behavior once the element is added to the form.
 
 *To display a menu as a context menu at design-time:*
 
@@ -25,7 +25,7 @@ Sometimes you need to display a context menu when the user right-clicks on a for
 [start=3]
 . Drag the Menu tool onto the toolbar and then drag the Button tools onto the menu's drop down.
 [start=4]
-. Either drag the PopUpMenu off the toolbar or set its  pick:[win-forms="link:infragistics4.win.ultrawintoolbars.v{ProductVersion}~infragistics.win.ultrawintoolbars.instanceprops~visible.html[Visible]"]  property to False.
+. Either drag the PopUpMenu off the toolbar or set its  pick:[win-forms="link:{ApiPlatform}win.ultrawintoolbars{ApiVersion}~infragistics.win.ultrawintoolbars.instanceprops~visible.html[Visible]"]  property to False.
 [start=5]
 . Select the form or any of its child controls and in the property page, find the "ContextMenuUltra on ultraToolbarsManager" property and select it. In the drop down, which will list all the PopUpMenu tools that are defined in the Manager with their keys listed. Select the PopUpMenu tool you just created.
 [start=6]

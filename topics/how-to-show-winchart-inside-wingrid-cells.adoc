@@ -16,7 +16,7 @@
 
 Showing WinChart™ within the Cells of WinGrid™ cannot be accomplished through intrinsic functionality, however by understanding some fundamentals as well as what is exposed to us through the Presentation Layer Framework™, this functionality can be achieved elegantly.
 
-WinGrid, along with many other Infragistics Windows Forms controls are built upon what has been named the Presentation Layer Framework (PLF). PLF Controls are composed of many link:win-uielements.html[UIElements], which are discrete graphical units that represent individual sections of the control. An  pick:[win-forms="link:infragistics4.win.v{ProductVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter]"]  implementation allows us to tap into the internals of PLF Controls and leverage the multitude of information that is available during the control’s rendering process.
+WinGrid, along with many other Infragistics Windows Forms controls are built upon what has been named the Presentation Layer Framework (PLF). PLF Controls are composed of many link:win-uielements.html[UIElements], which are discrete graphical units that represent individual sections of the control. An  pick:[win-forms="link:{ApiPlatform}win{ApiVersion}~infragistics.win.iuielementdrawfilter.html[IUIElementDrawFilter]"]  implementation allows us to tap into the internals of PLF Controls and leverage the multitude of information that is available during the control’s rendering process.
 
 Since we cannot truly embed WinChart within WinGrid cells, we need to think creatively in order to make this happen. The approach that this series of topics describes uses the strategy of positioning and sizing WinChart over specific cells in a particular WinGrid column.
 
